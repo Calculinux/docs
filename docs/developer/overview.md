@@ -61,17 +61,17 @@ Calculinux is built using the **Yocto Project**, a powerful framework for creati
 Calculinux Architecture:
 
 ┌─────────────────────────────────────┐
-│        Applications                  │
+│        Applications                 │
 ├─────────────────────────────────────┤
-│     Desktop Environment (Optional)   │
+│     Desktop Environment (Optional)  │
 ├─────────────────────────────────────┤
-│      Package Management (opkg)       │
+│      Package Management (opkg)      │
 ├─────────────────────────────────────┤
-│         System Libraries             │
+│         System Libraries            │
 ├─────────────────────────────────────┤
-│        Linux Kernel 5.10.x           │
+│        Linux Kernel 5.10.x          │
 ├─────────────────────────────────────┤
-│         U-Boot Bootloader            │
+│         U-Boot Bootloader           │
 ├─────────────────────────────────────┤
 │    Hardware (Luckfox Lyra/RV1106)   │
 └─────────────────────────────────────┘

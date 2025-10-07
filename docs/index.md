@@ -77,7 +77,6 @@ Calculinux is under active development. The current release includes:
 - ✅ Working LCD and keyboard drivers
 - ✅ Basic system functionality
 - ✅ Package management
-- 🚧 Desktop environment (in progress)
 - 🚧 Additional hardware support (planned)
 
 Check the [roadmap](about/roadmap.md) for upcoming features.
@@ -87,6 +86,9 @@ Check the [roadmap](about/roadmap.md) for upcoming features.
 Calculinux builds upon the incredible work of:
 
 - **hisptoot** - Original Luckfox Lyra port and driver development
+- **0xd61** - Yocto-based image development
+- **johnlaur** - Kernel driver and image development
+- **nekocharm** - display driver contributions
 - **Luckfox** - SDK and hardware support
 - **ClockworkPi** - PicoCalc hardware
 - **Yocto Project** - Build system foundation
