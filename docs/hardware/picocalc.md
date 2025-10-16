@@ -14,7 +14,7 @@ PicoCalc is a unique handheld device that combines:
 
 ## Original Hardware
 
-The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** microcontroller running calculator firmware. While functional as a calculator, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.
+The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** microcontroller running PicoMite MMBasic. While functional for small and light programming tasks, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.
 
 ## Why Replace the SBC?
 
