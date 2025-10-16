@@ -10,6 +10,8 @@ edit_uri: https://github.com/Calculinux/docs/edit/main/docs/
 theme:
   name: material
   #custom_dir: overrides
+  logo: assets/calculinux.svg
+  favicon: assets/calculinux.png
   palette:
     # Dark mode (default)
     - scheme: slate
