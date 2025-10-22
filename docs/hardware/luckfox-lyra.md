@@ -32,10 +32,13 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 
 - **Display**: SPI interface for LCD
 - **Camera**: MIPI CSI interface (not used in PicoCalc)
-- **USB**: USB 2.0 OTG
+- **USB**: USB 2.0 OTG (headers only - requires USB adapter)
 - **GPIO**: Multiple GPIO pins
 - **Audio**: I2S audio interface
 - **Network**: Ethernet MAC (PHY depends on version)
+
+!!! info "WiFi Not Included"
+    The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.
 
 ### Power
 
@@ -85,6 +88,24 @@ Calculinux includes custom kernel drivers developed specifically for the Luckfox
 - Key mapping for PicoCalc layout
 - Input event handling
 - Debouncing and repeat rate configuration
+
+### WiFi Drivers
+
+Calculinux includes drivers for external USB WiFi adapters with the following Realtek chipsets:
+
+- **RTL8723DU** - Dual-band WiFi adapter
+- **RTL8812AU** - AC1200 dual-band adapter
+- **RTL8814AU** - AC1900 quad-antenna adapter
+- **RTL8821CU** - AC600 compact adapter
+- **RTL88X2BU** - AC1200 adapter
+
+!!! tip "Choosing a WiFi Adapter"
+    When selecting a USB WiFi adapter:
+    
+    - Ensure it operates at **3.3V** (Lyra USB header voltage)
+    - Verify chipset compatibility with the list above
+    - Compact form factor recommended for PicoCalc integration
+    - Consider power consumption for battery operation
 
 ### Device Tree
 

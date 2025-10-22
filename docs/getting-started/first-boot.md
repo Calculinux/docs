@@ -72,23 +72,10 @@ df -h
 systemctl status
 ```
 
-### 4. Expand Filesystem (Optional)
+### 4. Filesystem Expansion (Automatic)
 
-!!! warning "Script Location Needs Verification"
-    The expand-filesystem.sh script location needs verification. The system includes `cloud-utils-growpart` package with the `growpart` utility.
-
-If using SD card larger than image size, you can expand the root partition:
-
-```bash
-# Using growpart (installed by default)
-growpart /dev/mmcblk1 2  # Expand partition 2
-resize2fs /dev/mmcblk1p2  # Resize filesystem
-
-# Alternative: check for expand-filesystem.sh
-if [ -f /usr/sbin/expand-filesystem.sh ]; then
-    /usr/sbin/expand-filesystem.sh
-fi
-```
+!!! success "Automatic Expansion"
+    The overlayfs partition is **automatically expanded** during the pre-init process on first boot. The system uses `growpart` to expand the overlay partition to fill available disk space, leaving 10% free. No manual intervention is required.
 
 ### 5. Update Package Database
 
@@ -110,7 +97,29 @@ cat /proc/bus/input/devices
 
 # Check CPU
 cat /proc/cpuinfo
+
+# Check USB WiFi adapter (if connected)
+lsusb
+ip link show
 ```
+
+### Supported Peripherals
+
+!!! info "Hardware Expansion"
+    The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.
+
+**Currently Tested:**
+- Display (built-in LCD drivers)
+- Keyboard (built-in keyboard drivers)  
+- USB WiFi adapters (see WiFi chipsets above)
+
+**Planned/Future Support:**
+- I2C RTC modules (e.g., Adafruit DS3231)
+- LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
+- Additional I2C/SPI peripherals
+
+!!! note "Peripheral Testing"
+    Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!
 
 ### Check Logs
 
@@ -124,29 +133,77 @@ journalctl -b
 
 ## Network Configuration
 
-!!! warning "Network Commands Need Verification"
-    The network configuration method should be verified. Calculinux uses systemd-networkd and may not use udhcpc as shown below.
+### WiFi Setup (USB Adapter Required)
+
+!!! info "WiFi Hardware Required"
+    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the USB header on the Lyra.
+
+**Supported WiFi Chipsets:**
+
+Calculinux includes drivers for the following Realtek chipsets:
+
+- RTL8723DU
+- RTL8812AU
+- RTL8814AU
+- RTL8821CU
+- RTL88X2BU
+
+#### Connecting to WiFi with iwctl
+
+Calculinux uses `iwd` (iNet Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
+
+```bash
+# Start iwctl interactive mode
+iwctl
+
+# Inside iwctl:
+[iwd]# device list                          # List wireless devices
+[iwd]# station wlan0 scan                   # Scan for networks
+[iwd]# station wlan0 get-networks           # Show available networks
+[iwd]# station wlan0 connect "SSID"         # Connect to network
+# Enter passphrase when prompted
+[iwd]# exit
+
+# Or use iwctl non-interactively:
+iwctl station wlan0 scan
+iwctl station wlan0 get-networks
+iwctl station wlan0 connect "YourSSID"
+```
+
+**Verify Connection:**
+
+```bash
+# Check connection status
+iwctl station wlan0 show
+
+# Check IP address
+ip addr show wlan0
+
+# Test connectivity
+ping -c 3 8.8.8.8
+```
+
+**Disconnect:**
+
+```bash
+iwctl station wlan0 disconnect
+```
 
 ### Via Ethernet
+
+The Luckfox Lyra has an Ethernet interface. Network configuration is handled by systemd-networkd:
 
 ```bash
 # Check interface status
 ip addr show
 networkctl status
 
-# DHCP is typically configured automatically via systemd-networkd
-# Manual DHCP request (if using busybox udhcpc):
-# udhcpc -i eth0
-
-# Static IP (temporary)
-ip addr add 192.168.1.100/24 dev eth0
-ip route add default via 192.168.1.1
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
+# DHCP is configured automatically via systemd-networkd
+# Check network configuration
+networkctl list
 ```
 
 For persistent network configuration, edit systemd-networkd files in `/etc/systemd/network/`.
-
-See [Networking Guide](../user-guide/networking.md) for details (page in development).
 
 ## Next Steps
 

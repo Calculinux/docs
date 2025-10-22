@@ -83,35 +83,31 @@ bitbake linux-calculinux -c unpack
 
 **Action**: Update all devtool examples to reference actual recipe names.
 
-### 5. Speculative Expand Filesystem Script
+### 5. Filesystem Expansion (RESOLVED)
 
 **Location**: `docs/getting-started/first-boot.md` lines ~80
 
-**Issue**: Documentation claims:
-```bash
-/usr/sbin/expand-filesystem.sh
-```
+**Issue**: Documentation incorrectly suggested manual filesystem expansion was needed.
 
-**Reality**: This script **does not exist** in the repository. However, `cloud-utils-growpart` IS installed in the image, which provides `growpart` utility.
+**Reality**: Filesystem expansion is **automatic** via the overlayfs pre-init script (`overlayfs-etc-preinit.sh.in`). The script uses `growpart` to automatically expand the overlay partition to fill available space (leaving 10% free) during first boot.
 
-**Action**: Either:
-1. Remove the reference and document `growpart` usage instead
-2. Create the `expand-filesystem.sh` script in the build
-3. Mark as "TODO: Script needs to be added"
+**Action**: ✅ **FIXED** - Updated documentation to explain automatic expansion process.
 
 ## High Priority - Unverified Claims
 
-### 6. Network Configuration Commands
+### 6. Network Configuration Commands (RESOLVED)
 
 **Location**: `docs/getting-started/first-boot.md` lines ~120-135
 
-**Issue**: Uses `udhcpc` command for DHCP
+**Issue**: Incorrectly used `udhcpc` command for network configuration.
 
-**Verification Needed**: 
-- Is `udhcpc` (busybox) actually used, or does the system use `systemd-networkd`?
-- The system has `systemd` and `systemd-conf` with `wlan.network` file
+**Reality**: 
+- WiFi configuration uses `iwd` (iNet Wireless Daemon) with `iwctl` command
+- Ethernet uses `systemd-networkd` for automatic DHCP
+- WiFi requires external USB adapter (3.3V compatible) - not built into hardware
+- Supported WiFi chipsets: RTL8723DU, RTL8812AU, RTL8814AU, RTL8821CU, RTL88X2BU
 
-**Action**: Verify actual network configuration method and update documentation accordingly.
+**Action**: ✅ **FIXED** - Added comprehensive iwctl guide and WiFi driver documentation.
 
 ### 7. Default User Password
 
@@ -133,19 +129,19 @@ Password: root
 
 ## Medium Priority - Speculation
 
-### 8. Hardware Peripherals
+### 8. Hardware Peripherals (RESOLVED)
 
 **Location**: Multiple files reference hardware features
 
-**Issue**: Documentation speculates about:
-- Display testing with `/dev/fb0`
-- Keyboard input devices
-- Audio devices
-- GPIO access
+**Issue**: Documentation speculated about various hardware without clear status.
 
-**Verification Needed**: Test all hardware examples on actual hardware to confirm they work.
+**Reality**:
+- **Tested/Working**: Display (built-in LCD), Keyboard (built-in), USB WiFi adapters (with listed chipsets)
+- **Hardware Not Built-in**: WiFi, audio, most peripherals - must be added externally
+- **Planned/Untested**: I2C RTC (DS3231), LoRa radio (Waveshare Core1262-868M), other I2C/SPI devices
+- **USB WiFi Requirements**: Must operate at 3.3V, connected to USB header on Lyra
 
-**Action**: Add disclaimer that hardware examples may need adjustment per device configuration.
+**Action**: ✅ **FIXED** - Added clear distinction between tested hardware and future/planned peripherals.
 
 ### 9. Build Times
 
