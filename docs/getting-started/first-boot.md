@@ -74,11 +74,20 @@ systemctl status
 
 ### 4. Expand Filesystem (Optional)
 
-If using SD card larger than image size:
+!!! warning "Script Location Needs Verification"
+    The expand-filesystem.sh script location needs verification. The system includes `cloud-utils-growpart` package with the `growpart` utility.
+
+If using SD card larger than image size, you can expand the root partition:
 
 ```bash
-/usr/sbin/expand-filesystem.sh
-# Or follow manual process
+# Using growpart (installed by default)
+growpart /dev/mmcblk1 2  # Expand partition 2
+resize2fs /dev/mmcblk1p2  # Resize filesystem
+
+# Alternative: check for expand-filesystem.sh
+if [ -f /usr/sbin/expand-filesystem.sh ]; then
+    /usr/sbin/expand-filesystem.sh
+fi
 ```
 
 ### 5. Update Package Database
@@ -115,22 +124,29 @@ journalctl -b
 
 ## Network Configuration
 
+!!! warning "Network Commands Need Verification"
+    The network configuration method should be verified. Calculinux uses systemd-networkd and may not use udhcpc as shown below.
+
 ### Via Ethernet
 
 ```bash
-# Check interface
+# Check interface status
 ip addr show
+networkctl status
 
-# DHCP (automatic)
-udhcpc -i eth0
+# DHCP is typically configured automatically via systemd-networkd
+# Manual DHCP request (if using busybox udhcpc):
+# udhcpc -i eth0
 
-# Static IP
+# Static IP (temporary)
 ip addr add 192.168.1.100/24 dev eth0
 ip route add default via 192.168.1.1
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 ```
 
-See [Networking Guide](../user-guide/networking.md) for details.
+For persistent network configuration, edit systemd-networkd files in `/etc/systemd/network/`.
+
+See [Networking Guide](../user-guide/networking.md) for details (page in development).
 
 ## Next Steps
 

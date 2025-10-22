@@ -104,33 +104,48 @@ Calculinux Architecture:
 
 ## Repository Structure
 
+!!! warning "Documentation Needs Update"
+    This section contains outdated information and is being revised to reflect the actual multi-layer Yocto structure. See [meta-calculinux README](https://github.com/Calculinux/meta-calculinux) for current structure.
+
 ### Main Repository
+
+The meta-calculinux repository uses a multi-layer Yocto structure:
 
 ```
 meta-calculinux/
-├── conf/
-│   ├── machine/          # Machine configurations
-│   │   └── picocalc-luckfox.conf
-│   ├── distro/           # Distribution config
-│   │   └── calculinux.conf
-│   └── layer.conf        # Layer configuration
-├── recipes-bsp/
-│   ├── u-boot/           # Bootloader recipes
-│   └── device-tree/      # Device tree files
-├── recipes-kernel/
-│   └── linux/            # Kernel recipes and patches
-├── recipes-core/
-│   └── images/           # Image definitions
-├── recipes-extended/
-│   └── packages/         # Additional packages
+├── meta-calculinux-distro/      # Distribution layer
+│   ├── conf/distro/
+│   │   └── calculinux-distro.conf
+│   ├── recipes-bsp/
+│   ├── recipes-connectivity/
+│   ├── recipes-core/
+│   │   ├── image/calculinux-image.bb
+│   │   └── bundles/calculinux-bundle.bb
+│   ├── recipes-extended/
+│   └── recipes-support/
+├── meta-picocalc-bsp-rockchip/  # Hardware BSP layer
+│   ├── conf/machine/
+│   │   └── luckfox-lyra.conf
+│   ├── recipes-bsp/
+│   │   └── u-boot/
+│   └── recipes-kernel/
+│       └── linux/linux-rockchip_6.1.bbappend
+├── meta-calculinux-apps/        # Applications layer
+│   ├── recipes-connectivity/
+│   │   └── zerotier-one/
+│   └── recipes-core/
+│       └── packagegroups/
+├── kas-luckfox-lyra-bundle.yaml # KAS build configuration
 └── README.md
 ```
 
-### Related Repositories
+### External Dependencies
 
-- **docs**: This documentation
-- **linux-calculinux**: Kernel source (fork)
-- **u-boot-calculinux**: Bootloader source (fork)
+Calculinux uses external repositories for kernel and bootloader sources:
+
+- **Kernel**: `github.com/0xd61/luckfox-linux-6.1-rk3506.git` (via linux-rockchip recipe)
+- **Bootloader**: Provided by meta-rockchip layer
+- **Documentation**: This repository (github.com/Calculinux/docs)
 
 ## Development Workflow
 
@@ -276,6 +291,9 @@ do_install() {
 
 ## Common Development Tasks
 
+!!! warning "Examples Need Verification"
+    The following examples use placeholder names and need to be updated with actual Calculinux recipe names and tested commands.
+
 ### Adding a Package
 
 ```bash
@@ -292,21 +310,22 @@ devtool finish <package-name> meta-calculinux
 ### Modifying Kernel
 
 ```bash
-# Extract kernel source
-bitbake linux-calculinux -c unpack
+# Extract kernel source (note: actual recipe is linux-rockchip, not linux-calculinux)
+bitbake linux-rockchip -c unpack
 
 # Make changes
-cd tmp/work/.../linux-calculinux/.../git
+cd tmp/work/.../linux-rockchip/.../git
 
 # Rebuild
-bitbake linux-calculinux -c compile -f
+bitbake linux-rockchip -c compile -f
 ```
 
 ### Creating Custom Image
 
 ```python
 # recipes-core/images/calculinux-custom.bb
-require calculinux-base.bb
+# Note: Only calculinux-image.bb and calculinux-bundle.bb currently exist
+require calculinux-image.bb
 
 IMAGE_INSTALL += "mypackage another-package"
 ```
@@ -315,12 +334,15 @@ IMAGE_INSTALL += "mypackage another-package"
 
 ### Build Testing
 
-```bash
-# Build specific image
-bitbake calculinux-minimal
+!!! warning "Example Uses Non-existent Images"
+    Only `calculinux-image` and `calculinux-bundle` targets currently exist. Examples below need verification.
 
-# Build with warnings as errors
-bitbake -k calculinux-base
+```bash
+# Build main image
+bitbake calculinux-image
+
+# Build update bundle
+bitbake calculinux-bundle
 
 # Verify package contents
 oe-pkgdata-util list-pkgs
