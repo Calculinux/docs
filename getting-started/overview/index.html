@@ -2426,22 +2426,26 @@
 <p>Before you begin, make sure you have:</p>
 <ul>
 <li>✅ PicoCalc device</li>
-<li>✅ Luckfox Lyra SBC</li>
+<li>✅ Luckfox Lyra SBC (128MB RAM model)</li>
 <li>✅ MicroSD card (8GB minimum, 16GB+ recommended)</li>
 <li>✅ SD card reader for your computer</li>
-<li>✅ USB-C cable (to connect the Lyra to your computer to wipe the NAND)</li>
-<li>✅ Computer</li>
+<li>✅ USB-C cable for power/connectivity</li>
+<li>✅ Computer (for flashing the SD card)</li>
 </ul>
 <p>Optional but helpful:
-- Second USB-C cable to monitor the serial console on the Picocalc USB-C port (1500000 Baud)
-- USB WiFi adapter (3.3V, see supported chipsets in <a href="../../hardware/compatibility/">Hardware Compatibility</a>)</p>
+- Second USB-C cable (for serial console monitoring at 1500000 baud)
+- USB WiFi adapter (3.3V compatible, see <a href="../hardware-requirements/">Hardware Requirements</a>)</p>
+<div class="admonition info">
+<p class="admonition-title">Detailed Hardware Info</p>
+<p>For complete hardware specifications and purchasing guidance, see <a href="../hardware-requirements/">Hardware Requirements</a> and <a href="../../hardware/specifications/">Hardware Specifications</a>.</p>
+</div>
 <h2 id="quick-start-process">Quick Start Process<a class="headerlink" href="#quick-start-process" title="Permanent link">&para;</a></h2>
 <p>Here's the high-level process to get Calculinux running:</p>
 <ol>
-<li><strong><a href="../hardware-requirements/">Check Hardware Requirements</a></strong> - Verify compatibility</li>
-<li><strong><a href="erase-nand.md">Erase NAND Flash</a></strong> (if equipped) - Erase the Lyra's on-board NAND Flash</li>
-<li><strong><a href="../installation/#hardware-installation">Install Hardware</a></strong> (if needed) - Install Luckfox Lyra in PicoCalc</li>
-<li><strong><a href="../installation/#flashing-the-image">Flash SD Card</a></strong> - Write Calculinux image to SD card</li>
+<li><strong><a href="../hardware-requirements/">Check Hardware Requirements</a></strong> - Verify you have everything needed</li>
+<li><strong><a href="../../troubleshooting/erase-nand/">Erase SPI NAND</a></strong> (if equipped) - Required for Lyra models with onboard NAND</li>
+<li><strong><a href="../installation/#hardware-installation">Install Lyra in PicoCalc</a></strong> (if needed) - Physical installation</li>
+<li><strong><a href="../installation/">Flash SD Card</a></strong> - Write Calculinux image to SD card</li>
 <li><strong><a href="../first-boot/">First Boot</a></strong> - Power on and complete initial setup</li>
 <li><strong><a href="../quick-start/">Quick Start Guide</a></strong> - Learn basic operations</li>
 </ol>
@@ -2489,9 +2493,13 @@
 <li><strong>Small Display</strong>: 320×320 pixels (53×40 text), optimized for terminal use</li>
 <li><strong>RAM</strong>: 128MB means careful resource management</li>
 <li><strong>Storage</strong>: SD card speed affects performance</li>
-<li><strong>No Built-in Network</strong>: Requires <strong>3.3 volt</strong> USB WiFi or Ethernet adapter</li>
+<li><strong>No Built-in Network</strong>: Requires 3.3V USB WiFi adapter or powered hub</li>
 <li><strong>Battery Life</strong>: Running Linux uses more power than stock firmware</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">More Details</p>
+<p>See <a href="../../hardware/specifications/">Hardware Specifications</a> for complete technical details about display, performance, and capabilities.</p>
+</div>
 <h2 id="learning-path">Learning Path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
 <h3 id="beginners">Beginners<a class="headerlink" href="#beginners" title="Permanent link">&para;</a></h3>
 <ol>
@@ -2539,8 +2547,8 @@
 <p>If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.</p>
 </div>
 <div class="admonition caution">
-<p class="admonition-title">SPI NAND</p>
-<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must</strong> erase it first or the SD card will be ignored. See <a href="../../troubleshooting/boot-problems/#spi-nand-interference">Boot Problems</a>.</p>
+<p class="admonition-title">SPI NAND Flash</p>
+<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must</strong> erase it first or the SD card will be ignored during boot. See the <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for complete instructions.</p>
 </div>
 <h3 id="make-a-backup-plan">Make a Backup Plan<a class="headerlink" href="#make-a-backup-plan" title="Permanent link">&para;</a></h3>
 <p>If this is your first time:</p>
@@ -2613,7 +2621,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 19:09:38 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:49:37 UTC">October 22, 2025</span>
   </span>
 
     

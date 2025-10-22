@@ -2882,33 +2882,23 @@
 - Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a>
 - Search forum for similar issues</p>
 <h2 id="step-5-initial-login">Step 5: Initial Login<a class="headerlink" href="#step-5-initial-login" title="Permanent link">&para;</a></h2>
-<p>Default credentials:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Username: root
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Password: root
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>-- OR --
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Username: pico
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Password: calc
-</code></pre></div>
+<p>After successful boot, you'll see a login prompt.</p>
+<div class="admonition info">
+<p class="admonition-title">Login Credentials</p>
+<p>For default usernames and passwords, see the <a href="../first-boot/#initial-login">First Boot guide</a>.</p>
+</div>
 <div class="admonition danger">
-<p class="admonition-title">Change Passwords Immediately</p>
-<p><strong>Both</strong> default passwords should be changed immediately after first login:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Change root password</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>passwd
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Change pico user password</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>passwd<span class="w"> </span>pico
-</code></pre></div></p>
-<p>The <code>pico</code> user is a member of the <code>wheel</code> group and can use <code>sudo</code> for administrative tasks.</p>
+<p class="admonition-title">Change Passwords</p>
+<p>Immediately change all default passwords after first login. See <a href="../first-boot/#initial-configuration">First Boot - Initial Configuration</a>.</p>
 </div>
 <h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
-<p>After successful login:</p>
+<p>After successful login, follow the <a href="../first-boot/">First Boot guide</a> for:</p>
 <ol>
-<li><strong>Change root password</strong>: <code>passwd</code></li>
-<li><strong>Update system time</strong>: <code>date -s "2025-10-06 12:00:00"</code></li>
-<li><strong>Check system</strong>: <code>df -h</code> and <code>free -m</code></li>
-<li><strong>Configure network</strong> (if needed): See <a href="../user-guide/networking.md">Networking</a></li>
+<li>Changing default passwords</li>
+<li>Setting system time</li>
+<li>Checking system status</li>
+<li>Configuring network (if needed)</li>
+<li>Updating package database</li>
 </ol>
 <h2 id="filesystem-expansion-automatic">Filesystem Expansion (Automatic)<a class="headerlink" href="#filesystem-expansion-automatic" title="Permanent link">&para;</a></h2>
 <div class="admonition success">
@@ -2924,11 +2914,11 @@
 <li><strong>Backup</strong>: Stable known-good configuration</li>
 </ul>
 <p>Just flash different images or clone a working card:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Clone a working SD card</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Later, restore it</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Clone a working SD card</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Later, restore it</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </code></pre></div>
 <h2 id="pre-installed-software">Pre-Installed Software<a class="headerlink" href="#pre-installed-software" title="Permanent link">&para;</a></h2>
 <p>Calculinux comes with a console-based environment including:</p>
@@ -2982,30 +2972,30 @@
 </ol>
 <h2 id="updating-calculinux">Updating Calculinux<a class="headerlink" href="#updating-calculinux" title="Permanent link">&para;</a></h2>
 <p>To update an existing installation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Update package database</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>opkg<span class="w"> </span>update
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Upgrade all packages</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>opkg<span class="w"> </span>upgrade
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Or see Updates guide</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Update package database</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>opkg<span class="w"> </span>update
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Upgrade all packages</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>opkg<span class="w"> </span>upgrade
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Or see Updates guide</span>
 </code></pre></div>
 <p>See <a href="../user-guide/updates.md">Updates</a> for detailed information.</p>
 <h2 id="backup-strategies">Backup Strategies<a class="headerlink" href="#backup-strategies" title="Permanent link">&para;</a></h2>
 <p>Protect your work:</p>
 <h3 id="full-sd-card-backup">Full SD Card Backup<a class="headerlink" href="#full-sd-card-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Backup entire SD card</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>calculinux-backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Compress to save space</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>gzip<span class="w"> </span>calculinux-backup.img
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Backup entire SD card</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>calculinux-backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Compress to save space</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>gzip<span class="w"> </span>calculinux-backup.img
 </code></pre></div>
 <h3 id="filesystem-backup">Filesystem Backup<a class="headerlink" href="#filesystem-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Backup home directory</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>tar<span class="w"> </span>czf<span class="w"> </span>home-backup.tar.gz<span class="w"> </span>/home
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Backup configuration</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>tar<span class="w"> </span>czf<span class="w"> </span>etc-backup.tar.gz<span class="w"> </span>/etc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Backup home directory</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>tar<span class="w"> </span>czf<span class="w"> </span>home-backup.tar.gz<span class="w"> </span>/home
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Backup configuration</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>tar<span class="w"> </span>czf<span class="w"> </span>etc-backup.tar.gz<span class="w"> </span>/etc
 </code></pre></div>
 <h2 id="common-installation-issues">Common Installation Issues<a class="headerlink" href="#common-installation-issues" title="Permanent link">&para;</a></h2>
 <h3 id="sd-card-not-recognized">SD Card Not Recognized<a class="headerlink" href="#sd-card-not-recognized" title="Permanent link">&para;</a></h3>
@@ -3071,7 +3061,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 16:27:24 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:49:37 UTC">October 22, 2025</span>
   </span>
 
     
