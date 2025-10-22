@@ -850,6 +850,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#wifi-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#device-tree" class="md-nav__link">
     <span class="md-ellipsis">
       Device Tree
@@ -2225,6 +2234,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#wifi-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#device-tree" class="md-nav__link">
     <span class="md-ellipsis">
       Device Tree
@@ -2427,11 +2445,15 @@
 <ul>
 <li><strong>Display</strong>: SPI interface for LCD</li>
 <li><strong>Camera</strong>: MIPI CSI interface (not used in PicoCalc)</li>
-<li><strong>USB</strong>: USB 2.0 OTG</li>
+<li><strong>USB</strong>: USB 2.0 OTG (headers only - requires USB adapter)</li>
 <li><strong>GPIO</strong>: Multiple GPIO pins</li>
 <li><strong>Audio</strong>: I2S audio interface</li>
 <li><strong>Network</strong>: Ethernet MAC (PHY depends on version)</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">WiFi Not Included</p>
+<p>The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.</p>
+</div>
 <h3 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Input Voltage</strong>: 5V</li>
@@ -2506,6 +2528,25 @@
 <li>Input event handling</li>
 <li>Debouncing and repeat rate configuration</li>
 </ul>
+<h3 id="wifi-drivers">WiFi Drivers<a class="headerlink" href="#wifi-drivers" title="Permanent link">&para;</a></h3>
+<p>Calculinux includes drivers for external USB WiFi adapters with the following Realtek chipsets:</p>
+<ul>
+<li><strong>RTL8723DU</strong> - Dual-band WiFi adapter</li>
+<li><strong>RTL8812AU</strong> - AC1200 dual-band adapter</li>
+<li><strong>RTL8814AU</strong> - AC1900 quad-antenna adapter</li>
+<li><strong>RTL8821CU</strong> - AC600 compact adapter</li>
+<li><strong>RTL88X2BU</strong> - AC1200 adapter</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Choosing a WiFi Adapter</p>
+<p>When selecting a USB WiFi adapter:</p>
+<ul>
+<li>Ensure it operates at <strong>3.3V</strong> (Lyra USB header voltage)</li>
+<li>Verify chipset compatibility with the list above</li>
+<li>Compact form factor recommended for PicoCalc integration</li>
+<li>Consider power consumption for battery operation</li>
+</ul>
+</div>
 <h3 id="device-tree">Device Tree<a class="headerlink" href="#device-tree" title="Permanent link">&para;</a></h3>
 <p>Calculinux includes a custom device tree configuration that:</p>
 <ul>
@@ -2601,7 +2642,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:50:53 UTC">October 22, 2025</span>
   </span>
 
     

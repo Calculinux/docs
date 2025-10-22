@@ -708,9 +708,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-expand-filesystem-optional" class="md-nav__link">
+  <a href="#4-filesystem-expansion-automatic" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Expand Filesystem (Optional)
+      4. Filesystem Expansion (Automatic)
     </span>
   </a>
   
@@ -750,6 +750,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#supported-peripherals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Peripherals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check-logs" class="md-nav__link">
     <span class="md-ellipsis">
       Check Logs
@@ -772,6 +781,30 @@
   
     <nav class="md-nav" aria-label="Network Configuration">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wifi-setup-usb-adapter-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Setup (USB Adapter Required)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Setup (USB Adapter Required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-wifi-with-iwctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to WiFi with iwctl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#via-ethernet" class="md-nav__link">
@@ -2207,9 +2240,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-expand-filesystem-optional" class="md-nav__link">
+  <a href="#4-filesystem-expansion-automatic" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Expand Filesystem (Optional)
+      4. Filesystem Expansion (Automatic)
     </span>
   </a>
   
@@ -2249,6 +2282,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#supported-peripherals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Peripherals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check-logs" class="md-nav__link">
     <span class="md-ellipsis">
       Check Logs
@@ -2271,6 +2313,30 @@
   
     <nav class="md-nav" aria-label="Network Configuration">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wifi-setup-usb-adapter-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi Setup (USB Adapter Required)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Setup (USB Adapter Required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-wifi-with-iwctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to WiFi with iwctl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#via-ethernet" class="md-nav__link">
@@ -2424,64 +2490,111 @@
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Check running services</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>systemctl<span class="w"> </span>status
 </code></pre></div>
-<h3 id="4-expand-filesystem-optional">4. Expand Filesystem (Optional)<a class="headerlink" href="#4-expand-filesystem-optional" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Script Location Needs Verification</p>
-<p>The expand-filesystem.sh script location needs verification. The system includes <code>cloud-utils-growpart</code> package with the <code>growpart</code> utility.</p>
+<h3 id="4-filesystem-expansion-automatic">4. Filesystem Expansion (Automatic)<a class="headerlink" href="#4-filesystem-expansion-automatic" title="Permanent link">&para;</a></h3>
+<div class="admonition success">
+<p class="admonition-title">Automatic Expansion</p>
+<p>The overlayfs partition is <strong>automatically expanded</strong> during the pre-init process on first boot. The system uses <code>growpart</code> to expand the overlay partition to fill available disk space, leaving 10% free. No manual intervention is required.</p>
 </div>
-<p>If using SD card larger than image size, you can expand the root partition:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Using growpart (installed by default)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>growpart<span class="w"> </span>/dev/mmcblk1<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="c1"># Expand partition 2</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>resize2fs<span class="w"> </span>/dev/mmcblk1p2<span class="w">  </span><span class="c1"># Resize filesystem</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Alternative: check for expand-filesystem.sh</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/usr/sbin/expand-filesystem.sh<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>/usr/sbin/expand-filesystem.sh
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">fi</span>
-</code></pre></div>
 <h3 id="5-update-package-database">5. Update Package Database<a class="headerlink" href="#5-update-package-database" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>opkg<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>opkg<span class="w"> </span>update
 </code></pre></div>
 <h2 id="basic-system-check">Basic System Check<a class="headerlink" href="#basic-system-check" title="Permanent link">&para;</a></h2>
 <h3 id="verify-hardware">Verify Hardware<a class="headerlink" href="#verify-hardware" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Check display</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>cat<span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>/dev/fb0<span class="w">  </span><span class="c1"># Should show random colors</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># Check keyboard</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>cat<span class="w"> </span>/proc/bus/input/devices
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Check CPU</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>cat<span class="w"> </span>/proc/cpuinfo
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Check display</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cat<span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>/dev/fb0<span class="w">  </span><span class="c1"># Should show random colors</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Check keyboard</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>cat<span class="w"> </span>/proc/bus/input/devices
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Check CPU</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>cat<span class="w"> </span>/proc/cpuinfo
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Check USB WiFi adapter (if connected)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>lsusb
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>ip<span class="w"> </span>link<span class="w"> </span>show
 </code></pre></div>
+<h3 id="supported-peripherals">Supported Peripherals<a class="headerlink" href="#supported-peripherals" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Hardware Expansion</p>
+<p>The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.</p>
+</div>
+<p><strong>Currently Tested:</strong>
+- Display (built-in LCD drivers)
+- Keyboard (built-in keyboard drivers)<br />
+- USB WiFi adapters (see WiFi chipsets above)</p>
+<p><strong>Planned/Future Support:</strong>
+- I2C RTC modules (e.g., Adafruit DS3231)
+- LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
+- Additional I2C/SPI peripherals</p>
+<div class="admonition note">
+<p class="admonition-title">Peripheral Testing</p>
+<p>Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!</p>
+</div>
 <h3 id="check-logs">Check Logs<a class="headerlink" href="#check-logs" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Boot messages</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># System journal</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>journalctl<span class="w"> </span>-b
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Boot messages</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># System journal</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>journalctl<span class="w"> </span>-b
 </code></pre></div>
 <h2 id="network-configuration">Network Configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Network Commands Need Verification</p>
-<p>The network configuration method should be verified. Calculinux uses systemd-networkd and may not use udhcpc as shown below.</p>
+<h3 id="wifi-setup-usb-adapter-required">WiFi Setup (USB Adapter Required)<a class="headerlink" href="#wifi-setup-usb-adapter-required" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">WiFi Hardware Required</p>
+<p>Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a <strong>USB WiFi adapter operating at 3.3V</strong> connected to the USB header on the Lyra.</p>
 </div>
+<p><strong>Supported WiFi Chipsets:</strong></p>
+<p>Calculinux includes drivers for the following Realtek chipsets:</p>
+<ul>
+<li>RTL8723DU</li>
+<li>RTL8812AU</li>
+<li>RTL8814AU</li>
+<li>RTL8821CU</li>
+<li>RTL88X2BU</li>
+</ul>
+<h4 id="connecting-to-wifi-with-iwctl">Connecting to WiFi with iwctl<a class="headerlink" href="#connecting-to-wifi-with-iwctl" title="Permanent link">&para;</a></h4>
+<p>Calculinux uses <code>iwd</code> (iNet Wireless Daemon) for WiFi management. Use <code>iwctl</code> to configure wireless connections:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Start iwctl interactive mode</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>iwctl
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Inside iwctl:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># device list                          # List wireless devices</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 scan                   # Scan for networks</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 get-networks           # Show available networks</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 connect &quot;SSID&quot;         # Connect to network</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Enter passphrase when prompted</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># exit</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Or use iwctl non-interactively:</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>scan
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;YourSSID&quot;</span>
+</code></pre></div>
+<p><strong>Verify Connection:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check connection status</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>show
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Check IP address</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>wlan0
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Test connectivity</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">8</span>.8.8.8
+</code></pre></div>
+<p><strong>Disconnect:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>disconnect
+</code></pre></div>
 <h3 id="via-ethernet">Via Ethernet<a class="headerlink" href="#via-ethernet" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check interface status</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>networkctl<span class="w"> </span>status
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># DHCP is typically configured automatically via systemd-networkd</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># Manual DHCP request (if using busybox udhcpc):</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># udhcpc -i eth0</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Static IP (temporary)</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.100/24<span class="w"> </span>dev<span class="w"> </span>eth0
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.1.1
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nameserver 8.8.8.8&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/resolv.conf
+<p>The Luckfox Lyra has an Ethernet interface. Network configuration is handled by systemd-networkd:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Check interface status</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>networkctl<span class="w"> </span>status
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># DHCP is configured automatically via systemd-networkd</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Check network configuration</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>networkctl<span class="w"> </span>list
 </code></pre></div>
 <p>For persistent network configuration, edit systemd-networkd files in <code>/etc/systemd/network/</code>.</p>
-<p>See <a href="../user-guide/networking.md">Networking Guide</a> for details (page in development).</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After initial setup:</p>
 <ul>
@@ -2540,7 +2653,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:30:36 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:50:53 UTC">October 22, 2025</span>
   </span>
 
     
