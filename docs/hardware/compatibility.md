@@ -6,8 +6,9 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 | SBC Model | Status | RAM Options | Notes |
 |-----------|--------|-------------|-------|
-| **Luckfox Lyra** | ✅ Fully Supported | 64/128/256 MB | Primary platform |
-| **Luckfox Lyra (SPI NAND)** | ✅ Supported | 128/256 MB | Requires NAND erase |
+| **Luckfox Lyra** | ✅ Fully Supported | 128 MB | Primary platform |
+| **Luckfox Lyra (SPI NAND)** | ✅ Supported | 128 MB | Requires NAND erase |
+| **Luckfox Lyra Plus** | ❓ Unknown | 128 MB | RK3506-based with Ethernet (untested) |
 | **Milk-V Duo** | 🚧 Planned | 64 MB | Future support |
 | **Milk-V Duo256** | 🚧 Planned | 256 MB | Future support |
 | **Raspberry Pi Zero** | ❌ Not Compatible | N/A | Form factor mismatch |
@@ -23,30 +24,16 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ### Supported Variants
 
-Calculinux currently supports two variants of the Luckfox Lyra board:
+Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 
 | RAM | Storage | Status | Notes |
 |-----|---------|--------|-------|
 | **128 MB** | SD Card Only | ✅ **Recommended** | Simplest setup |
 | **128 MB** | SPI NAND + SD | ✅ Supported | Requires NAND erase first |
 
-### Future Variants (Not Yet Supported)
-
-| Variant | Notes | Status |
-|---------|-------|--------|
-| **Luckfox Lyra Zero W** | Built-in WiFi/Bluetooth | 🚧 Potential future support |
-| **Luckfox Lyra Pi** | Core3506-based | 🚧 Potential future support |
-| **Luckfox Lyra Plus** | RK3576-based | 🚧 Potential future support |
-| **64MB variants** | Lower memory | 🚧 May work but untested |
-| **256MB variants** | Higher memory | 🚧 May work but untested |
-
-### By Memory Configuration
-
-| RAM | Recommended Use | Status |
-|-----|-----------------|--------|
-| **64 MB** | Console/Terminal | ❓ Untested - may work |
-| **128 MB** | General Use | ✅ **Recommended** for most applications |
-| **256 MB** | Development | ❓ Untested - may work |
+!!! note "Other Lyra Models"
+    - **Luckfox Lyra Plus**: RK3506-based with Ethernet (untested with Calculinux)
+    - **256 MB Lyra variants**: Would require custom adapter boards due to different pinouts; community members are experimenting with this
 
 ### By Storage Type
 
@@ -54,17 +41,16 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 |---------|---------------|-------------------|
 | **SD Card Only** | Primary | ✅ **Recommended** - simplest setup |
 | **SPI NAND + SD** | NAND first | ✅ Supported after NAND erase |
-| **eMMC** | N/A | ❌ Not available on Lyra |
 
 ### By Network Capability
 
 !!! info "Limited Network Options"
-    The basic Luckfox Lyra has no built-in networking. An Ethernet variant exists but would require a custom 3D-printed backplate to access the port and has not been tested with Calculinux.
+    The basic Luckfox Lyra has no built-in networking. The Luckfox Lyra Plus with Ethernet would require a custom 3D-printed backplate to access the port and has not been tested with Calculinux. USB WiFi adapters are the only tested networking option.
 
 | Connectivity | Hardware Required | Status | Notes |
 |--------------|-------------------|--------|-------|
-| **Ethernet (Lyra variant)** | Custom backplate | 🚧 Untested | Ethernet model exists but not tested |
-| **WiFi** | Not currently available | ❌ Not Supported | No practical solution at present |
+| **Luckfox Lyra Plus (Ethernet)** | Custom backplate | ❓ Untested | Plus model has Ethernet but not tested |
+| **USB WiFi** | USB WiFi adapter (3.3V or powered hub) | ✅ Supported | Only tested networking option |
 
 ## Storage Compatibility
 
@@ -83,15 +69,16 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 !!! note "SD Card Performance"
     Given the hardware speeds, different SD card classes are unlikely to have significant impact on performance.
 
-### USB Storage
+### PicoCalc External SD Card Slot
 
 | Type | Status | Notes |
 |------|--------|-------|
-| **Internal Storage** | ✅ Fully Supported | SD card and optional SPI NAND |
-| **External USB (OTG)** | 🧪 Experimental | Via USB-C port with 3.3V devices or powered hub |
+| **Internal Lyra Storage** | ✅ Fully Supported | Main SD card and optional SPI NAND |
+| **PicoCalc SD Card Slot** | ✅ Supported | Accessible external SD card slot on PicoCalc for additional storage |
+| **External USB Storage (OTG)** | 🧪 Experimental | Via Lyra's USB-C port with 3.3V devices or powered hub |
 
 !!! info "USB-C OTG Support"
-    The USB-C port supports USB On-The-Go functionality, enabling connection of external USB devices. However, this requires 3.3V compatible devices or an externally powered USB hub. This feature is currently untested and may require additional configuration.
+    The Lyra's USB-C port supports USB On-The-Go functionality, enabling connection of external USB storage devices. However, this requires 3.3V compatible devices or an externally powered USB hub. This feature is currently experimental and may require additional configuration.
 
 ## Display Compatibility
 
@@ -99,26 +86,17 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 
 | PicoCalc Model | Display Type | Status |
 |----------------|--------------|--------|
-| **PicoCalc (Original)** | ST7789 LCD | ✅ Fully Supported |
-| **PicoCalc (Variant)** | Similar LCD | ✅ Should work |
+| **PicoCalc** | ILI9488 LCD | ✅ Fully Supported |
 
 ### Replacement Display Options
 
 | Display Type | Connector | Size Requirement | Status |
 |--------------|-----------|------------------|--------|
 | **MIPI DSI (Higher Resolution)** | 22-pin (CM4 compatible) | 3.95" diagonal, square | 🚧 Possible |
-| **Original ST7789** | SPI | 320×320 | ✅ Standard |
+| **Original ILI9488** | SPI | 320×320 | ✅ Standard |
 
 !!! info "MIPI DSI Display Upgrade"
     Higher resolution MIPI DSI displays are possible if they use the same 22-pin connector found on Raspberry Pi Compute Module IO boards. The display must be square format and exactly 3.95" diagonal to fit within the PicoCalc enclosure. This would require hardware modification and custom driver configuration.
-
-### External Displays
-
-| Connection Type | Status | Notes |
-|-----------------|--------|-------|
-| **HDMI** | ❌ Not Available | RV1106 has no HDMI |
-| **USB Display** | 🧪 Experimental | May work with DisplayLink via USB-C OTG |
-| **SPI Display** | ⚠️ Conflicts | Would conflict with internal display |
 
 ## Input Device Compatibility
 
@@ -144,11 +122,12 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 
 | Model | Interface | Speed | Status |
 |-------|-----------|-------|--------|
-| **Lyra Ethernet** | 10/100 | 100 Mbps | 🚧 Untested - Requires custom backplate |
-| **Lyra Basic** | None | N/A | ❌ No networking capability |
+| **Lyra Plus** | Ethernet (10/100) | 100 Mbps | ❓ Untested - Requires custom backplate |
+| **Lyra** | None | N/A | N/A - USB WiFi adapters supported |
 
-!!! warning "Ethernet Model Considerations"
-    While a Luckfox Lyra variant with built-in Ethernet exists, it has not been tested with Calculinux and would require a custom 3D-printed backplate to access the Ethernet port within the PicoCalc enclosure.
+!!! info "Network Options"
+    - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only networking option.
+    - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the Ethernet port within the PicoCalc enclosure.
 
 ## Power Supply Compatibility
 
@@ -157,10 +136,14 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 | Power Source | Status | Notes |
 |--------------|--------|-------|
 | **PicoCalc Internal Battery** | ✅ Fully Supported | Rechargeable lithium-ion |
-| **USB-C Charging/OTG** | ✅ Supported | Charging + OTG data (3.3V devices) |
+| **PicoCalc USB-C Port** | ✅ Supported | Battery charging + serial console to Lyra |
+| **Lyra USB-C Port** | ✅ Supported | USB-OTG data only (does NOT charge PicoCalc) |
 
-!!! info "USB-C Dual Function"
-    The USB-C port serves dual purposes: charging the internal battery and USB OTG functionality for external devices. External devices must be 3.3V compatible or use an externally powered hub.
+!!! info "Two USB-C Ports"
+    The PicoCalc has TWO USB-C ports with different functions:
+    
+    - **PicoCalc USB-C Port**: Used for charging the internal battery and provides a USB serial console connection to the Lyra (at 1500000 baud)
+    - **Lyra USB-C Port**: Provides USB On-The-Go (OTG) functionality for external devices but does NOT charge the PicoCalc batteries. External devices must be 3.3V compatible or use an externally powered hub.
 
 ## Peripheral Compatibility
 
@@ -170,7 +153,8 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 |-------------|--------|-------|
 | **Display** | ✅ Fully Supported | Integrated LCD |
 | **Keyboard** | ✅ Fully Supported | Matrix keyboard |
-| **Storage** | ✅ Fully Supported | SD card, optional NAND |
+| **Lyra Storage** | ✅ Fully Supported | Lyra's SD card, optional NAND |
+| **PicoCalc SD Card Slot** | ✅ Fully Supported | External SD card accessible on PicoCalc |
 
 ### Expansion Interfaces
 
@@ -179,14 +163,15 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 
 | Interface | Voltage | Status | Notes |
 |-----------|---------|--------|-------|
-| **GPIO** | 3.3V | ✅ Available | Multiple GPIO pins accessible |
+| **GPIO** | 3.3V | ✅ Available | External GPIO pins are free (display/keyboard do not use them) |
 | **USB** | 3.3V | ✅ Available | Internal USB host/device |
 | **I2C** | 3.3V | ✅ Available | I2C bus for sensors/peripherals |
+| **I2S** | 3.3V | ❓ Untested | Audio interface available but untested |
 | **SPI** | 3.3V | ✅ Available | SPI interface (shared with display) |
 | **UART** | 3.3V | ✅ Available | Serial communication |
 
-!!! warning "Advanced Users Only"
-    Accessing these interfaces requires hardware modification skills and may void warranties. All interfaces operate at 3.3V logic levels.
+!!! warning "3.3V Logic Level Requirement"
+    **CRITICAL**: All interfaces operate at **3.3V logic levels only**. Using 5V devices or signals will damage the hardware. The PicoCalc is designed for tinkering and experimentation, but proper voltage levels must be maintained.
 
 ### Expansion Peripheral Compatibility
 
@@ -195,42 +180,41 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 | **Sensors** | I2C/SPI | ✅ Compatible | Temperature, accelerometer, etc. |
 | **External Storage** | USB 3.3V | ✅ Compatible | Flash drives, custom storage |
 | **Network Modules** | USB/SPI | 🚧 Possible | WiFi/cellular modules (3.3V) |
-| **Audio Devices** | I2C/SPI | 🚧 Possible | External audio codecs |
+| **Audio Devices (I2S)** | I2S | ❓ Untested | External audio codecs via I2S interface |
+| **Audio Devices (PWM)** | GPIO (PWM) | ⚠️ Limited | See PWM audio note below |
 | **Replacement Displays** | MIPI DSI | 🚧 Possible | 22-pin connector, 3.95" square |
 | **Additional SPI Displays** | SPI | ⚠️ Conflicts | Would conflict with main display |
 | **Input Devices** | GPIO/I2C | 🚧 Possible | Additional buttons, encoders |
 | **Communication** | UART/USB | ✅ Compatible | Serial devices, modems |
 
+!!! info "PWM Audio Details"
+    The PicoCalc has built-in audio support using PWM (Pulse Width Modulation) on GPIO pins. However, there are significant limitations:
+    
+    - The Lyra's PWM is not available on the correct pins without hardware modification
+    - Software PWM must be used instead on pins with only 1.2V tolerance
+    - This results in **low volume** audio and **high CPU usage**
+    
+    For proper audio, hardware modifications are needed to access the correct PWM pins or use the I2S interface. See the [Hardware Modifications guide](modifications.md) for details on enabling full-volume audio (documentation stub - refer to the [ClockworkPi forum](https://forum.clockworkpi.com/) for community solutions).
+
 !!! note "Custom Hardware Projects"
     These expansion options enable custom hardware projects and modifications for advanced users comfortable with electronics work.
-
-### GPIO Peripherals
-
-!!! warning "GPIO Access Limited"
-    Most GPIO pins are used by display and keyboard. External GPIO expansion is limited.
 
 ## Software Compatibility
 
 !!! info "Console-Only System"
-    Calculinux is currently a **console-only** system with no graphical desktop environment. All interaction is via text terminal. This is by design to maximize performance on limited hardware.
-
-### User Interface
-
-| Interface Type | RAM Requirement | Status | Notes |
-|---------|----------------|--------|-------|
-| **Console (Text)** | ~32 MB | ✅ Fully Supported | Current implementation |
-| **Framebuffer Graphics** | Variable | 🚧 Future | Planned for future releases |
-| **X11/Wayland Desktop** | >128 MB | 🚧 Future | Not currently available |
+    Calculinux is currently a **console-only** system with no graphical desktop environment. All interaction is via text terminal. This is by design to maximize performance on limited hardware (128 MB RAM).
 
 ### Console Applications
 
-| Application Type | 64 MB RAM | 128 MB RAM | 256 MB RAM |
-|------------------|-----------|------------|------------|
-| **Terminal Apps** | ✅ | ✅ | ✅ |
-| **Text Editor (vim/nano)** | ✅ | ✅ | ✅ |
-| **Scripting (Python/Bash)** | ⚠️ Basic | ✅ | ✅ |
-| **Development Tools** | ⚠️ Basic | ✅ | ✅ |
-| **Command-line Tools** | ✅ | ✅ | ✅ |
+All console applications work well with the 128 MB RAM configuration:
+
+| Application Type | Status | Notes |
+|------------------|--------|-------|
+| **Terminal Apps** | ✅ Fully Supported | All work well |
+| **Text Editor (vim/nano)** | ✅ Fully Supported | All work well |
+| **Scripting (Python/Bash)** | ✅ Fully Supported | All work well |
+| **Development Tools** | ✅ Fully Supported | All work well |
+| **Command-line Tools** | ✅ Fully Supported | All work well |
 
 ### Gaming and Entertainment (Community Tested)
 
@@ -275,7 +259,7 @@ Help us test these combinations:
 
 - [ ] Different SD card brands (though performance differences are likely minimal)
 - [ ] Various applications (request inclusion!)
-- [ ] Luckfox Lyra Ethernet model with custom backplate
+- [ ] Luckfox Lyra Plus (Ethernet model) with custom backplate
 
 ### How to Report
 
@@ -289,30 +273,6 @@ If you test a configuration:
    - What works / doesn't work
 3. Use the "Hardware Compatibility Report" template
 
-## Recommended Configurations
-
-### Budget Build
-
-- **SBC**: Luckfox Lyra 128MB (basic)
-- **Storage**: SanDisk Ultra 16GB
-- **Use Case**: Console, development, learning
-- **Cost**: ~$30-40
-
-### Standard Build
-
-- **SBC**: Luckfox Lyra 128MB 
-- **Storage**: Samsung EVO 32GB
-- **Use Case**: General use, projects
-- **Cost**: ~$35-45
-
-### Ethernet Build (Experimental)
-
-- **SBC**: Luckfox Lyra 128MB (ethernet variant)
-- **Storage**: Samsung EVO 32GB
-- **Extras**: Custom 3D-printed backplate for Ethernet access
-- **Use Case**: Network-connected projects (untested)
-- **Cost**: ~$40-50 + custom backplate
-
 ## Future Hardware Support
 
 ### Planned
@@ -323,7 +283,6 @@ If you test a configuration:
 ### Under Consideration
 
 - **Pine64 Ox64**: RISC-V option
-- **ESP32-based boards**: Lower cost alternative
 - **Raspberry Pi alternatives**: If form factor matches
 
 ## Next Steps

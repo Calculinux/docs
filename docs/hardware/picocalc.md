@@ -13,7 +13,7 @@ PicoCalc is a unique handheld device that combines:
 - Battery power capability
 
 !!! info "About the Name"
-    The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose computing platform.
+    The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose pocket computing platform.
 
 ## Original Hardware
 
@@ -23,11 +23,11 @@ The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** m
 
 Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provides:
 
-- **Full Linux OS** instead of firmware
+- **Full Linux OS** instead of PicoMite MMBasic
 - **Significantly more processing power**
-- **More RAM** (typically 64MB-256MB vs. 264KB)
+- **More RAM** (128MB vs. 264KB)
 - **Network connectivity** options
-- **Storage expansion** via SD card
+- **Storage expansion** via multiple SD cards
 - **Rich software ecosystem**
 
 ## Physical Specifications
@@ -45,7 +45,7 @@ Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provide
 The PicoCalc features an integrated LCD display that requires proper driver support in the Linux kernel. Key characteristics:
 
 - LCD panel with SPI interface
-- Resolution: (specifications to be documented)
+- Resolution: 320x320
 - Requires custom kernel drivers for Linux support
 
 ## Keyboard
@@ -53,12 +53,12 @@ The PicoCalc features an integrated LCD display that requires proper driver supp
 The keyboard provides:
 
 - Compact key layout suitable for programming and computation
-- Matrix keyboard interface
+- Matrix keyboard interface with a custom MCU connected over I2C
 - Requires custom kernel drivers for Linux support
-- Includes numeric keypad and function keys
+- Includes function keys and most keys on a standard keyboard.
 
 !!! note "Keyboard Layout"
-    While the PicoCalc includes a numeric keypad among other keys, it's designed as a general-purpose input device rather than a traditional calculator keypad. The layout is optimized for programming and computational work.
+    The custom kernel drivers support a mouse mode if you press both shift keys at the same time, which converts the arrow keys to function as a mouse cursor. Using shift with the arrow keys outside of mouse mode sends pgup/pgdown/home/end keys.
 
 ## Module Connector
 
@@ -72,6 +72,9 @@ The internal connector provides:
 
 !!! warning "Hardware Modification Required"
     Installing a Luckfox Lyra or similar SBC requires opening the PicoCalc case and replacing the original board. This process involves careful handling of the internal connector and components. See [Hardware Modifications](modifications.md) for detailed instructions.
+
+!!! warning "Screen Damage
+    Some people have broken their screens while disassembling and reassembling the PicoCalc. Taping the screen in place from behind when placing it in the front bezel is recommended!
 
 ## Compatibility
 
