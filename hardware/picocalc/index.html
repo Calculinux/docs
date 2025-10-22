@@ -2113,18 +2113,18 @@
 </ul>
 <div class="admonition info">
 <p class="admonition-title">About the Name</p>
-<p>The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose computing platform.</p>
+<p>The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose pocket computing platform.</p>
 </div>
 <h2 id="original-hardware">Original Hardware<a class="headerlink" href="#original-hardware" title="Permanent link">&para;</a></h2>
 <p>The PicoCalc originally ships with a <strong>Raspberry Pi Pico</strong> or <strong>RP2040-based</strong> microcontroller running <strong>PicoMite MMBasic</strong>. While functional for programming tasks and computation, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.</p>
 <h2 id="why-replace-the-sbc">Why Replace the SBC?<a class="headerlink" href="#why-replace-the-sbc" title="Permanent link">&para;</a></h2>
 <p>Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provides:</p>
 <ul>
-<li><strong>Full Linux OS</strong> instead of firmware</li>
+<li><strong>Full Linux OS</strong> instead of PicoMite MMBasic</li>
 <li><strong>Significantly more processing power</strong></li>
-<li><strong>More RAM</strong> (typically 64MB-256MB vs. 264KB)</li>
+<li><strong>More RAM</strong> (128MB vs. 264KB)</li>
 <li><strong>Network connectivity</strong> options</li>
-<li><strong>Storage expansion</strong> via SD card</li>
+<li><strong>Storage expansion</strong> via multiple SD cards</li>
 <li><strong>Rich software ecosystem</strong></li>
 </ul>
 <h2 id="physical-specifications">Physical Specifications<a class="headerlink" href="#physical-specifications" title="Permanent link">&para;</a></h2>
@@ -2162,20 +2162,20 @@
 <p>The PicoCalc features an integrated LCD display that requires proper driver support in the Linux kernel. Key characteristics:</p>
 <ul>
 <li>LCD panel with SPI interface</li>
-<li>Resolution: (specifications to be documented)</li>
+<li>Resolution: 320x320</li>
 <li>Requires custom kernel drivers for Linux support</li>
 </ul>
 <h2 id="keyboard">Keyboard<a class="headerlink" href="#keyboard" title="Permanent link">&para;</a></h2>
 <p>The keyboard provides:</p>
 <ul>
 <li>Compact key layout suitable for programming and computation</li>
-<li>Matrix keyboard interface</li>
+<li>Matrix keyboard interface with a custom MCU connected over I2C</li>
 <li>Requires custom kernel drivers for Linux support</li>
-<li>Includes numeric keypad and function keys</li>
+<li>Includes function keys and most keys on a standard keyboard.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Keyboard Layout</p>
-<p>While the PicoCalc includes a numeric keypad among other keys, it's designed as a general-purpose input device rather than a traditional calculator keypad. The layout is optimized for programming and computational work.</p>
+<p>The custom kernel drivers support a mouse mode if you press both shift keys at the same time, which converts the arrow keys to function as a mouse cursor. Using shift with the arrow keys outside of mouse mode sends pgup/pgdown/home/end keys.</p>
 </div>
 <h2 id="module-connector">Module Connector<a class="headerlink" href="#module-connector" title="Permanent link">&para;</a></h2>
 <p>The internal connector provides:</p>
@@ -2190,6 +2190,8 @@
 <p class="admonition-title">Hardware Modification Required</p>
 <p>Installing a Luckfox Lyra or similar SBC requires opening the PicoCalc case and replacing the original board. This process involves careful handling of the internal connector and components. See <a href="../modifications/">Hardware Modifications</a> for detailed instructions.</p>
 </div>
+<p>!!! warning "Screen Damage
+    Some people have broken their screens while disassembling and reassembling the PicoCalc. Taping the screen in place from behind when placing it in the front bezel is recommended!</p>
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
 <p>The PicoCalc's modular design potentially supports various SBCs with the right adapters and modifications:</p>
 <ul>
@@ -2232,7 +2234,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:14:06 UTC">October 22, 2025</span>
   </span>
 
     
