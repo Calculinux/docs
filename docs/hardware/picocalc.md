@@ -32,49 +32,32 @@ Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provide
 
 ## Physical Specifications
 
-| Specification | Details |
-|--------------|---------|
-| **Dimensions** | Pocket-sized handheld form factor |
-| **Display** | Built-in LCD screen |
-| **Input** | Physical keyboard with compact layout |
-| **Power** | USB-C port, battery operation |
-| **Module Interface** | Custom connector for SBC modules |
+For detailed technical specifications including display, keyboard, power, and interface details, see the [Hardware Specifications](specifications.md) page.
 
-## Display
-
-The PicoCalc features an integrated LCD display that requires proper driver support in the Linux kernel. Key characteristics:
-
-- LCD panel with SPI interface
-- Resolution: 320x320
-- Requires custom kernel drivers for Linux support
-
-## Keyboard
-
-The keyboard provides:
-
-- Compact key layout suitable for programming and computation
-- Matrix keyboard interface with a custom MCU connected over I2C
-- Requires custom kernel drivers for Linux support
-- Includes function keys and most keys on a standard keyboard.
-
-!!! note "Keyboard Layout"
-    The custom kernel drivers support a mouse mode if you press both shift keys at the same time, which converts the arrow keys to function as a mouse cursor. Using shift with the arrow keys outside of mouse mode sends pgup/pgdown/home/end keys.
-
-## Module Connector
-
-The internal connector provides:
-
-- Power delivery to the SBC
-- Display interface (SPI)
-- Keyboard interface
-- GPIO access
-- USB connectivity
+**Quick Overview:**
+- Pocket-sized handheld computer form factor
+- 320×320 pixel LCD display with ILI9488 controller
+- Full physical keyboard with compact layout
+- Two USB-C ports (PicoCalc port and Lyra port with different functions)
+- Internal rechargeable battery
+- Modular SBC design
 
 !!! warning "Hardware Modification Required"
     Installing a Luckfox Lyra or similar SBC requires opening the PicoCalc case and replacing the original board. This process involves careful handling of the internal connector and components. See [Hardware Modifications](modifications.md) for detailed instructions.
 
-!!! warning "Screen Damage
+!!! warning "Screen Damage Risk"
     Some people have broken their screens while disassembling and reassembling the PicoCalc. Taping the screen in place from behind when placing it in the front bezel is recommended!
+
+## Technical Details
+
+For complete technical specifications including:
+- Display system (ILI9488 controller, SPI interface, refresh rates)
+- Keyboard system (STM32 MCU, I2C communication)
+- USB-C ports (two ports with different functions)
+- Power system (battery specs, consumption data)
+- Storage options (internal and expansion SD cards)
+
+See the [Hardware Specifications](specifications.md) page.
 
 ## Compatibility
 
@@ -94,6 +77,8 @@ See the [Compatibility Matrix](compatibility.md) for detailed information.
 
 ## Next Steps
 
+- Review [Hardware Specifications](specifications.md) for complete technical details
 - Learn about the [Luckfox Lyra](luckfox-lyra.md) SBC
-- Review [Hardware Modifications](modifications.md) guide
-- Check [Display & Input](display-input.md) technical details
+- Check [Hardware Modifications](modifications.md) installation guide
+- See [Display & Input](display-input.md) for driver implementation details
+- Review [Hardware Compatibility](compatibility.md) for supported hardware

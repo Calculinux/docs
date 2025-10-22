@@ -11,24 +11,27 @@ Calculinux is a Linux distribution built specifically for the PicoCalc handheld 
 Before you begin, make sure you have:
 
 - ✅ PicoCalc device
-- ✅ Luckfox Lyra SBC
+- ✅ Luckfox Lyra SBC (128MB RAM model)
 - ✅ MicroSD card (8GB minimum, 16GB+ recommended)
 - ✅ SD card reader for your computer
-- ✅ USB-C cable (to connect the Lyra to your computer to wipe the NAND)
-- ✅ Computer
+- ✅ USB-C cable for power/connectivity
+- ✅ Computer (for flashing the SD card)
 
 Optional but helpful:
-- Second USB-C cable to monitor the serial console on the Picocalc USB-C port (1500000 Baud)
-- USB WiFi adapter (3.3V, see supported chipsets in [Hardware Compatibility](../hardware/compatibility.md))
+- Second USB-C cable (for serial console monitoring at 1500000 baud)
+- USB WiFi adapter (3.3V compatible, see [Hardware Requirements](hardware-requirements.md))
+
+!!! info "Detailed Hardware Info"
+    For complete hardware specifications and purchasing guidance, see [Hardware Requirements](hardware-requirements.md) and [Hardware Specifications](../hardware/specifications.md).
 
 ## Quick Start Process
 
 Here's the high-level process to get Calculinux running:
 
-1. **[Check Hardware Requirements](hardware-requirements.md)** - Verify compatibility
-2. **[Erase NAND Flash](erase-nand.md)** (if equipped) - Erase the Lyra's on-board NAND Flash
-3. **[Install Hardware](installation.md#hardware-installation)** (if needed) - Install Luckfox Lyra in PicoCalc
-4. **[Flash SD Card](installation.md#flashing-the-image)** - Write Calculinux image to SD card
+1. **[Check Hardware Requirements](hardware-requirements.md)** - Verify you have everything needed
+2. **[Erase SPI NAND](../troubleshooting/erase-nand.md)** (if equipped) - Required for Lyra models with onboard NAND
+3. **[Install Lyra in PicoCalc](installation.md#hardware-installation)** (if needed) - Physical installation
+4. **[Flash SD Card](installation.md)** - Write Calculinux image to SD card
 5. **[First Boot](first-boot.md)** - Power on and complete initial setup
 6. **[Quick Start Guide](quick-start.md)** - Learn basic operations
 
@@ -80,8 +83,11 @@ Be aware of these limitations:
 - **Small Display**: 320×320 pixels (53×40 text), optimized for terminal use
 - **RAM**: 128MB means careful resource management
 - **Storage**: SD card speed affects performance
-- **No Built-in Network**: Requires **3.3 volt** USB WiFi or Ethernet adapter
+- **No Built-in Network**: Requires 3.3V USB WiFi adapter or powered hub
 - **Battery Life**: Running Linux uses more power than stock firmware
+
+!!! info "More Details"
+    See [Hardware Specifications](../hardware/specifications.md) for complete technical details about display, performance, and capabilities.
 
 ## Learning Path
 
@@ -138,8 +144,8 @@ External links, tools, community information
 !!! warning "Data Loss"
     If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.
 
-!!! caution "SPI NAND"
-    If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored. See [Boot Problems](../troubleshooting/boot-problems.md#spi-nand-interference).
+!!! caution "SPI NAND Flash"
+    If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored during boot. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
 
 ### Make a Backup Plan
 

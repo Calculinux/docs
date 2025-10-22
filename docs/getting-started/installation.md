@@ -222,38 +222,23 @@ If the system doesn't boot:
 
 ## Step 5: Initial Login
 
-Default credentials:
+After successful boot, you'll see a login prompt.
 
-```
-Username: root
-Password: root
+!!! info "Login Credentials"
+    For default usernames and passwords, see the [First Boot guide](first-boot.md#initial-login).
 
--- OR --
-
-Username: pico
-Password: calc
-```
-
-!!! danger "Change Passwords Immediately"
-    **Both** default passwords should be changed immediately after first login:
-    ```bash
-    # Change root password
-    passwd
-    
-    # Change pico user password
-    passwd pico
-    ```
-    
-    The `pico` user is a member of the `wheel` group and can use `sudo` for administrative tasks.
+!!! danger "Change Passwords"
+    Immediately change all default passwords after first login. See [First Boot - Initial Configuration](first-boot.md#initial-configuration).
 
 ## Post-Installation
 
-After successful login:
+After successful login, follow the [First Boot guide](first-boot.md) for:
 
-1. **Change root password**: `passwd`
-2. **Update system time**: `date -s "2025-10-06 12:00:00"`
-3. **Check system**: `df -h` and `free -m`
-4. **Configure network** (if needed): See [Networking](../user-guide/networking.md)
+1. Changing default passwords
+2. Setting system time
+3. Checking system status
+4. Configuring network (if needed)
+5. Updating package database
 
 ## Filesystem Expansion (Automatic)
 

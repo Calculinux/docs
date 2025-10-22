@@ -1,6 +1,9 @@
 # Display & Input Technical Details
 
-This page provides technical information about the PicoCalc display and keyboard interfacing with Calculinux.
+This page provides technical implementation details about the PicoCalc display and keyboard drivers and device tree configuration.
+
+!!! info "Hardware Specifications"
+    For high-level hardware specifications (display resolution, keyboard type, etc.), see the [Hardware Specifications](specifications.md) page. This page focuses on driver implementation and device tree configuration.
 
 ## Display System
 

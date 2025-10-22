@@ -1,91 +1,139 @@
 # Hardware Requirements
 
-This page outlines the hardware required to run Calculinux.
+This page outlines what hardware you need to purchase and prepare to run Calculinux.
+
+!!! info "Technical Specifications"
+    For detailed technical specifications of all hardware components, see the [Hardware Specifications](../hardware/specifications.md) page.
 
 ## Required Hardware
 
 ### Essential Components
 
-| Component | Requirement | Notes |
-|-----------|-------------|-------|
-| **PicoCalc Device** | Base model | The handheld computer shell and display |
-| **Luckfox Lyra SBC** | RK3506G2-based | Replaces stock RP2040 board |
-| **MicroSD Card** | 8GB+ (16GB+ recommended) | For OS storage |
-| **USB-C Cable** | Data-capable | For power and connectivity |
-| **Power Supply** | 5V/2A minimum | 2A or higher recommended |
+| Component | Requirement | Where to Get |
+|-----------|-------------|--------------|
+| **PicoCalc Device** | Base model | [ClockworkPi Store](https://www.clockworkpi.com/) |
+| **Luckfox Lyra SBC** | 128MB RAM, RK3506G2-based | [Luckfox Store](https://www.luckfox.com/Luckfox-Lyra) |
+| **MicroSD Card** | 8GB minimum (16GB+ recommended) | Any retailer - Class 10 or better |
+| **USB-C Cable** | Data-capable | Any retailer |
 
-### Luckfox Lyra Specifications
-
-Supported Luckfox Lyra configuration:
-- **RAM**: 128MB (only available and tested configuration)
-- **SoC**: Rockchip RK3506G2
-- **Storage**: SD card (some models include SPI NAND that must be erased)
+!!! warning "Luckfox Lyra Configuration"
+    - **RAM**: Get the **128MB** model - this is the only tested and supported configuration
+    - **Storage**: Models with or without SPI NAND both work (NAND must be [erased first](../troubleshooting/erase-nand.md))
+    - **Other variants**: 64MB and 256MB RAM models have different footprints and pinouts and would require custom adapter boards
 
 ## Recommended Configurations
 
 ### Budget Configuration
-- Luckfox Lyra 128MB (basic)
+- Luckfox Lyra 128MB (basic model, no SPI NAND)
 - 16GB Class 10 SD card
-- **Use Case**: Console, scripting, development
-- **Cost**: ~$30-40
+- **Best for**: Console use, scripting, learning Linux
 
-### Standard Configuration  
+### Standard Configuration
 - Luckfox Lyra 128MB
 - 32GB UHS-I SD card
-- **Use Case**: Console with more storage for applications
-- **Cost**: ~$45-60
+- **Best for**: General use with more storage for applications
 
 ### Advanced Configuration
 - Luckfox Lyra 128MB
 - 64GB UHS-I SD card
-- Powered USB hub + peripherals
-- Second USB-C cable (for serial console access)
-- **Use Case**: Console development, experimentation
-- **Cost**: ~$60-80
+- Powered USB hub (for 5V peripherals)
+- Second USB-C cable (for serial console)
+- **Best for**: Development, experimentation, debugging
 
 !!! tip "Serial Console for Development"
-    A second USB-C cable connected to the PicoCalc's USB-C port (not the Lyra's port) provides serial console access at 1500000 baud. This is invaluable for:
+    A second USB-C cable connected to the **PicoCalc's USB-C port** (not the Lyra's port) provides serial console access at **1500000 baud**. This is invaluable for:
     
     - Watching boot messages and kernel output
     - Debugging firmware and kernel driver modifications
     - Troubleshooting hardware issues
     - Development work requiring low-level system access
+    
+    See [Hardware Specifications](../hardware/specifications.md#usb-c-ports) for details on the two different USB-C ports.
+
+## What's Included vs What to Buy
+
+### Comes with PicoCalc
+- Display and keyboard
+- Internal battery
+- PicoCalc USB-C port (for charging and serial console)
+- PicoCalc SD card slot (for expansion storage)
+- Original RP2040 board (you'll replace this)
+
+### You Need to Purchase
+- Luckfox Lyra SBC (replaces RP2040)
+- MicroSD card for Lyra (system boot disk)
+- USB-C cable
+
+### Optional Purchases
+- WiFi adapter (3.3V or via powered hub)
+- Additional SD card for PicoCalc slot
+- Powered USB hub (for 5V devices)
+- Second USB-C cable (for serial console)
+
+## Before You Order
+
+### Important Considerations
 
 !!! info "Graphical Desktop Experimentation"
-    While Calculinux is console-only by default, users may experiment with lightweight graphical environments. However, the 128MB RAM is a significant limiting factor for desktop use. Community experimentation is encouraged!
+    Calculinux is console-only by default. While you can experiment with lightweight graphical environments, the 128MB RAM is a significant limiting factor for desktop use. Set expectations accordingly!
+
+!!! caution "SPI NAND Models"
+    If you purchase a Luckfox Lyra with SPI NAND storage, you **must erase the NAND flash** before Calculinux will boot from SD card. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for instructions.
+
+!!! note "PicoCalc Availability"
+    Check [ClockworkPi's website](https://www.clockworkpi.com/) for current PicoCalc availability and shipping information.
+
+## Next Steps
+
+Once you have your hardware:
+
+1. **Check compatibility**: Review the [Hardware Compatibility Matrix](../hardware/compatibility.md)
+2. **Learn about the hardware**: See [Hardware Specifications](../hardware/specifications.md) for technical details
+3. **Prepare for installation**: Continue to the [Installation Guide](installation.md)
+
+## Additional Resources
+
+- [PicoCalc Overview](../hardware/picocalc.md) - Learn about the PicoCalc device
+- [Luckfox Lyra Details](../hardware/luckfox-lyra.md) - SDK, purchasing, and software info
+- [Hardware Specifications](../hardware/specifications.md) - Complete technical specs
+- [Hardware Compatibility](../hardware/compatibility.md) - Detailed compatibility information
 
 ## Optional Hardware
 
-!!! warning "USB Peripheral Limitations"
-    The Lyra USB-C port supports USB OTG, but has important limitations:
+### Network Connectivity
+
+!!! warning "No Built-in WiFi"
+    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You will need a USB WiFi adapter.
+
+!!! danger "Critical: 3.3V Requirement"
+    The Lyra's USB port provides only **3.3V power**. Standard 5V USB adapters will NOT work and may damage the board.
     
-    - **Voltage Requirement**: USB devices must operate at 3.3V or use an externally powered hub
-    - **Tested Hardware**: Only internal USB WiFi adapter (3.3V) has been confirmed working
-    - **Untested Peripherals**: External USB devices (keyboards, ethernet adapters, storage) have not been tested
-    - **Recommendation**: Use an externally powered USB hub for any external USB peripherals
+    **Options**:
+    - Use a 3.3V-compatible USB WiFi adapter
+    - Use an **externally powered** USB hub for 5V devices
 
-### Tested Hardware
+**Tested**: USB WiFi adapters with RTL8192CU, R8712U, R8188EU chipsets at 3.3V
 
-- **WiFi Adapter** (3.3V, internal USB header) - ✅ Confirmed working
-- **External SD Card** (PicoCalc's built-in SD slot) - ✅ Confirmed working
+**Untested but supported**: Additional chipsets listed in [Hardware Specifications - WiFi](../hardware/specifications.md#supported-wifi-chipsets)
 
-!!! info "External SD Card Expansion"
-    The PicoCalc includes a built-in SD card slot that can be used for additional storage. This slot is accessed over SPI and is therefore slower than the main internal SD card, but it's excellent for mass storage of files, media, or backups.
+### Storage Expansion
 
-### Untested Hardware
+| Option | Status | Notes |
+|--------|--------|-------|
+| **PicoCalc SD Card Slot** | ✅ Tested | External SD card via PicoCalc's built-in slot (SPI, slower but great for storage) |
+| **USB Storage** | ❓ Untested | Via Lyra USB-OTG port (requires 3.3V or powered hub) |
 
-The following peripherals may work but have not been tested and likely require a powered USB hub:
+### Other Peripherals
+
+**The following have NOT been tested with Calculinux** and likely require an externally powered USB hub:
 
 - USB keyboard
-- USB Ethernet adapter
+- USB ethernet adapter  
 - USB storage devices
 - Other USB peripherals
 
-!!! note "Luckfox Lyra Plus Ethernet"
-    The [Luckfox Lyra Plus](https://www.luckfox.com/Mini-PC/Luckfox-Lyra-Plus) includes a built-in Ethernet port, but this model has not been tested with Calculinux and would require a custom backplate to access the port within the PicoCalc enclosure.
-
-!!! note "Other Luckfox Lyra Models"
-    Other Luckfox Lyra models exist with different RAM configurations (64MB, 256MB), but these have different pinouts from the 128MB model and would require a custom adapter board to be compatible with the PicoCalc. Only the 128MB model with the standard pinout is currently supported.
+!!! note "Luckfox Lyra Plus (Ethernet Model)"
+    The [Luckfox Lyra Plus](https://www.luckfox.com/Mini-PC/Luckfox-Lyra-Plus) includes built-in Ethernet, but it has not been tested with Calculinux and would require a custom backplate to access the port within the PicoCalc enclosure.
 
 ## Compatibility
 

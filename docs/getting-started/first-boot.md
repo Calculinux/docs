@@ -136,17 +136,9 @@ journalctl -b
 ### WiFi Setup (USB Adapter Required)
 
 !!! info "WiFi Hardware Required"
-    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the USB header on the Lyra.
-
-**Supported WiFi Chipsets:**
-
-Calculinux includes drivers for the following Realtek chipsets:
-
-- RTL8723DU
-- RTL8812AU
-- RTL8814AU
-- RTL8821CU
-- RTL88X2BU
+    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the Lyra's USB header.
+    
+    For a complete list of supported WiFi chipsets, see [Hardware Specifications - WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets).
 
 #### Connecting to WiFi with iwctl
 

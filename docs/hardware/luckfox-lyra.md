@@ -4,84 +4,27 @@ The **Luckfox Lyra** is a compact single-board computer based on the Rockchip RK
 
 ## Overview
 
-The Luckfox Lyra provides significant computing power in a small form factor, making it perfect for pocket-sized Linux applications.
+The Luckfox Lyra provides significant computing power in a small form factor, perfect for pocket-sized Linux applications.
 
-## Specifications
-
-### Processor
-
-| Component | Specification |
-|-----------|--------------|
-| **SoC** | Rockchip RK3506G2 |
-| **CPU** | Triple-core ARM Cortex-A7 @ 1.2GHz + ARM Cortex-M0 |
-| **Architecture** | ARMv7-A (32-bit) |
-| **NPU** | 0.5 TOPS AI accelerator |
-
-### Memory & Storage
-
-| Component | Options |
-|-----------|---------|
-| **RAM** | 64MB / 128MB / 256MB DDR2/DDR3 |
-| **Flash Storage** | Optional SPI NAND (different versions available) |
-| **External Storage** | MicroSD card slot |
-
-!!! warning "SPI NAND Versions"
-    Some Luckfox Lyra boards come with SPI NAND flash memory. If your board has SPI NAND, you **must erase it first** or the board will boot from NAND instead of the SD card. See the [troubleshooting guide](../troubleshooting/boot-problems.md) for instructions.
-
-### Interfaces
-
-- **Display**: SPI interface for LCD
-- **Camera**: MIPI CSI interface (not used in PicoCalc)
-- **USB**: USB 2.0 OTG (headers only - requires USB adapter)
-- **GPIO**: Multiple GPIO pins
-- **Audio**: I2S audio interface
-- **Network**: Ethernet MAC (PHY depends on version)
-
-!!! info "Complete Interface Documentation"
-    For detailed pinout diagrams and interface specifications, refer to the [official Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/) and [pinout reference](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
-
-!!! info "WiFi Not Included"
-    The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.
-
-### Audio
-
-- **Default**: Software PWM audio output (poor quality)
-- **Hardware Interface**: I2S audio interface available
-- **PWM Output**: Requires hardware modification for good quality
-
-!!! warning "Audio Quality Limitations"
-    The default software PWM audio driver has very poor performance and is not suitable for general use. For good audio quality, hardware modifications are required. Current alpha images do not support audio driver selection, but this could be implemented through module blacklisting in the future.
-
-### Power
-
-- **Input Voltage**: 5V
-- **Power Consumption**: 
-  - Idle: ~0.5-0.52W
-  - Light use (gaming): ~0.59-0.60W  
-  - With WiFi connected: ~0.63-1.1W
-- **USB-C Power Delivery**: Supported
-- **Battery Operation**: Supported but significantly reduced life vs stock firmware
-
-!!! info "Real-World Power Data"
-    Community testing shows actual power consumption ranging from 0.5W idle to over 1W with WiFi active. Battery life is typically 2-4 hours depending on usage.
+!!! info "Complete Technical Specifications"
+    For detailed processor, memory, interface, and power specifications, see the [Hardware Specifications](specifications.md) page.
 
 ## Luckfox Lyra Versions
 
-Calculinux currently supports two variants of the Luckfox Lyra board available from [https://www.luckfox.com/Luckfox-Lyra](https://www.luckfox.com/Luckfox-Lyra):
-
-| Model | RAM | Flash | Notes |
-|-------|-----|-------|-------|
-| **Standard** | 128MB | None | SD card only - **Recommended** |
-| **SPI NAND** | 128MB | 128MB-1GB | Requires NAND erase before use |
+| Model | RAM | Flash | Ethernet | Status |
+|-------|-----|-------|----------|--------|
+| **Luckfox Lyra** | 128MB | None | No | ✅ **Recommended** |
+| **Luckfox Lyra (SPI NAND)** | 128MB | 128MB-1GB | No | ✅ Supported ([NAND must be erased](../troubleshooting/erase-nand.md)) |
+| **Luckfox Lyra Plus** | 128MB | SPI NAND | Yes (10/100) | ❓ Untested |
 
 !!! tip "Recommended Version"
-    The standard 128MB version without SPI NAND is recommended for simplicity. Both variants have identical performance for Calculinux.
+    The standard 128MB model without SPI NAND is recommended for simplicity.
 
-!!! info "Other Variants Not Yet Supported" 
-    Other Luckfox variants mentioned in community discussions (Lyra Zero W, Lyra Pi, Lyra Plus) could potentially be supported in the future but have not been attempted. Current images are only tested on the two variants listed above.
+!!! warning "SPI NAND Must Be Erased"
+    If your board has SPI NAND, you **must erase it** before Calculinux will boot from SD card. The boot ROM always tries NAND first. See the comprehensive [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for detailed step-by-step instructions.
 
-!!! warning "SPI NAND Versions"
-    If your board has SPI NAND, you **must erase it first** or the board will boot from NAND instead of the SD card. See the [troubleshooting guide](../troubleshooting/boot-problems.md) for instructions.
+!!! note "Other Lyra Models"
+    Other Luckfox Lyra models exist (64MB, 256MB RAM) but have different pinouts and would require custom adapter boards for PicoCalc compatibility.
 
 ## Why Luckfox Lyra for PicoCalc?
 
@@ -96,51 +39,14 @@ The Luckfox Lyra is particularly well-suited for PicoCalc:
 
 ## Driver Support in Calculinux
 
-Calculinux includes custom kernel drivers developed specifically for the Luckfox Lyra + PicoCalc combination:
+Calculinux includes custom kernel drivers developed specifically for the Luckfox Lyra + PicoCalc combination. For technical details about the drivers and device tree configuration, see [Display & Input Technical Details](display-input.md).
 
-### LCD Driver
+### Included Drivers
 
-- SPI-based display interface
-- Custom framebuffer driver
-- Optimized for PicoCalc's display panel
-- Resolution and refresh rate tuning
-
-### Keyboard Driver
-
-- Matrix keyboard scanning
-- Key mapping for PicoCalc layout
-- Input event handling
-- Debouncing and repeat rate configuration
-
-### WiFi Drivers
-
-Calculinux includes drivers for external USB WiFi adapters with the following chipsets currently enabled in the kernel:
-
-- **RTL8192CU** - Single-band USB WiFi adapter
-- **R8712U** - Single-band USB WiFi adapter  
-- **R8188EU** - Single-band USB WiFi adapter
-- **RTL8723BS** - Dual-band SDIO WiFi (not typically used via USB)
-
-**Additional chipsets that need kernel configuration**: RTL8723DU, RTL8812AU, RTL8814AU, RTL8821CU, RTL88X2BU.
-
-**Additional chipsets with pending support include**: RTL8188FU, RTL8188FTV, RT2800 series, MT7612U, MT7610U, and RT5370. Community testing has confirmed these work but drivers are not yet included in official images.
-
-!!! danger "Critical 3.3V Requirement"
-    When selecting a USB WiFi adapter:
-    
-    - **MUST operate at 3.3V** (Lyra USB header voltage) - 5V adapters will damage the board
-    - Verify chipset compatibility with the supported list above
-    - Compact form factor recommended for PicoCalc integration
-    - Consider power consumption for battery operation
-
-### Device Tree
-
-Calculinux includes a custom device tree configuration that:
-
-- Defines PicoCalc hardware connections
-- Configures SPI bus for display
-- Maps GPIO pins for keyboard matrix
-- Sets up USB and power management
+- **LCD Driver**: ILI9488 framebuffer driver for 320×320 display
+- **Keyboard Driver**: I2C-based keyboard with STM32 MCU integration  
+- **WiFi Drivers**: Support for multiple Realtek and other chipsets (see [WiFi Chipsets](specifications.md#supported-wifi-chipsets))
+- **Device Tree**: Custom configuration for PicoCalc hardware connections
 
 ## Luckfox SDK vs Calculinux
 
@@ -181,31 +87,18 @@ See the [ClockworkPi forum thread](https://forum.clockworkpi.com/t/luckfox-lyra-
 
 ### Boot Media Priority
 
-The RK3506G2 boot process follows this priority:
+The RK3506G2 boot ROM follows this priority:
 
 1. **SPI NAND** (if present and programmed)
 2. **SD Card** (if SPI NAND is erased or absent)
 3. **USB Boot** (for recovery/programming)
 
-!!! danger "Important for SPI NAND Versions"
-    If your Luckfox Lyra has SPI NAND, the boot ROM will **always try NAND first**. You must erase the NAND or it will ignore the SD card completely. See [Boot Problems](../troubleshooting/boot-problems.md#spi-nand-interference) for instructions.
+!!! danger "NAND Boot Priority"
+    If your Luckfox Lyra has SPI NAND, the boot ROM will **always try NAND first**. You must erase the NAND or it will ignore the SD card completely. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
 
-### Thermal Management
+### Power Supply & Thermal Management
 
-The RV1106 can generate heat under load:
-
-- Generally safe without heatsink for typical use
-- Consider heat dissipation in enclosed PicoCalc case
-- Monitor temperatures during intensive tasks
-
-### Power Supply
-
-Proper power delivery is critical:
-
-- Use quality USB-C cable
-- Ensure 5V/2A minimum supply
-- Battery operation is supported but monitor voltage
-- Under-voltage can cause instability
+For power requirements and thermal considerations, see [Hardware Specifications](specifications.md#power-system).
 
 ## Purchasing
 
@@ -233,7 +126,8 @@ Luckfox Lyra boards are available from:
 
 ## Next Steps
 
-- Review [Hardware Modifications](modifications.md) for installation guide
-- Check [Display & Input](display-input.md) for driver details
-- See [Compatibility Matrix](compatibility.md) for version compatibility
-- Learn about [power management](power.md) considerations
+- Learn about the [PicoCalc hardware](picocalc.md)
+- Review [Hardware Specifications](specifications.md) for complete technical details
+- Check [Display & Input](display-input.md) for driver implementation details
+- See [Hardware Compatibility](compatibility.md) for compatibility matrices
+- Follow [Hardware Modifications](modifications.md) for installation guide
