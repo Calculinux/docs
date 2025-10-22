@@ -133,10 +133,10 @@ External links, tools, community information
 ### Important Warnings
 
 !!! danger "Warranty"
-    Installing Luckfox Lyra requires opening your PicoCalc and will void the warranty. Proceed at your own risk.
+    Installing Luckfox Lyra requires opening your PicoCalc, possibly several times. You may want to secure your screen to the case with tape so it does not shift during assembly and break!
 
 !!! warning "Data Loss"
-    If you're replacing an existing system, back up any data first. The installation process will erase the SD card.
+    If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.
 
 !!! caution "SPI NAND"
     If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored. See [Boot Problems](../troubleshooting/boot-problems.md#spi-nand-interference).
