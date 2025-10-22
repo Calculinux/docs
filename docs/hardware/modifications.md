@@ -48,7 +48,7 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 5. Gently lift the board out
 
 !!! tip "Connector Orientation"
-    The connector orientation is critical. The Luckfox Lyra must be installed with the same orientation as the original board. Mark or photograph the correct orientation.
+    The connector orientation is critical. The Luckfox Lyra must be installed with the same orientation as the original board. Mark or photograph the correct orientation. For reference pinout diagrams, consult the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
 
 ## Installation
 
@@ -137,6 +137,27 @@ Understanding the pin connections helps with troubleshooting:
 | GPIO | Reset | LCD Reset |
 | 3.3V | Power | LCD VCC |
 | GND | Ground | LCD GND |
+
+### GPIO and RMIO Pin Mapping
+
+The Luckfox Lyra uses both standard GPIO and RMIO (Reconfigurable Multi-function IO) pins:
+
+| PicoCalc Pin | Luckfox Equivalent | Type | Voltage | Notes |
+|--------------|-------------------|------|---------|-------|
+| GP2 | RMIO12 | RMIO | 3.3V | Reconfigurable |
+| GP3 | RMIO13 | RMIO | 3.3V | Reconfigurable |
+| GP4 | RMIO0 | RMIO | 3.3V | Used for audio (PWM) |
+| GP5 | RMIO1 | RMIO | 3.3V | Reconfigurable |
+| GP21 | RMIO26 | RMIO | 3.3V | Reconfigurable |
+| GP28 | RMIO24 | RMIO | 3.3V | Reconfigurable |
+
+!!! warning "GPIO Voltage Levels"
+    - **RMIO pins**: 3.3V operation
+    - **GPIO4_B3/GPIO4_B2**: 1.8V operation (not RMIO-capable)
+    - Always verify voltage levels before hardware modifications
+
+!!! info "Hardware PWM Limitation"
+    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM.
 
 ### Keyboard Matrix
 

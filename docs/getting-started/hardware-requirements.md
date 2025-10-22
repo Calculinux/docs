@@ -8,7 +8,7 @@ This page outlines the hardware required to run Calculinux.
 
 | Component | Requirement | Notes |
 |-----------|-------------|-------|
-| **PicoCalc Device** | Any model | The calculator shell and display |
+| **PicoCalc Device** | Any model | The handheld computer shell and display |
 | **Luckfox Lyra SBC** | RV1106-based | Replaces stock RP2040 board |
 | **MicroSD Card** | 8GB+ (16GB+ recommended) | For OS storage |
 | **USB-C Cable** | Data-capable | For power and connectivity |

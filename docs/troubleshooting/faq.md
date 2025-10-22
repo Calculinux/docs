@@ -112,8 +112,8 @@ du -h /home | sort -h | tail -20
 # Clean package cache
 opkg clean
 
-# Expand filesystem if SD card is larger than partition
-/usr/sbin/expand-filesystem.sh
+# Note: Filesystem expansion is handled automatically by the pre-init script
+# No manual intervention required for SD card expansion
 ```
 
 ### Issue: System Running Slow
@@ -146,11 +146,11 @@ systemctl disable <service-name>
 
 **Q: What is Calculinux?**
 
-A: Calculinux is a Linux distribution built specifically for the PicoCalc calculator when equipped with a Luckfox Lyra or compatible SBC. It provides a full Linux environment in a pocket-sized device.
+A: Calculinux is a Linux distribution built specifically for the PicoCalc handheld computer when equipped with a Luckfox Lyra or compatible SBC. It provides a full Linux environment in a pocket-sized device.
 
 **Q: Is this the same as the stock PicoCalc firmware?**
 
-A: No. The stock PicoCalc uses a Raspberry Pi Pico running calculator firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full Linux.
+A: No. The stock PicoCalc uses a Raspberry Pi Pico running **PicoMite MMBasic** firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full Linux.
 
 **Q: Will this void my warranty?**
 
@@ -180,13 +180,13 @@ A: Not built-in, but USB WiFi adapters should work (requires testing). USB Ether
 
 **Q: How long does the battery last?**
 
-A: Battery life is significantly less than stock firmware due to running full Linux. Expect 2-4 hours depending on usage. External USB battery packs work well.
+A: Battery life is less than stock firmware due to running full Linux. Expect 4-6 hours depending on usage. External USB battery packs work well, and you can always swap batteries.
 
 ### Software Questions
 
 **Q: Can I install regular Linux software?**
 
-A: Yes, using the opkg package manager. Many standard Linux packages are available, though some may not work well on the small display or with limited RAM.
+A: Yes, using the opkg package manager. Many standard Linux packages are available, though some may not work well on the small display or with limited RAM. We are still building up the software library - if the application you're looking for is not present please request it!
 
 **Q: Can I run a graphical desktop?**
 
@@ -218,7 +218,7 @@ A: Follow the [Developer Guide](../developer/overview.md), starting with [Yocto 
 
 **Q: How long does a build take?**
 
-A: First build: 2-8 hours depending on your computer. Subsequent builds: much faster (minutes to an hour).
+A: First build: ~2 hours depending on your computer. Subsequent builds: much faster (minutes to an hour).
 
 **Q: Can I contribute to Calculinux?**
 
@@ -226,7 +226,7 @@ A: Absolutely! See [Contributing Guide](../developer/contributing.md) for how to
 
 **Q: Where is the source code?**
 
-A: GitHub: [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
+A: GitHub: [github.com/Calculinux](https://github.com/Calculinux)
 
 ### Troubleshooting Questions
 
@@ -236,7 +236,7 @@ A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you mus
 
 **Q: Why is my system so slow?**
 
-A: Check RAM usage (`free -h`). With only 64MB, many applications will struggle. Consider upgrading to 128MB or 256MB Luckfox Lyra, or use minimal image without GUI.
+A: Check RAM usage (`free -h`). With only 128MB, many applications will struggle. If you are trying to use a GUI, you may want to explore other lighter options.
 
 **Q: Where can I get help?**
 
@@ -249,17 +249,9 @@ A:
 **Q: The display shows garbage/corruption**
 
 A: Try:
-- Reducing SPI clock speed in device tree
-- Checking power supply quality
+- Reducing SPI clock speed in device tree. The default should be stable, however.
 - Reflashing SD card
 - Testing with different SD card
-
-**Q: Keys are doubled or not registering**
-
-A: Adjust debounce settings in device tree or:
-```bash
-kbdrate -d 250 -r 30
-```
 
 ## Error Messages
 
@@ -313,7 +305,7 @@ Connect via serial for full boot output:
 
 ```bash
 # From another computer
-screen /dev/ttyUSB0 115200
+screen /dev/ttyUSB0 1500000
 ```
 
 ### Safe Mode
@@ -321,6 +313,7 @@ screen /dev/ttyUSB0 115200
 Boot to minimal system:
 
 ```bash
+# Connect with a serial cable, then reboot.
 # In U-Boot, add to kernel command line:
 single
 ```

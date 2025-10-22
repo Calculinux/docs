@@ -10,7 +10,7 @@ This page provides links to external documentation, resources, and references th
 |----------|-----|-------------|
 | **Main Repository** | [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux) | Yocto layer and build system |
 | **Documentation** | [github.com/Calculinux/docs](https://github.com/Calculinux/docs) | This documentation source |
-| **Kernel** | [github.com/Calculinux/linux-calculinux](https://github.com/Calculinux/linux-calculinux) | Kernel fork with drivers |
+| **Meta Layer** | [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux) | Main Yocto meta-layer |
 
 ### ClockworkPi / PicoCalc
 

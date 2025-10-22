@@ -58,13 +58,13 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 
 ### By Network Capability
 
-!!! info "No Built-in Network Hardware"
-    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi or Ethernet. Network connectivity requires external USB adapters (3.3V compatible) connected to the USB header.
+!!! info "Limited Network Options"
+    The basic Luckfox Lyra has no built-in networking. An Ethernet variant exists but would require a custom 3D-printed backplate to access the port and has not been tested with Calculinux.
 
 | Connectivity | Hardware Required | Status | Notes |
 |--------------|-------------------|--------|-------|
-| **Ethernet** | USB Ethernet adapter | ✅ Supported | See supported chipsets below |
-| **WiFi** | USB WiFi adapter (3.3V) | ✅ Supported | See supported chipsets below |
+| **Ethernet (Lyra variant)** | Custom backplate | 🚧 Untested | Ethernet model exists but not tested |
+| **WiFi** | Not currently available | ❌ Not Supported | No practical solution at present |
 
 ## Storage Compatibility
 
@@ -73,22 +73,25 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 | Brand/Type | Speed Class | Size | Status | Notes |
 |------------|-------------|------|--------|-------|
 | **SanDisk Ultra** | Class 10 | 8-32 GB | ✅ Recommended | Good reliability |
-| **SanDisk Extreme** | UHS-I | 16-64 GB | ✅ Excellent | Fastest option |
 | **Samsung EVO** | Class 10 | 8-32 GB | ✅ Recommended | Good value |
-| **Generic/No-Name** | Varies | Any | ⚠️ Use Caution | May be slow or unreliable |
+| **Generic/No-Name** | Varies | Any | ⚠️ Use Caution | May be unreliable |
 
 **Recommendations**:
 - **Minimum**: 8 GB Class 10
-- **Recommended**: 16 GB UHS-I
-- **Optimal**: 32 GB SanDisk/Samsung branded
+- **Recommended**: 16-32 GB from reputable brand
+
+!!! note "SD Card Performance"
+    Given the hardware speeds, different SD card classes are unlikely to have significant impact on performance.
 
 ### USB Storage
 
 | Type | Status | Notes |
 |------|--------|-------|
-| **USB Flash** | ✅ Supported | Via USB-OTG adapter |
-| **USB HDD/SSD** | ✅ Supported | Requires powered hub |
-| **USB Card Reader** | ✅ Supported | Additional storage expansion |
+| **Internal Storage** | ✅ Fully Supported | SD card and optional SPI NAND |
+| **External USB (OTG)** | 🧪 Experimental | Via USB-C port with 3.3V devices or powered hub |
+
+!!! info "USB-C OTG Support"
+    The USB-C port supports USB On-The-Go functionality, enabling connection of external USB devices. However, this requires 3.3V compatible devices or an externally powered USB hub. This feature is currently untested and may require additional configuration.
 
 ## Display Compatibility
 
@@ -99,12 +102,22 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 | **PicoCalc (Original)** | ST7789 LCD | ✅ Fully Supported |
 | **PicoCalc (Variant)** | Similar LCD | ✅ Should work |
 
+### Replacement Display Options
+
+| Display Type | Connector | Size Requirement | Status |
+|--------------|-----------|------------------|--------|
+| **MIPI DSI (Higher Resolution)** | 22-pin (CM4 compatible) | 3.95" diagonal, square | 🚧 Possible |
+| **Original ST7789** | SPI | 320×320 | ✅ Standard |
+
+!!! info "MIPI DSI Display Upgrade"
+    Higher resolution MIPI DSI displays are possible if they use the same 22-pin connector found on Raspberry Pi Compute Module IO boards. The display must be square format and exactly 3.95" diagonal to fit within the PicoCalc enclosure. This would require hardware modification and custom driver configuration.
+
 ### External Displays
 
 | Connection Type | Status | Notes |
 |-----------------|--------|-------|
 | **HDMI** | ❌ Not Available | RV1106 has no HDMI |
-| **USB Display** | 🚧 Untested | May work with DisplayLink |
+| **USB Display** | 🧪 Experimental | May work with DisplayLink via USB-C OTG |
 | **SPI Display** | ⚠️ Conflicts | Would conflict with internal display |
 
 ## Input Device Compatibility
@@ -119,101 +132,77 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 
 | Device Type | Connection | Status | Notes |
 |-------------|------------|--------|-------|
-| **USB Keyboard** | USB-OTG | ✅ Supported | Full size keyboard |
-| **USB Mouse** | USB-OTG | ✅ Supported | Basic cursor support |
-| **Bluetooth Keyboard** | BT Dongle | 🚧 Untested | Requires USB BT adapter |
-| **Touchscreen** | N/A | ❌ Not Available | PicoCalc has no touch |
+| **USB Input Devices** | USB-C OTG | 🧪 Experimental | Requires 3.3V devices or powered hub |
+| **Keyboard/Mouse** | USB-C OTG | 🧪 Experimental | May work with compatible devices |
+
+!!! info "USB OTG Input Support"
+    While the integrated matrix keyboard is the primary input method, external USB input devices may be possible via the USB-C OTG port. This requires 3.3V compatible devices or an externally powered USB hub and is currently untested.
 
 ## Network Hardware
-
-### USB Network Adapters
-
-#### USB WiFi Adapters (3.3V Required)
-
-**Supported Realtek Chipsets:**
-
-| Chipset | Type | Status | Notes |
-|---------|------|--------|-------|
-| **RTL8723DU** | Dual-band | ✅ Supported | Included in image |
-| **RTL8812AU** | AC1200 dual-band | ✅ Supported | Included in image |
-| **RTL8814AU** | AC1900 quad-antenna | ✅ Supported | Included in image |
-| **RTL8821CU** | AC600 compact | ✅ Supported | Included in image |
-| **RTL88X2BU** | AC1200 | ✅ Supported | Included in image |
-
-**Additional Chipsets (Pending Support):**
-
-| Chipset | Type | Status | Notes |
-|---------|------|--------|-------|
-| **RTL8188FU** | Single-band | 🚧 Planned | Community tested, driver available |
-| **RTL8188FTV** | Single-band | 🚧 Planned | Successfully tested by community |
-| **RT2800 series** | Various | 🚧 Planned | Ralink/MediaTek drivers exist |
-| **MT7612U** | AC dual-band | 🚧 Planned | MediaTek, community confirmed |
-| **MT7610U** | AC single-band | 🚧 Planned | MediaTek chipset |
-| **RT5370** | Single-band | 🚧 Planned | Ralink Technology |
-
-!!! danger "Critical 3.3V Requirement"
-    **ALL USB WiFi adapters MUST operate at 3.3V** as they connect to the Lyra's USB header, not standard 5V USB. Using 5V adapters will damage the board. Verify voltage compatibility before purchase.
-
-### Alternative WiFi Solutions (Pending Support)
-
-| Solution | Connection | Status | Notes |
-|----------|------------|--------|-------|
-| **ESP32-C3 SPI WiFi** | SPI (SD card socket) | 🚧 Community tested | Works but not yet in official image |
-| **Custom SPI modules** | SPI interface | 🚧 Experimental | Community development ongoing |
-| **External antenna mods** | USB header + antenna | 🚧 Advanced users | Hardware modification required |
-
-!!! info "Alternative Connectivity"
-    These solutions are possible but not yet officially supported. Community members have successfully implemented some of these approaches.
-
-#### USB Ethernet Adapters
-
-!!! warning "3.3V Requirement"
-    USB WiFi adapters must operate at 3.3V as they connect to the Lyra's USB header, not standard 5V USB.
-
-#### USB Ethernet Adapters
-
-| Chipset | Status | Notes |
-|---------|--------|-------|
-| **RTL8152** | ✅ Recommended | Common, well-supported |
-| **AX88179** | ✅ Supported | USB 3.0 adapter |
 
 ### Built-in Network
 
 | Model | Interface | Speed | Status |
 |-------|-----------|-------|--------|
-| **Lyra Ethernet** | 10/100 | 100 Mbps | ✅ Supported |
-| **Lyra Basic** | None | N/A | ➖ Use USB adapter |
+| **Lyra Ethernet** | 10/100 | 100 Mbps | 🚧 Untested - Requires custom backplate |
+| **Lyra Basic** | None | N/A | ❌ No networking capability |
+
+!!! warning "Ethernet Model Considerations"
+    While a Luckfox Lyra variant with built-in Ethernet exists, it has not been tested with Calculinux and would require a custom 3D-printed backplate to access the Ethernet port within the PicoCalc enclosure.
 
 ## Power Supply Compatibility
 
-### USB-C Power
+### Internal Battery Power
 
-| Specification | Status | Notes |
+| Power Source | Status | Notes |
 |--------------|--------|-------|
-| **5V/1A** | ⚠️ Minimum | May be unstable under load |
-| **5V/2A** | ✅ **Recommended** | Reliable for all uses |
-| **5V/3A** | ✅ Excellent | Best for USB peripherals |
-| **USB-PD** | ✅ Compatible | Will negotiate 5V |
+| **PicoCalc Internal Battery** | ✅ Fully Supported | Rechargeable lithium-ion |
+| **USB-C Charging/OTG** | ✅ Supported | Charging + OTG data (3.3V devices) |
 
-### Battery Power
-
-| Battery Type | Capacity | Status | Notes |
-|--------------|----------|--------|-------|
-| **PicoCalc Internal** | ~2000mAh | ✅ Supported | Original battery |
-| **USB Power Bank** | Varies | ✅ Supported | Any 5V bank |
-| **LiPo (Custom)** | >2000mAh | ⚠️ Advanced | Requires modification |
+!!! info "USB-C Dual Function"
+    The USB-C port serves dual purposes: charging the internal battery and USB OTG functionality for external devices. External devices must be 3.3V compatible or use an externally powered hub.
 
 ## Peripheral Compatibility
 
-### USB Peripherals
+### Internal Peripherals
 
 | Device Type | Status | Notes |
 |-------------|--------|-------|
-| **USB Hub** | ✅ Supported | Powered hub recommended |
-| **USB Storage** | ✅ Supported | Flash drives, HDDs |
-| **USB Audio** | 🚧 Should Work | May need drivers |
-| **USB Serial** | ✅ Supported | FTDI, CH340, etc. |
-| **USB Camera** | 🚧 Untested | V4L2 support needed |
+| **Display** | ✅ Fully Supported | Integrated LCD |
+| **Keyboard** | ✅ Fully Supported | Matrix keyboard |
+| **Storage** | ✅ Fully Supported | SD card, optional NAND |
+
+### Expansion Interfaces
+
+!!! info "Internal Expansion Options"
+    While the Luckfox Lyra is enclosed within the PicoCalc, it provides several expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+
+| Interface | Voltage | Status | Notes |
+|-----------|---------|--------|-------|
+| **GPIO** | 3.3V | ✅ Available | Multiple GPIO pins accessible |
+| **USB** | 3.3V | ✅ Available | Internal USB host/device |
+| **I2C** | 3.3V | ✅ Available | I2C bus for sensors/peripherals |
+| **SPI** | 3.3V | ✅ Available | SPI interface (shared with display) |
+| **UART** | 3.3V | ✅ Available | Serial communication |
+
+!!! warning "Advanced Users Only"
+    Accessing these interfaces requires hardware modification skills and may void warranties. All interfaces operate at 3.3V logic levels.
+
+### Expansion Peripheral Compatibility
+
+| Peripheral Type | Interface | Status | Notes |
+|----------------|-----------|--------|-------|
+| **Sensors** | I2C/SPI | ✅ Compatible | Temperature, accelerometer, etc. |
+| **External Storage** | USB 3.3V | ✅ Compatible | Flash drives, custom storage |
+| **Network Modules** | USB/SPI | 🚧 Possible | WiFi/cellular modules (3.3V) |
+| **Audio Devices** | I2C/SPI | 🚧 Possible | External audio codecs |
+| **Replacement Displays** | MIPI DSI | 🚧 Possible | 22-pin connector, 3.95" square |
+| **Additional SPI Displays** | SPI | ⚠️ Conflicts | Would conflict with main display |
+| **Input Devices** | GPIO/I2C | 🚧 Possible | Additional buttons, encoders |
+| **Communication** | UART/USB | ✅ Compatible | Serial devices, modems |
+
+!!! note "Custom Hardware Projects"
+    These expansion options enable custom hardware projects and modifications for advanced users comfortable with electronics work.
 
 ### GPIO Peripherals
 
@@ -243,23 +232,38 @@ Calculinux currently supports two variants of the Luckfox Lyra board:
 | **Development Tools** | ⚠️ Basic | ✅ | ✅ |
 | **Command-line Tools** | ✅ | ✅ | ✅ |
 
+### Gaming and Entertainment (Community Tested)
+
+!!! info "Community Testing Results"
+    These applications have been tested by community members but may not be included in official Calculinux images.
+
+| Application | Status | Notes |
+|-------------|--------|-------|
+| **Pico-8** | ✅ Working | Runs smoothly, audio requires hardware mod |
+| **Doom (prboom)** | ✅ Working | Good performance, tested extensively |
+| **RetroArch** | ⚠️ Issues | Has configuration problems |
+| **tmux** | ✅ Working | Terminal multiplexer works well |
+| **Framebuffer apps** | ✅ Working | FBV image viewer confirmed working |
+
+!!! note "Gaming Performance"
+    Gaming applications work but are limited by SPI display bandwidth. Not all emulators perform well due to hardware constraints.
+
 ## Testing Status
 
 ### Tested Configurations
 
-| Configuration | Test Date | Status | Tester |
-|--------------|-----------|--------|--------|
-| Lyra 128MB + 16GB SD | Mar 2025 | ✅ Working | hisptoot |
-| Lyra 256MB + 32GB SD | TBD | 🚧 Testing | Community |
-| Lyra 64MB + 8GB SD | TBD | 🚧 Testing | Community |
+| Configuration | Test Date | Status |
+|--------------|-----------|--------|
+| Lyra 128MB + 64GB SD | Mar 2025 | ✅ Working |
+
+
 
 ### Known Issues
 
 | Issue | Affected Hardware | Status | Workaround |
 |-------|------------------|--------|------------|
 | SPI NAND Boot | Lyra with NAND | ✅ Documented | Erase NAND first |
-| Slow SD Cards | Generic cards | ⚠️ Known | Use branded cards |
-| USB Power Issues | Weak chargers | ⚠️ Known | Use 2A+ charger |
+| Slow SD Cards | External SD card | ⚠️ Known | Use internal storage for demanding tasks |
 
 ## Community Testing
 
@@ -269,11 +273,9 @@ We need community help testing various hardware combinations!
 
 Help us test these combinations:
 
-- [ ] Different SD card brands and speeds
-- [ ] Various USB Ethernet adapters
-- [ ] USB WiFi dongles
-- [ ] USB audio devices
-- [ ] Different power supplies
+- [ ] Different SD card brands (though performance differences are likely minimal)
+- [ ] Various applications (request inclusion!)
+- [ ] Luckfox Lyra Ethernet model with custom backplate
 
 ### How to Report
 
@@ -283,7 +285,6 @@ If you test a configuration:
 2. Include:
    - Hardware model and version
    - SD card brand and size
-   - Power supply specs
    - Any peripherals connected
    - What works / doesn't work
 3. Use the "Hardware Compatibility Report" template
@@ -294,27 +295,23 @@ If you test a configuration:
 
 - **SBC**: Luckfox Lyra 128MB (basic)
 - **Storage**: SanDisk Ultra 16GB
-- **Power**: Generic 5V/2A USB charger
 - **Use Case**: Console, development, learning
 - **Cost**: ~$30-40
 
 ### Standard Build
 
-- **SBC**: Luckfox Lyra 128MB (standard)
-- **Storage**: SanDisk Extreme 32GB
-- **Power**: Quality 5V/2A adapter
-- **Extras**: USB WiFi or Ethernet adapter (3.3V)
-- **Use Case**: General use, networking, projects
-- **Cost**: ~$45-60
+- **SBC**: Luckfox Lyra 128MB 
+- **Storage**: Samsung EVO 32GB
+- **Use Case**: General use, projects
+- **Cost**: ~$35-45
 
-### Premium Build
+### Ethernet Build (Experimental)
 
-- **SBC**: Luckfox Lyra 256MB (ethernet)
-- **Storage**: Samsung EVO Plus 64GB
-- **Power**: 5V/3A PD adapter
-- **Extras**: USB hub, peripherals, network adapters
-- **Use Case**: Development, heavy workloads
-- **Cost**: ~$60-80
+- **SBC**: Luckfox Lyra 128MB (ethernet variant)
+- **Storage**: Samsung EVO 32GB
+- **Extras**: Custom 3D-printed backplate for Ethernet access
+- **Use Case**: Network-connected projects (untested)
+- **Cost**: ~$40-50 + custom backplate
 
 ## Future Hardware Support
 

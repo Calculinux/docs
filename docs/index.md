@@ -2,7 +2,7 @@
 
 ![Calculinux Logo](assets/calculinux.svg){ align=right width=200 }
 
-**Calculinux** is a powerful Linux distribution designed specifically for the **PicoCalc** calculator running on the **Luckfox Lyra** and similar single-board computers (SBCs).
+**Calculinux** is a powerful Linux distribution designed specifically for the **PicoCalc** handheld computer running on the **Luckfox Lyra** and similar single-board computers (SBCs).
 
 ## What is Calculinux?
 
@@ -91,6 +91,7 @@ Calculinux builds upon the incredible work of:
 - **0xd61** - Yocto-based image development
 - **johnlaur** - Kernel driver and image development
 - **nekocharm** - display driver contributions
+- **benklop** - Calculinux organization and setup
 - **Luckfox** - SDK and hardware support
 - **ClockworkPi** - PicoCalc hardware
 - **Yocto Project** - Build system foundation

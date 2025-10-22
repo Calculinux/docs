@@ -1,20 +1,23 @@
 # PicoCalc Overview
 
-The **PicoCalc** is a pocket-sized calculator device created by ClockworkPi that features a modular design allowing for different computing modules.
+The **PicoCalc** is a pocket-sized handheld computing device created by ClockworkPi that features a modular design allowing for different computing modules.
 
 ## What is PicoCalc?
 
 PicoCalc is a unique handheld device that combines:
 
-- A physical calculator-style keyboard
+- A physical keyboard layout
 - A built-in display
 - A modular SBC (Single Board Computer) slot
 - USB-C connectivity
 - Battery power capability
 
+!!! info "About the Name"
+    The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose computing platform.
+
 ## Original Hardware
 
-The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** microcontroller running PicoMite MMBasic. While functional for small and light programming tasks, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.
+The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** microcontroller running **PicoMite MMBasic**. While functional for programming tasks and computation, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.
 
 ## Why Replace the SBC?
 
@@ -31,9 +34,9 @@ Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provide
 
 | Specification | Details |
 |--------------|---------|
-| **Dimensions** | Pocket-sized calculator form factor |
+| **Dimensions** | Pocket-sized handheld form factor |
 | **Display** | Built-in LCD screen |
-| **Input** | Physical keyboard with calculator layout |
+| **Input** | Physical keyboard with compact layout |
 | **Power** | USB-C port, battery operation |
 | **Module Interface** | Custom connector for SBC modules |
 
@@ -49,10 +52,13 @@ The PicoCalc features an integrated LCD display that requires proper driver supp
 
 The keyboard provides:
 
-- Calculator-style key layout
+- Compact key layout suitable for programming and computation
 - Matrix keyboard interface
 - Requires custom kernel drivers for Linux support
-- Includes number pad and function keys
+- Includes numeric keypad and function keys
+
+!!! note "Keyboard Layout"
+    While the PicoCalc includes a numeric keypad among other keys, it's designed as a general-purpose input device rather than a traditional calculator keypad. The layout is optimized for programming and computational work.
 
 ## Module Connector
 

@@ -4,7 +4,7 @@ Welcome to Calculinux! This guide will help you get started with your PicoCalc r
 
 ## Overview
 
-Calculinux is a Linux distribution built specifically for the PicoCalc calculator with Luckfox Lyra SBC. This getting started guide will walk you through everything you need to know to set up and use Calculinux.
+Calculinux is a Linux distribution built specifically for the PicoCalc handheld computer with Luckfox Lyra SBC. This getting started guide will walk you through everything you need to know to set up and use Calculinux.
 
 ## What You'll Need
 
@@ -78,7 +78,7 @@ Once Calculinux is running, you'll have:
 Be aware of these limitations:
 
 - **Console Only**: No graphical desktop environment (text-based interface)
-- **Small Display**: 240×240 pixels, optimized for terminal use
+- **Small Display**: 320×320 pixels (53×40 text), optimized for terminal use
 - **RAM**: 64-256MB means careful resource management
 - **Storage**: SD card speed affects performance
 - **No Built-in Network**: Requires USB WiFi or Ethernet adapter (3.3V for WiFi)

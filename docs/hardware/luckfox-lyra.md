@@ -37,6 +37,9 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 - **Audio**: I2S audio interface
 - **Network**: Ethernet MAC (PHY depends on version)
 
+!!! info "Complete Interface Documentation"
+    For detailed pinout diagrams and interface specifications, refer to the [official Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/) and [pinout reference](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+
 !!! info "WiFi Not Included"
     The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.
 
@@ -52,8 +55,15 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 ### Power
 
 - **Input Voltage**: 5V
-- **Power Consumption**: Low power (ideal for battery operation)
+- **Power Consumption**: 
+  - Idle: ~0.5-0.52W
+  - Light use (gaming): ~0.59-0.60W  
+  - With WiFi connected: ~0.63-1.1W
 - **USB-C Power Delivery**: Supported
+- **Battery Operation**: Supported but significantly reduced life vs stock firmware
+
+!!! info "Real-World Power Data"
+    Community testing shows actual power consumption ranging from 0.5W idle to over 1W with WiFi active. Battery life is typically 2-4 hours depending on usage.
 
 ## Luckfox Lyra Versions
 
@@ -104,13 +114,14 @@ Calculinux includes custom kernel drivers developed specifically for the Luckfox
 
 ### WiFi Drivers
 
-Calculinux includes drivers for external USB WiFi adapters with the following Realtek chipsets:
+Calculinux includes drivers for external USB WiFi adapters with the following chipsets currently enabled in the kernel:
 
-- **RTL8723DU** - Dual-band WiFi adapter
-- **RTL8812AU** - AC1200 dual-band adapter
-- **RTL8814AU** - AC1900 quad-antenna adapter
-- **RTL8821CU** - AC600 compact adapter
-- **RTL88X2BU** - AC1200 adapter
+- **RTL8192CU** - Single-band USB WiFi adapter
+- **R8712U** - Single-band USB WiFi adapter  
+- **R8188EU** - Single-band USB WiFi adapter
+- **RTL8723BS** - Dual-band SDIO WiFi (not typically used via USB)
+
+**Additional chipsets that need kernel configuration**: RTL8723DU, RTL8812AU, RTL8814AU, RTL8821CU, RTL88X2BU.
 
 **Additional chipsets with pending support include**: RTL8188FU, RTL8188FTV, RT2800 series, MT7612U, MT7610U, and RT5370. Community testing has confirmed these work but drivers are not yet included in official images.
 
@@ -170,7 +181,7 @@ See the [ClockworkPi forum thread](https://forum.clockworkpi.com/t/luckfox-lyra-
 
 ### Boot Media Priority
 
-The RV1106 boot process follows this priority:
+The RK3506G2 boot process follows this priority:
 
 1. **SPI NAND** (if present and programmed)
 2. **SD Card** (if SPI NAND is erased or absent)
