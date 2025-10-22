@@ -789,9 +789,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#optional-resize-filesystem" class="md-nav__link">
+  <a href="#filesystem-expansion-automatic" class="md-nav__link">
     <span class="md-ellipsis">
-      Optional: Resize Filesystem
+      Filesystem Expansion (Automatic)
     </span>
   </a>
   
@@ -817,27 +817,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#minimal-image" class="md-nav__link">
+  <a href="#system-utilities" class="md-nav__link">
     <span class="md-ellipsis">
-      Minimal Image
+      System Utilities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#base-image" class="md-nav__link">
+  <a href="#network-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      Base Image
+      Network Tools
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#full-image" class="md-nav__link">
+  <a href="#system-management" class="md-nav__link">
     <span class="md-ellipsis">
-      Full Image
+      System Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Features
     </span>
   </a>
   
@@ -2455,9 +2464,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#optional-resize-filesystem" class="md-nav__link">
+  <a href="#filesystem-expansion-automatic" class="md-nav__link">
     <span class="md-ellipsis">
-      Optional: Resize Filesystem
+      Filesystem Expansion (Automatic)
     </span>
   </a>
   
@@ -2483,27 +2492,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#minimal-image" class="md-nav__link">
+  <a href="#system-utilities" class="md-nav__link">
     <span class="md-ellipsis">
-      Minimal Image
+      System Utilities
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#base-image" class="md-nav__link">
+  <a href="#network-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      Base Image
+      Network Tools
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#full-image" class="md-nav__link">
+  <a href="#system-management" class="md-nav__link">
     <span class="md-ellipsis">
-      Full Image
+      System Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Features
     </span>
   </a>
   
@@ -2682,36 +2700,43 @@
 <h3 id="official-releases">Official Releases<a class="headerlink" href="#official-releases" title="Permanent link">&para;</a></h3>
 <p>Download the latest Calculinux image from:</p>
 <p><strong>GitHub Releases</strong>: <a href="https://github.com/Calculinux/meta-calculinux/releases">https://github.com/Calculinux/meta-calculinux/releases</a></p>
-<p>Choose the appropriate image for your hardware:</p>
+<p>Download the Calculinux image file:</p>
 <table>
 <thead>
 <tr>
 <th>Image Name</th>
 <th>Description</th>
-<th>Recommended For</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>calculinux-minimal-*.img.xz</code></td>
-<td>Console only, no GUI</td>
-<td>64MB RAM, headless use</td>
-</tr>
-<tr>
-<td><code>calculinux-base-*.img.xz</code></td>
-<td>Basic GUI, essential apps</td>
-<td>128MB RAM, general use</td>
-</tr>
-<tr>
-<td><code>calculinux-full-*.img.xz</code></td>
-<td>Full desktop environment</td>
-<td>256MB RAM, desktop use</td>
+<td><code>calculinux-image-luckfox-lyra.rootfs.wic.gz</code></td>
+<td>Complete Calculinux system image</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition tip">
-<p class="admonition-title">Image Selection</p>
-<p>If unsure, start with <code>calculinux-base</code> for 128MB+ systems or <code>calculinux-minimal</code> for 64MB systems.</p>
+<p>Additional files you may find:</p>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>calculinux-bundle-luckfox-lyra.raucb</code></td>
+<td>RAUC update bundle (for updating existing installations)</td>
+</tr>
+<tr>
+<td><code>*.manifest</code></td>
+<td>Build manifest with package list</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Single Image Design</p>
+<p>Calculinux provides a single console-based image suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software can be installed via the package manager as needed.</p>
 </div>
 <h3 id="verify-download">Verify Download<a class="headerlink" href="#verify-download" title="Permanent link">&para;</a></h3>
 <p>After downloading, verify the image integrity:</p>
@@ -2824,7 +2849,7 @@
 - Power LED should light up
 - Display may show boot messages
 - Initial splash screen
-- Login prompt or desktop</p>
+- Login prompt (console-only, no GUI)</p>
 <h3 id="boot-messages">Boot Messages<a class="headerlink" href="#boot-messages" title="Permanent link">&para;</a></h3>
 <p>You should see:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[    0.000000] Booting Linux on physical CPU 0x0
@@ -2859,13 +2884,23 @@
 <h2 id="step-5-initial-login">Step 5: Initial Login<a class="headerlink" href="#step-5-initial-login" title="Permanent link">&para;</a></h2>
 <p>Default credentials:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Username: root
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Password: calculinux
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Password: root
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>-- OR --
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Username: pico
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Password: calc
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Change Password</p>
-<p>You should change the default password immediately after first login:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>passwd
+<div class="admonition danger">
+<p class="admonition-title">Change Passwords Immediately</p>
+<p><strong>Both</strong> default passwords should be changed immediately after first login:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Change root password</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>passwd
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Change pico user password</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>passwd<span class="w"> </span>pico
 </code></pre></div></p>
+<p>The <code>pico</code> user is a member of the <code>wheel</code> group and can use <code>sudo</code> for administrative tasks.</p>
 </div>
 <h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
 <p>After successful login:</p>
@@ -2875,24 +2910,11 @@
 <li><strong>Check system</strong>: <code>df -h</code> and <code>free -m</code></li>
 <li><strong>Configure network</strong> (if needed): See <a href="../user-guide/networking.md">Networking</a></li>
 </ol>
-<h2 id="optional-resize-filesystem">Optional: Resize Filesystem<a class="headerlink" href="#optional-resize-filesystem" title="Permanent link">&para;</a></h2>
-<p>If you're using a SD card larger than the image size:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Expand root partition to fill SD card</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>/usr/sbin/expand-filesystem.sh
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Or manually:</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># 1. Expand partition</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>fdisk<span class="w"> </span>/dev/mmcblk0
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># d (delete partition 2)</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># n (new partition 2, use default values)</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># w (write)</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1"># 2. Reboot</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>reboot
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># 3. Resize filesystem</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>resize2fs<span class="w"> </span>/dev/mmcblk0p2
-</code></pre></div>
+<h2 id="filesystem-expansion-automatic">Filesystem Expansion (Automatic)<a class="headerlink" href="#filesystem-expansion-automatic" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">No Action Required</p>
+<p>The overlayfs partition is <strong>automatically expanded</strong> during first boot to use all available space on your SD card (leaving 10% free). No manual intervention is needed.</p>
+</div>
 <h2 id="multiple-sd-cards">Multiple SD Cards<a class="headerlink" href="#multiple-sd-cards" title="Permanent link">&para;</a></h2>
 <p>You can create multiple SD cards for different purposes:</p>
 <ul>
@@ -2902,41 +2924,51 @@
 <li><strong>Backup</strong>: Stable known-good configuration</li>
 </ul>
 <p>Just flash different images or clone a working card:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Clone a working SD card</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Later, restore it</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Clone a working SD card</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Later, restore it</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>backup.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </code></pre></div>
 <h2 id="pre-installed-software">Pre-Installed Software<a class="headerlink" href="#pre-installed-software" title="Permanent link">&para;</a></h2>
-<p>Depending on the image variant, you'll have:</p>
-<h3 id="minimal-image">Minimal Image<a class="headerlink" href="#minimal-image" title="Permanent link">&para;</a></h3>
+<p>Calculinux comes with a console-based environment including:</p>
+<h3 id="system-utilities">System Utilities<a class="headerlink" href="#system-utilities" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Basic Linux utilities</li>
-<li>Text editors (vi, nano)</li>
-<li>Package manager</li>
-<li>Development tools (gcc, make)</li>
-<li>Network utilities</li>
+<li><strong>Shell</strong>: bash, busybox</li>
+<li><strong>Editors</strong>: vi, nano (via opkg)</li>
+<li><strong>Development</strong>: gcc, g++, make, autoconf, git, gdb</li>
+<li><strong>Package Management</strong>: opkg with online repositories</li>
 </ul>
-<h3 id="base-image">Base Image<a class="headerlink" href="#base-image" title="Permanent link">&para;</a></h3>
-<p>All minimal plus:
-- X11 display server
-- Lightweight window manager
-- Terminal emulator
-- File manager
-- Basic applications</p>
-<h3 id="full-image">Full Image<a class="headerlink" href="#full-image" title="Permanent link">&para;</a></h3>
-<p>All base plus:
-- Complete desktop environment
-- Office applications
-- Media players
-- Web browser
-- Development IDEs</p>
+<h3 id="network-tools">Network Tools<a class="headerlink" href="#network-tools" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>WiFi</strong>: iwd (iwctl command)</li>
+<li><strong>Utilities</strong>: curl, wget, links (text browser), openssh</li>
+<li><strong>Debugging</strong>: iw, htop, systemd-analyze</li>
+</ul>
+<h3 id="system-management">System Management<a class="headerlink" href="#system-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Update System</strong>: RAUC (A/B partition updates)</li>
+<li><strong>Storage</strong>: e2fsprogs, mtd-utils, cloud-utils-growpart</li>
+<li><strong>Hardware</strong>: i2c-tools, usbutils, android-tools</li>
+</ul>
+<h3 id="additional-features">Additional Features<a class="headerlink" href="#additional-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Filesystem</strong>: Overlayfs for read-only root with persistent overlay</li>
+<li><strong>Console Font</strong>: Terminus font for better readability</li>
+<li><strong>Keyboard</strong>: Full keyboard mapping support</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">No GUI/Desktop</p>
+<p>Calculinux is currently <strong>console-only</strong> with no graphical desktop environment. All interaction is via text terminal. GUI support may be added in future releases.</p>
+</div>
+<ul>
+<li>File manager</li>
+<li>Basic applications</li>
+</ul>
 <h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
 <p>After installation, you can customize your system:</p>
 <ul>
 <li>Install additional packages: See <a href="../../user-guide/package-management/">Package Management</a></li>
-<li>Configure desktop: See <a href="../user-guide/desktop.md">Desktop Environment</a></li>
 <li>Set up development: See <a href="../../developer/overview/">Developer Guide</a></li>
 <li>Add applications: See <a href="../user-guide/applications.md">Applications</a></li>
 </ul>
@@ -2950,30 +2982,30 @@
 </ol>
 <h2 id="updating-calculinux">Updating Calculinux<a class="headerlink" href="#updating-calculinux" title="Permanent link">&para;</a></h2>
 <p>To update an existing installation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Update package database</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>opkg<span class="w"> </span>update
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Upgrade all packages</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>opkg<span class="w"> </span>upgrade
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Or see Updates guide</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Update package database</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>opkg<span class="w"> </span>update
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Upgrade all packages</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>opkg<span class="w"> </span>upgrade
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Or see Updates guide</span>
 </code></pre></div>
 <p>See <a href="../user-guide/updates.md">Updates</a> for detailed information.</p>
 <h2 id="backup-strategies">Backup Strategies<a class="headerlink" href="#backup-strategies" title="Permanent link">&para;</a></h2>
 <p>Protect your work:</p>
 <h3 id="full-sd-card-backup">Full SD Card Backup<a class="headerlink" href="#full-sd-card-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Backup entire SD card</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>calculinux-backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Compress to save space</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>gzip<span class="w"> </span>calculinux-backup.img
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Backup entire SD card</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">of</span><span class="o">=</span>calculinux-backup.img<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Compress to save space</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>gzip<span class="w"> </span>calculinux-backup.img
 </code></pre></div>
 <h3 id="filesystem-backup">Filesystem Backup<a class="headerlink" href="#filesystem-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Backup home directory</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>tar<span class="w"> </span>czf<span class="w"> </span>home-backup.tar.gz<span class="w"> </span>/home
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Backup configuration</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>tar<span class="w"> </span>czf<span class="w"> </span>etc-backup.tar.gz<span class="w"> </span>/etc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Backup home directory</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>tar<span class="w"> </span>czf<span class="w"> </span>home-backup.tar.gz<span class="w"> </span>/home
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Backup configuration</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>tar<span class="w"> </span>czf<span class="w"> </span>etc-backup.tar.gz<span class="w"> </span>/etc
 </code></pre></div>
 <h2 id="common-installation-issues">Common Installation Issues<a class="headerlink" href="#common-installation-issues" title="Permanent link">&para;</a></h2>
 <h3 id="sd-card-not-recognized">SD Card Not Recognized<a class="headerlink" href="#sd-card-not-recognized" title="Permanent link">&para;</a></h3>
@@ -3039,7 +3071,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 16:27:24 UTC">October 22, 2025</span>
   </span>
 
     
