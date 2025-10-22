@@ -12,13 +12,13 @@
         <meta name="author" content="Calculinux Project">
       
       
-        <link rel="canonical" href="https://docs.calculinux.org/developer/overview/">
+        <link rel="canonical" href="https://docs.calculinux.org/developer/building/">
       
       
-        <link rel="prev" href="../../user-guide/package-management/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../building/">
+        <link rel="next" href="../../troubleshooting/faq/">
       
       
       <link rel="icon" href="../../assets/calculinux.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Development Overview - Calculinux Documentation</title>
+        <title>Building Calculinux - Calculinux Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#developer-overview" class="md-skip">
+        <a href="#building-calculinux" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Development Overview
+              Building Calculinux
             
           </span>
         </div>
@@ -305,7 +305,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -1117,32 +1117,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Development Overview
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -1153,503 +1131,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-youll-learn" class="md-nav__link">
-    <span class="md-ellipsis">
-      What You'll Learn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#who-this-guide-is-for" class="md-nav__link">
-    <span class="md-ellipsis">
-      Who This Guide Is For
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Prerequisites">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#knowledge-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Knowledge Requirements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      System Requirements
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calculinux-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Calculinux Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Calculinux Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Repository Structure
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#main-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Repository
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#related-repositories" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Repositories
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Development Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Development Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#typical-development-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Typical Development Process
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Types
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#quick-start-for-developers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Start for Developers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-path" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Path
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Development Tools
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Development Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helpful-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Helpful Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#editor-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editor Setup
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-system-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build System Overview
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build System Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yoctoopenembedded" class="md-nav__link">
-    <span class="md-ellipsis">
-      Yocto/OpenEmbedded
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bitbake" class="md-nav__link">
-    <span class="md-ellipsis">
-      BitBake
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recipes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recipes
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-development-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Development Tasks
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Development Tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adding-a-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding a Package
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modifying-kernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modifying Kernel
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-custom-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating Custom Image
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing &amp; Validation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Testing &amp; Validation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Testing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#runtime-testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Runtime Testing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automated-testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Automated Testing
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Performance Optimization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Performance Optimization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-speed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Speed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#image-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      Image Size
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Debugging
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Debugging">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-failures" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Failures
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#runtime-debugging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Runtime Debugging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Contributing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#official-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Official Documentation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calculinux-specific" class="md-nav__link">
-    <span class="md-ellipsis">
-      Calculinux Specific
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Resources
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1682,10 +1163,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../building/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Building Calculinux
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1696,6 +1199,449 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build System Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone the Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-build-with-kas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Build with KAS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-locate-build-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Locate Build Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-types-and-package-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Types and Package Feed Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Types and Package Feed Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Feed Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-build-configuration-automated" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Build Configuration (Automated)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-build-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Build Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feed-configuration-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feed Configuration Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-change-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Change Feed Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Feed Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-feed-configuration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Feed Configuration Works
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Your Build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Your Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-distribution-codename" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Distribution Codename
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-feed-subfolder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Feed Subfolder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-build-configuration-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Build Configuration Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Targets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Targets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimal Image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel Builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-space-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Space Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing the Image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flashing the Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-sd-card-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      To SD Card (Linux)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-sd-card-cross-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      To SD Card (Cross-platform)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-feed-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Feed Publishing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-space-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Space Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2374,24 +2320,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-youll-learn" class="md-nav__link">
-    <span class="md-ellipsis">
-      What You'll Learn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#who-this-guide-is-for" class="md-nav__link">
-    <span class="md-ellipsis">
-      Who This Guide Is For
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -2402,15 +2330,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#knowledge-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Knowledge Requirements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#system-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       System Requirements
@@ -2419,175 +2338,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calculinux-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Calculinux Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Calculinux Architecture">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#required-software" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Repository Structure
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#main-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Repository
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#related-repositories" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Repositories
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Development Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Development Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#typical-development-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Typical Development Process
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Types
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#quick-start-for-developers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Start for Developers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-path" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Path
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Development Tools
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Development Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helpful-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Helpful Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#editor-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editor Setup
+      Required Software
     </span>
   </a>
   
@@ -2605,31 +2359,40 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Build System Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#yoctoopenembedded" class="md-nav__link">
+  <a href="#1-clone-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Yocto/OpenEmbedded
+      1. Clone the Repository
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#bitbake" class="md-nav__link">
+  <a href="#2-build-with-kas" class="md-nav__link">
     <span class="md-ellipsis">
-      BitBake
+      2. Build with KAS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#recipes" class="md-nav__link">
+  <a href="#3-locate-build-output" class="md-nav__link">
     <span class="md-ellipsis">
-      Recipes
+      3. Locate Build Output
     </span>
   </a>
   
@@ -2641,37 +2404,73 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-development-tasks" class="md-nav__link">
+  <a href="#build-types-and-package-feed-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Development Tasks
+      Build Types and Package Feed Configuration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Common Development Tasks">
+    <nav class="md-nav" aria-label="Build Types and Package Feed Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adding-a-package" class="md-nav__link">
+  <a href="#understanding-feed-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Adding a Package
+      Understanding Feed Configuration
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#modifying-kernel" class="md-nav__link">
+  <a href="#ci-build-configuration-automated" class="md-nav__link">
     <span class="md-ellipsis">
-      Modifying Kernel
+      CI Build Configuration (Automated)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-custom-image" class="md-nav__link">
+  <a href="#manual-build-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating Custom Image
+      Manual Build Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feed-configuration-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feed Configuration Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-change-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Change Feed Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-feed-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Feed Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-feed-configuration-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Feed Configuration Works
     </span>
   </a>
   
@@ -2683,37 +2482,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing-validation" class="md-nav__link">
+  <a href="#configuring-your-build" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing &amp; Validation
+      Configuring Your Build
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Testing &amp; Validation">
+    <nav class="md-nav" aria-label="Configuring Your Build">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-testing" class="md-nav__link">
+  <a href="#setting-distribution-codename" class="md-nav__link">
     <span class="md-ellipsis">
-      Build Testing
+      Setting Distribution Codename
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#runtime-testing" class="md-nav__link">
+  <a href="#setting-feed-subfolder" class="md-nav__link">
     <span class="md-ellipsis">
-      Runtime Testing
+      Setting Feed Subfolder
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#automated-testing" class="md-nav__link">
+  <a href="#complete-build-configuration-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Automated Testing
+      Complete Build Configuration Example
     </span>
   </a>
   
@@ -2725,28 +2524,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
+  <a href="#build-targets" class="md-nav__link">
     <span class="md-ellipsis">
-      Performance Optimization
+      Build Targets
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Performance Optimization">
+    <nav class="md-nav" aria-label="Build Targets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-speed" class="md-nav__link">
+  <a href="#main-image" class="md-nav__link">
     <span class="md-ellipsis">
-      Build Speed
+      Main Image
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#image-size" class="md-nav__link">
+  <a href="#minimal-image" class="md-nav__link">
     <span class="md-ellipsis">
-      Image Size
+      Minimal Image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDK
     </span>
   </a>
   
@@ -2758,13 +2566,130 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging" class="md-nav__link">
+  <a href="#build-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Debugging
+      Build Options
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Debugging">
+    <nav class="md-nav" aria-label="Build Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel Builds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-space-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Space Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing the Image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flashing the Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-sd-card-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      To SD Card (Linux)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-sd-card-cross-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      To SD Card (Cross-platform)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-feed-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Feed Publishing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2777,60 +2702,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#runtime-debugging" class="md-nav__link">
+  <a href="#disk-space-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Runtime Debugging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Contributing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#official-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Official Documentation
+      Disk Space Issues
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#calculinux-specific" class="md-nav__link">
+  <a href="#network-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Calculinux Specific
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learning-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Resources
+      Network Issues
     </span>
   </a>
   
@@ -2845,6 +2728,15 @@
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
     </span>
   </a>
   
@@ -2866,7 +2758,7 @@
 
 
   
-    <a href="https://github.com/Calculinux/docs/edit/main/docs/developer/overview.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/developer/building.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2874,414 +2766,370 @@
   
 
 
-<h1 id="developer-overview">Developer Overview<a class="headerlink" href="#developer-overview" title="Permanent link">&para;</a></h1>
-<p>Welcome to the Calculinux developer documentation! This section covers everything you need to know to build, customize, and contribute to Calculinux.</p>
-<h2 id="what-youll-learn">What You'll Learn<a class="headerlink" href="#what-youll-learn" title="Permanent link">&para;</a></h2>
-<p>This developer guide covers:</p>
-<ul>
-<li>Setting up the Yocto build environment</li>
-<li>Building Calculinux from source</li>
-<li>Customizing images and configurations</li>
-<li>Adding packages and applications</li>
-<li>Kernel and driver development</li>
-<li>Contributing to the project</li>
-<li>Release processes</li>
-</ul>
-<h2 id="who-this-guide-is-for">Who This Guide Is For<a class="headerlink" href="#who-this-guide-is-for" title="Permanent link">&para;</a></h2>
-<p>This guide is for:</p>
-<ul>
-<li><strong>Developers</strong> wanting to build Calculinux from source</li>
-<li><strong>Contributors</strong> interested in improving Calculinux</li>
-<li><strong>Customizers</strong> needing specific configurations</li>
-<li><strong>Maintainers</strong> managing their own distributions</li>
-<li><strong>Learners</strong> exploring embedded Linux development</li>
-</ul>
+<h1 id="building-calculinux">Building Calculinux<a class="headerlink" href="#building-calculinux" title="Permanent link">&para;</a></h1>
+<p>This guide covers building the Calculinux distribution from source.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<h3 id="knowledge-requirements">Knowledge Requirements<a class="headerlink" href="#knowledge-requirements" title="Permanent link">&para;</a></h3>
-<p>You should be familiar with:</p>
-<ul>
-<li><strong>Linux command line</strong> - Basic shell operations</li>
-<li><strong>Git</strong> - Version control basics</li>
-<li><strong>Make/build systems</strong> - Compilation processes</li>
-<li><strong>C/C++</strong> (for kernel/driver work)</li>
-<li><strong>Python</strong> (helpful for Yocto recipes)</li>
-</ul>
 <h3 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h3>
-<p>For building Calculinux, you need:</p>
+<ul>
+<li><strong>Host OS</strong>: Linux (Ubuntu 22.04 LTS or similar recommended)</li>
+<li><strong>Disk Space</strong>: Minimum 50GB free space (100GB+ recommended)</li>
+<li><strong>Memory</strong>: 8GB RAM minimum (16GB+ recommended for parallel builds)</li>
+<li><strong>CPU</strong>: Multi-core processor (builds can take 2-6 hours depending on hardware)</li>
+</ul>
+<h3 id="required-software">Required Software<a class="headerlink" href="#required-software" title="Permanent link">&para;</a></h3>
+<p>Install the required packages on your build host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Ubuntu/Debian</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gawk<span class="w"> </span>wget<span class="w"> </span>git<span class="w"> </span>diffstat<span class="w"> </span>unzip<span class="w"> </span>texinfo<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>gcc<span class="w"> </span>build-essential<span class="w"> </span>chrpath<span class="w"> </span>socat<span class="w"> </span>cpio<span class="w"> </span>python3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>python3-pip<span class="w"> </span>python3-pexpect<span class="w"> </span>xz-utils<span class="w"> </span>debianutils<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>iputils-ping<span class="w"> </span>python3-git<span class="w"> </span>python3-jinja2<span class="w"> </span>libegl1-mesa<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>libsdl1.2-dev<span class="w"> </span>pylint3<span class="w"> </span>xterm<span class="w"> </span>python3-subunit<span class="w"> </span>mesa-common-dev<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>zstd<span class="w"> </span>liblz4-tool
+</code></pre></div>
+<h2 id="build-system-overview">Build System Overview<a class="headerlink" href="#build-system-overview" title="Permanent link">&para;</a></h2>
+<p>Calculinux uses the <a href="https://www.yoctoproject.org/">Yocto Project</a> build system with:</p>
+<ul>
+<li><strong>Build Tool</strong>: <a href="https://kas.readthedocs.io/">KAS</a> for simplified configuration</li>
+<li><strong>Base</strong>: Yocto Scarthgap (4.2)</li>
+<li><strong>Distribution</strong>: Calculinux (based on Poky)</li>
+<li><strong>Layers</strong>: Multiple meta-layers for hardware support and software packages</li>
+</ul>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<h3 id="1-clone-the-repository">1. Clone the Repository<a class="headerlink" href="#1-clone-the-repository" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>calculinux-build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>calculinux-build
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Calculinux/meta-calculinux.git
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>meta-calculinux
+</code></pre></div>
+<h3 id="2-build-with-kas">2. Build with KAS<a class="headerlink" href="#2-build-with-kas" title="Permanent link">&para;</a></h3>
+<p>The simplest way to build is using the KAS container:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./kas-container<span class="w"> </span>--ssh-dir<span class="w"> </span>~/.ssh<span class="w"> </span>build<span class="w"> </span>--update<span class="w"> </span>kas-luckfox-lyra-bundle.yaml
+</code></pre></div>
+<p>This command will:</p>
+<ol>
+<li>Download all required Yocto layers</li>
+<li>Configure the build for Luckfox Lyra</li>
+<li>Build the complete distribution image</li>
+<li>Generate IPK packages</li>
+</ol>
+<h3 id="3-locate-build-output">3. Locate Build Output<a class="headerlink" href="#3-locate-build-output" title="Permanent link">&para;</a></h3>
+<p>After the build completes (2-6 hours), find your images in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>build/tmp/deploy/images/luckfox-lyra/
+</code></pre></div>
+<p>Key outputs:</p>
+<ul>
+<li><code>calculinux-image-luckfox-lyra.rootfs.wic.gz</code> - Full disk image for initial installation</li>
+<li><code>calculinux-bundle-luckfox-lyra.raucb</code> - RAUC update bundle for updating existing installations</li>
+</ul>
+<h2 id="build-types-and-package-feed-configuration">Build Types and Package Feed Configuration<a class="headerlink" href="#build-types-and-package-feed-configuration" title="Permanent link">&para;</a></h2>
+<p>Calculinux images are <strong>automatically configured</strong> with the appropriate package feed based on how they are built. <strong>Feeds are pre-configured in the image and typically do not require manual intervention.</strong> This section is primarily informational to help you understand the feed structure.</p>
+<h3 id="understanding-feed-configuration">Understanding Feed Configuration<a class="headerlink" href="#understanding-feed-configuration" title="Permanent link">&para;</a></h3>
+<p>Package feeds are organized by:</p>
+<ol>
+<li><strong>DISTRO_CODENAME</strong> - The Yocto/Poky codename (e.g., <code>walnascar</code> for Scarthgap 4.2)</li>
+<li><strong>FEED_SUBFOLDER</strong> - Either <code>continuous</code> (development) or <code>release</code> (stable tags)</li>
+</ol>
+<p>The feed URL structure is:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>https://opkg.calculinux.org/ipk/{DISTRO_CODENAME}/{FEED_SUBFOLDER}/
+</code></pre></div></p>
+<h3 id="ci-build-configuration-automated">CI Build Configuration (Automated)<a class="headerlink" href="#ci-build-configuration-automated" title="Permanent link">&para;</a></h3>
+<p>When building via GitHub Actions CI, the build system automatically generates <code>build/conf/auto.conf</code> to configure the package feeds:</p>
 <table>
 <thead>
 <tr>
-<th>Requirement</th>
-<th>Minimum</th>
-<th>Recommended</th>
+<th>Build Trigger</th>
+<th>DISTRO_CODENAME</th>
+<th>FEED_SUBFOLDER</th>
+<th>Resulting Feed URL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>OS</strong></td>
-<td>Linux (Ubuntu 20.04+)</td>
-<td>Linux (Ubuntu 22.04 LTS)</td>
+<td><code>main</code> branch push</td>
+<td><code>walnascar</code></td>
+<td><code>continuous</code></td>
+<td><code>https://opkg.calculinux.org/ipk/walnascar/continuous/</code></td>
 </tr>
 <tr>
-<td><strong>CPU</strong></td>
-<td>4 cores</td>
-<td>8+ cores</td>
+<td><code>develop</code> branch push</td>
+<td><code>develop</code></td>
+<td><code>continuous</code></td>
+<td><code>https://opkg.calculinux.org/ipk/develop/continuous/</code></td>
 </tr>
 <tr>
-<td><strong>RAM</strong></td>
-<td>8 GB</td>
-<td>16+ GB</td>
+<td>Tagged release (e.g., <code>v1.0.0</code>)</td>
+<td><code>walnascar</code></td>
+<td><code>release</code></td>
+<td><code>https://opkg.calculinux.org/ipk/walnascar/release/</code></td>
 </tr>
 <tr>
-<td><strong>Disk Space</strong></td>
-<td>50 GB</td>
-<td>100+ GB (SSD preferred)</td>
-</tr>
-<tr>
-<td><strong>Internet</strong></td>
-<td>Required</td>
-<td>Fast connection</td>
+<td>Pre-release tag (e.g., <code>v1.0.0-rc1</code>)</td>
+<td><code>walnascar</code></td>
+<td><code>release</code></td>
+<td><code>https://opkg.calculinux.org/ipk/walnascar/release/</code></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">Why Linux?</p>
-<p>While Yocto can run in VMs or containers on other OSes, native Linux is strongly recommended for performance and compatibility.</p>
-</div>
-<h2 id="calculinux-architecture">Calculinux Architecture<a class="headerlink" href="#calculinux-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>Calculinux is built using the <strong>Yocto Project</strong>, a powerful framework for creating custom Linux distributions.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Calculinux Architecture:
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>┌─────────────────────────────────────┐
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│        Applications                 │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│     Desktop Environment (Optional)  │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│      Package Management (opkg)      │
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│         System Libraries            │
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│        Linux Kernel 5.10.x          │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│         U-Boot Bootloader           │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├─────────────────────────────────────┤
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│    Hardware (Luckfox Lyra/RV1106)   │
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>└─────────────────────────────────────┘
+<p><strong>Example auto.conf generated by CI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># For main branch:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walnascar&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># For develop branch:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;develop&quot;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># For tagged release (v1.0.0):</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walnascar&quot;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;release&quot;</span>
+</code></pre></div></p>
+<h3 id="manual-build-configuration">Manual Build Configuration<a class="headerlink" href="#manual-build-configuration" title="Permanent link">&para;</a></h3>
+<p>When you build manually (without CI), <strong>auto.conf is not created</strong>, so the configuration comes from the distribution defaults in <code>meta-calculinux-distro/conf/distro/calculinux-distro.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Default values from calculinux-distro.conf:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walnascar&quot;</span><span class="w">           </span><span class="c1"># Inherited from poky.conf</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>CALCULINUX_FEED_SUBFOLDER<span class="w"> </span>??<span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span><span class="w">  </span><span class="c1"># Defaults to continuous</span>
 </code></pre></div>
-<h3 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h3>
-<p><strong>meta-calculinux</strong>
-- Main Yocto layer for Calculinux
-- Machine configurations
-- Custom recipes and patches
-- Image definitions</p>
-<p><strong>Linux Kernel</strong>
-- Based on Rockchip 5.10 kernel
-- Custom drivers (display, keyboard)
-- Device tree configurations
-- Hardware support</p>
-<p><strong>Bootloader</strong>
-- U-Boot for RV1106
-- Boot scripts
-- Device tree selection</p>
-<p><strong>Userspace</strong>
-- Based on OpenEmbedded core
-- Package management (opkg)
-- System services (systemd)
-- Optional desktop environments</p>
-<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
-<h3 id="main-repository">Main Repository<a class="headerlink" href="#main-repository" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>meta-calculinux/
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── conf/
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── machine/          # Machine configurations
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   │   └── picocalc-luckfox.conf
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── distro/           # Distribution config
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   │   └── calculinux.conf
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   └── layer.conf        # Layer configuration
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├── recipes-bsp/
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── u-boot/           # Bootloader recipes
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   └── device-tree/      # Device tree files
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>├── recipes-kernel/
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   └── linux/            # Kernel recipes and patches
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── recipes-core/
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   └── images/           # Image definitions
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>├── recipes-extended/
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   └── packages/         # Additional packages
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>└── README.md
-</code></pre></div>
-<h3 id="related-repositories">Related Repositories<a class="headerlink" href="#related-repositories" title="Permanent link">&para;</a></h3>
+<p><strong>Manual Build Behavior:</strong></p>
+<table>
+<thead>
+<tr>
+<th>What You Do</th>
+<th>DISTRO_CODENAME</th>
+<th>FEED_SUBFOLDER</th>
+<th>Feed URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kas-container build kas-luckfox-lyra-bundle.yaml</code></td>
+<td><code>walnascar</code> (from Poky)</td>
+<td><code>continuous</code> (default)</td>
+<td><code>ipk/walnascar/continuous/</code></td>
+</tr>
+<tr>
+<td>Add <code>CALCULINUX_FEED_SUBFOLDER = "release"</code> to <code>build/conf/local.conf</code></td>
+<td><code>walnascar</code> (from Poky)</td>
+<td><code>release</code> (override)</td>
+<td><code>ipk/walnascar/release/</code></td>
+</tr>
+<tr>
+<td>Add <code>DISTRO_CODENAME = "develop"</code> to <code>build/conf/local.conf</code></td>
+<td><code>develop</code> (override)</td>
+<td><code>continuous</code> (default)</td>
+<td><code>ipk/develop/continuous/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="feed-configuration-variables">Feed Configuration Variables<a class="headerlink" href="#feed-configuration-variables" title="Permanent link">&para;</a></h3>
+<p>These variables control which package feed your image will use:</p>
 <ul>
-<li><strong>docs</strong>: This documentation</li>
-<li><strong>linux-calculinux</strong>: Kernel source (fork)</li>
-<li><strong>u-boot-calculinux</strong>: Bootloader source (fork)</li>
+<li><strong><code>DISTRO_CODENAME</code></strong>: Distribution codename</li>
+<li>Inherited from <code>poky.conf</code> (currently <code>walnascar</code> for Scarthgap 4.2)</li>
+<li>CI overrides this to <code>develop</code> for develop branch builds</li>
+<li>
+<p>Can be manually overridden in <code>build/conf/local.conf</code> or <code>build/conf/auto.conf</code></p>
+</li>
+<li>
+<p><strong><code>CALCULINUX_FEED_SUBFOLDER</code></strong>: Feed subdirectory</p>
+</li>
+<li>Defaults to <code>continuous</code> if not specified</li>
+<li>CI sets to <code>release</code> for tagged builds</li>
+<li>Can be manually overridden in <code>build/conf/local.conf</code></li>
 </ul>
-<h2 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
-<h3 id="typical-development-process">Typical Development Process<a class="headerlink" href="#typical-development-process" title="Permanent link">&para;</a></h3>
+<h3 id="when-to-change-feed-configuration">When to Change Feed Configuration<a class="headerlink" href="#when-to-change-feed-configuration" title="Permanent link">&para;</a></h3>
+<p>You typically <strong>don't need to change feed configuration</strong> unless:</p>
 <ol>
-<li><strong>Set up environment</strong> - Install dependencies, clone repos</li>
-<li><strong>Configure build</strong> - Select machine, distro, image</li>
-<li><strong>Build image</strong> - Run bitbake to compile everything</li>
-<li><strong>Test on device</strong> - Flash to SD card, boot, verify</li>
-<li><strong>Iterate</strong> - Make changes, rebuild, test again</li>
-<li><strong>Submit changes</strong> - Create pull request</li>
+<li><strong>Testing a different feed</strong>: You want to test your local build with a different package repository</li>
+<li><strong>Custom deployment</strong>: You're creating a custom image variant with specific package sources</li>
+<li><strong>Development workflow</strong>: You're developing packages and want to use a test feed</li>
 </ol>
-<h3 id="build-types">Build Types<a class="headerlink" href="#build-types" title="Permanent link">&para;</a></h3>
-<p><strong>Full Build</strong> (Clean)
-- First build or major changes
-- Builds everything from scratch
-- Takes 2-8 hours depending on hardware
-- Uses significant disk space</p>
-<p><strong>Incremental Build</strong>
-- Rebuilds only changed components
-- Much faster (minutes to hour)
-- Used for development iterations</p>
-<p><strong>Package Build</strong>
-- Builds specific packages
-- Quick testing of changes
-- Useful for recipe development</p>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<h3 id="quick-start-for-developers">Quick Start for Developers<a class="headerlink" href="#quick-start-for-developers" title="Permanent link">&para;</a></h3>
-<p>If you're ready to start developing:</p>
-<ol>
-<li><a href="yocto-setup.md"><strong>Yocto Setup</strong></a> - Install dependencies and configure environment</li>
-<li><a href="../building/"><strong>Building Calculinux</strong></a> - Compile your first image</li>
-<li><a href="customization.md"><strong>Customization</strong></a> - Tailor Calculinux to your needs</li>
-<li><a href="adding-packages.md"><strong>Adding Packages</strong></a> - Include new software</li>
-</ol>
-<h3 id="learning-path">Learning Path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h3>
-<p><strong>Beginner</strong> (New to Yocto):
-1. Read Yocto Project documentation
-2. Follow our <a href="yocto-setup.md">Yocto Setup</a> guide
-3. Build a stock image
-4. Make small customizations</p>
-<p><strong>Intermediate</strong> (Some Yocto experience):
-1. Clone meta-calculinux
-2. Customize image configurations
-3. Add new packages/recipes
-4. Modify existing recipes</p>
-<p><strong>Advanced</strong> (Experienced with Yocto):
-1. Kernel development
-2. Driver development
-3. BSP modifications
-4. Architecture contributions</p>
-<h2 id="development-tools">Development Tools<a class="headerlink" href="#development-tools" title="Permanent link">&para;</a></h2>
-<h3 id="required-tools">Required Tools<a class="headerlink" href="#required-tools" title="Permanent link">&para;</a></h3>
-<p>Installed via package manager:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Ubuntu/Debian</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gawk<span class="w"> </span>wget<span class="w"> </span>git<span class="w"> </span>diffstat<span class="w"> </span>unzip<span class="w"> </span>texinfo<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>gcc<span class="w"> </span>build-essential<span class="w"> </span>chrpath<span class="w"> </span>socat<span class="w"> </span>cpio<span class="w"> </span>python3<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>python3-pip<span class="w"> </span>python3-pexpect<span class="w"> </span>xz-utils<span class="w"> </span>debianutils<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>iputils-ping<span class="w"> </span>python3-git<span class="w"> </span>python3-jinja2<span class="w"> </span>libegl1-mesa<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>libsdl1.2-dev<span class="w"> </span>pylint3<span class="w"> </span>xterm<span class="w"> </span>python3-subunit<span class="w"> </span>mesa-common-dev<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>zstd<span class="w"> </span>liblz4-tool
-</code></pre></div>
-<h3 id="helpful-tools">Helpful Tools<a class="headerlink" href="#helpful-tools" title="Permanent link">&para;</a></h3>
-<p>Development aids:</p>
-<ul>
-<li><strong>devtool</strong> - Yocto development tool for recipes</li>
-<li><strong>bitbake</strong> - Build engine</li>
-<li><strong>runqemu</strong> - QEMU emulation (limited use for ARM)</li>
-<li><strong>oe-pkgdata-util</strong> - Package data queries</li>
-<li><strong>bitbake-layers</strong> - Layer management</li>
-</ul>
-<h3 id="editor-setup">Editor Setup<a class="headerlink" href="#editor-setup" title="Permanent link">&para;</a></h3>
-<p>Recommended editors with Yocto support:</p>
-<ul>
-<li><strong>VS Code</strong> - With Yocto/BitBake extensions</li>
-<li><strong>Vim/Neovim</strong> - With syntax highlighting</li>
-<li><strong>Emacs</strong> - With bitbake-mode</li>
-</ul>
-<h2 id="build-system-overview">Build System Overview<a class="headerlink" href="#build-system-overview" title="Permanent link">&para;</a></h2>
-<h3 id="yoctoopenembedded">Yocto/OpenEmbedded<a class="headerlink" href="#yoctoopenembedded" title="Permanent link">&para;</a></h3>
-<p>Calculinux uses Yocto for several reasons:</p>
-<p><strong>Advantages</strong>:
-- ✅ Reproducible builds
-- ✅ Extensive package ecosystem
-- ✅ Professional tooling
-- ✅ Active community
-- ✅ Long-term support
-- ✅ Customization flexibility</p>
-<p><strong>Challenges</strong>:
-- ⚠️ Steep learning curve
-- ⚠️ Long initial build times
-- ⚠️ Large disk space requirements
-- ⚠️ Complex dependency management</p>
-<h3 id="bitbake">BitBake<a class="headerlink" href="#bitbake" title="Permanent link">&para;</a></h3>
-<p>BitBake is the build engine:</p>
-<ul>
-<li>Task execution</li>
-<li>Dependency resolution</li>
-<li>Parallel builds</li>
-<li>Caching/reuse</li>
-</ul>
-<h3 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">&para;</a></h3>
-<p>Recipes define how to build packages:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Example recipe structure</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">SUMMARY</span> <span class="o">=</span> <span class="s2">&quot;Example package&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">LICENSE</span> <span class="o">=</span> <span class="s2">&quot;MIT&quot;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">SRC_URI</span> <span class="o">=</span> <span class="s2">&quot;https://example.com/package.tar.gz&quot;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">do_compile</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="c1"># Compilation steps</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">do_install</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="c1"># Installation steps</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
-</code></pre></div>
-<h2 id="common-development-tasks">Common Development Tasks<a class="headerlink" href="#common-development-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="adding-a-package">Adding a Package<a class="headerlink" href="#adding-a-package" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Create new recipe</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>devtool<span class="w"> </span>add<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>&lt;source-url&gt;
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Test build</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>devtool<span class="w"> </span>build<span class="w"> </span>&lt;package-name&gt;
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Create recipe</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>devtool<span class="w"> </span>finish<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>meta-calculinux
-</code></pre></div>
-<h3 id="modifying-kernel">Modifying Kernel<a class="headerlink" href="#modifying-kernel" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Extract kernel source</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>bitbake<span class="w"> </span>linux-calculinux<span class="w"> </span>-c<span class="w"> </span>unpack
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Make changes</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>tmp/work/.../linux-calculinux/.../git
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Rebuild</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>bitbake<span class="w"> </span>linux-calculinux<span class="w"> </span>-c<span class="w"> </span>compile<span class="w"> </span>-f
-</code></pre></div>
-<h3 id="creating-custom-image">Creating Custom Image<a class="headerlink" href="#creating-custom-image" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># recipes-core/images/calculinux-custom.bb</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">require</span> <span class="n">calculinux</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">bb</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">IMAGE_INSTALL</span> <span class="o">+=</span> <span class="s2">&quot;mypackage another-package&quot;</span>
-</code></pre></div>
-<h2 id="testing-validation">Testing &amp; Validation<a class="headerlink" href="#testing-validation" title="Permanent link">&para;</a></h2>
-<h3 id="build-testing">Build Testing<a class="headerlink" href="#build-testing" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Build specific image</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>bitbake<span class="w"> </span>calculinux-minimal
+<p>To change the feed configuration for manual builds, create or edit <code>build/conf/local.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Example: Use the release feed instead of continuous</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;release&quot;</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Build with warnings as errors</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>bitbake<span class="w"> </span>-k<span class="w"> </span>calculinux-base
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Verify package contents</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>oe-pkgdata-util<span class="w"> </span>list-pkgs
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Example: Use the develop feed</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;develop&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span>
 </code></pre></div>
-<h3 id="runtime-testing">Runtime Testing<a class="headerlink" href="#runtime-testing" title="Permanent link">&para;</a></h3>
+<h3 id="verifying-feed-configuration">Verifying Feed Configuration<a class="headerlink" href="#verifying-feed-configuration" title="Permanent link">&para;</a></h3>
+<p>To check which feed your image will use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Inside kas-container shell:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>./kas-container<span class="w"> </span>shell<span class="w"> </span>kas-luckfox-lyra-bundle.yaml
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Query the feed configuration:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>bitbake<span class="w"> </span>-e<span class="w"> </span>calculinux-image<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^(DISTRO_CODENAME|CALCULINUX_FEED_SUBFOLDER|PACKAGE_FEED_BASE_PATHS)=&quot;</span>
+</code></pre></div>
+<p>Example output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>DISTRO_CODENAME=&quot;walnascar&quot;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>CALCULINUX_FEED_SUBFOLDER=&quot;continuous&quot;
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>PACKAGE_FEED_BASE_PATHS=&quot;ipk/walnascar/continuous&quot;
+</code></pre></div></p>
+<h3 id="how-feed-configuration-works">How Feed Configuration Works<a class="headerlink" href="#how-feed-configuration-works" title="Permanent link">&para;</a></h3>
+<p>The feed configuration is baked into the image during build:</p>
 <ol>
-<li>Flash image to SD card</li>
-<li>Boot on PicoCalc</li>
-<li>Verify functionality</li>
-<li>Check logs: <code>journalctl -b</code></li>
-<li>Test applications</li>
+<li><strong>Build Time</strong>: Yocto reads <code>DISTRO_CODENAME</code> and <code>CALCULINUX_FEED_SUBFOLDER</code> variables</li>
+<li><strong>Image Creation</strong>: Feed URL is written to <code>/etc/opkg/opkg.conf</code> in the image</li>
+<li><strong>Runtime</strong>: <code>opkg</code> uses the configured feed URL to install/update packages</li>
 </ol>
-<h3 id="automated-testing">Automated Testing<a class="headerlink" href="#automated-testing" title="Permanent link">&para;</a></h3>
-<p>Coming soon: CI/CD pipeline for automated builds and tests.</p>
-<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
-<h3 id="build-speed">Build Speed<a class="headerlink" href="#build-speed" title="Permanent link">&para;</a></h3>
-<p><strong>Parallel Builds</strong>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># local.conf</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">BB_NUMBER_THREADS</span> <span class="o">=</span> <span class="s2">&quot;8&quot;</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">PARALLEL_MAKE</span> <span class="o">=</span> <span class="s2">&quot;-j 8&quot;</span>
-</code></pre></div></p>
-<p><strong>Shared State Cache</strong>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">SSTATE_DIR</span> <span class="o">=</span> <span class="s2">&quot;/path/to/shared/sstate-cache&quot;</span>
-</code></pre></div></p>
-<p><strong>Build History</strong>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">INHERIT</span> <span class="o">+=</span> <span class="s2">&quot;buildhistory&quot;</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">BUILDHISTORY_COMMIT</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
-</code></pre></div></p>
-<h3 id="image-size">Image Size<a class="headerlink" href="#image-size" title="Permanent link">&para;</a></h3>
-<p>Optimize for small SD cards:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Remove documentation</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">IMAGE_FEATURES_remove</span> <span class="o">=</span> <span class="s2">&quot;doc-pkgs&quot;</span>
+<p>Users can still manually change feeds after installation by editing <code>/etc/opkg/opkg.conf</code>, but this is only needed for advanced use cases (see <a href="../../user-guide/package-management/">Package Management</a> for details).</p>
+<h2 id="configuring-your-build">Configuring Your Build<a class="headerlink" href="#configuring-your-build" title="Permanent link">&para;</a></h2>
+<h3 id="setting-distribution-codename">Setting Distribution Codename<a class="headerlink" href="#setting-distribution-codename" title="Permanent link">&para;</a></h3>
+<p>To manually set the distribution codename, edit <code>conf/local.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># For stable builds</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walnascar&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># For development builds</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;develop&quot;</span>
+</code></pre></div>
+<h3 id="setting-feed-subfolder">Setting Feed Subfolder<a class="headerlink" href="#setting-feed-subfolder" title="Permanent link">&para;</a></h3>
+<p>To configure the package feed subfolder, edit <code>conf/local.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># For continuous/rolling releases</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Remove development files</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">IMAGE_FEATURES_remove</span> <span class="o">=</span> <span class="s2">&quot;dev-pkgs&quot;</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Minimize locales</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">IMAGE_LINGUAS</span> <span class="o">=</span> <span class="s2">&quot;en-us&quot;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># For stable releases</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;release&quot;</span>
 </code></pre></div>
-<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
+<h3 id="complete-build-configuration-example">Complete Build Configuration Example<a class="headerlink" href="#complete-build-configuration-example" title="Permanent link">&para;</a></h3>
+<p>For a development build:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># conf/local.conf</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;develop&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;continuous&quot;</span>
+</code></pre></div>
+<p>For a release build:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># conf/local.conf</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">DISTRO_CODENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;walnascar&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nv">CALCULINUX_FEED_SUBFOLDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;release&quot;</span>
+</code></pre></div>
+<h2 id="build-targets">Build Targets<a class="headerlink" href="#build-targets" title="Permanent link">&para;</a></h2>
+<p>Calculinux provides several build targets:</p>
+<h3 id="main-image">Main Image<a class="headerlink" href="#main-image" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bitbake<span class="w"> </span>calculinux-image
+</code></pre></div>
+<p>The primary Calculinux image with desktop environment and applications.</p>
+<h3 id="minimal-image">Minimal Image<a class="headerlink" href="#minimal-image" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>bitbake<span class="w"> </span>calculinux-image-minimal
+</code></pre></div>
+<p>A minimal base system without desktop environment.</p>
+<h3 id="sdk">SDK<a class="headerlink" href="#sdk" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>bitbake<span class="w"> </span>calculinux-image<span class="w"> </span>-c<span class="w"> </span>populate_sdk
+</code></pre></div>
+<p>Generates a cross-compilation SDK for application development.</p>
+<h2 id="build-options">Build Options<a class="headerlink" href="#build-options" title="Permanent link">&para;</a></h2>
+<h3 id="clean-build">Clean Build<a class="headerlink" href="#clean-build" title="Permanent link">&para;</a></h3>
+<p>To perform a clean build:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Clean everything</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>cleanall<span class="w"> </span>calculinux-image
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Clean specific package</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>cleanall<span class="w"> </span>&lt;package-name&gt;
+</code></pre></div>
+<h3 id="parallel-builds">Parallel Builds<a class="headerlink" href="#parallel-builds" title="Permanent link">&para;</a></h3>
+<p>Configure parallel builds in <code>conf/local.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Number of parallel BitBake tasks</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>BB_NUMBER_THREADS<span class="w"> </span>?<span class="o">=</span><span class="w"> </span><span class="s2">&quot;8&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Number of parallel make tasks</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>PARALLEL_MAKE<span class="w"> </span>?<span class="o">=</span><span class="w"> </span><span class="s2">&quot;-j 8&quot;</span>
+</code></pre></div>
+<p>Adjust numbers based on your CPU cores and available RAM.</p>
+<h3 id="disk-space-management">Disk Space Management<a class="headerlink" href="#disk-space-management" title="Permanent link">&para;</a></h3>
+<p>Monitor disk usage:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Check build directory size</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>du<span class="w"> </span>-sh<span class="w"> </span>build/tmp
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Clean shared state cache</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>rm<span class="w"> </span>-rf<span class="w"> </span>build/sstate-cache/*
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Clean downloads (only if needed)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>rm<span class="w"> </span>-rf<span class="w"> </span>build/downloads/*
+</code></pre></div>
+<h2 id="build-output">Build Output<a class="headerlink" href="#build-output" title="Permanent link">&para;</a></h2>
+<p>After a successful build, find images in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>build/tmp/deploy/images/luckfox-lyra/
+</code></pre></div>
+<p>Key files:</p>
+<ul>
+<li><code>calculinux-image-*.wic.gz</code> - Flashable SD card image</li>
+<li><code>calculinux-image-*.tar.gz</code> - Root filesystem archive</li>
+<li><code>calculinux-image-*.manifest</code> - List of installed packages</li>
+</ul>
+<h2 id="flashing-the-image">Flashing the Image<a class="headerlink" href="#flashing-the-image" title="Permanent link">&para;</a></h2>
+<h3 id="to-sd-card-linux">To SD Card (Linux)<a class="headerlink" href="#to-sd-card-linux" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Decompress the image</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>gunzip<span class="w"> </span>calculinux-image-*.wic.gz
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Flash to SD card (replace /dev/sdX with your card)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>calculinux-image-*.wic<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>sudo<span class="w"> </span>sync
+</code></pre></div>
+<h3 id="to-sd-card-cross-platform">To SD Card (Cross-platform)<a class="headerlink" href="#to-sd-card-cross-platform" title="Permanent link">&para;</a></h3>
+<p>Use <a href="https://www.balena.io/etcher/">Etcher</a> or <a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a> with the <code>.wic.gz</code> file.</p>
+<h2 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h2>
+<p>Calculinux uses GitHub Actions for automated builds. The CI system automatically:</p>
+<ol>
+<li>Detects the branch or tag being built</li>
+<li>Sets appropriate <code>DISTRO_CODENAME</code> and <code>CALCULINUX_FEED_SUBFOLDER</code></li>
+<li>Builds the image</li>
+<li>Publishes packages to the correct feed location</li>
+<li>Uploads build artifacts</li>
+</ol>
+<h3 id="ci-configuration-files">CI Configuration Files<a class="headerlink" href="#ci-configuration-files" title="Permanent link">&para;</a></h3>
+<p>The build behavior is controlled by:</p>
+<ul>
+<li><code>.github/workflows/build.yml</code> - Main CI workflow</li>
+<li><code>conf/auto.conf</code> - Auto-generated build configuration</li>
+<li><code>conf/calculinux.conf</code> - Distribution configuration</li>
+</ul>
+<h2 id="package-feed-publishing">Package Feed Publishing<a class="headerlink" href="#package-feed-publishing" title="Permanent link">&para;</a></h2>
+<p>After building, packages can be published to the opkg feed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Upload to continuous feed (development)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>rsync<span class="w"> </span>-avz<span class="w"> </span>tmp/deploy/ipk/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>user@opkg.calculinux.org:/var/www/opkg/ipk/walnascar/continuous/
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># Upload to release feed (stable)</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>rsync<span class="w"> </span>-avz<span class="w"> </span>tmp/deploy/ipk/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span>user@opkg.calculinux.org:/var/www/opkg/ipk/walnascar/release/
+</code></pre></div>
+<p>The CI system handles this automatically for official builds.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="build-failures">Build Failures<a class="headerlink" href="#build-failures" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Verbose output</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>bitbake<span class="w"> </span>-v<span class="w"> </span>calculinux-base
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Debug specific task</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>devshell<span class="w"> </span>&lt;package&gt;
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Clean and rebuild</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>cleansstate<span class="w"> </span>&lt;package&gt;
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>bitbake<span class="w"> </span>&lt;package&gt;
+<p>If a build fails:</p>
+<ol>
+<li>Check the error message in the build log</li>
+<li>Clean the failing package: <code>bitbake -c cleanall &lt;package&gt;</code></li>
+<li>Retry the build</li>
+<li>Check <a href="../troubleshooting/common-issues.md">Common Issues</a></li>
+</ol>
+<h3 id="disk-space-issues">Disk Space Issues<a class="headerlink" href="#disk-space-issues" title="Permanent link">&para;</a></h3>
+<p>If you run out of disk space:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Remove old build artifacts</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>clean<span class="w"> </span>calculinux-image
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Clear shared state cache</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>rm<span class="w"> </span>-rf<span class="w"> </span>build/sstate-cache/*
 </code></pre></div>
-<h3 id="runtime-debugging">Runtime Debugging<a class="headerlink" href="#runtime-debugging" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Serial console</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>screen<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">115200</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># SSH access</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>ssh<span class="w"> </span>root@&lt;ip-address&gt;
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># System logs</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>journalctl<span class="w"> </span>-f
+<h3 id="network-issues">Network Issues<a class="headerlink" href="#network-issues" title="Permanent link">&para;</a></h3>
+<p>If downloads fail:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Use mirrors</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># Add to conf/local.conf:</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nv">PREMIRRORS_prepend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;\</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s2">  git://.*/.* http://downloads.yoctoproject.org/mirror/sources/ \n \</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="s2">  ftp://.*/.* http://downloads.yoctoproject.org/mirror/sources/ \n \</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="s2">  http://.*/.* http://downloads.yoctoproject.org/mirror/sources/ \n \</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="s2">  https://.*/.* http://downloads.yoctoproject.org/mirror/sources/ \n&quot;</span>
 </code></pre></div>
-<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
-<p>We welcome contributions! See <a href="contributing.md">Contributing Guide</a> for:</p>
-<ul>
-<li>Code style guidelines</li>
-<li>Submission process</li>
-<li>Review process</li>
-<li>Community standards</li>
-</ul>
-<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
-<h3 id="official-documentation">Official Documentation<a class="headerlink" href="#official-documentation" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Yocto Project</strong>: <a href="https://www.yoctoproject.org/docs/">https://www.yoctoproject.org/docs/</a></li>
-<li><strong>OpenEmbedded</strong>: <a href="https://www.openembedded.org/">https://www.openembedded.org/</a></li>
-<li><strong>BitBake Manual</strong>: <a href="https://docs.yoctoproject.org/bitbake/">https://docs.yoctoproject.org/bitbake/</a></li>
-</ul>
-<h3 id="calculinux-specific">Calculinux Specific<a class="headerlink" href="#calculinux-specific" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Repository</strong>: <a href="https://github.com/Calculinux/meta-calculinux">https://github.com/Calculinux/meta-calculinux</a></li>
-<li><strong>Issues</strong>: <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub Issues</a></li>
-<li><strong>Discussions</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum Thread</a></li>
-</ul>
-<h3 id="learning-resources">Learning Resources<a class="headerlink" href="#learning-resources" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Yocto Project Quick Start</li>
-<li>Yocto Project Mega-Manual</li>
-<li>OpenEmbedded User Manual</li>
-<li>Linux From Scratch (background)</li>
-</ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Choose your path:</p>
-<div class="grid cards">
 <ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span> <strong>Set Up Environment</strong></p>
-<hr />
-<p>Install tools and configure Yocto</p>
-<p><a href="yocto-setup.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Yocto Setup</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.78 15.3 6 6 2.11-2.16-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11 7.41-7.4L8.5 9.96l-.72.7-1.45-1.41v2.86l-.7.7-3.52-3.56.7-.7h2.81l-1.4-1.41 3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4-.71.71 1.79 1.78 1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5 2.67-2.67c.28.47.42.97.42 1.6 0 1.92-1.55 3.47-3.5 3.47"/></svg></span> <strong>Build Calculinux</strong></p>
-<hr />
-<p>Compile your first image</p>
-<p><a href="../building/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Building Guide</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5 1.5 1.5 0 0 1 14.5 5 1.5 1.5 0 0 1 16 6.5 1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5 1.5 1.5 0 0 1 9.5 5 1.5 1.5 0 0 1 11 6.5 1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5 1.5 1.5 0 0 1 6.5 9 1.5 1.5 0 0 1 8 10.5 1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8"/></svg></span> <strong>Customize</strong></p>
-<hr />
-<p>Make Calculinux your own</p>
-<p><a href="customization.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Customization</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg></span> <strong>Contribute</strong></p>
-<hr />
-<p>Join the development effort</p>
-<p><a href="contributing.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Contributing</a></p>
-</li>
+<li><a href="customization.md">Customizing Images</a> - Learn how to customize your build</li>
+<li><a href="adding-packages.md">Adding Packages</a> - Add your own packages</li>
+<li><a href="kernel.md">Kernel Development</a> - Customize the kernel</li>
+<li><a href="releases.md">Release Process</a> - Create official releases</li>
 </ul>
-</div>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.yoctoproject.org/">Yocto Project Documentation</a></li>
+<li><a href="https://docs.yoctoproject.org/bitbake/">BitBake User Manual</a></li>
+<li><a href="../../user-guide/package-management/">Package Management Guide</a> - Using opkg feeds</li>
+</ul>
 
 
 
@@ -3304,7 +3152,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:17:57 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:25:25 UTC">October 22, 2025</span>
   </span>
 
     
@@ -3314,7 +3162,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:25:25 UTC">October 22, 2025</span>
   </span>
 
     
