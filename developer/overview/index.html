@@ -1273,9 +1273,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#related-repositories" class="md-nav__link">
+  <a href="#external-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Repositories
+      External Dependencies
     </span>
   </a>
   
@@ -2477,9 +2477,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#related-repositories" class="md-nav__link">
+  <a href="#external-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Repositories
+      External Dependencies
     </span>
   </a>
   
@@ -2990,30 +2990,44 @@
 - System services (systemd)
 - Optional desktop environments</p>
 <h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Documentation Needs Update</p>
+<p>This section contains outdated information and is being revised to reflect the actual multi-layer Yocto structure. See <a href="https://github.com/Calculinux/meta-calculinux">meta-calculinux README</a> for current structure.</p>
+</div>
 <h3 id="main-repository">Main Repository<a class="headerlink" href="#main-repository" title="Permanent link">&para;</a></h3>
+<p>The meta-calculinux repository uses a multi-layer Yocto structure:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>meta-calculinux/
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── conf/
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── machine/          # Machine configurations
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   │   └── picocalc-luckfox.conf
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── distro/           # Distribution config
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   │   └── calculinux.conf
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   └── layer.conf        # Layer configuration
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├── recipes-bsp/
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── u-boot/           # Bootloader recipes
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   └── device-tree/      # Device tree files
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>├── recipes-kernel/
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   └── linux/            # Kernel recipes and patches
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── recipes-core/
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   └── images/           # Image definitions
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>├── recipes-extended/
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   └── packages/         # Additional packages
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>└── README.md
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── meta-calculinux-distro/      # Distribution layer
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── conf/distro/
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   │   └── calculinux-distro.conf
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── recipes-bsp/
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── recipes-connectivity/
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── recipes-core/
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   │   ├── image/calculinux-image.bb
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   │   └── bundles/calculinux-bundle.bb
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   ├── recipes-extended/
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   └── recipes-support/
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>├── meta-picocalc-bsp-rockchip/  # Hardware BSP layer
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   ├── conf/machine/
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   │   └── luckfox-lyra.conf
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── recipes-bsp/
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   │   └── u-boot/
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   └── recipes-kernel/
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│       └── linux/linux-rockchip_6.1.bbappend
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>├── meta-calculinux-apps/        # Applications layer
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   ├── recipes-connectivity/
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   │   └── zerotier-one/
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│   └── recipes-core/
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│       └── packagegroups/
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>├── kas-luckfox-lyra-bundle.yaml # KAS build configuration
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>└── README.md
 </code></pre></div>
-<h3 id="related-repositories">Related Repositories<a class="headerlink" href="#related-repositories" title="Permanent link">&para;</a></h3>
+<h3 id="external-dependencies">External Dependencies<a class="headerlink" href="#external-dependencies" title="Permanent link">&para;</a></h3>
+<p>Calculinux uses external repositories for kernel and bootloader sources:</p>
 <ul>
-<li><strong>docs</strong>: This documentation</li>
-<li><strong>linux-calculinux</strong>: Kernel source (fork)</li>
-<li><strong>u-boot-calculinux</strong>: Bootloader source (fork)</li>
+<li><strong>Kernel</strong>: <code>github.com/0xd61/luckfox-linux-6.1-rk3506.git</code> (via linux-rockchip recipe)</li>
+<li><strong>Bootloader</strong>: Provided by meta-rockchip layer</li>
+<li><strong>Documentation</strong>: This repository (github.com/Calculinux/docs)</li>
 </ul>
 <h2 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="typical-development-process">Typical Development Process<a class="headerlink" href="#typical-development-process" title="Permanent link">&para;</a></h3>
@@ -3130,6 +3144,10 @@
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="common-development-tasks">Common Development Tasks<a class="headerlink" href="#common-development-tasks" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Examples Need Verification</p>
+<p>The following examples use placeholder names and need to be updated with actual Calculinux recipe names and tested commands.</p>
+</div>
 <h3 id="adding-a-package">Adding a Package<a class="headerlink" href="#adding-a-package" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Create new recipe</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>devtool<span class="w"> </span>add<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>&lt;source-url&gt;
@@ -3141,28 +3159,33 @@
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>devtool<span class="w"> </span>finish<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>meta-calculinux
 </code></pre></div>
 <h3 id="modifying-kernel">Modifying Kernel<a class="headerlink" href="#modifying-kernel" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Extract kernel source</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>bitbake<span class="w"> </span>linux-calculinux<span class="w"> </span>-c<span class="w"> </span>unpack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Extract kernel source (note: actual recipe is linux-rockchip, not linux-calculinux)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>bitbake<span class="w"> </span>linux-rockchip<span class="w"> </span>-c<span class="w"> </span>unpack
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Make changes</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>tmp/work/.../linux-calculinux/.../git
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>tmp/work/.../linux-rockchip/.../git
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Rebuild</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>bitbake<span class="w"> </span>linux-calculinux<span class="w"> </span>-c<span class="w"> </span>compile<span class="w"> </span>-f
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>bitbake<span class="w"> </span>linux-rockchip<span class="w"> </span>-c<span class="w"> </span>compile<span class="w"> </span>-f
 </code></pre></div>
 <h3 id="creating-custom-image">Creating Custom Image<a class="headerlink" href="#creating-custom-image" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># recipes-core/images/calculinux-custom.bb</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">require</span> <span class="n">calculinux</span><span class="o">-</span><span class="n">base</span><span class="o">.</span><span class="n">bb</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">IMAGE_INSTALL</span> <span class="o">+=</span> <span class="s2">&quot;mypackage another-package&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># Note: Only calculinux-image.bb and calculinux-bundle.bb currently exist</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">require</span> <span class="n">calculinux</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">bb</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">IMAGE_INSTALL</span> <span class="o">+=</span> <span class="s2">&quot;mypackage another-package&quot;</span>
 </code></pre></div>
 <h2 id="testing-validation">Testing &amp; Validation<a class="headerlink" href="#testing-validation" title="Permanent link">&para;</a></h2>
 <h3 id="build-testing">Build Testing<a class="headerlink" href="#build-testing" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Build specific image</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>bitbake<span class="w"> </span>calculinux-minimal
+<div class="admonition warning">
+<p class="admonition-title">Example Uses Non-existent Images</p>
+<p>Only <code>calculinux-image</code> and <code>calculinux-bundle</code> targets currently exist. Examples below need verification.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Build main image</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>bitbake<span class="w"> </span>calculinux-image
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Build with warnings as errors</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>bitbake<span class="w"> </span>-k<span class="w"> </span>calculinux-base
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Build update bundle</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>bitbake<span class="w"> </span>calculinux-bundle
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Verify package contents</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>oe-pkgdata-util<span class="w"> </span>list-pkgs
@@ -3304,7 +3327,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:17:57 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 14:30:36 UTC">October 22, 2025</span>
   </span>
 
     
