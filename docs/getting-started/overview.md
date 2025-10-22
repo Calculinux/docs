@@ -11,17 +11,15 @@ Calculinux is a Linux distribution built specifically for the PicoCalc handheld 
 Before you begin, make sure you have:
 
 - ✅ PicoCalc device
-- ✅ Luckfox Lyra SBC (or compatible)
+- ✅ Luckfox Lyra SBC
 - ✅ MicroSD card (8GB minimum, 16GB+ recommended)
 - ✅ SD card reader for your computer
-- ✅ USB-C cable and power adapter (5V/2A minimum)
-- ✅ Computer for flashing the SD card
+- ✅ USB-C cable (to connect the Lyra to your computer to wipe the NAND)
+- ✅ Computer
 
 Optional but helpful:
-- USB-OTG adapter for peripherals
-- USB keyboard (for easier initial setup)
+- Second USB-C cable to monitor the serial console on the Picocalc USB-C port (1500000 Baud)
 - USB WiFi adapter (3.3V, see supported chipsets in [Hardware Compatibility](../hardware/compatibility.md))
-- USB Ethernet adapter (for wired network connectivity)
 
 ## Quick Start Process
 
