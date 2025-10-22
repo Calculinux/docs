@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Welcome to Calculinux
 
 ![Calculinux Logo](assets/calculinux.svg){ align=right width=200 }

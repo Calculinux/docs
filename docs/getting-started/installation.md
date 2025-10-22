@@ -144,7 +144,7 @@ sudo fdisk -l /dev/sdX
 # - Root filesystem (ext4)
 ```
 
-## Step 3: Hardware Installation
+## Step 3: Hardware Installation {#hardware-installation}
 
 If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the [Hardware Modifications](../hardware/modifications.md) guide.
 

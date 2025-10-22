@@ -82,32 +82,19 @@ nav:
   - Hardware:
     - PicoCalc Overview: hardware/picocalc.md
     - Luckfox Lyra: hardware/luckfox-lyra.md
+    - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
-    - Power Management: hardware/power.md
-    - Milk-V Duo (Future): hardware/milk-v-duo.md
     - Compatibility Matrix: hardware/compatibility.md
   
   - User Guide:
-    - Basic Usage: user-guide/basic-usage.md
-    - Desktop Environment: user-guide/desktop.md
-    - Applications: user-guide/applications.md
     - Package Management: user-guide/package-management.md
-    - System Configuration: user-guide/configuration.md
-    - Networking: user-guide/networking.md
-    - Storage & SD Cards: user-guide/storage.md
-    - Updates: user-guide/updates.md
   
   - Developer Guide:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
-    - Customizing Images: developer/customization.md
-    - Adding Packages: developer/adding-packages.md
-    - Kernel Development: developer/kernel.md
-    - Driver Development: developer/drivers.md
     - Contributing: developer/contributing.md
-    - Release Process: developer/releases.md
   
   - Troubleshooting:
     - Common Issues: troubleshooting/common-issues.md
@@ -115,17 +102,9 @@ nav:
     - Display Issues: troubleshooting/display.md
     - Input Problems: troubleshooting/input.md
     - Network Issues: troubleshooting/network.md
+    - Erasing SPI NAND: troubleshooting/erase-nand.md
     - FAQ: troubleshooting/faq.md
   
   - Resources:
     - Community Links: resources/community.md
     - External Documentation: resources/external-docs.md
-    - Useful Tools: resources/tools.md
-    - Related Projects: resources/related-projects.md
-    - Glossary: resources/glossary.md
-  
-  - About:
-    - Project Goals: about/goals.md
-    - Roadmap: about/roadmap.md
-    - License: about/license.md
-    - Contributors: about/contributors.md
