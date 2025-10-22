@@ -638,9 +638,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#premium-configuration" class="md-nav__link">
+  <a href="#advanced-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Premium Configuration
+      Advanced Configuration
     </span>
   </a>
   
@@ -657,6 +657,30 @@
       Optional Hardware
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Optional Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tested Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#untested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Untested Hardware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2060,9 +2084,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#premium-configuration" class="md-nav__link">
+  <a href="#advanced-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Premium Configuration
+      Advanced Configuration
     </span>
   </a>
   
@@ -2079,6 +2103,30 @@
       Optional Hardware
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Optional Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tested Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#untested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Untested Hardware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2139,12 +2187,12 @@
 <tbody>
 <tr>
 <td><strong>PicoCalc Device</strong></td>
-<td>Any model</td>
+<td>Base model</td>
 <td>The handheld computer shell and display</td>
 </tr>
 <tr>
 <td><strong>Luckfox Lyra SBC</strong></td>
-<td>RV1106-based</td>
+<td>RK3506G2-based</td>
 <td>Replaces stock RP2040 board</td>
 </tr>
 <tr>
@@ -2165,17 +2213,17 @@
 </tbody>
 </table>
 <h3 id="luckfox-lyra-specifications">Luckfox Lyra Specifications<a class="headerlink" href="#luckfox-lyra-specifications" title="Permanent link">&para;</a></h3>
-<p>Minimum supported Luckfox Lyra:
-- <strong>RAM</strong>: 128MB (only tested configuration)
+<p>Supported Luckfox Lyra configuration:
+- <strong>RAM</strong>: 128MB (only available and tested configuration)
 - <strong>SoC</strong>: Rockchip RK3506G2
-- <strong>Storage</strong>: SD card (SPI NAND optional)</p>
+- <strong>Storage</strong>: SD card (some models include SPI NAND that must be erased)</p>
 <h2 id="recommended-configurations">Recommended Configurations<a class="headerlink" href="#recommended-configurations" title="Permanent link">&para;</a></h2>
 <h3 id="budget-configuration">Budget Configuration<a class="headerlink" href="#budget-configuration" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Luckfox Lyra 128MB (basic)</li>
 <li>16GB Class 10 SD card</li>
 <li>Generic 5V/2A charger</li>
-<li><strong>Use Case</strong>: Console, development</li>
+<li><strong>Use Case</strong>: Console, scripting, development</li>
 <li><strong>Cost</strong>: ~$30-40</li>
 </ul>
 <h3 id="standard-configuration">Standard Configuration<a class="headerlink" href="#standard-configuration" title="Permanent link">&para;</a></h3>
@@ -2183,24 +2231,57 @@
 <li>Luckfox Lyra 128MB</li>
 <li>32GB UHS-I SD card</li>
 <li>Quality USB-C adapter</li>
-<li><strong>Use Case</strong>: Light desktop</li>
+<li><strong>Use Case</strong>: Console with more storage for applications</li>
 <li><strong>Cost</strong>: ~$45-60</li>
 </ul>
-<h3 id="premium-configuration">Premium Configuration<a class="headerlink" href="#premium-configuration" title="Permanent link">&para;</a></h3>
+<h3 id="advanced-configuration">Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Luckfox Lyra 256MB</li>
+<li>Luckfox Lyra 128MB</li>
 <li>64GB UHS-I SD card</li>
-<li>USB hub + peripherals</li>
-<li><strong>Use Case</strong>: Full desktop, development</li>
+<li>Powered USB hub + peripherals</li>
+<li><strong>Use Case</strong>: Console development, experimentation</li>
 <li><strong>Cost</strong>: ~$60-80</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Graphical Desktop Experimentation</p>
+<p>While Calculinux is console-only by default, users may experiment with lightweight graphical environments. However, the 128MB RAM is a significant limiting factor for desktop use. Community experimentation is encouraged but not officially supported.</p>
+</div>
 <h2 id="optional-hardware">Optional Hardware<a class="headerlink" href="#optional-hardware" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">USB Peripheral Limitations</p>
+<p>The Lyra USB-C port supports USB OTG, but has important limitations:</p>
 <ul>
-<li>USB keyboard (easier initial setup)</li>
-<li>USB Ethernet adapter (network access)</li>
-<li>USB hub (for multiple peripherals)</li>
-<li>USB WiFi adapter (untested but should work)</li>
+<li><strong>Voltage Requirement</strong>: USB devices must operate at 3.3V or use an externally powered hub</li>
+<li><strong>Tested Hardware</strong>: Only internal USB WiFi adapter (3.3V) has been confirmed working</li>
+<li><strong>Untested Peripherals</strong>: External USB devices (keyboards, ethernet adapters, storage) have not been tested</li>
+<li><strong>Recommendation</strong>: Use an externally powered USB hub for any external USB peripherals</li>
 </ul>
+</div>
+<h3 id="tested-hardware">Tested Hardware<a class="headerlink" href="#tested-hardware" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>WiFi Adapter</strong> (3.3V, internal USB header) - ✅ Confirmed working</li>
+<li><strong>External SD Card</strong> (PicoCalc's built-in SD slot) - ✅ Confirmed working</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">External SD Card Expansion</p>
+<p>The PicoCalc includes a built-in SD card slot that can be used for additional storage. This slot is accessed over SPI and is therefore slower than the main internal SD card, but it's excellent for mass storage of files, media, or backups.</p>
+</div>
+<h3 id="untested-hardware">Untested Hardware<a class="headerlink" href="#untested-hardware" title="Permanent link">&para;</a></h3>
+<p>The following peripherals may work but have not been tested and likely require a powered USB hub:</p>
+<ul>
+<li>USB keyboard</li>
+<li>USB Ethernet adapter</li>
+<li>USB storage devices</li>
+<li>Other USB peripherals</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Luckfox Lyra Plus Ethernet</p>
+<p>The <a href="https://www.luckfox.com/Mini-PC/Luckfox-Lyra-Plus">Luckfox Lyra Plus</a> includes a built-in Ethernet port, but this model has not been tested with Calculinux and would require a custom backplate to access the port within the PicoCalc enclosure.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Other Luckfox Lyra Models</p>
+<p>Other Luckfox Lyra models exist with different RAM configurations (64MB, 256MB), but these have different pinouts from the 128MB model and would require a custom adapter board to be compatible with the PicoCalc. Only the 128MB model with the standard pinout is currently supported.</p>
+</div>
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
 <p>See <a href="../../hardware/compatibility/">Compatibility Matrix</a> for detailed hardware compatibility information.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -2231,7 +2312,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 19:25:59 UTC">October 22, 2025</span>
   </span>
 
     
