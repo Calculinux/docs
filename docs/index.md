@@ -66,9 +66,9 @@ Calculinux is an open-source community project. Join us!
 ## System Requirements
 
 !!! info "Minimum Requirements"
-    - **Hardware**: PicoCalc with Luckfox Lyra SBC (or compatible)
+    - **Hardware**: PicoCalc
+    - **Microcontroller**:  Luckfox Lyra SBC
     - **Storage**: MicroSD card (8GB minimum, 16GB+ recommended)
-    - **Power**: USB-C power supply (5V/2A recommended)
 
 ## Current Status
 
