@@ -26,16 +26,17 @@ Optional but helpful:
 Here's the high-level process to get Calculinux running:
 
 1. **[Check Hardware Requirements](hardware-requirements.md)** - Verify compatibility
-2. **[Install Hardware](installation.md#hardware-installation)** (if needed) - Install Luckfox Lyra in PicoCalc
-3. **[Flash SD Card](installation.md#flashing-the-image)** - Write Calculinux image to SD card
-4. **[First Boot](first-boot.md)** - Power on and complete initial setup
-5. **[Quick Start Guide](quick-start.md)** - Learn basic operations
+2. **[Erase NAND Flash](erase-nand.md)** (if equipped) - Erase the Lyra's on-board NAND Flash
+3. **[Install Hardware](installation.md#hardware-installation)** (if needed) - Install Luckfox Lyra in PicoCalc
+4. **[Flash SD Card](installation.md#flashing-the-image)** - Write Calculinux image to SD card
+5. **[First Boot](first-boot.md)** - Power on and complete initial setup
+6. **[Quick Start Guide](quick-start.md)** - Learn basic operations
 
 ## Time Requirements
 
-- **Hardware Installation**: 30-60 minutes (if replacing SBC)
+- **Hardware Installation**: 5-10 minutes
 - **Image Flashing**: 5-15 minutes (depends on SD card)
-- **First Boot**: 5-10 minutes
+- **First Boot**: 2-3 minutes
 - **Initial Configuration**: 10-30 minutes
 
 ## Skill Level
@@ -77,9 +78,9 @@ Be aware of these limitations:
 
 - **Console Only**: No graphical desktop environment (text-based interface)
 - **Small Display**: 320×320 pixels (53×40 text), optimized for terminal use
-- **RAM**: 64-256MB means careful resource management
+- **RAM**: 128MB means careful resource management
 - **Storage**: SD card speed affects performance
-- **No Built-in Network**: Requires USB WiFi or Ethernet adapter (3.3V for WiFi)
+- **No Built-in Network**: Requires **3.3 volt** USB WiFi or Ethernet adapter
 - **Battery Life**: Running Linux uses more power than stock firmware
 
 ## Learning Path
@@ -144,7 +145,7 @@ External links, tools, community information
 
 If this is your first time:
 
-- Keep the original PicoCalc board in case you want to revert
+- Keep the original Raspberry Pi Pico board in case you want to revert
 - Use a spare SD card for testing
 - Join the community forum before starting
 - Read through all documentation first

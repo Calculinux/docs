@@ -13,12 +13,17 @@ Some Luckfox Lyra boards come with SPI NAND flash memory pre-installed. If your 
 **To check if your board has SPI NAND:**
 - Look for additional chip markings on the board
 - Check your purchase order/specifications
-
+- Lyra B and Lyra Plus models have 256MB SPI NAND
 
 **To erase SPI NAND:**
-1. Follow the NAND erase procedure in the [official Luckfox documentation](https://wiki.luckfox.com/Luckfox-Lyra/)
-2. Use the official Luckfox flashing tools
-3. Ensure NAND is completely erased before inserting Calculinux SD card
+
+See the comprehensive [SPI NAND Erase Guide](erase-nand.md) for detailed step-by-step instructions.
+
+**Quick Summary:**
+1. Download RKDevTool and drivers from the [official Luckfox documentation](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
+2. Enter Loader Mode (hold BOOT button while connecting USB)
+3. Use RKDevTool to erase the flash
+4. Insert Calculinux SD card and boot
 
 !!! danger "Critical Warning: SPI NAND Erase"
     **IMPORTANT**: Erasing SPI NAND will permanently remove any existing firmware or data stored on the NAND flash. This process cannot be undone. Make sure you understand the implications before proceeding.
@@ -32,7 +37,10 @@ Some Luckfox Lyra boards come with SPI NAND flash memory pre-installed. If your 
     Methods for erasing SPI NAND directly from Linux (without using external flashing tools) are not yet documented. Currently, the recommended approach is to use the official Luckfox flashing tools on a separate computer.
 
 !!! info "Additional Resources"
-    For detailed NAND erase procedures and troubleshooting, refer to the [official Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/).
+    For detailed NAND erase procedures and troubleshooting, refer to:
+    
+    - **Calculinux Guide**: [SPI NAND Erase Guide](erase-nand.md)
+    - **Official Luckfox Documentation**: [wiki.luckfox.com/Luckfox-Lyra/Image-flashing](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
 
 ### Hardware Issues
 
