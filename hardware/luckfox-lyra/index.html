@@ -325,7 +325,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../troubleshooting/common-issues.md" class="md-tabs__link">
+        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
           
   
   
@@ -1458,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/yocto-setup.md" class="md-nav__link">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
         
   
   
@@ -1596,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/contributing.md" class="md-nav__link">
+      <a href="../../developer/contributing/" class="md-nav__link">
         
   
   
@@ -1694,7 +1694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/common-issues.md" class="md-nav__link">
+      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
         
   
   
@@ -1717,7 +1717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/boot-problems.md" class="md-nav__link">
+      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
         
   
   
@@ -1740,7 +1740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/display.md" class="md-nav__link">
+      <a href="../../troubleshooting/display/" class="md-nav__link">
         
   
   
@@ -1763,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/input.md" class="md-nav__link">
+      <a href="../../troubleshooting/input/" class="md-nav__link">
         
   
   
@@ -1786,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/network.md" class="md-nav__link">
+      <a href="../../troubleshooting/network/" class="md-nav__link">
         
   
   
@@ -2523,7 +2523,7 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">SPI NAND Versions</p>
-<p>Some Luckfox Lyra boards come with SPI NAND flash memory. If your board has SPI NAND, you <strong>must erase it first</strong> or the board will boot from NAND instead of the SD card. See the <a href="../troubleshooting/boot-problems.md">troubleshooting guide</a> for instructions.</p>
+<p>Some Luckfox Lyra boards come with SPI NAND flash memory. If your board has SPI NAND, you <strong>must erase it first</strong> or the board will boot from NAND instead of the SD card. See the <a href="../../troubleshooting/boot-problems/">troubleshooting guide</a> for instructions.</p>
 </div>
 <h3 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2534,6 +2534,10 @@
 <li><strong>Audio</strong>: I2S audio interface</li>
 <li><strong>Network</strong>: Ethernet MAC (PHY depends on version)</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Complete Interface Documentation</p>
+<p>For detailed pinout diagrams and interface specifications, refer to the <a href="https://wiki.luckfox.com/Luckfox-Lyra/">official Luckfox Lyra documentation</a> and <a href="https://wiki.luckfox.com/Luckfox-Lyra/Pinout">pinout reference</a>.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">WiFi Not Included</p>
 <p>The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.</p>
@@ -2551,9 +2555,17 @@
 <h3 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Input Voltage</strong>: 5V</li>
-<li><strong>Power Consumption</strong>: Low power (ideal for battery operation)</li>
+<li><strong>Power Consumption</strong>: </li>
+<li>Idle: ~0.5-0.52W</li>
+<li>Light use (gaming): ~0.59-0.60W  </li>
+<li>With WiFi connected: ~0.63-1.1W</li>
 <li><strong>USB-C Power Delivery</strong>: Supported</li>
+<li><strong>Battery Operation</strong>: Supported but significantly reduced life vs stock firmware</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Real-World Power Data</p>
+<p>Community testing shows actual power consumption ranging from 0.5W idle to over 1W with WiFi active. Battery life is typically 2-4 hours depending on usage.</p>
+</div>
 <h2 id="luckfox-lyra-versions">Luckfox Lyra Versions<a class="headerlink" href="#luckfox-lyra-versions" title="Permanent link">&para;</a></h2>
 <p>Calculinux currently supports two variants of the Luckfox Lyra board available from <a href="https://www.luckfox.com/Luckfox-Lyra">https://www.luckfox.com/Luckfox-Lyra</a>:</p>
 <table>
@@ -2590,7 +2602,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">SPI NAND Versions</p>
-<p>If your board has SPI NAND, you <strong>must erase it first</strong> or the board will boot from NAND instead of the SD card. See the <a href="../troubleshooting/boot-problems.md">troubleshooting guide</a> for instructions.</p>
+<p>If your board has SPI NAND, you <strong>must erase it first</strong> or the board will boot from NAND instead of the SD card. See the <a href="../../troubleshooting/boot-problems/">troubleshooting guide</a> for instructions.</p>
 </div>
 <h2 id="why-luckfox-lyra-for-picocalc">Why Luckfox Lyra for PicoCalc?<a class="headerlink" href="#why-luckfox-lyra-for-picocalc" title="Permanent link">&para;</a></h2>
 <p>The Luckfox Lyra is particularly well-suited for PicoCalc:</p>
@@ -2619,14 +2631,14 @@
 <li>Debouncing and repeat rate configuration</li>
 </ul>
 <h3 id="wifi-drivers">WiFi Drivers<a class="headerlink" href="#wifi-drivers" title="Permanent link">&para;</a></h3>
-<p>Calculinux includes drivers for external USB WiFi adapters with the following Realtek chipsets:</p>
+<p>Calculinux includes drivers for external USB WiFi adapters with the following chipsets currently enabled in the kernel:</p>
 <ul>
-<li><strong>RTL8723DU</strong> - Dual-band WiFi adapter</li>
-<li><strong>RTL8812AU</strong> - AC1200 dual-band adapter</li>
-<li><strong>RTL8814AU</strong> - AC1900 quad-antenna adapter</li>
-<li><strong>RTL8821CU</strong> - AC600 compact adapter</li>
-<li><strong>RTL88X2BU</strong> - AC1200 adapter</li>
+<li><strong>RTL8192CU</strong> - Single-band USB WiFi adapter</li>
+<li><strong>R8712U</strong> - Single-band USB WiFi adapter  </li>
+<li><strong>R8188EU</strong> - Single-band USB WiFi adapter</li>
+<li><strong>RTL8723BS</strong> - Dual-band SDIO WiFi (not typically used via USB)</li>
 </ul>
+<p><strong>Additional chipsets that need kernel configuration</strong>: RTL8723DU, RTL8812AU, RTL8814AU, RTL8821CU, RTL88X2BU.</p>
 <p><strong>Additional chipsets with pending support include</strong>: RTL8188FU, RTL8188FTV, RT2800 series, MT7612U, MT7610U, and RT5370. Community testing has confirmed these work but drivers are not yet included in official images.</p>
 <div class="admonition danger">
 <p class="admonition-title">Critical 3.3V Requirement</p>
@@ -2679,7 +2691,7 @@
 <p>See the <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi forum thread</a> for links to these alternative distributions.</p>
 <h2 id="hardware-considerations">Hardware Considerations<a class="headerlink" href="#hardware-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="boot-media-priority">Boot Media Priority<a class="headerlink" href="#boot-media-priority" title="Permanent link">&para;</a></h3>
-<p>The RV1106 boot process follows this priority:</p>
+<p>The RK3506G2 boot process follows this priority:</p>
 <ol>
 <li><strong>SPI NAND</strong> (if present and programmed)</li>
 <li><strong>SD Card</strong> (if SPI NAND is erased or absent)</li>
@@ -2687,7 +2699,7 @@
 </ol>
 <div class="admonition danger">
 <p class="admonition-title">Important for SPI NAND Versions</p>
-<p>If your Luckfox Lyra has SPI NAND, the boot ROM will <strong>always try NAND first</strong>. You must erase the NAND or it will ignore the SD card completely. See <a href="../troubleshooting/boot-problems.md#spi-nand-interference">Boot Problems</a> for instructions.</p>
+<p>If your Luckfox Lyra has SPI NAND, the boot ROM will <strong>always try NAND first</strong>. You must erase the NAND or it will ignore the SD card completely. See <a href="../../troubleshooting/boot-problems/#spi-nand-interference">Boot Problems</a> for instructions.</p>
 </div>
 <h3 id="thermal-management">Thermal Management<a class="headerlink" href="#thermal-management" title="Permanent link">&para;</a></h3>
 <p>The RV1106 can generate heat under load:</p>
@@ -2756,7 +2768,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 16:27:24 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
   </span>
 
     

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.calculinux.org/troubleshooting/faq/">
       
       
-        <link rel="prev" href="../../developer/building/">
+        <link rel="prev" href="../network/">
       
       
         <link rel="next" href="../../resources/community/">
@@ -325,7 +325,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../common-issues.md" class="md-tabs__link">
+        <a href="../common-issues/" class="md-tabs__link">
           
   
   
@@ -1140,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/yocto-setup.md" class="md-nav__link">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
         
   
   
@@ -1278,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/contributing.md" class="md-nav__link">
+      <a href="../../developer/contributing/" class="md-nav__link">
         
   
   
@@ -1379,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../common-issues.md" class="md-nav__link">
+      <a href="../common-issues/" class="md-nav__link">
         
   
   
@@ -1402,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../boot-problems.md" class="md-nav__link">
+      <a href="../boot-problems/" class="md-nav__link">
         
   
   
@@ -1425,7 +1425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../display.md" class="md-nav__link">
+      <a href="../display/" class="md-nav__link">
         
   
   
@@ -1448,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../input.md" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -1471,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network.md" class="md-nav__link">
+      <a href="../network/" class="md-nav__link">
         
   
   
@@ -2440,7 +2440,7 @@
 4. Insufficient power supply
 5. Hardware connection issue</p>
 <p><strong>Solutions</strong>:
-- See <a href="boot-problems.md#system-wont-boot">Boot Problems</a> for detailed troubleshooting
+- See <a href="../boot-problems/#system-wont-boot">Boot Problems</a> for detailed troubleshooting
 - Verify SPI NAND was erased: <a href="../../hardware/modifications/#erasing-spi-nand">NAND Erasing Guide</a>
 - Try different power supply (5V/2A minimum)
 - Reflash SD card
@@ -2458,7 +2458,7 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>display
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>fb
 </code></pre></div></p>
-<p>See <a href="display.md">Display Issues</a> for more details.</p>
+<p>See <a href="../display/">Display Issues</a> for more details.</p>
 <h3 id="issue-keyboard-not-responding">Issue: Keyboard Not Responding<a class="headerlink" href="#issue-keyboard-not-responding" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: Cannot type or keys don't register</p>
 <p><strong>Quick Fixes</strong>:
@@ -2471,7 +2471,7 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Check driver</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>keyboard
 </code></pre></div></p>
-<p>See <a href="input.md">Input Problems</a> for more details.</p>
+<p>See <a href="../input/">Input Problems</a> for more details.</p>
 <h3 id="issue-network-not-working">Issue: Network Not Working<a class="headerlink" href="#issue-network-not-working" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: Cannot connect to network</p>
 <p><strong>Quick Check</strong>:
@@ -2484,7 +2484,7 @@
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Check DNS</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>cat<span class="w"> </span>/etc/resolv.conf
 </code></pre></div></p>
-<p>See <a href="network.md">Network Issues</a> for solutions.</p>
+<p>See <a href="../network/">Network Issues</a> for solutions.</p>
 <h3 id="issue-out-of-space">Issue: Out of Space<a class="headerlink" href="#issue-out-of-space" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: "No space left on device" errors</p>
 <p><strong>Solution</strong>:
@@ -2497,8 +2497,8 @@
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Clean package cache</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>opkg<span class="w"> </span>clean
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Expand filesystem if SD card is larger than partition</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>/usr/sbin/expand-filesystem.sh
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Note: Filesystem expansion is handled automatically by the pre-init script</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># No manual intervention required for SD card expansion</span>
 </code></pre></div></p>
 <h3 id="issue-system-running-slow">Issue: System Running Slow<a class="headerlink" href="#issue-system-running-slow" title="Permanent link">&para;</a></h3>
 <p><strong>Possible Causes</strong>:
@@ -2523,9 +2523,9 @@
 <h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
 <h3 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: What is Calculinux?</strong></p>
-<p>A: Calculinux is a Linux distribution built specifically for the PicoCalc calculator when equipped with a Luckfox Lyra or compatible SBC. It provides a full Linux environment in a pocket-sized device.</p>
+<p>A: Calculinux is a Linux distribution built specifically for the PicoCalc handheld computer when equipped with a Luckfox Lyra or compatible SBC. It provides a full Linux environment in a pocket-sized device.</p>
 <p><strong>Q: Is this the same as the stock PicoCalc firmware?</strong></p>
-<p>A: No. The stock PicoCalc uses a Raspberry Pi Pico running calculator firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full Linux.</p>
+<p>A: No. The stock PicoCalc uses a Raspberry Pi Pico running <strong>PicoMite MMBasic</strong> firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full Linux.</p>
 <p><strong>Q: Will this void my warranty?</strong></p>
 <p>A: Yes. Opening the PicoCalc and replacing the internal board voids the warranty. Proceed at your own risk.</p>
 <p><strong>Q: Can I revert to the original firmware?</strong></p>
@@ -2540,10 +2540,10 @@
 <p><strong>Q: Can I use WiFi?</strong></p>
 <p>A: Not built-in, but USB WiFi adapters should work (requires testing). USB Ethernet adapters are confirmed working.</p>
 <p><strong>Q: How long does the battery last?</strong></p>
-<p>A: Battery life is significantly less than stock firmware due to running full Linux. Expect 2-4 hours depending on usage. External USB battery packs work well.</p>
+<p>A: Battery life is less than stock firmware due to running full Linux. Expect 4-6 hours depending on usage. External USB battery packs work well, and you can always swap batteries.</p>
 <h3 id="software-questions">Software Questions<a class="headerlink" href="#software-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: Can I install regular Linux software?</strong></p>
-<p>A: Yes, using the opkg package manager. Many standard Linux packages are available, though some may not work well on the small display or with limited RAM.</p>
+<p>A: Yes, using the opkg package manager. Many standard Linux packages are available, though some may not work well on the small display or with limited RAM. We are still building up the software library - if the application you're looking for is not present please request it!</p>
 <p><strong>Q: Can I run a graphical desktop?</strong></p>
 <p>A: Yes, lightweight desktop environments like LXDE work on 128MB+ systems. Full desktops like GNOME/KDE are too heavy.</p>
 <p><strong>Q: Can I run Python/C/other languages?</strong></p>
@@ -2558,18 +2558,18 @@
 <p>See <a href="../../user-guide/package-management/">Package Management</a> for details.</p>
 <h3 id="build-development-questions">Build &amp; Development Questions<a class="headerlink" href="#build-development-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: How do I build Calculinux from source?</strong></p>
-<p>A: Follow the <a href="../../developer/overview/">Developer Guide</a>, starting with <a href="../developer/yocto-setup.md">Yocto Setup</a>.</p>
+<p>A: Follow the <a href="../../developer/overview/">Developer Guide</a>, starting with <a href="../../developer/yocto-setup/">Yocto Setup</a>.</p>
 <p><strong>Q: How long does a build take?</strong></p>
-<p>A: First build: 2-8 hours depending on your computer. Subsequent builds: much faster (minutes to an hour).</p>
+<p>A: First build: ~2 hours depending on your computer. Subsequent builds: much faster (minutes to an hour).</p>
 <p><strong>Q: Can I contribute to Calculinux?</strong></p>
-<p>A: Absolutely! See <a href="../developer/contributing.md">Contributing Guide</a> for how to get involved.</p>
+<p>A: Absolutely! See <a href="../../developer/contributing/">Contributing Guide</a> for how to get involved.</p>
 <p><strong>Q: Where is the source code?</strong></p>
-<p>A: GitHub: <a href="https://github.com/Calculinux/meta-calculinux">github.com/Calculinux/meta-calculinux</a></p>
+<p>A: GitHub: <a href="https://github.com/Calculinux">github.com/Calculinux</a></p>
 <h3 id="troubleshooting-questions">Troubleshooting Questions<a class="headerlink" href="#troubleshooting-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: Why won't my system boot from SD card?</strong></p>
-<p>A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you must erase it first. See <a href="boot-problems.md#spi-nand-interference">Boot Problems</a>.</p>
+<p>A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you must erase it first. See <a href="../boot-problems/#spi-nand-interference">Boot Problems</a>.</p>
 <p><strong>Q: Why is my system so slow?</strong></p>
-<p>A: Check RAM usage (<code>free -h</code>). With only 64MB, many applications will struggle. Consider upgrading to 128MB or 256MB Luckfox Lyra, or use minimal image without GUI.</p>
+<p>A: Check RAM usage (<code>free -h</code>). With only 128MB, many applications will struggle. If you are trying to use a GUI, you may want to explore other lighter options.</p>
 <p><strong>Q: Where can I get help?</strong></p>
 <p>A: 
 1. Check this documentation
@@ -2578,14 +2578,9 @@
 4. Open a <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub issue</a></p>
 <p><strong>Q: The display shows garbage/corruption</strong></p>
 <p>A: Try:
-- Reducing SPI clock speed in device tree
-- Checking power supply quality
+- Reducing SPI clock speed in device tree. The default should be stable, however.
 - Reflashing SD card
 - Testing with different SD card</p>
-<p><strong>Q: Keys are doubled or not registering</strong></p>
-<p>A: Adjust debounce settings in device tree or:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kbdrate<span class="w"> </span>-d<span class="w"> </span><span class="m">250</span><span class="w"> </span>-r<span class="w"> </span><span class="m">30</span>
-</code></pre></div></p>
 <h2 id="error-messages">Error Messages<a class="headerlink" href="#error-messages" title="Permanent link">&para;</a></h2>
 <h3 id="common-error-messages-and-solutions">Common Error Messages and Solutions<a class="headerlink" href="#common-error-messages-and-solutions" title="Permanent link">&para;</a></h3>
 <table>
@@ -2650,28 +2645,29 @@
 <h2 id="still-stuck">Still Stuck?<a class="headerlink" href="#still-stuck" title="Permanent link">&para;</a></h2>
 <h3 id="debug-mode-boot">Debug Mode Boot<a class="headerlink" href="#debug-mode-boot" title="Permanent link">&para;</a></h3>
 <p>Boot with more verbose output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Edit boot command in U-Boot</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Add to kernel command line:</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">loglevel</span><span class="o">=</span><span class="m">7</span><span class="w"> </span>debug
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Edit boot command in U-Boot</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># Add to kernel command line:</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">loglevel</span><span class="o">=</span><span class="m">7</span><span class="w"> </span>debug
 </code></pre></div>
 <h3 id="serial-console">Serial Console<a class="headerlink" href="#serial-console" title="Permanent link">&para;</a></h3>
 <p>Connect via serial for full boot output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># From another computer</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>screen<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">115200</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># From another computer</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>screen<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">1500000</span>
 </code></pre></div>
 <h3 id="safe-mode">Safe Mode<a class="headerlink" href="#safe-mode" title="Permanent link">&para;</a></h3>
 <p>Boot to minimal system:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># In U-Boot, add to kernel command line:</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>single
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Connect with a serial cable, then reboot.</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># In U-Boot, add to kernel command line:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>single
 </code></pre></div>
 <p>This boots to single-user mode for recovery.</p>
 <h2 id="related-pages">Related Pages<a class="headerlink" href="#related-pages" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="boot-problems.md">Boot Problems</a> - Detailed boot troubleshooting</li>
-<li><a href="display.md">Display Issues</a> - Display-specific problems</li>
-<li><a href="input.md">Input Problems</a> - Keyboard/input issues</li>
-<li><a href="network.md">Network Issues</a> - Networking problems</li>
-<li><a href="common-issues.md">Common Issues</a> - General issues and solutions</li>
+<li><a href="../boot-problems/">Boot Problems</a> - Detailed boot troubleshooting</li>
+<li><a href="../display/">Display Issues</a> - Display-specific problems</li>
+<li><a href="../input/">Input Problems</a> - Keyboard/input issues</li>
+<li><a href="../network/">Network Issues</a> - Networking problems</li>
+<li><a href="../common-issues/">Common Issues</a> - General issues and solutions</li>
 </ul>
 <hr />
 <p><em>Can't find your issue? <a href="https://github.com/Calculinux/docs/issues">Open a documentation issue</a> to request it be added!</em></p>
@@ -2697,7 +2693,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
   </span>
 
     

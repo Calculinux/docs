@@ -12,13 +12,13 @@
         <meta name="author" content="Calculinux Project">
       
       
-        <link rel="canonical" href="https://docs.calculinux.org/hardware/modifications/">
+        <link rel="canonical" href="https://docs.calculinux.org/troubleshooting/display/">
       
       
-        <link rel="prev" href="../luckfox-lyra/">
+        <link rel="prev" href="../boot-problems/">
       
       
-        <link rel="next" href="../display-input/">
+        <link rel="next" href="../input/">
       
       
       <link rel="icon" href="../../assets/calculinux.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Hardware Modifications - Calculinux Documentation</title>
+        <title>Display Issues - Calculinux Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hardware-modifications" class="md-skip">
+        <a href="#display-issues" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hardware Modifications
+              Display Issues
             
           </span>
         </div>
@@ -259,13 +259,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../picocalc/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../hardware/picocalc/" class="md-tabs__link">
           
   
   
@@ -321,11 +319,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../common-issues/" class="md-tabs__link">
           
   
   
@@ -620,31 +620,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -657,7 +654,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Hardware
@@ -671,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../picocalc/" class="md-nav__link">
+      <a href="../../hardware/picocalc/" class="md-nav__link">
         
   
   
@@ -694,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../luckfox-lyra/" class="md-nav__link">
+      <a href="../../hardware/luckfox-lyra/" class="md-nav__link">
         
   
   
@@ -714,32 +711,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Hardware Modifications
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../hardware/modifications/" class="md-nav__link">
         
   
   
@@ -750,389 +725,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Prerequisites">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tools-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tools Required
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parts-needed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parts Needed
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disassembly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disassembly
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Disassembly">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-power-off-and-disconnect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Power Off and Disconnect
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-open-the-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Open the Case
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-remove-original-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Remove Original Board
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-4-prepare-luckfox-lyra" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4: Prepare Luckfox Lyra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-install-luckfox-lyra" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5: Install Luckfox Lyra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-reassembly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 6: Reassembly
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erasing-spi-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      Erasing SPI NAND
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Erasing SPI NAND">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#method-1-using-luckfox-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 1: Using Luckfox Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-2-using-u-boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 2: Using U-Boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-3-from-running-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 3: From Running System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pin-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pin Mapping
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pin Mapping">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#display-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Display Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpio-and-rmio-pin-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      GPIO and RMIO Pin Mapping
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keyboard-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keyboard Matrix
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#power" class="md-nav__link">
-    <span class="md-ellipsis">
-      Power
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verification
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#board-wont-boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Board Won't Boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#display-not-working" class="md-nav__link">
-    <span class="md-ellipsis">
-      Display Not Working
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keyboard-not-responsive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keyboard Not Responsive
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#safety-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Safety Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Safety Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#electrical-safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Electrical Safety
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mechanical-safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mechanical Safety
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#thermal-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thermal Considerations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reverting-to-original" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverting to Original
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-modifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advanced Modifications
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced Modifications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optional-enhancements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional Enhancements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#future-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Compatibility
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1145,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../display-input/" class="md-nav__link">
+      <a href="../../hardware/display-input/" class="md-nav__link">
         
   
   
@@ -1168,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../power.md" class="md-nav__link">
+      <a href="../../hardware/power.md" class="md-nav__link">
         
   
   
@@ -1191,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../milk-v-duo.md" class="md-nav__link">
+      <a href="../../hardware/milk-v-duo.md" class="md-nav__link">
         
   
   
@@ -1214,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compatibility/" class="md-nav__link">
+      <a href="../../hardware/compatibility/" class="md-nav__link">
         
   
   
@@ -1736,28 +1328,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -1770,7 +1365,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Troubleshooting
@@ -1784,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
+      <a href="../common-issues/" class="md-nav__link">
         
   
   
@@ -1807,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
+      <a href="../boot-problems/" class="md-nav__link">
         
   
   
@@ -1827,10 +1422,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../troubleshooting/display/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Display Issues
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1841,6 +1458,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#display-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display Not Working
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-corruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display Corruption
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backlight-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backlight Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-display-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Display Problems
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1853,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/input/" class="md-nav__link">
+      <a href="../input/" class="md-nav__link">
         
   
   
@@ -1876,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/network/" class="md-nav__link">
+      <a href="../network/" class="md-nav__link">
         
   
   
@@ -1899,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/faq/" class="md-nav__link">
+      <a href="../faq/" class="md-nav__link">
         
   
   
@@ -2260,244 +1933,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Prerequisites">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tools-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tools Required
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parts-needed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parts Needed
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disassembly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disassembly
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Disassembly">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-power-off-and-disconnect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Power Off and Disconnect
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-open-the-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Open the Case
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-remove-original-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Remove Original Board
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-4-prepare-luckfox-lyra" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4: Prepare Luckfox Lyra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-install-luckfox-lyra" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5: Install Luckfox Lyra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-6-reassembly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 6: Reassembly
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erasing-spi-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      Erasing SPI NAND
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Erasing SPI NAND">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#method-1-using-luckfox-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 1: Using Luckfox Tools
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-2-using-u-boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 2: Using U-Boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-3-from-running-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 3: From Running System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pin-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pin Mapping
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pin Mapping">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#display-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Display Connection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpio-and-rmio-pin-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      GPIO and RMIO Pin Mapping
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keyboard-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keyboard Matrix
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#power" class="md-nav__link">
-    <span class="md-ellipsis">
-      Power
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verification
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#board-wont-boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Board Won't Boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#display-not-working" class="md-nav__link">
     <span class="md-ellipsis">
       Display Not Working
@@ -2505,118 +1940,29 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#keyboard-not-responsive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keyboard Not Responsive
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#safety-considerations" class="md-nav__link">
+  <a href="#display-corruption" class="md-nav__link">
     <span class="md-ellipsis">
-      Safety Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Safety Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#electrical-safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Electrical Safety
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mechanical-safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mechanical Safety
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#thermal-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thermal Considerations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reverting-to-original" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverting to Original
+      Display Corruption
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-modifications" class="md-nav__link">
+  <a href="#backlight-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Advanced Modifications
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced Modifications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#optional-enhancements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional Enhancements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#future-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Compatibility
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
+      Backlight Issues
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+  <a href="#spi-display-problems" class="md-nav__link">
     <span class="md-ellipsis">
-      Next Steps
+      SPI Display Problems
     </span>
   </a>
   
@@ -2638,7 +1984,7 @@
 
 
   
-    <a href="https://github.com/Calculinux/docs/edit/main/docs/hardware/modifications.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/troubleshooting/display.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2646,335 +1992,18 @@
   
 
 
-<h1 id="hardware-modifications">Hardware Modifications<a class="headerlink" href="#hardware-modifications" title="Permanent link">&para;</a></h1>
-<p>This guide covers the physical modifications required to install a Luckfox Lyra (or similar SBC) into your PicoCalc.</p>
-<div class="admonition danger">
-<p class="admonition-title">Warranty Warning</p>
-<p>Opening your PicoCalc and replacing the SBC will void your warranty. Proceed at your own risk. This modification requires careful handling of small components and connectors.</p>
-</div>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<h3 id="tools-required">Tools Required<a class="headerlink" href="#tools-required" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Small Phillips screwdriver</li>
-<li>Plastic spudger or opening tool</li>
-<li>ESD-safe work surface (or ESD wrist strap)</li>
-<li>Tweezers (optional but helpful)</li>
-<li>Good lighting and magnification (optional)</li>
-</ul>
-<h3 id="parts-needed">Parts Needed<a class="headerlink" href="#parts-needed" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Luckfox Lyra SBC (see <a href="../luckfox-lyra/#luckfox-lyra-versions">compatible versions</a>)</li>
-<li>MicroSD card (8GB minimum, 16GB+ recommended)</li>
-<li>(Optional) Thermal pad or paste if concerned about heat</li>
-</ul>
-<h2 id="disassembly">Disassembly<a class="headerlink" href="#disassembly" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-power-off-and-disconnect">Step 1: Power Off and Disconnect<a class="headerlink" href="#step-1-power-off-and-disconnect" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Power off the PicoCalc completely</li>
-<li>Disconnect any USB cables</li>
-<li>Remove any attached peripherals</li>
-</ol>
-<h3 id="step-2-open-the-case">Step 2: Open the Case<a class="headerlink" href="#step-2-open-the-case" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Take Photos</p>
-<p>Before disassembly, take photos of the original configuration. This helps during reassembly.</p>
-</div>
-<ol>
-<li>Locate the screws holding the case together (typically on the back)</li>
-<li>Remove all screws and keep them organized</li>
-<li>Carefully separate the case halves using a plastic spudger</li>
-<li>Be mindful of any ribbon cables connecting the halves</li>
-</ol>
-<h3 id="step-3-remove-original-board">Step 3: Remove Original Board<a class="headerlink" href="#step-3-remove-original-board" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Locate the existing RP2040/Pico board</li>
-<li>Carefully disconnect the main connector</li>
-<li>Note the orientation of the board and connector</li>
-<li>Remove any screws holding the board in place</li>
-<li>Gently lift the board out</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Connector Orientation</p>
-<p>The connector orientation is critical. The Luckfox Lyra must be installed with the same orientation as the original board. Mark or photograph the correct orientation. For reference pinout diagrams, consult the <a href="https://wiki.luckfox.com/Luckfox-Lyra/Pinout">official Luckfox Lyra pinout documentation</a>.</p>
-</div>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<h3 id="step-4-prepare-luckfox-lyra">Step 4: Prepare Luckfox Lyra<a class="headerlink" href="#step-4-prepare-luckfox-lyra" title="Permanent link">&para;</a></h3>
-<p>Before installation:</p>
-<ol>
-<li><strong>Erase SPI NAND</strong> (if your board has it) - see <a href="#erasing-spi-nand">SPI NAND Erasing</a></li>
-<li>Flash Calculinux to your microSD card - see <a href="../../getting-started/installation/">Installation Guide</a></li>
-<li>Insert the prepared microSD card into the Luckfox Lyra</li>
-</ol>
-<h3 id="step-5-install-luckfox-lyra">Step 5: Install Luckfox Lyra<a class="headerlink" href="#step-5-install-luckfox-lyra" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Position the Luckfox Lyra in the same orientation as the original board</li>
-<li>Carefully align the connector with the PicoCalc socket</li>
-<li>Gently but firmly press the connector into place</li>
-<li>Secure the board with screws if mounting holes align</li>
-<li>Verify the connection is seated properly</li>
-</ol>
-<div class="admonition caution">
-<p class="admonition-title">Connector Care</p>
-<p>The connector is delicate. Apply even pressure and ensure proper alignment before pushing it in. Do not force it.</p>
-</div>
-<h3 id="step-6-reassembly">Step 6: Reassembly<a class="headerlink" href="#step-6-reassembly" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Route any cables carefully (avoid pinching)</li>
-<li>Align the case halves</li>
-<li>Gently press together until they click</li>
-<li>Replace all screws</li>
-<li>Verify nothing is binding or misaligned</li>
-</ol>
-<h2 id="erasing-spi-nand">Erasing SPI NAND<a class="headerlink" href="#erasing-spi-nand" title="Permanent link">&para;</a></h2>
-<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must</strong> erase it for the board to boot from SD card.</p>
-<h3 id="method-1-using-luckfox-tools">Method 1: Using Luckfox Tools<a class="headerlink" href="#method-1-using-luckfox-tools" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Download Luckfox SDK and tools from <a href="https://github.com/LuckfoxTECH/luckfox-pico">GitHub</a></li>
-<li>Connect Luckfox Lyra via USB while holding boot button</li>
-<li>Use <code>upgrade_tool</code> to erase NAND:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>upgrade_tool<span class="w"> </span>ef
-</code></pre></div></li>
-<li>Wait for confirmation message</li>
-<li>Disconnect and reconnect power</li>
-</ol>
-<h3 id="method-2-using-u-boot">Method 2: Using U-Boot<a class="headerlink" href="#method-2-using-u-boot" title="Permanent link">&para;</a></h3>
-<p>If you can boot to U-Boot prompt:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Erase entire NAND</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nand<span class="w"> </span>erase.chip
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Or erase specific partition</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sf<span class="w"> </span>probe<span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sf<span class="w"> </span>erase<span class="w"> </span><span class="m">0</span><span class="w"> </span>0x1000000
-</code></pre></div>
-<h3 id="method-3-from-running-system">Method 3: From Running System<a class="headerlink" href="#method-3-from-running-system" title="Permanent link">&para;</a></h3>
-<p>If you have a working Linux system on the board:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Identify NAND device</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cat<span class="w"> </span>/proc/mtd
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Erase NAND (assuming mtd0)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>flash_erase<span class="w"> </span>/dev/mtd0<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">One-Time Operation</p>
-<p>You only need to erase the NAND once. After erasing, the board will always boot from SD card (unless you reprogram the NAND).</p>
-</div>
-<h2 id="pin-mapping">Pin Mapping<a class="headerlink" href="#pin-mapping" title="Permanent link">&para;</a></h2>
-<p>Understanding the pin connections helps with troubleshooting:</p>
-<h3 id="display-connection">Display Connection<a class="headerlink" href="#display-connection" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Luckfox Pin</th>
-<th>Function</th>
-<th>PicoCalc Connection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SPI MOSI</td>
-<td>Data Out</td>
-<td>LCD Data In</td>
-</tr>
-<tr>
-<td>SPI SCK</td>
-<td>Clock</td>
-<td>LCD Clock</td>
-</tr>
-<tr>
-<td>GPIO</td>
-<td>CS (Chip Select)</td>
-<td>LCD CS</td>
-</tr>
-<tr>
-<td>GPIO</td>
-<td>DC (Data/Command)</td>
-<td>LCD DC</td>
-</tr>
-<tr>
-<td>GPIO</td>
-<td>Reset</td>
-<td>LCD Reset</td>
-</tr>
-<tr>
-<td>3.3V</td>
-<td>Power</td>
-<td>LCD VCC</td>
-</tr>
-<tr>
-<td>GND</td>
-<td>Ground</td>
-<td>LCD GND</td>
-</tr>
-</tbody>
-</table>
-<h3 id="gpio-and-rmio-pin-mapping">GPIO and RMIO Pin Mapping<a class="headerlink" href="#gpio-and-rmio-pin-mapping" title="Permanent link">&para;</a></h3>
-<p>The Luckfox Lyra uses both standard GPIO and RMIO (Reconfigurable Multi-function IO) pins:</p>
-<table>
-<thead>
-<tr>
-<th>PicoCalc Pin</th>
-<th>Luckfox Equivalent</th>
-<th>Type</th>
-<th>Voltage</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GP2</td>
-<td>RMIO12</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Reconfigurable</td>
-</tr>
-<tr>
-<td>GP3</td>
-<td>RMIO13</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Reconfigurable</td>
-</tr>
-<tr>
-<td>GP4</td>
-<td>RMIO0</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Used for audio (PWM)</td>
-</tr>
-<tr>
-<td>GP5</td>
-<td>RMIO1</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Reconfigurable</td>
-</tr>
-<tr>
-<td>GP21</td>
-<td>RMIO26</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Reconfigurable</td>
-</tr>
-<tr>
-<td>GP28</td>
-<td>RMIO24</td>
-<td>RMIO</td>
-<td>3.3V</td>
-<td>Reconfigurable</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">GPIO Voltage Levels</p>
-<ul>
-<li><strong>RMIO pins</strong>: 3.3V operation</li>
-<li><strong>GPIO4_B3/GPIO4_B2</strong>: 1.8V operation (not RMIO-capable)</li>
-<li>Always verify voltage levels before hardware modifications</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Hardware PWM Limitation</p>
-<p>Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM.</p>
-</div>
-<h3 id="keyboard-matrix">Keyboard Matrix<a class="headerlink" href="#keyboard-matrix" title="Permanent link">&para;</a></h3>
-<p>The keyboard matrix connects via GPIO pins. Exact mapping is defined in the device tree. See <a href="../display-input/">Display &amp; Input</a> for details.</p>
-<h3 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>5V In</strong>: From USB-C connector via PicoCalc board</li>
-<li><strong>3.3V Regulation</strong>: On Luckfox Lyra board</li>
-<li><strong>Current Draw</strong>: ~500mA typical, up to 1A peak</li>
-</ul>
-<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
-<p>After installation:</p>
-<ol>
-<li><strong>Visual Check</strong>: Ensure board is seated properly</li>
-<li><strong>Power On</strong>: Connect USB-C power</li>
-<li><strong>Boot Check</strong>: Look for display activity</li>
-<li><strong>LED Indicators</strong>: Observe any status LEDs on Luckfox board</li>
-</ol>
-<p>If the system doesn't boot, see <a href="../../troubleshooting/boot-problems/">Boot Problems</a>.</p>
-<h2 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
-<h3 id="board-wont-boot">Board Won't Boot<a class="headerlink" href="#board-wont-boot" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>SPI NAND not erased</strong>: Most common issue with NAND versions</li>
-<li><strong>SD card not flashed correctly</strong>: Verify image integrity</li>
-<li><strong>Connector not seated</strong>: Reseat the board carefully</li>
-<li><strong>Power insufficient</strong>: Try different USB cable/adapter</li>
-</ul>
-<h3 id="display-not-working">Display Not Working<a class="headerlink" href="#display-not-working" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Driver not loaded</strong>: Check kernel logs</li>
-<li><strong>Connection issue</strong>: Reseat display cable</li>
-<li><strong>Wrong device tree</strong>: Verify correct DTB is loaded</li>
-</ul>
-<h3 id="keyboard-not-responsive">Keyboard Not Responsive<a class="headerlink" href="#keyboard-not-responsive" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Driver not loaded</strong>: Check kernel logs</li>
-<li><strong>GPIO mapping wrong</strong>: Verify device tree configuration</li>
-<li><strong>Connection issue</strong>: Reseat board connector</li>
-</ul>
-<h2 id="safety-considerations">Safety Considerations<a class="headerlink" href="#safety-considerations" title="Permanent link">&para;</a></h2>
-<h3 id="electrical-safety">Electrical Safety<a class="headerlink" href="#electrical-safety" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Work on ESD-safe surface</li>
-<li>Avoid static discharge to components</li>
-<li>Never work on powered device</li>
-<li>Check for shorts before powering on</li>
-</ul>
-<h3 id="mechanical-safety">Mechanical Safety<a class="headerlink" href="#mechanical-safety" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Don't force connectors</li>
-<li>Handle PCBs by edges</li>
-<li>Watch for sharp edges on case</li>
-<li>Keep screws organized</li>
-</ul>
-<h3 id="thermal-considerations">Thermal Considerations<a class="headerlink" href="#thermal-considerations" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Luckfox can get warm under load</li>
-<li>Ensure adequate ventilation</li>
-<li>Consider thermal pad if needed</li>
-<li>Monitor temperatures initially</li>
-</ul>
-<h2 id="reverting-to-original">Reverting to Original<a class="headerlink" href="#reverting-to-original" title="Permanent link">&para;</a></h2>
-<p>To restore the original RP2040 board:</p>
-<ol>
-<li>Follow disassembly steps above</li>
-<li>Remove Luckfox Lyra</li>
-<li>Reinstall original board in reverse order</li>
-<li>Reflash original firmware if needed</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Keep Original Board</p>
-<p>Store the original RP2040 board safely in case you want to revert or use it elsewhere.</p>
-</div>
-<h2 id="advanced-modifications">Advanced Modifications<a class="headerlink" href="#advanced-modifications" title="Permanent link">&para;</a></h2>
-<h3 id="optional-enhancements">Optional Enhancements<a class="headerlink" href="#optional-enhancements" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Heat sink</strong>: Add small heat sink to RV1106 SoC</li>
-<li><strong>Thermal pad</strong>: Use thermal interface material</li>
-<li><strong>Mounting</strong>: Create custom mounting bracket</li>
-<li><strong>Cables</strong>: Add internal USB extension for easier access</li>
-</ul>
-<h3 id="future-compatibility">Future Compatibility<a class="headerlink" href="#future-compatibility" title="Permanent link">&para;</a></h3>
-<p>The modification process should be similar for other SBCs:</p>
-<ul>
-<li>Milk-V Duo (future support)</li>
-<li>Other Rockchip-based boards</li>
-<li>Custom carrier boards</li>
-</ul>
-<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Video Guide</strong>: <a href="https://www.youtube.com/watch?v=DaVv7h8cKAE">YouTube - Luckfox Lyra on PicoCalc</a></li>
-<li><strong>Forum Discussion</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi Forum Thread</a></li>
-<li><strong>Image Files</strong>: Check forum thread for community-shared modifications</li>
-</ul>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After successful installation:</p>
-<ul>
-<li>Follow <a href="../../getting-started/first-boot/">First Boot</a> guide</li>
-<li>Configure system per <a href="../user-guide/configuration.md">Configuration Guide</a></li>
-<li>Explore <a href="../user-guide/basic-usage.md">User Guide</a></li>
-</ul>
+<h1 id="display-issues">Display Issues<a class="headerlink" href="#display-issues" title="Permanent link">&para;</a></h1>
+<p>Troubleshooting display-related problems.</p>
+<h2 id="display-not-working">Display Not Working<a class="headerlink" href="#display-not-working" title="Permanent link">&para;</a></h2>
+<p><em>Detailed troubleshooting for display issues.</em></p>
+<h2 id="display-corruption">Display Corruption<a class="headerlink" href="#display-corruption" title="Permanent link">&para;</a></h2>
+<p><em>Solutions for display corruption problems.</em></p>
+<h2 id="backlight-issues">Backlight Issues<a class="headerlink" href="#backlight-issues" title="Permanent link">&para;</a></h2>
+<p><em>Backlight troubleshooting information.</em></p>
+<h2 id="spi-display-problems">SPI Display Problems<a class="headerlink" href="#spi-display-problems" title="Permanent link">&para;</a></h2>
+<p><em>SPI-specific display troubleshooting.</em></p>
+<hr />
+<p><em>This page is under development and will be populated with detailed display troubleshooting information.</em></p>
 
 
 
@@ -3007,7 +2036,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
   </span>
 
     

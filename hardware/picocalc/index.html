@@ -325,7 +325,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../troubleshooting/common-issues.md" class="md-tabs__link">
+        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
           
   
   
@@ -1275,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/yocto-setup.md" class="md-nav__link">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
         
   
   
@@ -1413,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/contributing.md" class="md-nav__link">
+      <a href="../../developer/contributing/" class="md-nav__link">
         
   
   
@@ -1511,7 +1511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/common-issues.md" class="md-nav__link">
+      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
         
   
   
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/boot-problems.md" class="md-nav__link">
+      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
         
   
   
@@ -1557,7 +1557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/display.md" class="md-nav__link">
+      <a href="../../troubleshooting/display/" class="md-nav__link">
         
   
   
@@ -1580,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/input.md" class="md-nav__link">
+      <a href="../../troubleshooting/input/" class="md-nav__link">
         
   
   
@@ -1603,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting/network.md" class="md-nav__link">
+      <a href="../../troubleshooting/network/" class="md-nav__link">
         
   
   
@@ -2101,18 +2101,22 @@
 
 
 <h1 id="picocalc-overview">PicoCalc Overview<a class="headerlink" href="#picocalc-overview" title="Permanent link">&para;</a></h1>
-<p>The <strong>PicoCalc</strong> is a pocket-sized calculator device created by ClockworkPi that features a modular design allowing for different computing modules.</p>
+<p>The <strong>PicoCalc</strong> is a pocket-sized handheld computing device created by ClockworkPi that features a modular design allowing for different computing modules.</p>
 <h2 id="what-is-picocalc">What is PicoCalc?<a class="headerlink" href="#what-is-picocalc" title="Permanent link">&para;</a></h2>
 <p>PicoCalc is a unique handheld device that combines:</p>
 <ul>
-<li>A physical calculator-style keyboard</li>
+<li>A physical keyboard layout</li>
 <li>A built-in display</li>
 <li>A modular SBC (Single Board Computer) slot</li>
 <li>USB-C connectivity</li>
 <li>Battery power capability</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">About the Name</p>
+<p>The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose computing platform.</p>
+</div>
 <h2 id="original-hardware">Original Hardware<a class="headerlink" href="#original-hardware" title="Permanent link">&para;</a></h2>
-<p>The PicoCalc originally ships with a <strong>Raspberry Pi Pico</strong> or <strong>RP2040-based</strong> microcontroller running PicoMite MMBasic. While functional for small and light programming tasks, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.</p>
+<p>The PicoCalc originally ships with a <strong>Raspberry Pi Pico</strong> or <strong>RP2040-based</strong> microcontroller running <strong>PicoMite MMBasic</strong>. While functional for programming tasks and computation, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.</p>
 <h2 id="why-replace-the-sbc">Why Replace the SBC?<a class="headerlink" href="#why-replace-the-sbc" title="Permanent link">&para;</a></h2>
 <p>Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provides:</p>
 <ul>
@@ -2134,7 +2138,7 @@
 <tbody>
 <tr>
 <td><strong>Dimensions</strong></td>
-<td>Pocket-sized calculator form factor</td>
+<td>Pocket-sized handheld form factor</td>
 </tr>
 <tr>
 <td><strong>Display</strong></td>
@@ -2142,7 +2146,7 @@
 </tr>
 <tr>
 <td><strong>Input</strong></td>
-<td>Physical keyboard with calculator layout</td>
+<td>Physical keyboard with compact layout</td>
 </tr>
 <tr>
 <td><strong>Power</strong></td>
@@ -2164,11 +2168,15 @@
 <h2 id="keyboard">Keyboard<a class="headerlink" href="#keyboard" title="Permanent link">&para;</a></h2>
 <p>The keyboard provides:</p>
 <ul>
-<li>Calculator-style key layout</li>
+<li>Compact key layout suitable for programming and computation</li>
 <li>Matrix keyboard interface</li>
 <li>Requires custom kernel drivers for Linux support</li>
-<li>Includes number pad and function keys</li>
+<li>Includes numeric keypad and function keys</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Keyboard Layout</p>
+<p>While the PicoCalc includes a numeric keypad among other keys, it's designed as a general-purpose input device rather than a traditional calculator keypad. The layout is optimized for programming and computational work.</p>
+</div>
 <h2 id="module-connector">Module Connector<a class="headerlink" href="#module-connector" title="Permanent link">&para;</a></h2>
 <p>The internal connector provides:</p>
 <ul>
@@ -2224,7 +2232,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 16, 2025 20:05:44 UTC">October 16, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 18:34:01 UTC">October 22, 2025</span>
   </span>
 
     
