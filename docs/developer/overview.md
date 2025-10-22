@@ -104,9 +104,6 @@ Calculinux Architecture:
 
 ## Repository Structure
 
-!!! warning "Documentation Needs Update"
-    This section contains outdated information and is being revised to reflect the actual multi-layer Yocto structure. See [meta-calculinux README](https://github.com/Calculinux/meta-calculinux) for current structure.
-
 ### Main Repository
 
 The meta-calculinux repository uses a multi-layer Yocto structure:
@@ -291,9 +288,6 @@ do_install() {
 
 ## Common Development Tasks
 
-!!! warning "Examples Need Verification"
-    The following examples use placeholder names and need to be updated with actual Calculinux recipe names and tested commands.
-
 ### Adding a Package
 
 ```bash
@@ -310,7 +304,7 @@ devtool finish <package-name> meta-calculinux
 ### Modifying Kernel
 
 ```bash
-# Extract kernel source (note: actual recipe is linux-rockchip, not linux-calculinux)
+# Extract kernel source
 bitbake linux-rockchip -c unpack
 
 # Make changes
@@ -324,7 +318,6 @@ bitbake linux-rockchip -c compile -f
 
 ```python
 # recipes-core/images/calculinux-custom.bb
-# Note: Only calculinux-image.bb and calculinux-bundle.bb currently exist
 require calculinux-image.bb
 
 IMAGE_INSTALL += "mypackage another-package"
@@ -333,9 +326,6 @@ IMAGE_INSTALL += "mypackage another-package"
 ## Testing & Validation
 
 ### Build Testing
-
-!!! warning "Example Uses Non-existent Images"
-    Only `calculinux-image` and `calculinux-bundle` targets currently exist. Examples below need verification.
 
 ```bash
 # Build main image
@@ -403,7 +393,7 @@ IMAGE_LINGUAS = "en-us"
 
 ```bash
 # Verbose output
-bitbake -v calculinux-base
+bitbake -v calculinux-image
 
 # Debug specific task
 bitbake -c devshell <package>
