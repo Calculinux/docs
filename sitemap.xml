@@ -5,6 +5,14 @@
          <lastmod>2025-10-22</lastmod>
     </url>
     <url>
+         <loc>https://docs.calculinux.org/about/roadmap/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/developer/adding-packages/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://docs.calculinux.org/developer/building/</loc>
          <lastmod>2025-10-22</lastmod>
     </url>
@@ -13,7 +21,19 @@
          <lastmod>2025-10-22</lastmod>
     </url>
     <url>
+         <loc>https://docs.calculinux.org/developer/customization/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/developer/kernel/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://docs.calculinux.org/developer/overview/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/developer/releases/</loc>
          <lastmod>2025-10-22</lastmod>
     </url>
     <url>
@@ -61,6 +81,10 @@
          <lastmod>2025-10-22</lastmod>
     </url>
     <url>
+         <loc>https://docs.calculinux.org/hardware/power/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://docs.calculinux.org/hardware/specifications/</loc>
          <lastmod>2025-10-22</lastmod>
     </url>
@@ -101,7 +125,27 @@
          <lastmod>2025-10-22</lastmod>
     </url>
     <url>
+         <loc>https://docs.calculinux.org/user-guide/applications/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/user-guide/basic-usage/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/user-guide/configuration/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/user-guide/networking/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://docs.calculinux.org/user-guide/package-management/</loc>
+         <lastmod>2025-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.calculinux.org/user-guide/updates/</loc>
          <lastmod>2025-10-22</lastmod>
     </url>
 </urlset>
