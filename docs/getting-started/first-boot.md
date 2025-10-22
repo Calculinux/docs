@@ -189,22 +189,6 @@ ping -c 3 8.8.8.8
 iwctl station wlan0 disconnect
 ```
 
-### Via Ethernet
-
-The Luckfox Lyra has an Ethernet interface. Network configuration is handled by systemd-networkd:
-
-```bash
-# Check interface status
-ip addr show
-networkctl status
-
-# DHCP is configured automatically via systemd-networkd
-# Check network configuration
-networkctl list
-```
-
-For persistent network configuration, edit systemd-networkd files in `/etc/systemd/network/`.
-
 ## Next Steps
 
 After initial setup:
