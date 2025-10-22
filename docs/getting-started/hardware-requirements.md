@@ -26,14 +26,12 @@ Supported Luckfox Lyra configuration:
 ### Budget Configuration
 - Luckfox Lyra 128MB (basic)
 - 16GB Class 10 SD card
-- Generic 5V/2A charger
 - **Use Case**: Console, scripting, development
 - **Cost**: ~$30-40
 
 ### Standard Configuration  
 - Luckfox Lyra 128MB
 - 32GB UHS-I SD card
-- Quality USB-C adapter
 - **Use Case**: Console with more storage for applications
 - **Cost**: ~$45-60
 
@@ -41,11 +39,20 @@ Supported Luckfox Lyra configuration:
 - Luckfox Lyra 128MB
 - 64GB UHS-I SD card
 - Powered USB hub + peripherals
+- Second USB-C cable (for serial console access)
 - **Use Case**: Console development, experimentation
 - **Cost**: ~$60-80
 
+!!! tip "Serial Console for Development"
+    A second USB-C cable connected to the PicoCalc's USB-C port (not the Lyra's port) provides serial console access at 1500000 baud. This is invaluable for:
+    
+    - Watching boot messages and kernel output
+    - Debugging firmware and kernel driver modifications
+    - Troubleshooting hardware issues
+    - Development work requiring low-level system access
+
 !!! info "Graphical Desktop Experimentation"
-    While Calculinux is console-only by default, users may experiment with lightweight graphical environments. However, the 128MB RAM is a significant limiting factor for desktop use. Community experimentation is encouraged but not officially supported.
+    While Calculinux is console-only by default, users may experiment with lightweight graphical environments. However, the 128MB RAM is a significant limiting factor for desktop use. Community experimentation is encouraged!
 
 ## Optional Hardware
 
