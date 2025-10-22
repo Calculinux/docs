@@ -17,8 +17,8 @@ This page outlines the hardware required to run Calculinux.
 ### Luckfox Lyra Specifications
 
 Minimum supported Luckfox Lyra:
-- **RAM**: 64MB (128MB recommended)
-- **SoC**: Rockchip RV1106
+- **RAM**: 128MB (only tested configuration)
+- **SoC**: Rockchip RK3506G2
 - **Storage**: SD card (SPI NAND optional)
 
 ## Recommended Configurations

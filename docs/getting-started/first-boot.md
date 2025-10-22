@@ -211,7 +211,6 @@ After initial setup:
 
 - Follow [Quick Start Guide](quick-start.md)
 - Learn [Basic Usage](../user-guide/basic-usage.md)
-- Configure [Desktop Environment](../user-guide/desktop.md) (if using GUI image)
 - Install [Applications](../user-guide/applications.md)
 
 ## Troubleshooting First Boot

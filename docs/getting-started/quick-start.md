@@ -134,22 +134,6 @@ du -h /home | sort -h
 ps aux
 ```
 
-## Desktop Environment
-
-If using a GUI image:
-
-```bash
-# Start X server
-startx
-
-# Or if using display manager
-systemctl start lightdm
-```
-
-### Window Manager Shortcuts
-
-(Varies by window manager installed)
-
 ## Development
 
 ### Python Example

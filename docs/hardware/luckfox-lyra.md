@@ -1,6 +1,6 @@
 # Luckfox Lyra
 
-The **Luckfox Lyra** is a compact single-board computer based on the Rockchip RV1106 SoC, making it an ideal replacement for the PicoCalc's stock module.
+The **Luckfox Lyra** is a compact single-board computer based on the Rockchip RK3506G2 SoC, making it an ideal replacement for the PicoCalc's stock module.
 
 ## Overview
 
@@ -12,8 +12,8 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 
 | Component | Specification |
 |-----------|--------------|
-| **SoC** | Rockchip RV1106 |
-| **CPU** | ARM Cortex-A7, up to 1.2GHz |
+| **SoC** | Rockchip RK3506G2 |
+| **CPU** | Triple-core ARM Cortex-A7 @ 1.2GHz + ARM Cortex-M0 |
 | **Architecture** | ARMv7-A (32-bit) |
 | **NPU** | 0.5 TOPS AI accelerator |
 
@@ -40,6 +40,15 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 !!! info "WiFi Not Included"
     The Luckfox Lyra does not have built-in WiFi. Wireless connectivity requires an external USB WiFi adapter (must operate at 3.3V) connected to the USB header.
 
+### Audio
+
+- **Default**: Software PWM audio output (poor quality)
+- **Hardware Interface**: I2S audio interface available
+- **PWM Output**: Requires hardware modification for good quality
+
+!!! warning "Audio Quality Limitations"
+    The default software PWM audio driver has very poor performance and is not suitable for general use. For good audio quality, hardware modifications are required. Current alpha images do not support audio driver selection, but this could be implemented through module blacklisting in the future.
+
 ### Power
 
 - **Input Voltage**: 5V
@@ -48,17 +57,21 @@ The Luckfox Lyra provides significant computing power in a small form factor, ma
 
 ## Luckfox Lyra Versions
 
-Luckfox produces several variants of the Lyra board:
+Calculinux currently supports two variants of the Luckfox Lyra board available from [https://www.luckfox.com/Luckfox-Lyra](https://www.luckfox.com/Luckfox-Lyra):
 
 | Model | RAM | Flash | Notes |
 |-------|-----|-------|-------|
-| **Basic** | 64MB | None | SD card only |
-| **Standard** | 128MB | None | SD card only |
-| **SPI NAND** | 128MB/256MB | 128MB-1GB | Requires NAND erase |
-| **Ethernet** | 128MB | Optional | Includes Ethernet PHY |
+| **Standard** | 128MB | None | SD card only - **Recommended** |
+| **SPI NAND** | 128MB | 128MB-1GB | Requires NAND erase before use |
 
 !!! tip "Recommended Version"
-    For PicoCalc use, the standard 128MB version without SPI NAND is recommended for simplicity. If you have a SPI NAND version, the extra storage isn't utilized in typical Calculinux configurations.
+    The standard 128MB version without SPI NAND is recommended for simplicity. Both variants have identical performance for Calculinux.
+
+!!! info "Other Variants Not Yet Supported" 
+    Other Luckfox variants mentioned in community discussions (Lyra Zero W, Lyra Pi, Lyra Plus) could potentially be supported in the future but have not been attempted. Current images are only tested on the two variants listed above.
+
+!!! warning "SPI NAND Versions"
+    If your board has SPI NAND, you **must erase it first** or the board will boot from NAND instead of the SD card. See the [troubleshooting guide](../troubleshooting/boot-problems.md) for instructions.
 
 ## Why Luckfox Lyra for PicoCalc?
 
@@ -66,7 +79,7 @@ The Luckfox Lyra is particularly well-suited for PicoCalc:
 
 1. **Size**: Compact form factor fits inside PicoCalc
 2. **Power**: Efficient enough for battery operation
-3. **Performance**: Sufficient for Linux desktop and development
+3. **Performance**: Sufficient for Linux console applications and development
 4. **Interfaces**: SPI and GPIO interfaces match PicoCalc requirements
 5. **Community**: Active development and support
 6. **Cost**: Affordable pricing
@@ -99,11 +112,13 @@ Calculinux includes drivers for external USB WiFi adapters with the following Re
 - **RTL8821CU** - AC600 compact adapter
 - **RTL88X2BU** - AC1200 adapter
 
-!!! tip "Choosing a WiFi Adapter"
+**Additional chipsets with pending support include**: RTL8188FU, RTL8188FTV, RT2800 series, MT7612U, MT7610U, and RT5370. Community testing has confirmed these work but drivers are not yet included in official images.
+
+!!! danger "Critical 3.3V Requirement"
     When selecting a USB WiFi adapter:
     
-    - Ensure it operates at **3.3V** (Lyra USB header voltage)
-    - Verify chipset compatibility with the list above
+    - **MUST operate at 3.3V** (Lyra USB header voltage) - 5V adapters will damage the board
+    - Verify chipset compatibility with the supported list above
     - Compact form factor recommended for PicoCalc integration
     - Consider power consumption for battery operation
 
@@ -116,17 +131,40 @@ Calculinux includes a custom device tree configuration that:
 - Maps GPIO pins for keyboard matrix
 - Sets up USB and power management
 
-## Luckfox SDK
+## Luckfox SDK vs Calculinux
+
+### Official Luckfox SDK
 
 The Luckfox Lyra uses the Luckfox Pico SDK:
 
 - **Repository**: [https://github.com/LuckfoxTECH/luckfox-pico](https://github.com/LuckfoxTECH/luckfox-pico)
 - **Documentation**: Available in SDK repository
-- **Buildroot-based**: Original SDK uses Buildroot
-- **Calculinux Integration**: Calculinux ports drivers to Yocto
+- **Build System**: Buildroot-based
+- **Community Usage**: Most community images use this SDK
 
-!!! info "Yocto vs. Buildroot"
-    While the official Luckfox SDK uses Buildroot, Calculinux uses **Yocto** for better package management, reproducibility, and long-term maintenance. The kernel drivers are compatible with both systems.
+### Calculinux Architecture
+
+Calculinux is independently developed with a different approach:
+
+- **Build System**: Upstream Yocto (not Buildroot)
+- **Developer**: 0xd61 (personal repository continuation)
+- **Relationship to SDK**: Limited - only uses kernel and u-boot sources
+- **Kernel**: Hosted externally to the SDK
+- **U-Boot**: Hosted externally with custom patches
+- **Everything Else**: Independent implementation with upstream compilers
+
+!!! info "Independent Development"
+    While most community images are built with the Luckfox SDK and Buildroot, Calculinux is developed independently using upstream Yocto and only borrows the kernel and bootloader sources.
+
+### Other Major Community Images
+
+For completeness, other distributions available for Luckfox Lyra include:
+
+- **hisptoot's Buildroot images** - Original community port using Luckfox SDK
+- **markbirss's Ubuntu images** - Ubuntu 22.04/24.04 based distributions
+- **Community Buildroot variants** - Various SDK-based images with different features
+
+See the [ClockworkPi forum thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280) for links to these alternative distributions.
 
 ## Hardware Considerations
 
@@ -162,9 +200,12 @@ Proper power delivery is critical:
 
 Luckfox Lyra boards are available from:
 
-- **Luckfox Official Store**: [https://www.luckfox.com/](https://www.luckfox.com/)
+- **Luckfox Official Store**: [https://www.luckfox.com/Luckfox-Lyra](https://www.luckfox.com/Luckfox-Lyra)
 - **AliExpress**: Search for "Luckfox Lyra"
 - **Other Distributors**: Check Luckfox website for authorized sellers
+
+!!! tip "Official Source"
+    The official Luckfox website is the authoritative source for current specifications and available variants.
 
 ## Resources
 

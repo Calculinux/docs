@@ -21,13 +21,32 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ## Luckfox Lyra Variants
 
+### Supported Variants
+
+Calculinux currently supports two variants of the Luckfox Lyra board:
+
+| RAM | Storage | Status | Notes |
+|-----|---------|--------|-------|
+| **128 MB** | SD Card Only | ✅ **Recommended** | Simplest setup |
+| **128 MB** | SPI NAND + SD | ✅ Supported | Requires NAND erase first |
+
+### Future Variants (Not Yet Supported)
+
+| Variant | Notes | Status |
+|---------|-------|--------|
+| **Luckfox Lyra Zero W** | Built-in WiFi/Bluetooth | 🚧 Potential future support |
+| **Luckfox Lyra Pi** | Core3506-based | 🚧 Potential future support |
+| **Luckfox Lyra Plus** | RK3576-based | 🚧 Potential future support |
+| **64MB variants** | Lower memory | 🚧 May work but untested |
+| **256MB variants** | Higher memory | 🚧 May work but untested |
+
 ### By Memory Configuration
 
 | RAM | Recommended Use | Status |
 |-----|-----------------|--------|
-| **64 MB** | Console/Terminal | ✅ Supported, minimal desktop possible |
-| **128 MB** | Light Desktop | ✅ **Recommended** for general use |
-| **256 MB** | Full Desktop | ✅ Best performance, more apps |
+| **64 MB** | Console/Terminal | ❓ Untested - may work |
+| **128 MB** | General Use | ✅ **Recommended** for most applications |
+| **256 MB** | Development | ❓ Untested - may work |
 
 ### By Storage Type
 
@@ -39,11 +58,13 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ### By Network Capability
 
-| Model | Ethernet | WiFi | Notes |
-|-------|----------|------|-------|
-| **Basic** | ❌ | ❌ | No network hardware |
-| **Ethernet** | ✅ | ❌ | 10/100 Mbps via USB adapter |
-| **WiFi** | ❌ | 🚧 | Future USB WiFi dongle support |
+!!! info "No Built-in Network Hardware"
+    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi or Ethernet. Network connectivity requires external USB adapters (3.3V compatible) connected to the USB header.
+
+| Connectivity | Hardware Required | Status | Notes |
+|--------------|-------------------|--------|-------|
+| **Ethernet** | USB Ethernet adapter | ✅ Supported | See supported chipsets below |
+| **WiFi** | USB WiFi adapter (3.3V) | ✅ Supported | See supported chipsets below |
 
 ## Storage Compatibility
 
@@ -99,7 +120,7 @@ This page provides a comprehensive compatibility matrix for different hardware c
 | Device Type | Connection | Status | Notes |
 |-------------|------------|--------|-------|
 | **USB Keyboard** | USB-OTG | ✅ Supported | Full size keyboard |
-| **USB Mouse** | USB-OTG | ✅ Supported | For GUI use |
+| **USB Mouse** | USB-OTG | ✅ Supported | Basic cursor support |
 | **Bluetooth Keyboard** | BT Dongle | 🚧 Untested | Requires USB BT adapter |
 | **Touchscreen** | N/A | ❌ Not Available | PicoCalc has no touch |
 
@@ -107,12 +128,54 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ### USB Network Adapters
 
-| Type | Chipset | Status | Notes |
-|------|---------|--------|-------|
-| **USB Ethernet** | RTL8152 | ✅ Recommended | Well supported |
-| **USB Ethernet** | AX88179 | ✅ Supported | USB 3.0 adapter |
-| **USB WiFi** | RT5370 | 🚧 Should Work | Requires testing |
-| **USB WiFi** | MT7601U | 🚧 Should Work | Requires testing |
+#### USB WiFi Adapters (3.3V Required)
+
+**Supported Realtek Chipsets:**
+
+| Chipset | Type | Status | Notes |
+|---------|------|--------|-------|
+| **RTL8723DU** | Dual-band | ✅ Supported | Included in image |
+| **RTL8812AU** | AC1200 dual-band | ✅ Supported | Included in image |
+| **RTL8814AU** | AC1900 quad-antenna | ✅ Supported | Included in image |
+| **RTL8821CU** | AC600 compact | ✅ Supported | Included in image |
+| **RTL88X2BU** | AC1200 | ✅ Supported | Included in image |
+
+**Additional Chipsets (Pending Support):**
+
+| Chipset | Type | Status | Notes |
+|---------|------|--------|-------|
+| **RTL8188FU** | Single-band | 🚧 Planned | Community tested, driver available |
+| **RTL8188FTV** | Single-band | 🚧 Planned | Successfully tested by community |
+| **RT2800 series** | Various | 🚧 Planned | Ralink/MediaTek drivers exist |
+| **MT7612U** | AC dual-band | 🚧 Planned | MediaTek, community confirmed |
+| **MT7610U** | AC single-band | 🚧 Planned | MediaTek chipset |
+| **RT5370** | Single-band | 🚧 Planned | Ralink Technology |
+
+!!! danger "Critical 3.3V Requirement"
+    **ALL USB WiFi adapters MUST operate at 3.3V** as they connect to the Lyra's USB header, not standard 5V USB. Using 5V adapters will damage the board. Verify voltage compatibility before purchase.
+
+### Alternative WiFi Solutions (Pending Support)
+
+| Solution | Connection | Status | Notes |
+|----------|------------|--------|-------|
+| **ESP32-C3 SPI WiFi** | SPI (SD card socket) | 🚧 Community tested | Works but not yet in official image |
+| **Custom SPI modules** | SPI interface | 🚧 Experimental | Community development ongoing |
+| **External antenna mods** | USB header + antenna | 🚧 Advanced users | Hardware modification required |
+
+!!! info "Alternative Connectivity"
+    These solutions are possible but not yet officially supported. Community members have successfully implemented some of these approaches.
+
+#### USB Ethernet Adapters
+
+!!! warning "3.3V Requirement"
+    USB WiFi adapters must operate at 3.3V as they connect to the Lyra's USB header, not standard 5V USB.
+
+#### USB Ethernet Adapters
+
+| Chipset | Status | Notes |
+|---------|--------|-------|
+| **RTL8152** | ✅ Recommended | Common, well-supported |
+| **AX88179** | ✅ Supported | USB 3.0 adapter |
 
 ### Built-in Network
 
@@ -159,24 +222,26 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ## Software Compatibility
 
-### Desktop Environments
+!!! info "Console-Only System"
+    Calculinux is currently a **console-only** system with no graphical desktop environment. All interaction is via text terminal. This is by design to maximize performance on limited hardware.
 
-| Desktop | RAM Requirement | Status | Notes |
+### User Interface
+
+| Interface Type | RAM Requirement | Status | Notes |
 |---------|----------------|--------|-------|
-| **Console Only** | ~32 MB | ✅ Fully Supported | Best for 64MB RAM |
-| **Lightweight (LXDE)** | ~64 MB | ✅ Supported | Good for 128MB |
-| **Standard (XFCE)** | ~128 MB | ✅ Supported | Recommended for 256MB |
-| **Heavy (GNOME/KDE)** | >256 MB | ❌ Not Practical | Too resource intensive |
+| **Console (Text)** | ~32 MB | ✅ Fully Supported | Current implementation |
+| **Framebuffer Graphics** | Variable | 🚧 Future | Planned for future releases |
+| **X11/Wayland Desktop** | >128 MB | 🚧 Future | Not currently available |
 
-### Applications
+### Console Applications
 
 | Application Type | 64 MB RAM | 128 MB RAM | 256 MB RAM |
 |------------------|-----------|------------|------------|
 | **Terminal Apps** | ✅ | ✅ | ✅ |
-| **Text Editor** | ✅ | ✅ | ✅ |
-| **Web Browser** | ❌ | ⚠️ Limited | ✅ |
+| **Text Editor (vim/nano)** | ✅ | ✅ | ✅ |
+| **Scripting (Python/Bash)** | ⚠️ Basic | ✅ | ✅ |
 | **Development Tools** | ⚠️ Basic | ✅ | ✅ |
-| **Media Player** | ❌ | ⚠️ Audio | ✅ |
+| **Command-line Tools** | ✅ | ✅ | ✅ |
 
 ## Testing Status
 
@@ -238,8 +303,8 @@ If you test a configuration:
 - **SBC**: Luckfox Lyra 128MB (standard)
 - **Storage**: SanDisk Extreme 32GB
 - **Power**: Quality 5V/2A adapter
-- **Extras**: USB Ethernet adapter
-- **Use Case**: Desktop, networking, projects
+- **Extras**: USB WiFi or Ethernet adapter (3.3V)
+- **Use Case**: General use, networking, projects
 - **Cost**: ~$45-60
 
 ### Premium Build
@@ -247,8 +312,8 @@ If you test a configuration:
 - **SBC**: Luckfox Lyra 256MB (ethernet)
 - **Storage**: Samsung EVO Plus 64GB
 - **Power**: 5V/3A PD adapter
-- **Extras**: USB hub, peripherals
-- **Use Case**: Full desktop, development
+- **Extras**: USB hub, peripherals, network adapters
+- **Use Case**: Development, heavy workloads
 - **Cost**: ~$60-80
 
 ## Future Hardware Support

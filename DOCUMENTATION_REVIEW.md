@@ -215,16 +215,135 @@ Password: root
 
 ## Files Requiring Immediate Attention:
 
-1. ✅ HIGH: `docs/developer/overview.md` - Repository structure section (lines 105-135)
-2. ✅ HIGH: `docs/developer/overview.md` - Development tasks section (lines 277-320)
-3. ⚠️ MEDIUM: `docs/getting-started/first-boot.md` - Expand filesystem and network commands
-4. ⚠️ MEDIUM: All files - Verify systemd service references
-5. ℹ️ LOW: Multiple files - Remove or mark stub page links
+1. ✅ HIGH: `docs/developer/overview.md` - Repository structure section (FIXED)
+2. ✅ HIGH: `docs/developer/overview.md` - Development tasks section (FIXED)
+3. ✅ MEDIUM: `docs/getting-started/first-boot.md` - Expand filesystem and network commands (FIXED)
+4. ❌ HIGH: `docs/getting-started/installation.md` - Image names, default passwords (NEEDS FIX)
+5. ❌ HIGH: `docs/hardware/compatibility.md` - WiFi support status (NEEDS FIX)
+6. ❌ HIGH: Multiple files - Desktop/GUI claims (NEEDS FIX - NO GUI exists!)
+7. ⚠️ MEDIUM: All files - Verify systemd service references
+8. ℹ️ LOW: Multiple files - Remove or mark stub page links
+
+## Additional Critical Issues Found (Second Review)
+
+### 9. Image Names and Variants (HIGH PRIORITY)
+
+**Location**: `docs/getting-started/installation.md`, `docs/getting-started/overview.md`
+
+**Issue**: Documentation claims multiple image variants exist:
+- `calculinux-minimal-*.img.xz` - Console only
+- `calculinux-base-*.img.xz` - Basic GUI
+- `calculinux-full-*.img.xz` - Full desktop
+
+**Reality**: Only **ONE** image exists:
+- `calculinux-image-luckfox-lyra.rootfs.wic.gz` - The single image
+- `calculinux-bundle-luckfox-lyra.raucb` - RAUC update bundle (not a full image)
+
+**Action**: Remove all references to minimal/base/full variants. Document the single image.
+
+### 10. Default Password (HIGH PRIORITY)
+
+**Location**: `docs/getting-started/installation.md` line ~220, `docs/getting-started/first-boot.md`
+
+**Issue**: Documentation says:
+```
+Username: root
+Password: calculinux
+```
+
+**Reality** (verified from calculinux-image.bb):
+- Root password: `root` (password hash comment confirms this)
+- Pico user: `pico` with password `calc`
+
+**Action**: Fix all password references. Document both users.
+
+### 11. Desktop/GUI Claims (CRITICAL)
+
+**Location**: Multiple files claim GUI/desktop support
+
+**Issue**: Documentation extensively discusses:
+- X11 display server
+- Desktop environments
+- Window managers
+- GUI applications
+
+**Reality**: **NO GUI/DESKTOP IS INSTALLED**
+- DISTRO_FEATURES does not include x11 or wayland
+- No window manager or desktop packages installed
+- Console-only system
+
+**Action**: Remove ALL desktop/GUI references or clearly mark as "future planned feature"
+
+### 12. WiFi Support Status (HIGH PRIORITY)
+
+**Location**: `docs/hardware/compatibility.md`
+
+**Issue**: Claims WiFi is "🚧 Untested" or "Future USB WiFi dongle support"
+
+**Reality**: WiFi **IS SUPPORTED** with 5 Realtek chipsets:
+- RTL8723DU, RTL8812AU, RTL8814AU, RTL8821CU, RTL88X2BU
+- Drivers included in kas-luckfox-lyra-bundle.yaml
+- Already documented in first-boot.md correctly
+
+**Action**: Update hardware compatibility matrix to show WiFi as supported.
+
+### 13. Filesystem Resize Instructions (MEDIUM PRIORITY)
+
+**Location**: `docs/getting-started/installation.md` lines ~240-260
+
+**Issue**: Contains manual fdisk resize instructions
+
+**Reality**: Filesystem resize is **automatic** via pre-init script
+
+**Action**: Remove manual resize instructions, refer to automatic process.
 
 ## Next Steps:
 
-1. Review this document with maintainers
-2. Create GitHub issues for each high-priority item
-3. Add "NEEDS VERIFICATION" tags to speculative content
-4. Begin systematic verification of all command examples
-5. Update build scripts to create any missing utilities (like expand-filesystem.sh)
+1. ✅ Fix repository structure documentation (DONE)
+2. ✅ Fix network configuration (DONE)
+3. ✅ Fix filesystem expansion docs (DONE)
+4. ✅ Fix image names/variants (DONE)
+5. ✅ Fix default passwords (DONE)
+6. ✅ Remove/fix ALL desktop/GUI claims (DONE)
+7. ✅ Update WiFi compatibility status (DONE)
+8. ✅ Remove manual resize instructions (DONE)
+
+## Summary of Third Review Corrections
+
+### Files Corrected:
+1. **installation.md**: 
+   - Fixed image names (removed minimal/base/full variants, documented single image)
+   - Fixed default passwords (root/root, pico/calc)
+   - Removed manual filesystem resize instructions
+   - Removed "Full Image" GUI claims
+   - Fixed boot expectations (console-only)
+
+2. **compatibility.md**:
+   - Updated RAM recommendations (removed desktop references)
+   - Fixed network capability (WiFi marked as supported)
+   - Added complete WiFi chipset table with 5 supported Realtek drivers
+   - Removed "Desktop Environments" section, replaced with console-only clarification
+   - Updated applications table to show console tools only
+   - Fixed USB mouse description (removed "For GUI use")
+   - Updated use case descriptions (removed desktop references)
+
+3. **overview.md**:
+   - Added console-only clarification to limitations
+   - Added WiFi adapter requirement (3.3V) to optional hardware
+   - Removed "Optional graphical desktop environment" claim
+   - Added "No Built-in Network" to limitations
+
+4. **luckfox-lyra.md**:
+   - Changed "Linux desktop" to "Linux console applications" in performance description
+
+5. **external-docs.md**:
+   - Added note that desktop environment resources are for future reference only
+
+### Status:
+All major documentation inaccuracies from three systematic reviews have been corrected. Documentation now accurately reflects the actual Calculinux implementation:
+- Console-only system (no GUI/desktop)
+- Single image (calculinux-image-luckfox-lyra.rootfs.wic.gz)
+- Correct default passwords (root/root, pico/calc)
+- WiFi support with 5 Realtek chipsets
+- Automatic filesystem expansion
+- iwd/iwctl for WiFi networking

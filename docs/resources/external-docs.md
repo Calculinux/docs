@@ -151,6 +151,9 @@ This page provides links to external documentation, resources, and references th
 
 ## Desktop Environments
 
+!!! note "Future Feature"
+    Desktop environments are not currently implemented in Calculinux. These resources are provided for future reference if GUI support is added.
+
 ### Lightweight Options
 
 | Resource | URL | Description |

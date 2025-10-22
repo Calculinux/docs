@@ -30,16 +30,21 @@ Download the latest Calculinux image from:
 
 **GitHub Releases**: [https://github.com/Calculinux/meta-calculinux/releases](https://github.com/Calculinux/meta-calculinux/releases)
 
-Choose the appropriate image for your hardware:
+Download the Calculinux image file:
 
-| Image Name | Description | Recommended For |
-|------------|-------------|----------------|
-| `calculinux-minimal-*.img.xz` | Console only, no GUI | 64MB RAM, headless use |
-| `calculinux-base-*.img.xz` | Basic GUI, essential apps | 128MB RAM, general use |
-| `calculinux-full-*.img.xz` | Full desktop environment | 256MB RAM, desktop use |
+| Image Name | Description |
+|------------|-------------|
+| `calculinux-image-luckfox-lyra.rootfs.wic.gz` | Complete Calculinux system image |
 
-!!! tip "Image Selection"
-    If unsure, start with `calculinux-base` for 128MB+ systems or `calculinux-minimal` for 64MB systems.
+Additional files you may find:
+
+| File Name | Description |
+|-----------|-------------|
+| `calculinux-bundle-luckfox-lyra.raucb` | RAUC update bundle (for updating existing installations) |
+| `*.manifest` | Build manifest with package list |
+
+!!! info "Single Image Design"
+    Calculinux provides a single console-based image suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software can be installed via the package manager as needed.
 
 ### Verify Download
 
@@ -174,7 +179,7 @@ Quick checklist:
 - Power LED should light up
 - Display may show boot messages
 - Initial splash screen
-- Login prompt or desktop
+- Login prompt (console-only, no GUI)
 
 ### Boot Messages
 
@@ -221,14 +226,25 @@ Default credentials:
 
 ```
 Username: root
-Password: calculinux
+Password: root
+
+-- OR --
+
+Username: pico
+Password: calc
 ```
 
-!!! warning "Change Password"
-    You should change the default password immediately after first login:
+!!! danger "Change Passwords Immediately"
+    **Both** default passwords should be changed immediately after first login:
     ```bash
+    # Change root password
     passwd
+    
+    # Change pico user password
+    passwd pico
     ```
+    
+    The `pico` user is a member of the `wheel` group and can use `sudo` for administrative tasks.
 
 ## Post-Installation
 
@@ -239,27 +255,10 @@ After successful login:
 3. **Check system**: `df -h` and `free -m`
 4. **Configure network** (if needed): See [Networking](../user-guide/networking.md)
 
-## Optional: Resize Filesystem
+## Filesystem Expansion (Automatic)
 
-If you're using a SD card larger than the image size:
-
-```bash
-# Expand root partition to fill SD card
-/usr/sbin/expand-filesystem.sh
-
-# Or manually:
-# 1. Expand partition
-fdisk /dev/mmcblk0
-# d (delete partition 2)
-# n (new partition 2, use default values)
-# w (write)
-
-# 2. Reboot
-reboot
-
-# 3. Resize filesystem
-resize2fs /dev/mmcblk0p2
-```
+!!! success "No Action Required"
+    The overlayfs partition is **automatically expanded** during first boot to use all available space on your SD card (leaving 10% free). No manual intervention is needed.
 
 ## Multiple SD Cards
 
@@ -282,40 +281,39 @@ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress
 
 ## Pre-Installed Software
 
-Depending on the image variant, you'll have:
+Calculinux comes with a console-based environment including:
 
-### Minimal Image
+### System Utilities
+- **Shell**: bash, busybox
+- **Editors**: vi, nano (via opkg)
+- **Development**: gcc, g++, make, autoconf, git, gdb
+- **Package Management**: opkg with online repositories
 
-- Basic Linux utilities
-- Text editors (vi, nano)
-- Package manager
-- Development tools (gcc, make)
-- Network utilities
+### Network Tools
+- **WiFi**: iwd (iwctl command)
+- **Utilities**: curl, wget, links (text browser), openssh
+- **Debugging**: iw, htop, systemd-analyze
 
-### Base Image
+### System Management
+- **Update System**: RAUC (A/B partition updates)
+- **Storage**: e2fsprogs, mtd-utils, cloud-utils-growpart
+- **Hardware**: i2c-tools, usbutils, android-tools
 
-All minimal plus:
-- X11 display server
-- Lightweight window manager
-- Terminal emulator
+### Additional Features
+- **Filesystem**: Overlayfs for read-only root with persistent overlay
+- **Console Font**: Terminus font for better readability
+- **Keyboard**: Full keyboard mapping support
+
+!!! info "No GUI/Desktop"
+    Calculinux is currently **console-only** with no graphical desktop environment. All interaction is via text terminal. GUI support may be added in future releases.
 - File manager
 - Basic applications
-
-### Full Image
-
-All base plus:
-- Complete desktop environment
-- Office applications
-- Media players
-- Web browser
-- Development IDEs
 
 ## Customization
 
 After installation, you can customize your system:
 
 - Install additional packages: See [Package Management](../user-guide/package-management.md)
-- Configure desktop: See [Desktop Environment](../user-guide/desktop.md)
 - Set up development: See [Developer Guide](../developer/overview.md)
 - Add applications: See [Applications](../user-guide/applications.md)
 

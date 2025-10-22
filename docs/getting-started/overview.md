@@ -20,7 +20,8 @@ Before you begin, make sure you have:
 Optional but helpful:
 - USB-OTG adapter for peripherals
 - USB keyboard (for easier initial setup)
-- USB Ethernet adapter (for network connectivity)
+- USB WiFi adapter (3.3V, see supported chipsets in [Hardware Compatibility](../hardware/compatibility.md))
+- USB Ethernet adapter (for wired network connectivity)
 
 ## Quick Start Process
 
@@ -65,21 +66,22 @@ If you need help:
 
 Once Calculinux is running, you'll have:
 
-- Full Linux operating system
-- Command-line terminal access
-- Package manager for installing software
-- Development tools (compilers, interpreters, etc.)
-- Optional graphical desktop environment
-- Access to thousands of open-source applications
+- Full Linux operating system (console-based)
+- Command-line terminal access via built-in display and keyboard
+- Package manager (opkg) for installing software
+- Development tools (gcc, g++, make, git, gdb, etc.)
+- Network connectivity via WiFi or Ethernet (USB adapters required)
+- Access to thousands of open-source command-line applications
 
 ### Limitations
 
 Be aware of these limitations:
 
-- **Small Display**: 240×240 pixels limits some applications
+- **Console Only**: No graphical desktop environment (text-based interface)
+- **Small Display**: 240×240 pixels, optimized for terminal use
 - **RAM**: 64-256MB means careful resource management
 - **Storage**: SD card speed affects performance
-- **No GPU**: Software rendering only
+- **No Built-in Network**: Requires USB WiFi or Ethernet adapter (3.3V for WiFi)
 - **Battery Life**: Running Linux uses more power than stock firmware
 
 ## Learning Path
