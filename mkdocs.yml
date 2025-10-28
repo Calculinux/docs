@@ -1,7 +1,7 @@
-site_name: Calculinux Documentation
-site_description: Documentation for Calculinux - A Linux distribution for PicoCalc with Luckfox Lyra and similar SBCs
+site_name: Calculinux
+site_description: Calculinux - A Linux distribution for PicoCalc with Luckfox Lyra and similar SBCs
 site_author: Calculinux Project
-site_url: https://docs.calculinux.org/
+site_url: https://calculinux.org/
 
 repo_name: Calculinux/meta-calculinux
 repo_url: https://github.com/Calculinux/meta-calculinux
