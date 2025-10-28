@@ -84,7 +84,7 @@ Calculinux is under active development. The current release includes:
 - ✅ Basic system functionality
 - ✅ Audio drivers
 - ✅ A/B Upgrade support, preserving user data
-- 🚧 Package management (in progress)
+- ✅ Package management (PRs for new packages welcome!)
 - 🚧 Additional hardware support (planned)
 
 Check the [roadmap](about/roadmap.md) for upcoming features.
