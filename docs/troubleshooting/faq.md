@@ -242,8 +242,8 @@ A: Check RAM usage (`free -h`). With only 128MB, many applications will struggle
 
 A: 
 1. Check this documentation
-2. Search the [Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-3. Ask in community chat
+2. Join our [Discord Community](https://discord.gg/7quBbSPxcP)
+3. Search the [Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 4. Open a [GitHub issue](https://github.com/Calculinux/meta-calculinux/issues)
 
 **Q: The display shows garbage/corruption**
@@ -283,6 +283,7 @@ When asking for help, provide:
 ### Where to Ask
 
 - **Documentation**: Check specific troubleshooting pages
+- **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
 - **Forum**: [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - **GitHub**: [Issue Tracker](https://github.com/Calculinux/meta-calculinux/issues)
 - **Community**: Links in [Resources](../resources/community.md)

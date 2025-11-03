@@ -4,6 +4,16 @@ Connect with the Calculinux community and get support.
 
 ## Official Channels
 
+### Discord Community
+
+Join our active Discord community for real-time chat and support:
+
+**Calculinux Discord Server**
+- URL: [discord.gg/7quBbSPxcP](https://discord.gg/7quBbSPxcP)
+- Purpose: Real-time community discussion, help, and project sharing
+- Channels: General discussion, help & support, development, hardware, showcase
+- Active community with quick responses from developers and users
+
 ### Forum
 
 The primary discussion platform for Calculinux and PicoCalc modifications:
@@ -267,11 +277,12 @@ Full code of conduct: (To be added)
 
 Don't be a stranger! The Calculinux community is friendly and welcoming.
 
-- 💬 Join the forum discussion
-- ⭐ Star the GitHub repository  
-- 📢 Share your projects
-- 🤝 Help fellow users
-- 💻 Contribute code or documentation
+- 💬 **Discord**: Join our [Discord community](https://discord.gg/7quBbSPxcP)
+- 💬 **Forum**: Join the forum discussion
+- ⭐ **GitHub**: Star the GitHub repository  
+- 📢 **Projects**: Share your projects
+- 🤝 **Help**: Help fellow users
+- 💻 **Contribute**: Contribute code or documentation
 
 ---
 

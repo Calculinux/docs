@@ -57,9 +57,10 @@ Interested in helping? See our [Contributing Guide](../developer/contributing.md
 
 ## Stay Updated
 
-- 💬 [Forum Discussion](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-- 🐛 [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
-- 📚 [Source Repository](https://github.com/Calculinux/meta-calculinux)
+- 💬 **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
+- 💬 **Forum Discussion**: [Forum Discussion](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- 🐛 **GitHub Issues**: [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
+- 📚 **Source Repository**: [Source Repository](https://github.com/Calculinux/meta-calculinux)
 
 ---
 

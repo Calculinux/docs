@@ -63,6 +63,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 Calculinux is an open-source community project. Join us!
 
+- 💬 **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
 - 💬 **Forum Discussion**: [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
 - 💡 **Contributing**: See our [contribution guidelines](developer/contributing.md)
