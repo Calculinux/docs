@@ -14,11 +14,11 @@ The Luckfox Lyra provides significant computing power in a small form factor, pe
 | Model | RAM | Flash | Ethernet | Status |
 |-------|-----|-------|----------|--------|
 | **Luckfox Lyra** | 128MB | None | No | ✅ **Recommended** |
-| **Luckfox Lyra (SPI NAND)** | 128MB | 128MB-1GB | No | ✅ Supported ([NAND must be erased](../troubleshooting/erase-nand.md)) |
-| **Luckfox Lyra Plus** | 128MB | SPI NAND | Yes (10/100) | ❓ Untested |
+| **Luckfox Lyra B (SPI NAND)** | 128MB | 256MB SPI NAND| No | ✅ Supported ([NAND must be erased](../troubleshooting/erase-nand.md)) |
+| **Luckfox Lyra Plus** | 128MB | 256 MB SPI NAND | Yes (10/100) | ❓ Untested (Requires a custom printed backplate) |
 
 !!! tip "Recommended Version"
-    The standard 128MB model without SPI NAND is recommended for simplicity.
+    The standard 128MB model with SPI NAND is recommended for better compatibility with future features.
 
 !!! warning "SPI NAND Must Be Erased"
     If your board has SPI NAND, you **must erase it** before Calculinux will boot from SD card. The boot ROM always tries NAND first. See the comprehensive [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for detailed step-by-step instructions.
