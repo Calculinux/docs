@@ -9,46 +9,31 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 
 ### Tools Required
 
-- Small Phillips screwdriver
-- Plastic spudger or opening tool
-- ESD-safe work surface (or ESD wrist strap)
-- Tweezers (optional but helpful)
+- The allen wrench that came with the picocalc
 - Good lighting and magnification (optional)
+- A soft cloth to work or pad on
 
 ### Parts Needed
 
 - Luckfox Lyra SBC (see [compatible versions](luckfox-lyra.md#luckfox-lyra-versions))
-- MicroSD card (8GB minimum, 16GB+ recommended)
-- (Optional) Thermal pad or paste if concerned about heat
+- MicroSD card (8GB minimum, 64GB+ recommended)
 
 ## Disassembly
 
 ### Step 1: Power Off and Disconnect
 
 1. Power off the PicoCalc completely
-2. Disconnect any USB cables
-3. Remove any attached peripherals
+2. remove the batteries
 
 ### Step 2: Open the Case
 
-!!! warning "Take Photos"
-    Before disassembly, take photos of the original configuration. This helps during reassembly.
-
-1. Locate the screws holding the case together (typically on the back)
-2. Remove all screws and keep them organized
-3. Carefully separate the case halves using a plastic spudger
-4. Be mindful of any ribbon cables connecting the halves
+1. Remove all screws, open the case.
+2. disconnect the LCD
 
 ### Step 3: Remove Original Board
 
 1. Locate the existing RP2040/Pico board
-2. Carefully disconnect the main connector
-3. Note the orientation of the board and connector
-4. Remove any screws holding the board in place
-5. Gently lift the board out
-
-!!! tip "Connector Orientation"
-    The connector orientation is critical. The Luckfox Lyra must be installed with the same orientation as the original board. Mark or photograph the correct orientation. For reference pinout diagrams, consult the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+2. Unplug the RP2040 from its socket.
 
 ## Installation
 
@@ -62,22 +47,23 @@ Before installation:
 
 ### Step 5: Install Luckfox Lyra
 
-1. Position the Luckfox Lyra in the same orientation as the original board
-2. Carefully align the connector with the PicoCalc socket
-3. Gently but firmly press the connector into place
-4. Secure the board with screws if mounting holes align
-5. Verify the connection is seated properly
-
-!!! caution "Connector Care"
-    The connector is delicate. Apply even pressure and ensure proper alignment before pushing it in. Do not force it.
+1. Position the Luckfox Lyra in the same orientation as the original RP2030
+2. Gently but firmly press the Lyra in to the socket
 
 ### Step 6: Reassembly
 
-1. Route any cables carefully (avoid pinching)
-2. Align the case halves
-3. Gently press together until they click
+1. Take care to ensure the board is properly aligned with all screw holes
+2. Ensure the kayboard rubber is in place
+3. Ensure the display is properly aligned with the case
+3. Align the case halves
 4. Replace all screws
 5. Verify nothing is binding or misaligned
+
+!!! warn "Risk to your Display!"
+    If the display is misaligned when installed, it can crack when you tighten the screws. make sure it is perfectly aligned with the front case!
+
+!!! tip "Keeping the screen aligned"
+    You may want to tape the screen in place using kapton tape or similar. this will prevent it from moving around as you open and close the picocalc in the future.
 
 ## Erasing SPI NAND
 
@@ -123,33 +109,7 @@ flash_erase /dev/mtd0 0 0
     You only need to erase the NAND once. After erasing, the board will always boot from SD card (unless you reprogram the NAND).
 
 ## Pin Mapping
-
-Understanding the pin connections helps with troubleshooting:
-
-### Display Connection
-
-| Luckfox Pin | Function | PicoCalc Connection |
-|-------------|----------|---------------------|
-| SPI MOSI | Data Out | LCD Data In |
-| SPI SCK | Clock | LCD Clock |
-| GPIO | CS (Chip Select) | LCD CS |
-| GPIO | DC (Data/Command) | LCD DC |
-| GPIO | Reset | LCD Reset |
-| 3.3V | Power | LCD VCC |
-| GND | Ground | LCD GND |
-
-### GPIO and RMIO Pin Mapping
-
-The Luckfox Lyra uses both standard GPIO and RMIO (Reconfigurable Multi-function IO) pins:
-
-| PicoCalc Pin | Luckfox Equivalent | Type | Voltage | Notes |
-|--------------|-------------------|------|---------|-------|
-| GP2 | RMIO12 | RMIO | 3.3V | Reconfigurable |
-| GP3 | RMIO13 | RMIO | 3.3V | Reconfigurable |
-| GP4 | RMIO0 | RMIO | 3.3V | Used for audio (PWM) |
-| GP5 | RMIO1 | RMIO | 3.3V | Reconfigurable |
-| GP21 | RMIO26 | RMIO | 3.3V | Reconfigurable |
-| GP28 | RMIO24 | RMIO | 3.3V | Reconfigurable |
+TODO: insert information about pin mapping
 
 !!! warning "GPIO Voltage Levels"
     - **RMIO pins**: 3.3V operation
@@ -157,17 +117,14 @@ The Luckfox Lyra uses both standard GPIO and RMIO (Reconfigurable Multi-function
     - Always verify voltage levels before hardware modifications
 
 !!! info "Hardware PWM Limitation"
-    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM.
-
-### Keyboard Matrix
-
-The keyboard matrix connects via GPIO pins. Exact mapping is defined in the device tree. See [Display & Input](display-input.md) for details.
+    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM. 
+    A future page needs to be written detailing this.
 
 ### Power
 
-- **5V In**: From USB-C connector via PicoCalc board
+- **5V In**: From USB-C connector via PicoCalc board (to charge the batteries)
 - **3.3V Regulation**: On Luckfox Lyra board
-- **Current Draw**: ~500mA typical, up to 1A peak
+- **Current Draw**: TODO
 
 ## Verification
 
@@ -186,12 +143,11 @@ If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems
 
 - **SPI NAND not erased**: Most common issue with NAND versions
 - **SD card not flashed correctly**: Verify image integrity
-- **Connector not seated**: Reseat the board carefully
-- **Power insufficient**: Try different USB cable/adapter
+- **Power insufficient**: Try different USB cable/adapter or replace the batteries
 
 ### Display Not Working
 
-- **Driver not loaded**: Check kernel logs
+- **Driver not loaded**: Check kernel logs via the serial terminal on the picocalc USB-C connector
 - **Connection issue**: Reseat display cable
 - **Wrong device tree**: Verify correct DTB is loaded
 
@@ -199,7 +155,6 @@ If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems
 
 - **Driver not loaded**: Check kernel logs
 - **GPIO mapping wrong**: Verify device tree configuration
-- **Connection issue**: Reseat board connector
 
 ## Safety Considerations
 
@@ -214,15 +169,7 @@ If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems
 
 - Don't force connectors
 - Handle PCBs by edges
-- Watch for sharp edges on case
-- Keep screws organized
-
-### Thermal Considerations
-
-- Luckfox can get warm under load
-- Ensure adequate ventilation
-- Consider thermal pad if needed
-- Monitor temperatures initially
+- Watch for sharp edges
 
 ## Reverting to Original
 
@@ -240,17 +187,17 @@ To restore the original RP2040 board:
 
 ### Optional Enhancements
 
-- **Heat sink**: Add small heat sink to RV1106 SoC
-- **Thermal pad**: Use thermal interface material
-- **Mounting**: Create custom mounting bracket
-- **Cables**: Add internal USB extension for easier access
+(TODO: add articles detailing these modifications)
+
+- **Hardware PWM Mod**
+- **Add a WiFi Module**
+- **Flash customized firmware to the STM32 southbridge chip**
 
 ### Future Compatibility
 
 The modification process should be similar for other SBCs:
 
 - Milk-V Duo (future support)
-- Other Rockchip-based boards
 - Custom carrier boards
 
 ## Resources
