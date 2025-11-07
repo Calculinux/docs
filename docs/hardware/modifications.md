@@ -2,9 +2,6 @@
 
 This guide covers the physical modifications required to install a Luckfox Lyra (or similar SBC) into your PicoCalc.
 
-!!! danger "Warranty Warning"
-    Opening your PicoCalc and replacing the SBC will void your warranty. Proceed at your own risk. This modification requires careful handling of small components and connectors.
-
 ## Prerequisites
 
 ### Tools Required
