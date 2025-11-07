@@ -52,9 +52,8 @@ Calculinux includes custom kernel drivers developed specifically for the Luckfox
 
 ### Official Luckfox SDK
 
-The Luckfox Lyra uses the Luckfox Pico SDK:
+The Luckfox Lyra uses the Luckfox Lyra SDK:
 
-- **Repository**: [https://github.com/LuckfoxTECH/luckfox-pico](https://github.com/LuckfoxTECH/luckfox-pico)
 - **Documentation**: Available in SDK repository
 - **Build System**: Buildroot-based
 - **Community Usage**: Most community images use this SDK
@@ -71,7 +70,7 @@ Calculinux is independently developed with a different approach:
 - **Everything Else**: Independent implementation with upstream compilers
 
 !!! info "Independent Development"
-    While most community images are built with the Luckfox SDK and Buildroot, Calculinux is developed independently using upstream Yocto and only borrows the kernel and bootloader sources.
+    While most community images are built with the Luckfox SDK and Buildroot, Calculinux is developed independently using upstream Yocto and only borrows the kernel and bootloader sources. Our goal is to foster innovation and promote sharing and pooling our resources to the benefit of all picocalc based Linux distros
 
 ### Other Major Community Images
 
