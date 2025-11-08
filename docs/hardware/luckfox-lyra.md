@@ -115,7 +115,7 @@ Luckfox Lyra boards are available from:
 ### Official Documentation
 
 - **Luckfox Website**: [https://www.luckfox.com/](https://www.luckfox.com/)
-- **GitHub SDK**: [Luckfox Pico SDK](https://github.com/LuckfoxTECH/luckfox-pico)
+- **SDK**: [Luckfox Pico SDK](https://github.com/LuckfoxTECH/luckfox-pico)
 - **Wiki**: [Luckfox Wiki](https://wiki.luckfox.com/)
 
 ### Community Resources
