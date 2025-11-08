@@ -115,13 +115,14 @@ Luckfox Lyra boards are available from:
 ### Official Documentation
 
 - **Luckfox Website**: [https://www.luckfox.com/](https://www.luckfox.com/)
-- **SDK**: [Luckfox Pico SDK](https://github.com/LuckfoxTECH/luckfox-pico)
+- **SDK**: [Luckfox Lyra SDK](https://drive.google.com/drive/folders/1l2ixhfw53J3eZunyvHMnw2DYViH9d8Cx?usp=drive_link)
 - **Wiki**: [Luckfox Wiki](https://wiki.luckfox.com/)
 
 ### Community Resources
 
 - **Forum Thread**: [Luckfox Lyra on PicoCalc](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - **Original Port**: hisptoot's Google Drive with initial images and drivers
+- **Discord Server**: [Calculinux Discord](https://discord.gg/7quBbSPxcP)
 
 ## Next Steps
 
