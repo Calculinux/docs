@@ -26,6 +26,25 @@ cd docs
 pip install -r requirements.txt
 ```
 
+### Preview the docs locally
+
+MkDocs makes it easy to preview updates while authoring documentation.
+This repository already pins the toolchain in `./.tool-versions`, so it
+works seamlessly with `asdf`, but you can also install `mkdocs` and the
+Material theme manually:
+
+````bash
+pip install -r requirements.txt
+````
+
+Then launch the live preview server:
+
+````bash
+mkdocs serve --watch-theme
+````
+
+Navigate to http://127.0.0.1:8000/ to browse the rendered docs.
+
 ### Local Development
 
 Serve the documentation locally with live reload:

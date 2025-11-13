@@ -86,6 +86,7 @@ nav:
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
     - Compatibility Matrix: hardware/compatibility.md
+    - Serial Console Access: hardware/serial/console-access.md
   
   - User Guide:
     - Package Management: user-guide/package-management.md
