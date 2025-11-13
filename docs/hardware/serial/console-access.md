@@ -25,7 +25,7 @@ no parity, and 1 stop bit ("1500000 8N1").
   sudo usermod -a -G dialout "$USER"
   ```
 
-- USB-C cable connecting the host to the Picocalc debug port.
+- USB-C cable connecting the host to the Picocalc usb-c port.
 
 ## Verifying the device node
 
@@ -115,3 +115,6 @@ Key shortcuts while running:
 With the correct baud rate and settings, the serial console provides
 boot logs, kernel messages, and a root shell even before networking is
 available.
+
+Because this uses a hardware serial port, it will work even if no picocalc
+specific drivers are loaded.
