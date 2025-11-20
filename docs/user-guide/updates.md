@@ -178,7 +178,7 @@ Set `enable = true` to show a channel in `cup list`.
 
 ### Skipping Prefetch
 
-On development machines without opkg configured, skip prefetch:
+In some cases you might want to skip prefetch:
 
 ```bash
 sudo cup install --no-prefetch
@@ -235,7 +235,7 @@ Pending operations are stored in:
 
 ### Prefetch Fails
 
-This usually means opkg isn't configured. You can:
+This usually means opkg isn't configured, though it should be configured out of the box. You can:
 
 1. Skip prefetch: `sudo cup install --no-prefetch`
 2. Ensure network access is available after reboot
@@ -252,6 +252,8 @@ sudo reboot
 ```
 
 Or select the other slot in your bootloader (if supported).
+
+**Note that you may need to re-install some packages in this case.**
 
 ### Dry Run
 
