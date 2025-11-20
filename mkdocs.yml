@@ -90,11 +90,13 @@ nav:
   
   - User Guide:
     - Package Management: user-guide/package-management.md
+    - System Updates: user-guide/updates.md
   
   - Developer Guide:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
+    - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
   
   - Troubleshooting:
