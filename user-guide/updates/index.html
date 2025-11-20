@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://calculinux.org/user-guide/updates/">
       
       
+        <link rel="prev" href="../package-management/">
+      
+      
+        <link rel="next" href="../../developer/overview/">
       
       
         
@@ -277,10 +281,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../package-management/" class="md-tabs__link">
           
   
@@ -892,28 +898,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -931,7 +940,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -965,6 +974,553 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Updates
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-calculinux-update-tool-cup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Calculinux Update Tool (cup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Updates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-specific-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Specific Channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-with-specific-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update with Specific Bundle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-interactive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Interactive Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-available-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing Available Updates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listing Available Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-all-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List All Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-updates-from-specific-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Updates from Specific Channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-without-installing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download Without Installing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Reconciliation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package Reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-reconciliation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Reconciliation Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Reconciliation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automatic Reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#during-update-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During Update Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-rauc-installation-via-cup-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During RAUC Installation (via cup-hook)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-reboot-via-cup-postreboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After Reboot (via cup-postreboot)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-reconciliation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking Reconciliation Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skipping-prefetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping Prefetch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-process-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Process Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-fails-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Fails to Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-not-reconciling-after-reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packages Not Reconciling After Reboot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefetch-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefetch Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-an-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling Back an Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dry Run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Updating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After Updating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-development-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Development Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-pr-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing PR Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-mirrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Mirrors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1102,6 +1658,34 @@
     
   
     Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/calculinux-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculinux Update System
   
 
     
@@ -1551,10 +2135,149 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Getting Started
+        Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-calculinux-update-tool-cup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Calculinux Update Tool (cup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Updates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-specific-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Specific Channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-with-specific-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update with Specific Bundle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-interactive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Interactive Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-available-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing Available Updates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listing Available Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-all-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List All Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-updates-from-specific-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Updates from Specific Channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-without-installing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download Without Installing
       
     </span>
   </a>
@@ -1562,10 +2285,321 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#coming-soon" class="md-nav__link">
+  <a href="#package-reconciliation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Coming Soon
+        Package Reconciliation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package Reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-reconciliation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Reconciliation Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Reconciliation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automatic Reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#during-update-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During Update Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-rauc-installation-via-cup-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During RAUC Installation (via cup-hook)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-reboot-via-cup-postreboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After Reboot (via cup-postreboot)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-reconciliation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking Reconciliation Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skipping-prefetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping Prefetch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-process-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Process Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-fails-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Fails to Install
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-not-reconciling-after-reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packages Not Reconciling After Reboot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefetch-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefetch Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-an-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling Back an Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dry Run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Updating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After Updating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-development-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Development Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-pr-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing PR Builds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-mirrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Mirrors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
       
     </span>
   </a>
@@ -1590,6 +2624,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../package-management/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -1606,28 +2680,235 @@
 
 
 <h1 id="system-updates">System Updates<a class="headerlink" href="#system-updates" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Under Construction</p>
-<p>This page is currently being developed. Check back soon for update procedures.</p>
-</div>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>For now, please refer to:</p>
+<p>Calculinux uses a dual-layer update strategy combining RAUC for system images and OPKG for packages, with automatic reconciliation to keep everything in sync.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update Controller). When you install an update, it writes to the inactive slot, leaving your current system untouched. After reboot, the system switches to the new slot, and the old one becomes your rollback option.</p>
+<h3 id="update-architecture">Update Architecture<a class="headerlink" href="#update-architecture" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  Read-Only Base Image (RAUC Slot)       │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  ├─ Kernel                               │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  ├─ Base System Packages                │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  └─ /var/lib/opkg/status.image         │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>              ↓
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  Writable Overlay                        │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  ├─ User-Installed Packages              │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ├─ Configuration Files                  │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  └─ /var/lib/opkg/status                │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└─────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="the-calculinux-update-tool-cup">The Calculinux Update Tool (<code>cup</code>)<a class="headerlink" href="#the-calculinux-update-tool-cup" title="Permanent link">&para;</a></h3>
+<p>The <code>calculinux-update</code> package provides three commands:</p>
 <ul>
-<li><a href="../package-management/">Package Management</a> - Update packages with opkg</li>
-<li><a href="../../getting-started/installation/">Installation Guide</a> - Flashing new images</li>
+<li><strong><code>cup</code></strong> - Browse, download, and install RAUC updates</li>
+<li><strong><code>cup-hook</code></strong> - RAUC hook for package reconciliation</li>
+<li><strong><code>cup-postreboot</code></strong> - Post-reboot package reconciliation service</li>
 </ul>
-<h2 id="coming-soon">Coming Soon<a class="headerlink" href="#coming-soon" title="Permanent link">&para;</a></h2>
-<p>This section will cover:</p>
+<h2 id="installing-updates">Installing Updates<a class="headerlink" href="#installing-updates" title="Permanent link">&para;</a></h2>
+<h3 id="interactive-update">Interactive Update<a class="headerlink" href="#interactive-update" title="Permanent link">&para;</a></h3>
+<p>The easiest way to update is interactively:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install
+</code></pre></div>
+<p>This will:</p>
+<ol>
+<li>List available channels (if you have multiple enabled)</li>
+<li>Show available bundles sorted by date (newest first)</li>
+<li>Let you select which bundle to install</li>
+<li>Prefetch packages that will be reinstalled after reboot</li>
+<li>Prompt for confirmation before installing</li>
+</ol>
+<h3 id="update-specific-channel">Update Specific Channel<a class="headerlink" href="#update-specific-channel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Release&quot;</span>
+</code></pre></div>
+<h3 id="update-with-specific-bundle">Update with Specific Bundle<a class="headerlink" href="#update-with-specific-bundle" title="Permanent link">&para;</a></h3>
+<p>If you know the bundle name:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--bundle<span class="w"> </span>calculinux-bundle-walnascar-20251120.raucb
+</code></pre></div>
+<h3 id="non-interactive-update">Non-Interactive Update<a class="headerlink" href="#non-interactive-update" title="Permanent link">&para;</a></h3>
+<p>For automation or when you're confident:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--bundle<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--yes
+</code></pre></div>
+<h2 id="listing-available-updates">Listing Available Updates<a class="headerlink" href="#listing-available-updates" title="Permanent link">&para;</a></h2>
+<h3 id="list-all-updates">List All Updates<a class="headerlink" href="#list-all-updates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cup<span class="w"> </span>list
+</code></pre></div>
+<h3 id="list-updates-from-specific-channel">List Updates from Specific Channel<a class="headerlink" href="#list-updates-from-specific-channel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cup<span class="w"> </span>list<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Continuous&quot;</span>
+</code></pre></div>
+<h2 id="download-without-installing">Download Without Installing<a class="headerlink" href="#download-without-installing" title="Permanent link">&para;</a></h2>
+<p>To download a bundle without installing (useful for offline installation later):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cup<span class="w"> </span>download<span class="w"> </span>--bundle<span class="w"> </span>&lt;name&gt;
+</code></pre></div>
+<p>By default, bundles are downloaded to <code>/var/cache/calculinux-update/</code>.</p>
+<h2 id="package-reconciliation">Package Reconciliation<a class="headerlink" href="#package-reconciliation" title="Permanent link">&para;</a></h2>
+<h3 id="why-reconciliation-matters">Why Reconciliation Matters<a class="headerlink" href="#why-reconciliation-matters" title="Permanent link">&para;</a></h3>
+<p>Calculinux uses a dual-layer package system:</p>
 <ul>
-<li>System update procedures</li>
-<li>Package updates</li>
-<li>Kernel updates</li>
-<li>Rolling back updates</li>
-<li>Update troubleshooting</li>
-<li>A/B update system details</li>
+<li><strong>Base layer</strong>: System packages baked into the read-only RAUC image</li>
+<li><strong>Overlay layer</strong>: User-installed packages stored in writable storage</li>
+</ul>
+<p>When you update the base image, this can create problems:</p>
+<ol>
+<li><strong>Duplicate packages</strong>: A package you installed is now in the new base image</li>
+<li><strong>Missing packages</strong>: The new image removed a package your other packages depend on</li>
+<li><strong>Version conflicts</strong>: Your overlay packages conflict with newer base versions</li>
+</ol>
+<h3 id="automatic-reconciliation">Automatic Reconciliation<a class="headerlink" href="#automatic-reconciliation" title="Permanent link">&para;</a></h3>
+<p>The update process automatically handles these issues:</p>
+<h4 id="during-update-installation">During Update Installation<a class="headerlink" href="#during-update-installation" title="Permanent link">&para;</a></h4>
+<p>When you run <code>sudo cup install</code>, the system:</p>
+<ol>
+<li><strong>Prefetches packages</strong> - Downloads packages that will need reinstallation</li>
+<li><strong>Plans reconciliation</strong> - Identifies duplicates, missing packages, and upgrades needed</li>
+</ol>
+<h4 id="during-rauc-installation-via-cup-hook">During RAUC Installation (via <code>cup-hook</code>)<a class="headerlink" href="#during-rauc-installation-via-cup-hook" title="Permanent link">&para;</a></h4>
+<p>When RAUC installs the new slot:</p>
+<ol>
+<li><strong>Removes duplicates</strong> - Uninstalls overlay packages now provided by the base</li>
+<li><strong>Records the plan</strong> - Saves which packages need reinstalling/upgrading</li>
+<li><strong>Prepares for reboot</strong> - Everything is ready for the post-reboot phase</li>
+</ol>
+<h4 id="after-reboot-via-cup-postreboot">After Reboot (via <code>cup-postreboot</code>)<a class="headerlink" href="#after-reboot-via-cup-postreboot" title="Permanent link">&para;</a></h4>
+<p>When the system boots into the new slot:</p>
+<ol>
+<li><strong>Updates package feeds</strong> - Runs <code>opkg update</code></li>
+<li><strong>Reinstalls missing packages</strong> - Installs packages from the old base now missing</li>
+<li><strong>Upgrades overlay packages</strong> - Updates all user packages to match new base versions</li>
+<li><strong>Uses cached packages</strong> - Prefers locally cached .ipk files for offline operation</li>
+</ol>
+<h3 id="checking-reconciliation-status">Checking Reconciliation Status<a class="headerlink" href="#checking-reconciliation-status" title="Permanent link">&para;</a></h3>
+<p>After an update, check the systemd journal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>calculinux-update-postreboot.service
+</code></pre></div>
+<p>Look for messages like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cup-hook: pruned writable status against new image
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cup-hook: queued 3 packages for reinstall
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>cup-hook: queued 5 packages for upgrade
+</code></pre></div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="update-channels">Update Channels<a class="headerlink" href="#update-channels" title="Permanent link">&para;</a></h3>
+<p>Edit <code>/etc/calculinux-update.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[[channels]]</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Release&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/update/walnascar/release&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">[[channels]]</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Continuous&quot;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/update/walnascar/continuous&quot;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">[[channels]]</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Builds&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/update/walnascar/pr&quot;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="n">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</code></pre></div>
+<p>Set <code>enable = true</code> to show a channel in <code>cup list</code>.</p>
+<h3 id="skipping-prefetch">Skipping Prefetch<a class="headerlink" href="#skipping-prefetch" title="Permanent link">&para;</a></h3>
+<p>On development machines without opkg configured, skip prefetch:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--no-prefetch
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Without prefetch, post-reboot reconciliation requires network access.</p>
+</div>
+<h2 id="update-process-flow">Update Process Flow<a class="headerlink" href="#update-process-flow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>graph TD
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    A[cup install] --&gt; B[Select Bundle]
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    B --&gt; C[Prefetch Packages]
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    C --&gt; D[Download Bundle]
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    D --&gt; E[Confirm Install]
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    E --&gt; F[RAUC Install]
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    F --&gt; G[cup-hook: Prepare Reconciliation]
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    G --&gt; H[System Reboots]
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    H --&gt; I[Boot New Slot]
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    I --&gt; J[cup-postreboot: Reconcile Packages]
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    J --&gt; K[Update Complete]
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="update-fails-to-install">Update Fails to Install<a class="headerlink" href="#update-fails-to-install" title="Permanent link">&para;</a></h3>
+<p>Check RAUC status:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rauc<span class="w"> </span>status
+</code></pre></div>
+<p>View detailed logs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>rauc<span class="w"> </span>-e
+</code></pre></div>
+<h3 id="packages-not-reconciling-after-reboot">Packages Not Reconciling After Reboot<a class="headerlink" href="#packages-not-reconciling-after-reboot" title="Permanent link">&para;</a></h3>
+<p>Check the post-reboot service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>calculinux-update-postreboot.service
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>calculinux-update-postreboot.service<span class="w"> </span>-e
+</code></pre></div>
+<p>Pending operations are stored in:</p>
+<ul>
+<li><code>/var/lib/opkg/opkg-status-hook.pending-reinstalls</code></li>
+<li><code>/var/lib/opkg/opkg-status-hook.pending-upgrades</code></li>
+</ul>
+<h3 id="prefetch-fails">Prefetch Fails<a class="headerlink" href="#prefetch-fails" title="Permanent link">&para;</a></h3>
+<p>This usually means opkg isn't configured. You can:</p>
+<ol>
+<li>Skip prefetch: <code>sudo cup install --no-prefetch</code></li>
+<li>Ensure network access is available after reboot</li>
+<li>Check opkg configuration: <code>cat /etc/opkg/opkg.conf</code></li>
+</ol>
+<h3 id="rolling-back-an-update">Rolling Back an Update<a class="headerlink" href="#rolling-back-an-update" title="Permanent link">&para;</a></h3>
+<p>RAUC maintains the previous slot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Mark current slot as bad and reboot to previous</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>rauc<span class="w"> </span>status<span class="w"> </span>mark-bad<span class="w"> </span>booted
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>reboot
+</code></pre></div>
+<p>Or select the other slot in your bootloader (if supported).</p>
+<h3 id="dry-run">Dry Run<a class="headerlink" href="#dry-run" title="Permanent link">&para;</a></h3>
+<p>Test the update process without actually installing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cup<span class="w"> </span>install<span class="w"> </span>--dry-run
+</code></pre></div>
+<p>This downloads and prepares but doesn't invoke RAUC.</p>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="before-updating">Before Updating<a class="headerlink" href="#before-updating" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check free space</strong>: Ensure <code>/var/cache</code> has room for downloads</li>
+<li><strong>Backup critical data</strong>: Though updates are safe, backups are always good</li>
+<li><strong>Note your packages</strong>: <code>opkg list-installed &gt; my-packages.txt</code></li>
+</ol>
+<h3 id="after-updating">After Updating<a class="headerlink" href="#after-updating" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check reconciliation</strong>: <code>journalctl -u calculinux-update-postreboot.service</code></li>
+<li><strong>Test your applications</strong>: Ensure everything still works</li>
+<li><strong>Keep previous slot</strong>: Don't mark it bad until you're confident</li>
+</ol>
+<h3 id="for-development-machines">For Development Machines<a class="headerlink" href="#for-development-machines" title="Permanent link">&para;</a></h3>
+<p>Use <code>--no-prefetch</code> and ensure network access:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--no-prefetch
+</code></pre></div>
+<h2 id="advanced-usage">Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h2>
+<h3 id="testing-pr-builds">Testing PR Builds<a class="headerlink" href="#testing-pr-builds" title="Permanent link">&para;</a></h3>
+<p>Enable the Builds channel and install PR bundles:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Edit /etc/calculinux-update.toml, set Builds enable = true</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>cup<span class="w"> </span>list<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Builds&quot;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Builds&quot;</span><span class="w"> </span>--bundle<span class="w"> </span>calculinux-pr123.raucb
+</code></pre></div>
+<h3 id="automated-updates">Automated Updates<a class="headerlink" href="#automated-updates" title="Permanent link">&para;</a></h3>
+<p>For kiosk or embedded deployments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># Update to latest release automatically</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nv">BUNDLE</span><span class="o">=</span><span class="k">$(</span>cup<span class="w"> </span>list<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Release&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BUNDLE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Release&quot;</span><span class="w"> </span>--bundle<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BUNDLE</span><span class="s2">&quot;</span><span class="w"> </span>--yes
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">fi</span>
+</code></pre></div>
+<h3 id="custom-mirrors">Custom Mirrors<a class="headerlink" href="#custom-mirrors" title="Permanent link">&para;</a></h3>
+<p>Set <code>mirror_base_url</code> in <code>/etc/calculinux-update.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">mirror_base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://my-mirror.example.com&quot;</span>
+</code></pre></div>
+<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../package-management/">Package Management</a> - Installing and managing packages with opkg</li>
+<li><a href="../configuration/">Configuration</a> - System configuration files</li>
+<li><a href="../../troubleshooting/boot-problems/">Boot Problems</a> - Recovering from boot issues</li>
+<li><a href="https://rauc.readthedocs.io/">RAUC Documentation</a> - Upstream RAUC docs</li>
 </ul>
 <hr />
-<p><em>Content planned for future release</em></p>
+<p><em>For developers working on the update system, see <a href="../../developer/calculinux-update/">Developer Guide: Calculinux Update</a></em></p>
 
 
 
@@ -1650,7 +2931,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 21:01:36 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 20, 2025 22:10:34 UTC">November 20, 2025</span>
   </span>
 
     
