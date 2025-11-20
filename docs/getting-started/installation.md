@@ -52,10 +52,10 @@ After downloading, verify the image integrity:
 
 ```bash
 # On Linux/macOS
-sha256sum calculinux-*.img.xz
+sha256sum calculinux-*.wic.gz
 
 # On Windows (PowerShell)
-Get-FileHash calculinux-*.img.xz -Algorithm SHA256
+Get-FileHash calculinux-*.wic.gz -Algorithm SHA256
 ```
 
 Compare with the SHA256 hash on the release page.
@@ -66,10 +66,10 @@ If the image is compressed (`.xz`, `.gz`, `.zip`):
 
 ```bash
 # Linux/macOS with xz
-unxz calculinux-*.img.xz
+unxz calculinux-*.wic.gz
 
 # Or using 7-Zip on any platform
-7z x calculinux-*.img.xz
+7z x calculinux-*.wic.gz
 ```
 
 ## Step 2: Flash SD Card
@@ -102,7 +102,7 @@ lsblk
 sudo umount /dev/sdX*
 
 # 3. Flash the image
-sudo dd if=calculinux-*.img of=/dev/sdX bs=4M status=progress conv=fsync
+sudo dd if=calculinux-*.wic of=/dev/sdX bs=4M status=progress conv=fsync
 
 # 4. Sync to ensure all data is written
 sync
@@ -338,7 +338,7 @@ Protect your work:
 sudo dd if=/dev/sdX of=calculinux-backup.img bs=4M status=progress
 
 # Compress to save space
-gzip calculinux-backup.img
+gzip calculinux-backup.wic
 ```
 
 ### Filesystem Backup
