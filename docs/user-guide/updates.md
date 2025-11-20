@@ -26,11 +26,7 @@ Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update
 
 ### The Calculinux Update Tool (`cup`)
 
-The `calculinux-update` package provides three commands:
-
-- **`cup`** - Browse, download, and install RAUC updates
-- **`cup-hook`** - RAUC hook for package reconciliation
-- **`cup-postreboot`** - Post-reboot package reconciliation service
+The `calculinux-update` package provides the `cup` command for managing system updates. Two additional internal commands (`cup-hook` and `cup-postreboot`) are automatically invoked by the system during the update process—you typically won't need to run these manually.
 
 ## Installing Updates
 
