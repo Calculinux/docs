@@ -243,7 +243,7 @@ This usually means opkg isn't configured, though it should be configured out of 
 
 ### Rolling Back an Update
 
-RAUC maintains the previous slot:
+RAUC maintains the previous slot as a fallback:
 
 ```bash
 # Mark current slot as bad and reboot to previous
@@ -253,7 +253,18 @@ sudo reboot
 
 Or select the other slot in your bootloader (if supported).
 
-**Note that you may need to re-install some packages in this case.**
+!!! warning "Package State After Rollback"
+    After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:
+    
+    ```bash
+    # Before updating, save your package list
+    opkg list-installed > ~/my-packages.txt
+    
+    # After rollback, reinstall if needed
+    cat ~/my-packages.txt | awk '{print $1}' | xargs opkg install
+    ```
+    
+    Future versions will include automatic rollback detection and reconciliation.
 
 ### Dry Run
 
