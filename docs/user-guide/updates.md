@@ -11,16 +11,16 @@ Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update
 ```
 ┌─────────────────────────────────────────┐
 │  Read-Only Base Image (RAUC Slot)       │
-│  ├─ Kernel                               │
+│  ├─ Kernel                              │
 │  ├─ Base System Packages                │
-│  └─ /var/lib/opkg/status.image         │
+│  └─ /var/lib/opkg/status.image          │
 └─────────────────────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
 │  Writable Overlay                        │
 │  ├─ User-Installed Packages              │
 │  ├─ Configuration Files                  │
-│  └─ /var/lib/opkg/status                │
+│  └─ /var/lib/opkg/status                 │
 └─────────────────────────────────────────┘
 ```
 
