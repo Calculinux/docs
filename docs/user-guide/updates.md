@@ -8,20 +8,24 @@ Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update
 
 ### Update Architecture
 
-```
-┌─────────────────────────────────────────┐
-│  Read-Only Base Image (RAUC Slot)       │
-│  ├─ Kernel                              │
-│  ├─ Base System Packages                │
-│  └─ /var/lib/opkg/status.image          │
-└─────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────┐
-│  Writable Overlay                       │
-│  ├─ User-Installed Packages             │
-│  ├─ Configuration Files                 │
-│  └─ /var/lib/opkg/status                │
-└─────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph base["Read-Only Base Image (RAUC Slot)"]
+        kernel[Kernel]
+        basepkgs[Base System Packages]
+        statusimage[/var/lib/opkg/status.image]
+    end
+    
+    subgraph overlay["Writable Overlay"]
+        userpkgs[User-Installed Packages]
+        config[Configuration Files]
+        status[/var/lib/opkg/status]
+    end
+    
+    base -.-> overlay
+    
+    style base fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
+    style overlay fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
 
 ### The Calculinux Update Tool (`cup`)

@@ -6,28 +6,33 @@ Developer documentation for the `calculinux-update` package and OPKG reconciliat
 
 The Calculinux update system consists of three main components:
 
-```
-┌─────────────────────────────────────────────────────┐
-│  cup (CLI)                                          │
-│  ├─ Mirror browsing                                 │
-│  ├─ Bundle download                                 │
-│  ├─ Package prefetch                                │
-│  └─ RAUC installation                               │
-└─────────────────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────────────────┐
-│  cup-hook (RAUC Integration)                        │
-│  ├─ slot-post-install hook                          │
-│  ├─ Status file reconciliation                      │
-│  └─ Pending operation queueing                      │
-└─────────────────────────────────────────────────────┘
-              ↓ (reboot)
-┌─────────────────────────────────────────────────────┐
-│  cup-postreboot (Systemd Service)                   │
-│  ├─ opkg update                                     │
-│  ├─ Package reinstall                               │
-│  └─ Package upgrade                                 │
-└─────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph CLI["cup (CLI)"]
+        mirror[Mirror browsing]
+        download[Bundle download]
+        prefetch[Package prefetch]
+        install[RAUC installation]
+    end
+    
+    subgraph Hook["cup-hook (RAUC Integration)"]
+        slothook[slot-post-install hook]
+        reconcile[Status file reconciliation]
+        queue[Pending operation queueing]
+    end
+    
+    subgraph Postreboot["cup-postreboot (Systemd Service)"]
+        update[opkg update]
+        reinstall[Package reinstall]
+        upgrade[Package upgrade]
+    end
+    
+    CLI --> Hook
+    Hook -->|reboot| Postreboot
+    
+    style CLI fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style Hook fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style Postreboot fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
 ```
 
 ## Module Structure
