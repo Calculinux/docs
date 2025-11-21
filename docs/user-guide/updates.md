@@ -337,7 +337,7 @@ Enable the Builds channel and install PR bundles:
 ```bash
 # Edit /etc/calculinux-update.toml, set Builds enable = true
 cup list --channel "Builds"
-sudo cup install --channel "Builds" --bundle calculinux-pr123.raucb
+sudo cup install --channel "Builds" --bundle luckfox-lyra-pr123.raucb
 ```
 
 ### Automated Updates
