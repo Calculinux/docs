@@ -43,8 +43,11 @@ This will:
 1. List available channels (if you have multiple enabled)
 2. Show available bundles sorted by date (newest first)
 3. Let you select which bundle to install
-4. Prefetch packages that will be reinstalled after reboot
-5. Prompt for confirmation before installing
+4. Extract bundle metadata (OPKG configuration and package list)
+5. Prefetch packages that will be reinstalled after reboot
+6. Prompt for confirmation before installing
+
+Each RAUC bundle includes metadata about the new system's package configuration, allowing the update tool to prepare everything needed for a smooth transition.
 
 ### Update Specific Channel
 
@@ -115,8 +118,11 @@ The update process automatically handles these issues:
 
 When you run `sudo cup install`, the system:
 
-1. **Prefetches packages** - Downloads packages that will need reinstallation
+1. **Extracts bundle metadata** - Gets OPKG configuration and package information from the bundle
 2. **Plans reconciliation** - Identifies duplicates, missing packages, and upgrades needed
+3. **Prefetches packages** - Downloads packages that will need reinstallation using the new system's package repositories
+
+This metadata-driven approach allows the update to prepare everything needed before installation, enabling offline reconciliation even if network isn't available after reboot.
 
 #### During RAUC Installation (via `cup-hook`)
 
@@ -178,29 +184,31 @@ Set `enable = true` to show a channel in `cup list`.
 
 ### Skipping Prefetch
 
-In some cases you might want to skip prefetch:
+In some cases you might want to skip prefetch (though metadata extraction still occurs):
 
 ```bash
 sudo cup install --no-prefetch
 ```
 
 !!! warning
-    Without prefetch, post-reboot reconciliation requires network access.
+    Without prefetch, post-reboot reconciliation requires network access. The bundle metadata will still be validated to ensure compatibility.
 
 ## Update Process Flow
 
 ```mermaid
 graph TD
     A[cup install] --> B[Select Bundle]
-    B --> C[Prefetch Packages]
-    C --> D[Download Bundle]
-    D --> E[Confirm Install]
-    E --> F[RAUC Install]
-    F --> G[cup-hook: Prepare Reconciliation]
-    G --> H[System Reboots]
-    H --> I[Boot New Slot]
-    I --> J[cup-postreboot: Reconcile Packages]
-    J --> K[Update Complete]
+    B --> C[Extract Bundle Metadata]
+    C --> D[Plan Reconciliation]
+    D --> E[Prefetch Packages]
+    E --> F[Download Bundle]
+    F --> G[Confirm Install]
+    G --> H[RAUC Install]
+    H --> I[cup-hook: Prepare Reconciliation]
+    I --> J[System Reboots]
+    J --> K[Boot New Slot]
+    K --> L[cup-postreboot: Reconcile Packages]
+    L --> M[Update Complete]
 ```
 
 ## Troubleshooting
@@ -235,11 +243,29 @@ Pending operations are stored in:
 
 ### Prefetch Fails
 
-This usually means opkg isn't configured, though it should be configured out of the box. You can:
+If bundle metadata extraction or prefetch fails, you have several options:
 
-1. Skip prefetch: `sudo cup install --no-prefetch`
-2. Ensure network access is available after reboot
-3. Check opkg configuration: `cat /etc/opkg/opkg.conf`
+**Check if bundle is corrupted:**
+
+```bash
+# Download again if needed
+cup download --bundle <bundle-name>
+```
+
+**Skip prefetch (requires network after reboot):**
+
+```bash
+sudo cup install --no-prefetch
+```
+
+**Verify OPKG configuration:**
+
+```bash
+cat /etc/opkg/opkg.conf
+opkg update
+```
+
+Prefetch failures are usually harmless - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails completely, the bundle may be corrupted and should be re-downloaded.
 
 ### Rolling Back an Update
 

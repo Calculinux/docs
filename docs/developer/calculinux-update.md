@@ -38,13 +38,141 @@ src/calculinux_update/
 ├── config.py           # Configuration file parsing
 ├── mirror.py           # Mirror browsing and bundle listing
 ├── installer.py        # RAUC installation and coordination
+├── bundle.py           # Bundle extras extraction
 ├── prefetch.py         # Package prefetch before update
 ├── hooks.py            # RAUC hook and post-reboot entry points
 └── opkg/
     ├── status.py       # OPKG status file parser
-    ├── reconcile.py    # Reconciliation algorithm
-    └── bundle.py       # Bundle metadata parsing
+    └── reconcile.py    # Reconciliation algorithm
 ```
+
+## Bundle Extras
+
+### Overview
+
+RAUC bundles can include additional files beyond the root filesystem image. Calculinux bundles include a `bundle-extras.tar.gz` file containing OPKG configuration and package status information from the new image. This enables the prefetch system to work correctly.
+
+### Bundle Structure
+
+```
+bundle.raucb (squashfs)
+├── manifest.raucb      # RAUC manifest
+├── rootfs.img          # Root filesystem image
+└── bundle-extras.tar.gz
+    └── extras/
+        └── opkg/
+            ├── etc/
+            │   └── opkg/
+            │       ├── opkg.conf
+            │       └── *.conf
+            └── status.image
+```
+
+### Extraction Process
+
+**Module**: `bundle.py`
+
+The `extract_bundle_extras()` function performs a two-stage extraction:
+
+1. **Extract tarball from bundle** - Uses `unsquashfs` to extract `bundle-extras.tar.gz` from the squashfs bundle
+2. **Extract tarball contents** - Uses Python's `tarfile` module to extract the `extras/` directory structure
+
+```python
+def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
+    """Extract Calculinux-specific extras from a RAUC bundle.
+    
+    Returns None when extras are missing. The caller is responsible for calling
+    ``cleanup`` on the returned BundleExtras once finished with the temporary
+    directory.
+    """
+    # Stage 1: Extract tarball from bundle
+    subprocess.run([
+        "unsquashfs", "-f", "-d", str(temp_dir),
+        str(bundle_path), "bundle-extras.tar.gz"
+    ])
+    
+    # Stage 2: Extract tarball contents
+    with tarfile.open(tarball_path, "r:gz") as tar:
+        tar.extractall(path=temp_dir, filter="data")
+    
+    # Validate and return
+    if not (temp_dir / "extras/opkg/status.image").exists():
+        return None
+    
+    return BundleExtras(root=temp_dir, opkg_root=temp_dir / "extras/opkg", ...)
+```
+
+**Security**: The extraction uses `filter="data"` (Python 3.13+) to prevent path traversal attacks.
+
+### Bundle Extras Creation
+
+**Yocto Recipe**: `meta-calculinux-distro/recipes-core/image/calculinux-image.bb`
+
+The `calculinux_export_bundle_extras()` function runs during `do_rootfs`:
+
+```bash
+calculinux_export_bundle_extras() {
+    extras_dir="${DEPLOY_DIR_IMAGE}/bundle-extras/extras/opkg"
+    
+    # Export OPKG configuration
+    if [ -d "${IMAGE_ROOTFS}/etc/opkg" ]; then
+        install -d "${extras_dir}/etc"
+        cp -r "${IMAGE_ROOTFS}/etc/opkg" "${extras_dir}/etc/"
+    fi
+    
+    # Export image status file
+    if [ -f "${IMAGE_ROOTFS}/var/lib/opkg/status.image" ]; then
+        install -d "${extras_dir}"
+        install -m 0644 "${IMAGE_ROOTFS}/var/lib/opkg/status.image" \
+            "${extras_dir}/status.image"
+    fi
+    
+    # Create tarball only if we have data
+    if [ "$has_data" = "1" ]; then
+        tar -czf "${DEPLOY_DIR_IMAGE}/bundle-extras.tar.gz" \
+            -C "${DEPLOY_DIR_IMAGE}/bundle-extras" extras
+    fi
+}
+```
+
+**Bundle Recipe**: `meta-calculinux-distro/recipes-core/bundles/calculinux-bundle.bb`
+
+```bitbake
+inherit bundle
+
+RAUC_BUNDLE_EXTRA_FILES += "bundle-extras.tar.gz"
+```
+
+The `bundle` class automatically includes files listed in `RAUC_BUNDLE_EXTRA_FILES` from `DEPLOY_DIR_IMAGE`.
+
+### Why Bundle Extras?
+
+Without bundle extras, the prefetch system would need to:
+
+1. Mount the inactive slot after RAUC installation
+2. Access the filesystem to read OPKG configuration
+3. Deal with potential mounting failures or filesystem issues
+
+With bundle extras:
+
+✅ Self-contained: Bundle includes all necessary metadata  
+✅ No mounting required: Extracts directly from the bundle file  
+✅ Offline-friendly: Works even if slots can't be mounted  
+✅ Faster: No need to wait for RAUC to finish installation  
+
+### Error Handling
+
+If bundle extras are missing or corrupted:
+
+```python
+extras = extract_bundle_extras(bundle_path)
+if not extras:
+    # Graceful degradation - skip prefetch
+    console.print("[yellow]Bundle extras missing, skipping prefetch[/]")
+    # Installation continues normally
+```
+
+The update installation continues without prefetch, but post-reboot reconciliation will require network access.
 
 ## OPKG Reconciliation System
 
@@ -67,40 +195,42 @@ The reconciliation system solves this in three phases:
 
 #### Phase 1: Prefetch (Before Update)
 
-**Module**: `prefetch.py`
+**Module**: `prefetch.py`, `bundle.py`
 
 ```python
 def prefetch_for_bundle(
     bundle_path: str,
-    channel: ChannelConfig,
-    config: AppConfig
-) -> bool:
+    bundle_sha256: str,
+    console: Optional[Console] = None
+) -> PrefetchResult:
     """Pre-download packages needed for reconciliation."""
 ```
 
 **Process**:
 
-1. Mount the bundle's inactive slot read-only
-2. Create a temporary offline opkg root
-3. Compute reconciliation plan against new slot's status
-4. Download all packages marked for reinstall/upgrade
-5. Cache packages in `/var/cache/calculinux-update/opkg-cache/`
+1. Extract bundle extras from the RAUC bundle
+2. Load OPKG configuration and status.image from extras
+3. Compute reconciliation plan against current writable status
+4. Download all packages marked for reinstall using bundle's OPKG config
+5. Cache packages in `/var/cache/calculinux-update/prefetch/`
 
 **Key Implementation**:
 
 ```python
-class OpkgDownloader:
-    """Manages offline opkg configuration for download-only operations."""
-    
-    def download_packages(self, packages: List[str]) -> bool:
-        """Downloads packages without installing."""
-        # Creates temporary opkg root
-        # Patches opkg.conf to redirect paths
-        # Runs opkg download for each package
+# Extract bundle extras
+extras = extract_bundle_extras(bundle_path)
+if not extras:
+    return PrefetchResult(skipped=True, reason="bundle extras missing")
+
+# Use extras to configure opkg downloader
+downloader = OpkgDownloader(extras.opkg_root)
+downloaded = downloader.download(plan.reinstall, PREFETCH_CACHE_DIR)
 ```
 
 **Benefits**:
 
+- No need to mount inactive slot during prefetch
+- Self-contained: All metadata in the bundle
 - Offline reconciliation capability
 - Faster post-reboot (packages already cached)
 - Handles network unavailability during reboot
