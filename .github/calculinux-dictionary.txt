@@ -142,3 +142,14 @@ CONTRIBUTING
 DOCUMENTATION
 mkdocs
 markdown
+
+# Newly added terms (Rust packaging examples)
+newsboat
+glkcli
+cargo-update-recipe-crates
+AUTOREV
+BPN
+kas-base.yaml
+kas-luckfox-lyra-bundle.yaml
+Layerindex
+layerindex

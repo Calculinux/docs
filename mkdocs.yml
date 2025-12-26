@@ -102,6 +102,10 @@ nav:
     - Building Calculinux: developer/building.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
+    - Adding Packages:
+      - Overview: developer/adding-packages.md
+      - Rust Utility Example: developer/adding-packages/rust-example.md
+      - Newsboat Example: developer/adding-packages/newsboat.md
   
   - Troubleshooting:
     - Common Issues: troubleshooting/common-issues.md
