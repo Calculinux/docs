@@ -26,31 +26,15 @@ jobs:
           files: |
             docs/**/*.md
 
-      - name: Setup Node.js
+      - name: Markdownlint (reviewdog)
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: actions/setup-node@v3
+        uses: reviewdog/action-markdownlint@v2
         with:
-          node-version: '18'
-
-      - name: Install markdownlint-cli2 and cspell
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: npm install -g markdownlint-cli2 cspell
-
-      - name: Run markdownlint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        id: markdownlint
-        continue-on-error: true
-        run: |
-          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/markdownlint-output.txt 2>&1 || true
-          OUTPUT=$(cat /tmp/markdownlint-output.txt)
-          echo "$OUTPUT"
-          echo "output<<EOF" >> $GITHUB_OUTPUT
-          echo "$OUTPUT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          # Exit with non-zero if issues found
-          if [ -s /tmp/markdownlint-output.txt ]; then
-            exit 1
-          fi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          filter_mode: added
+          fail_on_error: true
+          markdownlint_flags: ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Setup Python for Vale
         if: steps.changed-files.outputs.any_changed == 'true'
@@ -58,82 +42,24 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Vale
+      - name: Vale (reviewdog)
         if: steps.changed-files.outputs.any_changed == 'true'
-        run: |
-          pip install vale
-
-      - name: Run Vale grammar check
-        if: steps.changed-files.outputs.any_changed == 'true'
-        id: vale
-        continue-on-error: true
-        run: |
-          vale ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/vale-output.txt 2>&1 || true
-          OUTPUT=$(cat /tmp/vale-output.txt)
-          echo "$OUTPUT"
-          echo "output<<EOF" >> $GITHUB_OUTPUT
-          echo "$OUTPUT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          # Exit with non-zero if output contains alerts (errors or warnings)
-          if grep -qE "\[.*(error|warning).*\]|with [0-9]+ errors" /tmp/vale-output.txt; then
-            exit 1
-          fi
-
-      - name: Run cspell spell check
-        if: steps.changed-files.outputs.any_changed == 'true'
-        id: cspell
-        continue-on-error: true
-        run: |
-          cspell --config ./cspell.json ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/cspell-output.txt 2>&1 || true
-          OUTPUT=$(cat /tmp/cspell-output.txt)
-          echo "$OUTPUT"
-          echo "output<<EOF" >> $GITHUB_OUTPUT
-          echo "$OUTPUT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          # Exit with non-zero if issues found
-          if grep -q "Unknown word\|Files checked.*Issues found" /tmp/cspell-output.txt; then
-            exit 1
-          fi
-
-      - name: Comment on PR with issues
-        if: steps.changed-files.outputs.any_changed == 'true' && (steps.markdownlint.outcome == 'failure' || steps.vale.outcome == 'failure' || steps.cspell.outcome == 'failure')
-        uses: actions/github-script@v7
+        uses: reviewdog/action-vale@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const markdownlintOutput = process.env.MARKDOWNLINT_OUTPUT || '';
-            const valeOutput = process.env.VALE_OUTPUT || '';
-            const cspellOutput = process.env.CSPELL_OUTPUT || '';
-            
-            let body = '## 📝 Grammar & Syntax Check Results\n\n';
-            
-            if (markdownlintOutput && markdownlintOutput.trim() !== '') {
-              body += '### Markdown Syntax Issues\n\n```\n' + markdownlintOutput + '\n```\n\n';
-            }
-            
-            if (valeOutput && valeOutput.trim() !== '') {
-              body += '### Grammar & Prose Issues\n\n```\n' + valeOutput + '\n```\n\n';
-            }
-            
-            if (cspellOutput && cspellOutput.trim() !== '') {
-              body += '### Spelling Issues\n\n```\n' + cspellOutput + '\n```\n\n';
-            }
-            
-            body += '---\n*Please review and address the issues above or close this conversation if you disagree with the findings.*';
-            
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: body
-            });
-        env:
-          MARKDOWNLINT_OUTPUT: ${{ steps.markdownlint.outputs.output }}
-          VALE_OUTPUT: ${{ steps.vale.outputs.output }}
-          CSPELL_OUTPUT: ${{ steps.cspell.outputs.output }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          filter_mode: added
+          fail_on_error: true
+          vale_flags: --config .vale.ini ${{ steps.changed-files.outputs.all_changed_files }}
 
-      - name: Fail workflow if issues found
-        if: steps.changed-files.outputs.any_changed == 'true' && (steps.markdownlint.outcome == 'failure' || steps.vale.outcome == 'failure' || steps.cspell.outcome == 'failure')
-        run: |
-          echo "Grammar, syntax, and/or spelling issues found. Please review the PR comments."
-          exit 1
+      - name: cspell (reviewdog)
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: reviewdog/action-cspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          filter_mode: added
+          fail_on_error: true
+          cspell_flags: --config ./cspell.json ${{ steps.changed-files.outputs.all_changed_files }}
+
+      # reviewdog actions will fail the job when issues are found (fail_on_error: true)
