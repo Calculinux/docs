@@ -41,11 +41,16 @@ jobs:
         id: markdownlint
         continue-on-error: true
         run: |
-          OUTPUT=$(markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 || true)
+          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/markdownlint-output.txt 2>&1 || true
+          OUTPUT=$(cat /tmp/markdownlint-output.txt)
           echo "$OUTPUT"
           echo "output<<EOF" >> $GITHUB_OUTPUT
           echo "$OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+          # Exit with non-zero if issues found
+          if [ -s /tmp/markdownlint-output.txt ]; then
+            exit 1
+          fi
 
       - name: Setup Python for Vale
         if: steps.changed-files.outputs.any_changed == 'true'
@@ -63,11 +68,16 @@ jobs:
         id: vale
         continue-on-error: true
         run: |
-          OUTPUT=$(vale ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 || true)
+          vale ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/vale-output.txt 2>&1 || true
+          OUTPUT=$(cat /tmp/vale-output.txt)
           echo "$OUTPUT"
           echo "output<<EOF" >> $GITHUB_OUTPUT
           echo "$OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+          # Exit with non-zero if output contains alerts (errors or warnings)
+          if grep -qE "\[.*(error|warning).*\]|with [0-9]+ errors" /tmp/vale-output.txt; then
+            exit 1
+          fi
 
       - name: Run cspell spell check
         if: steps.changed-files.outputs.any_changed == 'true'
