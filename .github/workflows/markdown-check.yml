@@ -127,10 +127,10 @@ jobs:
               repo: context.repo.repo,
               body: body
             });
-          env:
-            MARKDOWNLINT_OUTPUT: ${{ steps.markdownlint.outputs.output }}
-            VALE_OUTPUT: ${{ steps.vale.outputs.output }}
-            CSPELL_OUTPUT: ${{ steps.cspell.outputs.output }}
+        env:
+          MARKDOWNLINT_OUTPUT: ${{ steps.markdownlint.outputs.output }}
+          VALE_OUTPUT: ${{ steps.vale.outputs.output }}
+          CSPELL_OUTPUT: ${{ steps.cspell.outputs.output }}
 
       - name: Fail workflow if issues found
         if: steps.changed-files.outputs.any_changed == 'true' && (steps.markdownlint.outcome == 'failure' || steps.vale.outcome == 'failure' || steps.cspell.outcome == 'failure')
