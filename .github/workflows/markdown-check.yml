@@ -74,11 +74,16 @@ jobs:
         id: cspell
         continue-on-error: true
         run: |
-          OUTPUT=$(cspell --config ./cspell.json ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 || true)
+          cspell --config ./cspell.json ${{ steps.changed-files.outputs.all_changed_files }} > /tmp/cspell-output.txt 2>&1 || true
+          OUTPUT=$(cat /tmp/cspell-output.txt)
           echo "$OUTPUT"
           echo "output<<EOF" >> $GITHUB_OUTPUT
           echo "$OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+          # Exit with non-zero if issues found
+          if grep -q "Unknown word\|Files checked.*Issues found" /tmp/cspell-output.txt; then
+            exit 1
+          fi
 
       - name: Comment on PR with issues
         if: steps.changed-files.outputs.any_changed == 'true' && (steps.markdownlint.outcome == 'failure' || steps.vale.outcome == 'failure' || steps.cspell.outcome == 'failure')

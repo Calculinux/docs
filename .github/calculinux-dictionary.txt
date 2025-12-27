@@ -153,3 +153,20 @@ kas-base.yaml
 kas-luckfox-lyra-bundle.yaml
 Layerindex
 layerindex
+
+# BitBake/Yocto recipe variables and functions
+SRCREV
+LIC_FILES_CHKSUM
+RDEPENDS
+DEPENDS
+bindir
+bbfatal
+externalsrc
+Walnascar
+
+# Technical terms and jargon
+valac
+transpiles
+autotools
+mmcblk
+println
