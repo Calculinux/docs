@@ -101,9 +101,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const markdownlintOutput = JSON.parse(process.env.MARKDOWNLINT_OUTPUT || '""');
-            const valeOutput = JSON.parse(process.env.VALE_OUTPUT || '""');
-            const cspellOutput = JSON.parse(process.env.CSPELL_OUTPUT || '""');
+            const markdownlintOutput = process.env.MARKDOWNLINT_OUTPUT || '';
+            const valeOutput = process.env.VALE_OUTPUT || '';
+            const cspellOutput = process.env.CSPELL_OUTPUT || '';
             
             let body = '## 📝 Grammar & Syntax Check Results\n\n';
             
