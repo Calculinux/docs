@@ -1,4 +1,4 @@
-# Licensing Workflow
+# Licensing workflow
 
 BitBake enforces license checksums. Use this workflow to add them correctly:
 
@@ -12,7 +12,7 @@ BitBake enforces license checksums. Use this workflow to add them correctly:
 2. Trigger a build to get BitBake's suggested checksum:
 
    ```bash
-   bitbake <recipe-name>
+   bitbake <recipe_name>
    ```
 
    BitBake will fail and print the exact `LIC_FILES_CHKSUM` value to use.

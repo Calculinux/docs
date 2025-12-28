@@ -1,4 +1,4 @@
-# Install via SD Card (IPK Package)
+# Install via SD card (IPK package)
 
 You can test the package without rebuilding an image by copying the
 generated IPK to an SD card and installing it on the device.
@@ -13,7 +13,7 @@ generated IPK to an SD card and installing it on the device.
    find "$BUILDDIR/tmp/deploy/ipk" -type f -name 'hello-calculinux_*.ipk'
    ```
 
-   The IPK is typically under a path like:
+   The IPK is typically under a path such as:
    `$BUILDDIR/tmp/deploy/ipk/<arch>/hello-calculinux_<version>-r<rev>_<arch>.ipk`.
 
 2. Copy the IPK to an SD card on your host (PicoCalc slot SD works fine):

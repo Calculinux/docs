@@ -29,11 +29,7 @@ LICENSE = "MIT"  # or the license used by the project
 LIC_FILES_CHKSUM = "file://LICENSE;md5=<value from bitbake error>"
 ```
 
-#### Licensing workflow
-
-<!-- vale off -->
 --8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
-<!-- vale on -->
 
 ## Rust-specific lines
 
@@ -52,9 +48,7 @@ bitbake -c update_crates newsboat
 
 This auto-generates `newsboat-crates.inc` listing all Rust dependencies.
 
-<!-- vale off -->
 --8<-- "developer/adding-packages/_snippets/dependencies.md"
-<!-- vale on -->
 
 ## Tips
 

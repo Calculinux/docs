@@ -1,18 +1,18 @@
 # Dependencies
 
-### Build vs Runtime Dependencies
+## Build or runtime dependencies?
 
 Put build-time deps in **DEPENDS**, runtime deps in **RDEPENDS:${PN}**.
 
-This ensures we only include what's needed. Sometimes build-time packages
-aren't necessary at runtime. For example, **valac** (the Vala compiler)
-transpiles Vala code into C which then gets compiled, so it's not needed
-on the destination system. Other tools like autotools fall into this
+This ensures we only include what is needed. Sometimes build-time packages
+are not necessary at runtime. For example, **valac** (the Vala compiler)
+transpiles Vala code into C which then gets compiled, so it is not needed
+on the destination system. Other tools such as autotools fall into this
 category as well.
 
-#### Finding Dependencies
+### Finding dependencies
 
-Check the project's README or build documentation for required libraries.
+Check the project's README or build DOCUMENTATION for required libraries.
 Common dependencies include:
 
 - `sqlite3`, `curl`, `libxml2`, `ncurses`, `openssl`
