@@ -20,11 +20,20 @@ jobs:
           fetch-depth: 0
 
       - name: Get changed files
+        id: changed-files-json
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            docs/**/*.md
+          json: true
+
+      - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v40
         with:
           files: |
             docs/**/*.md
+          json: false
 
       - name: Markdownlint
         if: steps.changed-files.outputs.any_changed == 'true'
@@ -38,5 +47,6 @@ jobs:
         uses: errata-ai/vale-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: docs
+          files: ${{ steps.changed-files-json.outputs.all_changed_files }}
+          reporter: github-pr-review
           vale_flags: '--config .vale.ini'
