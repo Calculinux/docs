@@ -1,0 +1,52 @@
+name: Markdown & Style Check
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - '.github/workflows/markdown-check.yml'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  markdown-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files (JSON)
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            docs/**/*.md
+
+      - name: Get changed files (comma-separated)
+        id: changed-files-comma
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            docs/**/*.md
+          separator: ","
+
+      - name: Markdownlint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: |
+            ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Vale
+        if: steps.changed-files-comma.outputs.any_changed == 'true'
+        uses: errata-ai/vale-action@v2.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: '${{ steps.changed-files-comma.outputs.all_changed_files }}'
+          separator: ','
+          reporter: github-pr-review
+          vale_flags: '--config .vale.ini'
