@@ -20,12 +20,11 @@ jobs:
           fetch-depth: 0
 
       - name: Get changed files (JSON)
-        id: changed-files-json
+        id: changed-files
         uses: tj-actions/changed-files@v40
         with:
           files: |
             docs/**/*.md
-          json: true
 
       - name: Get changed files (comma-separated)
         id: changed-files-comma
@@ -44,9 +43,10 @@ jobs:
 
       - name: Vale
         if: steps.changed-files-comma.outputs.any_changed == 'true'
-        uses: errata-ai/vale-action@v2
+        uses: errata-ai/vale-action@v2.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: '${{ steps.changed-files-comma.outputs.all_changed_files }}'
+          separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
