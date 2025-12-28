@@ -55,7 +55,7 @@ meta-hello-calculinux/
       hello-calculinux_0.1.0.bb
 ```
 
-You can fetch sources via `git` or retrieve them from a tar file. Git is
+You can fetch sources via `git` or retrieve them from a .tar file. Git is
 simplest during development, but if you are packaging an upstream project,
 your options are limited by how they ship.
 
@@ -113,7 +113,7 @@ Notes:
 
 --8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
 
-## 4) Add the Package to Your Image
+## 4) Add the package to your image
 
 Add the utility to your image with an `IMAGE_INSTALL` append. For example,
 in your distribution or image configuration or a bundle:
