@@ -30,6 +30,7 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: DavidAnson/markdownlint-cli2-action@v15
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           globs: |
             ${{ steps.changed-files.outputs.all_changed_files }}
 
@@ -37,9 +38,11 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: errata-ai/vale-action@v2
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             ${{ steps.changed-files.outputs.all_changed_files }}
           vale_flags: '--config .vale.ini'
+          comments: true
 
       - name: cspell
         if: steps.changed-files.outputs.any_changed == 'true'
