@@ -1,4 +1,4 @@
-# Example: Packaging a Simple Rust Utility
+# Example: Packaging a simple Rust Utility
 
 This guide walks through creating a small Rust command-line utility and
 packaging it into a Yocto recipe so it ships in Calculinux images.
@@ -10,7 +10,7 @@ packaging it into a Yocto recipe so it ships in Calculinux images.
   `meta-calculinux-extended` or in `meta-calculinux-apps` if you want
   to contribute back to us).
 
-## 1) Create the Rust Utility
+## 1) Create the Rust utility
 
 Make a minimal CLI called `hello-calculinux`:
 
@@ -44,7 +44,7 @@ git commit -m "Initial Rust utility"
 # If hosting, push to e.g., GitHub
 ```
 
-## 2) Add Sources to Your Layer
+## 2) Add sources to your layer
 
 Create a recipe folder in your custom layer (example paths):
 
@@ -55,11 +55,11 @@ meta-hello-calculinux/
       hello-calculinux_0.1.0.bb
 ```
 
-You can fetch sources via `git` or bundle them as a tarball. Git is
-simplest during development, but if you're packaging an upstream project,
-you're limited to how they ship.
+You can fetch sources via `git` or retrieve them from a tar file. Git is
+simplest during development, but if you are packaging an upstream project,
+your options are limited by how they ship.
 
-## 3) Write the Yocto Recipe
+## 3) Write the Yocto recipe
 
 Create `hello-calculinux_0.1.0.bb` with this content (include the
 license file path but omit the checksum initially; BitBake will prompt
@@ -109,13 +109,13 @@ Notes:
 - The `cargo` class handles Rust toolchain configuration for the target.
 - The `do_install()` step copies the compiled binary to `${bindir}`.
 
-### Licensing Workflow
+### Licensing workflow
 
 --8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
 
 ## 4) Add the Package to Your Image
 
-Add the utility to your image via an `IMAGE_INSTALL` append. For example,
+Add the utility to your image with an `IMAGE_INSTALL` append. For example,
 in your distribution or image configuration or a bundle:
 
 ```bitbake
@@ -124,7 +124,7 @@ IMAGE_INSTALL:append = " hello-calculinux"
 
 If you use a bundle (e.g., `calculinux-bundle.bb`), include it there.
 
-## 5) Build and Test
+## 5) Build and test
 
 Build the package and the image:
 
@@ -149,7 +149,7 @@ hello-calculinux
 
 - If Rust is not available, add `meta-rust` and ensure the Rust toolchain
   is enabled for your target.
-- If the binary isn't found during `do_install()`, check the
+- If the binary is not found during `do_install()`, check the
   `B/target/*/release/` path in the build logs and adjust the `find`
   command as needed.
 - For crates with dependencies, ensure `Cargo.lock` is present to avoid
@@ -157,8 +157,8 @@ hello-calculinux
 
 --8<-- "developer/adding-packages/_snippets/dependencies.md"
 
-## Next Steps
+## Next steps
 
 - Add CLI options with `clap` or `argparse` for richer utilities.
-- Package libraries and services (systemd units) with additional Yocto recipe sections.
+- Package libraries and services (systemd units) in recipe sections.
 - Create a `-dev` subpackage if you plan to expose headers or examples.
