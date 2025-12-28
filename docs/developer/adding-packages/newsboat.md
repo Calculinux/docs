@@ -3,22 +3,22 @@
 This guide covers packaging the existing Rust-based CLI application
 **Newsboat** using Yocto, following patterns that work well in practice.
 
-## Reference Example
+## Reference example
 
 Check **glkcli** in your layers for a working Rust recipe:
 
 - `meta-calculinux-apps/recipes-games/glkcli/glkcli_git.bb`
 
-## Key Recipe Fields
+## Key recipe fields
 
 Use these fields; omit the license checksum initially:
 
-- **SECTION**: Category like `"console/network"`, `"games"`, etc.
+- **SECTION**: Category such as `"console/network"`, `"games"`, and so on.
 - **SRC_URI**: `"git://github.com/owner/repo;protocol=https;branch=master"`
 - **SRCREV**: Git commit hash, or `${AUTOREV}` for latest
 - **S**: `${WORKDIR}/git` (where the source gets checked out)
 
-### Add License Checksum Later
+### Add license checksum later
 
 BitBake will fail the first build and print the exact
 `LIC_FILES_CHKSUM` to use. Include the license filename up front, then
@@ -29,11 +29,13 @@ LICENSE = "MIT"  # or the license used by the project
 LIC_FILES_CHKSUM = "file://LICENSE;md5=<value from bitbake error>"
 ```
 
-#### Licensing Workflow
+#### Licensing workflow
 
+<!-- vale off -->
 --8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
+<!-- vale on -->
 
-## Rust-Specific Lines
+## Rust-specific lines
 
 Include these in the recipe:
 
@@ -50,7 +52,9 @@ bitbake -c update_crates newsboat
 
 This auto-generates `newsboat-crates.inc` listing all Rust dependencies.
 
+<!-- vale off -->
 --8<-- "developer/adding-packages/_snippets/dependencies.md"
+<!-- vale on -->
 
 ## Tips
 
