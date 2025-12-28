@@ -1,0 +1,6 @@
+BitBake
+BSP
+crosstap
+OpenEmbedded
+sstate
+Yocto

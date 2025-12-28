@@ -65,6 +65,10 @@ VS Code
 (?i)Git
 SSH
 FTP
+Vala
+
+# Commands
+kas-container
 
 # Packages & Libraries
 Realtek
@@ -154,8 +158,8 @@ mkdocs
 markdown
 
 # Rust packaging examples
-newsboat
-glkcli
+[Nn]ewsboat
+[gG]lk[cC]li
 cargo-update-recipe-crates
 AUTOREV
 BPN
