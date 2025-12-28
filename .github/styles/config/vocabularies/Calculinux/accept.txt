@@ -1,0 +1,193 @@
+# Calculinux Project Vocabulary - Accepted Terms
+#
+# For more information on the vocabulary file format, see:
+# https://vale.sh/docs/keys/vocab#file-format
+#
+# This file supports regex patterns for more advanced matching:
+# https://vale.sh/docs/guides/regex
+#
+# Examples:
+#   (?i)MongoDB       - case-insensitive match
+#   [Oo]bservability  - character class alternative
+#
+# Technical terms, brand names, and project-specific words
+
+# Hardware Terms
+Calculinux
+PicoCalc
+Luckfox
+Lyra
+Rockchip
+RK3506
+RK3506G2
+RV1106
+STM32
+STM32F103R8T6
+ILI9488
+ARM
+Cortex-A7
+Cortex-M0
+ARMv7-A
+SoC
+SPI
+I2C
+MCU
+UART
+DDR2
+NAND
+GPIO
+USB-C
+OTG
+POSIX
+FHS
+LSB
+Arduino
+BIOS
+RTC
+MFD
+
+# Software & Tools
+(?i)Yocto
+Poky
+(?i)OpenEmbedded
+(?i)BitBake
+KAS
+opkg
+systemd
+(?i)U-Boot
+Buildroot
+(?i)BusyBox
+(?i)Linux
+Kernel
+Etcher
+PuTTY
+VS Code
+(?i)Git
+SSH
+FTP
+Vala
+
+# Commands
+kas-container
+
+# Packages & Libraries
+Realtek
+Waveshare
+Meshtastic
+LoRa
+Core1262
+Adafruit
+DS3231
+(?i)WiFi
+Ethernet
+
+# File Systems
+ext4
+FAT32
+
+# Project Specific
+meta-calculinux
+meta-calculinux-distro
+meta-picocalc-bsp-rockchip
+picocalc-kbd
+picocalc-mfd
+picocalc-BIOS
+
+# Names
+hisptoot
+johnlaur
+nekocharm
+benklop
+ClockworkPi
+clockworkpi
+
+# Locations and Entities
+(?i)GitHub
+CNAME
+Milk-V
+Duo256
+
+# Technical Concepts
+framebuffer
+framebuffer-driver
+device-tree
+devicetree
+bootloader
+rootfs
+filesystem
+kernel-module
+driver
+subsystem
+matrix-keyboard
+input-event
+pinctrl
+drm
+fbdev
+devtool
+oe-pkgdata-util
+bitbake-layers
+runqemu
+dmesg
+journalctl
+
+# Common abbreviations
+DTB
+DT
+SDK
+TRM
+API
+HTTP
+HTTPS
+JSON
+HTML
+CSS
+YAML
+PWM
+LED
+IDE
+BSP
+NPU
+TOPS
+FLOPS
+
+# Writing/Docs specific
+README
+CONTRIBUTING
+DOCUMENTATION
+mkdocs
+markdown
+
+# Rust packaging examples
+[Nn]ewsboat
+[gG]lk[cC]li
+cargo-update-recipe-crates
+AUTOREV
+BPN
+kas-base.yaml
+kas-luckfox-lyra-bundle.yaml
+Layerindex
+layerindex
+
+# BitBake/Yocto recipe variables and functions
+SRCREV
+LIC_FILES_CHKSUM
+RDEPENDS
+DEPENDS
+bindir
+bbfatal
+externalsrc
+Walnascar
+
+# Technical terms and jargon
+valac
+transpiles
+autotools
+mmcblk
+println
+repo
+repos
+deps
+config
+subpackage
+distro
+IPK
