@@ -1,3 +1,5 @@
+# Licensing Workflow
+
 BitBake enforces license checksums. Use this workflow to add them correctly:
 
 1. Start with the license and a placeholder checksum in your recipe:

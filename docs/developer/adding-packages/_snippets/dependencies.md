@@ -1,8 +1,14 @@
-### Dependencies
+# Dependencies
+
+### Build vs Runtime Dependencies
 
 Put build-time deps in **DEPENDS**, runtime deps in **RDEPENDS:${PN}**.
 
-This is used by the build system to ensure that we only include what we really need. Sometimes packages used for build aren't necessary while running the application. **valac** (the Vala compiler) for example transpiles Vala code into C code which then gets compiled, so it's not needed on the destination system. There are lots of other tools used at build time (like autotools) that fall into this category as well.
+This ensures we only include what's needed. Sometimes build-time packages
+aren't necessary at runtime. For example, **valac** (the Vala compiler)
+transpiles Vala code into C which then gets compiled, so it's not needed
+on the destination system. Other tools like autotools fall into this
+category as well.
 
 #### Finding Dependencies
 

@@ -47,6 +47,6 @@ jobs:
         uses: errata-ai/vale-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: "${{ steps.changed-files-json.outputs.all_changed_files }}""
+          files: "${{ steps.changed-files-json.outputs.all_changed_files }}"
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'

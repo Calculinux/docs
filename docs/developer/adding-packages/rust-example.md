@@ -52,11 +52,15 @@ meta-hello-calculinux/
       hello-calculinux_0.1.0.bb
 ```
 
-You can fetch sources via `git` or bundle them as a tarball. Git is simplest during development, but if you're packaging an upstream projecct you're limited to how they ship.
+You can fetch sources via `git` or bundle them as a tarball. Git is
+simplest during development, but if you're packaging an upstream project
+you're limited to how they ship.
 
 ## 3) Write the Yocto Recipe
 
-Create `hello-calculinux_0.1.0.bb` with this content (include the license file path but omit the checksum initially; BitBake will prompt you with the exact value to add):
+Create `hello-calculinux_0.1.0.bb` with this content (include the license
+file path but omit the checksum initially; BitBake will prompt you with the
+exact value to add):
 
 ```bitbake
 SUMMARY = "Simple Rust CLI that prints a greeting"
@@ -95,7 +99,8 @@ INHIBIT_PACKAGE_STRIP = "0"
 ```
 
 Notes:
-- Use `SRC_URI` pointing to your Git repo. For local development, you can use `file://` sources and `externalsrc`.
+- Use `SRC_URI` pointing to your Git repo. For local development, you
+  can use `file://` sources and `externalsrc`.
 - The `cargo` class handles Rust toolchain configuration for the target.
 - The `do_install()` step copies the compiled binary to `${bindir}`.
 
