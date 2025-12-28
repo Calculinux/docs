@@ -1,11 +1,14 @@
 # Example: Packaging a Simple Rust Utility
 
-This guide walks through creating a small Rust command-line utility and packaging it into a Yocto recipe so it ships in Calculinux images.
+This guide walks through creating a small Rust command-line utility and
+packaging it into a Yocto recipe so it ships in Calculinux images.
 
 ## Prerequisites
 
 - Calculinux build environment ready (Yocto Walnascar 4.3)
-- A working layer where you place custom recipes (e.g., `meta-calculinux-extended` or in `meta-calculinux-apps` if you want to contribute back to us).
+- A working layer where you place custom recipes (e.g.,
+  `meta-calculinux-extended` or in `meta-calculinux-apps` if you want
+  to contribute back to us).
 
 ## 1) Create the Rust Utility
 
@@ -45,7 +48,7 @@ git commit -m "Initial Rust utility"
 
 Create a recipe folder in your custom layer (example paths):
 
-```
+```text
 meta-hello-calculinux/
   recipes-utils/
     hello-calculinux/
@@ -53,14 +56,14 @@ meta-hello-calculinux/
 ```
 
 You can fetch sources via `git` or bundle them as a tarball. Git is
-simplest during development, but if you're packaging an upstream project
+simplest during development, but if you're packaging an upstream project,
 you're limited to how they ship.
 
 ## 3) Write the Yocto Recipe
 
-Create `hello-calculinux_0.1.0.bb` with this content (include the license
-file path but omit the checksum initially; BitBake will prompt you with the
-exact value to add):
+Create `hello-calculinux_0.1.0.bb` with this content (include the
+license file path but omit the checksum initially; BitBake will prompt
+you with the exact value to add):
 
 ```bitbake
 SUMMARY = "Simple Rust CLI that prints a greeting"
@@ -69,7 +72,8 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=<fill-after-bitbake>"
 
 # Fetch from your repo; replace URL/branch/SRCREV with your details
-SRC_URI = "git://github.com/Calculinux/hello-calculinux;branch=main;protocol=https"
+SRC_URI = "git://github.com/Calculinux/hello-calculinux;branch=main;\
+protocol=https"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
@@ -99,6 +103,7 @@ INHIBIT_PACKAGE_STRIP = "0"
 ```
 
 Notes:
+
 - Use `SRC_URI` pointing to your Git repo. For local development, you
   can use `file://` sources and `externalsrc`.
 - The `cargo` class handles Rust toolchain configuration for the target.
@@ -110,7 +115,8 @@ Notes:
 
 ## 4) Add the Package to Your Image
 
-Add the utility to your image via an `IMAGE_INSTALL` append. For example, in your distro/image config or a bundle:
+Add the utility to your image via an `IMAGE_INSTALL` append. For example,
+in your distribution or image configuration or a bundle:
 
 ```bitbake
 IMAGE_INSTALL:append = " hello-calculinux"
@@ -141,9 +147,13 @@ hello-calculinux
 
 ## Troubleshooting
 
-- If Rust is not available, add `meta-rust` and ensure the Rust toolchain is enabled for your target.
-- If the binary isn’t found during `do_install()`, check the `B/target/*/release/` path in the build logs and adjust the `find` command as needed.
-- For crates with dependencies, ensure `Cargo.lock` is present to avoid network fetches during builds.
+- If Rust is not available, add `meta-rust` and ensure the Rust toolchain
+  is enabled for your target.
+- If the binary isn't found during `do_install()`, check the
+  `B/target/*/release/` path in the build logs and adjust the `find`
+  command as needed.
+- For crates with dependencies, ensure `Cargo.lock` is present to avoid
+  network fetches during builds.
 
 --8<-- "developer/adding-packages/_snippets/dependencies.md"
 

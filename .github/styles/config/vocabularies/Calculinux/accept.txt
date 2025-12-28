@@ -184,3 +184,10 @@ transpiles
 autotools
 mmcblk
 println
+repo
+repos
+deps
+config
+subpackage
+distro
+IPK

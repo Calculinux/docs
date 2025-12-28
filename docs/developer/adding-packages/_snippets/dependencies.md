@@ -12,11 +12,17 @@ category as well.
 
 #### Finding Dependencies
 
-Check the project's README or build documentation for required libraries. Common dependencies include:
+Check the project's README or build documentation for required libraries.
+Common dependencies include:
+
 - `sqlite3`, `curl`, `libxml2`, `ncurses`, `openssl`
 
-Most common libraries are available in layers included via `kas-base.yaml` or `kas-luckfox-lyra-bundle.yaml`. If missing:
+Most common libraries are available in layers included in `kas-base.yaml`
+or `kas-luckfox-lyra-bundle.yaml`. If missing:
 
-1. Search your kas-container checkout (after a full build) for the package name
-2. Check the Layer Index: https://layers.openembedded.org/layerindex/branch/master/recipes/
+1. Search your kas-container checkout (after a full build) for the
+   package name
+2. Check the [Layer Index][layerindex]
 3. If still not found, create a new recipe or add a layer that provides it
+
+[layerindex]: https://layers.openembedded.org/layerindex/branch/master/recipes/

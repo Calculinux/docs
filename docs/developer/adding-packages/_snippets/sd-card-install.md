@@ -42,6 +42,7 @@ generated IPK to an SD card and installing it on the device.
    ```
 
 Notes:
+
 - Ensure the IPK architecture matches the target (ARMv7 for Luckfox Lyra).
 - Using the PicoCalc SD slot is slower (SPI) but fine for small packages.
 - If `opkg` reports dependency issues, install missing runtime deps first.
