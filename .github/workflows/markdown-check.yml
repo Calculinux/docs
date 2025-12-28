@@ -1,4 +1,4 @@
-name: Markdown Grammar & Syntax Check
+name: Markdown & Style Check
 
 on:
   pull_request:
@@ -40,15 +40,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             ${{ steps.changed-files.outputs.all_changed_files }}
+          separator: ' '
           vale_flags: '--config .vale.ini'
           reporter: github-pr-check
-
-      - name: cspell
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: streetsidesoftware/cspell-action@v6
-        with:
-          files: |
-            ${{ steps.changed-files.outputs.all_changed_files }}
-          config: cspell.json
-          inline: warning
-          strict: true

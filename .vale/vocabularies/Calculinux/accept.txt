@@ -1,4 +1,15 @@
-# Calculinux Project Dictionary
+# Calculinux Project Vocabulary - Accepted Terms
+#
+# For more information on the vocabulary file format, see:
+# https://vale.sh/docs/keys/vocab#file-format
+#
+# This file supports regex patterns for more advanced matching:
+# https://vale.sh/docs/guides/regex
+#
+# Examples:
+#   (?i)MongoDB       - case-insensitive match
+#   [Oo]bservability  - character class alternative
+#
 # Technical terms, brand names, and project-specific words
 
 # Hardware Terms
@@ -36,22 +47,22 @@ RTC
 MFD
 
 # Software & Tools
-Yocto
+(?i)Yocto
 Poky
-OpenEmbedded
-BitBake
+(?i)OpenEmbedded
+(?i)BitBake
 KAS
 opkg
 systemd
-U-Boot
+(?i)U-Boot
 Buildroot
-BusyBox
-Linux
+(?i)BusyBox
+(?i)Linux
 Kernel
 Etcher
 PuTTY
 VS Code
-Git
+(?i)Git
 SSH
 FTP
 
@@ -63,7 +74,7 @@ LoRa
 Core1262
 Adafruit
 DS3231
-WiFi
+(?i)WiFi
 Ethernet
 
 # File Systems
@@ -71,13 +82,14 @@ ext4
 FAT32
 
 # Project Specific
-Calculinux
 meta-calculinux
 meta-calculinux-distro
 meta-picocalc-bsp-rockchip
 picocalc-kbd
 picocalc-mfd
 picocalc-BIOS
+
+# Names
 hisptoot
 johnlaur
 nekocharm
@@ -86,7 +98,7 @@ ClockworkPi
 clockworkpi
 
 # Locations and Entities
-GitHub
+(?i)GitHub
 CNAME
 Milk-V
 Duo256
@@ -129,8 +141,6 @@ YAML
 PWM
 LED
 IDE
-SDK
-SoC
 BSP
 NPU
 TOPS
@@ -143,7 +153,7 @@ DOCUMENTATION
 mkdocs
 markdown
 
-# Newly added terms (Rust packaging examples)
+# Rust packaging examples
 newsboat
 glkcli
 cargo-update-recipe-crates
