@@ -26,40 +26,27 @@ jobs:
           files: |
             docs/**/*.md
 
-      - name: Markdownlint (reviewdog)
+      - name: Markdownlint
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: reviewdog/action-markdownlint@v2
+        uses: DavidAnson/markdownlint-cli2-action@v15
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          filter_mode: added
-          fail_on_error: true
-          markdownlint_flags: ${{ steps.changed-files.outputs.all_changed_files }}
+          globs: |
+            ${{ steps.changed-files.outputs.all_changed_files }}
 
-      - name: Setup Python for Vale
+      - name: Vale
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v4
+        uses: errata-ai/vale-action@v2
         with:
-          python-version: '3.x'
+          files: |
+            ${{ steps.changed-files.outputs.all_changed_files }}
+          vale_flags: '--config .vale.ini'
 
-      - name: Vale (reviewdog)
+      - name: cspell
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: reviewdog/action-vale@v2
+        uses: streetsidesoftware/cspell-action@v6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          filter_mode: added
-          fail_on_error: true
-          vale_flags: --config .vale.ini ${{ steps.changed-files.outputs.all_changed_files }}
-
-      - name: cspell (reviewdog)
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: reviewdog/action-cspell@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          filter_mode: added
-          fail_on_error: true
-          cspell_flags: --config ./cspell.json ${{ steps.changed-files.outputs.all_changed_files }}
-
-      # reviewdog actions will fail the job when issues are found (fail_on_error: true)
+          files: |
+            ${{ steps.changed-files.outputs.all_changed_files }}
+          config: cspell.json
+          inline: warning
+          strict: true
