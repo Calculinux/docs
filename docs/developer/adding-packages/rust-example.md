@@ -55,9 +55,9 @@ meta-hello-calculinux/
       hello-calculinux_0.1.0.bb
 ```
 
-You can fetch sources using `git` or retrieve them from a .tar file. Git is
+You can fetch sources by using `git` or retrieve them from a .tar file. Git is
 simplest during development, but if you are packaging an upstream project,
-your options are limited by how they ship. The protocol portion of the SRC_URI
+your options are limited by how they ship. The protocol part of the SRC_URI
 (`git://` in this example) determines how the sources are retrieved.
 
 ## 3) Write the Yocto recipe
