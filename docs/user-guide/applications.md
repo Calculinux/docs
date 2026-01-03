@@ -4,7 +4,7 @@
     This page is currently being developed. Check back soon for application guides.
 
 ## Pre-installed applications
-All calculinux images will come with at least these basic 57 pre-installed applications (but they are less of applications, and more of a system package):
+All Calculinux images come with at least these basic pre-installed packages. Some include directly usable applications, but most are the basic building blocks of a functional system:
 | Package | Basic description |
 |-------|-------------------|
 | acpid | Handles ACPI events such as power button presses and lid switches. |
@@ -66,7 +66,7 @@ All calculinux images will come with at least these basic 57 pre-installed appli
 | wget | Command-line utility for downloading files over HTTP/HTTPS/FTP. |
 
 ## Installing new applications
-### THIS SECTION IS EXPLAINED BETTER: [here](package-management.md)
+### For a more thourough explinations go [here](package-management.md)
 
 Calculinux uses **opkg** (Open Package Management) as the package manager. Below, you will find a basic guide on how to install applications using opkg:
 
@@ -77,36 +77,51 @@ Calculinux uses **opkg** (Open Package Management) as the package manager. Below
     
 This, first checks the main package list by using *opkg update* to see if any new packages have been added or if any existing packages have been updated. Then, the *opkg install package_name* command will make opkg look for *package_name* in the list of available packages, and attempt to install it, if all dependancies are available.
 
-When you try to install a package using opkg without all the required dependencies, you may see an error message like *pkg_hash_check_unresolved: cannot find dependency <dependency_name> for <package_name>.* This indicates that the installation cannot proceed because the necessary dependencies are missing.
-
 ##### A dependency for a package in linux, is another package required for it to function properly or install successfully.
 
 ### Common opkg Package Installation Options
 | Option                | Description                                                                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **-k**                | This option is used to skip the integrity check of the packages during installation. It's helpful when dealing with local packages where you trust the source. |
 | **-l**                | This option lists all available packages. It can be used to view a summary of packages that can be installed, updated, or removed.                       |
 | **--force-reinstall** | Forces the reinstallation of a package even if it's already installed. Useful for ensuring that you have the latest version of a package.                  |
 | **--no-cache**        | Disables caching during the installation process. This is useful when you want to ensure that the installation process always retrieves packages directly from the repository, rather than a local cache. |
 | **-d**                | This option allows for installing a package without dependencies. Use this with caution, as it might lead to an unstable configuration.                      |
-| **--dest**            | Specifies an alternate installation destination. This can be handy if you want to install a package in a specific location on your filesystem.            |
 
 ### Example Usage of opkg Package Installation Options/Arguements
 ```opkg
-opkg install -k package-name
 opkg list-installed
 opkg list-installed | grep <package-name> # Searches Filter
 opkg install --force-reinstall package-name
 opkg install --no-cache package-name
 opkg install -d package-name
-opkg install --dest /desired/path package-name
+opkg search package-name # Searches for that package
 ```
 If you want to refer to the list of all available packages please refer to: [Available Packages](https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/)
+
+## Popular Application Recommendations
+The following table with a selected list of 15 popular linux applications is based on the author's opinion:
+| Name       | Basic description | Where to find documentation |
+|-----------|--------------------|-----------------------------|
+| vim       | Modal text editor widely used for code and config editing on Unix-like systems. | Project site (vim.org) and `:help` inside Vim. |
+| nano      | Simple, beginner-friendly terminal text editor. | `man nano` and nano-editor.org. |
+| wget      | Non-interactive command-line downloader supporting HTTP, HTTPS, and FTP. | `man wget` and GNU Wget manual (gnu.org). |
+| curl      | Versatile tool to transfer data with URLs over many protocols (HTTP, HTTPS, FTP, etc.). | `man curl` and curl.se/docs. |
+| git       | Distributed version control system for tracking changes in source code. | `git help <command>` and git-scm.com/docs. |
+| bash      | Widely used Unix shell and command language. | `man bash` and GNU Bash Reference Manual. |
+| mc        | Text-mode file manager (Midnight Commander) with panels and built-in viewers/editors. | `man mc` and midnight-commander.org documentation. |
+| htop      | Interactive process viewer and system monitor for the terminal. | `man htop` and htop.dev documentation. |
+| tmux      | Terminal multiplexer to manage multiple terminal sessions in one window. | `man tmux` and tmux.github.io. |
+| openssh   | Tools for secure remote login and file transfer (ssh, scp, sftp, sshd). | `man ssh`, `man sshd`, and openssh.com/manual.html. |
+| rsync     | Fast incremental file transfer and synchronization utility. | `man rsync` and rsync.samba.org documentation. |
+| tar       | Standard archiving tool to create and extract tar archives. | `man tar` and GNU Tar manual. |
+| grep      | Searches text using regular expressions, often used in pipelines. | `man grep` and GNU Grep manual. |
+| sed       | Stream editor for filtering and transforming text. | `man sed` and GNU Sed manual. |
+| python3   | Popular high-level programming language interpreter. | `python3 -m pydoc` and docs.python.org. |
+
 
 ## Coming Soon
 
 This section will cover:
-- Popular application recommendations
 - Application configuration
 - Troubleshooting applications
 
