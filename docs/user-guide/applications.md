@@ -79,6 +79,8 @@ This, first checks the main package list by using *opkg update* to see if any ne
 
 ##### A dependency for a package in linux, is another package required for it to function properly or install successfully.
 
+If you are installing packages with network access, dependancies should automatically install allongside your chosen package, but, if you install your package without network access (by loading the package onto the micro sd card, and then installing it in the corresponding folder) it may come up with an error, which tells your which dependacy is not installed, which you will have to install manually, one by one.
+
 ### Common opkg Package Installation Options
 | Option                | Description                                                                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -118,11 +120,11 @@ The following table with a selected list of 15 popular linux applications is bas
 | sed       | Stream editor for filtering and transforming text. | `man sed` and GNU Sed manual. |
 | python3   | Popular high-level programming language interpreter. | `python3 -m pydoc` and docs.python.org. |
 
+## Application Configuration
 
 ## Coming Soon
 
 This section will cover:
-- Application configuration
 - Troubleshooting applications
 
 ---
