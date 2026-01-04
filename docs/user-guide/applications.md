@@ -121,10 +121,46 @@ The following table with a selected list of 15 popular linux applications is bas
 | python3   | Popular high-level programming language interpreter. | `python3 -m pydoc` and docs.python.org. |
 
 ## Application Configuration
+Configuration for installed software is usually kept in two main places.
 
-## Coming Soon
+1. System wide files in /etc
+- Many important system and program settings are stored under /etc. These settings affect every user on the machine.
+- You need root rights to change files here. Use sudo or switch to the root account.
+- Be careful when you edit files in /etc. A wrong change can stop services or make the system fail to start.
+- Before you edit anything in /etc, make a copy of the file. For example:
+  - sudo cp /etc/example.conf /etc/example.conf.bak
 
-This section will cover:
-- Troubleshooting applications
+2. User settings in the home folder
+- Most applications save user specific settings in hidden files or folders in your home directory. These names start with a dot. Examples are ~/.config/, ~/.bashrc, or ~/.vimrc.
+- Settings here only affect that user. They are usually safe to change without admin rights.
+- Common places you will see are:
+  - ~/.config/appname/ for modern applications
+  - ~/.appnamerc or ~/.appname for older programs
+  - ~/.local/share/appname for per-user data
 
+Editing and testing tips
+- Back up the file before you edit. Keep a copy with a new name so you can restore it if needed.
+- Use a text editor you know, for example nano, vim, or micro.
+- If the file is in /etc, use sudo to save your changes.
+- After you change a setting, restart the application to see if the change worked. For system services you may need to restart the service or reboot.
+- If a change breaks something, restore the backup file to get back to the previous state.
+
+In-app settings
+- Many programs offer a settings or preferences menu you can use instead of editing files.
+- If you are not sure where a program keeps its settings, check its manual page with man, or look for a config file name in the program documentation.
+
+When to ask for help
+- If you are not sure what a setting does, search the web or ask the Calculinux community. Give details like the file name and the exact lines you changed so it is easier to help.
+  
+## Troubleshooting Applications
+Use these simple checks when an app does not work.
+
+- Restart the app. Close it and open it again.
+- Check the app logs. 
+- Look for error messages when you start the app.
+- Check if you have the right permissions. Some apps need root to run certain tasks.
+- Revert to your backup if a config change broke the app.
+- Update the package with opkg if the app is old or has a known bug.
+- Ask for help and include what you tried, the error text, and the files you changed.
+  
 ---
