@@ -34,113 +34,36 @@ jobs:
             docs/**/*.md
           separator: ","
 
-      - name: Extract additional files from PR description
-        id: pr-files
-        if: github.event.pull_request
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Get PR description
-          PR_BODY=$(gh pr view ${{ github.event.pull_request.number }} --json body -q .body)
-          
-          # Extract files from "Markdown and Grammar check" section
-          ADDITIONAL_FILES_SPACE=""
-          ADDITIONAL_FILES_COMMA=""
-          IN_SECTION=false
-          
-          while IFS= read -r line; do
-            # Check if we're entering the section
-            if echo "$line" | grep -qi "^#\+.*markdown.*grammar.*check"; then
-              IN_SECTION=true
-              continue
-            fi
-            
-            # Check if we're exiting the section (new heading)
-            if [ "$IN_SECTION" = true ] && echo "$line" | grep -q "^#"; then
-              break
-            fi
-            
-            # Extract file paths while in section
-            if [ "$IN_SECTION" = true ]; then
-              # Look for markdown file references (e.g., docs/file.md, file.md, [text](file.md))
-              FILES=$(echo "$line" | grep -oP '(?:^|[\s\(\[])([\w\-\/]+\.md)(?=$|[\s\)\]])' | grep -oP '[\w\-\/]+\.md' || true)
-              if [ -n "$FILES" ]; then
-                for file in $FILES; do
-                  # Ensure file exists
-                  if [ -f "$file" ]; then
-                    if [ -z "$ADDITIONAL_FILES_SPACE" ]; then
-                      ADDITIONAL_FILES_SPACE="$file"
-                      ADDITIONAL_FILES_COMMA="$file"
-                    else
-                      ADDITIONAL_FILES_SPACE="$ADDITIONAL_FILES_SPACE $file"
-                      ADDITIONAL_FILES_COMMA="$ADDITIONAL_FILES_COMMA,$file"
-                    fi
-                  fi
-                done
-              fi
-            fi
-          done <<< "$PR_BODY"
-          
-          echo "additional_files=$ADDITIONAL_FILES_SPACE" >> $GITHUB_OUTPUT
-          echo "additional_files_comma=$ADDITIONAL_FILES_COMMA" >> $GITHUB_OUTPUT
-          if [ -n "$ADDITIONAL_FILES_SPACE" ]; then
-            echo "Found additional files to check: $ADDITIONAL_FILES_SPACE"
-          fi
-
       - name: Setup reviewdog
-        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
+        if: steps.changed-files.outputs.any_changed == 'true'
         uses: reviewdog/action-setup@v1
 
       - name: Setup Node.js
-        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
+        if: steps.changed-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install markdownlint-cli2
-        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: npm install -g markdownlint-cli2
 
       - name: Run markdownlint with reviewdog
         id: markdownlint
-        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
+        if: steps.changed-files.outputs.any_changed == 'true'
         continue-on-error: true
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Combine changed files with additional files from PR description
-          FILES="${{ steps.changed-files.outputs.all_changed_files }} ${{ steps.pr-files.outputs.additional_files }}"
-          # Remove duplicates
-          FILES=$(echo "$FILES" | tr ' ' '\n' | sort -u | tr '\n' ' ')
-          
-          if [ -n "$FILES" ]; then
-            markdownlint-cli2 $FILES 2>&1 | \
-            reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=true || echo "MARKDOWNLINT_FAILED=true" >> $GITHUB_ENV
-          fi
-
-      - name: Combine files for Vale
-        id: vale-files
-        if: steps.changed-files-comma.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files_comma != ''
-        run: |
-          CHANGED="${{ steps.changed-files-comma.outputs.all_changed_files }}"
-          ADDITIONAL="${{ steps.pr-files.outputs.additional_files_comma }}"
-          
-          if [ -n "$CHANGED" ] && [ -n "$ADDITIONAL" ]; then
-            FILES="$CHANGED,$ADDITIONAL"
-          elif [ -n "$CHANGED" ]; then
-            FILES="$CHANGED"
-          else
-            FILES="$ADDITIONAL"
-          fi
-          
-          echo "files=$FILES" >> $GITHUB_OUTPUT
+          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
+          reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=true || echo "MARKDOWNLINT_FAILED=true" >> $GITHUB_ENV
 
       - name: Vale
-        if: steps.vale-files.outputs.files != ''
+        if: steps.changed-files-comma.outputs.any_changed == 'true'
         uses: errata-ai/vale-action@v2.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: '${{ steps.vale-files.outputs.files }}'
+          files: '${{ steps.changed-files-comma.outputs.all_changed_files }}'
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
