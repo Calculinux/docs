@@ -55,7 +55,7 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
+          markdownlint-cli2 --config .markdownlint.json ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
           reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=false
 
       - name: Vale
