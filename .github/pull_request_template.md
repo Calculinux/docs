@@ -20,6 +20,12 @@
 
 ---
 
+## Markdown and Grammar check
+
+<!-- List any additional files for automatic markdown syntax and grammar review -->
+
+---
+
 ## Automated Checks
 
 This PR will run the following automated checks:
