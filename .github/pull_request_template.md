@@ -12,13 +12,9 @@
 ## Related Issues
 <!-- Link any related issues: Closes #123, Fixes #456 -->
 
----
-
 ## Notes for Reviewers
 
 <!-- Add any additional context or notes for reviewers -->
-
----
 
 ## Automated Checks
 
