@@ -95,6 +95,7 @@ nav:
   - User Guide:
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
+    - Applications: user-guide/applications.md
   
   - Developer Guide:
     - Development Overview: developer/overview.md
