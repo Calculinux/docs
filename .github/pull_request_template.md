@@ -12,19 +12,14 @@
 ## Related Issues
 <!-- Link any related issues: Closes #123, Fixes #456 -->
 
----
-
 ## Notes for Reviewers
 
 <!-- Add any additional context or notes for reviewers -->
 
----
 
 ## Markdown and Grammar check
 
 <!-- List any additional files for automatic markdown syntax and grammar review -->
-
----
 
 ## Automated Checks
 
