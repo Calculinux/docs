@@ -118,12 +118,29 @@ jobs:
             reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=true || echo "MARKDOWNLINT_FAILED=true" >> $GITHUB_ENV
           fi
 
-      - name: Vale
+      - name: Combine files for Vale
+        id: vale-files
         if: steps.changed-files-comma.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files_comma != ''
+        run: |
+          CHANGED="${{ steps.changed-files-comma.outputs.all_changed_files }}"
+          ADDITIONAL="${{ steps.pr-files.outputs.additional_files_comma }}"
+          
+          if [ -n "$CHANGED" ] && [ -n "$ADDITIONAL" ]; then
+            FILES="$CHANGED,$ADDITIONAL"
+          elif [ -n "$CHANGED" ]; then
+            FILES="$CHANGED"
+          else
+            FILES="$ADDITIONAL"
+          fi
+          
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+
+      - name: Vale
+        if: steps.vale-files.outputs.files != ''
         uses: errata-ai/vale-action@v2.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: '${{ steps.changed-files-comma.outputs.all_changed_files }}${{ steps.pr-files.outputs.additional_files_comma && format('',{0}'', steps.pr-files.outputs.additional_files_comma) || '' }}'
+          files: '${{ steps.vale-files.outputs.files }}'
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
