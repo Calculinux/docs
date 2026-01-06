@@ -44,7 +44,8 @@ jobs:
           PR_BODY=$(gh pr view ${{ github.event.pull_request.number }} --json body -q .body)
           
           # Extract files from "Markdown and Grammar check" section
-          ADDITIONAL_FILES=""
+          ADDITIONAL_FILES_SPACE=""
+          ADDITIONAL_FILES_COMMA=""
           IN_SECTION=false
           
           while IFS= read -r line; do
@@ -67,10 +68,12 @@ jobs:
                 for file in $FILES; do
                   # Ensure file exists
                   if [ -f "$file" ]; then
-                    if [ -z "$ADDITIONAL_FILES" ]; then
-                      ADDITIONAL_FILES="$file"
+                    if [ -z "$ADDITIONAL_FILES_SPACE" ]; then
+                      ADDITIONAL_FILES_SPACE="$file"
+                      ADDITIONAL_FILES_COMMA="$file"
                     else
-                      ADDITIONAL_FILES="$ADDITIONAL_FILES $file"
+                      ADDITIONAL_FILES_SPACE="$ADDITIONAL_FILES_SPACE $file"
+                      ADDITIONAL_FILES_COMMA="$ADDITIONAL_FILES_COMMA,$file"
                     fi
                   fi
                 done
@@ -78,23 +81,24 @@ jobs:
             fi
           done <<< "$PR_BODY"
           
-          echo "additional_files=$ADDITIONAL_FILES" >> $GITHUB_OUTPUT
-          if [ -n "$ADDITIONAL_FILES" ]; then
-            echo "Found additional files to check: $ADDITIONAL_FILES"
+          echo "additional_files=$ADDITIONAL_FILES_SPACE" >> $GITHUB_OUTPUT
+          echo "additional_files_comma=$ADDITIONAL_FILES_COMMA" >> $GITHUB_OUTPUT
+          if [ -n "$ADDITIONAL_FILES_SPACE" ]; then
+            echo "Found additional files to check: $ADDITIONAL_FILES_SPACE"
           fi
 
       - name: Setup reviewdog
-        if: steps.changed-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
         uses: reviewdog/action-setup@v1
 
       - name: Setup Node.js
-        if: steps.changed-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install markdownlint-cli2
-        if: steps.changed-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
         run: npm install -g markdownlint-cli2
 
       - name: Run markdownlint with reviewdog
@@ -115,11 +119,11 @@ jobs:
           fi
 
       - name: Vale
-        if: steps.changed-files-comma.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files != ''
+        if: steps.changed-files-comma.outputs.any_changed == 'true' || steps.pr-files.outputs.additional_files_comma != ''
         uses: errata-ai/vale-action@v2.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: '${{ steps.changed-files-comma.outputs.all_changed_files }},${{ steps.pr-files.outputs.additional_files }}'
+          files: '${{ steps.changed-files-comma.outputs.all_changed_files }}${{ steps.pr-files.outputs.additional_files_comma && format('',{0}'', steps.pr-files.outputs.additional_files_comma) || '' }}'
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
