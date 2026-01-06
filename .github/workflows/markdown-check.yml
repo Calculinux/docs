@@ -34,12 +34,29 @@ jobs:
             docs/**/*.md
           separator: ","
 
-      - name: Markdownlint
+      - name: Setup reviewdog
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: DavidAnson/markdownlint-cli2-action@v15
+        uses: reviewdog/action-setup@v1
+
+      - name: Setup Node.js
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/setup-node@v4
         with:
-          globs: |
-            ${{ steps.changed-files.outputs.all_changed_files }}
+          node-version: '20'
+
+      - name: Install markdownlint-cli2
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: npm install -g markdownlint-cli2
+
+      - name: Run markdownlint with reviewdog
+        id: markdownlint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        continue-on-error: true
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
+          reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=true || echo "MARKDOWNLINT_FAILED=true" >> $GITHUB_ENV
 
       - name: Vale
         if: steps.changed-files-comma.outputs.any_changed == 'true'
@@ -50,3 +67,9 @@ jobs:
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
+
+      - name: Check if Markdownlint failed
+        if: env.MARKDOWNLINT_FAILED == 'true'
+        run: |
+          echo "Markdownlint found issues"
+          exit 1
