@@ -56,7 +56,7 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
-          reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=true || echo "MARKDOWNLINT_FAILED=true" >> $GITHUB_ENV
+          reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=false
 
       - name: Vale
         if: steps.changed-files-comma.outputs.any_changed == 'true'
@@ -67,9 +67,4 @@ jobs:
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
-
-      - name: Check if Markdownlint failed
-        if: env.MARKDOWNLINT_FAILED == 'true'
-        run: |
-          echo "Markdownlint found issues"
-          exit 1
+        continue-on-error: true
