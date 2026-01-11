@@ -23,6 +23,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 ## Quick Links
 
+<!-- prettier-ignore -->
 <div class="grid cards" markdown>
 
 -   :material-rocket-launch:{ .lg .middle } **Getting Started**
@@ -71,6 +72,7 @@ Calculinux is an open-source community project. Join us!
 
 ## System Requirements
 
+<!-- prettier-ignore -->
 !!! info "Minimum Requirements"
     - **Hardware**: PicoCalc with Luckfox Lyra SBC (128MB RAM)
     - **Storage**: MicroSD card (8GB minimum, 16GB+ recommended)
@@ -106,5 +108,6 @@ Calculinux builds upon the incredible work of:
 
 ---
 
+<!-- prettier-ignore -->
 !!! tip "Ready to get started?"
     Head over to the [Getting Started Guide](getting-started/overview.md) to begin your Calculinux journey!
