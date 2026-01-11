@@ -1,0 +1,11 @@
+{
+  // Configuration for markdownlint-cli2
+  "config": {
+    // Disable MD013 (line length)
+    "MD013": false,
+    // Allow explicit ordered list numbering (1, 2, 3) instead of all 1s
+    "MD029": {
+      "style": "ordered"
+    }
+  }
+}

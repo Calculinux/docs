@@ -11,12 +11,20 @@ permissions:
   pull-requests: write
 
 jobs:
+  prettier:
+    uses: ./.github/workflows/prettier-autofix.yml
+    permissions:
+      contents: write
+      pull-requests: write
+
   markdown-check:
     runs-on: ubuntu-latest
+    needs: prettier
     
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
 
       - name: Get changed files (JSON)

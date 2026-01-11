@@ -45,6 +45,7 @@ Arduino
 BIOS
 RTC
 MFD
+I²C
 
 # Software & Tools
 (?i)Yocto
@@ -69,6 +70,8 @@ Vala
 
 # Commands
 kas-container
+adb
+fastboot
 
 # Packages & Libraries
 Realtek
@@ -98,8 +101,7 @@ hisptoot
 johnlaur
 nekocharm
 benklop
-ClockworkPi
-clockworkpi
+(?i)ClockworkPi
 
 # Locations and Entities
 (?i)GitHub
@@ -153,7 +155,9 @@ FLOPS
 # Writing/Docs specific
 README
 CONTRIBUTING
+Contributing
 DOCUMENTATION
+documentation
 mkdocs
 markdown
 
@@ -177,6 +181,7 @@ bindir
 bbfatal
 externalsrc
 Walnascar
+downloader
 
 # Technical terms and jargon
 valac
@@ -191,3 +196,72 @@ config
 subpackage
 distro
 IPK
+SBC
+SBCs
+
+# Package Names (from applications.md)
+acpid
+alsa-lib
+alsa-plugins
+alsa-tools
+alsa-utils
+android-tools
+autoconf
+bash-completion
+btrfs-tools
+busybox
+calculinux-update
+cloud-utils-growpart
+dosfstools
+e2fsprogs
+e2fsprogs-resize2fs
+hoard-of-bitfonts-commodore
+htop
+i2c-tools
+iwd
+kbd-consolefonts
+kbd-keymaps
+kernel-modules
+libdrm-tests
+libsdl
+libsdl2
+freetype
+man-db
+mtd-utils
+musl-locales
+notcurses
+notcurses-tools
+ntp
+oldschool-console-fonts
+openssh
+opkg
+overlayfs-tools
+packagegroup-core-buildessential
+rauc
+sdl2-test
+systemd-analyze
+terminus-font
+u-boot-fw-config
+u-boot-rockchip-bootscript
+usbutils
+util-linux
+tmux
+rsync
+nano
+python3
+mc
+vim
+sed
+Sed
+scp
+sftp
+sshd
+downloader
+reinstallation
+alsamixer
+aplay
+adb
+fastboot
+pydoc
+lsusb
+
