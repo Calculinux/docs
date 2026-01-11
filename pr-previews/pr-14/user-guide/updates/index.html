@@ -2708,13 +2708,9 @@
 
 
 <h1 id="system-updates">System Updates<a class="headerlink" href="#system-updates" title="Permanent link">&para;</a></h1>
-<p>Calculinux uses a dual-layer update strategy combining RAUC for system images
-and OPKG for packages, with automatic reconciliation to keep everything in sync.</p>
+<p>Calculinux uses a dual-layer update strategy combining RAUC for system images and OPKG for packages, with automatic reconciliation to keep everything in sync.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update
-Controller). When you install an update, it writes to the inactive slot, leaving
-your current system untouched. After reboot, the system switches to the new
-slot, and the old one becomes your rollback option.</p>
+<p>Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update Controller). When you install an update, it writes to the inactive slot, leaving your current system untouched. After reboot, the system switches to the new slot, and the old one becomes your rollback option.</p>
 <h3 id="update-architecture">Update Architecture<a class="headerlink" href="#update-architecture" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>graph TD
     subgraph base["Read-Only Base Image (RAUC Slot)"]
@@ -2734,10 +2730,7 @@ slot, and the old one becomes your rollback option.</p>
     style base fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
     style overlay fill:#fff3e0,stroke:#ef6c00,stroke-width:2px</code></pre>
 <h3 id="the-calculinux-update-tool-cup">The Calculinux Update Tool (<code>cup</code>)<a class="headerlink" href="#the-calculinux-update-tool-cup" title="Permanent link">&para;</a></h3>
-<p>The <code>calculinux-update</code> package provides the <code>cup</code> command for managing system
-updates. Two additional internal commands (<code>cup-hook</code> and <code>cup-postreboot</code>) are
-automatically invoked by the system during the update process—you typically
-won't need to run these manually.</p>
+<p>The <code>calculinux-update</code> package provides the <code>cup</code> command for managing system updates. Two additional internal commands (<code>cup-hook</code> and <code>cup-postreboot</code>) are automatically invoked by the system during the update process—you typically won't need to run these manually.</p>
 <h2 id="installing-updates">Installing Updates<a class="headerlink" href="#installing-updates" title="Permanent link">&para;</a></h2>
 <h3 id="interactive-update">Interactive Update<a class="headerlink" href="#interactive-update" title="Permanent link">&para;</a></h3>
 <p>The easiest way to update is interactively:</p>
@@ -2752,8 +2745,7 @@ won't need to run these manually.</p>
 <li>Prefetch packages that will be reinstalled after reboot</li>
 <li>Prompt for confirmation before installing</li>
 </ol>
-<p>Each RAUC bundle includes metadata about the new system's package configuration,
-allowing the update tool to prepare everything needed for a smooth transition.</p>
+<p>Each RAUC bundle includes metadata about the new system's package configuration, allowing the update tool to prepare everything needed for a smooth transition.</p>
 <h3 id="update-specific-channel">Update Specific Channel<a class="headerlink" href="#update-specific-channel" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--channel<span class="w"> </span><span class="s2">&quot;Release&quot;</span>
 </code></pre></div>
@@ -2787,26 +2779,19 @@ allowing the update tool to prepare everything needed for a smooth transition.</
 <p>When you update the base image, this can create problems:</p>
 <ol>
 <li><strong>Duplicate packages</strong>: A package you installed is now in the new base image</li>
-<li><strong>Missing packages</strong>: The new image removed a package your other packages
-   depend on</li>
-<li><strong>Version conflicts</strong>: Your overlay packages conflict with newer base
-   versions</li>
+<li><strong>Missing packages</strong>: The new image removed a package your other packages depend on</li>
+<li><strong>Version conflicts</strong>: Your overlay packages conflict with newer base versions</li>
 </ol>
 <h3 id="automatic-reconciliation">Automatic Reconciliation<a class="headerlink" href="#automatic-reconciliation" title="Permanent link">&para;</a></h3>
 <p>The update process automatically handles these issues:</p>
 <h4 id="during-update-installation">During Update Installation<a class="headerlink" href="#during-update-installation" title="Permanent link">&para;</a></h4>
 <p>When you run <code>sudo cup install</code>, the system:</p>
 <ol>
-<li><strong>Extracts bundle metadata</strong> - Gets OPKG configuration and package
-   information from the bundle</li>
-<li><strong>Plans reconciliation</strong> - Identifies duplicates, missing packages, and
-   upgrades needed</li>
-<li><strong>Prefetches packages</strong> - Downloads packages that will need reinstallation
-   using the new system's package repositories</li>
+<li><strong>Extracts bundle metadata</strong> - Gets OPKG configuration and package information from the bundle</li>
+<li><strong>Plans reconciliation</strong> - Identifies duplicates, missing packages, and upgrades needed</li>
+<li><strong>Prefetches packages</strong> - Downloads packages that will need reinstallation using the new system's package repositories</li>
 </ol>
-<p>This metadata-driven approach allows the update to prepare everything needed
-before installation, enabling offline reconciliation even if network isn't
-available after reboot.</p>
+<p>This metadata-driven approach allows the update to prepare everything needed before installation, enabling offline reconciliation even if network isn't available after reboot.</p>
 <h4 id="during-rauc-installation-via-cup-hook">During RAUC Installation (via <code>cup-hook</code>)<a class="headerlink" href="#during-rauc-installation-via-cup-hook" title="Permanent link">&para;</a></h4>
 <p>When RAUC installs the new slot:</p>
 <ol>
@@ -2818,12 +2803,9 @@ available after reboot.</p>
 <p>When the system boots into the new slot:</p>
 <ol>
 <li><strong>Updates package feeds</strong> - Runs <code>opkg update</code></li>
-<li><strong>Reinstalls missing packages</strong> - Installs packages from the old base now
-   missing</li>
-<li><strong>Upgrades overlay packages</strong> - Updates all user packages to match new base
-   versions</li>
-<li><strong>Uses cached packages</strong> - Prefers locally cached .ipk files for offline
-   operation</li>
+<li><strong>Reinstalls missing packages</strong> - Installs packages from the old base now missing</li>
+<li><strong>Upgrades overlay packages</strong> - Updates all user packages to match new base versions</li>
+<li><strong>Uses cached packages</strong> - Prefers locally cached .ipk files for offline operation</li>
 </ol>
 <h3 id="checking-reconciliation-status">Checking Reconciliation Status<a class="headerlink" href="#checking-reconciliation-status" title="Permanent link">&para;</a></h3>
 <p>After an update, check the systemd journal:</p>
@@ -2854,12 +2836,13 @@ available after reboot.</p>
 </code></pre></div>
 <p>Set <code>enable = true</code> to show a channel in <code>cup list</code>.</p>
 <h3 id="skipping-prefetch">Skipping Prefetch<a class="headerlink" href="#skipping-prefetch" title="Permanent link">&para;</a></h3>
-<p>In some cases you might want to skip prefetch (though metadata extraction still
-occurs):</p>
+<p>In some cases you might want to skip prefetch (though metadata extraction still occurs):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>cup<span class="w"> </span>install<span class="w"> </span>--no-prefetch
 </code></pre></div>
-<p>!!! warning Without prefetch, post-reboot reconciliation requires network
-access. The bundle metadata will still be validated to ensure compatibility.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Without prefetch, post-reboot reconciliation requires network access. The bundle metadata will still be validated to ensure compatibility.</p>
+</div>
 <h2 id="update-process-flow">Update Process Flow<a class="headerlink" href="#update-process-flow" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[cup install] --&gt; B[Select Bundle]
@@ -2905,10 +2888,7 @@ access. The bundle metadata will still be validated to ensure compatibility.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span>/etc/opkg/opkg.conf
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>opkg<span class="w"> </span>update
 </code></pre></div>
-<p>Prefetch failures are usually harmless - the system will simply download
-packages after reboot instead of using pre-cached versions. However, if bundle
-metadata extraction fails completely, the bundle may be corrupted and should be
-re-downloaded.</p>
+<p>Prefetch failures are usually harmless - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails completely, the bundle may be corrupted and should be re-downloaded.</p>
 <h3 id="rolling-back-an-update">Rolling Back an Update<a class="headerlink" href="#rolling-back-an-update" title="Permanent link">&para;</a></h3>
 <p>RAUC maintains the previous slot as a fallback:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Mark current slot as bad and reboot to previous</span>
@@ -2916,20 +2896,17 @@ re-downloaded.</p>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>reboot
 </code></pre></div>
 <p>Or select the other slot in your bootloader (if supported).</p>
-<p>!!! warning "Package State After Rollback" After rolling back, some manually
-installed packages may need to be reinstalled, as the reconciliation system
-currently only runs during forward updates. A list of your installed packages
-can help:</p>
-<div class="highlight"><pre><span></span><code>```bash
-# Before updating, save your package list
-opkg list-installed &gt; ~/my-packages.txt
-
-# After rollback, reinstall if needed
-cat ~/my-packages.txt | awk &#39;{print $1}&#39; | xargs opkg install
-```
-
-Future versions will include automatic rollback detection and reconciliation.
+<div class="admonition warning">
+<p class="admonition-title">Package State After Rollback</p>
+<p>After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Before updating, save your package list</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>opkg<span class="w"> </span>list-installed<span class="w"> </span>&gt;<span class="w"> </span>~/my-packages.txt
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># After rollback, reinstall if needed</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>cat<span class="w"> </span>~/my-packages.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>opkg<span class="w"> </span>install
 </code></pre></div>
+<p>Future versions will include automatic rollback detection and reconciliation.</p>
+</div>
 <h3 id="dry-run">Dry Run<a class="headerlink" href="#dry-run" title="Permanent link">&para;</a></h3>
 <p>Test the update process without actually installing:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>cup<span class="w"> </span>install<span class="w"> </span>--dry-run
@@ -2944,8 +2921,7 @@ Future versions will include automatic rollback detection and reconciliation.
 </ol>
 <h3 id="after-updating">After Updating<a class="headerlink" href="#after-updating" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Check reconciliation</strong>:
-   <code>journalctl -u calculinux-update-postreboot.service</code></li>
+<li><strong>Check reconciliation</strong>: <code>journalctl -u calculinux-update-postreboot.service</code></li>
 <li><strong>Test your applications</strong>: Ensure everything still works</li>
 <li><strong>Keep previous slot</strong>: Don't mark it bad until you're confident</li>
 </ol>
@@ -2975,16 +2951,13 @@ Future versions will include automatic rollback detection and reconciliation.
 </code></pre></div>
 <h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../package-management/">Package Management</a> - Installing and managing packages
-  with opkg</li>
+<li><a href="../package-management/">Package Management</a> - Installing and managing packages with opkg</li>
 <li><a href="../configuration/">Configuration</a> - System configuration files</li>
-<li><a href="../../troubleshooting/boot-problems/">Boot Problems</a> - Recovering from boot
-  issues</li>
+<li><a href="../../troubleshooting/boot-problems/">Boot Problems</a> - Recovering from boot issues</li>
 <li><a href="https://rauc.readthedocs.io/">RAUC Documentation</a> - Upstream RAUC docs</li>
 </ul>
 <hr />
-<p><em>For developers working on the update system, see
-<a href="../../developer/calculinux-update/">Developer Guide: Calculinux Update</a></em></p>
+<p><em>For developers working on the update system, see <a href="../../developer/calculinux-update/">Developer Guide: Calculinux Update</a></em></p>
 
 
 
@@ -3007,7 +2980,7 @@ Future versions will include automatic rollback detection and reconciliation.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

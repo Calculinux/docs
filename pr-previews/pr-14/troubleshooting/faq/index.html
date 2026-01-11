@@ -2372,27 +2372,21 @@
 <h2 id="most-common-issues">Most Common Issues<a class="headerlink" href="#most-common-issues" title="Permanent link">&para;</a></h2>
 <h3 id="issue-system-wont-boot">Issue: System Won't Boot<a class="headerlink" href="#issue-system-wont-boot" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: No display activity, device appears dead</p>
-<p><strong>Possible Causes</strong>:</p>
-<ol>
-<li>SPI NAND not erased (most common with NAND versions)</li>
-<li>Corrupt SD card image</li>
-<li>SD card not inserted properly</li>
-<li>Insufficient power supply</li>
-<li>Hardware connection issue</li>
-</ol>
-<p><strong>Solutions</strong>:</p>
-<ul>
-<li>See <a href="../boot-problems/#system-wont-boot">Boot Problems</a> for detailed
-  troubleshooting</li>
-<li>Verify SPI NAND was erased:
-  <a href="../../hardware/modifications/#erasing-spi-nand">NAND Erasing Guide</a></li>
-<li>Try different power supply (5V/2A minimum)</li>
-<li>Reflash SD card</li>
-<li>Reseat hardware connections</li>
-</ul>
+<p><strong>Possible Causes</strong>:
+1. SPI NAND not erased (most common with NAND versions)
+2. Corrupt SD card image
+3. SD card not inserted properly
+4. Insufficient power supply
+5. Hardware connection issue</p>
+<p><strong>Solutions</strong>:
+- See <a href="../boot-problems/#system-wont-boot">Boot Problems</a> for detailed troubleshooting
+- Verify SPI NAND was erased: <a href="../../hardware/modifications/#erasing-spi-nand">NAND Erasing Guide</a>
+- Try different power supply (5V/2A minimum)
+- Reflash SD card
+- Reseat hardware connections</p>
 <h3 id="issue-display-not-working">Issue: Display Not Working<a class="headerlink" href="#issue-display-not-working" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: System boots but display stays blank</p>
-<p><strong>Quick Fixes</strong>:</p>
+<p><strong>Quick Fixes</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check if framebuffer exists</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -2402,11 +2396,11 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Check display driver</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>display
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>fb
-</code></pre></div>
+</code></pre></div></p>
 <p>See <a href="../display/">Display Issues</a> for more details.</p>
 <h3 id="issue-keyboard-not-responding">Issue: Keyboard Not Responding<a class="headerlink" href="#issue-keyboard-not-responding" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: Cannot type or keys don't register</p>
-<p><strong>Quick Fixes</strong>:</p>
+<p><strong>Quick Fixes</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Check input devices</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cat<span class="w"> </span>/proc/bus/input/devices
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
@@ -2415,11 +2409,11 @@
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Check driver</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>keyboard
-</code></pre></div>
+</code></pre></div></p>
 <p>See <a href="../input/">Input Problems</a> for more details.</p>
 <h3 id="issue-network-not-working">Issue: Network Not Working<a class="headerlink" href="#issue-network-not-working" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: Cannot connect to network</p>
-<p><strong>Quick Check</strong>:</p>
+<p><strong>Quick Check</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Check interfaces</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ip<span class="w"> </span>link
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
@@ -2428,11 +2422,11 @@
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Check DNS</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>cat<span class="w"> </span>/etc/resolv.conf
-</code></pre></div>
+</code></pre></div></p>
 <p>See <a href="../network/">Network Issues</a> for solutions.</p>
 <h3 id="issue-out-of-space">Issue: Out of Space<a class="headerlink" href="#issue-out-of-space" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: "No space left on device" errors</p>
-<p><strong>Solution</strong>:</p>
+<p><strong>Solution</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Check disk usage</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>df<span class="w"> </span>-h
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -2444,16 +2438,14 @@
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Note: Filesystem expansion is handled automatically by the pre-init script</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># No manual intervention required for SD card expansion</span>
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="issue-system-running-slow">Issue: System Running Slow<a class="headerlink" href="#issue-system-running-slow" title="Permanent link">&para;</a></h3>
-<p><strong>Possible Causes</strong>:</p>
-<ul>
-<li>Insufficient RAM</li>
-<li>Slow SD card</li>
-<li>Too many services running</li>
-<li>Swap thrashing</li>
-</ul>
-<p><strong>Solutions</strong>:</p>
+<p><strong>Possible Causes</strong>:
+- Insufficient RAM
+- Slow SD card
+- Too many services running
+- Swap thrashing</p>
+<p><strong>Solutions</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Check memory</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>free<span class="w"> </span>-h
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -2466,98 +2458,68 @@
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Disable unnecessary services</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--state<span class="o">=</span>enabled
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>systemctl<span class="w"> </span>disable<span class="w"> </span>&lt;service-name&gt;
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
 <h3 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: What is Calculinux?</strong></p>
-<p>A: Calculinux is a Linux distribution built specifically for the PicoCalc
-handheld computer when equipped with a Luckfox Lyra or compatible SBC. It
-provides a full Linux environment in a pocket-sized device.</p>
+<p>A: Calculinux is a Linux distribution built specifically for the PicoCalc handheld computer when equipped with a Luckfox Lyra or compatible SBC. It provides a full Linux environment in a pocket-sized device.</p>
 <p><strong>Q: Is this the same as the stock PicoCalc firmware?</strong></p>
-<p>A: No. The stock PicoCalc uses a Raspberry Pi Pico running <strong>PicoMite MMBasic</strong>
-firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full
-Linux.</p>
+<p>A: No. The stock PicoCalc uses a Raspberry Pi Pico running <strong>PicoMite MMBasic</strong> firmware. Calculinux requires replacing this with a Luckfox Lyra SBC to run full Linux.</p>
 <p><strong>Q: Will this void my warranty?</strong></p>
-<p>A: Yes. Opening the PicoCalc and replacing the internal board voids the
-warranty. Proceed at your own risk.</p>
+<p>A: Yes. Opening the PicoCalc and replacing the internal board voids the warranty. Proceed at your own risk.</p>
 <p><strong>Q: Can I revert to the original firmware?</strong></p>
-<p>A: Yes, if you kept the original RP2040 board. Simply reinstall it and reflash
-the original firmware.</p>
+<p>A: Yes, if you kept the original RP2040 board. Simply reinstall it and reflash the original firmware.</p>
 <h3 id="hardware-questions">Hardware Questions<a class="headerlink" href="#hardware-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: Which Luckfox Lyra version should I buy?</strong></p>
-<p>A: The 128MB version without SPI NAND is recommended for simplicity. The SPI
-NAND versions work but require an extra NAND erasing step.</p>
+<p>A: The 128MB version without SPI NAND is recommended for simplicity. The SPI NAND versions work but require an extra NAND erasing step.</p>
 <p><strong>Q: What size SD card do I need?</strong></p>
 <p>A: Minimum 8GB, but 16GB or 32GB is recommended for comfortable use.</p>
 <p><strong>Q: Does it work with other SBCs?</strong></p>
-<p>A: Currently only Luckfox Lyra is officially supported. Milk-V Duo support is
-planned. Other boards may work with community modifications.</p>
+<p>A: Currently only Luckfox Lyra is officially supported. Milk-V Duo support is planned. Other boards may work with community modifications.</p>
 <p><strong>Q: Can I use WiFi?</strong></p>
-<p>A: Not built-in, but USB WiFi adapters should work (requires testing). USB
-Ethernet adapters are confirmed working.</p>
+<p>A: Not built-in, but USB WiFi adapters should work (requires testing). USB Ethernet adapters are confirmed working.</p>
 <p><strong>Q: How long does the battery last?</strong></p>
-<p>A: Battery life is less than stock firmware due to running full Linux. Expect
-4-6 hours depending on usage. External USB battery packs work well, and you can
-always swap batteries.</p>
+<p>A: Battery life is less than stock firmware due to running full Linux. Expect 4-6 hours depending on usage. External USB battery packs work well, and you can always swap batteries.</p>
 <h3 id="software-questions">Software Questions<a class="headerlink" href="#software-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: Can I install regular Linux software?</strong></p>
-<p>A: Yes, using the opkg package manager. Many standard Linux packages are
-available, though some may not work well on the small display or with limited
-RAM. We are still building up the software library - if the application you're
-looking for is not present please request it!</p>
+<p>A: Yes, using the opkg package manager. Many standard Linux packages are available, though some may not work well on the small display or with limited RAM. We are still building up the software library - if the application you're looking for is not present please request it!</p>
 <p><strong>Q: Can I run a graphical desktop?</strong></p>
-<p>A: Yes, lightweight desktop environments like LXDE work on 128MB+ systems. Full
-desktops like GNOME/KDE are too heavy.</p>
+<p>A: Yes, lightweight desktop environments like LXDE work on 128MB+ systems. Full desktops like GNOME/KDE are too heavy.</p>
 <p><strong>Q: Can I run Python/C/other languages?</strong></p>
-<p>A: Yes, development tools including Python, GCC, and other compilers are
-available.</p>
+<p>A: Yes, development tools including Python, GCC, and other compilers are available.</p>
 <p><strong>Q: Can I browse the web?</strong></p>
-<p>A: Text-mode browsers (lynx, w3m) work well. Graphical browsers require 256MB+
-RAM and are slow on the small display.</p>
+<p>A: Text-mode browsers (lynx, w3m) work well. Graphical browsers require 256MB+ RAM and are slow on the small display.</p>
 <p><strong>Q: How do I install more software?</strong></p>
-<p>A: Use the opkg package manager:</p>
+<p>A: Use the opkg package manager:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>opkg<span class="w"> </span>update
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>opkg<span class="w"> </span>install<span class="w"> </span>&lt;package-name&gt;
-</code></pre></div>
+</code></pre></div></p>
 <p>See <a href="../../user-guide/package-management/">Package Management</a> for details.</p>
 <h3 id="build-development-questions">Build &amp; Development Questions<a class="headerlink" href="#build-development-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: How do I build Calculinux from source?</strong></p>
-<p>A: Follow the <a href="../../developer/overview/">Developer Guide</a>, starting with
-<a href="../../developer/yocto-setup/">Yocto Setup</a>.</p>
+<p>A: Follow the <a href="../../developer/overview/">Developer Guide</a>, starting with <a href="../../developer/yocto-setup/">Yocto Setup</a>.</p>
 <p><strong>Q: How long does a build take?</strong></p>
-<p>A: First build: ~2 hours depending on your computer. Subsequent builds: much
-faster (minutes to an hour).</p>
+<p>A: First build: ~2 hours depending on your computer. Subsequent builds: much faster (minutes to an hour).</p>
 <p><strong>Q: Can I contribute to Calculinux?</strong></p>
-<p>A: Absolutely! See <a href="../../developer/contributing/">Contributing Guide</a> for how to
-get involved.</p>
+<p>A: Absolutely! See <a href="../../developer/contributing/">Contributing Guide</a> for how to get involved.</p>
 <p><strong>Q: Where is the source code?</strong></p>
 <p>A: GitHub: <a href="https://github.com/Calculinux">github.com/Calculinux</a></p>
 <h3 id="troubleshooting-questions">Troubleshooting Questions<a class="headerlink" href="#troubleshooting-questions" title="Permanent link">&para;</a></h3>
 <p><strong>Q: Why won't my system boot from SD card?</strong></p>
-<p>A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you
-must erase it first. See
-<a href="../boot-problems/#spi-nand-interference">Boot Problems</a>.</p>
+<p>A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you must erase it first. See <a href="../boot-problems/#spi-nand-interference">Boot Problems</a>.</p>
 <p><strong>Q: Why is my system so slow?</strong></p>
-<p>A: Check RAM usage (<code>free -h</code>). With only 128MB, many applications will
-struggle. If you are trying to use a GUI, you may want to explore other lighter
-options.</p>
+<p>A: Check RAM usage (<code>free -h</code>). With only 128MB, many applications will struggle. If you are trying to use a GUI, you may want to explore other lighter options.</p>
 <p><strong>Q: Where can I get help?</strong></p>
-<p>A:</p>
-<ol>
-<li>Check this documentation</li>
-<li>Join our <a href="https://discord.gg/7quBbSPxcP">Discord Community</a></li>
-<li>Search the
-   <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum</a></li>
-<li>Open a <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub issue</a></li>
-</ol>
+<p>A: 
+1. Check this documentation
+2. Join our <a href="https://discord.gg/7quBbSPxcP">Discord Community</a>
+3. Search the <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum</a>
+4. Open a <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub issue</a></p>
 <p><strong>Q: The display shows garbage/corruption</strong></p>
-<p>A: Try:</p>
-<ul>
-<li>Reducing SPI clock speed in device tree. The default should be stable,
-  however.</li>
-<li>Reflashing SD card</li>
-<li>Testing with different SD card</li>
-</ul>
+<p>A: Try:
+- Reducing SPI clock speed in device tree. The default should be stable, however.
+- Reflashing SD card
+- Testing with different SD card</p>
 <h2 id="error-messages">Error Messages<a class="headerlink" href="#error-messages" title="Permanent link">&para;</a></h2>
 <h3 id="common-error-messages-and-solutions">Common Error Messages and Solutions<a class="headerlink" href="#common-error-messages-and-solutions" title="Permanent link">&para;</a></h3>
 <table>
@@ -2616,10 +2578,8 @@ options.</p>
 <ul>
 <li><strong>Documentation</strong>: Check specific troubleshooting pages</li>
 <li><strong>Discord Community</strong>: <a href="https://discord.gg/7quBbSPxcP">Join our Discord</a></li>
-<li><strong>Forum</strong>:
-  <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi Forum Thread</a></li>
-<li><strong>GitHub</strong>:
-  <a href="https://github.com/Calculinux/meta-calculinux/issues">Issue Tracker</a></li>
+<li><strong>Forum</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi Forum Thread</a></li>
+<li><strong>GitHub</strong>: <a href="https://github.com/Calculinux/meta-calculinux/issues">Issue Tracker</a></li>
 <li><strong>Community</strong>: Links in <a href="../../resources/community/">Resources</a></li>
 </ul>
 <h2 id="still-stuck">Still Stuck?<a class="headerlink" href="#still-stuck" title="Permanent link">&para;</a></h2>
@@ -2650,9 +2610,7 @@ options.</p>
 <li><a href="../common-issues/">Common Issues</a> - General issues and solutions</li>
 </ul>
 <hr />
-<p><em>Can't find your issue?
-<a href="https://github.com/Calculinux/docs/issues">Open a documentation issue</a> to
-request it be added!</em></p>
+<p><em>Can't find your issue? <a href="https://github.com/Calculinux/docs/issues">Open a documentation issue</a> to request it be added!</em></p>
 
 
 
@@ -2675,7 +2633,7 @@ request it be added!</em></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

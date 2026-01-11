@@ -2562,46 +2562,35 @@
 
 
 <h1 id="package-management">Package Management<a class="headerlink" href="#package-management" title="Permanent link">&para;</a></h1>
-<p>Calculinux uses <code>opkg</code> (Open Package Management) for installing, updating, and
-removing software packages.</p>
+<p>Calculinux uses <code>opkg</code> (Open Package Management) for installing, updating, and removing software packages.</p>
 <h2 id="understanding-package-feeds">Understanding Package Feeds<a class="headerlink" href="#understanding-package-feeds" title="Permanent link">&para;</a></h2>
-<p>Calculinux packages are hosted on package feeds at
-<code>https://opkg.calculinux.org/</code>. <strong>Your system is automatically configured to use
-the appropriate feed based on your installed version.</strong> You typically don't need
-to modify the feed configuration.</p>
+<p>Calculinux packages are hosted on package feeds at <code>https://opkg.calculinux.org/</code>. <strong>Your system is automatically configured to use the appropriate feed based on your installed version.</strong> You typically don't need to modify the feed configuration.</p>
 <h3 id="feed-types">Feed Types<a class="headerlink" href="#feed-types" title="Permanent link">&para;</a></h3>
-<p><strong>Continuous Feed</strong>: Rolling release packages with the latest updates</p>
-<ul>
-<li>URL format: <code>https://opkg.calculinux.org/ipk/{codename}/continuous/</code></li>
-<li>Updated automatically as changes are made</li>
-<li>Best for staying current with development</li>
-<li>May include experimental features</li>
-<li>Used by main and develop branch builds</li>
-</ul>
-<p><strong>Release Feed</strong>: Stable versioned packages</p>
-<ul>
-<li>URL format: <code>https://opkg.calculinux.org/ipk/{codename}/release/</code></li>
-<li>Locked to specific release versions</li>
-<li>Thoroughly tested before release</li>
-<li>Recommended for production use</li>
-<li>Used by tagged releases (e.g., v1.0.0)</li>
-</ul>
+<p><strong>Continuous Feed</strong>: Rolling release packages with the latest updates
+- URL format: <code>https://opkg.calculinux.org/ipk/{codename}/continuous/</code>
+- Updated automatically as changes are made
+- Best for staying current with development
+- May include experimental features
+- Used by main and develop branch builds</p>
+<p><strong>Release Feed</strong>: Stable versioned packages
+- URL format: <code>https://opkg.calculinux.org/ipk/{codename}/release/</code>
+- Locked to specific release versions
+- Thoroughly tested before release
+- Recommended for production use
+- Used by tagged releases (e.g., v1.0.0)</p>
 <h3 id="which-feed-am-i-using">Which Feed Am I Using?<a class="headerlink" href="#which-feed-am-i-using" title="Permanent link">&para;</a></h3>
 <p>Check your current feed configuration:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cat<span class="w"> </span>/etc/opkg/base-feeds.conf
 </code></pre></div>
-<p>Example output for a continuous build:</p>
+<p>Example output for a continuous build:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>src/gz all https://opkg.calculinux.org/ipk/walnascar/continuous/all
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>src/gz cortexa7t2hf-neon-vfpv4 https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>src/gz luckfox_lyra https://opkg.calculinux.org/ipk/walnascar/continuous/luckfox_lyra
-</code></pre></div>
-<p>The feed configuration is set during the image build process and matches the
-image type:</p>
-<ul>
-<li>Images from <code>main</code> branch → <code>walnascar/continuous</code> feed</li>
-<li>Images from <code>develop</code> branch → <code>develop/continuous</code> feed</li>
-<li>Images from tagged releases → <code>walnascar/release</code> feed</li>
-</ul>
+</code></pre></div></p>
+<p>The feed configuration is set during the image build process and matches the image type:
+- Images from <code>main</code> branch → <code>walnascar/continuous</code> feed
+- Images from <code>develop</code> branch → <code>develop/continuous</code> feed<br />
+- Images from tagged releases → <code>walnascar/release</code> feed</p>
 <h2 id="basic-commands">Basic Commands<a class="headerlink" href="#basic-commands" title="Permanent link">&para;</a></h2>
 <h3 id="updating-package-lists">Updating Package Lists<a class="headerlink" href="#updating-package-lists" title="Permanent link">&para;</a></h3>
 <p>Before installing or updating packages, refresh the package list:</p>
@@ -2611,9 +2600,9 @@ image type:</p>
 <p>Install a package:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>opkg<span class="w"> </span>install<span class="w"> </span>&lt;package-name&gt;
 </code></pre></div>
-<p>Example:</p>
+<p>Example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>opkg<span class="w"> </span>install<span class="w"> </span>vim
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="removing-packages">Removing Packages<a class="headerlink" href="#removing-packages" title="Permanent link">&para;</a></h3>
 <p>Remove a package:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>opkg<span class="w"> </span>remove<span class="w"> </span>&lt;package-name&gt;
@@ -2625,9 +2614,9 @@ image type:</p>
 <p>Search for available packages:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>opkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;search-term&gt;
 </code></pre></div>
-<p>Example:</p>
+<p>Example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>opkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>python
-</code></pre></div>
+</code></pre></div></p>
 <p>Search for installed packages:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>opkg<span class="w"> </span>list-installed<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;search-term&gt;
 </code></pre></div>
@@ -2665,9 +2654,9 @@ image type:</p>
 <h3 id="finding-which-package-provides-a-file">Finding Which Package Provides a File<a class="headerlink" href="#finding-which-package-provides-a-file" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>opkg<span class="w"> </span>search<span class="w"> </span>&lt;filename&gt;
 </code></pre></div>
-<p>Example:</p>
+<p>Example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>opkg<span class="w"> </span>search<span class="w"> </span>/usr/bin/python3
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="package-dependencies">Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permanent link">&para;</a></h3>
 <p>View package dependencies:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>opkg<span class="w"> </span>depends<span class="w"> </span>&lt;package-name&gt;
@@ -2676,14 +2665,15 @@ image type:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>opkg<span class="w"> </span>whatdepends<span class="w"> </span>&lt;package-name&gt;
 </code></pre></div>
 <h2 id="feed-configuration">Feed Configuration<a class="headerlink" href="#feed-configuration" title="Permanent link">&para;</a></h2>
-<p>!!! info "Automatic Configuration" <strong>Package feeds are automatically configured
-during image creation.</strong> You typically don't need to change feed configuration
-unless you're testing different package versions or have specific advanced
-requirements.</p>
+<div class="admonition info">
+<p class="admonition-title">Automatic Configuration</p>
+<p><strong>Package feeds are automatically configured during image creation.</strong> You typically don't need to change feed configuration unless you're testing different package versions or have specific advanced requirements.</p>
+</div>
 <h3 id="switching-feeds-advanced">Switching Feeds (Advanced)<a class="headerlink" href="#switching-feeds-advanced" title="Permanent link">&para;</a></h3>
-<p>!!! warning "Advanced Users Only" Switching feeds may cause package version
-conflicts and is only recommended for testing or specific use cases. Most users
-should use the pre-configured feed that came with their image.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advanced Users Only</p>
+<p>Switching feeds may cause package version conflicts and is only recommended for testing or specific use cases. Most users should use the pre-configured feed that came with their image.</p>
+</div>
 <p>To switch from continuous to release feed, edit <code>/etc/opkg/base-feeds.conf</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Backup current configuration</span>
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>cp<span class="w"> </span>/etc/opkg/base-feeds.conf<span class="w"> </span>/etc/opkg/base-feeds.conf.backup
@@ -2699,29 +2689,32 @@ should use the pre-configured feed that came with their image.</p>
 <p>Then update:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>opkg<span class="w"> </span>update
 </code></pre></div>
-<p>!!! note "Persistence" Changes to <code>/etc/opkg/base-feeds.conf</code> persist across
-reboots because Calculinux uses overlayfs - your changes are stored in the upper
-(writable) layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Persistence</p>
+<p>Changes to <code>/etc/opkg/base-feeds.conf</code> persist across reboots because Calculinux uses overlayfs - your changes are stored in the upper (writable) layer.</p>
+</div>
 <h3 id="adding-custom-feeds">Adding Custom Feeds<a class="headerlink" href="#adding-custom-feeds" title="Permanent link">&para;</a></h3>
 <p>To add a custom package feed:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;src/gz custom-feed https://example.com/ipk/all&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/opkg/custom-feeds.conf
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>opkg<span class="w"> </span>update
 </code></pre></div>
 <h3 id="development-vs-stable-codenames">Development vs. Stable Codenames<a class="headerlink" href="#development-vs-stable-codenames" title="Permanent link">&para;</a></h3>
-<p>Different Calculinux versions use different distribution codenames in their feed
-URLs:</p>
+<p>Different Calculinux versions use different distribution codenames in their feed URLs:</p>
 <ul>
 <li><strong>walnascar</strong>: Stable releases and main branch continuous builds</li>
 <li>Example: <code>https://opkg.calculinux.org/ipk/walnascar/continuous/</code></li>
-<li>Example: <code>https://opkg.calculinux.org/ipk/walnascar/release/</code></li>
-<li><strong>develop</strong>: Development branch builds (bleeding-edge features)</li>
+<li>
+<p>Example: <code>https://opkg.calculinux.org/ipk/walnascar/release/</code></p>
+</li>
+<li>
+<p><strong>develop</strong>: Development branch builds (bleeding-edge features)</p>
+</li>
 <li>Example: <code>https://opkg.calculinux.org/ipk/develop/continuous/</code></li>
 </ul>
-<p>!!! warning "Codename Compatibility" Switching between different codenames
-(e.g., <code>walnascar</code> ↔ <code>develop</code>) may cause significant package compatibility
-issues. This is <strong>not recommended</strong> except for advanced testing scenarios. If
-you want bleeding-edge packages, it's better to flash a new develop branch image
-rather than switching feeds.</p>
+<div class="admonition warning">
+<p class="admonition-title">Codename Compatibility</p>
+<p>Switching between different codenames (e.g., <code>walnascar</code> ↔ <code>develop</code>) may cause significant package compatibility issues. This is <strong>not recommended</strong> except for advanced testing scenarios. If you want bleeding-edge packages, it's better to flash a new develop branch image rather than switching feeds.</p>
+</div>
 <h2 id="common-tasks">Common Tasks<a class="headerlink" href="#common-tasks" title="Permanent link">&para;</a></h2>
 <h3 id="installing-development-tools">Installing Development Tools<a class="headerlink" href="#installing-development-tools" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>opkg<span class="w"> </span>update
@@ -2743,36 +2736,40 @@ rather than switching feeds.</p>
 <h3 id="package-installation-fails">Package Installation Fails<a class="headerlink" href="#package-installation-fails" title="Permanent link">&para;</a></h3>
 <p>If a package fails to install:</p>
 <ol>
-<li>Update package lists:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>opkg<span class="w"> </span>update
-</code></pre></div>
-<ol>
-<li>Check available space:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>df<span class="w"> </span>-h
-</code></pre></div>
-<ol>
-<li>Check error message for missing dependencies:
+<li>
+<p>Update package lists:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>opkg<span class="w"> </span>update
+</code></pre></div></p>
+</li>
+<li>
+<p>Check available space:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>df<span class="w"> </span>-h
+</code></pre></div></p>
+</li>
+<li>
+<p>Check error message for missing dependencies:
    <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>opkg<span class="w"> </span>install<span class="w"> </span>--force-depends<span class="w"> </span>&lt;package-name&gt;
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 </ol>
 <h3 id="repository-connection-issues">Repository Connection Issues<a class="headerlink" href="#repository-connection-issues" title="Permanent link">&para;</a></h3>
 <p>If you can't connect to the package feeds:</p>
 <ol>
-<li>Check network connectivity:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>ping<span class="w"> </span>opkg.calculinux.org
-</code></pre></div>
-<ol>
-<li>Verify feed URLs:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>cat<span class="w"> </span>/etc/opkg/base-feeds.conf
-</code></pre></div>
-<ol>
-<li>Try updating manually:
+<li>
+<p>Check network connectivity:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>ping<span class="w"> </span>opkg.calculinux.org
+</code></pre></div></p>
+</li>
+<li>
+<p>Verify feed URLs:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>cat<span class="w"> </span>/etc/opkg/base-feeds.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>Try updating manually:
    <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>opkg<span class="w"> </span>update<span class="w"> </span>--verbosity<span class="o">=</span><span class="m">3</span>
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 </ol>
 <h3 id="version-conflicts">Version Conflicts<a class="headerlink" href="#version-conflicts" title="Permanent link">&para;</a></h3>
 <p>If you encounter version conflicts:</p>
@@ -2802,14 +2799,10 @@ rather than switching feeds.</p>
 <h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Always update before installing</strong>: Run <code>opkg update</code> before <code>opkg install</code></li>
-<li><strong>Regular updates</strong>: Keep your system updated with
-   <code>opkg update &amp;&amp; opkg upgrade</code></li>
-<li><strong>Check dependencies</strong>: Use <code>opkg info</code> to check dependencies before
-   installing</li>
-<li><strong>Backup configurations</strong>: Keep backups of important config files before
-   major updates</li>
-<li><strong>Use stable feeds for production</strong>: Stick to release feeds for production
-   devices</li>
+<li><strong>Regular updates</strong>: Keep your system updated with <code>opkg update &amp;&amp; opkg upgrade</code></li>
+<li><strong>Check dependencies</strong>: Use <code>opkg info</code> to check dependencies before installing</li>
+<li><strong>Backup configurations</strong>: Keep backups of important config files before major updates</li>
+<li><strong>Use stable feeds for production</strong>: Stick to release feeds for production devices</li>
 <li><strong>Test on continuous feeds</strong>: Use continuous feeds for testing new features</li>
 </ol>
 <h2 id="comparison-with-other-package-managers">Comparison with Other Package Managers<a class="headerlink" href="#comparison-with-other-package-managers" title="Permanent link">&para;</a></h2>
@@ -2854,8 +2847,7 @@ rather than switching feeds.</p>
 <ul>
 <li><a href="../configuration/">System Configuration</a> - Configure your system</li>
 <li><a href="../updates/">Updates</a> - System update procedures</li>
-<li><a href="../../developer/building/">Building Calculinux</a> - Build configuration and
-  feeds</li>
+<li><a href="../../developer/building/">Building Calculinux</a> - Build configuration and feeds</li>
 <li><a href="../../developer/adding-packages/">Adding Packages</a> - Create your own packages</li>
 </ul>
 
@@ -2880,7 +2872,7 @@ rather than switching feeds.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

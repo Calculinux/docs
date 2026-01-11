@@ -2884,11 +2884,9 @@
 
 
 <h1 id="calculinux-update-system">Calculinux Update System<a class="headerlink" href="#calculinux-update-system" title="Permanent link">&para;</a></h1>
-<p>Developer documentation for the <code>calculinux-update</code> package and OPKG
-reconciliation system.</p>
+<p>Developer documentation for the <code>calculinux-update</code> package and OPKG reconciliation system.</p>
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
-<p>The Calculinux update system consists of three main components that work
-together to provide atomic A/B updates with automatic package reconciliation:</p>
+<p>The Calculinux update system consists of three main components that work together to provide atomic A/B updates with automatic package reconciliation:</p>
 <pre class="mermaid"><code>graph TD
     subgraph CLI["cup (CLI)"]
         mirror[Mirror browsing]
@@ -2921,10 +2919,7 @@ together to provide atomic A/B updates with automatic package reconciliation:</p
     style CLI fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style Hook fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style Postreboot fill:#e8f5e9,stroke:#388e3c,stroke-width:2px</code></pre>
-<p><strong>Key Architectural Principle</strong>: The hook performs ALL reconciliation planning
-and preparation (including status pruning and duplicate removal) BEFORE reboot.
-The post-reboot service contains NO reconciliation logic - it purely executes
-the plan created by the hook.</p>
+<p><strong>Key Architectural Principle</strong>: The hook performs ALL reconciliation planning and preparation (including status pruning and duplicate removal) BEFORE reboot. The post-reboot service contains NO reconciliation logic - it purely executes the plan created by the hook.</p>
 <h2 id="module-structure">Module Structure<a class="headerlink" href="#module-structure" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>src/calculinux_update/
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── cli.py              # Main CLI entry point (cup command)
@@ -2939,34 +2934,22 @@ the plan created by the hook.</p>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    ├── reconcile.py    # Reconciliation algorithm
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    └── overlayfs.py    # OverlayFS whiteout cleanup
 </code></pre></div>
-<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS
-whiteout management:</p>
-<ul>
-<li><code>cleanup_package_whiteouts()</code> - Remove package file whiteouts</li>
-<li><code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in
-  <code>/var/lib/opkg/info/</code></li>
-<li><code>has_files_in_upper()</code> - Detect if package has files in upper layer (for
-  two-phase duplicate removal)</li>
-<li><code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag
-  with fallback</li>
-<li><code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</li>
-</ul>
+<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS whiteout management:
+- <code>cleanup_package_whiteouts()</code> - Remove package file whiteouts
+- <code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in <code>/var/lib/opkg/info/</code>
+- <code>has_files_in_upper()</code> - Detect if package has files in upper layer (for two-phase duplicate removal)
+- <code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag with fallback
+- <code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</p>
 <p><strong>Binary Locations</strong> (as of v0.5.0):</p>
 <ul>
 <li><code>/usr/bin/cup</code> - User-facing CLI command</li>
-<li><code>/usr/lib/calculinux-update/cup-hook</code> - RAUC hook (internal, called by
-  post-install handler)</li>
-<li><code>/usr/lib/calculinux-update/cup-postreboot</code> - Post-reboot service entry point
-  (internal, called by systemd)</li>
+<li><code>/usr/lib/calculinux-update/cup-hook</code> - RAUC hook (internal, called by post-install handler)</li>
+<li><code>/usr/lib/calculinux-update/cup-postreboot</code> - Post-reboot service entry point (internal, called by systemd)</li>
 </ul>
-<p>System-internal binaries are now in <code>/usr/lib/calculinux-update/</code> to clarify
-they are not meant for direct user invocation.</p>
+<p>System-internal binaries are now in <code>/usr/lib/calculinux-update/</code> to clarify they are not meant for direct user invocation.</p>
 <h2 id="bundle-extras">Bundle Extras<a class="headerlink" href="#bundle-extras" title="Permanent link">&para;</a></h2>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>RAUC bundles can include additional files beyond the root filesystem image.
-Calculinux bundles include a <code>bundle-extras.tar.gz</code> file containing OPKG
-configuration and package status information from the new image. This enables
-the prefetch system to work correctly.</p>
+<p>RAUC bundles can include additional files beyond the root filesystem image. Calculinux bundles include a <code>bundle-extras.tar.gz</code> file containing OPKG configuration and package status information from the new image. This enables the prefetch system to work correctly.</p>
 <h3 id="bundle-structure">Bundle Structure<a class="headerlink" href="#bundle-structure" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bundle.raucb (squashfs)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── manifest.raucb      # RAUC manifest
@@ -2984,10 +2967,8 @@ the prefetch system to work correctly.</p>
 <p><strong>Module</strong>: <code>bundle.py</code></p>
 <p>The <code>extract_bundle_extras()</code> function performs a two-stage extraction:</p>
 <ol>
-<li><strong>Extract tarball from bundle</strong> - Uses <code>unsquashfs</code> to extract
-   <code>bundle-extras.tar.gz</code> from the squashfs bundle</li>
-<li><strong>Extract tarball contents</strong> - Uses Python's <code>tarfile</code> module to extract the
-   <code>extras/</code> directory structure</li>
+<li><strong>Extract tarball from bundle</strong> - Uses <code>unsquashfs</code> to extract <code>bundle-extras.tar.gz</code> from the squashfs bundle</li>
+<li><strong>Extract tarball contents</strong> - Uses Python's <code>tarfile</code> module to extract the <code>extras/</code> directory structure</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_bundle_extras</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BundleExtras</span><span class="p">]:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract Calculinux-specific extras from a RAUC bundle.</span>
@@ -3012,11 +2993,9 @@ the prefetch system to work correctly.</p>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="k">return</span> <span class="n">BundleExtras</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">temp_dir</span><span class="p">,</span> <span class="n">opkg_root</span><span class="o">=</span><span class="n">temp_dir</span> <span class="o">/</span> <span class="s2">&quot;extras/opkg&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>Security</strong>: The extraction uses <code>filter="data"</code> (Python 3.13+) to prevent path
-traversal attacks.</p>
+<p><strong>Security</strong>: The extraction uses <code>filter="data"</code> (Python 3.13+) to prevent path traversal attacks.</p>
 <h3 id="bundle-extras-creation">Bundle Extras Creation<a class="headerlink" href="#bundle-extras-creation" title="Permanent link">&para;</a></h3>
-<p><strong>Yocto Recipe</strong>:
-<code>meta-calculinux-distro/recipes-core/image/calculinux-image.bb</code></p>
+<p><strong>Yocto Recipe</strong>: <code>meta-calculinux-distro/recipes-core/image/calculinux-image.bb</code></p>
 <p>The <code>calculinux_export_bundle_extras()</code> function runs during <code>do_rootfs</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>calculinux_export_bundle_extras<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nv">extras_dir</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEPLOY_DIR_IMAGE</span><span class="si">}</span><span class="s2">/bundle-extras/extras/opkg&quot;</span>
@@ -3041,34 +3020,26 @@ traversal attacks.</p>
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="k">fi</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="o">}</span>
 </code></pre></div>
-<p><strong>Bundle Recipe</strong>:
-<code>meta-calculinux-distro/recipes-core/bundles/calculinux-bundle.bb</code></p>
+<p><strong>Bundle Recipe</strong>: <code>meta-calculinux-distro/recipes-core/bundles/calculinux-bundle.bb</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>inherit bundle
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>RAUC_BUNDLE_EXTRA_FILES += &quot;bundle-extras.tar.gz&quot;
 </code></pre></div>
-<p>The <code>bundle</code> class automatically includes files listed in
-<code>RAUC_BUNDLE_EXTRA_FILES</code> from <code>DEPLOY_DIR_IMAGE</code>.</p>
+<p>The <code>bundle</code> class automatically includes files listed in <code>RAUC_BUNDLE_EXTRA_FILES</code> from <code>DEPLOY_DIR_IMAGE</code>.</p>
 <h3 id="why-bundle-extras">Why Bundle Extras?<a class="headerlink" href="#why-bundle-extras" title="Permanent link">&para;</a></h3>
 <p>Without bundle extras, the hook would need to:</p>
 <ol>
-<li>~~Mount the inactive slot after RAUC installation~~ ✗ Not possible - RAUC
-   unmounts slots after installation</li>
-<li>~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted
-   when hook runs</li>
-<li>~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional
-   complexity and failure modes</li>
+<li>~~Mount the inactive slot after RAUC installation~~  ✗ Not possible - RAUC unmounts slots after installation</li>
+<li>~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted when hook runs</li>
+<li>~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional complexity and failure modes</li>
 </ol>
 <p>With bundle extras:</p>
 <p>✅ Self-contained: Bundle includes all necessary metadata<br />
 ✅ No mounting required: Status file provided via environment variable<br />
 ✅ Hook runs without slot access: Works even if slot can't be mounted<br />
 ✅ Faster: No filesystem access delays<br />
-✅ More reliable: Fewer moving parts, fewer failure modes</p>
-<p><strong>Critical for v0.5.0+</strong>: The hook now receives <code>RAUC_BUNDLE_STATUS_IMAGE</code> from
-the post-install handler, which extracts <code>status.image</code> from bundle extras. The
-hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new
-image's package status.</p>
+✅ More reliable: Fewer moving parts, fewer failure modes  </p>
+<p><strong>Critical for v0.5.0+</strong>: The hook now receives <code>RAUC_BUNDLE_STATUS_IMAGE</code> from the post-install handler, which extracts <code>status.image</code> from bundle extras. The hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new image's package status.</p>
 <h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
 <p>If bundle extras are missing or corrupted:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">extras</span> <span class="o">=</span> <span class="n">extract_bundle_extras</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">)</span>
@@ -3077,28 +3048,22 @@ image's package status.</p>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;[yellow]Bundle extras missing, skipping prefetch[/]&quot;</span><span class="p">)</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="c1"># Installation continues normally</span>
 </code></pre></div>
-<p>The update installation continues without prefetch, but post-reboot
-reconciliation will require network access.</p>
+<p>The update installation continues without prefetch, but post-reboot reconciliation will require network access.</p>
 <h2 id="opkg-reconciliation-system">OPKG Reconciliation System<a class="headerlink" href="#opkg-reconciliation-system" title="Permanent link">&para;</a></h2>
 <h3 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link">&para;</a></h3>
 <p>Calculinux uses a dual-layer package system:</p>
 <ul>
-<li><strong>Base layer</strong>: Read-only packages in the RAUC image
-  (<code>/var/lib/opkg/status.image</code>)</li>
-<li><strong>Overlay layer</strong>: User-installed packages in writable storage
-  (<code>/var/lib/opkg/status</code>)</li>
+<li><strong>Base layer</strong>: Read-only packages in the RAUC image (<code>/var/lib/opkg/status.image</code>)</li>
+<li><strong>Overlay layer</strong>: User-installed packages in writable storage (<code>/var/lib/opkg/status</code>)</li>
 </ul>
 <p>When updating the base image, three problems arise:</p>
 <ol>
-<li><strong>Shadowing</strong>: Packages installed in overlay that now exist in the new base
-   (duplicates)</li>
-<li><strong>Missing packages</strong>: Packages removed from new base that overlay packages
-   depend on</li>
+<li><strong>Shadowing</strong>: Packages installed in overlay that now exist in the new base (duplicates)</li>
+<li><strong>Missing packages</strong>: Packages removed from new base that overlay packages depend on</li>
 <li><strong>Version conflicts</strong>: Overlay packages built against old base versions</li>
 </ol>
 <h3 id="the-solution">The Solution<a class="headerlink" href="#the-solution" title="Permanent link">&para;</a></h3>
-<p>The reconciliation system solves this in two main phases plus an optional
-prefetch:</p>
+<p>The reconciliation system solves this in two main phases plus an optional prefetch:</p>
 <h4 id="phase-0-prefetch-optional-before-update">Phase 0: Prefetch (Optional, Before Update)<a class="headerlink" href="#phase-0-prefetch-optional-before-update" title="Permanent link">&para;</a></h4>
 <p><strong>Module</strong>: <code>prefetch.py</code>, <code>bundle.py</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">prefetch_for_bundle</span><span class="p">(</span>
@@ -3112,8 +3077,7 @@ prefetch:</p>
 <ol>
 <li>Extract bundle extras from the RAUC bundle</li>
 <li>Load OPKG configuration and status.image from extras</li>
-<li>Compute reconciliation plan against current writable status and current
-   slot's status.image</li>
+<li>Compute reconciliation plan against current writable status and current slot's status.image</li>
 <li>Download all packages marked for reinstall using bundle's OPKG config</li>
 <li>Cache packages in <code>/var/cache/calculinux-update/prefetch/</code></li>
 </ol>
@@ -3139,9 +3103,7 @@ prefetch:</p>
 <li>Faster post-reboot (packages already cached)</li>
 <li>Handles network unavailability during reboot</li>
 </ul>
-<p><strong>Note</strong>: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the
-update still proceeds normally. Network access is required after reboot if
-prefetch didn't cache packages.</p>
+<p><strong>Note</strong>: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the update still proceeds normally. Network access is required after reboot if prefetch didn't cache packages.</p>
 <h4 id="phase-1-hook-during-rauc-install-the-brain">Phase 1: Hook (During RAUC Install) - THE BRAIN<a class="headerlink" href="#phase-1-hook-during-rauc-install-the-brain" title="Permanent link">&para;</a></h4>
 <p><strong>Module</strong>: <code>hooks.py</code> → <code>run_slot_hook()</code></p>
 <p><strong>RAUC Integration</strong> (v0.5.0+):</p>
@@ -3154,31 +3116,25 @@ prefetch didn't cache packages.</p>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>/usr/lib/calculinux-update/cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SLOT_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-<p><strong>Critical Change in v0.5.0</strong>: The hook NO LONGER MOUNTS SLOTS. It receives the
-status.image file path from bundle extras via the <code>RAUC_BUNDLE_STATUS_IMAGE</code>
-environment variable.</p>
+<p><strong>Critical Change in v0.5.0</strong>: The hook NO LONGER MOUNTS SLOTS. It receives the status.image file path from bundle extras via the <code>RAUC_BUNDLE_STATUS_IMAGE</code> environment variable.</p>
 <p><strong>Process</strong> (ALL happens before reboot):</p>
 <ol>
-<li>Validate environment (<code>RAUC_SLOT_CLASS=rootfs</code>, <code>RAUC_BUNDLE_STATUS_IMAGE</code>
-   provided)</li>
+<li>Validate environment (<code>RAUC_SLOT_CLASS=rootfs</code>, <code>RAUC_BUNDLE_STATUS_IMAGE</code> provided)</li>
 <li>Load status files:</li>
 <li>New image status from <code>RAUC_BUNDLE_STATUS_IMAGE</code> (bundle extras)</li>
 <li>Current writable status from <code>/var/lib/opkg/status</code></li>
 <li>Current image status from <code>/var/lib/opkg/status.image</code></li>
 <li>Compute reconciliation plan (what needs to change)</li>
 <li><strong>Two-phase duplicate removal</strong>:</li>
-<li><strong>Status-only duplicates</strong>: Packages with no actual files in the upper
-     layer are removed from status file immediately (safe before reboot)</li>
-<li><strong>Physical duplicates</strong>: Packages with actual files in the upper layer are
-     queued for removal after reboot</li>
+<li><strong>Status-only duplicates</strong>: Packages with no actual files in the upper layer are removed from status file immediately (safe before reboot)</li>
+<li><strong>Physical duplicates</strong>: Packages with actual files in the upper layer are queued for removal after reboot</li>
 <li><strong>Clean up OverlayFS whiteouts</strong> for status-only duplicates:</li>
 <li>Pre-fetch file lists before package removal</li>
 <li>Remove package file whiteouts (character device 0:0)</li>
 <li>Remove metadata whiteouts in <code>/var/lib/opkg/info/</code></li>
 <li>Remount overlay to pick up changes</li>
 <li><strong>Queue pending operations</strong>:</li>
-<li>Write <code>/var/lib/calculinux-update/update-state.pending-duplicates</code>
-     (physical duplicates for post-reboot)</li>
+<li>Write <code>/var/lib/calculinux-update/update-state.pending-duplicates</code> (physical duplicates for post-reboot)</li>
 <li>Write <code>/var/lib/calculinux-update/update-state.pending-reinstalls</code></li>
 <li>Write <code>/var/lib/calculinux-update/update-state.pending-upgrades</code></li>
 <li><strong>Set completion marker</strong> - <code>/var/lib/calculinux-update/status-pruned</code></li>
@@ -3225,27 +3181,16 @@ environment variable.</p>
 </code></pre></div>
 <p><strong>Why Two-Phase Duplicate Removal?</strong>:</p>
 <ul>
-<li><strong>Status-only duplicates</strong>: Packages that exist only in the status file but
-  have no actual files in the upper layer can be safely removed immediately.
-  Removing them before reboot is safe because they don't have any files that
-  could temporarily break system access.</li>
-<li><strong>Physical duplicates</strong>: Packages with actual files in the upper layer must be
-  removed after reboot. If removed before reboot, OverlayFS creates whiteout
-  files for ALL package files. If a second update follows immediately, these
-  whiteouts temporarily hide critical libraries from the base image, potentially
-  breaking system access during the update window.</li>
-<li><strong>Example</strong>: User installs SDL → Update 1 includes SDL in base → Update 2
-  follows immediately. If SDL is removed before reboot in Update 1, whiteouts
-  hide SDL libraries during Update 2, breaking any program that needs SDL.</li>
+<li><strong>Status-only duplicates</strong>: Packages that exist only in the status file but have no actual files in the upper layer can be safely removed immediately. Removing them before reboot is safe because they don't have any files that could temporarily break system access.</li>
+<li><strong>Physical duplicates</strong>: Packages with actual files in the upper layer must be removed after reboot. If removed before reboot, OverlayFS creates whiteout files for ALL package files. If a second update follows immediately, these whiteouts temporarily hide critical libraries from the base image, potentially breaking system access during the update window.</li>
+<li><strong>Example</strong>: User installs SDL → Update 1 includes SDL in base → Update 2 follows immediately. If SDL is removed before reboot in Update 1, whiteouts hide SDL libraries during Update 2, breaking any program that needs SDL.</li>
 </ul>
 <p><strong>OverlayFS Whiteout Cleanup</strong>:</p>
 <p>The hook cleans up two types of whiteouts after removing status-only duplicates:</p>
 <ol>
 <li><strong>Package File Whiteouts</strong>:</li>
-<li>Pre-fetches file list for each package BEFORE <code>opkg remove</code> (removal
-     deletes from database)</li>
-<li>After removal, checks each file path for whiteout files (character device
-     0:0)</li>
+<li>Pre-fetches file list for each package BEFORE <code>opkg remove</code> (removal deletes from database)</li>
+<li>After removal, checks each file path for whiteout files (character device 0:0)</li>
 <li>Removes whiteouts to expose base image files</li>
 <li>
 <p>Uses enhanced opkg <code>--writable-only</code> flag to verify package removal</p>
@@ -3254,8 +3199,7 @@ environment variable.</p>
 <p><strong>Metadata Whiteouts</strong>:</p>
 </li>
 <li>Scans <code>/var/lib/opkg/info/</code> for <code>.wh.package.*</code> files</li>
-<li>Removes whiteouts that hide base image metadata files (<code>.list</code>, <code>.control</code>,
-     etc.)</li>
+<li>Removes whiteouts that hide base image metadata files (<code>.list</code>, <code>.control</code>, etc.)</li>
 <li>
 <p>Allows <code>opkg files package</code> queries to work correctly</p>
 </li>
@@ -3285,13 +3229,11 @@ environment variable.</p>
 <a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="k">[Install]</span>
 <a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </code></pre></div>
-<p><strong>Critical Change in v0.5.0</strong>: The post-reboot service contains ZERO
-reconciliation logic. It ONLY executes the plan created by the hook.</p>
+<p><strong>Critical Change in v0.5.0</strong>: The post-reboot service contains ZERO reconciliation logic. It ONLY executes the plan created by the hook.</p>
 <p><strong>Process</strong> (Simple execution only):</p>
 <ol>
 <li>Checks for pending operations (triggered by systemd conditions)</li>
-<li><strong>Removes physical duplicate packages</strong> queued by hook (with whiteout
-   cleanup)</li>
+<li><strong>Removes physical duplicate packages</strong> queued by hook (with whiteout cleanup)</li>
 <li>Updates opkg package feeds (<code>opkg update</code>)</li>
 <li>Executes pending reinstalls (preferring cached .ipk files)</li>
 <li>Executes pending upgrades</li>
@@ -3306,7 +3248,7 @@ reconciliation logic. It ONLY executes the plan created by the hook.</p>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="k">return</span> <span class="mi">0</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="c1"># If no pending operations, we&#39;re done</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> 
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>                   <span class="n">PENDING_UPGRADE_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>                   <span class="n">PENDING_DUPLICATES_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_pending</span><span class="p">:</span>
@@ -3346,8 +3288,7 @@ reconciliation logic. It ONLY executes the plan created by the hook.</p>
 <li>✅ Kept: Package installation/upgrade execution</li>
 <li>✅ Kept: Rollback detection</li>
 </ul>
-<p><strong>Cache Preference</strong>: The system prefers prefetched <code>.ipk</code> files from
-<code>/var/cache/calculinux-update/prefetch/</code> for offline operation:</p>
+<p><strong>Cache Preference</strong>: The system prefers prefetched <code>.ipk</code> files from <code>/var/cache/calculinux-update/prefetch/</code> for offline operation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_install_reinstall_pkg</span><span class="p">(</span><span class="n">pkg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">cached</span> <span class="o">=</span> <span class="n">_find_cached_package</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
@@ -3377,16 +3318,16 @@ reconciliation logic. It ONLY executes the plan created by the hook.</p>
 </code></pre></div>
 <p><strong>Algorithm</strong>:</p>
 <ol>
-<li><strong>Identify all duplicates</strong> - packages in both writable and new image:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
+<li>
+<p><strong>Identify all duplicates</strong> - packages in both writable and new image:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">new_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">image_status</span><span class="p">)}</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">all_duplicates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">writable_pkgs</span> <span class="o">&amp;</span> <span class="n">new_image_pkgs</span><span class="p">)</span>
-</code></pre></div>
-<ol>
-<li><strong>Split duplicates into two phases</strong> - based on upper layer presence:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Split duplicates into two phases</strong> - based on upper layer presence:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">physical_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>
@@ -3396,11 +3337,11 @@ reconciliation logic. It ONLY executes the plan created by the hook.</p>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>        <span class="c1"># Status-only - safe to remove now</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>        <span class="n">status_only_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div>
-<ol>
-<li><strong>Find missing packages</strong> - packages removed from new image:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Find missing packages</strong> - packages removed from new image:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">missing_from_new</span> <span class="o">=</span> <span class="n">old_image_pkgs</span> <span class="o">-</span> <span class="n">new_image_pkgs</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Only reinstall if writable packages depend on them</span>
@@ -3408,23 +3349,22 @@ reconciliation logic. It ONLY executes the plan created by the hook.</p>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">missing_from_new</span><span class="p">:</span>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">pkg</span> <span class="ow">in</span> <span class="n">get_dependencies</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">writable_status</span><span class="p">):</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">reinstall</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div>
-<ol>
-<li><strong>Identify upgrades needed</strong> - overlay packages that may conflict:
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Identify upgrades needed</strong> - overlay packages that may conflict:
    <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">upgrade_packages</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">):</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">pkg_name</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="k">if</span> <span class="n">pkg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>  <span class="c1"># Not a duplicate</span>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="n">upgrade_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">)</span>
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 </ol>
-<p><strong>Why upgrade everything?</strong>: Overlay packages were compiled against the old
-base. The new base may have updated shared libraries or APIs. Upgrading ensures
-ABI compatibility.</p>
+<p><strong>Why upgrade everything?</strong>: Overlay packages were compiled against the old base. The new base may have updated shared libraries or APIs. Upgrading ensures ABI compatibility.</p>
 <h3 id="status-file-parsing">Status File Parsing<a class="headerlink" href="#status-file-parsing" title="Permanent link">&para;</a></h3>
 <p><strong>Module</strong>: <code>status.py</code></p>
-<p><strong>Format</strong>: OPKG status files use a paragraph-based format (like Debian control
-files):</p>
+<p><strong>Format</strong>: OPKG status files use a paragraph-based format (like Debian control files):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Package: foo
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Version: 1.0-r0
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Depends: libbar (&gt;= 2.0)
@@ -3620,8 +3560,7 @@ files):</p>
 </code></pre></div>
 <p><strong>Hook Environment Variables</strong>:</p>
 <ul>
-<li><code>RAUC_SLOT_DEVICE</code> - Block device of newly installed slot (e.g.,
-  <code>/dev/mmcblk0p2</code>)</li>
+<li><code>RAUC_SLOT_DEVICE</code> - Block device of newly installed slot (e.g., <code>/dev/mmcblk0p2</code>)</li>
 <li><code>RAUC_SLOT_TYPE</code> - Slot type (<code>rootfs</code>)</li>
 <li><code>RAUC_SLOT_NAME</code> - Slot identifier (<code>rootfs.1</code>)</li>
 </ul>
@@ -3643,20 +3582,16 @@ files):</p>
 <p><strong>Key Paths</strong> (v0.5.1):</p>
 <ul>
 <li><code>/var/lib/opkg/status</code> - Current installed packages (writable)</li>
-<li><code>/var/lib/opkg/status.image</code> - Base image packages (read-only, required for
-  all images)</li>
-<li><code>/var/lib/opkg/info/</code> - Package metadata files (may contain <code>.wh.*</code> whiteouts
-  after removal)</li>
+<li><code>/var/lib/opkg/status.image</code> - Base image packages (read-only, required for all images)</li>
+<li><code>/var/lib/opkg/info/</code> - Package metadata files (may contain <code>.wh.*</code> whiteouts after removal)</li>
 <li><code>/var/lib/opkg/lists/</code> - Package feed metadata</li>
 <li><code>/var/cache/calculinux-update/prefetch/</code> - Prefetched .ipk files</li>
 <li><code>/var/lib/calculinux-update/</code> - Update state directory (new in v0.5.0)</li>
 <li><code>update-state.pending-reinstalls</code> - Packages to reinstall</li>
 <li><code>update-state.pending-upgrades</code> - Packages to upgrade</li>
-<li><code>update-state.pending-duplicates</code> - Physical duplicates to remove
-    post-reboot (new in v0.5.1)</li>
+<li><code>update-state.pending-duplicates</code> - Physical duplicates to remove post-reboot (new in v0.5.1)</li>
 <li><code>status-pruned</code> - Marker indicating hook completed</li>
-<li><code>update-state.pre-update-writable</code> - Pre-update writable status backup (for
-    rollback)</li>
+<li><code>update-state.pre-update-writable</code> - Pre-update writable status backup (for rollback)</li>
 <li><code>update-state.boot-id</code> - Boot ID for rollback detection</li>
 </ul>
 <h2 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">&para;</a></h2>
@@ -3687,8 +3622,7 @@ files):</p>
 <a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>        <span class="k">return</span> <span class="kc">False</span>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    <span class="c1"># RAUC install continues (slot is valid even if hook fails)</span>
 </code></pre></div>
-<p><strong>User Impact</strong>: May have duplicate packages or conflicts after reboot. Manual
-intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
+<p><strong>User Impact</strong>: May have duplicate packages or conflicts after reboot. Manual intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
 <h3 id="post-reboot-failures">Post-Reboot Failures<a class="headerlink" href="#post-reboot-failures" title="Permanent link">&para;</a></h3>
 <p><strong>Scenario</strong>: Network unavailable, missing packages, opkg failures</p>
 <p><strong>Handling</strong> (v0.5.0):</p>
@@ -3727,8 +3661,7 @@ intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
 <h3 id="no-more-slot-mounting-v050">No More Slot Mounting (v0.5.0)<a class="headerlink" href="#no-more-slot-mounting-v050" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Eliminated</strong>: Hook no longer mounts slots, improving reliability and speed</li>
-<li><strong>Bundle extras</strong>: Status file comes from bundle extras, no filesystem access
-  needed</li>
+<li><strong>Bundle extras</strong>: Status file comes from bundle extras, no filesystem access needed</li>
 <li><strong>Faster</strong>: Removed mount/unmount overhead</li>
 <li><strong>More reliable</strong>: Fewer points of failure</li>
 </ul>
@@ -3742,20 +3675,16 @@ intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
 <h3 id="planned-features">Planned Features<a class="headerlink" href="#planned-features" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Delta bundles</strong> - Smaller downloads for incremental updates</li>
-<li><strong>Rollback detection</strong> - Detect and skip reconciliation if rolling back to
-   known slot</li>
+<li><strong>Rollback detection</strong> - Detect and skip reconciliation if rolling back to known slot</li>
 <li><strong>Cache cleanup</strong> - Automatic cleanup of old prefetched packages</li>
-<li><strong>Metrics</strong> - Report reconciliation statistics (packages pruned, reinstalled,
-   upgraded)</li>
+<li><strong>Metrics</strong> - Report reconciliation statistics (packages pruned, reinstalled, upgraded)</li>
 <li><strong>Dry-run reconciliation</strong> - Preview reconciliation plan before install</li>
 </ol>
 <h3 id="architecture-improvements">Architecture Improvements<a class="headerlink" href="#architecture-improvements" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Async downloads</strong> - Speed up prefetch with concurrent downloads</li>
-<li><strong>Dependency resolution</strong> - Smarter reinstall logic based on actual
-   dependencies</li>
-<li><strong>Version pinning</strong> - Option to prevent automatic upgrades of specific
-   packages</li>
+<li><strong>Dependency resolution</strong> - Smarter reinstall logic based on actual dependencies</li>
+<li><strong>Version pinning</strong> - Option to prevent automatic upgrades of specific packages</li>
 <li><strong>Custom hooks</strong> - Allow site-specific pre/post reconciliation scripts</li>
 </ol>
 <h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
@@ -3835,8 +3764,7 @@ intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
 <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">Systemd Service Units</a></li>
 </ul>
 <hr />
-<p><em>For user-facing documentation, see
-<a href="../../user-guide/updates/">User Guide: System Updates</a></em></p>
+<p><em>For user-facing documentation, see <a href="../../user-guide/updates/">User Guide: System Updates</a></em></p>
 
 
 
@@ -3859,7 +3787,7 @@ intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

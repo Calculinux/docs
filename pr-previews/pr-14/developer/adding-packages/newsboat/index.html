@@ -1729,8 +1729,8 @@
 
 
 <h1 id="packaging-newsboat-rust-cli">Packaging Newsboat (Rust CLI)<a class="headerlink" href="#packaging-newsboat-rust-cli" title="Permanent link">&para;</a></h1>
-<p>This guide covers packaging the existing Rust-based CLI application <strong>Newsboat</strong>
-using Yocto, following patterns that work well in practice.</p>
+<p>This guide covers packaging the existing Rust-based CLI application
+<strong>Newsboat</strong> using Yocto, following patterns that work well in practice.</p>
 <h2 id="reference-example">Reference example<a class="headerlink" href="#reference-example" title="Permanent link">&para;</a></h2>
 <p>Check <strong>glkcli</strong> in your layers for a working Rust recipe:</p>
 <ul>
@@ -1745,9 +1745,9 @@ using Yocto, following patterns that work well in practice.</p>
 <li><strong>S</strong>: <code>${WORKDIR}/git</code> (where the source gets checked out)</li>
 </ul>
 <h3 id="add-license-checksum-later">Add license checksum later<a class="headerlink" href="#add-license-checksum-later" title="Permanent link">&para;</a></h3>
-<p>BitBake will fail the first build and print the exact <code>LIC_FILES_CHKSUM</code> to use.
-Include the license filename up front, then copy the suggested checksum into
-your recipe:</p>
+<p>BitBake will fail the first build and print the exact
+<code>LIC_FILES_CHKSUM</code> to use. Include the license filename up front, then
+copy the suggested checksum into your recipe:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LICENSE = &quot;MIT&quot;  # or the license used by the project
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>LIC_FILES_CHKSUM = &quot;file://LICENSE;md5=&lt;value from bitbake error&gt;&quot;
 </code></pre></div>
@@ -1762,8 +1762,8 @@ your recipe:</p>
 <p>This auto-generates <code>newsboat-crates.inc</code> listing all Rust dependencies.</p>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Keep <code>SRCREV</code> pinned to a commit for reproducibility; use <code>${AUTOREV}</code> only
-  during development.</li>
+<li>Keep <code>SRCREV</code> pinned to a commit for reproducibility; use <code>${AUTOREV}</code>
+  only during development.</li>
 <li>Ensure <code>Cargo.lock</code> is present to avoid network fetches during builds.</li>
 <li>Test the package standalone before adding it to images:</li>
 </ul>
@@ -1791,7 +1791,7 @@ your recipe:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

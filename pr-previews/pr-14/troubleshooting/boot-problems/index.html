@@ -1868,39 +1868,37 @@
 <h2 id="system-wont-boot">System Won't Boot<a class="headerlink" href="#system-wont-boot" title="Permanent link">&para;</a></h2>
 <p><em>This section will be populated with detailed boot troubleshooting steps.</em></p>
 <h3 id="spi-nand-interference">SPI NAND Interference<a class="headerlink" href="#spi-nand-interference" title="Permanent link">&para;</a></h3>
-<p>Some Luckfox Lyra boards include SPI NAND flash memory. The RK3506G2 boot ROM
-<strong>always tries NAND first</strong>, so if your board has NAND with any firmware on it,
-the boot ROM will ignore your SD card completely.</p>
-<p><strong>Quick Check:</strong></p>
-<ul>
-<li>Lyra models with "SPI NAND" or "Lyra B" or "Lyra Plus" have NAND</li>
-<li>Check your purchase specifications</li>
-<li>If unsure, try booting - if SD card is ignored, you likely have NAND</li>
-</ul>
-<p><strong>Solution:</strong> You must erase the SPI NAND flash. See the comprehensive
-<strong><a href="../erase-nand/">SPI NAND Erase Guide</a></strong> for detailed step-by-step instructions
-covering:</p>
+<p>Some Luckfox Lyra boards include SPI NAND flash memory. The RK3506G2 boot ROM <strong>always tries NAND first</strong>, so if your board has NAND with any firmware on it, the boot ROM will ignore your SD card completely.</p>
+<p><strong>Quick Check:</strong>
+- Lyra models with "SPI NAND" or "Lyra B" or "Lyra Plus" have NAND
+- Check your purchase specifications
+- If unsure, try booting - if SD card is ignored, you likely have NAND</p>
+<p><strong>Solution:</strong>
+You must erase the SPI NAND flash. See the comprehensive <strong><a href="../erase-nand/">SPI NAND Erase Guide</a></strong> for detailed step-by-step instructions covering:</p>
 <ul>
 <li>Windows method (RKDevTool)</li>
 <li>Linux method (upgrade_tool)</li>
 <li>MaskRom mode recovery</li>
 <li>Troubleshooting failed erases</li>
 </ul>
-<p>!!! danger "Critical: Data Loss" Erasing SPI NAND will <strong>permanently delete all
-data</strong> on the NAND flash. This cannot be undone. Ensure you understand the
-implications before proceeding.</p>
-<p>!!! info "More Information" - <strong>Complete Erase Guide</strong>:
-<a href="../erase-nand/">SPI NAND Erase Guide</a> - <strong>Boot Priority Details</strong>:
-<a href="../../hardware/specifications/#boot-priority">Hardware Specifications - Boot Priority</a> -
-<strong>Luckfox Official Docs</strong>:
-<a href="https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/">wiki.luckfox.com/Luckfox-Lyra/Image-flashing</a></p>
+<div class="admonition danger">
+<p class="admonition-title">Critical: Data Loss</p>
+<p>Erasing SPI NAND will <strong>permanently delete all data</strong> on the NAND flash. This cannot be undone. Ensure you understand the implications before proceeding.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">More Information</p>
+<ul>
+<li><strong>Complete Erase Guide</strong>: <a href="../erase-nand/">SPI NAND Erase Guide</a></li>
+<li><strong>Boot Priority Details</strong>: <a href="../../hardware/specifications/#boot-priority">Hardware Specifications - Boot Priority</a></li>
+<li><strong>Luckfox Official Docs</strong>: <a href="https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/">wiki.luckfox.com/Luckfox-Lyra/Image-flashing</a></li>
+</ul>
+</div>
 <h3 id="hardware-issues">Hardware Issues<a class="headerlink" href="#hardware-issues" title="Permanent link">&para;</a></h3>
 <p><em>Hardware-related boot problems and solutions.</em></p>
 <h3 id="sd-card-issues">SD Card Issues<a class="headerlink" href="#sd-card-issues" title="Permanent link">&para;</a></h3>
 <p><em>SD card related boot problems.</em></p>
 <hr />
-<p><em>This page is under development and will be populated with detailed
-troubleshooting information.</em></p>
+<p><em>This page is under development and will be populated with detailed troubleshooting information.</em></p>
 
 
 
@@ -1923,7 +1921,7 @@ troubleshooting information.</em></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

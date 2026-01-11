@@ -1779,8 +1779,8 @@ packaging it into a Yocto recipe so it ships in Calculinux images.</p>
 <ul>
 <li>Calculinux build environment ready (Yocto Walnascar 4.3)</li>
 <li>A working layer where you place custom recipes (e.g.,
-  <code>meta-calculinux-extended</code> or in <code>meta-calculinux-apps</code> if you want to
-  contribute back to us).</li>
+  <code>meta-calculinux-extended</code> or in <code>meta-calculinux-apps</code> if you want
+  to contribute back to us).</li>
 </ul>
 <h2 id="1-create-the-rust-utility">1) Create the Rust utility<a class="headerlink" href="#1-create-the-rust-utility" title="Permanent link">&para;</a></h2>
 <p>Make a minimal CLI called <code>hello-calculinux</code>:</p>
@@ -1811,13 +1811,13 @@ packaging it into a Yocto recipe so it ships in Calculinux images.</p>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>      hello-calculinux_0.1.0.bb
 </code></pre></div>
 <p>You can fetch sources by using <code>git</code> or retrieve them from a .tar file. Git is
-simplest during development, but if you are packaging an upstream project, your
-options are limited by how they ship. The protocol part of the SRC_URI (<code>git://</code>
-in this example) determines how the sources are retrieved.</p>
+simplest during development, but if you are packaging an upstream project,
+your options are limited by how they ship. The protocol part of the SRC_URI
+(<code>git://</code> in this example) determines how the sources are retrieved.</p>
 <h2 id="3-write-the-yocto-recipe">3) Write the Yocto recipe<a class="headerlink" href="#3-write-the-yocto-recipe" title="Permanent link">&para;</a></h2>
-<p>Create <code>hello-calculinux_0.1.0.bb</code> with this content (include the license file
-path but omit the checksum initially; BitBake will prompt you with the exact
-value to add):</p>
+<p>Create <code>hello-calculinux_0.1.0.bb</code> with this content (include the
+license file path but omit the checksum initially; BitBake will prompt
+you with the exact value to add):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SUMMARY = &quot;Simple Rust CLI that prints a greeting&quot;
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>HOMEPAGE = &quot;https://github.com/Calculinux/hello-calculinux&quot;
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>LICENSE = &quot;MIT&quot;
@@ -1855,15 +1855,15 @@ value to add):</p>
 </code></pre></div>
 <p>Notes:</p>
 <ul>
-<li>Use <code>SRC_URI</code> pointing to your Git repo. For local development, you can use
-  <code>file://</code> sources and <code>externalsrc</code>.</li>
+<li>Use <code>SRC_URI</code> pointing to your Git repo. For local development, you
+  can use <code>file://</code> sources and <code>externalsrc</code>.</li>
 <li>The <code>cargo</code> class handles Rust toolchain configuration for the target.</li>
 <li>The <code>do_install()</code> step copies the compiled binary to <code>${bindir}</code>.</li>
 </ul>
 <h3 id="licensing-workflow">Licensing workflow<a class="headerlink" href="#licensing-workflow" title="Permanent link">&para;</a></h3>
 <h2 id="4-add-the-package-to-your-image">4) Add the package to your image<a class="headerlink" href="#4-add-the-package-to-your-image" title="Permanent link">&para;</a></h2>
-<p>Add the utility to your image with an <code>IMAGE_INSTALL</code> append. For example, in
-your distribution or image configuration or a bundle:</p>
+<p>Add the utility to your image with an <code>IMAGE_INSTALL</code> append. For example,
+in your distribution or image configuration or a bundle:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>IMAGE_INSTALL:append = &quot; hello-calculinux&quot;
 </code></pre></div>
 <p>If you use a bundle (e.g., <code>calculinux-bundle.bb</code>), include it there.</p>
@@ -1881,13 +1881,13 @@ your distribution or image configuration or a bundle:</p>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
-<li>If Rust is not available, add <code>meta-rust</code> and ensure the Rust toolchain is
-  enabled for your target.</li>
+<li>If Rust is not available, add <code>meta-rust</code> and ensure the Rust toolchain
+  is enabled for your target.</li>
 <li>If the binary is not found during <code>do_install()</code>, check the
-  <code>B/target/*/release/</code> path in the build logs and adjust the <code>find</code> command as
-  needed.</li>
-<li>For crates with dependencies, ensure <code>Cargo.lock</code> is present to avoid network
-  fetches during builds.</li>
+  <code>B/target/*/release/</code> path in the build logs and adjust the <code>find</code>
+  command as needed.</li>
+<li>For crates with dependencies, ensure <code>Cargo.lock</code> is present to avoid
+  network fetches during builds.</li>
 </ul>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1917,7 +1917,7 @@ your distribution or image configuration or a bundle:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     

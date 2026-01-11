@@ -2306,8 +2306,7 @@
 
 
 <h1 id="hardware-specifications">Hardware Specifications<a class="headerlink" href="#hardware-specifications" title="Permanent link">&para;</a></h1>
-<p>This page provides comprehensive technical specifications for all hardware
-components supported by Calculinux.</p>
+<p>This page provides comprehensive technical specifications for all hardware components supported by Calculinux.</p>
 <h2 id="picocalc-hardware">PicoCalc Hardware<a class="headerlink" href="#picocalc-hardware" title="Permanent link">&para;</a></h2>
 <h3 id="physical-specifications">Physical Specifications<a class="headerlink" href="#physical-specifications" title="Permanent link">&para;</a></h3>
 <table>
@@ -2445,9 +2444,13 @@ components supported by Calculinux.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! info "Two Distinct USB-C Ports" - <strong>PicoCalc port</strong>: Accessible externally,
-charges battery, provides serial console access for debugging - <strong>Lyra port</strong>:
-Internal (requires case opening), USB host/device functionality, 3.3V only</p>
+<div class="admonition info">
+<p class="admonition-title">Two Distinct USB-C Ports</p>
+<ul>
+<li><strong>PicoCalc port</strong>: Accessible externally, charges battery, provides serial console access for debugging</li>
+<li><strong>Lyra port</strong>: Internal (requires case opening), USB host/device functionality, 3.3V only</li>
+</ul>
+</div>
 <h3 id="power-system">Power System<a class="headerlink" href="#power-system" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2560,9 +2563,10 @@ Internal (requires case opening), USB host/device functionality, 3.3V only</p>
 </tr>
 </tbody>
 </table>
-<p>!!! note "RAM Configuration" Only the 128MB RAM configuration has been tested
-with Calculinux. Other RAM variants (64MB, 256MB) exist but have different
-pinouts and would require custom adapter boards.</p>
+<div class="admonition note">
+<p class="admonition-title">RAM Configuration</p>
+<p>Only the 128MB RAM configuration has been tested with Calculinux. Other RAM variants (64MB, 256MB) exist but have different pinouts and would require custom adapter boards.</p>
+</div>
 <h3 id="network-interfaces">Network Interfaces<a class="headerlink" href="#network-interfaces" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2638,9 +2642,10 @@ pinouts and would require custom adapter boards.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! danger "Critical: 3.3V Logic Levels" <strong>ALL interfaces operate at 3.3V
-ONLY.</strong> Using 5V devices or signals will damage the hardware. Always verify
-voltage compatibility before connecting peripherals.</p>
+<div class="admonition danger">
+<p class="admonition-title">Critical: 3.3V Logic Levels</p>
+<p><strong>ALL interfaces operate at 3.3V ONLY.</strong> Using 5V devices or signals will damage the hardware. Always verify voltage compatibility before connecting peripherals.</p>
+</div>
 <h3 id="display-interface-details">Display Interface Details<a class="headerlink" href="#display-interface-details" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2735,10 +2740,10 @@ voltage compatibility before connecting peripherals.</p>
 <li>MT7610U</li>
 <li>RT5370</li>
 </ul>
-<p>!!! warning "3.3V Requirement for WiFi" USB WiFi adapters <strong>must operate at
-3.3V</strong> as the Lyra's USB provides only 3.3V power. Standard 5V USB adapters will
-not work and may damage the board. Use an externally powered USB hub for 5V
-devices.</p>
+<div class="admonition warning">
+<p class="admonition-title">3.3V Requirement for WiFi</p>
+<p>USB WiFi adapters <strong>must operate at 3.3V</strong> as the Lyra's USB provides only 3.3V power. Standard 5V USB adapters will not work and may damage the board. Use an externally powered USB hub for 5V devices.</p>
+</div>
 <h2 id="boot-priority">Boot Priority<a class="headerlink" href="#boot-priority" title="Permanent link">&para;</a></h2>
 <p>The RK3506G2 boot ROM follows this priority:</p>
 <ol>
@@ -2746,10 +2751,10 @@ devices.</p>
 <li><strong>SD Card</strong> (if SPI NAND is erased or absent)</li>
 <li><strong>USB Boot</strong> (for recovery/programming)</li>
 </ol>
-<p>!!! danger "SPI NAND Boot Priority" If your Luckfox Lyra has SPI NAND flash, you
-<strong>must erase it</strong> or the boot ROM will ignore the SD card. See the
-<a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for detailed
-instructions.</p>
+<div class="admonition danger">
+<p class="admonition-title">SPI NAND Boot Priority</p>
+<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must erase it</strong> or the boot ROM will ignore the SD card. See the <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for detailed instructions.</p>
+</div>
 <h2 id="luckfox-lyra-variants">Luckfox Lyra Variants<a class="headerlink" href="#luckfox-lyra-variants" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2785,9 +2790,10 @@ instructions.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! note "Other Lyra Models" Other Luckfox Lyra variants exist (64MB, 256MB RAM,
-different SoC models) but have different pinouts and are not compatible without
-custom adapter boards.</p>
+<div class="admonition note">
+<p class="admonition-title">Other Lyra Models</p>
+<p>Other Luckfox Lyra variants exist (64MB, 256MB RAM, different SoC models) but have different pinouts and are not compatible without custom adapter boards.</p>
+</div>
 <h2 id="thermal-considerations">Thermal Considerations<a class="headerlink" href="#thermal-considerations" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2838,10 +2844,15 @@ custom adapter boards.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! tip "Power Supply Recommendations" - Use a quality USB-C cable (not just
-charging cables) - Ensure power supply can deliver stable 2A - Under-voltage can
-cause system instability and boot failures - Quality power supplies reduce risk
-of data corruption</p>
+<div class="admonition tip">
+<p class="admonition-title">Power Supply Recommendations</p>
+<ul>
+<li>Use a quality USB-C cable (not just charging cables)</li>
+<li>Ensure power supply can deliver stable 2A</li>
+<li>Under-voltage can cause system instability and boot failures</li>
+<li>Quality power supplies reduce risk of data corruption</li>
+</ul>
+</div>
 <h2 id="console-display-specifications">Console Display Specifications<a class="headerlink" href="#console-display-specifications" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2873,24 +2884,25 @@ of data corruption</p>
 </tr>
 </tbody>
 </table>
-<p>!!! note "Small Text Console" The 53×40 text area is smaller than standard
-terminals (typically 80×24 or larger). Many applications may require:</p>
-<div class="highlight"><pre><span></span><code>- Horizontal scrolling for wide output
-- Setting `COLUMNS=53 LINES=40` environment variables
-- Using compact display modes when available
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Small Text Console</p>
+<p>The 53×40 text area is smaller than standard terminals (typically 80×24 or larger). Many applications may require:</p>
+<ul>
+<li>Horizontal scrolling for wide output</li>
+<li>Setting <code>COLUMNS=53 LINES=40</code> environment variables</li>
+<li>Using compact display modes when available</li>
+</ul>
+</div>
 <h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../picocalc/">PicoCalc Overview</a> - Device overview and design</li>
 <li><a href="../luckfox-lyra/">Luckfox Lyra</a> - SDK, purchasing, software details</li>
 <li><a href="../display-input/">Display &amp; Input</a> - Driver implementation details</li>
 <li><a href="../compatibility/">Hardware Compatibility</a> - Compatibility matrices</li>
-<li><a href="../modifications/">Hardware Modifications</a> - Installation and modification
-  guides</li>
+<li><a href="../modifications/">Hardware Modifications</a> - Installation and modification guides</li>
 </ul>
 <hr />
-<p><strong>Note</strong>: This page is the canonical reference for all hardware specifications.
-Other pages should link here rather than duplicating these details.</p>
+<p><strong>Note</strong>: This page is the canonical reference for all hardware specifications. Other pages should link here rather than duplicating these details.</p>
 
 
 
@@ -2913,7 +2925,7 @@ Other pages should link here rather than duplicating these details.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:07:56 UTC">January 11, 2026</span>
   </span>
 
     
