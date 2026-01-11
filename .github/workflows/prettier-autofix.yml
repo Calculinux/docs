@@ -1,0 +1,40 @@
+name: Auto-format Markdown
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - '.prettierrc.json'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install Prettier
+        run: npm install -g prettier
+
+      - name: Format markdown files
+        run: prettier --write "docs/**/*.md"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "style: auto-format markdown with prettier"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
