@@ -4,20 +4,21 @@ Troubleshooting keyboard and input device issues.
 
 ## Keyboard Not Responding
 
-*Detailed keyboard troubleshooting steps.*
+_Detailed keyboard troubleshooting steps._
 
 ## Key Mapping Issues
 
-*Solutions for incorrect key mappings.*
+_Solutions for incorrect key mappings._
 
 ## Input Lag
 
-*Troubleshooting input lag problems.*
+_Troubleshooting input lag problems._
 
 ## Debounce Issues
 
-*Information about key debounce problems and solutions.*
+_Information about key debounce problems and solutions._
 
 ---
 
-*This page is under development and will be populated with detailed input troubleshooting information.*
+_This page is under development and will be populated with detailed input
+troubleshooting information._

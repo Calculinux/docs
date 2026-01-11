@@ -1,10 +1,13 @@
 # Getting Started with Calculinux
 
-Welcome to Calculinux! This guide will help you get started with your PicoCalc running Linux.
+Welcome to Calculinux! This guide will help you get started with your PicoCalc
+running Linux.
 
 ## Overview
 
-Calculinux is a Linux distribution built specifically for the PicoCalc handheld computer with Luckfox Lyra SBC. This getting started guide will walk you through everything you need to know to set up and use Calculinux.
+Calculinux is a Linux distribution built specifically for the PicoCalc handheld
+computer with Luckfox Lyra SBC. This getting started guide will walk you through
+everything you need to know to set up and use Calculinux.
 
 ## What You'll Need
 
@@ -18,19 +21,25 @@ Before you begin, make sure you have:
 - ✅ Computer (for flashing the SD card)
 
 Optional but helpful:
-- Second USB-C cable (for serial console monitoring at 1500000 baud)
-- USB WiFi adapter (3.3V compatible, see [Hardware Requirements](hardware-requirements.md))
 
-!!! info "Detailed Hardware Info"
-    For complete hardware specifications and purchasing guidance, see [Hardware Requirements](hardware-requirements.md) and [Hardware Specifications](../hardware/specifications.md).
+- Second USB-C cable (for serial console monitoring at 1500000 baud)
+- USB WiFi adapter (3.3V compatible, see
+  [Hardware Requirements](hardware-requirements.md))
+
+!!! info "Detailed Hardware Info" For complete hardware specifications and
+purchasing guidance, see [Hardware Requirements](hardware-requirements.md) and
+[Hardware Specifications](../hardware/specifications.md).
 
 ## Quick Start Process
 
 Here's the high-level process to get Calculinux running:
 
-1. **[Check Hardware Requirements](hardware-requirements.md)** - Verify you have everything needed
-2. **[Erase SPI NAND](../troubleshooting/erase-nand.md)** (if equipped) - Required for Lyra models with onboard NAND
-3. **[Install Lyra in PicoCalc](installation.md#hardware-installation)** (if needed) - Physical installation
+1. **[Check Hardware Requirements](hardware-requirements.md)** - Verify you have
+   everything needed
+2. **[Erase SPI NAND](../troubleshooting/erase-nand.md)** (if equipped) -
+   Required for Lyra models with onboard NAND
+3. **[Install Lyra in PicoCalc](installation.md#hardware-installation)** (if
+   needed) - Physical installation
 4. **[Flash SD Card](installation.md)** - Write Calculinux image to SD card
 5. **[First Boot](first-boot.md)** - Power on and complete initial setup
 6. **[Quick Start Guide](quick-start.md)** - Learn basic operations
@@ -50,16 +59,20 @@ This guide is written for users with basic to intermediate technical knowledge:
 - **Intermediate**: Comfortable with command-line interfaces
 - **Advanced**: Hardware modifications and development
 
-!!! tip "Don't worry!"
-    Even if you're new to Linux or embedded systems, the guide provides detailed step-by-step instructions. Take your time and ask for help in the community if needed.
+!!! tip "Don't worry!" Even if you're new to Linux or embedded systems, the
+guide provides detailed step-by-step instructions. Take your time and ask for
+help in the community if needed.
 
 ## Support Channels
 
 If you need help:
 
 - 📖 Check this documentation first
-- 💬 [ClockworkPi Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280) - Active community
-- 🐛 [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues) - Bug reports
+- 💬
+  [ClockworkPi Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280) -
+  Active community
+- 🐛 [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues) - Bug
+  reports
 - 📧 Community Discord/Matrix (links in [Resources](../resources/community.md))
 
 ## What to Expect
@@ -86,8 +99,9 @@ Be aware of these limitations:
 - **No Built-in Network**: Requires 3.3V USB WiFi adapter or powered hub
 - **Battery Life**: Running Linux uses more power than stock firmware
 
-!!! info "More Details"
-    See [Hardware Specifications](../hardware/specifications.md) for complete technical details about display, performance, and capabilities.
+!!! info "More Details" See
+[Hardware Specifications](../hardware/specifications.md) for complete technical
+details about display, performance, and capabilities.
 
 ## Learning Path
 
@@ -117,35 +131,45 @@ Be aware of these limitations:
 This documentation is organized into sections:
 
 ### Getting Started (You Are Here)
+
 Everything needed to get Calculinux running
 
 ### Hardware
+
 Physical device information, modifications, technical specs
 
 ### User Guide
+
 Day-to-day usage, applications, configuration
 
 ### Developer Guide
+
 Building, customizing, contributing to Calculinux
 
 ### Troubleshooting
+
 Solutions to common problems and FAQ
 
 ### Resources
+
 External links, tools, community information
 
 ## Before You Begin
 
 ### Important Warnings
 
-!!! danger "Warranty"
-    Installing Luckfox Lyra requires opening your PicoCalc, possibly several times. You may want to secure your screen to the case with tape so it does not shift during assembly and break!
+!!! danger "Warranty" Installing Luckfox Lyra requires opening your PicoCalc,
+possibly several times. You may want to secure your screen to the case with tape
+so it does not shift during assembly and break!
 
-!!! warning "Data Loss"
-    If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.
+!!! warning "Data Loss" If you're replacing an existing PicoCalc Linux
+installation, back up any data first, or use a different SD card. The
+installation process will erase the SD card.
 
-!!! caution "SPI NAND Flash"
-    If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored during boot. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
+!!! caution "SPI NAND Flash" If your Luckfox Lyra has SPI NAND flash, you
+**must** erase it first or the SD card will be ignored during boot. See the
+[SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete
+instructions.
 
 ### Make a Backup Plan
 
@@ -162,37 +186,37 @@ Ready to proceed? Here's where to go next:
 
 <div class="grid cards" markdown>
 
--   :material-check-decagram:{ .lg .middle } **Hardware Requirements**
+- :material-check-decagram:{ .lg .middle } **Hardware Requirements**
 
-    ---
+  ***
 
-    Verify you have compatible hardware
+  Verify you have compatible hardware
 
-    [:octicons-arrow-right-24: Check Requirements](hardware-requirements.md)
+  [:octicons-arrow-right-24: Check Requirements](hardware-requirements.md)
 
--   :material-download:{ .lg .middle } **Installation Guide**
+- :material-download:{ .lg .middle } **Installation Guide**
 
-    ---
+  ***
 
-    Flash Calculinux to your SD card
+  Flash Calculinux to your SD card
 
-    [:octicons-arrow-right-24: Install Now](installation.md)
+  [:octicons-arrow-right-24: Install Now](installation.md)
 
--   :material-rocket-launch:{ .lg .middle } **First Boot**
+- :material-rocket-launch:{ .lg .middle } **First Boot**
 
-    ---
+  ***
 
-    Power on and configure your system
+  Power on and configure your system
 
-    [:octicons-arrow-right-24: Boot Up](first-boot.md)
+  [:octicons-arrow-right-24: Boot Up](first-boot.md)
 
--   :material-book-open:{ .lg .middle } **Quick Start**
+- :material-book-open:{ .lg .middle } **Quick Start**
 
-    ---
+  ***
 
-    Learn the basics quickly
+  Learn the basics quickly
 
-    [:octicons-arrow-right-24: Quick Start](quick-start.md)
+  [:octicons-arrow-right-24: Quick Start](quick-start.md)
 
 </div>
 
@@ -205,8 +229,10 @@ This documentation is continuously improving! If you find:
 - Errors or outdated content
 - Suggestions for improvement
 
-Please [open an issue](https://github.com/Calculinux/docs/issues) or submit a pull request!
+Please [open an issue](https://github.com/Calculinux/docs/issues) or submit a
+pull request!
 
 ---
 
-Let's get started! Head to [Hardware Requirements](hardware-requirements.md) to begin.
+Let's get started! Head to [Hardware Requirements](hardware-requirements.md) to
+begin.

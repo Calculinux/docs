@@ -1,7 +1,7 @@
 # System Configuration
 
-!!! warning "Under Construction"
-    This page is currently being developed. Check back soon for configuration guides.
+!!! warning "Under Construction" This page is currently being developed. Check
+back soon for configuration guides.
 
 ## Getting Started
 
@@ -23,4 +23,4 @@ This section will cover:
 
 ---
 
-*Content planned for future release*
+_Content planned for future release_

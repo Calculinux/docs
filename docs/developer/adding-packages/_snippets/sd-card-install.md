@@ -1,7 +1,7 @@
 # Install via SD card (IPK package)
 
-You can test the package without rebuilding an image by copying the
-generated IPK to an SD card and installing it on the device.
+You can test the package without rebuilding an image by copying the generated
+IPK to an SD card and installing it on the device.
 
 1. Build the package and locate the IPK on your build host:
 

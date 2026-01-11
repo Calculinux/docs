@@ -1,10 +1,12 @@
 # Calculinux Update System
 
-Developer documentation for the `calculinux-update` package and OPKG reconciliation system.
+Developer documentation for the `calculinux-update` package and OPKG
+reconciliation system.
 
 ## Architecture Overview
 
-The Calculinux update system consists of three main components that work together to provide atomic A/B updates with automatic package reconciliation:
+The Calculinux update system consists of three main components that work
+together to provide atomic A/B updates with automatic package reconciliation:
 
 ```mermaid
 graph TD
@@ -14,7 +16,7 @@ graph TD
         prefetch[Package prefetch]
         install[RAUC installation]
     end
-    
+
     subgraph Hook["cup-hook (RAUC Post-Install Handler)"]
         extract[Extract bundle extras]
         compare[Compare status files]
@@ -23,25 +25,28 @@ graph TD
         queue[Queue pending operations]
         marker[Set status-pruned marker]
     end
-    
+
     subgraph Postreboot["cup-postreboot (Systemd Service)"]
         feeds[opkg update]
         reinstall[Execute reinstalls]
         upgrade[Execute upgrades]
         cleanup[Clean up state files]
     end
-    
+
     CLI -->|Prefetch packages| prefetch
     CLI -->|Install bundle| install
     install -->|RAUC post-install| Hook
     Hook -->|System reboot| Postreboot
-    
+
     style CLI fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style Hook fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style Postreboot fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
 ```
 
-**Key Architectural Principle**: The hook performs ALL reconciliation planning and preparation (including status pruning and duplicate removal) BEFORE reboot. The post-reboot service contains NO reconciliation logic - it purely executes the plan created by the hook.
+**Key Architectural Principle**: The hook performs ALL reconciliation planning
+and preparation (including status pruning and duplicate removal) BEFORE reboot.
+The post-reboot service contains NO reconciliation logic - it purely executes
+the plan created by the hook.
 
 ## Module Structure
 
@@ -60,26 +65,37 @@ src/calculinux_update/
     └── overlayfs.py    # OverlayFS whiteout cleanup
 ```
 
-**New in v0.5.1**: `overlayfs.py` module provides comprehensive OverlayFS whiteout management:
+**New in v0.5.1**: `overlayfs.py` module provides comprehensive OverlayFS
+whiteout management:
+
 - `cleanup_package_whiteouts()` - Remove package file whiteouts
-- `cleanup_opkg_metadata_whiteouts()` - Remove metadata whiteouts in `/var/lib/opkg/info/`
-- `has_files_in_upper()` - Detect if package has files in upper layer (for two-phase duplicate removal)
-- `is_package_in_writable_status()` - Uses enhanced opkg `--writable-only` flag with fallback
+- `cleanup_opkg_metadata_whiteouts()` - Remove metadata whiteouts in
+  `/var/lib/opkg/info/`
+- `has_files_in_upper()` - Detect if package has files in upper layer (for
+  two-phase duplicate removal)
+- `is_package_in_writable_status()` - Uses enhanced opkg `--writable-only` flag
+  with fallback
 - `remount_overlayfs()` - Remount overlay to pick up whiteout changes
 
 **Binary Locations** (as of v0.5.0):
 
 - `/usr/bin/cup` - User-facing CLI command
-- `/usr/lib/calculinux-update/cup-hook` - RAUC hook (internal, called by post-install handler)
-- `/usr/lib/calculinux-update/cup-postreboot` - Post-reboot service entry point (internal, called by systemd)
+- `/usr/lib/calculinux-update/cup-hook` - RAUC hook (internal, called by
+  post-install handler)
+- `/usr/lib/calculinux-update/cup-postreboot` - Post-reboot service entry point
+  (internal, called by systemd)
 
-System-internal binaries are now in `/usr/lib/calculinux-update/` to clarify they are not meant for direct user invocation.
+System-internal binaries are now in `/usr/lib/calculinux-update/` to clarify
+they are not meant for direct user invocation.
 
 ## Bundle Extras
 
 ### Overview
 
-RAUC bundles can include additional files beyond the root filesystem image. Calculinux bundles include a `bundle-extras.tar.gz` file containing OPKG configuration and package status information from the new image. This enables the prefetch system to work correctly.
+RAUC bundles can include additional files beyond the root filesystem image.
+Calculinux bundles include a `bundle-extras.tar.gz` file containing OPKG
+configuration and package status information from the new image. This enables
+the prefetch system to work correctly.
 
 ### Bundle Structure
 
@@ -103,13 +119,15 @@ bundle.raucb (squashfs)
 
 The `extract_bundle_extras()` function performs a two-stage extraction:
 
-1. **Extract tarball from bundle** - Uses `unsquashfs` to extract `bundle-extras.tar.gz` from the squashfs bundle
-2. **Extract tarball contents** - Uses Python's `tarfile` module to extract the `extras/` directory structure
+1. **Extract tarball from bundle** - Uses `unsquashfs` to extract
+   `bundle-extras.tar.gz` from the squashfs bundle
+2. **Extract tarball contents** - Uses Python's `tarfile` module to extract the
+   `extras/` directory structure
 
 ```python
 def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
     """Extract Calculinux-specific extras from a RAUC bundle.
-    
+
     Returns None when extras are missing. The caller is responsible for calling
     ``cleanup`` on the returned BundleExtras once finished with the temporary
     directory.
@@ -119,43 +137,45 @@ def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
         "unsquashfs", "-f", "-d", str(temp_dir),
         str(bundle_path), "bundle-extras.tar.gz"
     ])
-    
+
     # Stage 2: Extract tarball contents
     with tarfile.open(tarball_path, "r:gz") as tar:
         tar.extractall(path=temp_dir, filter="data")
-    
+
     # Validate and return
     if not (temp_dir / "extras/opkg/status.image").exists():
         return None
-    
+
     return BundleExtras(root=temp_dir, opkg_root=temp_dir / "extras/opkg", ...)
 ```
 
-**Security**: The extraction uses `filter="data"` (Python 3.13+) to prevent path traversal attacks.
+**Security**: The extraction uses `filter="data"` (Python 3.13+) to prevent path
+traversal attacks.
 
 ### Bundle Extras Creation
 
-**Yocto Recipe**: `meta-calculinux-distro/recipes-core/image/calculinux-image.bb`
+**Yocto Recipe**:
+`meta-calculinux-distro/recipes-core/image/calculinux-image.bb`
 
 The `calculinux_export_bundle_extras()` function runs during `do_rootfs`:
 
 ```bash
 calculinux_export_bundle_extras() {
     extras_dir="${DEPLOY_DIR_IMAGE}/bundle-extras/extras/opkg"
-    
+
     # Export OPKG configuration
     if [ -d "${IMAGE_ROOTFS}/etc/opkg" ]; then
         install -d "${extras_dir}/etc"
         cp -r "${IMAGE_ROOTFS}/etc/opkg" "${extras_dir}/etc/"
     fi
-    
+
     # Export image status file
     if [ -f "${IMAGE_ROOTFS}/var/lib/opkg/status.image" ]; then
         install -d "${extras_dir}"
         install -m 0644 "${IMAGE_ROOTFS}/var/lib/opkg/status.image" \
             "${extras_dir}/status.image"
     fi
-    
+
     # Create tarball only if we have data
     if [ "$has_data" = "1" ]; then
         tar -czf "${DEPLOY_DIR_IMAGE}/bundle-extras.tar.gz" \
@@ -164,7 +184,8 @@ calculinux_export_bundle_extras() {
 }
 ```
 
-**Bundle Recipe**: `meta-calculinux-distro/recipes-core/bundles/calculinux-bundle.bb`
+**Bundle Recipe**:
+`meta-calculinux-distro/recipes-core/bundles/calculinux-bundle.bb`
 
 ```bitbake
 inherit bundle
@@ -172,15 +193,19 @@ inherit bundle
 RAUC_BUNDLE_EXTRA_FILES += "bundle-extras.tar.gz"
 ```
 
-The `bundle` class automatically includes files listed in `RAUC_BUNDLE_EXTRA_FILES` from `DEPLOY_DIR_IMAGE`.
+The `bundle` class automatically includes files listed in
+`RAUC_BUNDLE_EXTRA_FILES` from `DEPLOY_DIR_IMAGE`.
 
 ### Why Bundle Extras?
 
 Without bundle extras, the hook would need to:
 
-1. ~~Mount the inactive slot after RAUC installation~~  ✗ Not possible - RAUC unmounts slots after installation
-2. ~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted when hook runs
-3. ~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional complexity and failure modes
+1. ~~Mount the inactive slot after RAUC installation~~ ✗ Not possible - RAUC
+   unmounts slots after installation
+2. ~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted
+   when hook runs
+3. ~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional
+   complexity and failure modes
 
 With bundle extras:
 
@@ -188,9 +213,12 @@ With bundle extras:
 ✅ No mounting required: Status file provided via environment variable  
 ✅ Hook runs without slot access: Works even if slot can't be mounted  
 ✅ Faster: No filesystem access delays  
-✅ More reliable: Fewer moving parts, fewer failure modes  
+✅ More reliable: Fewer moving parts, fewer failure modes
 
-**Critical for v0.5.0+**: The hook now receives `RAUC_BUNDLE_STATUS_IMAGE` from the post-install handler, which extracts `status.image` from bundle extras. The hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new image's package status.
+**Critical for v0.5.0+**: The hook now receives `RAUC_BUNDLE_STATUS_IMAGE` from
+the post-install handler, which extracts `status.image` from bundle extras. The
+hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new
+image's package status.
 
 ### Error Handling
 
@@ -204,7 +232,8 @@ if not extras:
     # Installation continues normally
 ```
 
-The update installation continues without prefetch, but post-reboot reconciliation will require network access.
+The update installation continues without prefetch, but post-reboot
+reconciliation will require network access.
 
 ## OPKG Reconciliation System
 
@@ -212,18 +241,23 @@ The update installation continues without prefetch, but post-reboot reconciliati
 
 Calculinux uses a dual-layer package system:
 
-- **Base layer**: Read-only packages in the RAUC image (`/var/lib/opkg/status.image`)
-- **Overlay layer**: User-installed packages in writable storage (`/var/lib/opkg/status`)
+- **Base layer**: Read-only packages in the RAUC image
+  (`/var/lib/opkg/status.image`)
+- **Overlay layer**: User-installed packages in writable storage
+  (`/var/lib/opkg/status`)
 
 When updating the base image, three problems arise:
 
-1. **Shadowing**: Packages installed in overlay that now exist in the new base (duplicates)
-2. **Missing packages**: Packages removed from new base that overlay packages depend on
+1. **Shadowing**: Packages installed in overlay that now exist in the new base
+   (duplicates)
+2. **Missing packages**: Packages removed from new base that overlay packages
+   depend on
 3. **Version conflicts**: Overlay packages built against old base versions
 
 ### The Solution
 
-The reconciliation system solves this in two main phases plus an optional prefetch:
+The reconciliation system solves this in two main phases plus an optional
+prefetch:
 
 #### Phase 0: Prefetch (Optional, Before Update)
 
@@ -242,7 +276,8 @@ def prefetch_for_bundle(
 
 1. Extract bundle extras from the RAUC bundle
 2. Load OPKG configuration and status.image from extras
-3. Compute reconciliation plan against current writable status and current slot's status.image
+3. Compute reconciliation plan against current writable status and current
+   slot's status.image
 4. Download all packages marked for reinstall using bundle's OPKG config
 5. Cache packages in `/var/cache/calculinux-update/prefetch/`
 
@@ -271,7 +306,9 @@ downloaded = downloader.download(plan.reinstall, PREFETCH_CACHE_DIR)
 - Faster post-reboot (packages already cached)
 - Handles network unavailability during reboot
 
-**Note**: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the update still proceeds normally. Network access is required after reboot if prefetch didn't cache packages.
+**Note**: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the
+update still proceeds normally. Network access is required after reboot if
+prefetch didn't cache packages.
 
 #### Phase 1: Hook (During RAUC Install) - THE BRAIN
 
@@ -290,26 +327,32 @@ export RAUC_SLOT_NAME="${SLOT_NAME}"
 /usr/lib/calculinux-update/cup-hook slot-post-install "${SLOT_NAME}"
 ```
 
-**Critical Change in v0.5.0**: The hook NO LONGER MOUNTS SLOTS. It receives the status.image file path from bundle extras via the `RAUC_BUNDLE_STATUS_IMAGE` environment variable.
+**Critical Change in v0.5.0**: The hook NO LONGER MOUNTS SLOTS. It receives the
+status.image file path from bundle extras via the `RAUC_BUNDLE_STATUS_IMAGE`
+environment variable.
 
 **Process** (ALL happens before reboot):
 
-1. Validate environment (`RAUC_SLOT_CLASS=rootfs`, `RAUC_BUNDLE_STATUS_IMAGE` provided)
+1. Validate environment (`RAUC_SLOT_CLASS=rootfs`, `RAUC_BUNDLE_STATUS_IMAGE`
+   provided)
 2. Load status files:
    - New image status from `RAUC_BUNDLE_STATUS_IMAGE` (bundle extras)
    - Current writable status from `/var/lib/opkg/status`
    - Current image status from `/var/lib/opkg/status.image`
 3. Compute reconciliation plan (what needs to change)
 4. **Two-phase duplicate removal**:
-   - **Status-only duplicates**: Packages with no actual files in the upper layer are removed from status file immediately (safe before reboot)
-   - **Physical duplicates**: Packages with actual files in the upper layer are queued for removal after reboot
+   - **Status-only duplicates**: Packages with no actual files in the upper
+     layer are removed from status file immediately (safe before reboot)
+   - **Physical duplicates**: Packages with actual files in the upper layer are
+     queued for removal after reboot
 5. **Clean up OverlayFS whiteouts** for status-only duplicates:
    - Pre-fetch file lists before package removal
    - Remove package file whiteouts (character device 0:0)
    - Remove metadata whiteouts in `/var/lib/opkg/info/`
    - Remount overlay to pick up changes
 6. **Queue pending operations**:
-   - Write `/var/lib/calculinux-update/update-state.pending-duplicates` (physical duplicates for post-reboot)
+   - Write `/var/lib/calculinux-update/update-state.pending-duplicates`
+     (physical duplicates for post-reboot)
    - Write `/var/lib/calculinux-update/update-state.pending-reinstalls`
    - Write `/var/lib/calculinux-update/update-state.pending-upgrades`
 7. **Set completion marker** - `/var/lib/calculinux-update/status-pruned`
@@ -319,63 +362,75 @@ export RAUC_SLOT_NAME="${SLOT_NAME}"
 ```python
 def run_slot_hook(hook: str, slot: str) -> None:
     """RAUC hook for slot-post-install phase."""
-    
+
     # 1. Get status.image from bundle extras (via environment)
     bundle_status_image = os.environ.get("RAUC_BUNDLE_STATUS_IMAGE")
     if not bundle_status_image:
         LOG.warning("RAUC_BUNDLE_STATUS_IMAGE not provided")
         return
-    
+
     image_status = Path(bundle_status_image)
     if not image_status.exists():
         LOG.warning("bundle status image missing")
         return
-    
+
     # 2. Require current image to have status.image
     if not CURRENT_IMAGE_STATUS.exists():
         LOG.error("current image too old - missing status.image")
         raise SystemExit(1)
-    
+
     # 3. Compute reconciliation plan
     plan = compute_reconcile_plan(
         image_status=image_status,
         writable_status=WRITABLE_STATUS,
         current_status=CURRENT_IMAGE_STATUS,
     )
-    
+
     # 4. Remove status-only duplicates immediately (safe)
     _prune_status_only_duplicates(plan.status_only_duplicates)
-    
+
     # 5. Queue physical duplicates for post-reboot removal
     _write_pending(PENDING_DUPLICATES_FILE, plan.duplicates, "physical duplicates")
-    
+
     # 6. Queue pending operations
     _write_pending(PENDING_REINSTALL_FILE, plan.reinstall, "reinstall")
     _write_pending(PENDING_UPGRADE_FILE, plan.upgrade, "upgrade")
-    
+
     # 7. Mark status as pruned
     _atomic_write(STATUS_PRUNED_MARKER, "pruned\n")
 ```
 
 **Why Two-Phase Duplicate Removal?**:
 
-- **Status-only duplicates**: Packages that exist only in the status file but have no actual files in the upper layer can be safely removed immediately. Removing them before reboot is safe because they don't have any files that could temporarily break system access.
-- **Physical duplicates**: Packages with actual files in the upper layer must be removed after reboot. If removed before reboot, OverlayFS creates whiteout files for ALL package files. If a second update follows immediately, these whiteouts temporarily hide critical libraries from the base image, potentially breaking system access during the update window.
-- **Example**: User installs SDL → Update 1 includes SDL in base → Update 2 follows immediately. If SDL is removed before reboot in Update 1, whiteouts hide SDL libraries during Update 2, breaking any program that needs SDL.
+- **Status-only duplicates**: Packages that exist only in the status file but
+  have no actual files in the upper layer can be safely removed immediately.
+  Removing them before reboot is safe because they don't have any files that
+  could temporarily break system access.
+- **Physical duplicates**: Packages with actual files in the upper layer must be
+  removed after reboot. If removed before reboot, OverlayFS creates whiteout
+  files for ALL package files. If a second update follows immediately, these
+  whiteouts temporarily hide critical libraries from the base image, potentially
+  breaking system access during the update window.
+- **Example**: User installs SDL → Update 1 includes SDL in base → Update 2
+  follows immediately. If SDL is removed before reboot in Update 1, whiteouts
+  hide SDL libraries during Update 2, breaking any program that needs SDL.
 
 **OverlayFS Whiteout Cleanup**:
 
 The hook cleans up two types of whiteouts after removing status-only duplicates:
 
 1. **Package File Whiteouts**:
-   - Pre-fetches file list for each package BEFORE `opkg remove` (removal deletes from database)
-   - After removal, checks each file path for whiteout files (character device 0:0)
+   - Pre-fetches file list for each package BEFORE `opkg remove` (removal
+     deletes from database)
+   - After removal, checks each file path for whiteout files (character device
+     0:0)
    - Removes whiteouts to expose base image files
    - Uses enhanced opkg `--writable-only` flag to verify package removal
 
 2. **Metadata Whiteouts**:
    - Scans `/var/lib/opkg/info/` for `.wh.package.*` files
-   - Removes whiteouts that hide base image metadata files (`.list`, `.control`, etc.)
+   - Removes whiteouts that hide base image metadata files (`.list`, `.control`,
+     etc.)
    - Allows `opkg files package` queries to work correctly
 
 3. **Remount Overlay**:
@@ -407,12 +462,14 @@ ExecStart=/usr/lib/calculinux-update/cup-postreboot
 WantedBy=multi-user.target
 ```
 
-**Critical Change in v0.5.0**: The post-reboot service contains ZERO reconciliation logic. It ONLY executes the plan created by the hook.
+**Critical Change in v0.5.0**: The post-reboot service contains ZERO
+reconciliation logic. It ONLY executes the plan created by the hook.
 
 **Process** (Simple execution only):
 
 1. Checks for pending operations (triggered by systemd conditions)
-2. **Removes physical duplicate packages** queued by hook (with whiteout cleanup)
+2. **Removes physical duplicate packages** queued by hook (with whiteout
+   cleanup)
 3. Updates opkg package feeds (`opkg update`)
 4. Executes pending reinstalls (preferring cached .ipk files)
 5. Executes pending upgrades
@@ -423,40 +480,40 @@ WantedBy=multi-user.target
 ```python
 def postreboot_entrypoint() -> int:
     """Post-reboot package reconciliation - pure execution."""
-    
+
     # Check for rollback (skip if we rolled back)
     if _handle_rollback():
         return 0
-    
+
     # If no pending operations, we're done
-    has_pending = (PENDING_REINSTALL_FILE.exists() or 
+    has_pending = (PENDING_REINSTALL_FILE.exists() or
                    PENDING_UPGRADE_FILE.exists() or
                    PENDING_DUPLICATES_FILE.exists())
     if not has_pending:
         LOG.info("no pending operations")
         return 0
-    
+
     # Remove physical duplicates first (queued from hook)
     if PENDING_DUPLICATES_FILE.exists():
         if not _process_pending(PENDING_DUPLICATES_FILE, _remove_duplicate_pkg):
             LOG.warning("some duplicate removals failed")
             # Continue anyway
-    
+
     # Update feeds
     if not _run_opkg(["update"]):
         LOG.error("opkg update failed")
         return 1
-    
+
     # Execute reinstalls
     if not _process_pending(PENDING_REINSTALL_FILE, _install_reinstall_pkg):
         LOG.warning("some reinstalls failed, leaving pending file for retry")
         # Continue anyway
-    
+
     # Execute upgrades
     if not _process_pending(PENDING_UPGRADE_FILE, _upgrade_pkg):
         LOG.warning("some upgrades failed, leaving pending file for retry")
         # Continue anyway
-    
+
     LOG.info("post-reboot reconciliation complete")
     return 0
 ```
@@ -470,7 +527,8 @@ def postreboot_entrypoint() -> int:
 - ✅ Kept: Package installation/upgrade execution
 - ✅ Kept: Rollback detection
 
-**Cache Preference**: The system prefers prefetched `.ipk` files from `/var/cache/calculinux-update/prefetch/` for offline operation:
+**Cache Preference**: The system prefers prefetched `.ipk` files from
+`/var/cache/calculinux-update/prefetch/` for offline operation:
 
 ```python
 def _install_reinstall_pkg(pkg: str) -> bool:
@@ -509,6 +567,7 @@ def compute_reconcile_plan(
 **Algorithm**:
 
 1. **Identify all duplicates** - packages in both writable and new image:
+
    ```python
    writable_pkgs = {e["Package"] for e in load_status_entries(writable_status)}
    new_image_pkgs = {e["Package"] for e in load_status_entries(image_status)}
@@ -516,10 +575,11 @@ def compute_reconcile_plan(
    ```
 
 2. **Split duplicates into two phases** - based on upper layer presence:
+
    ```python
    status_only_duplicates = []
    physical_duplicates = []
-   
+
    for pkg in all_duplicates:
        if has_files_in_upper(pkg):
            # Has actual files - defer to post-reboot
@@ -530,10 +590,11 @@ def compute_reconcile_plan(
    ```
 
 3. **Find missing packages** - packages removed from new image:
+
    ```python
    old_image_pkgs = {e["Package"] for e in load_status_entries(current_status)}
    missing_from_new = old_image_pkgs - new_image_pkgs
-   
+
    # Only reinstall if writable packages depend on them
    reinstall = []
    for pkg in missing_from_new:
@@ -550,13 +611,16 @@ def compute_reconcile_plan(
            upgrade_packages.append(pkg_name)
    ```
 
-**Why upgrade everything?**: Overlay packages were compiled against the old base. The new base may have updated shared libraries or APIs. Upgrading ensures ABI compatibility.
+**Why upgrade everything?**: Overlay packages were compiled against the old
+base. The new base may have updated shared libraries or APIs. Upgrading ensures
+ABI compatibility.
 
 ### Status File Parsing
 
 **Module**: `status.py`
 
-**Format**: OPKG status files use a paragraph-based format (like Debian control files):
+**Format**: OPKG status files use a paragraph-based format (like Debian control
+files):
 
 ```
 Package: foo
@@ -809,7 +873,8 @@ post-install=/usr/bin/cup-hook
 
 **Hook Environment Variables**:
 
-- `RAUC_SLOT_DEVICE` - Block device of newly installed slot (e.g., `/dev/mmcblk0p2`)
+- `RAUC_SLOT_DEVICE` - Block device of newly installed slot (e.g.,
+  `/dev/mmcblk0p2`)
 - `RAUC_SLOT_TYPE` - Slot type (`rootfs`)
 - `RAUC_SLOT_NAME` - Slot identifier (`rootfs.1`)
 
@@ -838,16 +903,20 @@ lists_dir ext /var/lib/opkg/lists
 **Key Paths** (v0.5.1):
 
 - `/var/lib/opkg/status` - Current installed packages (writable)
-- `/var/lib/opkg/status.image` - Base image packages (read-only, required for all images)
-- `/var/lib/opkg/info/` - Package metadata files (may contain `.wh.*` whiteouts after removal)
+- `/var/lib/opkg/status.image` - Base image packages (read-only, required for
+  all images)
+- `/var/lib/opkg/info/` - Package metadata files (may contain `.wh.*` whiteouts
+  after removal)
 - `/var/lib/opkg/lists/` - Package feed metadata
 - `/var/cache/calculinux-update/prefetch/` - Prefetched .ipk files
 - `/var/lib/calculinux-update/` - Update state directory (new in v0.5.0)
   - `update-state.pending-reinstalls` - Packages to reinstall
   - `update-state.pending-upgrades` - Packages to upgrade
-  - `update-state.pending-duplicates` - Physical duplicates to remove post-reboot (new in v0.5.1)
+  - `update-state.pending-duplicates` - Physical duplicates to remove
+    post-reboot (new in v0.5.1)
   - `status-pruned` - Marker indicating hook completed
-  - `update-state.pre-update-writable` - Pre-update writable status backup (for rollback)
+  - `update-state.pre-update-writable` - Pre-update writable status backup (for
+    rollback)
   - `update-state.boot-id` - Boot ID for rollback detection
 
 ## Error Handling
@@ -890,7 +959,8 @@ def run_slot_hook(...) -> bool:
     # RAUC install continues (slot is valid even if hook fails)
 ```
 
-**User Impact**: May have duplicate packages or conflicts after reboot. Manual intervention required (`opkg remove <pkg>`).
+**User Impact**: May have duplicate packages or conflicts after reboot. Manual
+intervention required (`opkg remove <pkg>`).
 
 ### Post-Reboot Failures
 
@@ -903,12 +973,12 @@ def postreboot_entrypoint() -> int:
     # Check for rollback first
     if _handle_rollback():
         return 0
-    
+
     # If no pending operations, we're done
     if not has_pending:
         LOG.info("no pending operations")
         return 0
-    
+
     try:
         # Update feeds, reinstall, upgrade
         _cleanup_update_state()  # Only on success
@@ -936,7 +1006,8 @@ def postreboot_entrypoint() -> int:
 ### No More Slot Mounting (v0.5.0)
 
 - **Eliminated**: Hook no longer mounts slots, improving reliability and speed
-- **Bundle extras**: Status file comes from bundle extras, no filesystem access needed
+- **Bundle extras**: Status file comes from bundle extras, no filesystem access
+  needed
 - **Faster**: Removed mount/unmount overhead
 - **More reliable**: Fewer points of failure
 
@@ -951,16 +1022,20 @@ def postreboot_entrypoint() -> int:
 ### Planned Features
 
 1. **Delta bundles** - Smaller downloads for incremental updates
-2. **Rollback detection** - Detect and skip reconciliation if rolling back to known slot
+2. **Rollback detection** - Detect and skip reconciliation if rolling back to
+   known slot
 3. **Cache cleanup** - Automatic cleanup of old prefetched packages
-4. **Metrics** - Report reconciliation statistics (packages pruned, reinstalled, upgraded)
+4. **Metrics** - Report reconciliation statistics (packages pruned, reinstalled,
+   upgraded)
 5. **Dry-run reconciliation** - Preview reconciliation plan before install
 
 ### Architecture Improvements
 
 1. **Async downloads** - Speed up prefetch with concurrent downloads
-2. **Dependency resolution** - Smarter reinstall logic based on actual dependencies
-3. **Version pinning** - Option to prevent automatic upgrades of specific packages
+2. **Dependency resolution** - Smarter reinstall logic based on actual
+   dependencies
+3. **Version pinning** - Option to prevent automatic upgrades of specific
+   packages
 4. **Custom hooks** - Allow site-specific pre/post reconciliation scripts
 
 ## Debugging
@@ -1055,4 +1130,5 @@ print(f"Packages to upgrade: {plan.upgrade}")
 
 ---
 
-*For user-facing documentation, see [User Guide: System Updates](../user-guide/updates.md)*
+_For user-facing documentation, see
+[User Guide: System Updates](../user-guide/updates.md)_

@@ -1,6 +1,7 @@
 # Developer Overview
 
-Welcome to the Calculinux developer documentation! This section covers everything you need to know to build, customize, and contribute to Calculinux.
+Welcome to the Calculinux developer documentation! This section covers
+everything you need to know to build, customize, and contribute to Calculinux.
 
 ## What You'll Learn
 
@@ -40,22 +41,23 @@ You should be familiar with:
 
 For building Calculinux, you need:
 
-| Requirement | Minimum | Recommended |
-|-------------|---------|-------------|
-| **OS** | Linux (Ubuntu 20.04+) | Linux (Ubuntu 22.04 LTS) |
-| **CPU** | 4 cores | 8+ cores |
-| **RAM** | 8 GB | 16+ GB |
-| **Disk Space** | 50 GB | 100+ GB (SSD preferred) |
-| **Internet** | Required | Fast connection |
+| Requirement    | Minimum               | Recommended              |
+| -------------- | --------------------- | ------------------------ |
+| **OS**         | Linux (Ubuntu 20.04+) | Linux (Ubuntu 22.04 LTS) |
+| **CPU**        | 4 cores               | 8+ cores                 |
+| **RAM**        | 8 GB                  | 16+ GB                   |
+| **Disk Space** | 50 GB                 | 100+ GB (SSD preferred)  |
+| **Internet**   | Required              | Fast connection          |
 
-!!! info "Why Linux?"
-    While Yocto can run in VMs or containers on other OSes, native Linux is strongly recommended for performance and compatibility.
+!!! info "Why Linux?" While Yocto can run in VMs or containers on other OSes,
+native Linux is strongly recommended for performance and compatibility.
 
 ## Calculinux Architecture
 
 ### Overview
 
-Calculinux is built using the **Yocto Project**, a powerful framework for creating custom Linux distributions.
+Calculinux is built using the **Yocto Project**, a powerful framework for
+creating custom Linux distributions.
 
 ```
 Calculinux Architecture:
@@ -80,23 +82,27 @@ Calculinux Architecture:
 ### Key Components
 
 **meta-calculinux**
+
 - Main Yocto layer for Calculinux
 - Machine configurations
 - Custom recipes and patches
 - Image definitions
 
 **Linux Kernel**
+
 - Based on Rockchip 5.10 kernel
 - Custom drivers (display, keyboard)
 - Device tree configurations
 - Hardware support
 
 **Bootloader**
+
 - U-Boot for RV1106
 - Boot scripts
 - Device tree selection
 
 **Userspace**
+
 - Based on OpenEmbedded core
 - Package management (opkg)
 - System services (systemd)
@@ -140,7 +146,8 @@ meta-calculinux/
 
 Calculinux uses external repositories for kernel and bootloader sources:
 
-- **Kernel**: `github.com/0xd61/luckfox-linux-6.1-rk3506.git` (via linux-rockchip recipe)
+- **Kernel**: `github.com/0xd61/luckfox-linux-6.1-rk3506.git` (via
+  linux-rockchip recipe)
 - **Bootloader**: Provided by meta-rockchip layer
 - **Documentation**: This repository (github.com/Calculinux/docs)
 
@@ -158,17 +165,20 @@ Calculinux uses external repositories for kernel and bootloader sources:
 ### Build Types
 
 **Full Build** (Clean)
+
 - First build or major changes
 - Builds everything from scratch
 - Takes 2-8 hours depending on hardware
 - Uses significant disk space
 
 **Incremental Build**
+
 - Rebuilds only changed components
 - Much faster (minutes to hour)
 - Used for development iterations
 
 **Package Build**
+
 - Builds specific packages
 - Quick testing of changes
 - Useful for recipe development
@@ -179,7 +189,8 @@ Calculinux uses external repositories for kernel and bootloader sources:
 
 If you're ready to start developing:
 
-1. [**Yocto Setup**](yocto-setup.md) - Install dependencies and configure environment
+1. [**Yocto Setup**](yocto-setup.md) - Install dependencies and configure
+   environment
 2. [**Building Calculinux**](building.md) - Compile your first image
 3. [**Customization**](customization.md) - Tailor Calculinux to your needs
 4. [**Adding Packages**](adding-packages.md) - Include new software
@@ -187,18 +198,21 @@ If you're ready to start developing:
 ### Learning Path
 
 **Beginner** (New to Yocto):
+
 1. Read Yocto Project documentation
 2. Follow our [Yocto Setup](yocto-setup.md) guide
 3. Build a stock image
 4. Make small customizations
 
 **Intermediate** (Some Yocto experience):
+
 1. Clone meta-calculinux
 2. Customize image configurations
 3. Add new packages/recipes
 4. Modify existing recipes
 
 **Advanced** (Experienced with Yocto):
+
 1. Kernel development
 2. Driver development
 3. BSP modifications
@@ -245,6 +259,7 @@ Recommended editors with Yocto support:
 Calculinux uses Yocto for several reasons:
 
 **Advantages**:
+
 - ✅ Reproducible builds
 - ✅ Extensive package ecosystem
 - ✅ Professional tooling
@@ -253,6 +268,7 @@ Calculinux uses Yocto for several reasons:
 - ✅ Customization flexibility
 
 **Challenges**:
+
 - ⚠️ Steep learning curve
 - ⚠️ Long initial build times
 - ⚠️ Large disk space requirements
@@ -355,6 +371,7 @@ Coming soon: CI/CD pipeline for automated builds and tests.
 ### Build Speed
 
 **Parallel Builds**:
+
 ```python
 # local.conf
 BB_NUMBER_THREADS = "8"
@@ -362,11 +379,13 @@ PARALLEL_MAKE = "-j 8"
 ```
 
 **Shared State Cache**:
+
 ```python
 SSTATE_DIR = "/path/to/shared/sstate-cache"
 ```
 
 **Build History**:
+
 ```python
 INHERIT += "buildhistory"
 BUILDHISTORY_COMMIT = "1"
@@ -429,15 +448,21 @@ We welcome contributions! See [Contributing Guide](contributing.md) for:
 
 ### Official Documentation
 
-- **Yocto Project**: [https://www.yoctoproject.org/docs/](https://www.yoctoproject.org/docs/)
-- **OpenEmbedded**: [https://www.openembedded.org/](https://www.openembedded.org/)
-- **BitBake Manual**: [https://docs.yoctoproject.org/bitbake/](https://docs.yoctoproject.org/bitbake/)
+- **Yocto Project**:
+  [https://www.yoctoproject.org/docs/](https://www.yoctoproject.org/docs/)
+- **OpenEmbedded**:
+  [https://www.openembedded.org/](https://www.openembedded.org/)
+- **BitBake Manual**:
+  [https://docs.yoctoproject.org/bitbake/](https://docs.yoctoproject.org/bitbake/)
 
 ### Calculinux Specific
 
-- **Repository**: [https://github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
-- **Issues**: [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
-- **Discussions**: [Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- **Repository**:
+  [https://github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
+- **Issues**:
+  [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
+- **Discussions**:
+  [Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 
 ### Learning Resources
 
@@ -452,36 +477,36 @@ Choose your path:
 
 <div class="grid cards" markdown>
 
--   :material-cog:{ .lg .middle } **Set Up Environment**
+- :material-cog:{ .lg .middle } **Set Up Environment**
 
-    ---
+  ***
 
-    Install tools and configure Yocto
+  Install tools and configure Yocto
 
-    [:octicons-arrow-right-24: Yocto Setup](yocto-setup.md)
+  [:octicons-arrow-right-24: Yocto Setup](yocto-setup.md)
 
--   :material-hammer-wrench:{ .lg .middle } **Build Calculinux**
+- :material-hammer-wrench:{ .lg .middle } **Build Calculinux**
 
-    ---
+  ***
 
-    Compile your first image
+  Compile your first image
 
-    [:octicons-arrow-right-24: Building Guide](building.md)
+  [:octicons-arrow-right-24: Building Guide](building.md)
 
--   :material-palette:{ .lg .middle } **Customize**
+- :material-palette:{ .lg .middle } **Customize**
 
-    ---
+  ***
 
-    Make Calculinux your own
+  Make Calculinux your own
 
-    [:octicons-arrow-right-24: Customization](customization.md)
+  [:octicons-arrow-right-24: Customization](customization.md)
 
--   :material-code-braces:{ .lg .middle } **Contribute**
+- :material-code-braces:{ .lg .middle } **Contribute**
 
-    ---
+  ***
 
-    Join the development effort
+  Join the development effort
 
-    [:octicons-arrow-right-24: Contributing](contributing.md)
+  [:octicons-arrow-right-24: Contributing](contributing.md)
 
 </div>

@@ -4,20 +4,21 @@ Troubleshooting display-related problems.
 
 ## Display Not Working
 
-*Detailed troubleshooting for display issues.*
+_Detailed troubleshooting for display issues._
 
 ## Display Corruption
 
-*Solutions for display corruption problems.*
+_Solutions for display corruption problems._
 
 ## Backlight Issues
 
-*Backlight troubleshooting information.*
+_Backlight troubleshooting information._
 
 ## SPI Display Problems
 
-*SPI-specific display troubleshooting.*
+_SPI-specific display troubleshooting._
 
 ---
 
-*This page is under development and will be populated with detailed display troubleshooting information.*
+_This page is under development and will be populated with detailed display
+troubleshooting information._

@@ -1,6 +1,7 @@
 # Hardware Modifications
 
-This guide covers the physical modifications required to install a Luckfox Lyra (or similar SBC) into your PicoCalc.
+This guide covers the physical modifications required to install a Luckfox Lyra
+(or similar SBC) into your PicoCalc.
 
 ## Prerequisites
 
@@ -12,7 +13,8 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 
 ### Parts Needed
 
-- Luckfox Lyra SBC (see [compatible versions](luckfox-lyra.md#luckfox-lyra-versions))
+- Luckfox Lyra SBC (see
+  [compatible versions](luckfox-lyra.md#luckfox-lyra-versions))
 - MicroSD card (8GB minimum, 64GB+ recommended)
 
 ## Disassembly
@@ -38,8 +40,10 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 
 Before installation:
 
-1. **Erase SPI NAND** (if your board has it) - see [SPI NAND Erasing](#erasing-spi-nand)
-2. Flash Calculinux to your microSD card - see [Installation Guide](../getting-started/installation.md)
+1. **Erase SPI NAND** (if your board has it) - see
+   [SPI NAND Erasing](#erasing-spi-nand)
+2. Flash Calculinux to your microSD card - see
+   [Installation Guide](../getting-started/installation.md)
 3. Insert the prepared microSD card into the Luckfox Lyra
 
 ### Step 5: Install Luckfox Lyra
@@ -52,23 +56,27 @@ Before installation:
 1. Take care to ensure the board is properly aligned with all screw holes
 2. Ensure the kayboard rubber is in place
 3. Ensure the display is properly aligned with the case
-3. Align the case halves
-4. Replace all screws
-5. Verify nothing is binding or misaligned
+4. Align the case halves
+5. Replace all screws
+6. Verify nothing is binding or misaligned
 
-!!! warn "Risk to your Display!"
-    If the display is misaligned when installed, it can crack when you tighten the screws. make sure it is perfectly aligned with the front case!
+!!! warn "Risk to your Display!" If the display is misaligned when installed, it
+can crack when you tighten the screws. make sure it is perfectly aligned with
+the front case!
 
-!!! tip "Keeping the screen aligned"
-    You may want to tape the screen in place using kapton tape or similar. this will prevent it from moving around as you open and close the picocalc in the future.
+!!! tip "Keeping the screen aligned" You may want to tape the screen in place
+using kapton tape or similar. this will prevent it from moving around as you
+open and close the picocalc in the future.
 
 ## Erasing SPI NAND
 
-If your Luckfox Lyra has SPI NAND flash, you **must** erase it for the board to boot from SD card.
+If your Luckfox Lyra has SPI NAND flash, you **must** erase it for the board to
+boot from SD card.
 
 ### Method 1: Using Luckfox Tools
 
-1. Download Luckfox SDK and tools from [GitHub](https://github.com/LuckfoxTECH/luckfox-pico)
+1. Download Luckfox SDK and tools from
+   [GitHub](https://github.com/LuckfoxTECH/luckfox-pico)
 2. Connect Luckfox Lyra via USB while holding boot button
 3. Use `upgrade_tool` to erase NAND:
    ```bash
@@ -102,20 +110,22 @@ cat /proc/mtd
 flash_erase /dev/mtd0 0 0
 ```
 
-!!! tip "One-Time Operation"
-    You only need to erase the NAND once. After erasing, the board will always boot from SD card (unless you reprogram the NAND).
+!!! tip "One-Time Operation" You only need to erase the NAND once. After
+erasing, the board will always boot from SD card (unless you reprogram the
+NAND).
 
 ## Pin Mapping
+
 TODO: insert information about pin mapping
 
-!!! warning "GPIO Voltage Levels"
-    - **RMIO pins**: 3.3V operation
-    - **GPIO4_B3/GPIO4_B2**: 1.8V operation (not RMIO-capable)
-    - Always verify voltage levels before hardware modifications
+!!! warning "GPIO Voltage Levels" - **RMIO pins**: 3.3V operation -
+**GPIO4_B3/GPIO4_B2**: 1.8V operation (not RMIO-capable) - Always verify voltage
+levels before hardware modifications
 
-!!! info "Hardware PWM Limitation"
-    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM. 
-    A future page needs to be written detailing this.
+!!! info "Hardware PWM Limitation" Some GPIO pins (like GPIO4_B3 and GPIO4_B2)
+cannot output hardware PWM as they are not RMIO-capable. For audio
+modifications, use RMIO pins that support hardware PWM. A future page needs to
+be written detailing this.
 
 ### Power
 
@@ -132,7 +142,8 @@ After installation:
 3. **Boot Check**: Look for display activity
 4. **LED Indicators**: Observe any status LEDs on Luckfox board
 
-If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems.md).
+If the system doesn't boot, see
+[Boot Problems](../troubleshooting/boot-problems.md).
 
 ## Common Issues
 
@@ -140,11 +151,13 @@ If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems
 
 - **SPI NAND not erased**: Most common issue with NAND versions
 - **SD card not flashed correctly**: Verify image integrity
-- **Power insufficient**: Try different USB cable/adapter or replace the batteries
+- **Power insufficient**: Try different USB cable/adapter or replace the
+  batteries
 
 ### Display Not Working
 
-- **Driver not loaded**: Check kernel logs via the serial terminal on the picocalc USB-C connector
+- **Driver not loaded**: Check kernel logs via the serial terminal on the
+  picocalc USB-C connector
 - **Connection issue**: Reseat display cable
 - **Wrong device tree**: Verify correct DTB is loaded
 
@@ -177,8 +190,8 @@ To restore the original RP2040 board:
 3. Reinstall original board in reverse order
 4. Reflash original firmware if needed
 
-!!! note "Keep Original Board"
-    Store the original RP2040 board safely in case you want to revert or use it elsewhere.
+!!! note "Keep Original Board" Store the original RP2040 board safely in case
+you want to revert or use it elsewhere.
 
 ## Advanced Modifications
 
@@ -199,8 +212,10 @@ The modification process should be similar for other SBCs:
 
 ## Resources
 
-- **Video Guide**: [YouTube - Luckfox Lyra on PicoCalc](https://www.youtube.com/watch?v=DaVv7h8cKAE)
-- **Forum Discussion**: [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- **Video Guide**:
+  [YouTube - Luckfox Lyra on PicoCalc](https://www.youtube.com/watch?v=DaVv7h8cKAE)
+- **Forum Discussion**:
+  [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - **Image Files**: Check forum thread for community-shared modifications
 
 ## Next Steps

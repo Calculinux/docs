@@ -1,7 +1,7 @@
 # Customizing Calculinux
 
-!!! warning "Under Construction"
-    This page is currently being developed. Check back soon for customization guides.
+!!! warning "Under Construction" This page is currently being developed. Check
+back soon for customization guides.
 
 ## Getting Started
 
@@ -25,4 +25,4 @@ This section will cover:
 
 ---
 
-*Content planned for future release*
+_Content planned for future release_

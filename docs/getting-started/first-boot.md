@@ -13,12 +13,14 @@ After flashing your SD card and installing hardware:
 ### What to Expect
 
 **Boot Process**:
+
 - Power LED lights up
 - Boot messages appear on display
 - System initialization
 - Login prompt appears
 
 **First Boot Timing**:
+
 - First boot: 30-60 seconds
 - Subsequent boots: 15-30 seconds
 
@@ -31,11 +33,8 @@ Username: root
 Password: root
 ```
 
-!!! danger "Change Password Immediately"
-    The first thing you should do after logging in is change the root password:
-    ```bash
-    passwd
-    ```
+!!! danger "Change Password Immediately" The first thing you should do after
+logging in is change the root password: `bash     passwd     `
 
 ## Initial Configuration
 
@@ -74,8 +73,10 @@ systemctl status
 
 ### 4. Filesystem Expansion (Automatic)
 
-!!! success "Automatic Expansion"
-    The overlayfs partition is **automatically expanded** during the pre-init process on first boot. The system uses `growpart` to expand the overlay partition to fill available disk space, leaving 10% free. No manual intervention is required.
+!!! success "Automatic Expansion" The overlayfs partition is **automatically
+expanded** during the pre-init process on first boot. The system uses `growpart`
+to expand the overlay partition to fill available disk space, leaving 10% free.
+No manual intervention is required.
 
 ### 5. Update Package Database
 
@@ -105,21 +106,25 @@ ip link show
 
 ### Supported Peripherals
 
-!!! info "Hardware Expansion"
-    The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.
+!!! info "Hardware Expansion" The PicoCalc and Luckfox Lyra do not include WiFi
+or many peripherals by default. Hardware can be added via USB, I2C, SPI, and
+GPIO headers.
 
 **Currently Tested:**
+
 - Display (built-in LCD drivers)
-- Keyboard (built-in keyboard drivers)  
+- Keyboard (built-in keyboard drivers)
 - USB WiFi adapters (see WiFi chipsets above)
 
 **Planned/Future Support:**
+
 - I2C RTC modules (e.g., Adafruit DS3231)
 - LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
 - Additional I2C/SPI peripherals
 
-!!! note "Peripheral Testing"
-    Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!
+!!! note "Peripheral Testing" Most peripheral support beyond WiFi, display, and
+keyboard has not been thoroughly tested yet. Community contributions for
+additional hardware support are welcome!
 
 ### Check Logs
 
@@ -135,14 +140,16 @@ journalctl -b
 
 ### WiFi Setup (USB Adapter Required)
 
-!!! info "WiFi Hardware Required"
-    Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the Lyra's USB header.
-    
+!!! info "WiFi Hardware Required" Neither the PicoCalc nor Luckfox Lyra include
+built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to
+the Lyra's USB header.
+
     For a complete list of supported WiFi chipsets, see [Hardware Specifications - WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets).
 
 #### Connecting to WiFi with iwctl
 
-Calculinux uses `iwd` (iNet Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
+Calculinux uses `iwd` (iNet Wireless Daemon) for WiFi management. Use `iwctl` to
+configure wireless connections:
 
 ```bash
 # Start iwctl interactive mode

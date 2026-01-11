@@ -1,7 +1,7 @@
 # Power Management
 
-!!! warning "Under Construction"
-    This page is currently being developed. Check back soon for power management information.
+!!! warning "Under Construction" This page is currently being developed. Check
+back soon for power management information.
 
 ## Getting Started
 
@@ -23,4 +23,4 @@ This section will cover:
 
 ---
 
-*Content planned for future release*
+_Content planned for future release_

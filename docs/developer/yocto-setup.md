@@ -4,20 +4,21 @@ Setting up the Yocto build environment for Calculinux development.
 
 ## Prerequisites
 
-*System requirements and dependencies.*
+_System requirements and dependencies._
 
 ## Environment Setup
 
-*Step-by-step Yocto environment configuration.*
+_Step-by-step Yocto environment configuration._
 
 ## Initial Configuration
 
-*First-time setup instructions.*
+_First-time setup instructions._
 
 ## Troubleshooting Setup Issues
 
-*Common setup problems and solutions.*
+_Common setup problems and solutions._
 
 ---
 
-*This page is under development and will be populated with detailed Yocto setup instructions.*
+_This page is under development and will be populated with detailed Yocto setup
+instructions._
