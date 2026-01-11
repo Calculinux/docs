@@ -4,21 +4,20 @@ General troubleshooting for common Calculinux problems.
 
 ## General System Issues
 
-_Common system problems and their solutions._
+*Common system problems and their solutions.*
 
 ## Performance Issues
 
-_System performance troubleshooting._
+*System performance troubleshooting.*
 
 ## Storage Issues
 
-_Storage-related problems and solutions._
+*Storage-related problems and solutions.*
 
 ## Package Management Issues
 
-_opkg and package-related troubleshooting._
+*opkg and package-related troubleshooting.*
 
 ---
 
-_This page is under development and will be populated with detailed
-troubleshooting information for common issues._
+*This page is under development and will be populated with detailed troubleshooting information for common issues.*

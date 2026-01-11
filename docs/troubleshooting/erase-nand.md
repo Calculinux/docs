@@ -1,16 +1,13 @@
 # Erasing SPI NAND Flash
 
-This guide explains how to erase the SPI NAND flash memory on Luckfox Lyra
-boards that include onboard flash storage.
+This guide explains how to erase the SPI NAND flash memory on Luckfox Lyra boards that include onboard flash storage.
 
-!!! danger "Critical Warning: Data Loss" **Erasing SPI NAND will permanently
-delete ALL data stored on the NAND flash.** This action cannot be undone. Ensure
-you have backups of any important data before proceeding.
+!!! danger "Critical Warning: Data Loss"
+    **Erasing SPI NAND will permanently delete ALL data stored on the NAND flash.** This action cannot be undone. Ensure you have backups of any important data before proceeding.
 
 ## Why Erase SPI NAND?
 
-The Luckfox Lyra boot process prioritizes SPI NAND flash over SD cards. If your
-board has SPI NAND with existing firmware:
+The Luckfox Lyra boot process prioritizes SPI NAND flash over SD cards. If your board has SPI NAND with existing firmware:
 
 - The board will boot from NAND instead of your Calculinux SD card
 - Your SD card will be ignored even if properly flashed
@@ -18,27 +15,23 @@ board has SPI NAND with existing firmware:
 
 ## Which Boards Have SPI NAND?
 
-| Board Model                    | SPI NAND | Notes                     |
-| ------------------------------ | -------- | ------------------------- |
-| **Luckfox Lyra (Base)**        | ❌ No    | SD card only              |
-| **Luckfox Lyra B**             | ✅ Yes   | 256MB SPI NAND            |
-| **Luckfox Lyra Plus**          | ✅ Yes   | 256MB SPI NAND            |
-| **Luckfox Lyra Ultra/Ultra W** | N/A      | Uses eMMC, not NAND       |
-| **Luckfox Lyra Zero W**        | Varies   | Check your specific model |
-| **Luckfox Lyra Pi**            | Varies   | Check your specific model |
+| Board Model | SPI NAND | Notes |
+|-------------|----------|-------|
+| **Luckfox Lyra (Base)** | ❌ No | SD card only |
+| **Luckfox Lyra B** | ✅ Yes | 256MB SPI NAND |
+| **Luckfox Lyra Plus** | ✅ Yes | 256MB SPI NAND |
+| **Luckfox Lyra Ultra/Ultra W** | N/A | Uses eMMC, not NAND |
+| **Luckfox Lyra Zero W** | Varies | Check your specific model |
+| **Luckfox Lyra Pi** | Varies | Check your specific model |
 
 ## Checking If You Have SPI NAND
 
 **Visual Inspection:**
-
 - Look for an additional chip on the board labeled "SPI NAND" or similar
 - Check your purchase order/product specifications
 
 **Check Product Documentation:**
-
-- Refer to the
-  [Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/) for your
-  specific model
+- Refer to the [Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/) for your specific model
 
 ## Erasure Methods
 
@@ -54,12 +47,9 @@ This is the easiest and most reliable method for most users.
 
 #### Step 1: Download Required Tools
 
-1. **RK Driver Assistant**:
-   [Download v5.13](https://files.luckfox.com/wiki/Omni3576/TOOLS/DriverAssitant_v5.13.zip)
-2. **RKDevTool**:
-   [Download v3.31](https://files.luckfox.com/wiki/Omni3576/TOOLS/RKDevTool_Release_v3.31.zip)
-3. **Luckfox Firmware** (any official image):
-   [Download from Luckfox](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/#2--image-download)
+1. **RK Driver Assistant**: [Download v5.13](https://files.luckfox.com/wiki/Omni3576/TOOLS/DriverAssitant_v5.13.zip)
+2. **RKDevTool**: [Download v3.31](https://files.luckfox.com/wiki/Omni3576/TOOLS/RKDevTool_Release_v3.31.zip)
+3. **Luckfox Firmware** (any official image): [Download from Luckfox](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/#2--image-download)
 
 #### Step 2: Install Drivers
 
@@ -78,6 +68,7 @@ This is the easiest and most reliable method for most users.
    - Hold down the **BOOT** button on the board
    - While holding BOOT, connect the USB cable to your PC
    - Wait 2-3 seconds, then release the BOOT button
+   
 3. **Method B - Using RESET button:**
    - With the board connected via USB
    - Hold down **RESET** button
@@ -89,12 +80,12 @@ This is the easiest and most reliable method for most users.
 
 ![Loader Mode Detected](https://wiki.luckfox.com/assets/images/RK3506-LOADER-1fbf388a871c4e6f6755532deb9324fa.png)
 
-!!! tip "Troubleshooting Device Detection" If the device is not detected, check
-Windows Device Manager:
-
+!!! tip "Troubleshooting Device Detection"
+    If the device is not detected, check Windows Device Manager:
+    
     - **Correct (Loader Mode)**: Should show "Rockusb Device" under "Universal Serial Bus controllers"
     - **Wrong**: Shows as "ADB Interface" or other device
-
+    
     If not detected properly, try a different USB cable or USB port.
 
 #### Step 4: Erase the NAND Flash
@@ -133,11 +124,9 @@ This method uses command-line tools on Linux.
 #### Step 1: Download Tools
 
 Download the Luckfox SDK which includes the flashing tools:
-
 - [Luckfox SDK Setup Guide](https://wiki.luckfox.com/Luckfox-Lyra/SDK)
 
 Or download standalone upgrade_tool:
-
 - Available in the SDK under `tools/linux/Linux_Upgrade_Tool/`
 
 #### Step 2: Enter Loader Mode
@@ -150,7 +139,6 @@ lsusb | grep Rockchip
 ```
 
 You should see output indicating Loader mode:
-
 ```
 Bus 001 Device 007: ID 2207:350f Fuzhou Rockchip Electronics Company
 ```
@@ -173,11 +161,10 @@ sudo ./rkflash.sh query
 
 ### Method 3: MaskRom Mode (Advanced/Recovery)
 
-Use this method only if Loader Mode fails or the device is in an unrecoverable
-state.
+Use this method only if Loader Mode fails or the device is in an unrecoverable state.
 
-!!! warning "Advanced Users Only" MaskRom mode requires physical hardware
-manipulation and should only be used when Loader mode fails.
+!!! warning "Advanced Users Only"
+    MaskRom mode requires physical hardware manipulation and should only be used when Loader mode fails.
 
 #### Entering MaskRom Mode
 
@@ -198,10 +185,9 @@ manipulation and should only be used when Loader mode fails.
 
 ### Method 4: Linux on the Device (Not Yet Documented)
 
-!!! warning "Method Not Available" Methods for erasing SPI NAND directly from
-Linux running on the Luckfox Lyra (without external flashing tools) are not yet
-documented or tested.
-
+!!! warning "Method Not Available"
+    Methods for erasing SPI NAND directly from Linux running on the Luckfox Lyra (without external flashing tools) are not yet documented or tested. 
+    
     This would theoretically be possible using `mtd-utils` and `/dev/mtdX` devices, but specific procedures for Calculinux have not been established.
 
 ## After Erasing
@@ -220,7 +206,6 @@ Once the SPI NAND is erased:
 **Symptoms**: SD card is ignored, old firmware still runs
 
 **Solutions**:
-
 - Verify the erase completed successfully
 - Try the erase process again
 - Try MaskRom mode instead of Loader mode
@@ -231,7 +216,6 @@ Once the SPI NAND is erased:
 **Symptoms**: RKDevTool doesn't detect device
 
 **Solutions**:
-
 - Try different USB cable (must be data-capable)
 - Try different USB port
 - Check Device Manager for driver issues
@@ -243,7 +227,6 @@ Once the SPI NAND is erased:
 **Symptoms**: Erase process errors or hangs
 
 **Solutions**:
-
 - Disconnect and retry
 - Try using MaskRom mode
 - Ensure stable USB connection
@@ -254,7 +237,6 @@ Once the SPI NAND is erased:
 **Symptoms**: No boot after erasing NAND
 
 **This is expected behavior!** With NAND erased and no SD card:
-
 - Insert your Calculinux SD card
 - Power on the device
 - It should boot from SD card
@@ -264,30 +246,24 @@ Once the SPI NAND is erased:
 If you need to restore the original Luckfox firmware to NAND:
 
 1. Download the official Luckfox firmware for your board model
-2. Follow the
-   [official flashing guide](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
+2. Follow the [official flashing guide](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
 3. Flash the firmware to SPI NAND using RKDevTool
 
 ## Additional Resources
 
-- **Official Luckfox Flashing Guide**:
-  [wiki.luckfox.com/Luckfox-Lyra/Image-flashing](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
+- **Official Luckfox Flashing Guide**: [wiki.luckfox.com/Luckfox-Lyra/Image-flashing](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/)
 - **Luckfox Forum**: [forums.luckfox.com](https://forums.luckfox.com/)
-- **RK Driver Downloads**:
-  [Luckfox Tools](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/#3-installing-drivers)
+- **RK Driver Downloads**: [Luckfox Tools](https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/#3-installing-drivers)
 
 ## Questions?
 
 If you encounter issues not covered here:
 
 1. Check the [Boot Problems](boot-problems.md) troubleshooting guide
-2. Ask in the
-   [Calculinux Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-3. Refer to
-   [Luckfox Official Documentation](https://wiki.luckfox.com/Luckfox-Lyra/)
+2. Ask in the [Calculinux Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+3. Refer to [Luckfox Official Documentation](https://wiki.luckfox.com/Luckfox-Lyra/)
 4. Open a [GitHub Issue](https://github.com/Calculinux/meta-calculinux/issues)
 
 ---
 
-**Remember**: Erasing SPI NAND is a one-way operation. Make sure you understand
-the implications before proceeding.
+**Remember**: Erasing SPI NAND is a one-way operation. Make sure you understand the implications before proceeding.

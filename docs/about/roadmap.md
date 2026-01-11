@@ -1,7 +1,7 @@
 # Roadmap
 
-!!! info "Active Development" Calculinux is under active development. This
-roadmap outlines planned features and improvements.
+!!! info "Active Development"
+    Calculinux is under active development. This roadmap outlines planned features and improvements.
 
 ## Current Status
 
@@ -47,8 +47,7 @@ Calculinux currently includes:
 
 ## How to Contribute
 
-Interested in helping? See our
-[Contributing Guide](../developer/contributing.md) for:
+Interested in helping? See our [Contributing Guide](../developer/contributing.md) for:
 
 - Code contributions
 - Documentation improvements
@@ -59,13 +58,10 @@ Interested in helping? See our
 ## Stay Updated
 
 - 💬 **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
-- 💬 **Forum Discussion**:
-  [Forum Discussion](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-- 🐛 **GitHub Issues**:
-  [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
-- 📚 **Source Repository**:
-  [Source Repository](https://github.com/Calculinux/meta-calculinux)
+- 💬 **Forum Discussion**: [Forum Discussion](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- 🐛 **GitHub Issues**: [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
+- 📚 **Source Repository**: [Source Repository](https://github.com/Calculinux/meta-calculinux)
 
 ---
 
-_Roadmap updated: October 2024_
+*Roadmap updated: October 2024*

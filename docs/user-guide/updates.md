@@ -1,14 +1,10 @@
 # System Updates
 
-Calculinux uses a dual-layer update strategy combining RAUC for system images
-and OPKG for packages, with automatic reconciliation to keep everything in sync.
+Calculinux uses a dual-layer update strategy combining RAUC for system images and OPKG for packages, with automatic reconciliation to keep everything in sync.
 
 ## Overview
 
-Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update
-Controller). When you install an update, it writes to the inactive slot, leaving
-your current system untouched. After reboot, the system switches to the new
-slot, and the old one becomes your rollback option.
+Calculinux employs an A/B slot update system powered by RAUC (Robust Auto-Update Controller). When you install an update, it writes to the inactive slot, leaving your current system untouched. After reboot, the system switches to the new slot, and the old one becomes your rollback option.
 
 ### Update Architecture
 
@@ -19,25 +15,22 @@ graph TD
         basepkgs[Base System Packages]
         statusimage[/var/lib/opkg/status.image]
     end
-
+    
     subgraph overlay["Writable Overlay"]
         userpkgs[User-Installed Packages]
         config[Configuration Files]
         status[/var/lib/opkg/status]
     end
-
+    
     base -.-> overlay
-
+    
     style base fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
     style overlay fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
 
 ### The Calculinux Update Tool (`cup`)
 
-The `calculinux-update` package provides the `cup` command for managing system
-updates. Two additional internal commands (`cup-hook` and `cup-postreboot`) are
-automatically invoked by the system during the update process—you typically
-won't need to run these manually.
+The `calculinux-update` package provides the `cup` command for managing system updates. Two additional internal commands (`cup-hook` and `cup-postreboot`) are automatically invoked by the system during the update process—you typically won't need to run these manually.
 
 ## Installing Updates
 
@@ -58,8 +51,7 @@ This will:
 5. Prefetch packages that will be reinstalled after reboot
 6. Prompt for confirmation before installing
 
-Each RAUC bundle includes metadata about the new system's package configuration,
-allowing the update tool to prepare everything needed for a smooth transition.
+Each RAUC bundle includes metadata about the new system's package configuration, allowing the update tool to prepare everything needed for a smooth transition.
 
 ### Update Specific Channel
 
@@ -119,10 +111,8 @@ Calculinux uses a dual-layer package system:
 When you update the base image, this can create problems:
 
 1. **Duplicate packages**: A package you installed is now in the new base image
-2. **Missing packages**: The new image removed a package your other packages
-   depend on
-3. **Version conflicts**: Your overlay packages conflict with newer base
-   versions
+2. **Missing packages**: The new image removed a package your other packages depend on
+3. **Version conflicts**: Your overlay packages conflict with newer base versions
 
 ### Automatic Reconciliation
 
@@ -132,16 +122,11 @@ The update process automatically handles these issues:
 
 When you run `sudo cup install`, the system:
 
-1. **Extracts bundle metadata** - Gets OPKG configuration and package
-   information from the bundle
-2. **Plans reconciliation** - Identifies duplicates, missing packages, and
-   upgrades needed
-3. **Prefetches packages** - Downloads packages that will need reinstallation
-   using the new system's package repositories
+1. **Extracts bundle metadata** - Gets OPKG configuration and package information from the bundle
+2. **Plans reconciliation** - Identifies duplicates, missing packages, and upgrades needed
+3. **Prefetches packages** - Downloads packages that will need reinstallation using the new system's package repositories
 
-This metadata-driven approach allows the update to prepare everything needed
-before installation, enabling offline reconciliation even if network isn't
-available after reboot.
+This metadata-driven approach allows the update to prepare everything needed before installation, enabling offline reconciliation even if network isn't available after reboot.
 
 #### During RAUC Installation (via `cup-hook`)
 
@@ -156,12 +141,9 @@ When RAUC installs the new slot:
 When the system boots into the new slot:
 
 1. **Updates package feeds** - Runs `opkg update`
-2. **Reinstalls missing packages** - Installs packages from the old base now
-   missing
-3. **Upgrades overlay packages** - Updates all user packages to match new base
-   versions
-4. **Uses cached packages** - Prefers locally cached .ipk files for offline
-   operation
+2. **Reinstalls missing packages** - Installs packages from the old base now missing
+3. **Upgrades overlay packages** - Updates all user packages to match new base versions
+4. **Uses cached packages** - Prefers locally cached .ipk files for offline operation
 
 ### Checking Reconciliation Status
 
@@ -206,15 +188,14 @@ Set `enable = true` to show a channel in `cup list`.
 
 ### Skipping Prefetch
 
-In some cases you might want to skip prefetch (though metadata extraction still
-occurs):
+In some cases you might want to skip prefetch (though metadata extraction still occurs):
 
 ```bash
 sudo cup install --no-prefetch
 ```
 
-!!! warning Without prefetch, post-reboot reconciliation requires network
-access. The bundle metadata will still be validated to ensure compatibility.
+!!! warning
+    Without prefetch, post-reboot reconciliation requires network access. The bundle metadata will still be validated to ensure compatibility.
 
 ## Update Process Flow
 
@@ -288,10 +269,7 @@ cat /etc/opkg/opkg.conf
 opkg update
 ```
 
-Prefetch failures are usually harmless - the system will simply download
-packages after reboot instead of using pre-cached versions. However, if bundle
-metadata extraction fails completely, the bundle may be corrupted and should be
-re-downloaded.
+Prefetch failures are usually harmless - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails completely, the bundle may be corrupted and should be re-downloaded.
 
 ### Rolling Back an Update
 
@@ -305,19 +283,17 @@ sudo reboot
 
 Or select the other slot in your bootloader (if supported).
 
-!!! warning "Package State After Rollback" After rolling back, some manually
-installed packages may need to be reinstalled, as the reconciliation system
-currently only runs during forward updates. A list of your installed packages
-can help:
-
+!!! warning "Package State After Rollback"
+    After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:
+    
     ```bash
     # Before updating, save your package list
     opkg list-installed > ~/my-packages.txt
-
+    
     # After rollback, reinstall if needed
     cat ~/my-packages.txt | awk '{print $1}' | xargs opkg install
     ```
-
+    
     Future versions will include automatic rollback detection and reconciliation.
 
 ### Dry Run
@@ -340,8 +316,7 @@ This downloads and prepares but doesn't invoke RAUC.
 
 ### After Updating
 
-1. **Check reconciliation**:
-   `journalctl -u calculinux-update-postreboot.service`
+1. **Check reconciliation**: `journalctl -u calculinux-update-postreboot.service`
 2. **Test your applications**: Ensure everything still works
 3. **Keep previous slot**: Don't mark it bad until you're confident
 
@@ -388,14 +363,11 @@ mirror_base_url = "https://my-mirror.example.com"
 
 ## Related Topics
 
-- [Package Management](package-management.md) - Installing and managing packages
-  with opkg
+- [Package Management](package-management.md) - Installing and managing packages with opkg
 - [Configuration](configuration.md) - System configuration files
-- [Boot Problems](../troubleshooting/boot-problems.md) - Recovering from boot
-  issues
+- [Boot Problems](../troubleshooting/boot-problems.md) - Recovering from boot issues
 - [RAUC Documentation](https://rauc.readthedocs.io/) - Upstream RAUC docs
 
 ---
 
-_For developers working on the update system, see
-[Developer Guide: Calculinux Update](../developer/calculinux-update.md)_
+*For developers working on the update system, see [Developer Guide: Calculinux Update](../developer/calculinux-update.md)*

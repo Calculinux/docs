@@ -9,7 +9,6 @@ Connect with the Calculinux community and get support.
 Join our active Discord community for real-time chat and support:
 
 **Calculinux Discord Server**
-
 - URL: [discord.gg/7quBbSPxcP](https://discord.gg/7quBbSPxcP)
 - Purpose: Real-time community discussion, help, and project sharing
 - Channels: General discussion, help & support, development, hardware, showcase
@@ -20,9 +19,7 @@ Join our active Discord community for real-time chat and support:
 The primary discussion platform for Calculinux and PicoCalc modifications:
 
 **ClockworkPi Forum - Luckfox Lyra Thread**
-
-- URL:
-  [forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- URL: [forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - Purpose: General discussion, questions, showcase projects
 - Activity: Active community, quick responses
 - Original port discussion and ongoing development
@@ -30,15 +27,12 @@ The primary discussion platform for Calculinux and PicoCalc modifications:
 ### GitHub
 
 **Source Code & Issues**
-
-- Repository:
-  [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
+- Repository: [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
 - Issues: Bug reports and feature requests
 - Pull Requests: Code contributions
 - Discussions: Development planning
 
 **Documentation**
-
 - Repository: [github.com/Calculinux/docs](https://github.com/Calculinux/docs)
 - Issues: Documentation improvements
 - Website: [calculinux.github.io/docs](https://calculinux.github.io/docs)
@@ -72,8 +66,7 @@ The primary discussion platform for Calculinux and PicoCalc modifications:
 1. **Check Documentation**: Read relevant sections
 2. **Search Forum**: Someone may have had the same issue
 3. **Check Issues**: Look for existing GitHub issues
-4. **Try Troubleshooting**: Follow
-   [troubleshooting guides](../troubleshooting/faq.md)
+4. **Try Troubleshooting**: Follow [troubleshooting guides](../troubleshooting/faq.md)
 
 ### How to Ask
 
@@ -118,28 +111,24 @@ Logs:
 ### Ways to Contribute
 
 **Code Contributions**
-
 - Bug fixes
 - New features
 - Driver improvements
 - See [Contributing Guide](../developer/contributing.md)
 
 **Documentation**
-
 - Fix typos and errors
 - Add missing information
 - Create tutorials
 - Translate to other languages
 
 **Testing**
-
 - Test on different hardware
 - Report compatibility
 - Verify bug fixes
 - Test new features
 
 **Community Support**
-
 - Answer questions on forum
 - Help troubleshoot issues
 - Share your projects
@@ -171,10 +160,8 @@ Want to become a maintainer? Contribute regularly and show your commitment!
 ### Embedded Linux
 
 - **eLinux.org**: [elinux.org](https://elinux.org/)
-- **Yocto Community**:
-  [yoctoproject.org/community](https://www.yoctoproject.org/community/)
-- **Reddit /r/embedded**:
-  [reddit.com/r/embedded](https://www.reddit.com/r/embedded/)
+- **Yocto Community**: [yoctoproject.org/community](https://www.yoctoproject.org/community/)
+- **Reddit /r/embedded**: [reddit.com/r/embedded](https://www.reddit.com/r/embedded/)
 
 ## Events & Meetings
 
@@ -292,7 +279,7 @@ Don't be a stranger! The Calculinux community is friendly and welcoming.
 
 - 💬 **Discord**: Join our [Discord community](https://discord.gg/7quBbSPxcP)
 - 💬 **Forum**: Join the forum discussion
-- ⭐ **GitHub**: Star the GitHub repository
+- ⭐ **GitHub**: Star the GitHub repository  
 - 📢 **Projects**: Share your projects
 - 🤝 **Help**: Help fellow users
 - 💻 **Contribute**: Contribute code or documentation

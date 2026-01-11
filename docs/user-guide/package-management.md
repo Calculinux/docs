@@ -1,19 +1,14 @@
 # Package Management
 
-Calculinux uses `opkg` (Open Package Management) for installing, updating, and
-removing software packages.
+Calculinux uses `opkg` (Open Package Management) for installing, updating, and removing software packages.
 
 ## Understanding Package Feeds
 
-Calculinux packages are hosted on package feeds at
-`https://opkg.calculinux.org/`. **Your system is automatically configured to use
-the appropriate feed based on your installed version.** You typically don't need
-to modify the feed configuration.
+Calculinux packages are hosted on package feeds at `https://opkg.calculinux.org/`. **Your system is automatically configured to use the appropriate feed based on your installed version.** You typically don't need to modify the feed configuration.
 
 ### Feed Types
 
 **Continuous Feed**: Rolling release packages with the latest updates
-
 - URL format: `https://opkg.calculinux.org/ipk/{codename}/continuous/`
 - Updated automatically as changes are made
 - Best for staying current with development
@@ -21,7 +16,6 @@ to modify the feed configuration.
 - Used by main and develop branch builds
 
 **Release Feed**: Stable versioned packages
-
 - URL format: `https://opkg.calculinux.org/ipk/{codename}/release/`
 - Locked to specific release versions
 - Thoroughly tested before release
@@ -37,18 +31,15 @@ cat /etc/opkg/base-feeds.conf
 ```
 
 Example output for a continuous build:
-
 ```
 src/gz all https://opkg.calculinux.org/ipk/walnascar/continuous/all
 src/gz cortexa7t2hf-neon-vfpv4 https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4
 src/gz luckfox_lyra https://opkg.calculinux.org/ipk/walnascar/continuous/luckfox_lyra
 ```
 
-The feed configuration is set during the image build process and matches the
-image type:
-
+The feed configuration is set during the image build process and matches the image type:
 - Images from `main` branch → `walnascar/continuous` feed
-- Images from `develop` branch → `develop/continuous` feed
+- Images from `develop` branch → `develop/continuous` feed  
 - Images from tagged releases → `walnascar/release` feed
 
 ## Basic Commands
@@ -70,7 +61,6 @@ opkg install <package-name>
 ```
 
 Example:
-
 ```bash
 opkg install vim
 ```
@@ -98,7 +88,6 @@ opkg list | grep <search-term>
 ```
 
 Example:
-
 ```bash
 opkg list | grep python
 ```
@@ -176,7 +165,6 @@ opkg search <filename>
 ```
 
 Example:
-
 ```bash
 opkg search /usr/bin/python3
 ```
@@ -197,16 +185,13 @@ opkg whatdepends <package-name>
 
 ## Feed Configuration
 
-!!! info "Automatic Configuration" **Package feeds are automatically configured
-during image creation.** You typically don't need to change feed configuration
-unless you're testing different package versions or have specific advanced
-requirements.
+!!! info "Automatic Configuration"
+    **Package feeds are automatically configured during image creation.** You typically don't need to change feed configuration unless you're testing different package versions or have specific advanced requirements.
 
 ### Switching Feeds (Advanced)
 
-!!! warning "Advanced Users Only" Switching feeds may cause package version
-conflicts and is only recommended for testing or specific use cases. Most users
-should use the pre-configured feed that came with their image.
+!!! warning "Advanced Users Only"
+    Switching feeds may cause package version conflicts and is only recommended for testing or specific use cases. Most users should use the pre-configured feed that came with their image.
 
 To switch from continuous to release feed, edit `/etc/opkg/base-feeds.conf`:
 
@@ -232,9 +217,8 @@ Then update:
 opkg update
 ```
 
-!!! note "Persistence" Changes to `/etc/opkg/base-feeds.conf` persist across
-reboots because Calculinux uses overlayfs - your changes are stored in the upper
-(writable) layer.
+!!! note "Persistence"
+    Changes to `/etc/opkg/base-feeds.conf` persist across reboots because Calculinux uses overlayfs - your changes are stored in the upper (writable) layer.
 
 ### Adding Custom Feeds
 
@@ -247,20 +231,17 @@ opkg update
 
 ### Development vs. Stable Codenames
 
-Different Calculinux versions use different distribution codenames in their feed
-URLs:
+Different Calculinux versions use different distribution codenames in their feed URLs:
 
 - **walnascar**: Stable releases and main branch continuous builds
   - Example: `https://opkg.calculinux.org/ipk/walnascar/continuous/`
   - Example: `https://opkg.calculinux.org/ipk/walnascar/release/`
+  
 - **develop**: Development branch builds (bleeding-edge features)
   - Example: `https://opkg.calculinux.org/ipk/develop/continuous/`
 
-!!! warning "Codename Compatibility" Switching between different codenames
-(e.g., `walnascar` ↔ `develop`) may cause significant package compatibility
-issues. This is **not recommended** except for advanced testing scenarios. If
-you want bleeding-edge packages, it's better to flash a new develop branch image
-rather than switching feeds.
+!!! warning "Codename Compatibility"
+    Switching between different codenames (e.g., `walnascar` ↔ `develop`) may cause significant package compatibility issues. This is **not recommended** except for advanced testing scenarios. If you want bleeding-edge packages, it's better to flash a new develop branch image rather than switching feeds.
 
 ## Common Tasks
 
@@ -300,13 +281,11 @@ rm -rf /var/cache/opkg/*
 If a package fails to install:
 
 1. Update package lists:
-
    ```bash
    opkg update
    ```
 
 2. Check available space:
-
    ```bash
    df -h
    ```
@@ -321,13 +300,11 @@ If a package fails to install:
 If you can't connect to the package feeds:
 
 1. Check network connectivity:
-
    ```bash
    ping opkg.calculinux.org
    ```
 
 2. Verify feed URLs:
-
    ```bash
    cat /etc/opkg/base-feeds.conf
    ```
@@ -375,32 +352,27 @@ Your system automatically uses packages from all relevant feeds.
 ## Best Practices
 
 1. **Always update before installing**: Run `opkg update` before `opkg install`
-2. **Regular updates**: Keep your system updated with
-   `opkg update && opkg upgrade`
-3. **Check dependencies**: Use `opkg info` to check dependencies before
-   installing
-4. **Backup configurations**: Keep backups of important config files before
-   major updates
-5. **Use stable feeds for production**: Stick to release feeds for production
-   devices
+2. **Regular updates**: Keep your system updated with `opkg update && opkg upgrade`
+3. **Check dependencies**: Use `opkg info` to check dependencies before installing
+4. **Backup configurations**: Keep backups of important config files before major updates
+5. **Use stable feeds for production**: Stick to release feeds for production devices
 6. **Test on continuous feeds**: Use continuous feeds for testing new features
 
 ## Comparison with Other Package Managers
 
 If you're coming from other Linux distributions:
 
-| Opkg           | APT (Debian/Ubuntu) | DNF (Fedora)       |
-| -------------- | ------------------- | ------------------ |
-| `opkg update`  | `apt update`        | `dnf check-update` |
-| `opkg install` | `apt install`       | `dnf install`      |
-| `opkg remove`  | `apt remove`        | `dnf remove`       |
-| `opkg list`    | `apt list`          | `dnf list`         |
-| `opkg upgrade` | `apt upgrade`       | `dnf upgrade`      |
+| Opkg | APT (Debian/Ubuntu) | DNF (Fedora) |
+|------|---------------------|--------------|
+| `opkg update` | `apt update` | `dnf check-update` |
+| `opkg install` | `apt install` | `dnf install` |
+| `opkg remove` | `apt remove` | `dnf remove` |
+| `opkg list` | `apt list` | `dnf list` |
+| `opkg upgrade` | `apt upgrade` | `dnf upgrade` |
 
 ## See Also
 
 - [System Configuration](configuration.md) - Configure your system
 - [Updates](updates.md) - System update procedures
-- [Building Calculinux](../developer/building.md) - Build configuration and
-  feeds
+- [Building Calculinux](../developer/building.md) - Build configuration and feeds
 - [Adding Packages](../developer/adding-packages.md) - Create your own packages

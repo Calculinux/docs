@@ -1,7 +1,7 @@
 # Adding Packages
 
-!!! warning "Under Construction" This page is currently being developed. Check
-back soon for package development guides.
+!!! warning "Under Construction"
+    This page is currently being developed. Check back soon for package development guides.
 
 ## Getting Started
 
@@ -25,4 +25,4 @@ This section will cover:
 
 ---
 
-_Content planned for future release_
+*Content planned for future release*

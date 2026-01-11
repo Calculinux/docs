@@ -7,8 +7,8 @@ packaging it into a Yocto recipe so it ships in Calculinux images.
 
 - Calculinux build environment ready (Yocto Walnascar 4.3)
 - A working layer where you place custom recipes (e.g.,
-  `meta-calculinux-extended` or in `meta-calculinux-apps` if you want to
-  contribute back to us).
+  `meta-calculinux-extended` or in `meta-calculinux-apps` if you want
+  to contribute back to us).
 
 ## 1) Create the Rust utility
 
@@ -56,15 +56,15 @@ meta-hello-calculinux/
 ```
 
 You can fetch sources by using `git` or retrieve them from a .tar file. Git is
-simplest during development, but if you are packaging an upstream project, your
-options are limited by how they ship. The protocol part of the SRC_URI (`git://`
-in this example) determines how the sources are retrieved.
+simplest during development, but if you are packaging an upstream project,
+your options are limited by how they ship. The protocol part of the SRC_URI
+(`git://` in this example) determines how the sources are retrieved.
 
 ## 3) Write the Yocto recipe
 
-Create `hello-calculinux_0.1.0.bb` with this content (include the license file
-path but omit the checksum initially; BitBake will prompt you with the exact
-value to add):
+Create `hello-calculinux_0.1.0.bb` with this content (include the
+license file path but omit the checksum initially; BitBake will prompt
+you with the exact value to add):
 
 ```bitbake
 SUMMARY = "Simple Rust CLI that prints a greeting"
@@ -105,19 +105,19 @@ INHIBIT_PACKAGE_STRIP = "0"
 
 Notes:
 
-- Use `SRC_URI` pointing to your Git repo. For local development, you can use
-  `file://` sources and `externalsrc`.
+- Use `SRC_URI` pointing to your Git repo. For local development, you
+  can use `file://` sources and `externalsrc`.
 - The `cargo` class handles Rust toolchain configuration for the target.
 - The `do_install()` step copies the compiled binary to `${bindir}`.
 
 ### Licensing workflow
 
---8<-- "developer/adding-packages/\_snippets/licensing-workflow.md"
+--8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
 
 ## 4) Add the package to your image
 
-Add the utility to your image with an `IMAGE_INSTALL` append. For example, in
-your distribution or image configuration or a bundle:
+Add the utility to your image with an `IMAGE_INSTALL` append. For example,
+in your distribution or image configuration or a bundle:
 
 ```bitbake
 IMAGE_INSTALL:append = " hello-calculinux"
@@ -144,19 +144,19 @@ hello-calculinux
 # Output: hello, Calculinux!
 ```
 
---8<-- "developer/adding-packages/\_snippets/sd-card-install.md"
+--8<-- "developer/adding-packages/_snippets/sd-card-install.md"
 
 ## Troubleshooting
 
-- If Rust is not available, add `meta-rust` and ensure the Rust toolchain is
-  enabled for your target.
+- If Rust is not available, add `meta-rust` and ensure the Rust toolchain
+  is enabled for your target.
 - If the binary is not found during `do_install()`, check the
-  `B/target/*/release/` path in the build logs and adjust the `find` command as
-  needed.
-- For crates with dependencies, ensure `Cargo.lock` is present to avoid network
-  fetches during builds.
+  `B/target/*/release/` path in the build logs and adjust the `find`
+  command as needed.
+- For crates with dependencies, ensure `Cargo.lock` is present to avoid
+  network fetches during builds.
 
---8<-- "developer/adding-packages/\_snippets/dependencies.md"
+--8<-- "developer/adding-packages/_snippets/dependencies.md"
 
 ## Next steps
 

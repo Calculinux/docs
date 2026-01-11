@@ -4,21 +4,20 @@ Troubleshooting network connectivity problems.
 
 ## WiFi Not Working
 
-_WiFi troubleshooting steps._
+*WiFi troubleshooting steps.*
 
 ## Ethernet Issues
 
-_USB Ethernet adapter troubleshooting._
+*USB Ethernet adapter troubleshooting.*
 
 ## DNS Problems
 
-_DNS resolution issues and solutions._
+*DNS resolution issues and solutions.*
 
 ## Connection Timeouts
 
-_Network timeout troubleshooting._
+*Network timeout troubleshooting.*
 
 ---
 
-_This page is under development and will be populated with detailed network
-troubleshooting information._
+*This page is under development and will be populated with detailed network troubleshooting information.*
