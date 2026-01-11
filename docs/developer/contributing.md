@@ -4,25 +4,24 @@ Guidelines for contributing to the Calculinux project.
 
 ## Getting Started
 
-_How to start contributing to Calculinux._
+*How to start contributing to Calculinux.*
 
 ## Code Contributions
 
-_Guidelines for code contributions._
+*Guidelines for code contributions.*
 
 ## Documentation Contributions
 
-_How to improve documentation._
+*How to improve documentation.*
 
 ## Testing and Bug Reports
 
-_Reporting bugs and testing procedures._
+*Reporting bugs and testing procedures.*
 
 ## Development Workflow
 
-_Git workflow and development process._
+*Git workflow and development process.*
 
 ---
 
-_This page is under development and will be populated with detailed contribution
-guidelines._
+*This page is under development and will be populated with detailed contribution guidelines.*

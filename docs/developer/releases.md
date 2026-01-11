@@ -1,7 +1,7 @@
 # Release Process
 
-!!! warning "Under Construction" This page is currently being developed. Check
-back soon for release procedures.
+!!! warning "Under Construction"
+    This page is currently being developed. Check back soon for release procedures.
 
 ## Getting Started
 
@@ -24,4 +24,4 @@ This section will cover:
 
 ---
 
-_Content planned for future release_
+*Content planned for future release*

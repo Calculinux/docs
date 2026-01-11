@@ -1,7 +1,6 @@
 # Installation Guide
 
-This guide covers how to install Calculinux on your PicoCalc with Luckfox Lyra
-SBC.
+This guide covers how to install Calculinux on your PicoCalc with Luckfox Lyra SBC.
 
 ## Overview
 
@@ -29,25 +28,23 @@ Before starting, ensure you have:
 
 Download the latest Calculinux image from:
 
-**GitHub Releases**:
-[https://github.com/Calculinux/meta-calculinux/releases](https://github.com/Calculinux/meta-calculinux/releases)
+**GitHub Releases**: [https://github.com/Calculinux/meta-calculinux/releases](https://github.com/Calculinux/meta-calculinux/releases)
 
 Download the Calculinux image file:
 
-| Image Name                                    | Description                      |
-| --------------------------------------------- | -------------------------------- |
+| Image Name | Description |
+|------------|-------------|
 | `calculinux-image-luckfox-lyra.rootfs.wic.gz` | Complete Calculinux system image |
 
 Additional files you may find:
 
-| File Name                              | Description                                              |
-| -------------------------------------- | -------------------------------------------------------- |
+| File Name | Description |
+|-----------|-------------|
 | `calculinux-bundle-luckfox-lyra.raucb` | RAUC update bundle (for updating existing installations) |
-| `*.manifest`                           | Build manifest with package list                         |
+| `*.manifest` | Build manifest with package list |
 
-!!! info "Single Image Design" Calculinux provides a single console-based image
-suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software
-can be installed via the package manager as needed.
+!!! info "Single Image Design"
+    Calculinux provides a single console-based image suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software can be installed via the package manager as needed.
 
 ### Verify Download
 
@@ -77,13 +74,12 @@ unxz calculinux-*.wic.gz
 
 ## Step 2: Flash SD Card
 
-!!! danger "Data Loss Warning" Flashing will **erase all data** on the SD card.
-Make sure you've selected the correct device!
+!!! danger "Data Loss Warning"
+    Flashing will **erase all data** on the SD card. Make sure you've selected the correct device!
 
 ### Option A: Using Balena Etcher (Recommended for Beginners)
 
-1. **Download Balena Etcher**:
-   [https://www.balena.io/etcher/](https://www.balena.io/etcher/)
+1. **Download Balena Etcher**: [https://www.balena.io/etcher/](https://www.balena.io/etcher/)
 2. **Install and launch** Etcher
 3. **Insert SD card** into card reader
 4. In Etcher:
@@ -94,8 +90,8 @@ Make sure you've selected the correct device!
 
 ### Option B: Using dd (Linux/macOS)
 
-!!! warning "Dangerous Command" Double-check the device name! Using the wrong
-device will destroy your data.
+!!! warning "Dangerous Command"
+    Double-check the device name! Using the wrong device will destroy your data.
 
 ```bash
 # 1. Insert SD card and identify device
@@ -126,8 +122,7 @@ sync
 
 ### Option D: Using Win32DiskImager (Windows)
 
-1. **Download**:
-   [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/)
+1. **Download**: [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/)
 2. **Install and launch** as administrator
 3. **Insert SD card**
 4. In Win32DiskImager:
@@ -151,8 +146,7 @@ sudo fdisk -l /dev/sdX
 
 ## Step 3: Hardware Installation {#hardware-installation}
 
-If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the
-[Hardware Modifications](../hardware/modifications.md) guide.
+If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the [Hardware Modifications](../hardware/modifications.md) guide.
 
 If your Luckfox Lyra has SPI NAND, you **must** erase it:
 
@@ -178,12 +172,10 @@ Quick checklist:
 ### What to Expect
 
 **Initial boot timing**:
-
 - First boot: 30-60 seconds
 - Subsequent boots: 15-30 seconds
 
 **Visual indicators**:
-
 - Power LED should light up
 - Display may show boot messages
 - Initial splash screen
@@ -206,27 +198,24 @@ Calculinux GNU/Linux 1.0 picocalc ttyS0
 picocalc login: _
 ```
 
-!!! success "Success!" If you see a login prompt, congratulations! Calculinux is
-running.
+!!! success "Success!"
+    If you see a login prompt, congratulations! Calculinux is running.
 
 ### Troubleshooting Boot Issues
 
 If the system doesn't boot:
 
 **No display activity**:
-
 - Check power supply (try different cable/adapter)
 - Verify SD card is inserted correctly
 - See [Boot Problems](../troubleshooting/boot-problems.md)
 
 **Boots but hangs**:
-
 - Wait 2-3 minutes (first boot may take longer)
 - Check SD card integrity
 - Try reflashing the image
 
 **Display shows errors**:
-
 - Note the error messages
 - Check [Troubleshooting](../troubleshooting/common-issues.md)
 - Search forum for similar issues
@@ -235,12 +224,11 @@ If the system doesn't boot:
 
 After successful boot, you'll see a login prompt.
 
-!!! info "Login Credentials" For default usernames and passwords, see the
-[First Boot guide](first-boot.md#initial-login).
+!!! info "Login Credentials"
+    For default usernames and passwords, see the [First Boot guide](first-boot.md#initial-login).
 
-!!! danger "Change Passwords" Immediately change all default passwords after
-first login. See
-[First Boot - Initial Configuration](first-boot.md#initial-configuration).
+!!! danger "Change Passwords"
+    Immediately change all default passwords after first login. See [First Boot - Initial Configuration](first-boot.md#initial-configuration).
 
 ## Post-Installation
 
@@ -254,9 +242,8 @@ After successful login, follow the [First Boot guide](first-boot.md) for:
 
 ## Filesystem Expansion (Automatic)
 
-!!! success "No Action Required" The overlayfs partition is **automatically
-expanded** during first boot to use all available space on your SD card (leaving
-10% free). No manual intervention is needed.
+!!! success "No Action Required"
+    The overlayfs partition is **automatically expanded** during first boot to use all available space on your SD card (leaving 10% free). No manual intervention is needed.
 
 ## Multiple SD Cards
 
@@ -282,34 +269,28 @@ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress
 Calculinux comes with a console-based environment including:
 
 ### System Utilities
-
 - **Shell**: bash, busybox
 - **Editors**: vi, nano (via opkg)
 - **Development**: gcc, g++, make, autoconf, git, gdb
 - **Package Management**: opkg with online repositories
 
 ### Network Tools
-
 - **WiFi**: iwd (iwctl command)
 - **Utilities**: curl, wget, links (text browser), openssh
 - **Debugging**: iw, htop, systemd-analyze
 
 ### System Management
-
 - **Update System**: RAUC (A/B partition updates)
 - **Storage**: e2fsprogs, mtd-utils, cloud-utils-growpart
 - **Hardware**: i2c-tools, usbutils, android-tools
 
 ### Additional Features
-
 - **Filesystem**: Overlayfs for read-only root with persistent overlay
 - **Console Font**: Terminus font for better readability
 - **Keyboard**: Full keyboard mapping support
 
-!!! info "No GUI/Desktop" Calculinux is currently **console-only** with no
-graphical desktop environment. All interaction is via text terminal. GUI support
-may be added in future releases.
-
+!!! info "No GUI/Desktop"
+    Calculinux is currently **console-only** with no graphical desktop environment. All interaction is via text terminal. GUI support may be added in future releases.
 - File manager
 - Basic applications
 
@@ -317,8 +298,7 @@ may be added in future releases.
 
 After installation, you can customize your system:
 
-- Install additional packages: See
-  [Package Management](../user-guide/package-management.md)
+- Install additional packages: See [Package Management](../user-guide/package-management.md)
 - Set up development: See [Developer Guide](../developer/overview.md)
 - Add applications: See [Applications](../user-guide/applications.md)
 
@@ -407,13 +387,11 @@ Now that Calculinux is installed:
 If you encounter problems:
 
 1. Check [Troubleshooting](../troubleshooting/common-issues.md)
-2. Search
-   [Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+2. Search [Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 3. Ask in community chat
 4. Open [GitHub issue](https://github.com/Calculinux/meta-calculinux/issues)
 
 Include in your help request:
-
 - Image variant and version
 - SD card brand/size
 - Luckfox Lyra version (RAM, NAND)
