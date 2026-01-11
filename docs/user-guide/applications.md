@@ -21,7 +21,7 @@ blocks of a functional system:
 | bash                             | Primary interactive shell for command-line use and scripting.           |
 | bash-completion                  | Tab-completion support for many shell commands.                         |
 | btrfs-tools                      | Utilities for managing and maintaining Btrfs filesystems.               |
-| busybox                          | Lightweight collection of essential Unix command-line utilities.        |
+| busybox                          | Lightweight collection of essential UNIX command-line utilities.        |
 | calculinux-update                | Calculinux-specific system update tooling.                              |
 | cloud-utils-growpart             | Tool to automatically expand disk partitions in cloud images.           |
 | curl                             | Command-line tool for transferring data over network protocols.         |
