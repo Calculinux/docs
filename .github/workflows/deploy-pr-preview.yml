@@ -48,6 +48,11 @@ jobs:
       - name: Build documentation
         run: mkdocs build
       
+      - name: Save built site
+        run: |
+          mkdir -p /tmp/site-build
+          cp -r site/* /tmp/site-build/
+      
       - name: Deploy to PR preview directory
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -61,19 +66,16 @@ jobs:
           # Create pr-previews directory if it doesn't exist
           mkdir -p pr-previews/pr-${PR_NUMBER}
           
-          # Copy built site to pr-previews/pr-{number}
-          cp -r site/* pr-previews/pr-${PR_NUMBER}/
+          # Copy built site from temp location to pr-previews/pr-{number}
+          cp -r /tmp/site-build/* pr-previews/pr-${PR_NUMBER}/
           
           # Restore main site if it exists
           if git show origin/gh-pages:index.html > /dev/null 2>&1; then
             git checkout origin/gh-pages -- . || true
             # Re-copy the PR preview (in case it was overwritten)
             mkdir -p pr-previews/pr-${PR_NUMBER}
-            cp -r site/* pr-previews/pr-${PR_NUMBER}/
+            cp -r /tmp/site-build/* pr-previews/pr-${PR_NUMBER}/
           fi
-          
-          # Clean up the site directory
-          rm -rf site
           
           # Add and commit
           git add pr-previews/pr-${PR_NUMBER}
