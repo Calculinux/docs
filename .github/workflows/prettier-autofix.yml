@@ -5,6 +5,11 @@ on:
     paths:
       - 'docs/**/*.md'
       - '.prettierrc.json'
+  workflow_call:
+    outputs:
+      changes_made:
+        description: 'Whether prettier made any changes'
+        value: ${{ jobs.prettier.outputs.changes_made }}
 
 permissions:
   contents: write
