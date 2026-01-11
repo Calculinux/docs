@@ -84,24 +84,24 @@ opkg install package_name
 This, first checks the main package list by using _opkg update_ to see if any
 new packages have been added or if any existing packages have been updated.
 Then, the _opkg install *package_name*_ command will make opkg look for
-_package_name_ in the list of available packages, and try to install it, if
-all dependencies are available.
+_package_name_ in the list of available packages, and try to install it, if all
+dependencies are available.
 
 ##### A dependency for a package in linux, is another package required for it to function properly or install successfully.
 
 If you are installing packages with network access, dependencies should
 automatically install alongside your chosen package. If however you install your
 package without network access (by loading the package onto the micro sd card,
-and then installing it in the corresponding folder) it may come up with an
-error which tells you which dependency is not installed. You will then have to
-install it manually, one by one.
+and then installing it in the corresponding folder) it may come up with an error
+which tells you which dependency is not installed. You will then have to install
+it manually, one by one.
 
 ### Common opkg Package Installation Options
 
 | Option                | Description                                                                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **-l**                | This option lists all available packages. It can be used to view a summary of packages that can be installed, updated, or removed.                                                                        |
-| **--force-reinstall** | Forces the reinstallation of a package even if it is already installed. Useful for ensuring that you have the latest version of a package.                                                                 |
+| **--force-reinstall** | Forces the reinstallation of a package even if it is already installed. Useful for ensuring that you have the latest version of a package.                                                                |
 | **--no-cache**        | Disables caching during the installation process. This is useful when you want to ensure that the installation process always retrieves packages directly from the repository, rather than a local cache. |
 | **-d**                | This option allows for installing a package without dependencies. Use this with caution, as it might lead to an unstable configuration.                                                                   |
 
