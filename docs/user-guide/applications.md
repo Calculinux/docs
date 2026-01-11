@@ -12,8 +12,8 @@ blocks of a functional system:
 | Package                          | Basic description                                                       |
 | -------------------------------- | ----------------------------------------------------------------------- |
 | acpid                            | Handles ACPI events such as power button presses and lid switches.      |
-| alsa-lib                         | Core user-space library for the ALSA sound system.                      |
-| alsa-plugins                     | Additional ALSA audio plugins (mixing, routing, etc.).                  |
+| alsa-lib                         | Core user-space library for ALSA (Advanced Linux Sound Architecture)    |
+| alsa-plugins                     | Additional ALSA audio plugins (mixing, routing, etc).                   |
 | alsa-tools                       | Low-level tools for configuring and debugging ALSA audio hardware.      |
 | alsa-utils                       | Common ALSA utilities like `alsamixer` and `aplay`.                     |
 | android-tools                    | Utilities for interacting with Android devices (adb, fastboot).         |
@@ -40,7 +40,7 @@ blocks of a functional system:
 | iwd                              | Modern wireless daemon for managing Wi-Fi connections.                  |
 | kbd-consolefonts                 | Bitmap fonts for Linux virtual consoles.                                |
 | kbd-keymaps                      | Keyboard layout definitions for console input.                          |
-| kernel-modules                   | Hardware drivers and kernel extensions needed for device support.       |
+| kernel-modules                   | Hardware drivers and Kernel extensions needed for device support.       |
 | libdrm-tests                     | Test programs for Direct Rendering Manager graphics support.            |
 | libsdl                           | SDL 1.x library for multimedia and graphics applications.               |
 | libsdl2                          | SDL 2.x library for multimedia, input, and graphics applications.       |
