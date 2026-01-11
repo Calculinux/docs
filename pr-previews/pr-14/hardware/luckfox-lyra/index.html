@@ -2186,14 +2186,13 @@
 
 
 <h1 id="luckfox-lyra">Luckfox Lyra<a class="headerlink" href="#luckfox-lyra" title="Permanent link">&para;</a></h1>
-<p>The <strong>Luckfox Lyra</strong> is a compact single-board computer based on the Rockchip
-RK3506G2 SoC, making it an ideal replacement for the PicoCalc's stock module.</p>
+<p>The <strong>Luckfox Lyra</strong> is a compact single-board computer based on the Rockchip RK3506G2 SoC, making it an ideal replacement for the PicoCalc's stock module.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The Luckfox Lyra provides significant computing power in a small form factor,
-perfect for pocket-sized Linux applications.</p>
-<p>!!! info "Complete Technical Specifications" For detailed processor, memory,
-interface, and power specifications, see the
-<a href="../specifications/">Hardware Specifications</a> page.</p>
+<p>The Luckfox Lyra provides significant computing power in a small form factor, perfect for pocket-sized Linux applications.</p>
+<div class="admonition info">
+<p class="admonition-title">Complete Technical Specifications</p>
+<p>For detailed processor, memory, interface, and power specifications, see the <a href="../specifications/">Hardware Specifications</a> page.</p>
+</div>
 <h2 id="luckfox-lyra-versions">Luckfox Lyra Versions<a class="headerlink" href="#luckfox-lyra-versions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2229,16 +2228,18 @@ interface, and power specifications, see the
 </tr>
 </tbody>
 </table>
-<p>!!! tip "Recommended Version" The standard 128MB model with SPI NAND is
-recommended for better compatibility with future features.</p>
-<p>!!! warning "SPI NAND Must Be Erased" If your board has SPI NAND, you <strong>must
-erase it</strong> before Calculinux will boot from SD card. The boot ROM always tries
-NAND first. See the comprehensive
-<a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for detailed
-step-by-step instructions.</p>
-<p>!!! note "Other Lyra Models" Other Luckfox Lyra models exist (64MB, 256MB RAM)
-but have different pinouts and would require custom adapter boards for PicoCalc
-compatibility.</p>
+<div class="admonition tip">
+<p class="admonition-title">Recommended Version</p>
+<p>The standard 128MB model with SPI NAND is recommended for better compatibility with future features.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">SPI NAND Must Be Erased</p>
+<p>If your board has SPI NAND, you <strong>must erase it</strong> before Calculinux will boot from SD card. The boot ROM always tries NAND first. See the comprehensive <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for detailed step-by-step instructions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Other Lyra Models</p>
+<p>Other Luckfox Lyra models exist (64MB, 256MB RAM) but have different pinouts and would require custom adapter boards for PicoCalc compatibility.</p>
+</div>
 <h2 id="why-luckfox-lyra-for-picocalc">Why Luckfox Lyra for PicoCalc?<a class="headerlink" href="#why-luckfox-lyra-for-picocalc" title="Permanent link">&para;</a></h2>
 <p>The Luckfox Lyra is particularly well-suited for PicoCalc:</p>
 <ol>
@@ -2250,15 +2251,12 @@ compatibility.</p>
 <li><strong>Cost</strong>: Affordable pricing</li>
 </ol>
 <h2 id="driver-support-in-calculinux">Driver Support in Calculinux<a class="headerlink" href="#driver-support-in-calculinux" title="Permanent link">&para;</a></h2>
-<p>Calculinux includes custom kernel drivers developed specifically for the Luckfox
-Lyra + PicoCalc combination. For technical details about the drivers and device
-tree configuration, see <a href="../display-input/">Display &amp; Input Technical Details</a>.</p>
+<p>Calculinux includes custom kernel drivers developed specifically for the Luckfox Lyra + PicoCalc combination. For technical details about the drivers and device tree configuration, see <a href="../display-input/">Display &amp; Input Technical Details</a>.</p>
 <h3 id="included-drivers">Included Drivers<a class="headerlink" href="#included-drivers" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>LCD Driver</strong>: ILI9488 framebuffer driver for 320×320 display</li>
-<li><strong>Keyboard Driver</strong>: I2C-based keyboard with STM32 MCU integration</li>
-<li><strong>WiFi Drivers</strong>: Support for multiple Realtek and other chipsets (see
-  <a href="../specifications/#supported-wifi-chipsets">WiFi Chipsets</a>)</li>
+<li><strong>Keyboard Driver</strong>: I2C-based keyboard with STM32 MCU integration  </li>
+<li><strong>WiFi Drivers</strong>: Support for multiple Realtek and other chipsets (see <a href="../specifications/#supported-wifi-chipsets">WiFi Chipsets</a>)</li>
 <li><strong>Device Tree</strong>: Custom configuration for PicoCalc hardware connections</li>
 </ul>
 <h2 id="luckfox-sdk-vs-calculinux">Luckfox SDK vs Calculinux<a class="headerlink" href="#luckfox-sdk-vs-calculinux" title="Permanent link">&para;</a></h2>
@@ -2279,22 +2277,18 @@ tree configuration, see <a href="../display-input/">Display &amp; Input Technica
 <li><strong>U-Boot</strong>: Hosted externally with custom patches</li>
 <li><strong>Everything Else</strong>: Independent implementation with upstream compilers</li>
 </ul>
-<p>!!! info "Independent Development" While most community images are built with
-the Luckfox SDK and Buildroot, Calculinux is developed independently using
-upstream Yocto and only borrows the kernel and bootloader sources. Our goal is
-to foster innovation and promote sharing and pooling our resources to the
-benefit of all picocalc based Linux distros</p>
+<div class="admonition info">
+<p class="admonition-title">Independent Development</p>
+<p>While most community images are built with the Luckfox SDK and Buildroot, Calculinux is developed independently using upstream Yocto and only borrows the kernel and bootloader sources. Our goal is to foster innovation and promote sharing and pooling our resources to the benefit of all picocalc based Linux distros</p>
+</div>
 <h3 id="other-major-community-images">Other Major Community Images<a class="headerlink" href="#other-major-community-images" title="Permanent link">&para;</a></h3>
 <p>For completeness, other distributions available for Luckfox Lyra include:</p>
 <ul>
 <li><strong>hisptoot's Buildroot images</strong> - Original community port using Luckfox SDK</li>
 <li><strong>markbirss's Ubuntu images</strong> - Ubuntu 22.04/24.04 based distributions</li>
-<li><strong>Community Buildroot variants</strong> - Various SDK-based images with different
-  features</li>
+<li><strong>Community Buildroot variants</strong> - Various SDK-based images with different features</li>
 </ul>
-<p>See the
-<a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi forum thread</a>
-for links to these alternative distributions.</p>
+<p>See the <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi forum thread</a> for links to these alternative distributions.</p>
 <h2 id="hardware-considerations">Hardware Considerations<a class="headerlink" href="#hardware-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="boot-media-priority">Boot Media Priority<a class="headerlink" href="#boot-media-priority" title="Permanent link">&para;</a></h3>
 <p>The RK3506G2 boot ROM follows this priority:</p>
@@ -2303,44 +2297,40 @@ for links to these alternative distributions.</p>
 <li><strong>SD Card</strong> (if SPI NAND is erased or absent)</li>
 <li><strong>USB Boot</strong> (for recovery/programming)</li>
 </ol>
-<p>!!! danger "NAND Boot Priority" If your Luckfox Lyra has SPI NAND, the boot ROM
-will <strong>always try NAND first</strong>. You must erase the NAND or it will ignore the SD
-card completely. See the
-<a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for complete
-instructions.</p>
+<div class="admonition danger">
+<p class="admonition-title">NAND Boot Priority</p>
+<p>If your Luckfox Lyra has SPI NAND, the boot ROM will <strong>always try NAND first</strong>. You must erase the NAND or it will ignore the SD card completely. See the <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for complete instructions.</p>
+</div>
 <h3 id="power-supply-thermal-management">Power Supply &amp; Thermal Management<a class="headerlink" href="#power-supply-thermal-management" title="Permanent link">&para;</a></h3>
-<p>For power requirements and thermal considerations, see
-<a href="../specifications/#power-system">Hardware Specifications</a>.</p>
+<p>For power requirements and thermal considerations, see <a href="../specifications/#power-system">Hardware Specifications</a>.</p>
 <h2 id="purchasing">Purchasing<a class="headerlink" href="#purchasing" title="Permanent link">&para;</a></h2>
 <p>Luckfox Lyra boards are available from:</p>
 <ul>
-<li><strong>Luckfox Official Store</strong>:
-  <a href="https://www.luckfox.com/Luckfox-Lyra">https://www.luckfox.com/Luckfox-Lyra</a></li>
+<li><strong>Luckfox Official Store</strong>: <a href="https://www.luckfox.com/Luckfox-Lyra">https://www.luckfox.com/Luckfox-Lyra</a></li>
 <li><strong>AliExpress</strong>: Search for "Luckfox Lyra"</li>
 <li><strong>Other Distributors</strong>: Check Luckfox website for authorized sellers</li>
 </ul>
-<p>!!! tip "Official Source" The official Luckfox website is the authoritative
-source for current specifications and available variants.</p>
+<div class="admonition tip">
+<p class="admonition-title">Official Source</p>
+<p>The official Luckfox website is the authoritative source for current specifications and available variants.</p>
+</div>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <h3 id="official-documentation">Official Documentation<a class="headerlink" href="#official-documentation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Luckfox Website</strong>: <a href="https://www.luckfox.com/">https://www.luckfox.com/</a></li>
-<li><strong>SDK</strong>:
-  <a href="https://drive.google.com/drive/folders/1l2ixhfw53J3eZunyvHMnw2DYViH9d8Cx?usp=drive_link">Luckfox Lyra SDK</a></li>
+<li><strong>SDK</strong>: <a href="https://drive.google.com/drive/folders/1l2ixhfw53J3eZunyvHMnw2DYViH9d8Cx?usp=drive_link">Luckfox Lyra SDK</a></li>
 <li><strong>Wiki</strong>: <a href="https://wiki.luckfox.com/">Luckfox Wiki</a></li>
 </ul>
 <h3 id="community-resources">Community Resources<a class="headerlink" href="#community-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Forum Thread</strong>:
-  <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Luckfox Lyra on PicoCalc</a></li>
+<li><strong>Forum Thread</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Luckfox Lyra on PicoCalc</a></li>
 <li><strong>Original Port</strong>: hisptoot's Google Drive with initial images and drivers</li>
 <li><strong>Discord Server</strong>: <a href="https://discord.gg/7quBbSPxcP">Calculinux Discord</a></li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Learn about the <a href="../picocalc/">PicoCalc hardware</a></li>
-<li>Review <a href="../specifications/">Hardware Specifications</a> for complete technical
-  details</li>
+<li>Review <a href="../specifications/">Hardware Specifications</a> for complete technical details</li>
 <li>Check <a href="../display-input/">Display &amp; Input</a> for driver implementation details</li>
 <li>See <a href="../compatibility/">Hardware Compatibility</a> for compatibility matrices</li>
 <li>Follow <a href="../modifications/">Hardware Modifications</a> for installation guide</li>
@@ -2367,7 +2357,7 @@ source for current specifications and available variants.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

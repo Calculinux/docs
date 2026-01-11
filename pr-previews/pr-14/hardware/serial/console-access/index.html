@@ -1874,21 +1874,25 @@
 
 
 <h1 id="serial-console-access">Serial Console Access<a class="headerlink" href="#serial-console-access" title="Permanent link">&para;</a></h1>
-<p>A hardware serial console is the most reliable way to debug early boot issues or
-recover a system when network access is unavailable. The Picocalc exposes a
-USB-to-UART bridge that enumerates as <code>/dev/ttyUSB0</code> on most Linux hosts. The
-console runs at <strong>1,500,000 baud</strong>, 8 data bits, no parity, and 1 stop bit
-("1500000 8N1").</p>
+<p>A hardware serial console is the most reliable way to debug early boot
+issues or recover a system when network access is unavailable. The
+Picocalc exposes a USB-to-UART bridge that enumerates as <code>/dev/ttyUSB0</code>
+on most Linux hosts. The console runs at <strong>1,500,000 baud</strong>, 8 data bits,
+no parity, and 1 stop bit ("1500000 8N1").</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Linux host with <code>python3-serial</code> (for <code>miniterm.py</code>) or <code>minicom</code> installed.</li>
-<li>Access to <code>/dev/ttyUSB0</code>. If you are not root, add yourself to the <code>dialout</code>
-  (or distribution-specific) group and re-login:</li>
+<li>Linux host with <code>python3-serial</code> (for <code>miniterm.py</code>) or <code>minicom</code>
+  installed.</li>
+<li>Access to <code>/dev/ttyUSB0</code>. If you are not root, add yourself to the
+  <code>dialout</code> (or distribution-specific) group and re-login:</li>
 </ul>
-<p>!!! info If you prefeer a GUI tool to access the serial port but don't know what
-to choose, options on Linux desktops include <strong>CuteCom</strong>, and <strong>PuTTY</strong> among
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you prefeer a GUI tool to access the serial port but don't know what to
+choose, options on Linux desktops include <strong>CuteCom</strong>, and <strong>PuTTY</strong> among 
 others; they provide point-and-click interfaces for selecting ports and baud
-rates. The only setting you will need to change is the 1,500,000 baud setting.</p>
+rates. The only setting you will need to change is the 1,500,000 baud setting. </p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
 </code></pre></div>
 <ul>
@@ -1898,13 +1902,13 @@ rates. The only setting you will need to change is the 1,500,000 baud setting.</
 <p>After connecting the board, confirm the kernel created the serial device:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>/dev/ttyUSB*
 </code></pre></div>
-<p>You should see <code>/dev/ttyUSB0</code>. If the device is missing, check <code>dmesg</code> for
-driver errors or verify cabling. If you already have other serial devices, it
-may have received a different number.</p>
+<p>You should see <code>/dev/ttyUSB0</code>. If the device is missing, check <code>dmesg</code>
+for driver errors or verify cabling. If you already have other serial 
+devices, it may have received a different number.</p>
 <hr />
 <h2 id="using-minitermpy">Using <code>miniterm.py</code><a class="headerlink" href="#using-minitermpy" title="Permanent link">&para;</a></h2>
-<p><code>miniterm.py</code> ships with the <code>pyserial</code> package and provides a simple serial
-terminal.</p>
+<p><code>miniterm.py</code> ships with the <code>pyserial</code> package and provides a simple
+serial terminal.</p>
 <ol>
 <li>Launch the terminal with the required baud rate:</li>
 </ol>
@@ -1912,8 +1916,8 @@ terminal.</p>
 </code></pre></div>
 <ol>
 <li>Interact with the console directly in the terminal window.</li>
-<li>Use <code>Ctrl+]</code> to open the miniterm command menu. From there you can toggle
-   local echo (<code>e</code>), change settings, or quit (<code>q</code>).</li>
+<li>Use <code>Ctrl+]</code> to open the miniterm command menu. From there you can
+   toggle local echo (<code>e</code>), change settings, or quit (<code>q</code>).</li>
 <li>Exit with <code>Ctrl+]</code> followed by <code>q</code>.</li>
 </ol>
 <p>Optional flags:</p>
@@ -1923,8 +1927,8 @@ terminal.</p>
 </ul>
 <hr />
 <h2 id="using-minicom">Using <code>minicom</code><a class="headerlink" href="#using-minicom" title="Permanent link">&para;</a></h2>
-<p><code>minicom</code> is a curses-based serial terminal that can persist configuration
-between sessions.</p>
+<p><code>minicom</code> is a curses-based serial terminal that can persist
+configuration between sessions.</p>
 <ol>
 <li>Run the setup menu once to create a default profile:</li>
 </ol>
@@ -1935,12 +1939,12 @@ between sessions.</p>
 <li>Set <strong>Serial device</strong> to <code>/dev/ttyUSB0</code>.</li>
 <li>Set <strong>Bps/Par/Bits</strong> to <code>1500000 8N1</code>.</li>
 <li>
-<p>Disable both hardware (<code>RTS/CTS</code>) and software (<code>XON/XOFF</code>) flow control
-     unless your setup requires them.</p>
+<p>Disable both hardware (<code>RTS/CTS</code>) and software (<code>XON/XOFF</code>) flow
+     control unless your setup requires them.</p>
 </li>
 <li>
-<p>Choose <strong>Save setup as dfl</strong> so future invocations reuse these settings, then
-   <strong>Exit</strong> the configuration menu.</p>
+<p>Choose <strong>Save setup as dfl</strong> so future invocations reuse these
+   settings, then <strong>Exit</strong> the configuration menu.</p>
 </li>
 <li>
 <p>Start minicom normally:</p>
@@ -1952,22 +1956,25 @@ between sessions.</p>
 <ul>
 <li><code>Ctrl+A</code> then <code>Z</code>: help and command summary.</li>
 <li><code>Ctrl+A</code> then <code>O</code>: reopen the setup menu.</li>
-<li><code>Ctrl+A</code> then <code>W</code>: toggle logging to the file defined in the configuration.</li>
+<li><code>Ctrl+A</code> then <code>W</code>: toggle logging to the file defined in the
+  configuration.</li>
 <li><code>Ctrl+A</code> then <code>X</code>: exit minicom.</li>
 </ul>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Permission denied</strong>: ensure your user is in the correct group or run minicom
-  with <code>sudo</code>. Avoid running graphical terminals as root for security reasons.</li>
-<li><strong>Garbled output</strong>: double-check the baud rate (must be 1,500,000) and make
-  sure only one terminal program is connected to the port.</li>
-<li><strong>No output</strong>: confirm the board is powered and the USB-to-UART bridge is
-  enumerated by the host (<code>dmesg | tail</code>).</li>
+<li><strong>Permission denied</strong>: ensure your user is in the correct group or run
+  minicom with <code>sudo</code>. Avoid running graphical terminals as root for
+  security reasons.</li>
+<li><strong>Garbled output</strong>: double-check the baud rate (must be 1,500,000) and
+  make sure only one terminal program is connected to the port.</li>
+<li><strong>No output</strong>: confirm the board is powered and the USB-to-UART bridge
+  is enumerated by the host (<code>dmesg | tail</code>).</li>
 </ul>
 <hr />
-<p>With the correct baud rate and settings, the serial console provides boot logs,
-kernel messages, and a root shell even before networking is available.</p>
+<p>With the correct baud rate and settings, the serial console provides
+boot logs, kernel messages, and a root shell even before networking is
+available.</p>
 <p>Because this uses a hardware serial port, it will work even if no picocalc
 specific drivers are loaded.</p>
 
@@ -1992,7 +1999,7 @@ specific drivers are loaded.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

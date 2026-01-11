@@ -1940,9 +1940,7 @@
 
 
 <h1 id="picocalc-overview">PicoCalc Overview<a class="headerlink" href="#picocalc-overview" title="Permanent link">&para;</a></h1>
-<p>The <strong>PicoCalc</strong> is a pocket-sized handheld computing device created by
-ClockworkPi that features a modular design allowing for different computing
-modules.</p>
+<p>The <strong>PicoCalc</strong> is a pocket-sized handheld computing device created by ClockworkPi that features a modular design allowing for different computing modules.</p>
 <h2 id="what-is-picocalc">What is PicoCalc?<a class="headerlink" href="#what-is-picocalc" title="Permanent link">&para;</a></h2>
 <p>PicoCalc is a unique handheld device that combines:</p>
 <ul>
@@ -1952,18 +1950,14 @@ modules.</p>
 <li>USB-C connectivity</li>
 <li>Battery power capability</li>
 </ul>
-<p>!!! info "About the Name" The "PicoCalc" name suggests its intended purpose for
-calculation and computation work, though it's primarily a clever branding choice
-rather than a literal description. The device is roughly the size of a large
-calculator but is designed as a general-purpose pocket computing platform.</p>
+<div class="admonition info">
+<p class="admonition-title">About the Name</p>
+<p>The "PicoCalc" name suggests its intended purpose for calculation and computation work, though it's primarily a clever branding choice rather than a literal description. The device is roughly the size of a large calculator but is designed as a general-purpose pocket computing platform.</p>
+</div>
 <h2 id="original-hardware">Original Hardware<a class="headerlink" href="#original-hardware" title="Permanent link">&para;</a></h2>
-<p>The PicoCalc originally ships with a <strong>Raspberry Pi Pico</strong> or <strong>RP2040-based</strong>
-microcontroller running <strong>PicoMite MMBasic</strong>. While functional for programming
-tasks and computation, replacing this with a more powerful SBC unlocks the
-device's full potential as a pocket Linux computer.</p>
+<p>The PicoCalc originally ships with a <strong>Raspberry Pi Pico</strong> or <strong>RP2040-based</strong> microcontroller running <strong>PicoMite MMBasic</strong>. While functional for programming tasks and computation, replacing this with a more powerful SBC unlocks the device's full potential as a pocket Linux computer.</p>
 <h2 id="why-replace-the-sbc">Why Replace the SBC?<a class="headerlink" href="#why-replace-the-sbc" title="Permanent link">&para;</a></h2>
-<p>Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra
-provides:</p>
+<p>Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provides:</p>
 <ul>
 <li><strong>Full Linux OS</strong> instead of PicoMite MMBasic</li>
 <li><strong>Significantly more processing power</strong></li>
@@ -1973,37 +1967,32 @@ provides:</p>
 <li><strong>Rich software ecosystem</strong></li>
 </ul>
 <h2 id="physical-specifications">Physical Specifications<a class="headerlink" href="#physical-specifications" title="Permanent link">&para;</a></h2>
-<p>For detailed technical specifications including display, keyboard, power, and
-interface details, see the <a href="../specifications/">Hardware Specifications</a> page.</p>
-<p><strong>Quick Overview:</strong></p>
-<ul>
-<li>Pocket-sized handheld computer form factor</li>
-<li>320×320 pixel LCD display with ILI9488 controller</li>
-<li>Full physical keyboard with compact layout</li>
-<li>Two USB-C ports (PicoCalc port and Lyra port with different functions)</li>
-<li>Internal rechargeable battery</li>
-<li>Modular SBC design</li>
-</ul>
-<p>!!! warning "Hardware Modification Required" Installing a Luckfox Lyra or
-similar SBC requires opening the PicoCalc case and replacing the original board.
-This process involves careful handling of the internal connector and components.
-See <a href="../modifications/">Hardware Modifications</a> for detailed instructions.</p>
-<p>!!! warning "Screen Damage Risk" Some people have broken their screens while
-disassembling and reassembling the PicoCalc. Taping the screen in place from
-behind when placing it in the front bezel is recommended!</p>
+<p>For detailed technical specifications including display, keyboard, power, and interface details, see the <a href="../specifications/">Hardware Specifications</a> page.</p>
+<p><strong>Quick Overview:</strong>
+- Pocket-sized handheld computer form factor
+- 320×320 pixel LCD display with ILI9488 controller
+- Full physical keyboard with compact layout
+- Two USB-C ports (PicoCalc port and Lyra port with different functions)
+- Internal rechargeable battery
+- Modular SBC design</p>
+<div class="admonition warning">
+<p class="admonition-title">Hardware Modification Required</p>
+<p>Installing a Luckfox Lyra or similar SBC requires opening the PicoCalc case and replacing the original board. This process involves careful handling of the internal connector and components. See <a href="../modifications/">Hardware Modifications</a> for detailed instructions.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Screen Damage Risk</p>
+<p>Some people have broken their screens while disassembling and reassembling the PicoCalc. Taping the screen in place from behind when placing it in the front bezel is recommended!</p>
+</div>
 <h2 id="technical-details">Technical Details<a class="headerlink" href="#technical-details" title="Permanent link">&para;</a></h2>
-<p>For complete technical specifications including:</p>
-<ul>
-<li>Display system (ILI9488 controller, SPI interface, refresh rates)</li>
-<li>Keyboard system (STM32 MCU, I2C communication)</li>
-<li>USB-C ports (two ports with different functions)</li>
-<li>Power system (battery specs, consumption data)</li>
-<li>Storage options (internal and expansion SD cards)</li>
-</ul>
+<p>For complete technical specifications including:
+- Display system (ILI9488 controller, SPI interface, refresh rates)
+- Keyboard system (STM32 MCU, I2C communication)
+- USB-C ports (two ports with different functions)
+- Power system (battery specs, consumption data)
+- Storage options (internal and expansion SD cards)</p>
 <p>See the <a href="../specifications/">Hardware Specifications</a> page.</p>
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
-<p>The PicoCalc's modular design potentially supports various SBCs with the right
-adapters and modifications:</p>
+<p>The PicoCalc's modular design potentially supports various SBCs with the right adapters and modifications:</p>
 <ul>
 <li>✅ <strong>Luckfox Lyra</strong> - Fully supported by Calculinux</li>
 <li>🚧 <strong>Milk-V Duo</strong> - Future support planned</li>
@@ -2012,17 +2001,13 @@ adapters and modifications:</p>
 <p>See the <a href="../compatibility/">Compatibility Matrix</a> for detailed information.</p>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Official Product Page</strong>:
-  <a href="https://www.clockworkpi.com/">ClockworkPi PicoCalc</a></li>
-<li><strong>Community Forum</strong>:
-  <a href="https://forum.clockworkpi.com/c/picocalc/31">PicoCalc Category</a></li>
-<li><strong>Hardware Discussion</strong>:
-  <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum Thread</a></li>
+<li><strong>Official Product Page</strong>: <a href="https://www.clockworkpi.com/">ClockworkPi PicoCalc</a></li>
+<li><strong>Community Forum</strong>: <a href="https://forum.clockworkpi.com/c/picocalc/31">PicoCalc Category</a></li>
+<li><strong>Hardware Discussion</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum Thread</a></li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Review <a href="../specifications/">Hardware Specifications</a> for complete technical
-  details</li>
+<li>Review <a href="../specifications/">Hardware Specifications</a> for complete technical details</li>
 <li>Learn about the <a href="../luckfox-lyra/">Luckfox Lyra</a> SBC</li>
 <li>Check <a href="../modifications/">Hardware Modifications</a> installation guide</li>
 <li>See <a href="../display-input/">Display &amp; Input</a> for driver implementation details</li>
@@ -2050,7 +2035,7 @@ adapters and modifications:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

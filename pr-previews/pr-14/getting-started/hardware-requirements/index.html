@@ -2264,11 +2264,11 @@
 
 
 <h1 id="hardware-requirements">Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h1>
-<p>This page outlines what hardware you need to purchase and prepare to run
-Calculinux.</p>
-<p>!!! info "Technical Specifications" For detailed technical specifications of all
-hardware components, see the
-<a href="../../hardware/specifications/">Hardware Specifications</a> page.</p>
+<p>This page outlines what hardware you need to purchase and prepare to run Calculinux.</p>
+<div class="admonition info">
+<p class="admonition-title">Technical Specifications</p>
+<p>For detailed technical specifications of all hardware components, see the <a href="../../hardware/specifications/">Hardware Specifications</a> page.</p>
+</div>
 <h2 id="required-hardware">Required Hardware<a class="headerlink" href="#required-hardware" title="Permanent link">&para;</a></h2>
 <h3 id="essential-components">Essential Components<a class="headerlink" href="#essential-components" title="Permanent link">&para;</a></h3>
 <table>
@@ -2302,12 +2302,14 @@ hardware components, see the
 </tr>
 </tbody>
 </table>
-<p>!!! warning "Luckfox Lyra Configuration" - <strong>RAM</strong>: Get the <strong>128MB</strong> model -
-this is the only tested and supported configuration - <strong>Storage</strong>: Models with
-or without SPI NAND both work (NAND must be
-<a href="../../troubleshooting/erase-nand/">erased first</a>) - <strong>Other variants</strong>: 64MB and
-256MB RAM models have different footprints and pinouts and would require custom
-adapter boards</p>
+<div class="admonition warning">
+<p class="admonition-title">Luckfox Lyra Configuration</p>
+<ul>
+<li><strong>RAM</strong>: Get the <strong>128MB</strong> model - this is the only tested and supported configuration</li>
+<li><strong>Storage</strong>: Models with or without SPI NAND both work (NAND must be <a href="../../troubleshooting/erase-nand/">erased first</a>)</li>
+<li><strong>Other variants</strong>: 64MB and 256MB RAM models have different footprints and pinouts and would require custom adapter boards</li>
+</ul>
+</div>
 <h2 id="recommended-configurations">Recommended Configurations<a class="headerlink" href="#recommended-configurations" title="Permanent link">&para;</a></h2>
 <h3 id="budget-configuration">Budget Configuration<a class="headerlink" href="#budget-configuration" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2329,16 +2331,17 @@ adapter boards</p>
 <li>Second USB-C cable (for serial console)</li>
 <li><strong>Best for</strong>: Development, experimentation, debugging</li>
 </ul>
-<p>!!! tip "Serial Console for Development" A second USB-C cable connected to the
-<strong>PicoCalc's USB-C port</strong> (not the Lyra's port) provides serial console access
-at <strong>1500000 baud</strong>. This is invaluable for:</p>
-<div class="highlight"><pre><span></span><code>- Watching boot messages and kernel output
-- Debugging firmware and kernel driver modifications
-- Troubleshooting hardware issues
-- Development work requiring low-level system access
-
-See [Hardware Specifications](../hardware/specifications.md#usb-c-ports) for details on the two different USB-C ports.
-</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Serial Console for Development</p>
+<p>A second USB-C cable connected to the <strong>PicoCalc's USB-C port</strong> (not the Lyra's port) provides serial console access at <strong>1500000 baud</strong>. This is invaluable for:</p>
+<ul>
+<li>Watching boot messages and kernel output</li>
+<li>Debugging firmware and kernel driver modifications</li>
+<li>Troubleshooting hardware issues</li>
+<li>Development work requiring low-level system access</li>
+</ul>
+<p>See <a href="../../hardware/specifications/#usb-c-ports">Hardware Specifications</a> for details on the two different USB-C ports.</p>
+</div>
 <h2 id="whats-included-vs-what-to-buy">What's Included vs What to Buy<a class="headerlink" href="#whats-included-vs-what-to-buy" title="Permanent link">&para;</a></h2>
 <h3 id="comes-with-picocalc">Comes with PicoCalc<a class="headerlink" href="#comes-with-picocalc" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2363,51 +2366,47 @@ See [Hardware Specifications](../hardware/specifications.md#usb-c-ports) for det
 </ul>
 <h2 id="before-you-order">Before You Order<a class="headerlink" href="#before-you-order" title="Permanent link">&para;</a></h2>
 <h3 id="important-considerations">Important Considerations<a class="headerlink" href="#important-considerations" title="Permanent link">&para;</a></h3>
-<p>!!! info "Graphical Desktop Experimentation" Calculinux is console-only by
-default. While you can experiment with lightweight graphical environments, the
-128MB RAM is a significant limiting factor for desktop use. Set expectations
-accordingly!</p>
-<p>!!! caution "SPI NAND Models" If you purchase a Luckfox Lyra with SPI NAND
-storage, you <strong>must erase the NAND flash</strong> before Calculinux will boot from SD
-card. See the <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for
-instructions.</p>
-<p>!!! note "PicoCalc Availability" Check
-<a href="https://www.clockworkpi.com/">ClockworkPi's website</a> for current PicoCalc
-availability and shipping information.</p>
+<div class="admonition info">
+<p class="admonition-title">Graphical Desktop Experimentation</p>
+<p>Calculinux is console-only by default. While you can experiment with lightweight graphical environments, the 128MB RAM is a significant limiting factor for desktop use. Set expectations accordingly!</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">SPI NAND Models</p>
+<p>If you purchase a Luckfox Lyra with SPI NAND storage, you <strong>must erase the NAND flash</strong> before Calculinux will boot from SD card. See the <a href="../../troubleshooting/erase-nand/">SPI NAND Erase Guide</a> for instructions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">PicoCalc Availability</p>
+<p>Check <a href="https://www.clockworkpi.com/">ClockworkPi's website</a> for current PicoCalc availability and shipping information.</p>
+</div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once you have your hardware:</p>
 <ol>
-<li><strong>Check compatibility</strong>: Review the
-   <a href="../../hardware/compatibility/">Hardware Compatibility Matrix</a></li>
-<li><strong>Learn about the hardware</strong>: See
-   <a href="../../hardware/specifications/">Hardware Specifications</a> for technical
-   details</li>
-<li><strong>Prepare for installation</strong>: Continue to the
-   <a href="../installation/">Installation Guide</a></li>
+<li><strong>Check compatibility</strong>: Review the <a href="../../hardware/compatibility/">Hardware Compatibility Matrix</a></li>
+<li><strong>Learn about the hardware</strong>: See <a href="../../hardware/specifications/">Hardware Specifications</a> for technical details</li>
+<li><strong>Prepare for installation</strong>: Continue to the <a href="../installation/">Installation Guide</a></li>
 </ol>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../hardware/picocalc/">PicoCalc Overview</a> - Learn about the PicoCalc device</li>
-<li><a href="../../hardware/luckfox-lyra/">Luckfox Lyra Details</a> - SDK, purchasing, and
-  software info</li>
-<li><a href="../../hardware/specifications/">Hardware Specifications</a> - Complete technical
-  specs</li>
-<li><a href="../../hardware/compatibility/">Hardware Compatibility</a> - Detailed
-  compatibility information</li>
+<li><a href="../../hardware/luckfox-lyra/">Luckfox Lyra Details</a> - SDK, purchasing, and software info</li>
+<li><a href="../../hardware/specifications/">Hardware Specifications</a> - Complete technical specs</li>
+<li><a href="../../hardware/compatibility/">Hardware Compatibility</a> - Detailed compatibility information</li>
 </ul>
 <h2 id="optional-hardware">Optional Hardware<a class="headerlink" href="#optional-hardware" title="Permanent link">&para;</a></h2>
 <h3 id="network-connectivity">Network Connectivity<a class="headerlink" href="#network-connectivity" title="Permanent link">&para;</a></h3>
-<p>!!! warning "No Built-in WiFi" Neither the PicoCalc nor Luckfox Lyra include
-built-in WiFi. You will need a USB WiFi adapter.</p>
-<p>!!! danger "Critical: 3.3V Requirement" The Lyra's USB port provides only <strong>3.3V
-power</strong>. Standard 5V USB adapters will NOT work and may damage the board.</p>
-<div class="highlight"><pre><span></span><code>**Options**:
+<div class="admonition warning">
+<p class="admonition-title">No Built-in WiFi</p>
+<p>Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You will need a USB WiFi adapter.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Critical: 3.3V Requirement</p>
+<p>The Lyra's USB port provides only <strong>3.3V power</strong>. Standard 5V USB adapters will NOT work and may damage the board.</p>
+<p><strong>Options</strong>:
 - Use a 3.3V-compatible USB WiFi adapter
-- Use an **externally powered** USB hub for 5V devices
-</code></pre></div>
+- Use an <strong>externally powered</strong> USB hub for 5V devices</p>
+</div>
 <p><strong>Tested</strong>: USB WiFi adapters with RTL8192CU, R8712U, R8188EU chipsets at 3.3V</p>
-<p><strong>Untested but supported</strong>: Additional chipsets listed in
-<a href="../../hardware/specifications/#supported-wifi-chipsets">Hardware Specifications - WiFi</a></p>
+<p><strong>Untested but supported</strong>: Additional chipsets listed in <a href="../../hardware/specifications/#supported-wifi-chipsets">Hardware Specifications - WiFi</a></p>
 <h3 id="storage-expansion">Storage Expansion<a class="headerlink" href="#storage-expansion" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2431,21 +2430,19 @@ power</strong>. Standard 5V USB adapters will NOT work and may damage the board.
 </tbody>
 </table>
 <h3 id="other-peripherals">Other Peripherals<a class="headerlink" href="#other-peripherals" title="Permanent link">&para;</a></h3>
-<p><strong>The following have NOT been tested with Calculinux</strong> and likely require an
-externally powered USB hub:</p>
+<p><strong>The following have NOT been tested with Calculinux</strong> and likely require an externally powered USB hub:</p>
 <ul>
 <li>USB keyboard</li>
-<li>USB ethernet adapter</li>
+<li>USB ethernet adapter  </li>
 <li>USB storage devices</li>
 <li>Other USB peripherals</li>
 </ul>
-<p>!!! note "Luckfox Lyra Plus (Ethernet Model)" The
-<a href="https://www.luckfox.com/Mini-PC/Luckfox-Lyra-Plus">Luckfox Lyra Plus</a> includes
-built-in Ethernet, but it has not been tested with Calculinux and would require
-a custom backplate to access the port within the PicoCalc enclosure.</p>
+<div class="admonition note">
+<p class="admonition-title">Luckfox Lyra Plus (Ethernet Model)</p>
+<p>The <a href="https://www.luckfox.com/Mini-PC/Luckfox-Lyra-Plus">Luckfox Lyra Plus</a> includes built-in Ethernet, but it has not been tested with Calculinux and would require a custom backplate to access the port within the PicoCalc enclosure.</p>
+</div>
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
-<p>See <a href="../../hardware/compatibility/">Compatibility Matrix</a> for detailed hardware
-compatibility information.</p>
+<p>See <a href="../../hardware/compatibility/">Compatibility Matrix</a> for detailed hardware compatibility information.</p>
 <h2 id="next-steps_1">Next Steps<a class="headerlink" href="#next-steps_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Review <a href="../../hardware/luckfox-lyra/">Luckfox Lyra details</a></li>
@@ -2474,7 +2471,7 @@ compatibility information.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

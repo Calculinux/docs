@@ -2542,8 +2542,7 @@
 
 
 <h1 id="hardware-modifications">Hardware Modifications<a class="headerlink" href="#hardware-modifications" title="Permanent link">&para;</a></h1>
-<p>This guide covers the physical modifications required to install a Luckfox Lyra
-(or similar SBC) into your PicoCalc.</p>
+<p>This guide covers the physical modifications required to install a Luckfox Lyra (or similar SBC) into your PicoCalc.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="tools-required">Tools Required<a class="headerlink" href="#tools-required" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2553,8 +2552,7 @@
 </ul>
 <h3 id="parts-needed">Parts Needed<a class="headerlink" href="#parts-needed" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Luckfox Lyra SBC (see
-  <a href="../luckfox-lyra/#luckfox-lyra-versions">compatible versions</a>)</li>
+<li>Luckfox Lyra SBC (see <a href="../luckfox-lyra/#luckfox-lyra-versions">compatible versions</a>)</li>
 <li>MicroSD card (8GB minimum, 64GB+ recommended)</li>
 </ul>
 <h2 id="disassembly">Disassembly<a class="headerlink" href="#disassembly" title="Permanent link">&para;</a></h2>
@@ -2577,10 +2575,8 @@
 <h3 id="step-4-prepare-luckfox-lyra">Step 4: Prepare Luckfox Lyra<a class="headerlink" href="#step-4-prepare-luckfox-lyra" title="Permanent link">&para;</a></h3>
 <p>Before installation:</p>
 <ol>
-<li><strong>Erase SPI NAND</strong> (if your board has it) - see
-   <a href="#erasing-spi-nand">SPI NAND Erasing</a></li>
-<li>Flash Calculinux to your microSD card - see
-   <a href="../../getting-started/installation/">Installation Guide</a></li>
+<li><strong>Erase SPI NAND</strong> (if your board has it) - see <a href="#erasing-spi-nand">SPI NAND Erasing</a></li>
+<li>Flash Calculinux to your microSD card - see <a href="../../getting-started/installation/">Installation Guide</a></li>
 <li>Insert the prepared microSD card into the Luckfox Lyra</li>
 </ol>
 <h3 id="step-5-install-luckfox-lyra">Step 5: Install Luckfox Lyra<a class="headerlink" href="#step-5-install-luckfox-lyra" title="Permanent link">&para;</a></h3>
@@ -2597,19 +2593,19 @@
 <li>Replace all screws</li>
 <li>Verify nothing is binding or misaligned</li>
 </ol>
-<p>!!! warn "Risk to your Display!" If the display is misaligned when installed, it
-can crack when you tighten the screws. make sure it is perfectly aligned with
-the front case!</p>
-<p>!!! tip "Keeping the screen aligned" You may want to tape the screen in place
-using kapton tape or similar. this will prevent it from moving around as you
-open and close the picocalc in the future.</p>
+<div class="admonition warn">
+<p class="admonition-title">Risk to your Display!</p>
+<p>If the display is misaligned when installed, it can crack when you tighten the screws. make sure it is perfectly aligned with the front case!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Keeping the screen aligned</p>
+<p>You may want to tape the screen in place using kapton tape or similar. this will prevent it from moving around as you open and close the picocalc in the future.</p>
+</div>
 <h2 id="erasing-spi-nand">Erasing SPI NAND<a class="headerlink" href="#erasing-spi-nand" title="Permanent link">&para;</a></h2>
-<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must</strong> erase it for the board to
-boot from SD card.</p>
+<p>If your Luckfox Lyra has SPI NAND flash, you <strong>must</strong> erase it for the board to boot from SD card.</p>
 <h3 id="method-1-using-luckfox-tools">Method 1: Using Luckfox Tools<a class="headerlink" href="#method-1-using-luckfox-tools" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Download Luckfox SDK and tools from
-   <a href="https://github.com/LuckfoxTECH/luckfox-pico">GitHub</a></li>
+<li>Download Luckfox SDK and tools from <a href="https://github.com/LuckfoxTECH/luckfox-pico">GitHub</a></li>
 <li>Connect Luckfox Lyra via USB while holding boot button</li>
 <li>Use <code>upgrade_tool</code> to erase NAND:
    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>upgrade_tool<span class="w"> </span>ef
@@ -2634,18 +2630,25 @@ boot from SD card.</p>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Erase NAND (assuming mtd0)</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>flash_erase<span class="w"> </span>/dev/mtd0<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-<p>!!! tip "One-Time Operation" You only need to erase the NAND once. After
-erasing, the board will always boot from SD card (unless you reprogram the
-NAND).</p>
+<div class="admonition tip">
+<p class="admonition-title">One-Time Operation</p>
+<p>You only need to erase the NAND once. After erasing, the board will always boot from SD card (unless you reprogram the NAND).</p>
+</div>
 <h2 id="pin-mapping">Pin Mapping<a class="headerlink" href="#pin-mapping" title="Permanent link">&para;</a></h2>
 <p>TODO: insert information about pin mapping</p>
-<p>!!! warning "GPIO Voltage Levels" - <strong>RMIO pins</strong>: 3.3V operation -
-<strong>GPIO4_B3/GPIO4_B2</strong>: 1.8V operation (not RMIO-capable) - Always verify voltage
-levels before hardware modifications</p>
-<p>!!! info "Hardware PWM Limitation" Some GPIO pins (like GPIO4_B3 and GPIO4_B2)
-cannot output hardware PWM as they are not RMIO-capable. For audio
-modifications, use RMIO pins that support hardware PWM. A future page needs to
-be written detailing this.</p>
+<div class="admonition warning">
+<p class="admonition-title">GPIO Voltage Levels</p>
+<ul>
+<li><strong>RMIO pins</strong>: 3.3V operation</li>
+<li><strong>GPIO4_B3/GPIO4_B2</strong>: 1.8V operation (not RMIO-capable)</li>
+<li>Always verify voltage levels before hardware modifications</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Hardware PWM Limitation</p>
+<p>Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM. 
+A future page needs to be written detailing this.</p>
+</div>
 <h3 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>5V In</strong>: From USB-C connector via PicoCalc board (to charge the batteries)</li>
@@ -2660,20 +2663,17 @@ be written detailing this.</p>
 <li><strong>Boot Check</strong>: Look for display activity</li>
 <li><strong>LED Indicators</strong>: Observe any status LEDs on Luckfox board</li>
 </ol>
-<p>If the system doesn't boot, see
-<a href="../../troubleshooting/boot-problems/">Boot Problems</a>.</p>
+<p>If the system doesn't boot, see <a href="../../troubleshooting/boot-problems/">Boot Problems</a>.</p>
 <h2 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
 <h3 id="board-wont-boot">Board Won't Boot<a class="headerlink" href="#board-wont-boot" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>SPI NAND not erased</strong>: Most common issue with NAND versions</li>
 <li><strong>SD card not flashed correctly</strong>: Verify image integrity</li>
-<li><strong>Power insufficient</strong>: Try different USB cable/adapter or replace the
-  batteries</li>
+<li><strong>Power insufficient</strong>: Try different USB cable/adapter or replace the batteries</li>
 </ul>
 <h3 id="display-not-working">Display Not Working<a class="headerlink" href="#display-not-working" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Driver not loaded</strong>: Check kernel logs via the serial terminal on the
-  picocalc USB-C connector</li>
+<li><strong>Driver not loaded</strong>: Check kernel logs via the serial terminal on the picocalc USB-C connector</li>
 <li><strong>Connection issue</strong>: Reseat display cable</li>
 <li><strong>Wrong device tree</strong>: Verify correct DTB is loaded</li>
 </ul>
@@ -2704,8 +2704,10 @@ be written detailing this.</p>
 <li>Reinstall original board in reverse order</li>
 <li>Reflash original firmware if needed</li>
 </ol>
-<p>!!! note "Keep Original Board" Store the original RP2040 board safely in case
-you want to revert or use it elsewhere.</p>
+<div class="admonition note">
+<p class="admonition-title">Keep Original Board</p>
+<p>Store the original RP2040 board safely in case you want to revert or use it elsewhere.</p>
+</div>
 <h2 id="advanced-modifications">Advanced Modifications<a class="headerlink" href="#advanced-modifications" title="Permanent link">&para;</a></h2>
 <h3 id="optional-enhancements">Optional Enhancements<a class="headerlink" href="#optional-enhancements" title="Permanent link">&para;</a></h3>
 <p>(TODO: add articles detailing these modifications)</p>
@@ -2722,10 +2724,8 @@ you want to revert or use it elsewhere.</p>
 </ul>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Video Guide</strong>:
-  <a href="https://www.youtube.com/watch?v=DaVv7h8cKAE">YouTube - Luckfox Lyra on PicoCalc</a></li>
-<li><strong>Forum Discussion</strong>:
-  <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi Forum Thread</a></li>
+<li><strong>Video Guide</strong>: <a href="https://www.youtube.com/watch?v=DaVv7h8cKAE">YouTube - Luckfox Lyra on PicoCalc</a></li>
+<li><strong>Forum Discussion</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">ClockworkPi Forum Thread</a></li>
 <li><strong>Image Files</strong>: Check forum thread for community-shared modifications</li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -2757,7 +2757,7 @@ you want to revert or use it elsewhere.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

@@ -2672,8 +2672,7 @@
 
 
 <h1 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">&para;</a></h1>
-<p>This guide covers how to install Calculinux on your PicoCalc with Luckfox Lyra
-SBC.</p>
+<p>This guide covers how to install Calculinux on your PicoCalc with Luckfox Lyra SBC.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The installation process involves:</p>
 <ol>
@@ -2695,8 +2694,7 @@ SBC.</p>
 <h2 id="step-1-download-calculinux-image">Step 1: Download Calculinux Image<a class="headerlink" href="#step-1-download-calculinux-image" title="Permanent link">&para;</a></h2>
 <h3 id="official-releases">Official Releases<a class="headerlink" href="#official-releases" title="Permanent link">&para;</a></h3>
 <p>Download the latest Calculinux image from:</p>
-<p><strong>GitHub Releases</strong>:
-<a href="https://github.com/Calculinux/meta-calculinux/releases">https://github.com/Calculinux/meta-calculinux/releases</a></p>
+<p><strong>GitHub Releases</strong>: <a href="https://github.com/Calculinux/meta-calculinux/releases">https://github.com/Calculinux/meta-calculinux/releases</a></p>
 <p>Download the Calculinux image file:</p>
 <table>
 <thead>
@@ -2731,9 +2729,10 @@ SBC.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! info "Single Image Design" Calculinux provides a single console-based image
-suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software
-can be installed via the package manager as needed.</p>
+<div class="admonition info">
+<p class="admonition-title">Single Image Design</p>
+<p>Calculinux provides a single console-based image suitable for all RAM configurations (64MB, 128MB, 256MB). Additional software can be installed via the package manager as needed.</p>
+</div>
 <h3 id="verify-download">Verify Download<a class="headerlink" href="#verify-download" title="Permanent link">&para;</a></h3>
 <p>After downloading, verify the image integrity:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># On Linux/macOS</span>
@@ -2752,12 +2751,13 @@ can be installed via the package manager as needed.</p>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>7z<span class="w"> </span>x<span class="w"> </span>calculinux-*.wic.gz
 </code></pre></div>
 <h2 id="step-2-flash-sd-card">Step 2: Flash SD Card<a class="headerlink" href="#step-2-flash-sd-card" title="Permanent link">&para;</a></h2>
-<p>!!! danger "Data Loss Warning" Flashing will <strong>erase all data</strong> on the SD card.
-Make sure you've selected the correct device!</p>
+<div class="admonition danger">
+<p class="admonition-title">Data Loss Warning</p>
+<p>Flashing will <strong>erase all data</strong> on the SD card. Make sure you've selected the correct device!</p>
+</div>
 <h3 id="option-a-using-balena-etcher-recommended-for-beginners">Option A: Using Balena Etcher (Recommended for Beginners)<a class="headerlink" href="#option-a-using-balena-etcher-recommended-for-beginners" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Download Balena Etcher</strong>:
-   <a href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a></li>
+<li><strong>Download Balena Etcher</strong>: <a href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a></li>
 <li><strong>Install and launch</strong> Etcher</li>
 <li><strong>Insert SD card</strong> into card reader</li>
 <li>In Etcher:</li>
@@ -2767,8 +2767,10 @@ Make sure you've selected the correct device!</p>
 <li><strong>Wait for completion</strong> and verification</li>
 </ol>
 <h3 id="option-b-using-dd-linuxmacos">Option B: Using dd (Linux/macOS)<a class="headerlink" href="#option-b-using-dd-linuxmacos" title="Permanent link">&para;</a></h3>
-<p>!!! warning "Dangerous Command" Double-check the device name! Using the wrong
-device will destroy your data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Dangerous Command</p>
+<p>Double-check the device name! Using the wrong device will destroy your data.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Insert SD card and identify device</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>lsblk
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Look for your SD card (usually /dev/sdX or /dev/mmcblkN)</span>
@@ -2796,8 +2798,7 @@ device will destroy your data.</p>
 </ol>
 <h3 id="option-d-using-win32diskimager-windows">Option D: Using Win32DiskImager (Windows)<a class="headerlink" href="#option-d-using-win32diskimager-windows" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Download</strong>:
-   <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a></li>
+<li><strong>Download</strong>: <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a></li>
 <li><strong>Install and launch</strong> as administrator</li>
 <li><strong>Insert SD card</strong></li>
 <li>In Win32DiskImager:</li>
@@ -2816,8 +2817,7 @@ device will destroy your data.</p>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># - Root filesystem (ext4)</span>
 </code></pre></div>
 <h2 id="hardware-installation">Step 3: Hardware Installation<a class="headerlink" href="#hardware-installation" title="Permanent link">&para;</a></h2>
-<p>If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the
-<a href="../../hardware/modifications/">Hardware Modifications</a> guide.</p>
+<p>If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the <a href="../../hardware/modifications/">Hardware Modifications</a> guide.</p>
 <p>If your Luckfox Lyra has SPI NAND, you <strong>must</strong> erase it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># See Hardware Modifications guide for detailed instructions</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Or Boot Problems troubleshooting page</span>
@@ -2837,18 +2837,14 @@ device will destroy your data.</p>
 <li><strong>Power on</strong> the device</li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a class="headerlink" href="#what-to-expect" title="Permanent link">&para;</a></h3>
-<p><strong>Initial boot timing</strong>:</p>
-<ul>
-<li>First boot: 30-60 seconds</li>
-<li>Subsequent boots: 15-30 seconds</li>
-</ul>
-<p><strong>Visual indicators</strong>:</p>
-<ul>
-<li>Power LED should light up</li>
-<li>Display may show boot messages</li>
-<li>Initial splash screen</li>
-<li>Login prompt (console-only, no GUI)</li>
-</ul>
+<p><strong>Initial boot timing</strong>:
+- First boot: 30-60 seconds
+- Subsequent boots: 15-30 seconds</p>
+<p><strong>Visual indicators</strong>:
+- Power LED should light up
+- Display may show boot messages
+- Initial splash screen
+- Login prompt (console-only, no GUI)</p>
 <h3 id="boot-messages">Boot Messages<a class="headerlink" href="#boot-messages" title="Permanent link">&para;</a></h3>
 <p>You should see:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[    0.000000] Booting Linux on physical CPU 0x0
@@ -2862,35 +2858,34 @@ device will destroy your data.</p>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>picocalc login: _
 </code></pre></div>
-<p>!!! success "Success!" If you see a login prompt, congratulations! Calculinux is
-running.</p>
+<div class="admonition success">
+<p class="admonition-title">Success!</p>
+<p>If you see a login prompt, congratulations! Calculinux is running.</p>
+</div>
 <h3 id="troubleshooting-boot-issues">Troubleshooting Boot Issues<a class="headerlink" href="#troubleshooting-boot-issues" title="Permanent link">&para;</a></h3>
 <p>If the system doesn't boot:</p>
-<p><strong>No display activity</strong>:</p>
-<ul>
-<li>Check power supply (try different cable/adapter)</li>
-<li>Verify SD card is inserted correctly</li>
-<li>See <a href="../../troubleshooting/boot-problems/">Boot Problems</a></li>
-</ul>
-<p><strong>Boots but hangs</strong>:</p>
-<ul>
-<li>Wait 2-3 minutes (first boot may take longer)</li>
-<li>Check SD card integrity</li>
-<li>Try reflashing the image</li>
-</ul>
-<p><strong>Display shows errors</strong>:</p>
-<ul>
-<li>Note the error messages</li>
-<li>Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a></li>
-<li>Search forum for similar issues</li>
-</ul>
+<p><strong>No display activity</strong>:
+- Check power supply (try different cable/adapter)
+- Verify SD card is inserted correctly
+- See <a href="../../troubleshooting/boot-problems/">Boot Problems</a></p>
+<p><strong>Boots but hangs</strong>:
+- Wait 2-3 minutes (first boot may take longer)
+- Check SD card integrity
+- Try reflashing the image</p>
+<p><strong>Display shows errors</strong>:
+- Note the error messages
+- Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a>
+- Search forum for similar issues</p>
 <h2 id="step-5-initial-login">Step 5: Initial Login<a class="headerlink" href="#step-5-initial-login" title="Permanent link">&para;</a></h2>
 <p>After successful boot, you'll see a login prompt.</p>
-<p>!!! info "Login Credentials" For default usernames and passwords, see the
-<a href="../first-boot/#initial-login">First Boot guide</a>.</p>
-<p>!!! danger "Change Passwords" Immediately change all default passwords after
-first login. See
-<a href="../first-boot/#initial-configuration">First Boot - Initial Configuration</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Login Credentials</p>
+<p>For default usernames and passwords, see the <a href="../first-boot/#initial-login">First Boot guide</a>.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Change Passwords</p>
+<p>Immediately change all default passwords after first login. See <a href="../first-boot/#initial-configuration">First Boot - Initial Configuration</a>.</p>
+</div>
 <h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
 <p>After successful login, follow the <a href="../first-boot/">First Boot guide</a> for:</p>
 <ol>
@@ -2901,9 +2896,10 @@ first login. See
 <li>Updating package database</li>
 </ol>
 <h2 id="filesystem-expansion-automatic">Filesystem Expansion (Automatic)<a class="headerlink" href="#filesystem-expansion-automatic" title="Permanent link">&para;</a></h2>
-<p>!!! success "No Action Required" The overlayfs partition is <strong>automatically
-expanded</strong> during first boot to use all available space on your SD card (leaving
-10% free). No manual intervention is needed.</p>
+<div class="admonition success">
+<p class="admonition-title">No Action Required</p>
+<p>The overlayfs partition is <strong>automatically expanded</strong> during first boot to use all available space on your SD card (leaving 10% free). No manual intervention is needed.</p>
+</div>
 <h2 id="multiple-sd-cards">Multiple SD Cards<a class="headerlink" href="#multiple-sd-cards" title="Permanent link">&para;</a></h2>
 <p>You can create multiple SD cards for different purposes:</p>
 <ul>
@@ -2946,9 +2942,10 @@ expanded</strong> during first boot to use all available space on your SD card (
 <li><strong>Console Font</strong>: Terminus font for better readability</li>
 <li><strong>Keyboard</strong>: Full keyboard mapping support</li>
 </ul>
-<p>!!! info "No GUI/Desktop" Calculinux is currently <strong>console-only</strong> with no
-graphical desktop environment. All interaction is via text terminal. GUI support
-may be added in future releases.</p>
+<div class="admonition info">
+<p class="admonition-title">No GUI/Desktop</p>
+<p>Calculinux is currently <strong>console-only</strong> with no graphical desktop environment. All interaction is via text terminal. GUI support may be added in future releases.</p>
+</div>
 <ul>
 <li>File manager</li>
 <li>Basic applications</li>
@@ -2956,8 +2953,7 @@ may be added in future releases.</p>
 <h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
 <p>After installation, you can customize your system:</p>
 <ul>
-<li>Install additional packages: See
-  <a href="../../user-guide/package-management/">Package Management</a></li>
+<li>Install additional packages: See <a href="../../user-guide/package-management/">Package Management</a></li>
 <li>Set up development: See <a href="../../developer/overview/">Developer Guide</a></li>
 <li>Add applications: See <a href="../../user-guide/applications/">Applications</a></li>
 </ul>
@@ -3028,19 +3024,16 @@ may be added in future releases.</p>
 <p>If you encounter problems:</p>
 <ol>
 <li>Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a></li>
-<li>Search
-   <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum</a></li>
+<li>Search <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum</a></li>
 <li>Ask in community chat</li>
 <li>Open <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub issue</a></li>
 </ol>
-<p>Include in your help request:</p>
-<ul>
-<li>Image variant and version</li>
-<li>SD card brand/size</li>
-<li>Luckfox Lyra version (RAM, NAND)</li>
-<li>Exact error messages</li>
-<li>What you've already tried</li>
-</ul>
+<p>Include in your help request:
+- Image variant and version
+- SD card brand/size
+- Luckfox Lyra version (RAM, NAND)
+- Exact error messages
+- What you've already tried</p>
 
 
 
@@ -3063,7 +3056,7 @@ may be added in future releases.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

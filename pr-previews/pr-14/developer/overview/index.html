@@ -2898,8 +2898,7 @@
 
 
 <h1 id="developer-overview">Developer Overview<a class="headerlink" href="#developer-overview" title="Permanent link">&para;</a></h1>
-<p>Welcome to the Calculinux developer documentation! This section covers
-everything you need to know to build, customize, and contribute to Calculinux.</p>
+<p>Welcome to the Calculinux developer documentation! This section covers everything you need to know to build, customize, and contribute to Calculinux.</p>
 <h2 id="what-youll-learn">What You'll Learn<a class="headerlink" href="#what-youll-learn" title="Permanent link">&para;</a></h2>
 <p>This developer guide covers:</p>
 <ul>
@@ -2968,12 +2967,13 @@ everything you need to know to build, customize, and contribute to Calculinux.</
 </tr>
 </tbody>
 </table>
-<p>!!! info "Why Linux?" While Yocto can run in VMs or containers on other OSes,
-native Linux is strongly recommended for performance and compatibility.</p>
+<div class="admonition info">
+<p class="admonition-title">Why Linux?</p>
+<p>While Yocto can run in VMs or containers on other OSes, native Linux is strongly recommended for performance and compatibility.</p>
+</div>
 <h2 id="calculinux-architecture">Calculinux Architecture<a class="headerlink" href="#calculinux-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>Calculinux is built using the <strong>Yocto Project</strong>, a powerful framework for
-creating custom Linux distributions.</p>
+<p>Calculinux is built using the <strong>Yocto Project</strong>, a powerful framework for creating custom Linux distributions.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Calculinux Architecture:
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>┌─────────────────────────────────────┐
@@ -2993,33 +2993,25 @@ creating custom Linux distributions.</p>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>└─────────────────────────────────────┘
 </code></pre></div>
 <h3 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h3>
-<p><strong>meta-calculinux</strong></p>
-<ul>
-<li>Main Yocto layer for Calculinux</li>
-<li>Machine configurations</li>
-<li>Custom recipes and patches</li>
-<li>Image definitions</li>
-</ul>
-<p><strong>Linux Kernel</strong></p>
-<ul>
-<li>Based on Rockchip 5.10 kernel</li>
-<li>Custom drivers (display, keyboard)</li>
-<li>Device tree configurations</li>
-<li>Hardware support</li>
-</ul>
-<p><strong>Bootloader</strong></p>
-<ul>
-<li>U-Boot for RV1106</li>
-<li>Boot scripts</li>
-<li>Device tree selection</li>
-</ul>
-<p><strong>Userspace</strong></p>
-<ul>
-<li>Based on OpenEmbedded core</li>
-<li>Package management (opkg)</li>
-<li>System services (systemd)</li>
-<li>Optional desktop environments</li>
-</ul>
+<p><strong>meta-calculinux</strong>
+- Main Yocto layer for Calculinux
+- Machine configurations
+- Custom recipes and patches
+- Image definitions</p>
+<p><strong>Linux Kernel</strong>
+- Based on Rockchip 5.10 kernel
+- Custom drivers (display, keyboard)
+- Device tree configurations
+- Hardware support</p>
+<p><strong>Bootloader</strong>
+- U-Boot for RV1106
+- Boot scripts
+- Device tree selection</p>
+<p><strong>Userspace</strong>
+- Based on OpenEmbedded core
+- Package management (opkg)
+- System services (systemd)
+- Optional desktop environments</p>
 <h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
 <h3 id="main-repository">Main Repository<a class="headerlink" href="#main-repository" title="Permanent link">&para;</a></h3>
 <p>The meta-calculinux repository uses a multi-layer Yocto structure:</p>
@@ -3052,8 +3044,7 @@ creating custom Linux distributions.</p>
 <h3 id="external-dependencies">External Dependencies<a class="headerlink" href="#external-dependencies" title="Permanent link">&para;</a></h3>
 <p>Calculinux uses external repositories for kernel and bootloader sources:</p>
 <ul>
-<li><strong>Kernel</strong>: <code>github.com/0xd61/luckfox-linux-6.1-rk3506.git</code> (via
-  linux-rockchip recipe)</li>
+<li><strong>Kernel</strong>: <code>github.com/0xd61/luckfox-linux-6.1-rk3506.git</code> (via linux-rockchip recipe)</li>
 <li><strong>Bootloader</strong>: Provided by meta-rockchip layer</li>
 <li><strong>Documentation</strong>: This repository (github.com/Calculinux/docs)</li>
 </ul>
@@ -3068,57 +3059,44 @@ creating custom Linux distributions.</p>
 <li><strong>Submit changes</strong> - Create pull request</li>
 </ol>
 <h3 id="build-types">Build Types<a class="headerlink" href="#build-types" title="Permanent link">&para;</a></h3>
-<p><strong>Full Build</strong> (Clean)</p>
-<ul>
-<li>First build or major changes</li>
-<li>Builds everything from scratch</li>
-<li>Takes 2-8 hours depending on hardware</li>
-<li>Uses significant disk space</li>
-</ul>
-<p><strong>Incremental Build</strong></p>
-<ul>
-<li>Rebuilds only changed components</li>
-<li>Much faster (minutes to hour)</li>
-<li>Used for development iterations</li>
-</ul>
-<p><strong>Package Build</strong></p>
-<ul>
-<li>Builds specific packages</li>
-<li>Quick testing of changes</li>
-<li>Useful for recipe development</li>
-</ul>
+<p><strong>Full Build</strong> (Clean)
+- First build or major changes
+- Builds everything from scratch
+- Takes 2-8 hours depending on hardware
+- Uses significant disk space</p>
+<p><strong>Incremental Build</strong>
+- Rebuilds only changed components
+- Much faster (minutes to hour)
+- Used for development iterations</p>
+<p><strong>Package Build</strong>
+- Builds specific packages
+- Quick testing of changes
+- Useful for recipe development</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="quick-start-for-developers">Quick Start for Developers<a class="headerlink" href="#quick-start-for-developers" title="Permanent link">&para;</a></h3>
 <p>If you're ready to start developing:</p>
 <ol>
-<li><a href="../yocto-setup/"><strong>Yocto Setup</strong></a> - Install dependencies and configure
-   environment</li>
+<li><a href="../yocto-setup/"><strong>Yocto Setup</strong></a> - Install dependencies and configure environment</li>
 <li><a href="../building/"><strong>Building Calculinux</strong></a> - Compile your first image</li>
 <li><a href="../customization/"><strong>Customization</strong></a> - Tailor Calculinux to your needs</li>
 <li><a href="../adding-packages/"><strong>Adding Packages</strong></a> - Include new software</li>
 </ol>
 <h3 id="learning-path">Learning Path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h3>
-<p><strong>Beginner</strong> (New to Yocto):</p>
-<ol>
-<li>Read Yocto Project documentation</li>
-<li>Follow our <a href="../yocto-setup/">Yocto Setup</a> guide</li>
-<li>Build a stock image</li>
-<li>Make small customizations</li>
-</ol>
-<p><strong>Intermediate</strong> (Some Yocto experience):</p>
-<ol>
-<li>Clone meta-calculinux</li>
-<li>Customize image configurations</li>
-<li>Add new packages/recipes</li>
-<li>Modify existing recipes</li>
-</ol>
-<p><strong>Advanced</strong> (Experienced with Yocto):</p>
-<ol>
-<li>Kernel development</li>
-<li>Driver development</li>
-<li>BSP modifications</li>
-<li>Architecture contributions</li>
-</ol>
+<p><strong>Beginner</strong> (New to Yocto):
+1. Read Yocto Project documentation
+2. Follow our <a href="../yocto-setup/">Yocto Setup</a> guide
+3. Build a stock image
+4. Make small customizations</p>
+<p><strong>Intermediate</strong> (Some Yocto experience):
+1. Clone meta-calculinux
+2. Customize image configurations
+3. Add new packages/recipes
+4. Modify existing recipes</p>
+<p><strong>Advanced</strong> (Experienced with Yocto):
+1. Kernel development
+2. Driver development
+3. BSP modifications
+4. Architecture contributions</p>
 <h2 id="development-tools">Development Tools<a class="headerlink" href="#development-tools" title="Permanent link">&para;</a></h2>
 <h3 id="required-tools">Required Tools<a class="headerlink" href="#required-tools" title="Permanent link">&para;</a></h3>
 <p>Installed via package manager:</p>
@@ -3149,22 +3127,18 @@ creating custom Linux distributions.</p>
 <h2 id="build-system-overview">Build System Overview<a class="headerlink" href="#build-system-overview" title="Permanent link">&para;</a></h2>
 <h3 id="yoctoopenembedded">Yocto/OpenEmbedded<a class="headerlink" href="#yoctoopenembedded" title="Permanent link">&para;</a></h3>
 <p>Calculinux uses Yocto for several reasons:</p>
-<p><strong>Advantages</strong>:</p>
-<ul>
-<li>✅ Reproducible builds</li>
-<li>✅ Extensive package ecosystem</li>
-<li>✅ Professional tooling</li>
-<li>✅ Active community</li>
-<li>✅ Long-term support</li>
-<li>✅ Customization flexibility</li>
-</ul>
-<p><strong>Challenges</strong>:</p>
-<ul>
-<li>⚠️ Steep learning curve</li>
-<li>⚠️ Long initial build times</li>
-<li>⚠️ Large disk space requirements</li>
-<li>⚠️ Complex dependency management</li>
-</ul>
+<p><strong>Advantages</strong>:
+- ✅ Reproducible builds
+- ✅ Extensive package ecosystem
+- ✅ Professional tooling
+- ✅ Active community
+- ✅ Long-term support
+- ✅ Customization flexibility</p>
+<p><strong>Challenges</strong>:
+- ⚠️ Steep learning curve
+- ⚠️ Long initial build times
+- ⚠️ Large disk space requirements
+- ⚠️ Complex dependency management</p>
 <h3 id="bitbake">BitBake<a class="headerlink" href="#bitbake" title="Permanent link">&para;</a></h3>
 <p>BitBake is the build engine:</p>
 <ul>
@@ -3238,18 +3212,18 @@ creating custom Linux distributions.</p>
 <p>Coming soon: CI/CD pipeline for automated builds and tests.</p>
 <h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
 <h3 id="build-speed">Build Speed<a class="headerlink" href="#build-speed" title="Permanent link">&para;</a></h3>
-<p><strong>Parallel Builds</strong>:</p>
+<p><strong>Parallel Builds</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># local.conf</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">BB_NUMBER_THREADS</span> <span class="o">=</span> <span class="s2">&quot;8&quot;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">PARALLEL_MAKE</span> <span class="o">=</span> <span class="s2">&quot;-j 8&quot;</span>
-</code></pre></div>
-<p><strong>Shared State Cache</strong>:</p>
+</code></pre></div></p>
+<p><strong>Shared State Cache</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">SSTATE_DIR</span> <span class="o">=</span> <span class="s2">&quot;/path/to/shared/sstate-cache&quot;</span>
-</code></pre></div>
-<p><strong>Build History</strong>:</p>
+</code></pre></div></p>
+<p><strong>Build History</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">INHERIT</span> <span class="o">+=</span> <span class="s2">&quot;buildhistory&quot;</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">BUILDHISTORY_COMMIT</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="image-size">Image Size<a class="headerlink" href="#image-size" title="Permanent link">&para;</a></h3>
 <p>Optimize for small SD cards:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Remove documentation</span>
@@ -3294,21 +3268,15 @@ creating custom Linux distributions.</p>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <h3 id="official-documentation">Official Documentation<a class="headerlink" href="#official-documentation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Yocto Project</strong>:
-  <a href="https://www.yoctoproject.org/docs/">https://www.yoctoproject.org/docs/</a></li>
-<li><strong>OpenEmbedded</strong>:
-  <a href="https://www.openembedded.org/">https://www.openembedded.org/</a></li>
-<li><strong>BitBake Manual</strong>:
-  <a href="https://docs.yoctoproject.org/bitbake/">https://docs.yoctoproject.org/bitbake/</a></li>
+<li><strong>Yocto Project</strong>: <a href="https://www.yoctoproject.org/docs/">https://www.yoctoproject.org/docs/</a></li>
+<li><strong>OpenEmbedded</strong>: <a href="https://www.openembedded.org/">https://www.openembedded.org/</a></li>
+<li><strong>BitBake Manual</strong>: <a href="https://docs.yoctoproject.org/bitbake/">https://docs.yoctoproject.org/bitbake/</a></li>
 </ul>
 <h3 id="calculinux-specific">Calculinux Specific<a class="headerlink" href="#calculinux-specific" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Repository</strong>:
-  <a href="https://github.com/Calculinux/meta-calculinux">https://github.com/Calculinux/meta-calculinux</a></li>
-<li><strong>Issues</strong>:
-  <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub Issues</a></li>
-<li><strong>Discussions</strong>:
-  <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum Thread</a></li>
+<li><strong>Repository</strong>: <a href="https://github.com/Calculinux/meta-calculinux">https://github.com/Calculinux/meta-calculinux</a></li>
+<li><strong>Issues</strong>: <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub Issues</a></li>
+<li><strong>Discussions</strong>: <a href="https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280">Forum Thread</a></li>
 </ul>
 <h3 id="learning-resources">Learning Resources<a class="headerlink" href="#learning-resources" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3321,29 +3289,31 @@ creating custom Linux distributions.</p>
 <p>Choose your path:</p>
 <div class="grid cards">
 <ul>
-<li><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span> <strong>Set Up Environment</strong></li>
-</ul>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span> <strong>Set Up Environment</strong></p>
 <hr />
 <p>Install tools and configure Yocto</p>
 <p><a href="../yocto-setup/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Yocto Setup</a></p>
-<ul>
-<li><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.78 15.3 6 6 2.11-2.16-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11 7.41-7.4L8.5 9.96l-.72.7-1.45-1.41v2.86l-.7.7-3.52-3.56.7-.7h2.81l-1.4-1.41 3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4-.71.71 1.79 1.78 1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5 2.67-2.67c.28.47.42.97.42 1.6 0 1.92-1.55 3.47-3.5 3.47"/></svg></span> <strong>Build Calculinux</strong></li>
-</ul>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.78 15.3 6 6 2.11-2.16-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11 7.41-7.4L8.5 9.96l-.72.7-1.45-1.41v2.86l-.7.7-3.52-3.56.7-.7h2.81l-1.4-1.41 3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4-.71.71 1.79 1.78 1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5 2.67-2.67c.28.47.42.97.42 1.6 0 1.92-1.55 3.47-3.5 3.47"/></svg></span> <strong>Build Calculinux</strong></p>
 <hr />
 <p>Compile your first image</p>
 <p><a href="../building/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Building Guide</a></p>
-<ul>
-<li><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5 1.5 1.5 0 0 1 14.5 5 1.5 1.5 0 0 1 16 6.5 1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5 1.5 1.5 0 0 1 9.5 5 1.5 1.5 0 0 1 11 6.5 1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5 1.5 1.5 0 0 1 6.5 9 1.5 1.5 0 0 1 8 10.5 1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8"/></svg></span> <strong>Customize</strong></li>
-</ul>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5 1.5 1.5 0 0 1 14.5 5 1.5 1.5 0 0 1 16 6.5 1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5 1.5 1.5 0 0 1 9.5 5 1.5 1.5 0 0 1 11 6.5 1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5 1.5 1.5 0 0 1 6.5 9 1.5 1.5 0 0 1 8 10.5 1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8"/></svg></span> <strong>Customize</strong></p>
 <hr />
 <p>Make Calculinux your own</p>
 <p><a href="../customization/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Customization</a></p>
-<ul>
-<li><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg></span> <strong>Contribute</strong></li>
-</ul>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg></span> <strong>Contribute</strong></p>
 <hr />
 <p>Join the development effort</p>
 <p><a href="../contributing/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Contributing</a></p>
+</li>
+</ul>
 </div>
 
 
@@ -3367,7 +3337,7 @@ creating custom Linux distributions.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

@@ -2363,138 +2363,135 @@
 <li><strong>Wait for boot</strong> (30-60 seconds first time)</li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a class="headerlink" href="#what-to-expect" title="Permanent link">&para;</a></h3>
-<p><strong>Boot Process</strong>:</p>
-<ul>
-<li>Power LED lights up</li>
-<li>Boot messages appear on display</li>
-<li>System initialization</li>
-<li>Login prompt appears</li>
-</ul>
-<p><strong>First Boot Timing</strong>:</p>
-<ul>
-<li>First boot: 30-60 seconds</li>
-<li>Subsequent boots: 15-30 seconds</li>
-</ul>
+<p><strong>Boot Process</strong>:
+- Power LED lights up
+- Boot messages appear on display
+- System initialization
+- Login prompt appears</p>
+<p><strong>First Boot Timing</strong>:
+- First boot: 30-60 seconds
+- Subsequent boots: 15-30 seconds</p>
 <h2 id="initial-login">Initial Login<a class="headerlink" href="#initial-login" title="Permanent link">&para;</a></h2>
 <h3 id="default-credentials">Default Credentials<a class="headerlink" href="#default-credentials" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Username: root
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Password: root
 </code></pre></div>
-<p>!!! danger "Change Password Immediately" The first thing you should do after
-logging in is change the root password: <code>bash     passwd</code></p>
+<div class="admonition danger">
+<p class="admonition-title">Change Password Immediately</p>
+<p>The first thing you should do after logging in is change the root password:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>passwd
+</code></pre></div></p>
+</div>
 <h2 id="initial-configuration">Initial Configuration<a class="headerlink" href="#initial-configuration" title="Permanent link">&para;</a></h2>
 <h3 id="1-change-root-password">1. Change Root Password<a class="headerlink" href="#1-change-root-password" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>passwd
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Enter new password twice</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>passwd
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Enter new password twice</span>
 </code></pre></div>
 <h3 id="2-set-system-time">2. Set System Time<a class="headerlink" href="#2-set-system-time" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Set current date/time</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>date<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;2025-10-06 14:30:00&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Or use NTP if network connected</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ntpd<span class="w"> </span>-q<span class="w"> </span>-p<span class="w"> </span>pool.ntp.org
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Set current date/time</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>date<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;2025-10-06 14:30:00&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Or use NTP if network connected</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ntpd<span class="w"> </span>-q<span class="w"> </span>-p<span class="w"> </span>pool.ntp.org
 </code></pre></div>
 <h3 id="3-check-system-status">3. Check System Status<a class="headerlink" href="#3-check-system-status" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Check system info</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>uname<span class="w"> </span>-a
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Check memory</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>free<span class="w"> </span>-h
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Check disk space</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>df<span class="w"> </span>-h
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Check running services</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>systemctl<span class="w"> </span>status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Check system info</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>uname<span class="w"> </span>-a
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Check memory</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>free<span class="w"> </span>-h
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Check disk space</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>df<span class="w"> </span>-h
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Check running services</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>systemctl<span class="w"> </span>status
 </code></pre></div>
 <h3 id="4-filesystem-expansion-automatic">4. Filesystem Expansion (Automatic)<a class="headerlink" href="#4-filesystem-expansion-automatic" title="Permanent link">&para;</a></h3>
-<p>!!! success "Automatic Expansion" The overlayfs partition is <strong>automatically
-expanded</strong> during the pre-init process on first boot. The system uses <code>growpart</code>
-to expand the overlay partition to fill available disk space, leaving 10% free.
-No manual intervention is required.</p>
+<div class="admonition success">
+<p class="admonition-title">Automatic Expansion</p>
+<p>The overlayfs partition is <strong>automatically expanded</strong> during the pre-init process on first boot. The system uses <code>growpart</code> to expand the overlay partition to fill available disk space, leaving 10% free. No manual intervention is required.</p>
+</div>
 <h3 id="5-update-package-database">5. Update Package Database<a class="headerlink" href="#5-update-package-database" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>opkg<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>opkg<span class="w"> </span>update
 </code></pre></div>
 <h2 id="basic-system-check">Basic System Check<a class="headerlink" href="#basic-system-check" title="Permanent link">&para;</a></h2>
 <h3 id="verify-hardware">Verify Hardware<a class="headerlink" href="#verify-hardware" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Check display</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>cat<span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>/dev/fb0<span class="w">  </span><span class="c1"># Should show random colors</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Check keyboard</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>cat<span class="w"> </span>/proc/bus/input/devices
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Check CPU</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>cat<span class="w"> </span>/proc/cpuinfo
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Check USB WiFi adapter (if connected)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>lsusb
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>ip<span class="w"> </span>link<span class="w"> </span>show
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Check display</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cat<span class="w"> </span>/dev/urandom<span class="w"> </span>&gt;<span class="w"> </span>/dev/fb0<span class="w">  </span><span class="c1"># Should show random colors</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Check keyboard</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>cat<span class="w"> </span>/proc/bus/input/devices
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Check CPU</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>cat<span class="w"> </span>/proc/cpuinfo
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Check USB WiFi adapter (if connected)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>lsusb
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>ip<span class="w"> </span>link<span class="w"> </span>show
 </code></pre></div>
 <h3 id="supported-peripherals">Supported Peripherals<a class="headerlink" href="#supported-peripherals" title="Permanent link">&para;</a></h3>
-<p>!!! info "Hardware Expansion" The PicoCalc and Luckfox Lyra do not include WiFi
-or many peripherals by default. Hardware can be added via USB, I2C, SPI, and
-GPIO headers.</p>
-<p><strong>Currently Tested:</strong></p>
-<ul>
-<li>Display (built-in LCD drivers)</li>
-<li>Keyboard (built-in keyboard drivers)</li>
-<li>USB WiFi adapters (see WiFi chipsets above)</li>
-</ul>
-<p><strong>Planned/Future Support:</strong></p>
-<ul>
-<li>I2C RTC modules (e.g., Adafruit DS3231)</li>
-<li>LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)</li>
-<li>Additional I2C/SPI peripherals</li>
-</ul>
-<p>!!! note "Peripheral Testing" Most peripheral support beyond WiFi, display, and
-keyboard has not been thoroughly tested yet. Community contributions for
-additional hardware support are welcome!</p>
+<div class="admonition info">
+<p class="admonition-title">Hardware Expansion</p>
+<p>The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.</p>
+</div>
+<p><strong>Currently Tested:</strong>
+- Display (built-in LCD drivers)
+- Keyboard (built-in keyboard drivers)<br />
+- USB WiFi adapters (see WiFi chipsets above)</p>
+<p><strong>Planned/Future Support:</strong>
+- I2C RTC modules (e.g., Adafruit DS3231)
+- LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
+- Additional I2C/SPI peripherals</p>
+<div class="admonition note">
+<p class="admonition-title">Peripheral Testing</p>
+<p>Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!</p>
+</div>
 <h3 id="check-logs">Check Logs<a class="headerlink" href="#check-logs" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Boot messages</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># System journal</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>journalctl<span class="w"> </span>-b
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Boot messages</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># System journal</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>journalctl<span class="w"> </span>-b
 </code></pre></div>
 <h2 id="network-configuration">Network Configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
 <h3 id="wifi-setup-usb-adapter-required">WiFi Setup (USB Adapter Required)<a class="headerlink" href="#wifi-setup-usb-adapter-required" title="Permanent link">&para;</a></h3>
-<p>!!! info "WiFi Hardware Required" Neither the PicoCalc nor Luckfox Lyra include
-built-in WiFi. You need a <strong>USB WiFi adapter operating at 3.3V</strong> connected to
-the Lyra's USB header.</p>
-<div class="highlight"><pre><span></span><code>For a complete list of supported WiFi chipsets, see [Hardware Specifications - WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets).
-</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">WiFi Hardware Required</p>
+<p>Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a <strong>USB WiFi adapter operating at 3.3V</strong> connected to the Lyra's USB header.</p>
+<p>For a complete list of supported WiFi chipsets, see <a href="../../hardware/specifications/#supported-wifi-chipsets">Hardware Specifications - WiFi Chipsets</a>.</p>
+</div>
 <h4 id="connecting-to-wifi-with-iwctl">Connecting to WiFi with iwctl<a class="headerlink" href="#connecting-to-wifi-with-iwctl" title="Permanent link">&para;</a></h4>
-<p>Calculinux uses <code>iwd</code> (iNet Wireless Daemon) for WiFi management. Use <code>iwctl</code> to
-configure wireless connections:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Start iwctl interactive mode</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>iwctl
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Inside iwctl:</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># device list                          # List wireless devices</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 scan                   # Scan for networks</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 get-networks           # Show available networks</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 connect &quot;SSID&quot;         # Connect to network</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># Enter passphrase when prompted</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># exit</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Or use iwctl non-interactively:</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>scan
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;YourSSID&quot;</span>
+<p>Calculinux uses <code>iwd</code> (iNet Wireless Daemon) for WiFi management. Use <code>iwctl</code> to configure wireless connections:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Start iwctl interactive mode</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>iwctl
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Inside iwctl:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># device list                          # List wireless devices</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 scan                   # Scan for networks</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 get-networks           # Show available networks</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 connect &quot;SSID&quot;         # Connect to network</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Enter passphrase when prompted</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># exit</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Or use iwctl non-interactively:</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>scan
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;YourSSID&quot;</span>
 </code></pre></div>
 <p><strong>Verify Connection:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Check connection status</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>show
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Check IP address</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>wlan0
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Test connectivity</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">8</span>.8.8.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check connection status</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>show
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Check IP address</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>wlan0
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Test connectivity</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">8</span>.8.8.8
 </code></pre></div>
 <p><strong>Disconnect:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>disconnect
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>disconnect
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After initial setup:</p>
@@ -2553,7 +2550,7 @@ configure wireless connections:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     

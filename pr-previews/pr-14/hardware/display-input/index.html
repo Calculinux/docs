@@ -2730,12 +2730,11 @@
 
 
 <h1 id="display-input-technical-details">Display &amp; Input Technical Details<a class="headerlink" href="#display-input-technical-details" title="Permanent link">&para;</a></h1>
-<p>This page provides technical implementation details about the PicoCalc display
-and keyboard drivers and device tree configuration.</p>
-<p>!!! info "Hardware Specifications" For high-level hardware specifications
-(display resolution, keyboard type, etc.), see the
-<a href="../specifications/">Hardware Specifications</a> page. This page focuses on driver
-implementation and device tree configuration.</p>
+<p>This page provides technical implementation details about the PicoCalc display and keyboard drivers and device tree configuration.</p>
+<div class="admonition info">
+<p class="admonition-title">Hardware Specifications</p>
+<p>For high-level hardware specifications (display resolution, keyboard type, etc.), see the <a href="../specifications/">Hardware Specifications</a> page. This page focuses on driver implementation and device tree configuration.</p>
+</div>
 <h2 id="display-system">Display System<a class="headerlink" href="#display-system" title="Permanent link">&para;</a></h2>
 <h3 id="lcd-panel-specifications">LCD Panel Specifications<a class="headerlink" href="#lcd-panel-specifications" title="Permanent link">&para;</a></h3>
 <table>
@@ -2772,10 +2771,10 @@ implementation and device tree configuration.</p>
 </tr>
 </tbody>
 </table>
-<p>!!! note "Panel Variations" The PicoCalc uses a 320×320 pixel display with an
-ILI9488 controller. The small text area (53×40 characters) means that many
-applications will wrap text lines, but this is usually manageable with proper
-terminal configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Panel Variations</p>
+<p>The PicoCalc uses a 320×320 pixel display with an ILI9488 controller. The small text area (53×40 characters) means that many applications will wrap text lines, but this is usually manageable with proper terminal configuration.</p>
+</div>
 <h3 id="spi-configuration">SPI Configuration<a class="headerlink" href="#spi-configuration" title="Permanent link">&para;</a></h3>
 <p>The display connects via SPI with the following characteristics:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SPI Bus: spi0
@@ -2784,9 +2783,10 @@ terminal configuration.</p>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Max Speed: 80 MHz (overclocked for better performance)
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Standard Speed: 40 MHz
 </code></pre></div>
-<p>!!! info "SPI Overclocking" Community testing shows the display SPI can be
-safely overclocked to 80MHz for improved performance, though this may be limited
-by SPI bandwidth for full framerate applications.</p>
+<div class="admonition info">
+<p class="admonition-title">SPI Overclocking</p>
+<p>Community testing shows the display SPI can be safely overclocked to 80MHz for improved performance, though this may be limited by SPI bandwidth for full framerate applications.</p>
+</div>
 <h3 id="framerate-limitations">Framerate Limitations<a class="headerlink" href="#framerate-limitations" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2811,50 +2811,45 @@ by SPI bandwidth for full framerate applications.</p>
 </tbody>
 </table>
 <h3 id="text-display-considerations">Text Display Considerations<a class="headerlink" href="#text-display-considerations" title="Permanent link">&para;</a></h3>
-<p>The 320×320 pixel display with 6×8 font provides a text area of <strong>53 columns ×
-40 rows</strong>. This is smaller than most software expects:</p>
+<p>The 320×320 pixel display with 6×8 font provides a text area of <strong>53 columns × 40 rows</strong>. This is smaller than most software expects:</p>
 <ul>
 <li>Standard terminal: 80×24 or larger</li>
 <li>Many applications assume at least 80 columns</li>
 <li>Text lines will often wrap, requiring horizontal scrolling</li>
 <li>Some TUI applications may have layout issues</li>
 </ul>
-<p><strong>Workarounds</strong>:</p>
-<ul>
-<li>Use applications designed for small terminals</li>
-<li>Configure <code>COLUMNS=53</code> and <code>LINES=40</code> environment variables</li>
-<li>Use terminal pagers with line wrapping (<code>less -S</code> for side-scrolling)</li>
-<li>Choose compact display options when available in applications</li>
-</ul>
+<p><strong>Workarounds</strong>:
+- Use applications designed for small terminals
+- Configure <code>COLUMNS=53</code> and <code>LINES=40</code> environment variables
+- Use terminal pagers with line wrapping (<code>less -S</code> for side-scrolling)
+- Choose compact display options when available in applications</p>
 <h3 id="backlight-control">Backlight Control<a class="headerlink" href="#backlight-control" title="Permanent link">&para;</a></h3>
 <p>The backlight is controlled by the STM32 MCU, not directly by the Linux system:</p>
-<p><strong>Current Implementation</strong>: Limited display sleep functionality <strong>Interface</strong>:
-Via MFD drivers (experimental) <strong>MCU Control</strong>: Brightness managed by keyboard
-MCU firmware</p>
-<p>!!! warning "Backlight Limitations" Current display sleep functionality does not
-yet control the backlight directly. Full backlight control is intended to be
-implemented through the experimental MFD drivers that communicate with the
-keyboard MCU.</p>
-<p><strong>Display Sleep</strong> (without backlight control):</p>
+<p><strong>Current Implementation</strong>: Limited display sleep functionality
+<strong>Interface</strong>: Via MFD drivers (experimental)
+<strong>MCU Control</strong>: Brightness managed by keyboard MCU firmware</p>
+<div class="admonition warning">
+<p class="admonition-title">Backlight Limitations</p>
+<p>Current display sleep functionality does not yet control the backlight directly. Full backlight control is intended to be implemented through the experimental MFD drivers that communicate with the keyboard MCU.</p>
+</div>
+<p><strong>Display Sleep</strong> (without backlight control):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Turn off display (framebuffer only)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Turn on display</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="display-driver">Display Driver<a class="headerlink" href="#display-driver" title="Permanent link">&para;</a></h3>
 <p>Calculinux uses a custom ILI9488 framebuffer driver:</p>
-<p><strong>Driver Name</strong>: <code>ili9488</code> <strong>Compatible</strong>: <code>ilitek,ili9488</code></p>
-<p><strong>Features</strong>:</p>
-<ul>
-<li>Direct framebuffer access (<code>/dev/fb0</code>)</li>
-<li>320×320 pixel resolution</li>
-<li>30 FPS target frame rate</li>
-<li>SPI interface at up to 80MHz</li>
-<li>Hardware-specific optimizations</li>
-</ul>
-<p><strong>Driver Location</strong>: Available in the
-<a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></p>
+<p><strong>Driver Name</strong>: <code>ili9488</code>
+<strong>Compatible</strong>: <code>ilitek,ili9488</code></p>
+<p><strong>Features</strong>:
+- Direct framebuffer access (<code>/dev/fb0</code>)
+- 320×320 pixel resolution
+- 30 FPS target frame rate
+- SPI interface at up to 80MHz
+- Hardware-specific optimizations</p>
+<p><strong>Driver Location</strong>: Available in the <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></p>
 <h3 id="device-tree-configuration">Device Tree Configuration<a class="headerlink" href="#device-tree-configuration" title="Permanent link">&para;</a></h3>
 <p>Actual device tree configuration from <code>rk3506-luckfox-lyra.dtsi</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">&amp;</span><span class="na">spi0</span><span class="w"> </span><span class="p">{</span>
@@ -2878,7 +2873,7 @@ keyboard MCU.</p>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">};</span>
 </code></pre></div>
-<p><strong>GPIO Pin Configuration</strong>:</p>
+<p><strong>GPIO Pin Configuration</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ili9488</span><span class="cm"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nl">ili9488_pins</span><span class="p">:</span><span class="w"> </span><span class="nf">ili9488-pins</span><span class="cm"> </span><span class="p">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">rockchip</span><span class="p">,</span><span class="n">pins</span><span class="w"> </span><span class="o">=</span>
@@ -2887,22 +2882,20 @@ keyboard MCU.</p>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PA2</span><span class="w"> </span><span class="na">RK_FUNC_GPIO</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">;</span><span class="w">  </span><span class="cm">/* RST */</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">};</span>
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
-<p><strong>Bandwidth Calculation</strong>:</p>
+<p><strong>Bandwidth Calculation</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>320 × 320 pixels × 2 bytes × 60 fps = 12.3 MB/s
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>At 80 MHz SPI: ~10 MB/s theoretical maximum
-</code></pre></div>
-<p>The driver implements:</p>
-<ul>
-<li>Frame skipping if needed</li>
-<li>Partial updates for efficiency</li>
-<li>Double buffering to reduce tearing</li>
-</ul>
+</code></pre></div></p>
+<p>The driver implements:
+- Frame skipping if needed
+- Partial updates for efficiency
+- Double buffering to reduce tearing</p>
 <h3 id="backlight-control_1">Backlight Control<a class="headerlink" href="#backlight-control_1" title="Permanent link">&para;</a></h3>
 <p>The backlight is controlled via PWM:</p>
 <p><strong>Interface</strong>: <code>/sys/class/backlight/picocalc/</code></p>
-<p><strong>Control</strong>:</p>
+<p><strong>Control</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Set brightness (0-255)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/brightness
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -2911,18 +2904,17 @@ keyboard MCU.</p>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Get maximum brightness</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>cat<span class="w"> </span>/sys/class/backlight/picocalc/max_brightness
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="keyboard-system">Keyboard System<a class="headerlink" href="#keyboard-system" title="Permanent link">&para;</a></h2>
 <h3 id="keyboard-architecture">Keyboard Architecture<a class="headerlink" href="#keyboard-architecture" title="Permanent link">&para;</a></h3>
-<p>The PicoCalc keyboard uses a sophisticated architecture with a dedicated
-microcontroller:</p>
-<p><strong>MCU</strong>: STM32F103R8T6 "southbridge" chip running Arduino code <strong>Interface</strong>:
-I2C communication to the Luckfox Lyra <strong>Matrix</strong>: Physical matrix keyboard
-handled internally by the MCU</p>
-<p>!!! info "MCU Southbridge Design" The keyboard MCU handles matrix scanning
-internally and presents a clean I2C interface to the main SBC. This design
-offloads keyboard processing and enables additional functionality like power
-management and brightness control.</p>
+<p>The PicoCalc keyboard uses a sophisticated architecture with a dedicated microcontroller:</p>
+<p><strong>MCU</strong>: STM32F103R8T6 "southbridge" chip running Arduino code
+<strong>Interface</strong>: I2C communication to the Luckfox Lyra
+<strong>Matrix</strong>: Physical matrix keyboard handled internally by the MCU</p>
+<div class="admonition info">
+<p class="admonition-title">MCU Southbridge Design</p>
+<p>The keyboard MCU handles matrix scanning internally and presents a clean I2C interface to the main SBC. This design offloads keyboard processing and enables additional functionality like power management and brightness control.</p>
+</div>
 <h3 id="mcu-functions">MCU Functions<a class="headerlink" href="#mcu-functions" title="Permanent link">&para;</a></h3>
 <p>The STM32F103R8T6 microcontroller provides multiple functions:</p>
 <table>
@@ -2968,60 +2960,54 @@ management and brightness control.</p>
 </table>
 <h3 id="firmware-options">Firmware Options<a class="headerlink" href="#firmware-options" title="Permanent link">&para;</a></h3>
 <h4 id="default-firmware">Default Firmware<a class="headerlink" href="#default-firmware" title="Permanent link">&para;</a></h4>
-<p><strong>Source</strong>:
-<a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a>
-<strong>Platform</strong>: Arduino code for STM32F103R8T6 <strong>Features</strong>: Basic keyboard and
-I2C communication</p>
+<p><strong>Source</strong>: <a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a>
+<strong>Platform</strong>: Arduino code for STM32F103R8T6
+<strong>Features</strong>: Basic keyboard and I2C communication</p>
 <h4 id="custom-bios-firmware">Custom BIOS Firmware<a class="headerlink" href="#custom-bios-firmware" title="Permanent link">&para;</a></h4>
-<p><strong>Source</strong>:
-<a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">Custom PicoCalc BIOS</a>
-<strong>Forum Discussion</strong>:
-<a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">Custom PicoCalc BIOS Thread</a>
-<strong>Additional Features</strong>:</p>
-<ul>
-<li>Real-Time Clock (RTC) support</li>
-<li>Enhanced power management</li>
-<li>Extended I2C functionality</li>
-</ul>
-<p>!!! note "Firmware Development" The keyboard MCU firmware is user-upgradeable,
-enabling community development of enhanced features and functionality.</p>
+<p><strong>Source</strong>: <a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">Custom PicoCalc BIOS</a>
+<strong>Forum Discussion</strong>: <a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">Custom PicoCalc BIOS Thread</a>
+<strong>Additional Features</strong>:
+- Real-Time Clock (RTC) support
+- Enhanced power management
+- Extended I2C functionality</p>
+<div class="admonition note">
+<p class="admonition-title">Firmware Development</p>
+<p>The keyboard MCU firmware is user-upgradeable, enabling community development of enhanced features and functionality.</p>
+</div>
 <h3 id="i2c-communication">I2C Communication<a class="headerlink" href="#i2c-communication" title="Permanent link">&para;</a></h3>
-<p><strong>I2C Address</strong>: (Device-specific, check firmware documentation) <strong>Bus Speed</strong>:
-Standard mode (100 kHz) or Fast mode (400 kHz) <strong>Protocol</strong>: Custom protocol
-defined by firmware</p>
+<p><strong>I2C Address</strong>: (Device-specific, check firmware documentation)
+<strong>Bus Speed</strong>: Standard mode (100 kHz) or Fast mode (400 kHz)
+<strong>Protocol</strong>: Custom protocol defined by firmware</p>
 <h3 id="linux-driver-integration">Linux Driver Integration<a class="headerlink" href="#linux-driver-integration" title="Permanent link">&para;</a></h3>
 <h4 id="mfd-multi-function-device-drivers">MFD (Multi-Function Device) Drivers<a class="headerlink" href="#mfd-multi-function-device-drivers" title="Permanent link">&para;</a></h4>
-<p><strong>Status</strong>: 🧪 Experimental - under development <strong>Purpose</strong>: Unified driver for
-all MCU functions</p>
-<p><strong>Driver Components</strong>:</p>
-<ul>
-<li>Keyboard input device</li>
-<li>Battery monitoring</li>
-<li>Brightness control</li>
-<li>Power management</li>
-<li>RTC support (custom firmware)</li>
-</ul>
-<p>!!! warning "Driver Development Status" The MFD drivers are experimental and not
-yet complete. They show promise but may not be fully functional in current
-releases.</p>
+<p><strong>Status</strong>: 🧪 Experimental - under development
+<strong>Purpose</strong>: Unified driver for all MCU functions</p>
+<p><strong>Driver Components</strong>:
+- Keyboard input device
+- Battery monitoring
+- Brightness control
+- Power management
+- RTC support (custom firmware)</p>
+<div class="admonition warning">
+<p class="admonition-title">Driver Development Status</p>
+<p>The MFD drivers are experimental and not yet complete. They show promise but may not be fully functional in current releases.</p>
+</div>
 <h3 id="keyboard-driver">Keyboard Driver<a class="headerlink" href="#keyboard-driver" title="Permanent link">&para;</a></h3>
-<p><strong>Driver Type</strong>: MFD (Multi-Function Device) with I2C communication <strong>Driver
-Name</strong>: <code>picocalc_mfd</code> (experimental)</p>
-<p><strong>Features</strong>:</p>
-<ul>
-<li>I2C communication with STM32 MCU</li>
-<li>Standard Linux input device interface</li>
-<li>Integration with MCU power management</li>
-<li>Battery monitoring support</li>
-<li>Brightness control interface</li>
-</ul>
+<p><strong>Driver Type</strong>: MFD (Multi-Function Device) with I2C communication
+<strong>Driver Name</strong>: <code>picocalc_mfd</code> (experimental)</p>
+<p><strong>Features</strong>:
+- I2C communication with STM32 MCU
+- Standard Linux input device interface
+- Integration with MCU power management
+- Battery monitoring support
+- Brightness control interface</p>
 <p><strong>Driver Location</strong>: <code>drivers/mfd/picocalc_mfd.c</code> (experimental)</p>
-<p>!!! info "Legacy vs MFD Drivers" Current stable releases may use simpler
-keyboard-only drivers, while experimental MFD drivers provide full MCU
-integration. Check your kernel configuration for which driver is active.</p>
+<div class="admonition info">
+<p class="admonition-title">Legacy vs MFD Drivers</p>
+<p>Current stable releases may use simpler keyboard-only drivers, while experimental MFD drivers provide full MCU integration. Check your kernel configuration for which driver is active.</p>
+</div>
 <h3 id="device-tree-configuration_1">Device Tree Configuration<a class="headerlink" href="#device-tree-configuration_1" title="Permanent link">&para;</a></h3>
-<p>Actual device tree configuration for I2C keyboard MCU from
-<code>rk3506-luckfox-lyra.dtsi</code>:</p>
+<p>Actual device tree configuration for I2C keyboard MCU from <code>rk3506-luckfox-lyra.dtsi</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&amp;</span><span class="na">i2c2</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">pinctrl-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">;</span>
@@ -3035,7 +3021,7 @@ integration. Check your kernel configuration for which driver is active.</p>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">};</span>
 </code></pre></div>
-<p><strong>I2C Pin Configuration</strong>:</p>
+<p><strong>I2C Pin Configuration</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&amp;</span><span class="na">pinctrl</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="na">rm_io11</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nl">rm_io11_i2c2_sda</span><span class="p">:</span><span class="w"> </span><span class="nf">rm-io11-i2c2-sda</span><span class="cm"> </span><span class="p">{</span>
@@ -3049,57 +3035,56 @@ integration. Check your kernel configuration for which driver is active.</p>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="p">};</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">};</span>
-</code></pre></div>
-<p>!!! note "I2C Configuration" The keyboard MCU is connected to I2C bus 2 at
-address 0x1F, running at 400kHz (fast mode).</p>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">I2C Configuration</p>
+<p>The keyboard MCU is connected to I2C bus 2 at address 0x1F, running at 400kHz (fast mode).</p>
+</div>
 <h3 id="input-device-interface">Input Device Interface<a class="headerlink" href="#input-device-interface" title="Permanent link">&para;</a></h3>
 <p>The keyboard appears as a standard Linux input device:</p>
 <p><strong>Device Path</strong>: <code>/dev/input/event0</code></p>
-<p><strong>Testing Input</strong>:</p>
+<p><strong>Testing Input</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># List input devices</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cat<span class="w"> </span>/proc/bus/input/devices
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Monitor keyboard events</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>evtest<span class="w"> </span>/dev/input/event0
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="custom-key-bindings">Custom Key Bindings<a class="headerlink" href="#custom-key-bindings" title="Permanent link">&para;</a></h3>
 <p>Users can remap keys using standard Linux tools:</p>
-<p><strong>Using udev/hwdb</strong>:</p>
+<p><strong>Using udev/hwdb</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># /etc/udev/hwdb.d/90-picocalc-keyboard.hwdb
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>evdev:input:b0003v*p*
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a> KEYBOARD_KEY_1e=leftshift
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="display-output">Display Output<a class="headerlink" href="#display-output" title="Permanent link">&para;</a></h2>
 <h3 id="console-text-mode">Console (Text Mode)<a class="headerlink" href="#console-text-mode" title="Permanent link">&para;</a></h3>
-<p><strong>Console Driver</strong>: <code>fbcon</code> (framebuffer console) <strong>Default Font</strong>: 6×8 pixels
+<p><strong>Console Driver</strong>: <code>fbcon</code> (framebuffer console)
+<strong>Default Font</strong>: 6×8 pixels
 <strong>Text Area</strong>: <strong>53 columns × 40 rows</strong> (at 320×320 with 6×8 font)</p>
-<p><strong>Configuration</strong>:</p>
+<p><strong>Configuration</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># /etc/default/console-setup</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">ACTIVE_CONSOLES</span><span class="o">=</span><span class="s2">&quot;/dev/tty[1-6]&quot;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">FONTFACE</span><span class="o">=</span><span class="s2">&quot;Terminus&quot;</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">FONTSIZE</span><span class="o">=</span><span class="s2">&quot;6x8&quot;</span>
-</code></pre></div>
-<p><strong>Font Rendering</strong>:</p>
-<ul>
-<li>Character size: 6×8 pixels</li>
-<li>Text area: 53×40 characters</li>
-<li>VGA text mode emulation</li>
-<li>UTF-8 support</li>
-</ul>
+</code></pre></div></p>
+<p><strong>Font Rendering</strong>:
+- Character size: 6×8 pixels
+- Text area: 53×40 characters
+- VGA text mode emulation
+- UTF-8 support</p>
 <h3 id="graphical-display">Graphical Display<a class="headerlink" href="#graphical-display" title="Permanent link">&para;</a></h3>
-<p>The display is graphics-capable but no graphical environment is installed by
-default:</p>
-<p><strong>Current State</strong>: Console-only by default <strong>Experimentation Encouraged</strong>:
-Community testing of graphical environments</p>
-<p><strong>Potential Display Servers</strong>:</p>
-<ul>
-<li><strong>X11</strong>: Would require <code>xf86-video-fbdev</code> driver installation</li>
-<li><strong>Wayland</strong>: Would require compositor with fbdev backend</li>
-<li><strong>Direct Rendering</strong>: Via <code>/dev/fb0</code> for custom applications</li>
-</ul>
-<p>!!! info "Graphics Capability" While Calculinux ships as console-only, the
-hardware supports graphics applications. Community experimentation with X11,
-Wayland, or direct framebuffer graphics is encouraged.</p>
+<p>The display is graphics-capable but no graphical environment is installed by default:</p>
+<p><strong>Current State</strong>: Console-only by default
+<strong>Experimentation Encouraged</strong>: Community testing of graphical environments</p>
+<p><strong>Potential Display Servers</strong>:
+- <strong>X11</strong>: Would require <code>xf86-video-fbdev</code> driver installation
+- <strong>Wayland</strong>: Would require compositor with fbdev backend
+- <strong>Direct Rendering</strong>: Via <code>/dev/fb0</code> for custom applications</p>
+<div class="admonition info">
+<p class="admonition-title">Graphics Capability</p>
+<p>While Calculinux ships as console-only, the hardware supports graphics applications. Community experimentation with X11, Wayland, or direct framebuffer graphics is encouraged.</p>
+</div>
 <h2 id="power-management">Power Management<a class="headerlink" href="#power-management" title="Permanent link">&para;</a></h2>
 <h3 id="display-sleep">Display Sleep<a class="headerlink" href="#display-sleep" title="Permanent link">&para;</a></h3>
 <p>The display can be put to sleep to save power:</p>
@@ -3119,7 +3104,7 @@ Wayland, or direct framebuffer graphics is encouraged.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="display-issues">Display Issues<a class="headerlink" href="#display-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Symptom</strong>: No display output</p>
-<p><strong>Check</strong>:</p>
+<p><strong>Check</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Verify framebuffer device exists</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
@@ -3128,27 +3113,23 @@ Wayland, or direct framebuffer graphics is encouraged.</p>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># View kernel logs</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>ili9488
-</code></pre></div>
+</code></pre></div></p>
 <p><strong>Symptom</strong>: Display corruption or tearing</p>
-<p><strong>Solutions</strong>:</p>
-<ul>
-<li>Check display cable is fully inserted</li>
-<li>Reduce SPI clock speed in device tree</li>
-<li>Enable double buffering</li>
-<li>Verify power supply stability</li>
-</ul>
+<p><strong>Solutions</strong>:
+- Check display cable is fully inserted
+- Reduce SPI clock speed in device tree
+- Enable double buffering
+- Verify power supply stability</p>
 <h3 id="keyboard-issues">Keyboard Issues<a class="headerlink" href="#keyboard-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Symptom</strong>: Keys not responding</p>
-<p><strong>Check via Serial Console</strong>:</p>
-<ol>
-<li>Connect to PicoCalc USB-C port at 1500000 baud</li>
-<li>Log in to the system</li>
-<li>Check which keyboard driver is loaded:</li>
-</ol>
+<p><strong>Check via Serial Console</strong>:
+1. Connect to PicoCalc USB-C port at 1500000 baud
+2. Log in to the system
+3. Check which keyboard driver is loaded:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Check for picocalc_kbd driver</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>picocalc_kbd
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Check for MFD keyboard driver</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Check for MFD keyboard driver  </span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>picocalc_mfd_kbd
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Try loading the alternative driver if needed</span>
@@ -3156,7 +3137,7 @@ Wayland, or direct framebuffer graphics is encouraged.</p>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1"># or</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>modprobe<span class="w"> </span>picocalc_kbd
 </code></pre></div>
-<p><strong>Additional Checks</strong>:</p>
+<p><strong>Additional Checks</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Verify input device exists</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/input/event*
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
@@ -3165,45 +3146,41 @@ Wayland, or direct framebuffer graphics is encouraged.</p>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Test raw input</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>evtest<span class="w"> </span>/dev/input/event0
-</code></pre></div>
-<p><strong>If Problems Persist</strong>: File a bug report with:</p>
-<ul>
-<li>Which drivers you tested</li>
-<li>Serial console output</li>
-<li>Kernel log messages (<code>dmesg | grep -i picocalc</code>)</li>
-</ul>
+</code></pre></div></p>
+<p><strong>If Problems Persist</strong>:
+File a bug report with:
+- Which drivers you tested
+- Serial console output
+- Kernel log messages (<code>dmesg | grep -i picocalc</code>)</p>
 <p><strong>Symptom</strong>: Intermittent key responses</p>
-<p><strong>Check</strong>:</p>
+<p><strong>Check</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Check I2C bus errors</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>i2c
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Monitor MCU communication</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># (requires debug firmware or driver)</span>
-</code></pre></div>
+</code></pre></div></p>
 <p><strong>Symptom</strong>: Key repeat too fast/slow</p>
-<p><strong>Adjust</strong>:</p>
+<p><strong>Adjust</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Set repeat rate (delay, rate)</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kbdrate<span class="w"> </span>-d<span class="w"> </span><span class="m">250</span><span class="w"> </span>-r<span class="w"> </span><span class="m">30</span>
-</code></pre></div>
+</code></pre></div></p>
 <h2 id="development-debugging">Development &amp; Debugging<a class="headerlink" href="#development-debugging" title="Permanent link">&para;</a></h2>
 <h3 id="graphics-programming">Graphics Programming<a class="headerlink" href="#graphics-programming" title="Permanent link">&para;</a></h3>
-<p>For graphics applications, we recommend using SDL rather than direct framebuffer
-access:</p>
-<p><strong>SDL (Simple DirectMedia Layer)</strong>:</p>
-<ul>
-<li>Cross-platform graphics library</li>
-<li>Handles framebuffer abstraction</li>
-<li>Better compatibility and portability</li>
-<li>Hardware acceleration where available</li>
-</ul>
+<p>For graphics applications, we recommend using SDL rather than direct framebuffer access:</p>
+<p><strong>SDL (Simple DirectMedia Layer)</strong>:
+- Cross-platform graphics library
+- Handles framebuffer abstraction
+- Better compatibility and portability
+- Hardware acceleration where available</p>
 <p><strong>SDL Documentation</strong>: <a href="https://wiki.libsdl.org/">SDL2 Documentation</a></p>
-<p><strong>Basic SDL Setup</strong>:</p>
+<p><strong>Basic SDL Setup</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SDL2/SDL.h&gt;</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="n">SDL_Init</span><span class="p">(</span><span class="n">SDL_INIT_VIDEO</span><span class="p">);</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="n">SDL_Window</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_CreateWindow</span><span class="p">(</span><span class="s">&quot;PicoCalc App&quot;</span><span class="p">,</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span><span class="w"> </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="n">SDL_Window</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_CreateWindow</span><span class="p">(</span><span class="s">&quot;PicoCalc App&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span><span class="w"> </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span><span class="w"> </span>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="n">SDL_WINDOW_SHOWN</span><span class="p">);</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="n">SDL_Renderer</span><span class="o">*</span><span class="w"> </span><span class="n">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_CreateRenderer</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
@@ -3214,7 +3191,7 @@ access:</p>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">    </span><span class="n">SDL_Quit</span><span class="p">();</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="reading-keyboard-events">Reading Keyboard Events<a class="headerlink" href="#reading-keyboard-events" title="Permanent link">&para;</a></h3>
 <p>Example Python code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evdev</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputDevice</span><span class="p">,</span> <span class="n">categorize</span><span class="p">,</span> <span class="n">ecodes</span>
@@ -3226,31 +3203,24 @@ access:</p>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">categorize</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="driver-source-code">Driver Source Code<a class="headerlink" href="#driver-source-code" title="Permanent link">&para;</a></h2>
-<p>The complete driver source code is available in the Calculinux picocalc-drivers
-repository:</p>
+<p>The complete driver source code is available in the Calculinux picocalc-drivers repository:</p>
 <ul>
-<li><strong>Display Driver (ILI9488)</strong>:
-  <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
-<li><strong>MFD Keyboard Driver</strong>:
-  <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
-<li><strong>Hisptoot Keyboard Driver</strong>:
-  <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
-<li><strong>Device Tree</strong>:
-  <a href="https://github.com/Calculinux/meta-calculinux">meta-calculinux repository</a></li>
+<li><strong>Display Driver (ILI9488)</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>MFD Keyboard Driver</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>Hisptoot Keyboard Driver</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>Device Tree</strong>: <a href="https://github.com/Calculinux/meta-calculinux">meta-calculinux repository</a></li>
 </ul>
 <h3 id="mcu-firmware-source-code">MCU Firmware Source Code<a class="headerlink" href="#mcu-firmware-source-code" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Default Firmware</strong>:
-  <a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a></li>
-<li><strong>Custom BIOS</strong>:
-  <a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">jackcartersmith/picocalc_BIOS</a></li>
+<li><strong>Default Firmware</strong>: <a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a></li>
+<li><strong>Custom BIOS</strong>: <a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">jackcartersmith/picocalc_BIOS</a></li>
 </ul>
-<p>!!! info "Driver Repository" Hardware-specific drivers are maintained in the
-picocalc-drivers repository, while the meta-calculinux repository contains the
-build system and device tree configurations.</p>
+<div class="admonition info">
+<p class="admonition-title">Driver Repository</p>
+<p>Hardware-specific drivers are maintained in the picocalc-drivers repository, while the meta-calculinux repository contains the build system and device tree configurations.</p>
+</div>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
-<p>Improvements to the display and keyboard drivers are welcome! See
-<a href="../../developer/contributing/">Contributing</a> for guidelines.</p>
+<p>Improvements to the display and keyboard drivers are welcome! See <a href="../../developer/contributing/">Contributing</a> for guidelines.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Learn about <a href="../power/">Power Management</a></li>
@@ -3279,7 +3249,7 @@ build system and device tree configurations.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 20:44:52 UTC">January 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 21:12:56 UTC">January 11, 2026</span>
   </span>
 
     
