@@ -1097,15 +1097,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-a-more-thourough-explinations-go-here" class="md-nav__link">
+  <a href="#see-the-package-management-documentation-for-a-more-thorough-explanation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        For a more thourough explinations go here
+        See the Package Management documentation For a more thorough explanation.
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="For a more thourough explinations go here">
+    <nav class="md-nav" aria-label="See the Package Management documentation For a more thorough explanation.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1825,15 +1825,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-a-more-thourough-explinations-go-here" class="md-nav__link">
+  <a href="#see-the-package-management-documentation-for-a-more-thorough-explanation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        For a more thourough explinations go here
+        See the Package Management documentation For a more thorough explanation.
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="For a more thourough explinations go here">
+    <nav class="md-nav" aria-label="See the Package Management documentation For a more thorough explanation.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1986,80 +1986,269 @@
 
 
 <h1 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Under Construction</p>
-<p>This page is currently being developed. Check back soon for application guides.</p>
-</div>
+<p>!!! warning "Under Construction" This page is currently being developed. Check
+back soon for application guides.</p>
 <h2 id="pre-installed-applications">Pre-installed applications<a class="headerlink" href="#pre-installed-applications" title="Permanent link">&para;</a></h2>
-<p>All Calculinux images come with at least these basic pre-installed packages. Some include directly usable applications, but most are the basic building blocks of a functional system:
-| Package | Basic description |
-|-------|-------------------|
-| acpid | Handles ACPI events such as power button presses and lid switches. |
-| alsa-lib | Core user-space library for the ALSA sound system. |
-| alsa-plugins | Additional ALSA audio plugins (mixing, routing, etc.). |
-| alsa-tools | Low-level tools for configuring and debugging ALSA audio hardware. |
-| alsa-utils | Common ALSA utilities like <code>alsamixer</code> and <code>aplay</code>. |
-| android-tools | Utilities for interacting with Android devices (adb, fastboot). |
-| autoconf | Tool for generating portable <code>configure</code> scripts for building software. |
-| bash | Primary interactive shell for command-line use and scripting. |
-| bash-completion | Tab-completion support for many shell commands. |
-| btrfs-tools | Utilities for managing and maintaining Btrfs filesystems. |
-| busybox | Lightweight collection of essential Unix command-line utilities. |
-| calculinux-update | Calculinux-specific system update tooling. |
-| cloud-utils-growpart | Tool to automatically expand disk partitions in cloud images. |
-| curl | Command-line tool for transferring data over network protocols. |
-| dosfstools | Utilities for creating and checking FAT filesystems. |
-| e2fsprogs | Tools for creating, checking, and repairing ext2/3/4 filesystems. |
-| e2fsprogs-resize2fs | Utility for resizing ext filesystems. |
-| file | Detects file types by inspecting their contents. |
-| gdb | GNU debugger for debugging applications and binaries. |
-| git | Distributed version control system for managing source code and files. |
-| grep | Tool for searching text using regular expressions. |
-| groff | Document formatting system used for man pages and text output. |
-| hoard-of-bitfonts-commodore | Retro-style bitmap console fonts inspired by Commodore systems. |
-| htop | Interactive process viewer and system monitor. |
-| i2c-tools | Utilities for interacting with I²C devices and buses. |
-| iw | Command-line tool for configuring wireless network devices. |
-| iwd | Modern wireless daemon for managing Wi-Fi connections. |
-| kbd-consolefonts | Bitmap fonts for Linux virtual consoles. |
-| kbd-keymaps | Keyboard layout definitions for console input. |
-| kernel-modules | Hardware drivers and kernel extensions needed for device support. |
-| libdrm-tests | Test programs for Direct Rendering Manager graphics support. |
-| libsdl | SDL 1.x library for multimedia and graphics applications. |
-| libsdl2 | SDL 2.x library for multimedia, input, and graphics applications. |
-| freetype | Font rendering library used by many graphical applications. |
-| links | Text-based web browser for terminal use. |
-| man-db | System for viewing and managing manual (man) pages. |
-| mtd-utils | Tools for managing raw flash memory devices (MTD). |
-| musl-locales | Locale data for systems using the musl C library. |
-| notcurses | Library for building rich text-based user interfaces in terminals. |
-| notcurses-tools | Demo and utility programs for notcurses. |
-| ntp | Synchronizes system time with network time servers. |
-| oldschool-console-fonts | Collection of classic-style console fonts. |
-| openssh | Secure remote login, command execution, and file transfer tools. |
-| opkg | Lightweight package manager for installing and updating software. |
-| overlayfs-tools | Utilities for managing OverlayFS-based filesystems. |
-| packagegroup-core-buildessential | Meta-package providing essential build tools (compiler, make, etc.). |
-| rauc | Robust update framework for embedded Linux systems. |
-| sdl2-test | Test and example programs for SDL2. |
-| shadow | User and password management utilities. |
-| sudo | Allows users to run commands with elevated privileges. |
-| systemd-analyze | Tools for analyzing system boot performance and state. |
-| terminus-font | Popular, readable fixed-width console font. |
-| u-boot-fw-config | Firmware configuration support for U-Boot bootloader. |
-| u-boot-rockchip-bootscript | Boot scripts for Rockchip-based systems using U-Boot. |
-| usbutils | Utilities for inspecting USB devices (e.g., <code>lsusb</code>). |
-| util-linux | Core system utilities for disk, mount, login, and system management. |
-| wget | Command-line utility for downloading files over HTTP/HTTPS/FTP. |</p>
+<p>All Calculinux images come with at least these basic pre-installed packages.
+Some include directly usable applications, but most are the basic building
+blocks of a functional system:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Basic description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acpid</td>
+<td>Handles ACPI events such as power button presses and lid switches.</td>
+</tr>
+<tr>
+<td>alsa-lib</td>
+<td>Core user-space library for ALSA (Advanced Linux Sound Architecture)</td>
+</tr>
+<tr>
+<td>alsa-plugins</td>
+<td>Additional ALSA audio plugins (mixing, routing, etc).</td>
+</tr>
+<tr>
+<td>alsa-tools</td>
+<td>Low-level tools for configuring and debugging ALSA audio hardware.</td>
+</tr>
+<tr>
+<td>alsa-utils</td>
+<td>Common ALSA utilities like <code>alsamixer</code> and <code>aplay</code>.</td>
+</tr>
+<tr>
+<td>android-tools</td>
+<td>Utilities for interacting with Android devices (adb, fastboot).</td>
+</tr>
+<tr>
+<td>autoconf</td>
+<td>Tool for generating portable <code>configure</code> scripts for building software.</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Primary interactive shell for command-line use and scripting.</td>
+</tr>
+<tr>
+<td>bash-completion</td>
+<td>Tab-completion support for many shell commands.</td>
+</tr>
+<tr>
+<td>btrfs-tools</td>
+<td>Utilities for managing and maintaining Btrfs filesystems.</td>
+</tr>
+<tr>
+<td>busybox</td>
+<td>Lightweight collection of essential UNIX command-line utilities.</td>
+</tr>
+<tr>
+<td>calculinux-update</td>
+<td>Calculinux-specific system update tooling.</td>
+</tr>
+<tr>
+<td>cloud-utils-growpart</td>
+<td>Tool to automatically expand disk partitions in cloud images.</td>
+</tr>
+<tr>
+<td>curl</td>
+<td>Command-line tool for transferring data over network protocols.</td>
+</tr>
+<tr>
+<td>dosfstools</td>
+<td>Utilities for creating and checking FAT filesystems.</td>
+</tr>
+<tr>
+<td>e2fsprogs</td>
+<td>Tools for creating, checking, and repairing ext2/3/4 filesystems.</td>
+</tr>
+<tr>
+<td>e2fsprogs-resize2fs</td>
+<td>Utility for resizing ext filesystems.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>Detects file types by inspecting their contents.</td>
+</tr>
+<tr>
+<td>gdb</td>
+<td>GNU debugger for debugging applications and binaries.</td>
+</tr>
+<tr>
+<td>git</td>
+<td>Distributed version control system for managing source code and files.</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>Tool for searching text using regular expressions.</td>
+</tr>
+<tr>
+<td>groff</td>
+<td>Document formatting system used for man pages and text output.</td>
+</tr>
+<tr>
+<td>hoard-of-bitfonts-commodore</td>
+<td>Retro-style bitmap console fonts inspired by Commodore systems.</td>
+</tr>
+<tr>
+<td>htop</td>
+<td>Interactive process viewer and system monitor.</td>
+</tr>
+<tr>
+<td>i2c-tools</td>
+<td>Utilities for interacting with I²C devices and buses.</td>
+</tr>
+<tr>
+<td>iw</td>
+<td>Command-line tool for configuring wireless network devices.</td>
+</tr>
+<tr>
+<td>iwd</td>
+<td>Modern wireless daemon for managing Wi-Fi connections.</td>
+</tr>
+<tr>
+<td>kbd-consolefonts</td>
+<td>Bitmap fonts for Linux virtual consoles.</td>
+</tr>
+<tr>
+<td>kbd-keymaps</td>
+<td>Keyboard layout definitions for console input.</td>
+</tr>
+<tr>
+<td>kernel-modules</td>
+<td>Hardware drivers and Kernel extensions needed for device support.</td>
+</tr>
+<tr>
+<td>libdrm-tests</td>
+<td>Test programs for Direct Rendering Manager graphics support.</td>
+</tr>
+<tr>
+<td>libsdl</td>
+<td>SDL 1.x library for multimedia and graphics applications.</td>
+</tr>
+<tr>
+<td>libsdl2</td>
+<td>SDL 2.x library for multimedia, input, and graphics applications.</td>
+</tr>
+<tr>
+<td>freetype</td>
+<td>Font rendering library used by many graphical applications.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Text-based web browser for terminal use.</td>
+</tr>
+<tr>
+<td>man-db</td>
+<td>System for viewing and managing manual (man) pages.</td>
+</tr>
+<tr>
+<td>mtd-utils</td>
+<td>Tools for managing raw flash memory devices (MTD).</td>
+</tr>
+<tr>
+<td>musl-locales</td>
+<td>Locale data for systems using the musl C library.</td>
+</tr>
+<tr>
+<td>notcurses</td>
+<td>Library for building rich text-based user interfaces in terminals.</td>
+</tr>
+<tr>
+<td>notcurses-tools</td>
+<td>Demo and utility programs for notcurses.</td>
+</tr>
+<tr>
+<td>ntp</td>
+<td>Synchronizes system time with network time servers.</td>
+</tr>
+<tr>
+<td>oldschool-console-fonts</td>
+<td>Collection of classic-style console fonts.</td>
+</tr>
+<tr>
+<td>openssh</td>
+<td>Secure remote login, command execution, and file transfer tools.</td>
+</tr>
+<tr>
+<td>opkg</td>
+<td>Lightweight package manager for installing and updating software.</td>
+</tr>
+<tr>
+<td>overlayfs-tools</td>
+<td>Utilities for managing OverlayFS-based filesystems.</td>
+</tr>
+<tr>
+<td>packagegroup-core-buildessential</td>
+<td>Meta-package providing essential build tools (compiler, make, etc.).</td>
+</tr>
+<tr>
+<td>rauc</td>
+<td>Robust update framework for embedded Linux systems.</td>
+</tr>
+<tr>
+<td>sdl2-test</td>
+<td>Test and example programs for SDL2.</td>
+</tr>
+<tr>
+<td>shadow</td>
+<td>User and password management utilities.</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>Grants users permission to run commands with elevated privileges.</td>
+</tr>
+<tr>
+<td>systemd-analyze</td>
+<td>Tools for analyzing system boot performance and state.</td>
+</tr>
+<tr>
+<td>terminus-font</td>
+<td>Popular, readable fixed-width console font.</td>
+</tr>
+<tr>
+<td>u-boot-fw-config</td>
+<td>Firmware configuration support for U-Boot bootloader.</td>
+</tr>
+<tr>
+<td>u-boot-rockchip-bootscript</td>
+<td>Boot scripts for Rockchip-based systems using U-Boot.</td>
+</tr>
+<tr>
+<td>usbutils</td>
+<td>Utilities for inspecting USB devices (e.g., <code>lsusb</code>).</td>
+</tr>
+<tr>
+<td>util-linux</td>
+<td>Core system utilities for disk, mount, login, and system management.</td>
+</tr>
+<tr>
+<td>wget</td>
+<td>Command-line utility for downloading files over HTTP/HTTPS/FTP.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="installing-new-applications">Installing new applications<a class="headerlink" href="#installing-new-applications" title="Permanent link">&para;</a></h2>
-<h3 id="for-a-more-thourough-explinations-go-here">For a more thourough explinations go <a href="../package-management/">here</a><a class="headerlink" href="#for-a-more-thourough-explinations-go-here" title="Permanent link">&para;</a></h3>
-<p>Calculinux uses <strong>opkg</strong> (Open Package Management) as the package manager. Below, you will find a basic guide on how to install applications using opkg:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    opkg update
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    opkg install package_name
+<h3 id="see-the-package-management-documentation-for-a-more-thorough-explanation">See the <a href="../package-management/">Package Management</a> documentation For a more thorough explanation.<a class="headerlink" href="#see-the-package-management-documentation-for-a-more-thorough-explanation" title="Permanent link">&para;</a></h3>
+<p>Calculinux uses <strong>opkg</strong> (Open Package Management) as the package manager.
+Below, you will find a basic guide on how to install applications by using opkg:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>opkg<span class="w"> </span>update
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>opkg<span class="w"> </span>install<span class="w"> </span>package_name
 </code></pre></div>
-<p>This, first checks the main package list by using <em>opkg update</em> to see if any new packages have been added or if any existing packages have been updated. Then, the <em>opkg install package_name</em> command will make opkg look for <em>package_name</em> in the list of available packages, and attempt to install it, if all dependancies are available.</p>
+<p>This, first checks the main package list by using <em>opkg update</em> to see if any
+new packages have been added or if any existing packages have been updated.
+Then, the <em>opkg install <em>package_name</em></em> command will make opkg look for
+<em>package_name</em> in the list of available packages, and try to install it, if all
+dependencies are available.</p>
 <h5 id="a-dependency-for-a-package-in-linux-is-another-package-required-for-it-to-function-properly-or-install-successfully">A dependency for a package in linux, is another package required for it to function properly or install successfully.<a class="headerlink" href="#a-dependency-for-a-package-in-linux-is-another-package-required-for-it-to-function-properly-or-install-successfully" title="Permanent link">&para;</a></h5>
-<p>If you are installing packages with network access, dependancies should automatically install allongside your chosen package, but, if you install your package without network access (by loading the package onto the micro sd card, and then installing it in the corresponding folder) it may come up with an error, which tells your which dependacy is not installed, which you will have to install manually, one by one.</p>
+<p>If you are installing packages with network access, dependencies should
+automatically install alongside your chosen package. If however you install your
+package without network access (by loading the package onto the micro sd card,
+and then installing it in the corresponding folder) it may come up with an error
+which tells you which dependency is not installed. You will then have to install
+it manually, one by one.</p>
 <h3 id="common-opkg-package-installation-options">Common opkg Package Installation Options<a class="headerlink" href="#common-opkg-package-installation-options" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2075,7 +2264,7 @@
 </tr>
 <tr>
 <td><strong>--force-reinstall</strong></td>
-<td>Forces the reinstallation of a package even if it's already installed. Useful for ensuring that you have the latest version of a package.</td>
+<td>Forces the reinstallation of a package even if it is already installed. Useful for ensuring that you have the latest version of a package.</td>
 </tr>
 <tr>
 <td><strong>--no-cache</strong></td>
@@ -2088,40 +2277,118 @@
 </tbody>
 </table>
 <h3 id="example-usage-of-opkg-package-installation-optionsarguements">Example Usage of opkg Package Installation Options/Arguements<a class="headerlink" href="#example-usage-of-opkg-package-installation-optionsarguements" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>opkg list-installed
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>opkg list-installed | grep &lt;package-name&gt; # Searches Filter
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>opkg install --force-reinstall package-name
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>opkg install --no-cache package-name
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>opkg install -d package-name
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>opkg search package-name # Searches for that package
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>opkg<span class="w"> </span>list-installed
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>opkg<span class="w"> </span>list-installed<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span><span class="c1"># Searches Filter</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>opkg<span class="w"> </span>install<span class="w"> </span>--force-reinstall<span class="w"> </span>package-name
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>opkg<span class="w"> </span>install<span class="w"> </span>--no-cache<span class="w"> </span>package-name
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>opkg<span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>package-name
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>opkg<span class="w"> </span>search<span class="w"> </span>package-name<span class="w"> </span><span class="c1"># Searches for that package</span>
 </code></pre></div>
-If you want to refer to the list of all available packages please refer to: <a href="https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/">Available Packages</a></p>
+<p>If you want to refer to the list of all available packages refer to:
+<a href="https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/">Available Packages</a></p>
 <h2 id="popular-application-recommendations">Popular Application Recommendations<a class="headerlink" href="#popular-application-recommendations" title="Permanent link">&para;</a></h2>
-<p>The following table with a selected list of 15 popular linux applications is based on the author's opinion:
-| Name       | Basic description | Where to find documentation |
-|-----------|--------------------|-----------------------------|
-| vim       | Modal text editor widely used for code and config editing on Unix-like systems. | Project site (vim.org) and <code>:help</code> inside Vim. |
-| nano      | Simple, beginner-friendly terminal text editor. | <code>man nano</code> and nano-editor.org. |
-| wget      | Non-interactive command-line downloader supporting HTTP, HTTPS, and FTP. | <code>man wget</code> and GNU Wget manual (gnu.org). |
-| curl      | Versatile tool to transfer data with URLs over many protocols (HTTP, HTTPS, FTP, etc.). | <code>man curl</code> and curl.se/docs. |
-| git       | Distributed version control system for tracking changes in source code. | <code>git help &lt;command&gt;</code> and git-scm.com/docs. |
-| bash      | Widely used Unix shell and command language. | <code>man bash</code> and GNU Bash Reference Manual. |
-| mc        | Text-mode file manager (Midnight Commander) with panels and built-in viewers/editors. | <code>man mc</code> and midnight-commander.org documentation. |
-| htop      | Interactive process viewer and system monitor for the terminal. | <code>man htop</code> and htop.dev documentation. |
-| tmux      | Terminal multiplexer to manage multiple terminal sessions in one window. | <code>man tmux</code> and tmux.github.io. |
-| openssh   | Tools for secure remote login and file transfer (ssh, scp, sftp, sshd). | <code>man ssh</code>, <code>man sshd</code>, and openssh.com/manual.html. |
-| rsync     | Fast incremental file transfer and synchronization utility. | <code>man rsync</code> and rsync.samba.org documentation. |
-| tar       | Standard archiving tool to create and extract tar archives. | <code>man tar</code> and GNU Tar manual. |
-| grep      | Searches text using regular expressions, often used in pipelines. | <code>man grep</code> and GNU Grep manual. |
-| sed       | Stream editor for filtering and transforming text. | <code>man sed</code> and GNU Sed manual. |
-| python3   | Popular high-level programming language interpreter. | <code>python3 -m pydoc</code> and docs.python.org. |</p>
+<p>The following table with a selected list of 15 popular linux applications is
+based on the author's opinion:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Basic description</th>
+<th>Where to find documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vim</td>
+<td>Modal text editor widely used for code and config editing on UNIX-like systems.</td>
+<td>Project site (vim.org) and <code>:help</code> inside Vim.</td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Simple, beginner-friendly terminal text editor.</td>
+<td><code>man nano</code> and nano-editor.org.</td>
+</tr>
+<tr>
+<td>wget</td>
+<td>Noninteractive command-line downloader supporting HTTP, HTTPS, and FTP.</td>
+<td><code>man wget</code> and GNU Wget manual (gnu.org).</td>
+</tr>
+<tr>
+<td>curl</td>
+<td>Versatile tool to transfer data with URLs over many protocols (HTTP, HTTPS, FTP, etc.).</td>
+<td><code>man curl</code> and curl.se/docs.</td>
+</tr>
+<tr>
+<td>git</td>
+<td>Distributed version control system for tracking changes in source code.</td>
+<td><code>git help &lt;command&gt;</code> and git-scm.com/docs.</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>Widely used Unix shell and command language.</td>
+<td><code>man bash</code> and GNU Bash Reference Manual.</td>
+</tr>
+<tr>
+<td>mc</td>
+<td>Text-mode file manager (Midnight Commander) with panels and built-in viewers/editors.</td>
+<td><code>man mc</code> and midnight-commander.org documentation.</td>
+</tr>
+<tr>
+<td>htop</td>
+<td>Interactive process viewer and system monitor for the terminal.</td>
+<td><code>man htop</code> and htop.dev documentation.</td>
+</tr>
+<tr>
+<td>tmux</td>
+<td>Terminal multiplexer to manage multiple terminal sessions in one window.</td>
+<td><code>man tmux</code> and tmux.github.io.</td>
+</tr>
+<tr>
+<td>openssh</td>
+<td>Tools for secure remote login and file transfer (ssh, scp, sftp, sshd).</td>
+<td><code>man ssh</code>, <code>man sshd</code>, and openssh.com/manual.html.</td>
+</tr>
+<tr>
+<td>rsync</td>
+<td>Fast incremental file transfer and synchronization utility.</td>
+<td><code>man rsync</code> and rsync.samba.org documentation.</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>Standard archiving tool to create and extract tar archives.</td>
+<td><code>man tar</code> and GNU Tar manual.</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>Searches text using regular expressions, often used in pipelines.</td>
+<td><code>man grep</code> and GNU Grep manual.</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>Stream editor for filtering and transforming text.</td>
+<td><code>man sed</code> and GNU Sed manual.</td>
+</tr>
+<tr>
+<td>python3</td>
+<td>Popular high-level programming language interpreter.</td>
+<td><code>python3 -m pydoc</code> and docs.python.org.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="application-configuration">Application Configuration<a class="headerlink" href="#application-configuration" title="Permanent link">&para;</a></h2>
 <p>Configuration for installed software is usually kept in two main places.</p>
 <ol>
-<li>System wide files in /etc</li>
-<li>Many important system and program settings are stored under /etc. These settings affect every user on the machine.</li>
-<li>You need root rights to change files here. Use sudo or switch to the root account.</li>
-<li>Be careful when you edit files in /etc. A wrong change can stop services or make the system fail to start.</li>
+<li>
+<p>System wide files in /etc</p>
+</li>
+<li>
+<p>Many important system and program settings are stored under /etc. These
+  settings affect every user on the machine.</p>
+</li>
+<li>You need root rights to change files here. Use sudo or switch to the root
+  account.</li>
+<li>Be careful when you edit files in /etc. A wrong change can stop services or
+  make the system fail to start.</li>
 <li>Before you edit anything in /etc, make a copy of the file. For example:</li>
 <li>
 <p>sudo cp /etc/example.conf /etc/example.conf.bak</p>
@@ -2129,34 +2396,54 @@ If you want to refer to the list of all available packages please refer to: <a h
 <li>
 <p>User settings in the home folder</p>
 </li>
-<li>Most applications save user specific settings in hidden files or folders in your home directory. These names start with a dot. Examples are ~/.config/, ~/.bashrc, or ~/.vimrc.</li>
-<li>Settings here only affect that user. They are usually safe to change without admin rights.</li>
+<li>
+<p>Most applications save user specific settings in hidden files or folders in
+  your home directory. These names start with a dot. Examples are ~/.config/,
+  ~/.bashrc, or ~/.vimrc.</p>
+</li>
+<li>Settings here only affect that user. They are usually safe to change without
+  admin rights.</li>
 <li>Common places you will see are:</li>
 <li>~/.config/appname/ for modern applications</li>
 <li>~/.appnamerc or ~/.appname for older programs</li>
 <li>~/.local/share/appname for per-user data</li>
 </ol>
-<p>Editing and testing tips
-- Back up the file before you edit. Keep a copy with a new name so you can restore it if needed.
-- Use a text editor you know, for example nano, vim, or micro.
-- If the file is in /etc, use sudo to save your changes.
-- After you change a setting, restart the application to see if the change worked. For system services you may need to restart the service or reboot.
-- If a change breaks something, restore the backup file to get back to the previous state.</p>
-<p>In-app settings
-- Many programs offer a settings or preferences menu you can use instead of editing files.
-- If you are not sure where a program keeps its settings, check its manual page with man, or look for a config file name in the program documentation.</p>
-<p>When to ask for help
-- If you are not sure what a setting does, search the web or ask the Calculinux community. Give details like the file name and the exact lines you changed so it is easier to help.</p>
+<p>Editing and testing tips</p>
+<ul>
+<li>Back up the file before you edit. Keep a copy with a new name so you can
+  restore it if needed.</li>
+<li>Use a text editor you know, for example nano, vim, or micro.</li>
+<li>If the file is in /etc, use sudo to save your changes.</li>
+<li>After you change a setting, restart the application to see if the change
+  worked. For system services you may need to restart the service or reboot.</li>
+<li>If a change breaks something, restore the backup file to get back to the
+  previous state.</li>
+</ul>
+<p>In-app settings</p>
+<ul>
+<li>Many programs offer a settings or preferences menu you can use instead of
+  editing files.</li>
+<li>If you are not sure where a program keeps its settings, check its manual page
+  with man, or look for a config file name in the program documentation.</li>
+</ul>
+<p>When to ask for help</p>
+<ul>
+<li>If you are not sure what a setting does, search the web or ask the Calculinux
+  community. Give details like the file name and the exact lines you changed so
+  it is easier to help.</li>
+</ul>
 <h2 id="troubleshooting-applications">Troubleshooting Applications<a class="headerlink" href="#troubleshooting-applications" title="Permanent link">&para;</a></h2>
 <p>Use these simple checks when an app does not work.</p>
 <ul>
 <li>Restart the app. Close it and open it again.</li>
-<li>Check the app logs. </li>
+<li>Check the app logs.</li>
 <li>Look for error messages when you start the app.</li>
-<li>Check if you have the right permissions. Some apps need root to run certain tasks.</li>
+<li>Check if you have the right permissions. Some apps need root to run certain
+  tasks.</li>
 <li>Revert to your backup if a config change broke the app.</li>
 <li>Update the package with opkg if the app is old or has a known bug.</li>
-<li>Ask for help and include what you tried, the error text, and the files you changed.</li>
+<li>Ask for help and include what you tried, the error text, and the files you
+  changed.</li>
 </ul>
 <hr />
 
@@ -2181,7 +2468,7 @@ If you want to refer to the list of all available packages please refer to: <a h
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 4, 2026 01:52:15 UTC">January 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 11, 2026 22:32:17 UTC">January 11, 2026</span>
   </span>
 
     
