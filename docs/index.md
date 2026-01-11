@@ -7,16 +7,21 @@ hide:
 
 ![Calculinux Logo](assets/calculinux.svg){ align=right width=200 }
 
-**Calculinux** is a powerful Linux distribution designed specifically for the **PicoCalc** handheld computer running on the **Luckfox Lyra** and similar single-board computers (SBCs).
+**Calculinux** is a powerful Linux distribution designed specifically for the
+**PicoCalc** handheld computer running on the **Luckfox Lyra** and similar
+single-board computers (SBCs).
 
 ## What is Calculinux?
 
-Calculinux transforms your PicoCalc into a fully-functional Linux computer, opening up endless possibilities for computation, development, and experimentation in a pocket-sized form factor.
+Calculinux transforms your PicoCalc into a fully-functional Linux computer,
+opening up endless possibilities for computation, development, and
+experimentation in a pocket-sized form factor.
 
 Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - ✅ **Optimized Performance** - Tailored specifically for the PicoCalc hardware
-- 🔧 **Developer-Friendly** - Full access to Linux tools and development environments
+- 🔧 **Developer-Friendly** - Full access to Linux tools and development
+  environments
 - 📦 **Package Management** - Easy installation of additional software
 - 🎨 **Customizable** - Open-source and fully modifiable
 - 🚀 **Active Development** - Regular updates and community support
@@ -26,37 +31,37 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 <!-- prettier-ignore -->
 <div class="grid cards" markdown>
 
--   :material-rocket-launch:{ .lg .middle } **Getting Started**
+- :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-    ---
+  ***
 
-    New to Calculinux? Start here to get up and running.
+  New to Calculinux? Start here to get up and running.
 
-    [:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
+  [:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
 
--   :material-chip:{ .lg .middle } **Hardware**
+- :material-chip:{ .lg .middle } **Hardware**
 
-    ---
+  ***
 
-    Learn about compatible hardware and modifications.
+  Learn about compatible hardware and modifications.
 
-    [:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
+  [:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
 
--   :material-book-open-variant:{ .lg .middle } **User Guide**
+- :material-book-open-variant:{ .lg .middle } **User Guide**
 
-    ---
+  ***
 
-    Discover how to use Calculinux effectively.
+  Discover how to use Calculinux effectively.
 
-    [:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
+  [:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
 
--   :material-code-braces:{ .lg .middle } **Developer Guide**
+- :material-code-braces:{ .lg .middle } **Developer Guide**
 
-    ---
+  ***
 
-    Build, customize, and contribute to Calculinux.
+  Build, customize, and contribute to Calculinux.
 
-    [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
+  [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
 
 </div>
 
@@ -65,10 +70,14 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 Calculinux is an open-source community project. Join us!
 
 - 💬 **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
-- 💬 **Forum Discussion**: [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
-- 💡 **Contributing**: See our [contribution guidelines](developer/contributing.md)
-- 📚 **Source Code**: [GitHub Repository](https://github.com/Calculinux/meta-calculinux)
+- 💬 **Forum Discussion**:
+  [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
+- 🐛 **Issue Tracker**:
+  [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues)
+- 💡 **Contributing**: See our
+  [contribution guidelines](developer/contributing.md)
+- 📚 **Source Code**:
+  [GitHub Repository](https://github.com/Calculinux/meta-calculinux)
 
 ## System Requirements
 
@@ -76,7 +85,7 @@ Calculinux is an open-source community project. Join us!
 !!! info "Minimum Requirements"
     - **Hardware**: PicoCalc with Luckfox Lyra SBC (128MB RAM)
     - **Storage**: MicroSD card (8GB minimum, 16GB+ recommended)
-    
+
     See [Hardware Requirements](getting-started/hardware-requirements.md) for purchasing guidance and [Hardware Specifications](hardware/specifications.md) for complete technical details.
 
 ## Current Status
