@@ -70,6 +70,8 @@ Vala
 
 # Commands
 kas-container
+adb
+fastboot
 
 # Packages & Libraries
 Realtek
@@ -155,6 +157,7 @@ README
 CONTRIBUTING
 Contributing
 DOCUMENTATION
+documentation
 mkdocs
 markdown
 
@@ -178,6 +181,7 @@ bindir
 bbfatal
 externalsrc
 Walnascar
+downloader
 
 # Technical terms and jargon
 valac
@@ -245,4 +249,19 @@ tmux
 rsync
 nano
 python3
+mc
+vim
+sed
+Sed
+scp
+sftp
+sshd
+downloader
+reinstallation
+alsamixer
+aplay
+adb
+fastboot
+pydoc
+lsusb
 

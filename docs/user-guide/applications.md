@@ -60,7 +60,7 @@ blocks of a functional system:
 | rauc                             | Robust update framework for embedded Linux systems.                     |
 | sdl2-test                        | Test and example programs for SDL2.                                     |
 | shadow                           | User and password management utilities.                                 |
-| sudo                             | Allows users to run commands with elevated privileges.                  |
+| sudo                             | Grants users permission to run commands with elevated privileges.       |
 | systemd-analyze                  | Tools for analyzing system boot performance and state.                  |
 | terminus-font                    | Popular, readable fixed-width console font.                             |
 | u-boot-fw-config                 | Firmware configuration support for U-Boot bootloader.                   |
@@ -71,43 +71,43 @@ blocks of a functional system:
 
 ## Installing new applications
 
-### For a more thourough explinations go [here](package-management.md)
+### See the [Package Management](package-management.md) documentation For a more thorough explanation.
 
 Calculinux uses **opkg** (Open Package Management) as the package manager.
-Below, you will find a basic guide on how to install applications using opkg:
+Below, you will find a basic guide on how to install applications by using opkg:
 
-```
-    opkg update
-    opkg install package_name
+```bash
+opkg update
+opkg install package_name
 ```
 
 This, first checks the main package list by using _opkg update_ to see if any
 new packages have been added or if any existing packages have been updated.
-Then, the _opkg install package_name_ command will make opkg look for
-_package_name_ in the list of available packages, and attempt to install it, if
-all dependancies are available.
+Then, the _opkg install *package_name*_ command will make opkg look for
+_package_name_ in the list of available packages, and try to install it, if
+all dependencies are available.
 
 ##### A dependency for a package in linux, is another package required for it to function properly or install successfully.
 
-If you are installing packages with network access, dependancies should
-automatically install allongside your chosen package, but, if you install your
+If you are installing packages with network access, dependencies should
+automatically install alongside your chosen package. If however you install your
 package without network access (by loading the package onto the micro sd card,
 and then installing it in the corresponding folder) it may come up with an
-error, which tells your which dependacy is not installed, which you will have to
-install manually, one by one.
+error which tells you which dependency is not installed. You will then have to
+install it manually, one by one.
 
 ### Common opkg Package Installation Options
 
 | Option                | Description                                                                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **-l**                | This option lists all available packages. It can be used to view a summary of packages that can be installed, updated, or removed.                                                                        |
-| **--force-reinstall** | Forces the reinstallation of a package even if it's already installed. Useful for ensuring that you have the latest version of a package.                                                                 |
+| **--force-reinstall** | Forces the reinstallation of a package even if it is already installed. Useful for ensuring that you have the latest version of a package.                                                                 |
 | **--no-cache**        | Disables caching during the installation process. This is useful when you want to ensure that the installation process always retrieves packages directly from the repository, rather than a local cache. |
 | **-d**                | This option allows for installing a package without dependencies. Use this with caution, as it might lead to an unstable configuration.                                                                   |
 
 ### Example Usage of opkg Package Installation Options/Arguements
 
-```opkg
+```bash
 opkg list-installed
 opkg list-installed | grep <package-name> # Searches Filter
 opkg install --force-reinstall package-name
@@ -116,7 +116,7 @@ opkg install -d package-name
 opkg search package-name # Searches for that package
 ```
 
-If you want to refer to the list of all available packages please refer to:
+If you want to refer to the list of all available packages refer to:
 [Available Packages](https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/)
 
 ## Popular Application Recommendations
@@ -126,9 +126,9 @@ based on the author's opinion:
 
 | Name    | Basic description                                                                       | Where to find documentation                         |
 | ------- | --------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| vim     | Modal text editor widely used for code and config editing on Unix-like systems.         | Project site (vim.org) and `:help` inside Vim.      |
+| vim     | Modal text editor widely used for code and config editing on UNIX-like systems.         | Project site (vim.org) and `:help` inside Vim.      |
 | nano    | Simple, beginner-friendly terminal text editor.                                         | `man nano` and nano-editor.org.                     |
-| wget    | Non-interactive command-line downloader supporting HTTP, HTTPS, and FTP.                | `man wget` and GNU Wget manual (gnu.org).           |
+| wget    | Noninteractive command-line downloader supporting HTTP, HTTPS, and FTP.                 | `man wget` and GNU Wget manual (gnu.org).           |
 | curl    | Versatile tool to transfer data with URLs over many protocols (HTTP, HTTPS, FTP, etc.). | `man curl` and curl.se/docs.                        |
 | git     | Distributed version control system for tracking changes in source code.                 | `git help <command>` and git-scm.com/docs.          |
 | bash    | Widely used Unix shell and command language.                                            | `man bash` and GNU Bash Reference Manual.           |
