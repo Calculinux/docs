@@ -5,6 +5,7 @@
 
 ## Pre-installed applications
 All Calculinux images come with at least these basic pre-installed packages. Some include directly usable applications, but most are the basic building blocks of a functional system:
+
 | Package | Basic description |
 |-------|-------------------|
 | acpid | Handles ACPI events such as power button presses and lid switches. |
@@ -82,6 +83,7 @@ This, first checks the main package list by using *opkg update* to see if any ne
 If you are installing packages with network access, dependancies should automatically install allongside your chosen package, but, if you install your package without network access (by loading the package onto the micro sd card, and then installing it in the corresponding folder) it may come up with an error, which tells your which dependacy is not installed, which you will have to install manually, one by one.
 
 ### Common opkg Package Installation Options
+
 | Option                | Description                                                                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **-l**                | This option lists all available packages. It can be used to view a summary of packages that can be installed, updated, or removed.                       |
@@ -102,6 +104,7 @@ If you want to refer to the list of all available packages please refer to: [Ava
 
 ## Popular Application Recommendations
 The following table with a selected list of 15 popular linux applications is based on the author's opinion:
+
 | Name       | Basic description | Where to find documentation |
 |-----------|--------------------|-----------------------------|
 | vim       | Modal text editor widely used for code and config editing on Unix-like systems. | Project site (vim.org) and `:help` inside Vim. |
