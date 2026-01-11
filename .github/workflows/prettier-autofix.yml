@@ -13,6 +13,8 @@ permissions:
 jobs:
   prettier:
     runs-on: ubuntu-latest
+    outputs:
+      changes_made: ${{ steps.auto-commit.outputs.changes_detected }}
     
     steps:
       - uses: actions/checkout@v6
@@ -32,9 +34,11 @@ jobs:
         run: prettier --write "docs/**/*.md"
 
       - name: Commit changes
+        id: auto-commit
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "style: auto-format markdown with prettier"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          skip_dirty_check: false
