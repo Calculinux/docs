@@ -21,17 +21,28 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Get changed markdown files
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            docs/**/*.md
 
       - name: Setup Node.js
+        if: steps.changed-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v6
         with:
           node-version: '20'
 
       - name: Install Prettier
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: npm install -g prettier
 
-      - name: Format markdown files
-        run: prettier --write "docs/**/*.md"
+      - name: Format changed markdown files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: prettier --write ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Commit changes
         id: auto-commit
