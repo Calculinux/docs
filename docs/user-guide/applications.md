@@ -1,8 +1,5 @@
 # Applications
 
-!!! warning "Under Construction"
-    This page is currently being developed. Check back soon for application guides.
-
 ## Pre-installed applications
 
 All Calculinux images come with at least these basic pre-installed packages. Some include directly usable applications, but most are the basic building blocks of a functional system:
