@@ -64,6 +64,7 @@ All Calculinux images come with at least these basic pre-installed packages. Som
 | wget | Command-line utility for downloading files over HTTP/HTTPS/FTP. |
 
 ## Installing new applications
+
 ### For a more thourough explinations go [here](package-management.md)
 
 Calculinux uses **opkg** (Open Package Management) as the package manager. Below, you will find a basic guide on how to install applications using opkg:
@@ -80,6 +81,7 @@ This, first checks the main package list by using *opkg update* to see if any ne
 If you are installing packages with network access, dependancies should automatically install allongside your chosen package, but, if you install your package without network access (by loading the package onto the micro sd card, and then installing it in the corresponding folder) it may come up with an error, which tells your which dependacy is not installed, which you will have to install manually, one by one.
 
 ### Common opkg Package Installation Options
+
 | Option                | Description                                                                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **-l**                | This option lists all available packages. It can be used to view a summary of packages that can be installed, updated, or removed.                       |
@@ -88,6 +90,7 @@ If you are installing packages with network access, dependancies should automati
 | **-d**                | This option allows for installing a package without dependencies. Use this with caution, as it might lead to an unstable configuration.                      |
 
 ### Example Usage of opkg Package Installation Options/Arguements
+
 ```opkg
 opkg list-installed
 opkg list-installed | grep <package-name> # Searches Filter
@@ -99,6 +102,7 @@ opkg search package-name # Searches for that package
 If you want to refer to the list of all available packages please refer to: [Available Packages](https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/)
 
 ## Popular Application Recommendations
+
 The following table with a selected list of 15 popular linux applications is based on the author's opinion:
 | Name       | Basic description | Where to find documentation |
 |-----------|--------------------|-----------------------------|
@@ -119,6 +123,7 @@ The following table with a selected list of 15 popular linux applications is bas
 | python3   | Popular high-level programming language interpreter. | `python3 -m pydoc` and docs.python.org. |
 
 ## Application Configuration
+
 Configuration for installed software is usually kept in two main places.
 
 1. System wide files in /etc
@@ -151,6 +156,7 @@ When to ask for help
 - If you are not sure what a setting does, search the web or ask the Calculinux community. Give details like the file name and the exact lines you changed so it is easier to help.
   
 ## Troubleshooting Applications
+
 Use these simple checks when an app does not work.
 
 - Restart the app. Close it and open it again.
