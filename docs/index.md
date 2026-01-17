@@ -33,7 +33,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-  ---
+  ***
 
   New to Calculinux? Start here to get up and running.
 
@@ -41,7 +41,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-chip:{ .lg .middle } **Hardware**
 
-  ---
+  ***
 
   Learn about compatible hardware and modifications.
 
@@ -49,7 +49,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-book-open-variant:{ .lg .middle } **User Guide**
 
-  ---
+  ***
 
   Discover how to use Calculinux effectively.
 
@@ -57,7 +57,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-code-braces:{ .lg .middle } **Developer Guide**
 
-  ---
+  ***
 
   Build, customize, and contribute to Calculinux.
 
