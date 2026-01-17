@@ -28,40 +28,39 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 ## Quick Links
 
-<!-- prettier-ignore -->
 <div class="grid cards" markdown>
 
-- :material-rocket-launch:{ .lg .middle } **Getting Started**
+-   :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-  ***
+    ---
 
-  New to Calculinux? Start here to get up and running.
+    New to Calculinux? Start here to get up and running.
 
-  [:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
+    [:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
 
-- :material-chip:{ .lg .middle } **Hardware**
+-   :material-chip:{ .lg .middle } **Hardware**
 
-  ***
+    ---
 
-  Learn about compatible hardware and modifications.
+    Learn about compatible hardware and modifications.
 
-  [:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
+    [:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
 
-- :material-book-open-variant:{ .lg .middle } **User Guide**
+-   :material-book-open-variant:{ .lg .middle } **User Guide**
 
-  ***
+    ---
 
-  Discover how to use Calculinux effectively.
+    Discover how to use Calculinux effectively.
 
-  [:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
+    [:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
 
-- :material-code-braces:{ .lg .middle } **Developer Guide**
+-   :material-code-braces:{ .lg .middle } **Developer Guide**
 
-  ***
+    ---
 
-  Build, customize, and contribute to Calculinux.
+    Build, customize, and contribute to Calculinux.
 
-  [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
+    [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
 
 </div>
 
@@ -81,7 +80,6 @@ Calculinux is an open-source community project. Join us!
 
 ## System Requirements
 
-<!-- prettier-ignore -->
 !!! info "Minimum Requirements"
     - **Hardware**: PicoCalc with Luckfox Lyra SBC (128MB RAM)
     - **Storage**: MicroSD card (8GB minimum, 16GB+ recommended)
@@ -117,6 +115,5 @@ Calculinux builds upon the incredible work of:
 
 ---
 
-<!-- prettier-ignore -->
 !!! tip "Ready to get started?"
     Head over to the [Getting Started Guide](getting-started/overview.md) to begin your Calculinux journey!

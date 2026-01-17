@@ -14,7 +14,6 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
 
 **Grid Cards** - Used on landing pages for visual navigation:
 ```markdown
-<!-- prettier-ignore -->
 <div class="grid cards" markdown>
 
 -   :material-icon:{ .lg .middle } **Title**
@@ -27,13 +26,11 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
 
 </div>
 ```
-- Always use `<!-- prettier-ignore -->` before grid cards (Prettier breaks the syntax)
 - Icons: use Material Design (`:material-*:`) or Octicons (`:octicons-*:`)
 - See [docs/index.md](../docs/index.md) lines 26-61 for canonical example
 
 **Admonitions** - For callouts:
 ```markdown
-<!-- prettier-ignore -->
 !!! tip "Optional Title"
     Content here
 
@@ -44,7 +41,6 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
     - Hardware: PicoCalc with Luckfox Lyra
     - Storage: 8GB+ microSD
 ```
-- Always use `<!-- prettier-ignore -->` before admonitions (Prettier can break 4-space indentation)
 - Types: `info`, `tip`, `warning`, `danger`, `note`, `example`
 - Content must be indented exactly 4 spaces
 
@@ -61,13 +57,6 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
 Defined in `mkdocs.yml` nav section (lines 79-119). **Always update nav when adding new pages**.
 
 Sections: Getting Started → Hardware → User Guide → Developer Guide → Troubleshooting → Resources
-
-### Line Wrapping
-
-**Prettier enforces 80-char hard wraps** (`.prettierrc.json`):
-- One sentence per line is preferred before Prettier runs
-- Prettier reformats to 80 chars on every PR (auto-commit via GitHub Actions)
-- Use `<!-- prettier-ignore -->` sparingly only when Prettier breaks syntax (grid cards, tables)
 
 ## Development Workflow
 
@@ -91,10 +80,9 @@ mkdocs build  # Output to site/
 
 All PRs trigger automated checks:
 
-1. **Prettier** (`.github/workflows/prettier-autofix.yml`) - Auto-commits formatting fixes
-2. **Markdown Lint** (markdownlint) - Syntax/structure validation (MD013 line length disabled)
-3. **Vale** - Prose linting for style/grammar
-4. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
+1. **Markdown Lint** (markdownlint) - Syntax/structure validation (MD013 line length disabled)
+2. **Vale** - Prose linting for style/grammar
+3. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
 
 Reviewdog posts inline comments on PRs. Don't block on minor style issues - let automation handle it.
 
@@ -110,7 +98,6 @@ Reviewdog posts inline comments on PRs. Don't block on minor style issues - let 
 - Active voice, present tense, second person
 - Test all commands before documenting
 - Use realistic examples from the actual codebase
-- One sentence per line in source (before Prettier wraps)
 
 ### Code Blocks
 Always specify language:

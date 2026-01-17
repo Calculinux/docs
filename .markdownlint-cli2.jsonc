@@ -6,6 +6,10 @@
     // Allow explicit ordered list numbering (1, 2, 3) instead of all 1s
     "MD029": {
       "style": "ordered"
-    }
+    },
+    "MD033": false,
+    "MD041": false,
+    "tables": true,
+    "ignore_code_blocks": true
   }
 }
