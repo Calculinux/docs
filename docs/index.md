@@ -28,12 +28,11 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 ## Quick Links
 
-<!-- prettier-ignore-start -->
 <div class="grid cards" markdown>
 
 - :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-  ***
+  ---
 
   New to Calculinux? Start here to get up and running.
 
@@ -41,7 +40,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-chip:{ .lg .middle } **Hardware**
 
-  ***
+  ---
 
   Learn about compatible hardware and modifications.
 
@@ -49,7 +48,7 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-book-open-variant:{ .lg .middle } **User Guide**
 
-  ***
+  ---
 
   Discover how to use Calculinux effectively.
 
@@ -57,14 +56,13 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 - :material-code-braces:{ .lg .middle } **Developer Guide**
 
-  ***
+  ---
 
   Build, customize, and contribute to Calculinux.
 
   [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
 
 </div>
-<!-- prettier-ignore-end -->
 
 ## Community & Support
 
@@ -82,7 +80,6 @@ Calculinux is an open-source community project. Join us!
 
 ## System Requirements
 
-<!-- prettier-ignore -->
 !!! info "Minimum Requirements"
     - **Hardware**: PicoCalc with Luckfox Lyra SBC (128MB RAM)
     - **Storage**: MicroSD card (8GB minimum, 16GB+ recommended)
@@ -118,6 +115,5 @@ Calculinux builds upon the incredible work of:
 
 ---
 
-<!-- prettier-ignore -->
 !!! tip "Ready to get started?"
     Head over to the [Getting Started Guide](getting-started/overview.md) to begin your Calculinux journey!
