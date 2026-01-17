@@ -28,46 +28,43 @@ Built on the robust **Yocto Project** framework, Calculinux provides:
 
 ## Quick Links
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 <div class="grid cards" markdown>
 
 - :material-rocket-launch:{ .lg .middle } **Getting Started**
 
-<!-- prettier-ignore -->
   ---
 
-New to Calculinux? Start here to get up and running.
+  New to Calculinux? Start here to get up and running.
 
-[:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
+  [:octicons-arrow-right-24: Installation Guide](getting-started/installation.md)
 
 - :material-chip:{ .lg .middle } **Hardware**
 
-<!-- prettier-ignore -->
   ---
 
-Learn about compatible hardware and modifications.
+  Learn about compatible hardware and modifications.
 
-[:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
+  [:octicons-arrow-right-24: Hardware Guide](hardware/luckfox-lyra.md)
 
 - :material-book-open-variant:{ .lg .middle } **User Guide**
 
-<!-- prettier-ignore -->
   ---
 
-Discover how to use Calculinux effectively.
+  Discover how to use Calculinux effectively.
 
-[:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
+  [:octicons-arrow-right-24: User Guide](user-guide/basic-usage.md)
 
 - :material-code-braces:{ .lg .middle } **Developer Guide**
 
-<!-- prettier-ignore -->
   ---
 
-Build, customize, and contribute to Calculinux.
+  Build, customize, and contribute to Calculinux.
 
-[:octicons-arrow-right-24: Developer Guide](developer/overview.md)
+  [:octicons-arrow-right-24: Developer Guide](developer/overview.md)
 
 </div>
+<!-- prettier-ignore-end -->
 
 ## Community & Support
 
