@@ -1,0 +1,3352 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Calculinux - A Linux distribution for PicoCalc with Luckfox Lyra and similar SBCs">
+      
+      
+        <meta name="author" content="Calculinux Project">
+      
+      
+        <link rel="canonical" href="https://calculinux.org/hardware/display-input/">
+      
+      
+        <link rel="prev" href="../modifications/">
+      
+      
+        <link rel="next" href="../compatibility/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/calculinux.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Display & Input - Calculinux</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/flatly.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#display-input-technical-details" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculinux" class="md-header__button md-logo" aria-label="Calculinux" data-md-component="logo">
+      
+  <img src="../../assets/calculinux.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculinux
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Display & Input
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Calculinux/meta-calculinux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Calculinux/meta-calculinux
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../picocalc/" class="md-tabs__link">
+          
+  
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/package-management/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/overview/" class="md-tabs__link">
+          
+  
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
+          
+  
+  
+  Troubleshooting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/community/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculinux" class="md-nav__button md-logo" aria-label="Calculinux" data-md-component="logo">
+      
+  <img src="../../assets/calculinux.svg" alt="logo">
+
+    </a>
+    Calculinux
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Calculinux/meta-calculinux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Calculinux/meta-calculinux
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/hardware-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../picocalc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PicoCalc Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../luckfox-lyra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Luckfox Lyra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Specifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display & Input
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display & Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#display-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd-panel-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LCD Panel Specifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framerate-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framerate Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-display-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Display Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlight-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlight Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Tree Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlight-control_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlight Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keyboard System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcu-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCU Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-bios-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom BIOS Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I2C Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-driver-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Driver Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux Driver Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mfd-multi-function-device-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MFD (Multi-Function Device) Drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Tree Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-device-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Device Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-key-bindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Key Bindings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-text-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console (Text Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphical Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-dimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Dimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development &amp; Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development &amp; Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphics-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphics Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-keyboard-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Keyboard Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver Source Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Driver Source Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mcu-firmware-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCU Firmware Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compatibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatibility Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial/console-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Console Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/package-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Package Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up Yocto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/calculinux-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculinux Update System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/project-ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boot Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/erase-nand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Erasing SPI NAND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/external-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#display-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd-panel-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LCD Panel Specifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framerate-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framerate Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-display-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Display Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlight-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlight Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Tree Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlight-control_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlight Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keyboard System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcu-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCU Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-bios-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom BIOS Firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I2C Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-driver-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Driver Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux Driver Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mfd-multi-function-device-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MFD (Multi-Function Device) Drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-tree-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Tree Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-device-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Device Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-key-bindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Key Bindings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-text-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console (Text Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphical Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-dimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Dimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development &amp; Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development &amp; Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphics-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphics Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-keyboard-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Keyboard Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver Source Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Driver Source Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mcu-firmware-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCU Firmware Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../picocalc/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/hardware/display-input.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="display-input-technical-details">Display &amp; Input Technical Details<a class="headerlink" href="#display-input-technical-details" title="Permanent link">&para;</a></h1>
+<p>This page provides technical implementation details about the PicoCalc display and keyboard drivers and device tree configuration.</p>
+<div class="admonition info">
+<p class="admonition-title">Hardware Specifications</p>
+<p>For high-level hardware specifications (display resolution, keyboard type, etc.), see the <a href="../specifications/">Hardware Specifications</a> page. This page focuses on driver implementation and device tree configuration.</p>
+</div>
+<h2 id="display-system">Display System<a class="headerlink" href="#display-system" title="Permanent link">&para;</a></h2>
+<h3 id="lcd-panel-specifications">LCD Panel Specifications<a class="headerlink" href="#lcd-panel-specifications" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Specification</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface</strong></td>
+<td>SPI (Serial Peripheral Interface)</td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>ILI9488 (or similar)</td>
+</tr>
+<tr>
+<td><strong>Resolution</strong></td>
+<td>320×320 pixels</td>
+</tr>
+<tr>
+<td><strong>Text Mode</strong></td>
+<td>53 columns × 40 rows (6×8 font)</td>
+</tr>
+<tr>
+<td><strong>Color Depth</strong></td>
+<td>16-bit RGB565</td>
+</tr>
+<tr>
+<td><strong>Refresh Rate</strong></td>
+<td>~60Hz</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Panel Variations</p>
+<p>The PicoCalc uses a 320×320 pixel display with an ILI9488 controller. The small text area (53×40 characters) means that many applications will wrap text lines, but this is usually manageable with proper terminal configuration.</p>
+</div>
+<h3 id="spi-configuration">SPI Configuration<a class="headerlink" href="#spi-configuration" title="Permanent link">&para;</a></h3>
+<p>The display connects via SPI with the following characteristics:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SPI Bus: spi0
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mode: 0 (CPOL=0, CPHA=0)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Bits per word: 8
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Max Speed: 80 MHz (overclocked for better performance)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Standard Speed: 40 MHz
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">SPI Overclocking</p>
+<p>Community testing shows the display SPI can be safely overclocked to 80MHz for improved performance, though this may be limited by SPI bandwidth for full framerate applications.</p>
+</div>
+<h3 id="framerate-limitations">Framerate Limitations<a class="headerlink" href="#framerate-limitations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Usage Type</th>
+<th>Expected Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text/Console</strong></td>
+<td>Full speed</td>
+</tr>
+<tr>
+<td><strong>Graphics Applications</strong></td>
+<td>&lt;60fps due to SPI bandwidth</td>
+</tr>
+<tr>
+<td><strong>Gaming</strong></td>
+<td>Varies by complexity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-display-considerations">Text Display Considerations<a class="headerlink" href="#text-display-considerations" title="Permanent link">&para;</a></h3>
+<p>The 320×320 pixel display with 6×8 font provides a text area of <strong>53 columns × 40 rows</strong>. This is smaller than most software expects:</p>
+<ul>
+<li>Standard terminal: 80×24 or larger</li>
+<li>Many applications assume at least 80 columns</li>
+<li>Text lines will often wrap, requiring horizontal scrolling</li>
+<li>Some TUI applications may have layout issues</li>
+</ul>
+<p><strong>Workarounds</strong>:
+- Use applications designed for small terminals
+- Configure <code>COLUMNS=53</code> and <code>LINES=40</code> environment variables
+- Use terminal pagers with line wrapping (<code>less -S</code> for side-scrolling)
+- Choose compact display options when available in applications</p>
+<h3 id="backlight-control">Backlight Control<a class="headerlink" href="#backlight-control" title="Permanent link">&para;</a></h3>
+<p>The backlight is controlled by the STM32 MCU, not directly by the Linux system:</p>
+<p><strong>Current Implementation</strong>: Limited display sleep functionality
+<strong>Interface</strong>: Via MFD drivers (experimental)
+<strong>MCU Control</strong>: Brightness managed by keyboard MCU firmware</p>
+<div class="admonition warning">
+<p class="admonition-title">Backlight Limitations</p>
+<p>Current display sleep functionality does not yet control the backlight directly. Full backlight control is intended to be implemented through the experimental MFD drivers that communicate with the keyboard MCU.</p>
+</div>
+<p><strong>Display Sleep</strong> (without backlight control):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Turn off display (framebuffer only)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Turn on display</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
+</code></pre></div></p>
+<h3 id="display-driver">Display Driver<a class="headerlink" href="#display-driver" title="Permanent link">&para;</a></h3>
+<p>Calculinux uses a custom ILI9488 framebuffer driver:</p>
+<p><strong>Driver Name</strong>: <code>ili9488</code>
+<strong>Compatible</strong>: <code>ilitek,ili9488</code></p>
+<p><strong>Features</strong>:
+- Direct framebuffer access (<code>/dev/fb0</code>)
+- 320×320 pixel resolution
+- 30 FPS target frame rate
+- SPI interface at up to 80MHz
+- Hardware-specific optimizations</p>
+<p><strong>Driver Location</strong>: Available in the <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></p>
+<h3 id="device-tree-configuration">Device Tree Configuration<a class="headerlink" href="#device-tree-configuration" title="Permanent link">&para;</a></h3>
+<p>Actual device tree configuration from <code>rk3506-luckfox-lyra.dtsi</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">&amp;</span><span class="na">spi0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">pinctrl-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">pinctrl-0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">rm_io7_spi0_clk</span><span class="w"> </span><span class="o">&amp;</span><span class="na">rm_io6_spi0_mosi</span><span class="w"> </span><span class="o">&amp;</span><span class="na">rm_io5_spi0_miso</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nl">ili9488</span><span class="p">:</span><span class="w"> </span><span class="nf">ili9488</span><span class="o">@</span><span class="mi">0</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ilitek,ili9488&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">80000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">pinctrl-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">pinctrl-0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">ili9488_pins</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">fps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">30</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">320</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">320</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">cs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="na">RK_PA4</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">dc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="na">RK_PA3</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="na">RK_PA2</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">};</span>
+</code></pre></div>
+<p><strong>GPIO Pin Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ili9488</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nl">ili9488_pins</span><span class="p">:</span><span class="w"> </span><span class="nf">ili9488-pins</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">rockchip</span><span class="p">,</span><span class="n">pins</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">            </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PA4</span><span class="w"> </span><span class="na">RK_FUNC_GPIO</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">,</span><span class="w">  </span><span class="cm">/* CS */</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">            </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PA3</span><span class="w"> </span><span class="na">RK_FUNC_GPIO</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">,</span><span class="w">  </span><span class="cm">/* DC */</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PA2</span><span class="w"> </span><span class="na">RK_FUNC_GPIO</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">;</span><span class="w">  </span><span class="cm">/* RST */</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">};</span>
+</code></pre></div></p>
+<h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
+<p><strong>Bandwidth Calculation</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>320 × 320 pixels × 2 bytes × 60 fps = 12.3 MB/s
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>At 80 MHz SPI: ~10 MB/s theoretical maximum
+</code></pre></div></p>
+<p>The driver implements:
+- Frame skipping if needed
+- Partial updates for efficiency
+- Double buffering to reduce tearing</p>
+<h3 id="backlight-control_1">Backlight Control<a class="headerlink" href="#backlight-control_1" title="Permanent link">&para;</a></h3>
+<p>The backlight is controlled via PWM:</p>
+<p><strong>Interface</strong>: <code>/sys/class/backlight/picocalc/</code></p>
+<p><strong>Control</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Set brightness (0-255)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/brightness
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Get current brightness</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>cat<span class="w"> </span>/sys/class/backlight/picocalc/brightness
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Get maximum brightness</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>cat<span class="w"> </span>/sys/class/backlight/picocalc/max_brightness
+</code></pre></div></p>
+<h2 id="keyboard-system">Keyboard System<a class="headerlink" href="#keyboard-system" title="Permanent link">&para;</a></h2>
+<h3 id="keyboard-architecture">Keyboard Architecture<a class="headerlink" href="#keyboard-architecture" title="Permanent link">&para;</a></h3>
+<p>The PicoCalc keyboard uses a sophisticated architecture with a dedicated microcontroller:</p>
+<p><strong>MCU</strong>: STM32F103R8T6 "southbridge" chip running Arduino code
+<strong>Interface</strong>: I2C communication to the Luckfox Lyra
+<strong>Matrix</strong>: Physical matrix keyboard handled internally by the MCU</p>
+<div class="admonition info">
+<p class="admonition-title">MCU Southbridge Design</p>
+<p>The keyboard MCU handles matrix scanning internally and presents a clean I2C interface to the main SBC. This design offloads keyboard processing and enables additional functionality like power management and brightness control.</p>
+</div>
+<h3 id="mcu-functions">MCU Functions<a class="headerlink" href="#mcu-functions" title="Permanent link">&para;</a></h3>
+<p>The STM32F103R8T6 microcontroller provides multiple functions:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Keyboard Matrix Scanning</strong></td>
+<td>✅ Active</td>
+<td>Internal matrix handling</td>
+</tr>
+<tr>
+<td><strong>I2C Communication</strong></td>
+<td>✅ Active</td>
+<td>Interface to Luckfox Lyra</td>
+</tr>
+<tr>
+<td><strong>Battery Monitoring</strong></td>
+<td>🧪 Experimental</td>
+<td>Via MFD drivers</td>
+</tr>
+<tr>
+<td><strong>Brightness Control</strong></td>
+<td>🧪 Experimental</td>
+<td>Screen and keyboard backlight</td>
+</tr>
+<tr>
+<td><strong>Power Button Support</strong></td>
+<td>🧪 Experimental</td>
+<td>System shutdown control</td>
+</tr>
+<tr>
+<td><strong>RTC (Alternate Firmware)</strong></td>
+<td>🚧 Future</td>
+<td>Custom firmware feature</td>
+</tr>
+</tbody>
+</table>
+<h3 id="firmware-options">Firmware Options<a class="headerlink" href="#firmware-options" title="Permanent link">&para;</a></h3>
+<h4 id="default-firmware">Default Firmware<a class="headerlink" href="#default-firmware" title="Permanent link">&para;</a></h4>
+<p><strong>Source</strong>: <a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a>
+<strong>Platform</strong>: Arduino code for STM32F103R8T6
+<strong>Features</strong>: Basic keyboard and I2C communication</p>
+<h4 id="custom-bios-firmware">Custom BIOS Firmware<a class="headerlink" href="#custom-bios-firmware" title="Permanent link">&para;</a></h4>
+<p><strong>Source</strong>: <a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">Custom PicoCalc BIOS</a>
+<strong>Forum Discussion</strong>: <a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">Custom PicoCalc BIOS Thread</a>
+<strong>Additional Features</strong>:
+- Real-Time Clock (RTC) support
+- Enhanced power management
+- Extended I2C functionality</p>
+<div class="admonition note">
+<p class="admonition-title">Firmware Development</p>
+<p>The keyboard MCU firmware is user-upgradeable, enabling community development of enhanced features and functionality.</p>
+</div>
+<h3 id="i2c-communication">I2C Communication<a class="headerlink" href="#i2c-communication" title="Permanent link">&para;</a></h3>
+<p><strong>I2C Address</strong>: (Device-specific, check firmware documentation)
+<strong>Bus Speed</strong>: Standard mode (100 kHz) or Fast mode (400 kHz)
+<strong>Protocol</strong>: Custom protocol defined by firmware</p>
+<h3 id="linux-driver-integration">Linux Driver Integration<a class="headerlink" href="#linux-driver-integration" title="Permanent link">&para;</a></h3>
+<h4 id="mfd-multi-function-device-drivers">MFD (Multi-Function Device) Drivers<a class="headerlink" href="#mfd-multi-function-device-drivers" title="Permanent link">&para;</a></h4>
+<p><strong>Status</strong>: 🧪 Experimental - under development
+<strong>Purpose</strong>: Unified driver for all MCU functions</p>
+<p><strong>Driver Components</strong>:
+- Keyboard input device
+- Battery monitoring
+- Brightness control
+- Power management
+- RTC support (custom firmware)</p>
+<div class="admonition warning">
+<p class="admonition-title">Driver Development Status</p>
+<p>The MFD drivers are experimental and not yet complete. They show promise but may not be fully functional in current releases.</p>
+</div>
+<h3 id="keyboard-driver">Keyboard Driver<a class="headerlink" href="#keyboard-driver" title="Permanent link">&para;</a></h3>
+<p><strong>Driver Type</strong>: MFD (Multi-Function Device) with I2C communication
+<strong>Driver Name</strong>: <code>picocalc_mfd</code> (experimental)</p>
+<p><strong>Features</strong>:
+- I2C communication with STM32 MCU
+- Standard Linux input device interface
+- Integration with MCU power management
+- Battery monitoring support
+- Brightness control interface</p>
+<p><strong>Driver Location</strong>: <code>drivers/mfd/picocalc_mfd.c</code> (experimental)</p>
+<div class="admonition info">
+<p class="admonition-title">Legacy vs MFD Drivers</p>
+<p>Current stable releases may use simpler keyboard-only drivers, while experimental MFD drivers provide full MCU integration. Check your kernel configuration for which driver is active.</p>
+</div>
+<h3 id="device-tree-configuration_1">Device Tree Configuration<a class="headerlink" href="#device-tree-configuration_1" title="Permanent link">&para;</a></h3>
+<p>Actual device tree configuration for I2C keyboard MCU from <code>rk3506-luckfox-lyra.dtsi</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&amp;</span><span class="na">i2c2</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">pinctrl-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">pinctrl-0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">rm_io10_i2c2_scl</span><span class="w"> </span><span class="o">&amp;</span><span class="na">rm_io11_i2c2_sda</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">400000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nl">picocalc_kbd</span><span class="p">:</span><span class="w"> </span><span class="nf">picocalc_kbd</span><span class="o">@</span><span class="mi">1f</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;picocalc_kbd&quot;</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x1F</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">};</span>
+</code></pre></div>
+<p><strong>I2C Pin Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&amp;</span><span class="na">pinctrl</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="na">rm_io11</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nl">rm_io11_i2c2_sda</span><span class="p">:</span><span class="w"> </span><span class="nf">rm-io11-i2c2-sda</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">            </span><span class="n">rockchip</span><span class="p">,</span><span class="n">pins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PB3</span><span class="w"> </span><span class="mi">35</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nf">rm_io10</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="nl">rm_io10_i2c2_scl</span><span class="p">:</span><span class="w"> </span><span class="nf">rm-io10-i2c2-scl</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="n">rockchip</span><span class="p">,</span><span class="n">pins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PB2</span><span class="w"> </span><span class="mi">34</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">};</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">I2C Configuration</p>
+<p>The keyboard MCU is connected to I2C bus 2 at address 0x1F, running at 400kHz (fast mode).</p>
+</div>
+<h3 id="input-device-interface">Input Device Interface<a class="headerlink" href="#input-device-interface" title="Permanent link">&para;</a></h3>
+<p>The keyboard appears as a standard Linux input device:</p>
+<p><strong>Device Path</strong>: <code>/dev/input/event0</code></p>
+<p><strong>Testing Input</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># List input devices</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cat<span class="w"> </span>/proc/bus/input/devices
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Monitor keyboard events</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>evtest<span class="w"> </span>/dev/input/event0
+</code></pre></div></p>
+<h3 id="custom-key-bindings">Custom Key Bindings<a class="headerlink" href="#custom-key-bindings" title="Permanent link">&para;</a></h3>
+<p>Users can remap keys using standard Linux tools:</p>
+<p><strong>Using udev/hwdb</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># /etc/udev/hwdb.d/90-picocalc-keyboard.hwdb
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>evdev:input:b0003v*p*
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a> KEYBOARD_KEY_1e=leftshift
+</code></pre></div></p>
+<h2 id="display-output">Display Output<a class="headerlink" href="#display-output" title="Permanent link">&para;</a></h2>
+<h3 id="console-text-mode">Console (Text Mode)<a class="headerlink" href="#console-text-mode" title="Permanent link">&para;</a></h3>
+<p><strong>Console Driver</strong>: <code>fbcon</code> (framebuffer console)
+<strong>Default Font</strong>: 6×8 pixels
+<strong>Text Area</strong>: <strong>53 columns × 40 rows</strong> (at 320×320 with 6×8 font)</p>
+<p><strong>Configuration</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># /etc/default/console-setup</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">ACTIVE_CONSOLES</span><span class="o">=</span><span class="s2">&quot;/dev/tty[1-6]&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">FONTFACE</span><span class="o">=</span><span class="s2">&quot;Terminus&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">FONTSIZE</span><span class="o">=</span><span class="s2">&quot;6x8&quot;</span>
+</code></pre></div></p>
+<p><strong>Font Rendering</strong>:
+- Character size: 6×8 pixels
+- Text area: 53×40 characters
+- VGA text mode emulation
+- UTF-8 support</p>
+<h3 id="graphical-display">Graphical Display<a class="headerlink" href="#graphical-display" title="Permanent link">&para;</a></h3>
+<p>The display is graphics-capable but no graphical environment is installed by default:</p>
+<p><strong>Current State</strong>: Console-only by default
+<strong>Experimentation Encouraged</strong>: Community testing of graphical environments</p>
+<p><strong>Potential Display Servers</strong>:
+- <strong>X11</strong>: Would require <code>xf86-video-fbdev</code> driver installation
+- <strong>Wayland</strong>: Would require compositor with fbdev backend
+- <strong>Direct Rendering</strong>: Via <code>/dev/fb0</code> for custom applications</p>
+<div class="admonition info">
+<p class="admonition-title">Graphics Capability</p>
+<p>While Calculinux ships as console-only, the hardware supports graphics applications. Community experimentation with X11, Wayland, or direct framebuffer graphics is encouraged.</p>
+</div>
+<h2 id="power-management">Power Management<a class="headerlink" href="#power-management" title="Permanent link">&para;</a></h2>
+<h3 id="display-sleep">Display Sleep<a class="headerlink" href="#display-sleep" title="Permanent link">&para;</a></h3>
+<p>The display can be put to sleep to save power:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Turn off display</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Turn on display</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
+</code></pre></div>
+<h3 id="automatic-dimming">Automatic Dimming<a class="headerlink" href="#automatic-dimming" title="Permanent link">&para;</a></h3>
+<p>Configure automatic dimming:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Using systemd-logind</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># /etc/systemd/logind.conf</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nv">IdleAction</span><span class="o">=</span>ignore
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nv">IdleActionSec</span><span class="o">=</span>5min
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="display-issues">Display Issues<a class="headerlink" href="#display-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Symptom</strong>: No display output</p>
+<p><strong>Check</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Verify framebuffer device exists</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Check ILI9488 driver loaded</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ili9488
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># View kernel logs</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>ili9488
+</code></pre></div></p>
+<p><strong>Symptom</strong>: Display corruption or tearing</p>
+<p><strong>Solutions</strong>:
+- Check display cable is fully inserted
+- Reduce SPI clock speed in device tree
+- Enable double buffering
+- Verify power supply stability</p>
+<h3 id="keyboard-issues">Keyboard Issues<a class="headerlink" href="#keyboard-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Symptom</strong>: Keys not responding</p>
+<p><strong>Check via Serial Console</strong>:
+1. Connect to PicoCalc USB-C port at 1500000 baud
+2. Log in to the system
+3. Check which keyboard driver is loaded:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Check for picocalc_kbd driver</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>picocalc_kbd
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Check for MFD keyboard driver  </span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>picocalc_mfd_kbd
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Try loading the alternative driver if needed</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>modprobe<span class="w"> </span>picocalc_mfd_kbd
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1"># or</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>modprobe<span class="w"> </span>picocalc_kbd
+</code></pre></div>
+<p><strong>Additional Checks</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Verify input device exists</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/input/event*
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Check I2C communication</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="c1"># MCU is on I2C bus 2</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Test raw input</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>evtest<span class="w"> </span>/dev/input/event0
+</code></pre></div></p>
+<p><strong>If Problems Persist</strong>:
+File a bug report with:
+- Which drivers you tested
+- Serial console output
+- Kernel log messages (<code>dmesg | grep -i picocalc</code>)</p>
+<p><strong>Symptom</strong>: Intermittent key responses</p>
+<p><strong>Check</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Check I2C bus errors</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>i2c
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Monitor MCU communication</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># (requires debug firmware or driver)</span>
+</code></pre></div></p>
+<p><strong>Symptom</strong>: Key repeat too fast/slow</p>
+<p><strong>Adjust</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Set repeat rate (delay, rate)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kbdrate<span class="w"> </span>-d<span class="w"> </span><span class="m">250</span><span class="w"> </span>-r<span class="w"> </span><span class="m">30</span>
+</code></pre></div></p>
+<h2 id="development-debugging">Development &amp; Debugging<a class="headerlink" href="#development-debugging" title="Permanent link">&para;</a></h2>
+<h3 id="graphics-programming">Graphics Programming<a class="headerlink" href="#graphics-programming" title="Permanent link">&para;</a></h3>
+<p>For graphics applications, we recommend using SDL rather than direct framebuffer access:</p>
+<p><strong>SDL (Simple DirectMedia Layer)</strong>:
+- Cross-platform graphics library
+- Handles framebuffer abstraction
+- Better compatibility and portability
+- Hardware acceleration where available</p>
+<p><strong>SDL Documentation</strong>: <a href="https://wiki.libsdl.org/">SDL2 Documentation</a></p>
+<p><strong>Basic SDL Setup</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SDL2/SDL.h&gt;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="n">SDL_Init</span><span class="p">(</span><span class="n">SDL_INIT_VIDEO</span><span class="p">);</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="n">SDL_Window</span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_CreateWindow</span><span class="p">(</span><span class="s">&quot;PicoCalc App&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span><span class="w"> </span><span class="n">SDL_WINDOWPOS_UNDEFINED</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="n">SDL_WINDOW_SHOWN</span><span class="p">);</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="n">SDL_Renderer</span><span class="o">*</span><span class="w"> </span><span class="n">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDL_CreateRenderer</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="c1">// Your graphics code here</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">    </span><span class="n">SDL_DestroyRenderer</span><span class="p">(</span><span class="n">renderer</span><span class="p">);</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="n">SDL_DestroyWindow</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">    </span><span class="n">SDL_Quit</span><span class="p">();</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="reading-keyboard-events">Reading Keyboard Events<a class="headerlink" href="#reading-keyboard-events" title="Permanent link">&para;</a></h3>
+<p>Example Python code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evdev</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputDevice</span><span class="p">,</span> <span class="n">categorize</span><span class="p">,</span> <span class="n">ecodes</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">dev</span> <span class="o">=</span> <span class="n">InputDevice</span><span class="p">(</span><span class="s1">&#39;/dev/input/event0&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">dev</span><span class="o">.</span><span class="n">read_loop</span><span class="p">():</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">ecodes</span><span class="o">.</span><span class="n">EV_KEY</span><span class="p">:</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">categorize</span><span class="p">(</span><span class="n">event</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="driver-source-code">Driver Source Code<a class="headerlink" href="#driver-source-code" title="Permanent link">&para;</a></h2>
+<p>The complete driver source code is available in the Calculinux picocalc-drivers repository:</p>
+<ul>
+<li><strong>Display Driver (ILI9488)</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>MFD Keyboard Driver</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>Hisptoot Keyboard Driver</strong>: <a href="https://github.com/Calculinux/picocalc-drivers">picocalc-drivers repository</a></li>
+<li><strong>Device Tree</strong>: <a href="https://github.com/Calculinux/meta-calculinux">meta-calculinux repository</a></li>
+</ul>
+<h3 id="mcu-firmware-source-code">MCU Firmware Source Code<a class="headerlink" href="#mcu-firmware-source-code" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Default Firmware</strong>: <a href="https://github.com/clockworkpi/PicoCalc/tree/master/Code/picocalc_keyboard">clockworkpi/PicoCalc</a></li>
+<li><strong>Custom BIOS</strong>: <a href="https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS">jackcartersmith/picocalc_BIOS</a></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Driver Repository</p>
+<p>Hardware-specific drivers are maintained in the picocalc-drivers repository, while the meta-calculinux repository contains the build system and device tree configurations.</p>
+</div>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>Improvements to the display and keyboard drivers are welcome! See <a href="../../developer/contributing/">Contributing</a> for guidelines.</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn about <a href="../power/">Power Management</a></li>
+<li>Review <a href="../modifications/">Hardware Modifications</a></li>
+<li>Explore <a href="../../developer/kernel/">Kernel Development</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:49:37 UTC">October 22, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2025 04:07:24 UTC">October 7, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
