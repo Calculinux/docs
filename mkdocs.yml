@@ -103,6 +103,7 @@ nav:
     - Building Calculinux: developer/building.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
+    - Project Ideas: developer/project-ideas.md
   
   - Troubleshooting:
     - Common Issues: troubleshooting/common-issues.md
