@@ -93,6 +93,7 @@ nav:
     - Serial Console Access: hardware/serial/console-access.md
   
   - User Guide:
+    - Basic Usage: user-guide/basic-usage.md
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
     - Applications: user-guide/applications.md
