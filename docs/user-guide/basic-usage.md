@@ -1,11 +1,8 @@
 # Basic Usage
 
-!!! warning "Under Construction"
-    This page is currently being developed. Check back soon for comprehensive usage instructions.
-
 ## Getting Started
 
-For now, please refer to:
+First, please refer to (if you haven't already):
 
 - [Quick Start Guide](../getting-started/quick-start.md) - Essential commands and tips
 - [First Boot](../getting-started/first-boot.md) - Initial setup and configuration
@@ -55,14 +52,63 @@ The Linux Command Line can be difficult at first, but once you get the hang of i
 
 For more thourough command explinations, and a larger list, you may want to refer to: [100+ Linux Commands: A Complete Guide for Beginners and Professionals](https://dev.to/10000coders/100-linux-commands-a-complete-guide-for-beginners-and-professionals-5404)
 
-## Coming Soon
+## File management
 
-This section will cover:
+You can do all file work on calculinux from the shell, but a visual tool is often quicker for day‑to‑day tasks like moving lots of files or comparing two folders.
 
-- File management (using mc and others, not command line because already explained above)
-- System monitoring (using packages and command line)
-- Common tasks
+### Midnight Commander
+
+Midnight Commander (mc) is a TUI file manager that runs in your terminal and shows two panels side by side. It fits well with calculinux because it is light, keyboard‑driven, and doesn’t require a full desktop.
+
+### Starting mc
+
+Open a terminal, go to any directory you like, and run mc.
+It will take over the terminal with a full‑screen interface; press ```F10``` to quit and you will be back at the same shell prompt.
+
+### Layout and navigation
+
+mc splits the screen into left and right panels, each showing a directory. The bottom line lists function-key shortcuts; use ```Tab``` to switch the active panel, ```arrow keys``` to move the cursor, Enter to enter a directory, and select the .. entry to go up.
+
+### Working with files
+
+Highlight a file or directory to act on it, or mark several items if you want to work on more than one at a time. The actual operations (copy, move, delete, etc.) are the same ones shown in the command table above; mc just gives you a clearer view of what you are doing.
+
+## System monitoring
+
+Monitoring your system helps keep it running smoothly by showing how resources are being used.
+
+### htop
+
+htop is a real‑time, interactive system monitor that displays CPU, memory, and process activity in a color‑coded layout.
+
+**Run:**
+```
+htop
+```
+
+**Basic keys:**
+
+|  Key  |         Action         |
+|-------|------------------------|
+| ↑ / ↓ | Move through processes |
+|  F3   |         Search         |
+|  F6   |     Sort by column     |
+|  F9   |      Kill process      |
+|  F10  |          Quit          |
+
+Use the bars at the top to quickly check load and memory usage.
+
+### Command line tools
+
+You can also check system health with basic commands:
+
+|  Command  |          Description           |
+|-----------|--------------------------------|
+|   `top`   |     Live view of processes     |
+| `uptime`  | System uptime and load average |
+| `free -h` |     Memory and swap usage      |
+|  `df -h`  |        Disk space usage        |
+| `ps aux`  |     Detailed process list      |
+
 
 ---
-
-*Content planned for future release*
