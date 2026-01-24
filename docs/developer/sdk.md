@@ -13,7 +13,7 @@ SDKs are published to the Calculinux download server. Pick the feed/subfolder ba
 
 Notes:
 - SDKs are built for x86_64 and aarch64 hosts; both target the Luckfox Lyra (ARMv7).
-- `main` branch builds do not produce SDKs.
+- `main` branch builds produce SDKs (continuous) under walnascar.
 - Each directory includes a `.sh` installer and a matching `.manifest` for reference.
 
 ## Install the SDK
