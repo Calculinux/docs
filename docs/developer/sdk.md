@@ -83,6 +83,27 @@ meson compile -C build
 
 The `$PKG_CONFIG_SYSROOT_DIR` and `$OECORE_TARGET_SYSROOT` variables from the SDK environment ensure headers and libraries resolve correctly.
 
+### Target triple and tune names
+
+The SDK names its environment file with the target triple plus the Yocto tune. For the Luckfox Lyra build you will see something like:
+
+```
+environment-setup-cortexa7thf-neon-vfpv4-poky-linux-musl*
+```
+
+- **cortexa7thf-neon-vfpv4** — the Yocto tune (CPU/core, thumb, hard-float, NEON/VFPv4).
+- **poky** — Yocto distribution identifier.
+- **linux** — kernel/OS.
+- **musl** — C library/ABI; if a different libc or ABI were used (e.g., glibc or soft-float), this part would change.
+
+If you build a different machine or change the tune/libc, the environment filename will change accordingly; always source the `environment-setup-*` present in your SDK install.
+
+#### Term glossary
+
+- **Tune**: Yocto shorthand for CPU features and ABI (e.g., `cortexa7thf-neon-vfpv4` = Cortex-A7, Thumb, hard-float, NEON/VFPv4). Changing the tune changes the generated binaries and the SDK filename.
+- **Target triple**: Canonical string that identifies CPU-vendor-OS-ABI in toolchains. In the SDK filename it appears after `environment-setup-` and encodes the tune, distro, OS, and libc pieces (`<tune>-poky-linux-musl`).
+- **Libc/ABI**: The C library and ABI in use (musl vs glibc, hard-float vs soft-float). Must match the runtime image to keep binary compatibility.
+
 ## Build out-of-tree kernel modules
 
 The SDK includes the target sysroot and matching kernel headers for the Luckfox Lyra image. Use the SDK cross toolchain to build modules that match the kernel shipped in the corresponding image.
