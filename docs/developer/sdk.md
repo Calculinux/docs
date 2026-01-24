@@ -104,9 +104,45 @@ If you build a different machine or change the tune/libc, the environment filena
 - **Target triple**: Canonical string that identifies CPU-vendor-OS-ABI in toolchains. In the SDK filename it appears after `environment-setup-` and encodes the tune, distro, OS, and libc pieces (`<tune>-poky-linux-musl`).
 - **Libc/ABI**: The C library and ABI in use (musl vs glibc, hard-float vs soft-float). Must match the runtime image to keep binary compatibility.
 
+## Install additional packages into the SDK
+
+The SDK sysroot can be extended with additional development libraries and tools from the Calculinux package feed. This is useful for adding dependencies your projects need (e.g., `libcurl-dev`, database headers, etc.).
+
+### Quick install (copy-paste ready)
+
+```bash
+source ~/calculinux-sdk/environment-setup-*
+WORK_DIR=$(mktemp -d) && cd "$WORK_DIR"
+ARCH=$(basename $OECORE_TARGET_SYSROOT | cut -d- -f1-4)
+curl -O "https://opkg.calculinux.org/ipk/walnascar/continuous/$ARCH/linux-libc-headers-dev_*.ipk"
+ar x *.ipk && tar xf data.tar.* -C "$OECORE_TARGET_SYSROOT"
+cd / && rm -rf "$WORK_DIR"
+```
+
+Replace `libcurl-dev` with the package you want. That's it!
+
+### Finding packages
+
+To browse available packages:
+
+```bash
+# List packages for your architecture
+ARCH=$(basename $OECORE_TARGET_SYSROOT | cut -d- -f1-4)
+curl https://opkg.calculinux.org/ipk/walnascar/continuous/$ARCH/ | grep ".ipk" | head -30
+```
+
+Or search from your host (no SDK needed):
+
+```bash
+curl https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/ | grep "libcurl"
+```
+
+!!! tip "Matching SDK and image versions"
+    Always install packages from the same feed/version as your SDK. Mismatched libraries can cause runtime issues on the device.
+
 ## Build out-of-tree kernel modules
 
-The SDK includes the target sysroot and matching kernel headers for the Luckfox Lyra image. Use the SDK cross toolchain to build modules that match the kernel shipped in the corresponding image.
+The SDK includes kernel headers and source in `usr/src/kernel/` for out-of-tree module development. These match the kernel shipped in the corresponding image, ensuring module ABI compatibility.
 
 1) Create a simple module (example):
 

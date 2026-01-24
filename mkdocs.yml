@@ -94,6 +94,8 @@ nav:
   
   - User Guide:
     - Basic Usage: user-guide/basic-usage.md
+    - Networking: user-guide/networking.md
+    - USB Networking: user-guide/usb-networking.md
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
     - Applications: user-guide/applications.md
