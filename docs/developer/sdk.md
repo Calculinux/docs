@@ -18,7 +18,7 @@ Notes:
 
 ## Install the SDK
 
-1) Download the installer that matches your host architecture:
+1. Download the installer that matches your host architecture:
 
 ```bash
 SDK_BASE=https://opkg.calculinux.org/sdk/develop/continuous
@@ -26,7 +26,7 @@ curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.sh
 curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.manifest
 ```
 
-2) Choose an install location (no sudo needed):
+2. Choose an install location (no sudo needed):
 
 ```bash
 INSTALL_DIR="$HOME/opt/calculinux-sdk"
@@ -34,7 +34,7 @@ chmod +x calculinux-sdk-luckfox-lyra-x86_64.sh
 ./calculinux-sdk-luckfox-lyra-x86_64.sh -d "$INSTALL_DIR" -- -y
 ```
 
-3) Optional: skim the manifest to see included headers and libraries:
+3. Optional: skim the manifest to see included headers and libraries:
 
 ```bash
 less calculinux-sdk-luckfox-lyra-x86_64.manifest
@@ -144,7 +144,7 @@ curl https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv
 
 The SDK includes kernel headers and source in `usr/src/kernel/` for out-of-tree module development. These match the kernel shipped in the corresponding image, ensuring module ABI compatibility.
 
-1) Create a simple module (example):
+1. Create a simple module (example):
 
 ```c
 // hello.c
@@ -167,13 +167,13 @@ module_exit(hello_exit);
 MODULE_LICENSE("GPL");
 ```
 
-2) Add a minimal `Makefile` that uses the kernel build system:
+2. Add a minimal `Makefile` that uses the kernel build system:
 
 ```make
 obj-m += hello.o
 ```
 
-3) Build the module with the SDK environment:
+3. Build the module with the SDK environment:
 
 ```bash
 source "$INSTALL_DIR"/environment-setup-*
@@ -183,7 +183,7 @@ KERNEL_SRC=$OECORE_TARGET_SYSROOT/usr/src/kernel
 ARCH=arm make -C "$KERNEL_SRC" M="$PWD" modules
 ```
 
-4) The resulting `hello.ko` can be copied to the device and loaded:
+4. The resulting `hello.ko` can be copied to the device and loaded:
 
 ```bash
 scp hello.ko root@<device>:/tmp/
