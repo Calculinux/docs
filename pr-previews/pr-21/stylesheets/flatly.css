@@ -1,0 +1,75 @@
+/* Flatly theme CSS for MkDocs Material */
+/* Based on Bootswatch Flatly theme */
+
+:root {
+  --md-primary-fg-color: #2C3E50;
+  --md-primary-fg-color--light: #34495E;
+  --md-primary-fg-color--dark: #1C2833;
+  --md-primary-bg-color: #FFFFFF;
+  --md-primary-bg-color--light: #F8F9FA;
+  
+  --md-accent-fg-color: #18BC9C;
+  --md-accent-fg-color--transparent: rgba(24, 188, 156, 0.1);
+  --md-accent-bg-color: #FFFFFF;
+  
+  --md-default-fg-color: #2C3E50;
+  --md-default-fg-color--light: #7B8A8B;
+  --md-default-fg-color--lighter: #95A5A6;
+  --md-default-fg-color--lightest: #ECF0F1;
+  --md-default-bg-color: #FFFFFF;
+  --md-default-bg-color--light: #F8F9FA;
+  --md-default-bg-color--lighter: #ECF0F1;
+  --md-default-bg-color--lightest: #F8F9FA;
+  
+  --md-code-fg-color: #E74C3C;
+  --md-code-bg-color: #F8F9FA;
+  --md-code-hl-color: rgba(24, 188, 156, 0.15);
+}
+
+/* Custom styling for admonitions */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left: 4px solid #18BC9C;
+}
+
+/* Button styling */
+.md-button {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+  color: white;
+}
+
+.md-button:hover,
+.md-button:focus {
+  background-color: #15A589;
+  border-color: #15A589;
+}
+
+.md-button--primary {
+  background-color: #2C3E50;
+  border-color: #2C3E50;
+}
+
+/* Link colors */
+.md-typeset a {
+  color: #18BC9C;
+}
+
+.md-typeset a:hover {
+  color: #15A589;
+}
+
+/* Table styling */
+.md-typeset table:not([class]) {
+  border: 1px solid #ECF0F1;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #18BC9C;
+  color: white;
+  font-weight: 700;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: rgba(24, 188, 156, 0.05);
+}
