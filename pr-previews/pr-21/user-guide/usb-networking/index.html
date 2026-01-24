@@ -1,0 +1,3362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Calculinux - A Linux distribution for PicoCalc with Luckfox Lyra and similar SBCs">
+      
+      
+        <meta name="author" content="Calculinux Project">
+      
+      
+        <link rel="canonical" href="https://calculinux.org/user-guide/usb-networking/">
+      
+      
+        <link rel="prev" href="../networking/">
+      
+      
+        <link rel="next" href="../package-management/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/calculinux.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>USB Networking - Calculinux</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/flatly.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usb-networking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculinux" class="md-header__button md-logo" aria-label="Calculinux" data-md-component="logo">
+      
+  <img src="../../assets/calculinux.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculinux
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              USB Networking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Calculinux/meta-calculinux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Calculinux/meta-calculinux
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hardware/picocalc/" class="md-tabs__link">
+          
+  
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../basic-usage/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/overview/" class="md-tabs__link">
+          
+  
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
+          
+  
+  
+  Troubleshooting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/community/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculinux" class="md-nav__button md-logo" aria-label="Calculinux" data-md-component="logo">
+      
+  <img src="../../assets/calculinux.svg" alt="logo">
+
+    </a>
+    Calculinux
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Calculinux/meta-calculinux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Calculinux/meta-calculinux
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/hardware-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/picocalc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PicoCalc Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/luckfox-lyra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Luckfox Lyra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/specifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Specifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/modifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/display-input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display & Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatibility Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/serial/console-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Console Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Host Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Desktop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gnome-networkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GNOME (NetworkManager)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNOME (NetworkManager)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-setup-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Setup (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Line Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kde-plasma-networkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KDE Plasma (NetworkManager)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd-networkd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemd-networkd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-your-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting to Your PicoCalc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to Your PicoCalc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Transfer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying Connection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-host-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On Host Computer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On PicoCalc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-not-appearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Not Appearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cannot-ping-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cannot Ping PicoCalc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-internet-on-picocalc-with-sharing-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Internet on PicoCalc (with Sharing Enabled)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-ip-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom IP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-simultaneous-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Simultaneous Connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adb-over-usb-functionfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADB over USB (FunctionFS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ADB over USB (FunctionFS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-on-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites (on PicoCalc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-gadget-adb-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure gadget ADB function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-adbd-auth-and-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure adbd auth and transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../package-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Package Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up Yocto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/calculinux-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculinux Update System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/project-ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boot Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/erase-nand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Erasing SPI NAND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/external-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Host Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux Desktop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gnome-networkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GNOME (NetworkManager)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNOME (NetworkManager)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-setup-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Setup (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Line Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kde-plasma-networkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KDE Plasma (NetworkManager)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd-networkd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemd-networkd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-your-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting to Your PicoCalc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to Your PicoCalc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Transfer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying Connection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-host-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On Host Computer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On PicoCalc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-not-appearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device Not Appearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cannot-ping-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cannot Ping PicoCalc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-internet-on-picocalc-with-sharing-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Internet on PicoCalc (with Sharing Enabled)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Topics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-ip-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom IP Ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-simultaneous-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Simultaneous Connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adb-over-usb-functionfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADB over USB (FunctionFS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ADB over USB (FunctionFS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-on-picocalc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites (on PicoCalc)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-gadget-adb-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure gadget ADB function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-adbd-auth-and-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure adbd auth and transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../basic-usage/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/user-guide/usb-networking.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="usb-networking">USB Networking<a class="headerlink" href="#usb-networking" title="Permanent link">&para;</a></h1>
+<p>Connect your PicoCalc directly to your computer via USB for fast, convenient network access without requiring WiFi or additional network infrastructure.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Calculinux includes built-in USB gadget networking support that makes your PicoCalc appear as a USB Ethernet adapter when connected to a host computer. This provides:</p>
+<ul>
+<li>🔌 <strong>Direct connection</strong> - No WiFi or router needed</li>
+<li>🚀 <strong>Fast transfer speeds</strong> - USB 2.0 High-Speed (480 Mbps)</li>
+<li>🔒 <strong>Secure</strong> - Direct connection without wireless exposure</li>
+<li>🌐 <strong>Internet sharing</strong> - Host can share its internet connection</li>
+<li>💻 <strong>Cross-platform</strong> - Works with Linux, macOS, and Windows</li>
+</ul>
+<p>The USB gadget provides two configurations:</p>
+<ul>
+<li><strong>RNDIS</strong> - For Windows compatibility</li>
+<li><strong>CDC-Ether/ECM</strong> - Standard USB Ethernet for Linux and macOS</li>
+</ul>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Connect</strong> your PicoCalc to your computer via USB cable</li>
+<li><strong>Configure</strong> the network interface on your host (see platform-specific sections below)</li>
+<li><strong>Connect</strong> to your PicoCalc:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Password: calc</span>
+</code></pre></div></li>
+</ol>
+<h2 id="network-configuration">Network Configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
+<p>The PicoCalc USB network interface is configured to support both static IP and DHCP:</p>
+<ul>
+<li><strong>Static IP</strong>: 192.168.7.2/24 (fallback)</li>
+<li><strong>DHCP</strong>: Automatically configured if host provides DHCP server</li>
+<li><strong>Interface</strong>: <code>usb0</code></li>
+</ul>
+<p>Your host computer should be configured with:
+- <strong>IP Address</strong>: 192.168.7.1/24 (for static configuration)
+- <strong>DHCP Server</strong>: Optional, for automatic configuration</p>
+<h2 id="host-configuration">Host Configuration<a class="headerlink" href="#host-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="linux-desktop">Linux Desktop<a class="headerlink" href="#linux-desktop" title="Permanent link">&para;</a></h3>
+<h4 id="gnome-networkmanager">GNOME (NetworkManager)<a class="headerlink" href="#gnome-networkmanager" title="Permanent link">&para;</a></h4>
+<p>GNOME's default NetworkManager makes USB networking simple:</p>
+<h5 id="automatic-setup-recommended">Automatic Setup (Recommended)<a class="headerlink" href="#automatic-setup-recommended" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Connect your PicoCalc via USB</li>
+<li>Click the <strong>network icon</strong> in the top bar</li>
+<li>Look for a new wired connection (may show as "USB Ethernet" or "Wired connection 2")</li>
+<li>Click the connection to view settings</li>
+<li>Click the <strong>gear icon</strong> ⚙️ next to the connection</li>
+</ol>
+<p><strong>Option A: With Internet Sharing (DHCP)</strong></p>
+<ol>
+<li>Go to the <strong>IPv4</strong> tab</li>
+<li>Set Method to: <strong>Shared to other computers</strong></li>
+<li>Click <strong>Apply</strong></li>
+</ol>
+<p>This automatically:
+- Assigns an IP to the host (typically 10.42.0.1)
+- Runs a DHCP server for the PicoCalc
+- Shares your internet connection via NAT</p>
+<p>Your PicoCalc will automatically get an IP address via DHCP!</p>
+<p><strong>Option B: Direct Connection (Static)</strong></p>
+<ol>
+<li>Go to the <strong>IPv4</strong> tab</li>
+<li>Set Method to: <strong>Manual</strong></li>
+<li>Click <strong>Add</strong> under Addresses:</li>
+<li>Address: <code>192.168.7.1</code></li>
+<li>Netmask: <code>24</code></li>
+<li>Gateway: (leave empty)</li>
+<li>Click <strong>Apply</strong></li>
+</ol>
+<h5 id="command-line-setup">Command Line Setup<a class="headerlink" href="#command-line-setup" title="Permanent link">&para;</a></h5>
+<p>Create a NetworkManager connection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># For internet sharing (DHCP)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>ifname<span class="w"> </span>usb0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>con-name<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>ipv4.method<span class="w"> </span>shared
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># For direct connection (static)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>ifname<span class="w"> </span>usb0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>con-name<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>ipv4.method<span class="w"> </span>manual<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.7.1/24
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Activate the connection</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span>
+</code></pre></div>
+<p>To switch between shared and static:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Switch to shared (with internet)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>shared
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Switch to static (direct only)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>ipv4.method<span class="w"> </span>manual<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.7.1/24
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;PicoCalc USB&quot;</span>
+</code></pre></div>
+<h4 id="kde-plasma-networkmanager">KDE Plasma (NetworkManager)<a class="headerlink" href="#kde-plasma-networkmanager" title="Permanent link">&para;</a></h4>
+<p>KDE also uses NetworkManager with a different interface:</p>
+<ol>
+<li>Connect your PicoCalc via USB</li>
+<li>Click the <strong>network icon</strong> in the system tray</li>
+<li>Click <strong>Configure Network Connections...</strong></li>
+<li>Find the new USB Ethernet connection (or click <strong>+</strong> to add a new connection)</li>
+<li>Select <strong>Ethernet</strong> as the connection type</li>
+</ol>
+<p><strong>Option A: With Internet Sharing (DHCP)</strong></p>
+<ol>
+<li>In the <strong>IPv4</strong> tab, set Method to: <strong>Shared</strong></li>
+<li>Click <strong>OK</strong> then <strong>Apply</strong></li>
+</ol>
+<p><strong>Option B: Direct Connection (Static)</strong></p>
+<ol>
+<li>In the <strong>IPv4</strong> tab, set Method to: <strong>Manual</strong></li>
+<li>Click <strong>Add</strong> next to Addresses:</li>
+<li>Address: <code>192.168.7.1</code></li>
+<li>Netmask: <code>24</code> or <code>255.255.255.0</code></li>
+<li>Click <strong>OK</strong> then <strong>Apply</strong></li>
+</ol>
+<p>The command-line approach (using <code>nmcli</code>) also works in KDE since it uses NetworkManager.</p>
+<h4 id="systemd-networkd">systemd-networkd<a class="headerlink" href="#systemd-networkd" title="Permanent link">&para;</a></h4>
+<p>If your system uses systemd-networkd instead of NetworkManager:</p>
+<p><strong>For internet sharing (with DHCP):</strong></p>
+<ol>
+<li>
+<p>Create <code>/etc/systemd/network/50-usb-picocalc.network</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[Match]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Name</span><span class="o">=</span><span class="s">usb0</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">[Network]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">Address</span><span class="o">=</span><span class="s">10.42.0.1/24</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">DHCPServer</span><span class="o">=</span><span class="s">yes</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="na">IPMasquerade</span><span class="o">=</span><span class="s">yes</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">[DHCPServer]</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="na">PoolOffset</span><span class="o">=</span><span class="s">100</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="na">PoolSize</span><span class="o">=</span><span class="s">50</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">EmitDNS</span><span class="o">=</span><span class="s">yes</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="na">DNS</span><span class="o">=</span><span class="s">1.1.1.1 8.8.8.8</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Enable IP forwarding:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;net.ipv4.ip_forward=1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/sysctl.d/50-ip-forward.conf
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p<span class="w"> </span>/etc/sysctl.d/50-ip-forward.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>Restart networking:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-networkd
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>For direct connection (static):</strong></p>
+<ol>
+<li>
+<p>Create <code>/etc/systemd/network/50-usb-picocalc.network</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[Match]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">Name</span><span class="o">=</span><span class="s">usb0</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">[Network]</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="na">Address</span><span class="o">=</span><span class="s">192.168.7.1/24</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Restart networking:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-networkd
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="macos">macOS<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect your PicoCalc via USB</li>
+<li>Open <strong>System Settings</strong> (or System Preferences on older versions)</li>
+<li>Go to <strong>Network</strong></li>
+<li>The USB device should appear (may show as "CDC Composite Gadget" or "USB 10/100 LAN")</li>
+<li>Select the USB device</li>
+</ol>
+<p><strong>Option A: Automatic (Internet Sharing)</strong></p>
+<ol>
+<li>Go back to <strong>System Settings</strong> → <strong>General</strong> → <strong>Sharing</strong></li>
+<li>Select <strong>Internet Sharing</strong> in the sidebar</li>
+<li>Set "Share your connection from:" to your active connection (Wi-Fi or Ethernet)</li>
+<li>Check the box next to the USB Ethernet device</li>
+<li>Enable Internet Sharing</li>
+</ol>
+<p>macOS will automatically configure DHCP for the PicoCalc!</p>
+<p><strong>Option B: Manual Configuration</strong></p>
+<ol>
+<li>Click <strong>Details</strong></li>
+<li>Go to the <strong>TCP/IP</strong> tab</li>
+<li>Set Configure IPv4: <strong>Manually</strong></li>
+<li>Enter:</li>
+<li>IP Address: <code>192.168.7.1</code></li>
+<li>Subnet Mask: <code>255.255.255.0</code></li>
+<li>Click <strong>OK</strong></li>
+</ol>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows requires RNDIS drivers, which are usually built-in for Windows 10/11.</p>
+</div>
+<ol>
+<li>Connect your PicoCalc via USB</li>
+<li>Windows should detect it as "RNDIS/Ethernet Gadget"</li>
+<li>If driver installation is needed, Windows should install it automatically</li>
+</ol>
+<p><strong>Configure the network:</strong></p>
+<ol>
+<li>Open <strong>Settings</strong> → <strong>Network &amp; Internet</strong> → <strong>Ethernet</strong></li>
+<li>Click the RNDIS/Ethernet Gadget adapter</li>
+<li>Click <strong>Edit</strong> next to IP assignment</li>
+</ol>
+<p><strong>Option A: For Internet Sharing</strong></p>
+<ol>
+<li>Use Windows' <strong>Internet Connection Sharing (ICS)</strong>:</li>
+<li>Open <strong>Control Panel</strong> → <strong>Network and Sharing Center</strong></li>
+<li>Click your internet-connected adapter</li>
+<li>Click <strong>Properties</strong></li>
+<li>Go to the <strong>Sharing</strong> tab</li>
+<li>Check "Allow other network users to connect through this computer's Internet connection"</li>
+<li>Select the RNDIS adapter from the dropdown</li>
+<li>Click <strong>OK</strong></li>
+</ol>
+<p>Windows will automatically configure DHCP (typically 192.168.137.x range).</p>
+<p><strong>Option B: Manual Configuration</strong></p>
+<ol>
+<li>Set to <strong>Manual</strong></li>
+<li>Enter:</li>
+<li>IP address: <code>192.168.7.1</code></li>
+<li>Subnet prefix length: <code>24</code></li>
+<li>Gateway: (leave empty)</li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<h2 id="connecting-to-your-picocalc">Connecting to Your PicoCalc<a class="headerlink" href="#connecting-to-your-picocalc" title="Permanent link">&para;</a></h2>
+<p>Once the network is configured, you can access your PicoCalc:</p>
+<h3 id="ssh-access">SSH Access<a class="headerlink" href="#ssh-access" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Password: calc</span>
+</code></pre></div>
+<p>Or if using DHCP/internet sharing, check the assigned IP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># On PicoCalc (via serial console or other connection)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>usb0
+</code></pre></div>
+<h3 id="file-transfer">File Transfer<a class="headerlink" href="#file-transfer" title="Permanent link">&para;</a></h3>
+<p>Using SCP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Copy file to PicoCalc</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>scp<span class="w"> </span>myfile.txt<span class="w"> </span>pico@192.168.7.2:/home/pico/
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Copy file from PicoCalc</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>scp<span class="w"> </span>pico@192.168.7.2:/home/pico/myfile.txt<span class="w"> </span>./
+</code></pre></div>
+<p>Using SFTP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sftp<span class="w"> </span>pico@192.168.7.2
+</code></pre></div>
+<h3 id="package-management">Package Management<a class="headerlink" href="#package-management" title="Permanent link">&para;</a></h3>
+<p>With internet sharing enabled, you can install packages on your PicoCalc:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>update
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>install<span class="w"> </span>&lt;package-name&gt;
+</code></pre></div>
+<h2 id="verifying-connection">Verifying Connection<a class="headerlink" href="#verifying-connection" title="Permanent link">&para;</a></h2>
+<h3 id="on-host-computer">On Host Computer<a class="headerlink" href="#on-host-computer" title="Permanent link">&para;</a></h3>
+<p><strong>Check if interface is up:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Linux/macOS</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ip<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>usb0<span class="w">        </span><span class="c1"># or the actual interface name</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># Should show state UP</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Windows</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>ipconfig
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Look for the RNDIS/Ethernet Gadget adapter</span>
+</code></pre></div>
+<p><strong>Test connectivity:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ping<span class="w"> </span><span class="m">192</span>.168.7.2
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Should receive replies</span>
+</code></pre></div>
+<h3 id="on-picocalc">On PicoCalc<a class="headerlink" href="#on-picocalc" title="Permanent link">&para;</a></h3>
+<p>Via serial console or existing network connection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Check if usb0 is configured</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>usb0
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Check if service is running</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Test connectivity to host</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>ping<span class="w"> </span><span class="m">192</span>.168.7.1<span class="w">  </span><span class="c1"># or your DHCP-assigned gateway</span>
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="device-not-appearing">Device Not Appearing<a class="headerlink" href="#device-not-appearing" title="Permanent link">&para;</a></h3>
+<p><strong>On PicoCalc:</strong></p>
+<ol>
+<li>
+<p>Check if the USB gadget service is running:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network
+</code></pre></div></p>
+</li>
+<li>
+<p>Restart the service if needed:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>usb-gadget-network
+</code></pre></div></p>
+</li>
+<li>
+<p>Check kernel modules:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;libcomposite|rndis|ecm|dwc2&#39;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Check USB gadget configuration:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ls<span class="w"> </span>/sys/kernel/config/usb_gadget/g1/UDC
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>On Host:</strong></p>
+<ul>
+<li>Try a different USB cable (must support data, not just charging)</li>
+<li>Try a different USB port</li>
+<li>Check system logs for USB device detection</li>
+</ul>
+<h3 id="cannot-ping-picocalc">Cannot Ping PicoCalc<a class="headerlink" href="#cannot-ping-picocalc" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Verify IP configuration</strong> on both host and device:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Host (Linux/macOS)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>usb0
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># PicoCalc</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>usb0
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Check firewall rules</strong> on host computer</p>
+</li>
+<li>
+<p><strong>Verify cable connection</strong> - must be a data cable, not power-only</p>
+</li>
+</ol>
+<h3 id="no-internet-on-picocalc-with-sharing-enabled">No Internet on PicoCalc (with Sharing Enabled)<a class="headerlink" href="#no-internet-on-picocalc-with-sharing-enabled" title="Permanent link">&para;</a></h3>
+<p><strong>On PicoCalc:</strong></p>
+<ol>
+<li>
+<p>Check if you got an IP via DHCP:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>usb0
+</code></pre></div></p>
+</li>
+<li>
+<p>Check default route:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>default
+</code></pre></div></p>
+</li>
+<li>
+<p>Check DNS:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>cat<span class="w"> </span>/etc/resolv.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>Test connectivity:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ping<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w">      </span><span class="c1"># Test IP connectivity</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ping<span class="w"> </span>google.com<span class="w">   </span><span class="c1"># Test DNS resolution</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>On Host (Linux):</strong></p>
+<ol>
+<li>
+<p>Verify IP forwarding is enabled:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sysctl<span class="w"> </span>net.ipv4.ip_forward
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># Should return 1</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Check NAT rules (if using manual configuration):
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-L<span class="w"> </span>-v
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="dhcp-not-working">DHCP Not Working<a class="headerlink" href="#dhcp-not-working" title="Permanent link">&para;</a></h3>
+<p>If PicoCalc doesn't get an IP via DHCP:</p>
+<ol>
+<li>
+<p><strong>Verify host DHCP server</strong> is running (automatic with "Shared" mode in NetworkManager)</p>
+</li>
+<li>
+<p><strong>On PicoCalc</strong>, check systemd-networkd logs:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-f
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Restart network</strong> on PicoCalc:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-networkd
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Fallback to static IP</strong> - PicoCalc will use 192.168.7.2 if DHCP fails</p>
+</li>
+</ol>
+<h2 id="advanced-topics">Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h2>
+<h3 id="custom-ip-ranges">Custom IP Ranges<a class="headerlink" href="#custom-ip-ranges" title="Permanent link">&para;</a></h3>
+<p>To use a different IP range, you'll need to modify files on the PicoCalc:</p>
+<ol>
+<li>
+<p>Edit <code>/lib/systemd/network/usb0.network</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">[Match]</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="na">Name</span><span class="o">=</span><span class="s">usb0</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">[Network]</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="na">Address</span><span class="o">=</span><span class="s">10.0.0.2/24</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="na">DHCP</span><span class="o">=</span><span class="s">yes</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Edit <code>/usr/bin/usb-gadget-network.sh</code> and change the IP in the script:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.0.0.2/24<span class="w"> </span>dev<span class="w"> </span>usb0
+</code></pre></div></p>
+</li>
+<li>
+<p>Restart the service:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>usb-gadget-network
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="multiple-simultaneous-connections">Multiple Simultaneous Connections<a class="headerlink" href="#multiple-simultaneous-connections" title="Permanent link">&para;</a></h3>
+<p>You can use USB networking alongside WiFi:</p>
+<ul>
+<li><strong>WiFi</strong> for internet access</li>
+<li><strong>USB</strong> for fast file transfers and SSH access</li>
+</ul>
+<p>Both interfaces can be active simultaneously. The PicoCalc will route traffic appropriately based on the default route.</p>
+<h3 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Security Note</p>
+<p>When enabling internet sharing, your PicoCalc becomes accessible to anyone who can access your host computer's network (if the host is on a shared network).</p>
+</div>
+<p>Best practices:</p>
+<ul>
+<li>Only join networks that you trust</li>
+<li>Use strong passwords for the <code>pico</code> and <code>root</code> accounts</li>
+<li>Keep your system updated</li>
+<li>Disable SSH password authentication and use SSH keys</li>
+</ul>
+<h2 id="adb-over-usb-functionfs">ADB over USB (FunctionFS)<a class="headerlink" href="#adb-over-usb-functionfs" title="Permanent link">&para;</a></h2>
+<p>Calculinux can expose ADB over the same USB gadget using FunctionFS. This runs a patched
+adbd that works without Android, mounted via ConfigFS. This was ported from Luckfox's
+buildroot SDK and the patches were updated to a newer version of adbd to support more
+modern OpenSSL libraries.</p>
+<h3 id="prerequisites-on-picocalc">Prerequisites (on PicoCalc)<a class="headerlink" href="#prerequisites-on-picocalc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>usb-gadget-network service enabled (default):
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network
+</code></pre></div></li>
+<li>adbd service enabled (default):
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>adbd
+</code></pre></div></li>
+<li>Host has Android Platform Tools (adb) installed.</li>
+</ul>
+<h3 id="configure-gadget-adb-function">Configure gadget ADB function<a class="headerlink" href="#configure-gadget-adb-function" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Toggle ADB function: edit <code>/etc/default/usb-gadget-network</code> and set <code>ENABLE_ADB=1</code> (default) or <code>0</code> to disable. Restart:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>usb-gadget-network
+</code></pre></div></li>
+<li>FunctionFS mount and function name can also be adjusted via <code>ADB_FUNCTION_NAME</code>, <code>ADB_MOUNTPOINT</code>, <code>ADB_CONFIGS</code> in the same file.</li>
+</ul>
+<h3 id="configure-adbd-auth-and-transport">Configure adbd auth and transport<a class="headerlink" href="#configure-adbd-auth-and-transport" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Set a password (preferred): create <code>/etc/adbd.passwd</code> (plaintext) or <code>/etc/adbd.passwd.md5</code> (md5 hash). Example:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;strongpassword&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/adbd.passwd<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>adbd
+</code></pre></div></li>
+<li>Runtime defaults: <code>/etc/default/adbd</code></li>
+<li><code>ADB_SECURE=1</code> (default) enforces password prompt via <code>/usr/bin/adbd-auth.sh</code></li>
+<li><code>ADB_TCP_PORT=0</code> keeps ADB on USB only; set to <code>5555</code> if you also want TCP</li>
+<li><code>ADBD_AUTH_COMMAND</code> can point to a custom helper if needed</li>
+</ul>
+<h3 id="host-connection">Host connection<a class="headerlink" href="#host-connection" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Plug PicoCalc via USB and wait for usb-gadget-network + adbd.</li>
+<li>On host, restart adb and list devices:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>adb<span class="w"> </span>kill-server
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>adb<span class="w"> </span>devices
+</code></pre></div></li>
+<li>Connect (accept password prompt):
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>adb<span class="w"> </span>shell
+</code></pre></div>
+    If you enabled TCP (<code>ADB_TCP_PORT=5555</code>), connect with <code>adb connect 192.168.7.2:5555</code>.</li>
+</ol>
+<h3 id="troubleshooting_1">Troubleshooting<a class="headerlink" href="#troubleshooting_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Check FunctionFS mount: <code>mount | grep functionfs</code></li>
+<li>Inspect gadget functions: <code>ls /sys/kernel/config/usb_gadget/g1/functions</code></li>
+<li>View adbd logs: <code>journalctl -u adbd -f</code></li>
+<li>If host does not see ADB: <code>adb kill-server</code>, replug USB, verify <code>ENABLE_ADB=1</code>, and ensure <code>usb_f_fs</code> module is loaded.</li>
+</ul>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../basic-usage/">Basic Usage</a> - General PicoCalc usage</li>
+<li><a href="../../getting-started/first-boot/#wifi-setup-usb-adapter-required">WiFi Configuration</a> - Alternative connectivity</li>
+<li><a href="../../troubleshooting/network/">Network Troubleshooting</a> - More troubleshooting tips</li>
+<li><a href="../../hardware/serial/console-access/">Serial Console Access</a> - Alternative access method</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 04:55:52 UTC">January 24, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 04:55:52 UTC">January 24, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
