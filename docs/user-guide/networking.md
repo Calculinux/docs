@@ -66,8 +66,8 @@ scp pico@<ip-address>:/path/to/file ./
 
 ### Internet Access
 
-Your PicoCalc can access the internet via:
- (requires USB WiFi adapter)
+Your PicoCalc can access the internet via (requires USB WiFi adapter):
+
 - **WiFi connection** - Direct internet access
 - **USB with internet sharing** - Host computer shares its connection
 - **USB tethering from phone** - Android or iOS device sharing
