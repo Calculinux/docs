@@ -102,6 +102,7 @@ nav:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
+    - Using the Yocto SDK: developer/sdk.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
     - Project Ideas: developer/project-ideas.md
