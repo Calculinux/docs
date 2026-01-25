@@ -1484,7 +1484,7 @@
   <a href="#build-out-of-tree-kernel-modules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build out-of-tree kernel modules
+        Build out-of-tree Kernel modules
       
     </span>
   </a>
@@ -2156,7 +2156,7 @@
   <a href="#build-out-of-tree-kernel-modules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build out-of-tree kernel modules
+        Build out-of-tree Kernel modules
       
     </span>
   </a>
@@ -2330,7 +2330,7 @@
 <ul>
 <li><strong>cortexa7thf-neon-vfpv4</strong> — the Yocto tune (CPU/core, thumb, hard-float, NEON/VFPv4).</li>
 <li><strong>poky</strong> — Yocto distribution identifier.</li>
-<li><strong>linux</strong> — kernel/OS.</li>
+<li><strong>linux</strong> — Kernel/OS.</li>
 <li><strong>musl</strong> — C library/ABI; if a different libc or ABI were used (e.g., glibc or soft-float), this part would change.</li>
 </ul>
 <p>If you build a different machine or change the tune/libc, the environment filename will change accordingly; always source the <code>environment-setup-*</code> present in your SDK install.</p>
@@ -2342,6 +2342,16 @@
 </ul>
 <h2 id="install-additional-packages-into-the-sdk">Install additional packages into the SDK<a class="headerlink" href="#install-additional-packages-into-the-sdk" title="Permanent link">&para;</a></h2>
 <p>The SDK sysroot can be extended with additional development libraries and tools from the Calculinux package feed. This is useful for adding dependencies your projects need (e.g., <code>libcurl-dev</code>, database headers, etc.).</p>
+<div class="admonition warning">
+<p class="admonition-title">Experimental: Opkg package installation in SDK</p>
+<p>Installing opkg packages directly into the SDK sysroot is experimental and may not work reliably. Many packages have dependencies on image-specific files or systemd services that won't be present in the SDK. Consider these alternatives:</p>
+<ul>
+<li><strong>Build from source</strong> – Most projects compile cleanly within the SDK</li>
+<li><strong><a href="../customization/">Rebuild the image</a></strong> – Add recipe dependencies to the image layer instead of modifying the SDK</li>
+<li><strong>Manual header/library installation</strong> – Download and extract only the headers you need</li>
+</ul>
+<p>Use this method only if you've confirmed the package and its dependencies are SDK-compatible.</p>
+</div>
 <h3 id="quick-install-copy-paste-ready">Quick install (copy-paste ready)<a class="headerlink" href="#quick-install-copy-paste-ready" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>~/calculinux-sdk/environment-setup-*
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">WORK_DIR</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK_DIR</span><span class="s2">&quot;</span>
@@ -2364,8 +2374,8 @@
 <p class="admonition-title">Matching SDK and image versions</p>
 <p>Always install packages from the same feed/version as your SDK. Mismatched libraries can cause runtime issues on the device.</p>
 </div>
-<h2 id="build-out-of-tree-kernel-modules">Build out-of-tree kernel modules<a class="headerlink" href="#build-out-of-tree-kernel-modules" title="Permanent link">&para;</a></h2>
-<p>The SDK includes kernel headers and source in <code>usr/src/kernel/</code> for out-of-tree module development. These match the kernel shipped in the corresponding image, ensuring module ABI compatibility.</p>
+<h2 id="build-out-of-tree-kernel-modules">Build out-of-tree Kernel modules<a class="headerlink" href="#build-out-of-tree-kernel-modules" title="Permanent link">&para;</a></h2>
+<p>The SDK includes Kernel headers and source in <code>usr/src/kernel/</code> for out-of-tree module development. These match the Kernel shipped in the corresponding image, ensuring module ABI compatibility.</p>
 <ol>
 <li>Create a simple module (example):</li>
 </ol>
@@ -2389,7 +2399,7 @@
 <a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
 </code></pre></div>
 <ol>
-<li>Add a minimal <code>Makefile</code> that uses the kernel build system:</li>
+<li>Add a minimal <code>Makefile</code> that uses the Kernel build system:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">obj-m</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>hello.o
 </code></pre></div>
@@ -2409,9 +2419,9 @@
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ssh<span class="w"> </span>root@&lt;device&gt;<span class="w"> </span><span class="s2">&quot;insmod /tmp/hello.ko &amp;&amp; dmesg | tail&quot;</span>
 </code></pre></div>
 <p>Notes:
-- Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the kernel.
+- Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the Kernel.
 - If you see missing headers, confirm the SDK contains <code>usr/src/kernel</code>; install the matching <code>linux-*-dev</code> package into the SDK sysroot if needed, then rebuild.
-- For repeated builds, keep the <code>KERNEL_SRC</code> path cached; the kernel tree in the SDK already has the correct config and Module.symvers.</p>
+- For repeated builds, keep the <code>KERNEL_SRC</code> path cached; the Kernel tree in the SDK already has the correct config and Module.symvers.</p>
 <h2 id="updating-the-sdk">Updating the SDK<a class="headerlink" href="#updating-the-sdk" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Grab the latest installer from the same feed/subfolder when CI publishes a new build (develop) or a new tag (release).</li>
@@ -2440,7 +2450,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 06:04:38 UTC">January 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 25, 2026 03:46:02 UTC">January 25, 2026</span>
   </span>
 
     
