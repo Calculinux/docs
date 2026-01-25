@@ -93,7 +93,7 @@ environment-setup-cortexa7thf-neon-vfpv4-poky-linux-musl*
 
 - **cortexa7thf-neon-vfpv4** — the Yocto tune (CPU/core, thumb, hard-float, NEON/VFPv4).
 - **poky** — Yocto distribution identifier.
-- **linux** — kernel/OS.
+- **linux** — Kernel/OS.
 - **musl** — C library/ABI; if a different libc or ABI were used (e.g., glibc or soft-float), this part would change.
 
 If you build a different machine or change the tune/libc, the environment filename will change accordingly; always source the `environment-setup-*` present in your SDK install.
@@ -107,6 +107,15 @@ If you build a different machine or change the tune/libc, the environment filena
 ## Install additional packages into the SDK
 
 The SDK sysroot can be extended with additional development libraries and tools from the Calculinux package feed. This is useful for adding dependencies your projects need (e.g., `libcurl-dev`, database headers, etc.).
+
+!!! warning "Experimental: Opkg package installation in SDK"
+    Installing opkg packages directly into the SDK sysroot is experimental and may not work reliably. Many packages have dependencies on image-specific files or systemd services that won't be present in the SDK. Consider these alternatives:
+    
+    - **Build from source** – Most projects compile cleanly within the SDK
+    - **[Rebuild the image](customization.md)** – Add recipe dependencies to the image layer instead of modifying the SDK
+    - **Manual header/library installation** – Download and extract only the headers you need
+    
+    Use this method only if you've confirmed the package and its dependencies are SDK-compatible.
 
 ### Quick install (copy-paste ready)
 
@@ -140,9 +149,9 @@ curl https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv
 !!! tip "Matching SDK and image versions"
     Always install packages from the same feed/version as your SDK. Mismatched libraries can cause runtime issues on the device.
 
-## Build out-of-tree kernel modules
+## Build out-of-tree Kernel modules
 
-The SDK includes kernel headers and source in `usr/src/kernel/` for out-of-tree module development. These match the kernel shipped in the corresponding image, ensuring module ABI compatibility.
+The SDK includes Kernel headers and source in `usr/src/kernel/` for out-of-tree module development. These match the Kernel shipped in the corresponding image, ensuring module ABI compatibility.
 
 1. Create a simple module (example):
 
@@ -167,7 +176,7 @@ module_exit(hello_exit);
 MODULE_LICENSE("GPL");
 ```
 
-2. Add a minimal `Makefile` that uses the kernel build system:
+2. Add a minimal `Makefile` that uses the Kernel build system:
 
 ```make
 obj-m += hello.o
@@ -191,9 +200,9 @@ ssh root@<device> "insmod /tmp/hello.ko && dmesg | tail"
 ```
 
 Notes:
-- Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the kernel.
+- Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the Kernel.
 - If you see missing headers, confirm the SDK contains `usr/src/kernel`; install the matching `linux-*-dev` package into the SDK sysroot if needed, then rebuild.
-- For repeated builds, keep the `KERNEL_SRC` path cached; the kernel tree in the SDK already has the correct config and Module.symvers.
+- For repeated builds, keep the `KERNEL_SRC` path cached; the Kernel tree in the SDK already has the correct config and Module.symvers.
 
 ## Updating the SDK
 
