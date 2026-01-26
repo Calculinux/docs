@@ -270,4 +270,3 @@ Subfolder
 sudo
 sysroot
 autotools
-
