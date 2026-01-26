@@ -264,4 +264,10 @@ adb
 fastboot
 pydoc
 lsusb
+CMake
+SDKs
+Subfolder
+sudo
+sysroot
+autotools
 
