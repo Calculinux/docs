@@ -12,6 +12,7 @@ SDKs are published to the Calculinux download server. Pick the feed/subfolder ba
 | Tagged releases (e.g., `v1.0.0`) | `walnascar` (current distro codename) | `release` | `https://opkg.calculinux.org/sdk/walnascar/release/x86_64/` |
 
 Notes:
+
 - SDKs are built for x86_64 and aarch64 hosts; both target the Luckfox Lyra (ARMv7).
 - `main` branch builds produce SDKs (continuous) under walnascar.
 - Each directory includes a `.sh` installer and a matching `.manifest` for reference.
