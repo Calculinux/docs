@@ -439,11 +439,35 @@ If PicoCalc doesn't get an IP via DHCP:
 
 4. **Fallback to static IP** - PicoCalc will use 192.168.7.2 if DHCP fails
 
-## Advanced Topics
+### Advanced Topics
+
+### Network Configuration Details
+
+The PicoCalc uses **dual IP addressing** for maximum compatibility:
+
+- **Static IP**: `192.168.7.2/24` - Always available as a fallback
+- **DHCP**: Automatically acquires an IP when the host provides DHCP (via internet sharing)
+
+This configuration is handled by systemd-networkd and is defined in `/lib/systemd/network/usb0.network`:
+
+```ini
+[Match]
+Name=usb0
+
+[Network]
+Address=192.168.7.2/24
+DHCP=yes
+```
+
+When internet sharing is enabled on the host:
+- The PicoCalc will acquire a second IP via DHCP (e.g., `10.42.0.247/24` on Linux)
+- The static IP `192.168.7.2` remains active
+- Internet traffic uses the DHCP-assigned gateway
+- You can SSH to either IP address
 
 ### Custom IP Ranges
 
-To use a different IP range, you'll need to modify files on the PicoCalc:
+To use a different static IP range:
 
 1. Edit `/lib/systemd/network/usb0.network`:
    ```ini
@@ -455,15 +479,13 @@ To use a different IP range, you'll need to modify files on the PicoCalc:
    DHCP=yes
    ```
 
-2. Edit `/usr/bin/usb-gadget-network.sh` and change the IP in the script:
+2. Restart systemd-networkd:
    ```bash
-   ip addr add 10.0.0.2/24 dev usb0
+   sudo systemctl restart systemd-networkd
    ```
 
-3. Restart the service:
-   ```bash
-   sudo systemctl restart usb-gadget-network
-   ```
+!!! note
+    The DHCP-assigned IP is controlled by your host computer's network sharing configuration and cannot be changed on the PicoCalc.
 
 ### Multiple Simultaneous Connections
 
@@ -486,32 +508,87 @@ Best practices:
 - Keep your system updated
 - Disable SSH password authentication and use SSH keys
 
-## ADB over USB (FunctionFS)
+## USB Serial Console
+
+The USB gadget also exposes a **USB serial console** using the ACM (Abstract Control Model) function. This provides an additional login prompt over USB, accessible at **1500000 baud**.
+
+### Accessing the Console
+
+**On Linux/macOS:**
+
+The device appears as `/dev/ttyACM0` (Linux) or `/dev/tty.usbmodem*` (macOS):
+
+```bash
+# Linux - using screen
+screen /dev/ttyACM0 1500000
+
+# Linux - using miniterm
+python3 -m serial.tools.miniterm /dev/ttyACM0 1500000
+
+# macOS - using screen
+screen /dev/tty.usbmodem* 1500000
+```
+
+**On Windows:**
+
+The device appears as a COM port in Device Manager:
+
+1. Open Device Manager and note the COM port number (e.g., COM3)
+2. Use PuTTY or another serial terminal:
+   - Connection type: Serial
+   - Serial line: COM3 (or your port)
+   - Speed: 1500000
+
+### Login
+
+Once connected, you'll see a login prompt:
+
+```
+Calculinux 1.0.0-dev+abc1234 luckfox-lyra ttyGS0
+
+luckfox-lyra login: 
+```
+
+Login with:
+- Username: `pico`
+- Password: `calc`
+
+!!! tip "USB Serial vs Hardware Serial"
+    - **USB Serial** (`/dev/ttyACM0` on host, `/dev/ttyGS0` on device): 1500000 baud, provided by USB gadget
+    - **Hardware Serial** (`/dev/ttyUSB0` on host): 1500000 baud, physical UART bridge on PicoCalc USB-C port
+    
+    See [Serial Console Access](../hardware/serial/console-access.md) for the hardware serial connection.
+
+## ADB over USB (Experimental)
+
+!!! warning "Currently Disabled by Default"
+    ADB support is included but **disabled by default** due to initialization complexity. The FunctionFS interface used by ADB requires special setup where the userspace daemon must be running before the gadget function can be bound.
 
 Calculinux can expose ADB over the same USB gadget using FunctionFS. This runs a patched
 adbd that works without Android, mounted via ConfigFS. This was ported from Luckfox's
 buildroot SDK and the patches were updated to a newer version of adbd to support more
 modern OpenSSL libraries.
 
-### Prerequisites (on PicoCalc)
+### Enabling ADB
 
-- usb-gadget-network service enabled (default):
+To enable ADB (advanced users):
+
+1. Edit `/etc/default/usb-gadget-network` and set `ENABLE_ADB=1`
+2. Ensure the adbd service will start before the gadget binds:
    ```bash
-   sudo systemctl status usb-gadget-network
+   sudo systemctl enable adbd
+   sudo systemctl start adbd
    ```
-- adbd service enabled (default):
-   ```bash
-   sudo systemctl status adbd
-   ```
-- Host has Android Platform Tools (adb) installed.
-
-### Configure gadget ADB function
-
-- Toggle ADB function: edit `/etc/default/usb-gadget-network` and set `ENABLE_ADB=1` (default) or `0` to disable. Restart:
+3. Restart the USB gadget:
    ```bash
    sudo systemctl restart usb-gadget-network
    ```
-- FunctionFS mount and function name can also be adjusted via `ADB_FUNCTION_NAME`, `ADB_MOUNTPOINT`, `ADB_CONFIGS` in the same file.
+
+### Prerequisites
+
+- Host has Android Platform Tools (adb) installed
+- usb-gadget-network service enabled
+- adbd service running **before** the USB gadget binds
 
 ### Configure adbd auth and transport
 
@@ -527,7 +604,7 @@ modern OpenSSL libraries.
 
 ### Host connection
 
-1. Plug PicoCalc via USB and wait for usb-gadget-network + adbd.
+1. Plug PicoCalc via USB and wait for usb-gadget-network + adbd
 2. On host, restart adb and list devices:
     ```bash
     adb kill-server
@@ -544,7 +621,7 @@ modern OpenSSL libraries.
 - Check FunctionFS mount: `mount | grep functionfs`
 - Inspect gadget functions: `ls /sys/kernel/config/usb_gadget/g1/functions`
 - View adbd logs: `journalctl -u adbd -f`
-- If host does not see ADB: `adb kill-server`, replug USB, verify `ENABLE_ADB=1`, and ensure `usb_f_fs` module is loaded.
+- If host does not see ADB: `adb kill-server`, replug USB, verify `ENABLE_ADB=1`, ensure `usb_f_fs` module is loaded, and verify adbd is running
 
 ## See Also
 

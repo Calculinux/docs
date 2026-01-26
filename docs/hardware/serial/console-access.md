@@ -6,6 +6,9 @@ Picocalc exposes a USB-to-UART bridge that enumerates as `/dev/ttyUSB0`
 on most Linux hosts. The console runs at **1,500,000 baud**, 8 data bits,
 no parity, and 1 stop bit ("1500000 8N1").
 
+!!! tip "USB Serial Console Alternative"
+    For general terminal access over USB (not early boot debugging), see the [USB Serial Console](../../user-guide/usb-networking.md#usb-serial-console) section in the USB Networking guide. The USB serial console runs at the same 1500000 baud and appears as `/dev/ttyACM0` on Linux hosts.
+
 ## Prerequisites
 
 - Linux host with `python3-serial` (for `miniterm.py`) or `minicom`

@@ -133,6 +133,37 @@ journalctl -b
 
 ## Network Configuration
 
+You have two primary options for network connectivity:
+
+1. **USB Networking** - Direct connection to your computer (recommended for initial setup)
+2. **WiFi** - Requires USB WiFi adapter
+
+### USB Networking
+
+USB networking is the easiest way to get started with Calculinux. Simply connect the Lyra's USB-C port to your computer, and the device will appear as a USB Ethernet adapter.
+
+!!! tip "Quick USB Setup"
+    1. Connect Lyra's USB-C port to your computer
+    2. Wait 10-15 seconds for the USB gadget to enumerate
+    3. SSH to the PicoCalc:
+       ```bash
+       ssh pico@192.168.7.2
+       # Password: calc
+       ```
+    
+    See the [USB Networking Guide](../user-guide/usb-networking.md) for complete setup instructions including:
+    - Internet sharing configuration
+    - USB serial console access
+    - Advanced configuration options
+
+**What you get with USB networking:**
+- ✅ Fast, reliable connection
+- ✅ No additional hardware required
+- ✅ Works on Linux, macOS, and Windows
+- ✅ Static IP (`192.168.7.2`) always available
+- ✅ DHCP support for internet sharing
+- ✅ USB serial console at 1500000 baud
+
 ### WiFi Setup (USB Adapter Required)
 
 !!! info "WiFi Hardware Required"

@@ -407,7 +407,7 @@ bitbake <package>
 
 ```bash
 # Serial console
-screen /dev/ttyUSB0 115200
+screen /dev/ttyUSB0 1500000
 
 # SSH access
 ssh root@<ip-address>

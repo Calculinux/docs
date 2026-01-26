@@ -72,7 +72,9 @@ Once Calculinux is running, you'll have:
 - Command-line terminal access via built-in display and keyboard
 - Package manager (opkg) for installing software
 - Development tools (gcc, g++, make, git, gdb, etc.)
+- USB networking for fast connection to your computer
 - Network connectivity via WiFi or Ethernet (USB adapters required)
+- USB serial console for remote access
 - Access to thousands of open-source command-line applications
 
 ### Limitations
