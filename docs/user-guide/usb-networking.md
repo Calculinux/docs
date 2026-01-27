@@ -574,7 +574,7 @@ Best practices:
 
 ## USB Serial Console
 
-The USB gadget also exposes a **USB serial console** using the ACM (Abstract Control Model) function. This provides an additional login prompt over USB, accessible at **150000 baud**.
+The USB gadget also exposes a **USB serial console** using the ACM (Abstract Control Model) function. This provides an additional login prompt over USB, accessible at **1500000 baud**.
 
 ### Accessing the Console
 
@@ -584,13 +584,13 @@ The device appears as `/dev/ttyACM0` (Linux) or `/dev/tty.usbmodem*` (macOS):
 
 ```bash
 # Linux - using screen
-screen /dev/ttyACM0 150000
+screen /dev/ttyACM0 1500000
 
 # Linux - using miniterm
-python3 -m serial.tools.miniterm /dev/ttyACM0 150000
+python3 -m serial.tools.miniterm /dev/ttyACM0 1500000
 
 # macOS - using screen
-screen /dev/tty.usbmodem* 150000
+screen /dev/tty.usbmodem* 1500000
 ```
 
 **On Windows:**
@@ -601,7 +601,7 @@ The device appears as a COM port in Device Manager:
 2. Use PuTTY or another serial terminal:
    - Connection type: Serial
    - Serial line: COM3 (or your port)
-   - Speed: 150000
+   - Speed: 1500000
 
 ### Login
 
@@ -618,8 +618,10 @@ Login with:
 - Password: `calc`
 
 !!! tip "USB Serial vs Hardware Serial"
-    - **USB Serial** (`/dev/ttyACM0` on host, `/dev/ttyGS0` on device): 150000 baud, provided by USB gadget
-    - **Hardware Serial** (`/dev/ttyUSB0` on host): 1500000 baud, physical UART bridge on PicoCalc USB-C port
+    Both serial console options use **1500000 baud**:
+    
+    - **USB Serial** (`/dev/ttyACM0` on host, `/dev/ttyGS0` on device): Provided by USB gadget ACM function
+    - **Hardware Serial** (`/dev/ttyUSB0` on host): Physical UART bridge (CH340) on PicoCalc USB-C port
     
     See [Serial Console Access](../hardware/serial/console-access.md) for the hardware serial connection.
 

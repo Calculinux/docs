@@ -168,7 +168,7 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
 - ✅ Windows support via RNDIS mode
 - ✅ Static IP (`192.168.7.2`) always available
 - ✅ DHCP support for internet sharing
-- ✅ USB serial console at 150000 baud (USB ACM)
+- ✅ USB serial console at 1500000 baud
 
 ### WiFi Setup (USB Adapter Required)
 
