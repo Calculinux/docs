@@ -9,6 +9,7 @@
     },
     "MD033": false,
     "MD041": false,
+    "MD007": false,
     "tables": true,
     "ignore_code_blocks": true
   }
