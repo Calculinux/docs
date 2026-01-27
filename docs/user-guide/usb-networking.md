@@ -12,10 +12,12 @@ Calculinux includes built-in USB gadget networking support that makes your PicoC
 - 🌐 **Internet sharing** - Host can share its internet connection
 - 💻 **Cross-platform** - Works with Linux, macOS, and Windows
 
-The USB gadget provides two configurations:
+The USB gadget uses a **single configuration** mode where you can select the network protocol:
 
-- **RNDIS** - For Windows compatibility
-- **CDC-Ether/ECM** - Standard USB Ethernet for Linux and macOS
+- **ECM (CDC-Ether)** - Default, native Linux/macOS protocol (recommended)
+- **RNDIS** - Windows compatibility (configure via `/etc/default/usb-gadget-network`)
+
+By default, the device uses ECM which works natively on Linux and macOS without additional drivers. For Windows support, you can switch to RNDIS mode.
 
 ## Quick Start
 
@@ -217,11 +219,17 @@ macOS will automatically configure DHCP for the PicoCalc!
 
 ### Windows
 
+!!! warning "RNDIS Mode Required"
+    Windows requires the USB gadget to be in **RNDIS mode**. The default ECM mode will not work on Windows.
+    
+    See the [Configuration](#switching-between-ecm-and-rndis) section above to switch to RNDIS mode.
+
 !!! note
     Windows requires RNDIS drivers, which are usually built-in for Windows 10/11.
 
-1. Connect your PicoCalc via USB
-2. Windows should detect it as "RNDIS/Ethernet Gadget"
+1. **Configure PicoCalc** for RNDIS mode (see Configuration section)
+2. Connect your PicoCalc via USB
+3. Windows should detect it as "RNDIS/Ethernet Gadget"
 3. If driver installation is needed, Windows should install it automatically
 
 **Configure the network:**
@@ -340,6 +348,19 @@ ping 192.168.7.1  # or your DHCP-assigned gateway
 
 ### Device Not Appearing
 
+**Check Protocol Configuration:**
+
+First, verify you're using the correct protocol for your host OS:
+
+```bash
+# On PicoCalc - check current protocol
+grep USB_PROTOCOL /etc/default/usb-gadget-network
+
+# Should be:
+# USB_PROTOCOL=ecm    # for Linux/macOS
+# USB_PROTOCOL=rndis  # for Windows
+```
+
 **On PicoCalc:**
 
 1. Check if the USB gadget service is running:
@@ -360,6 +381,9 @@ ping 192.168.7.1  # or your DHCP-assigned gateway
 4. Check USB gadget configuration:
    ```bash
    ls /sys/kernel/config/usb_gadget/g1/UDC
+   # Check which function is active:
+   ls /sys/kernel/config/usb_gadget/g1/functions/
+   # Should show either ecm.usb0 or rndis.usb0 (not both)
    ```
 
 **On Host:**
@@ -438,6 +462,46 @@ If PicoCalc doesn't get an IP via DHCP:
    ```
 
 4. **Fallback to static IP** - PicoCalc will use 192.168.7.2 if DHCP fails
+
+## Configuration
+
+### Switching Between ECM and RNDIS
+
+The USB network protocol can be configured by editing `/etc/default/usb-gadget-network` on the PicoCalc:
+
+**To use ECM (default - Linux/macOS):**
+
+```bash
+# Edit the configuration file
+sudo nano /etc/default/usb-gadget-network
+
+# Set or verify:
+USB_PROTOCOL=ecm
+
+# Restart the USB gadget service
+sudo systemctl restart usb-gadget-network
+```
+
+**To use RNDIS (Windows):**
+
+```bash
+# Edit the configuration file
+sudo nano /etc/default/usb-gadget-network
+
+# Change to:
+USB_PROTOCOL=rndis
+
+# Restart the USB gadget service
+sudo systemctl restart usb-gadget-network
+```
+
+!!! note "Reconnection Required"
+    After changing the protocol and restarting the service, you need to **unplug and replug** the USB cable for the host to detect the new configuration.
+
+!!! tip "Protocol Selection"
+    - Use **ECM** if you primarily use Linux or macOS - it's native and doesn't require special drivers
+    - Use **RNDIS** if you primarily use Windows - it requires the RNDIS driver but provides better Windows compatibility
+    - You cannot use both simultaneously; the device operates in one mode at a time
 
 ### Advanced Topics
 
