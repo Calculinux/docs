@@ -132,12 +132,39 @@ docs/
 ├── getting-started/            # Installation, first boot
 ├── hardware/                   # PicoCalc, Lyra, specs, serial console
 ├── user-guide/                 # Package management, updates, apps
+│   └── updates.md              # System updates, RAUC, package reconciliation, config file handling
 ├── developer/                  # Yocto setup, building, contributing
+│   ├── calculinux-update.md    # Update system architecture, OPKG reconciliation, conffiles
 │   └── adding-packages/        # Recipe examples (newsboat, rust-example)
 │       └── _snippets/          # Reusable content blocks
 ├── troubleshooting/            # FAQs, boot problems, display issues
 └── resources/                  # Community links, external docs
 ```
+
+## Key Documentation Topics
+
+### Update System (`calculinux-update`)
+
+The update system documentation covers:
+
+- **RAUC A/B slot updates**: Atomic system updates with rollback capability
+- **Package reconciliation**: Automatic handling of duplicate/missing/conflicting packages
+- **Config file conflict detection** (v0.6.0+): Detects user-modified configs that shadow new versions
+  - Creates `.dpkg-new` files for manual review
+  - Reports modified files after reboot
+  - User resolves conflicts with `diff`/`vimdiff`
+- **Bundle extras**: Metadata embedded in RAUC bundles for prefetch and reconciliation
+- **Three-component architecture**: `cup` (CLI), `cup-hook` (RAUC handler), `cup-postreboot` (systemd service)
+
+Key files:
+- User guide: `docs/user-guide/updates.md` - User-facing update process, config file resolution
+- Developer guide: `docs/developer/calculinux-update.md` - Technical architecture, module documentation
+
+When documenting updates:
+- Config file handling is Phase 4 of reconciliation (after package duplicate removal)
+- CONFFILES metadata from `/var/lib/opkg/info/<package>.conffiles` lists config files
+- OverlayFS upper/lower layer comparison detects modifications via MD5 checksums
+- `.dpkg-new` files contain new versions; original paths keep user modifications
 
 ## Dependencies
 

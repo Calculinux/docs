@@ -57,12 +57,18 @@ src/calculinux_update/
 └── opkg/
     ├── status.py       # OPKG status file parser
     ├── reconcile.py    # Reconciliation algorithm
-    └── overlayfs.py    # OverlayFS whiteout cleanup
+    ├── overlayfs.py    # OverlayFS whiteout cleanup
+    └── conffiles.py    # Config file conflict detection
 ```
 
 **New in v0.5.1**: `overlayfs.py` module provides comprehensive OverlayFS whiteout management:
 - `cleanup_package_whiteouts()` - Remove package file whiteouts
 - `cleanup_opkg_metadata_whiteouts()` - Remove metadata whiteouts in `/var/lib/opkg/info/`
+
+**New in v0.6.0**: `conffiles.py` module provides config file conflict detection:
+- `detect_modified_conffiles()` - Compare config files between upper/lower OverlayFS layers
+- `create_dpkg_new_files()` - Copy new versions to `.dpkg-new` files for manual review
+- `get_package_conffiles()` - Read CONFFILES metadata from opkg
 - `has_files_in_upper()` - Detect if package has files in upper layer (for two-phase duplicate removal)
 - `is_package_in_writable_status()` - Uses enhanced opkg `--writable-only` flag with fallback
 - `remount_overlayfs()` - Remount overlay to pick up whiteout changes
@@ -363,6 +369,20 @@ def run_slot_hook(hook: str, slot: str) -> None:
 - **Physical duplicates**: Packages with actual files in the upper layer must be removed after reboot. If removed before reboot, OverlayFS creates whiteout files for ALL package files. If a second update follows immediately, these whiteouts temporarily hide critical libraries from the base image, potentially breaking system access during the update window.
 - **Example**: User installs SDL → Update 1 includes SDL in base → Update 2 follows immediately. If SDL is removed before reboot in Update 1, whiteouts hide SDL libraries during Update 2, breaking any program that needs SDL.
 
+**Config File Conflict Detection** (Phase 4):
+
+After package reconciliation, the hook detects modified configuration files:
+
+1. **Read CONFFILES metadata**: Load config file lists from `/var/lib/opkg/info/<package>.conffiles`
+2. **Compare upper/lower layers**: For each config file:
+   - Compute MD5 of upper layer file (user's modified version)
+   - Compute MD5 of lower layer file (new image version)
+   - If different, user has modified the config and it shadows the new version
+3. **Create `.dpkg-new` files**: Copy lower layer version to `<path>.dpkg-new` in upper layer
+4. **Save state**: Write modified conffiles list for post-reboot reporting
+
+This ensures users are aware when their config changes shadow new versions from the updated image.
+
 **OverlayFS Whiteout Cleanup**:
 
 The hook cleans up two types of whiteouts after removing status-only duplicates:
@@ -416,7 +436,8 @@ WantedBy=multi-user.target
 3. Updates opkg package feeds (`opkg update`)
 4. Executes pending reinstalls (preferring cached .ipk files)
 5. Executes pending upgrades
-6. Cleans up state files
+6. **Reports modified config files** for user review
+7. Cleans up state files
 
 **Key Implementation** (v0.5.0):
 
@@ -457,9 +478,24 @@ def postreboot_entrypoint() -> int:
         LOG.warning("some upgrades failed, leaving pending file for retry")
         # Continue anyway
     
+    # Report modified config files
+    _report_modified_conffiles()
+    
     LOG.info("post-reboot reconciliation complete")
     return 0
 ```
+
+**Config File Reporting**:
+
+After all package operations complete, the service reports modified config files that need manual review. Users see output like:
+
+```
+Modified config files detected (user changes shadow new image versions):
+Package: openssh-server
+  /etc/ssh/sshd_config -> /etc/ssh/sshd_config.dpkg-new
+```
+
+Users can then review changes with `diff` or `vimdiff` and merge manually.
 
 **What Changed from v0.4.x**:
 
@@ -591,6 +627,114 @@ def _iter_paragraphs(file: TextIO) -> Iterator[List[str]]:
 - Preserves field order when round-tripping
 - Respects blank lines between entries
 - Case-insensitive field lookup
+
+### Config File Conflict Detection
+
+**Module**: `conffiles.py`
+
+**Purpose**: Detect when user-modified configuration files shadow new versions from an updated image.
+
+**The Problem**:
+
+When updating with RAUC, config files in the lower OverlayFS layer (read-only base image) are replaced, but user-modified copies in the upper layer persist and shadow the new versions. OPKG's CONFFILES mechanism only works during package upgrades, not image replacements.
+
+**The Solution**:
+
+```python
+from calculinux_update.opkg.conffiles import (
+    ConffileInfo,
+    get_package_conffiles,
+    detect_modified_conffiles,
+    create_dpkg_new_files,
+)
+
+# Get conffiles for all packages in new image
+conffiles = get_all_conffiles(image_packages, "/var/lib/opkg/info")
+
+# Detect which ones are modified
+modified = detect_modified_conffiles(image_packages, overlay_mount="/data/overlay/etc")
+
+# Create .dpkg-new files for manual review
+create_dpkg_new_files(modified, overlay_mount="/data/overlay/etc")
+```
+
+**Key Functions**:
+
+```python
+@dataclass
+class ConffileInfo:
+    path: str           # Absolute path to config file
+    package: str        # Package name
+    md5_from_meta: Optional[str]  # MD5 from .conffiles file
+
+def get_package_conffiles(package_name: str, info_dir: str) -> List[ConffileInfo]:
+    """Read CONFFILES metadata for a package from /var/lib/opkg/info/."""
+    # Parses <package>.conffiles format:
+    # /path/to/file [md5sum]
+
+def detect_modified_conffiles(
+    image_packages: List[str],
+    overlay_mount: str = "/data/overlay/etc",
+) -> List[ConffileInfo]:
+    """Compare config files between upper/lower OverlayFS layers."""
+    # Returns files where upper MD5 != lower MD5
+
+def create_dpkg_new_files(
+    modified_conffiles: List[ConffileInfo],
+    overlay_mount: str,
+    dry_run: bool = False,
+) -> int:
+    """Copy lower layer versions to .dpkg-new files in upper layer."""
+    # Creates <path>.dpkg-new for each modified file
+```
+
+**CONFFILES Format**:
+
+OPKG packages declare config files in `/var/lib/opkg/info/<package>.conffiles`:
+
+```
+# Comment lines ignored
+/etc/ssh/sshd_config d41d8cd98f00b204e9800998ecf8427e
+/etc/ssh/ssh_config
+/etc/default/ssh
+```
+
+Each line:
+- Absolute path to config file
+- Optional MD5 checksum (newer OPKG versions)
+- Comments (lines starting with `#`) are ignored
+
+**OverlayFS Access**:
+
+The module accesses both layers directly:
+
+- Upper layer: `/data/overlay/<dir>/upper/<path>` (user's version)
+- Lower layer: `/data/overlay/<dir>/lower/<path>` (new image version)
+
+This allows MD5 comparison without mounting slots.
+
+**Integration**:
+
+Called during RAUC hook (Phase 4) after package reconciliation:
+
+```python
+# In hooks.py run_slot_hook()
+modified_conffiles = detect_modified_conffiles(image_packages)
+create_dpkg_new_files(modified_conffiles)
+_atomic_write(MODIFIED_CONFFILES_FILE, modified_conffiles)  # For post-reboot reporting
+```
+
+**Testing**:
+
+```bash
+pytest tests/test_opkg_conffiles.py -v
+```
+
+Test coverage includes:
+- MD5 computation (including error cases)
+- CONFFILES parsing (with/without checksums, comments, relative paths)
+- Modified file detection (various scenarios)
+- `.dpkg-new` file creation (including dry-run mode)
 
 ## Configuration
 

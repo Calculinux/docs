@@ -242,8 +242,26 @@ journalctl -u calculinux-update-postreboot.service -e
 
 Pending operations are stored in:
 
-- `/var/lib/opkg/opkg-status-hook.pending-reinstalls`
-- `/var/lib/opkg/opkg-status-hook.pending-upgrades`
+- `/var/lib/calculinux-update/update-state.pending-reinstalls`
+- `/var/lib/calculinux-update/update-state.pending-upgrades`
+- `/var/lib/calculinux-update/update-state.pending-duplicates`
+
+### Modified Config Files After Update
+
+To check which config files need review:
+
+```bash
+# Check post-reboot service logs
+journalctl -u calculinux-update-postreboot.service | grep "Modified config"
+
+# View the state file directly
+cat /var/lib/calculinux-update/update-state.modified-conffiles
+
+# Find all .dpkg-new files
+find /etc /usr /var -name "*.dpkg-new" 2>/dev/null
+```
+
+See the [Config File Handling](#config-file-handling) section for how to resolve conflicts.
 
 ### Prefetch Fails
 
