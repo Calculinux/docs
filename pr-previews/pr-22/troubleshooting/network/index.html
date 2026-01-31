@@ -2431,23 +2431,21 @@
 </code></pre></div>
 <p>If no WiFi interface is found:</p>
 <ol>
-<li>
-<p>Check if the module is loaded:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;rtl|aic&#39;</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Load the WiFi driver module:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>&lt;driver_name&gt;
-</code></pre></div></p>
-</li>
-<li>
-<p>Check system logs:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>wifi
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-b
-</code></pre></div></p>
-</li>
+<li>Check if the module is loaded:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;rtl|aic&#39;</span>
+</code></pre></div>
+<ol>
+<li>Load the WiFi driver module:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>&lt;driver_name&gt;
+</code></pre></div>
+<ol>
+<li>Check system logs:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>wifi
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-b
+</code></pre></div>
 <h3 id="cannot-connect-to-network">Cannot Connect to Network<a class="headerlink" href="#cannot-connect-to-network" title="Permanent link">&para;</a></h3>
 <p>Using <code>iwctl</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Enter iwctl interactive mode</span>
@@ -2467,18 +2465,18 @@
 <li><strong>Check signal strength</strong>: Move closer to the access point</li>
 <li><strong>Verify password</strong>: Ensure correct passphrase</li>
 <li><strong>Check network mode</strong>: Some routers may need 2.4GHz mode enabled</li>
-<li><strong>Check logs</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-f
-</code></pre></div></li>
+<li><strong>Check logs</strong>:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-f
+</code></pre></div>
 <h3 id="wifi-disconnects-frequently">WiFi Disconnects Frequently<a class="headerlink" href="#wifi-disconnects-frequently" title="Permanent link">&para;</a></h3>
 <p>Common causes:</p>
 <ol>
-<li>
-<p><strong>Power management</strong>: Disable WiFi power saving:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span><span class="nb">set</span><span class="w"> </span>power_save<span class="w"> </span>off
-</code></pre></div></p>
-</li>
+<li><strong>Power management</strong>: Disable WiFi power saving:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span><span class="nb">set</span><span class="w"> </span>power_save<span class="w"> </span>off
+</code></pre></div>
+<ol>
 <li>
 <p><strong>Weak signal</strong>: Move closer to access point or add external antenna</p>
 </li>
@@ -2486,11 +2484,11 @@
 <p><strong>Channel interference</strong>: Try changing router channel (especially on 2.4GHz)</p>
 </li>
 <li>
-<p><strong>Driver issues</strong>: Check for kernel messages:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>wlan0
-</code></pre></div></p>
+<p><strong>Driver issues</strong>: Check for kernel messages:</p>
 </li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>wlan0
+</code></pre></div>
 <h2 id="dns-problems">DNS Problems<a class="headerlink" href="#dns-problems" title="Permanent link">&para;</a></h2>
 <h3 id="cannot-resolve-hostnames">Cannot Resolve Hostnames<a class="headerlink" href="#cannot-resolve-hostnames" title="Permanent link">&para;</a></h3>
 <p>Test DNS resolution:</p>
@@ -2505,17 +2503,17 @@
 </code></pre></div>
 <p>Fix DNS issues:</p>
 <ol>
-<li>
-<p><strong>Manually set DNS servers</strong> in <code>/etc/resolv.conf</code>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>nameserver<span class="w"> </span><span class="m">1</span>.1.1.1
+<li><strong>Manually set DNS servers</strong> in <code>/etc/resolv.conf</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>nameserver<span class="w"> </span><span class="m">1</span>.1.1.1
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>nameserver<span class="w"> </span><span class="m">8</span>.8.8.8
-</code></pre></div></p>
-</li>
+</code></pre></div>
+<ol>
 <li>
 <p><strong>For WiFi with iwd</strong>: DNS should be set automatically via DHCP</p>
 </li>
 <li>
-<p><strong>For USB networking</strong>: </p>
+<p><strong>For USB networking</strong>:</p>
 </li>
 <li>With internet sharing, DNS should come from DHCP</li>
 <li>For static config, manually set DNS as above</li>
@@ -2523,65 +2521,63 @@
 <h3 id="dns-lookup-slow">DNS Lookup Slow<a class="headerlink" href="#dns-lookup-slow" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Try alternative DNS servers (Cloudflare, Google, Quad9)</li>
-<li>Check if DNS server is accessible:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ping<span class="w"> </span><span class="m">1</span>.1.1.1
-</code></pre></div></li>
+<li>Check if DNS server is accessible:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ping<span class="w"> </span><span class="m">1</span>.1.1.1
+</code></pre></div>
 <h2 id="connection-timeouts">Connection Timeouts<a class="headerlink" href="#connection-timeouts" title="Permanent link">&para;</a></h2>
 <h3 id="ssh-connection-times-out">SSH Connection Times Out<a class="headerlink" href="#ssh-connection-times-out" title="Permanent link">&para;</a></h3>
 <p>If SSH to your PicoCalc times out:</p>
 <ol>
-<li>
-<p><strong>Verify connectivity</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ping<span class="w"> </span>&lt;picocalc-ip&gt;
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Check if SSH is running</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># On PicoCalc</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Check firewall</strong> (if enabled):
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># On PicoCalc</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-v
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Try verbose SSH</strong> to see where it fails:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ssh<span class="w"> </span>-vvv<span class="w"> </span>pico@&lt;ip-address&gt;
-</code></pre></div></p>
-</li>
+<li><strong>Verify connectivity</strong>:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ping<span class="w"> </span>&lt;picocalc-ip&gt;
+</code></pre></div>
+<ol>
+<li><strong>Check if SSH is running</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># On PicoCalc</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
+</code></pre></div>
+<ol>
+<li><strong>Check firewall</strong> (if enabled):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># On PicoCalc</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-v
+</code></pre></div>
+<ol>
+<li><strong>Try verbose SSH</strong> to see where it fails:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ssh<span class="w"> </span>-vvv<span class="w"> </span>pico@&lt;ip-address&gt;
+</code></pre></div>
 <h3 id="internet-access-times-out">Internet Access Times Out<a class="headerlink" href="#internet-access-times-out" title="Permanent link">&para;</a></h3>
 <p>If you can't reach external sites:</p>
 <ol>
-<li>
-<p><strong>Check default route</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>default
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Test local gateway</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ping<span class="w"> </span>&lt;gateway-ip&gt;
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Test external IP</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ping<span class="w"> </span><span class="m">8</span>.8.8.8
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Test DNS</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ping<span class="w"> </span>google.com
-</code></pre></div></p>
-</li>
+<li><strong>Check default route</strong>:</li>
 </ol>
-<p>This helps identify if the issue is:
-- Local network (can't reach gateway)
-- Internet routing (can reach gateway but not internet)
-- DNS (can reach IPs but not resolve names)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>default
+</code></pre></div>
+<ol>
+<li><strong>Test local gateway</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ping<span class="w"> </span>&lt;gateway-ip&gt;
+</code></pre></div>
+<ol>
+<li><strong>Test external IP</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ping<span class="w"> </span><span class="m">8</span>.8.8.8
+</code></pre></div>
+<ol>
+<li><strong>Test DNS</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ping<span class="w"> </span>google.com
+</code></pre></div>
+<p>This helps identify if the issue is:</p>
+<ul>
+<li>Local network (can't reach gateway)</li>
+<li>Internet routing (can reach gateway but not internet)</li>
+<li>DNS (can reach IPs but not resolve names)</li>
+</ul>
 <h2 id="advanced-diagnostics">Advanced Diagnostics<a class="headerlink" href="#advanced-diagnostics" title="Permanent link">&para;</a></h2>
 <h3 id="network-interface-details">Network Interface Details<a class="headerlink" href="#network-interface-details" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Detailed interface info</span>
@@ -2617,9 +2613,9 @@
 <h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
 <p>If you're still experiencing issues:</p>
 <ol>
-<li>
-<p><strong>Gather diagnostic information</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Save to a file</span>
+<li><strong>Gather diagnostic information</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Save to a file</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="o">{</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Network Interfaces ===&quot;</span>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span>ip<span class="w"> </span>addr<span class="w"> </span>show
@@ -2630,11 +2626,9 @@
 <a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Service Status ===&quot;</span>
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">  </span>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network<span class="w"> </span>systemd-networkd<span class="w"> </span>iwd
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>network-diag.txt
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Check the documentation</strong>:</p>
-</li>
+</code></pre></div>
+<ol>
+<li><strong>Check the documentation</strong>:</li>
 <li><a href="../../user-guide/usb-networking/">USB Networking Guide</a></li>
 <li><a href="../../getting-started/first-boot/">First Boot</a> - WiFi setup</li>
 <li>
@@ -2675,7 +2669,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 24, 2026 04:55:52 UTC">January 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 31, 2026 07:46:06 UTC">January 31, 2026</span>
   </span>
 
     

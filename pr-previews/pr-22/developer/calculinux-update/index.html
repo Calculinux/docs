@@ -1437,21 +1437,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-bundle-extras" class="md-nav__link">
+  <a href="#missing-bundle-extras" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bundle Extras?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Handling
+        Missing Bundle Extras
       
     </span>
   </a>
@@ -1719,7 +1708,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#error-handling_1" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
         Error Handling
@@ -2480,21 +2469,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-bundle-extras" class="md-nav__link">
+  <a href="#missing-bundle-extras" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bundle Extras?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Handling
+        Missing Bundle Extras
       
     </span>
   </a>
@@ -2762,7 +2740,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#error-handling_1" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
         Error Handling
@@ -3097,16 +3075,20 @@
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ├── overlayfs.py    # OverlayFS whiteout cleanup
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    └── conffiles.py    # Config file conflict detection
 </code></pre></div>
-<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS whiteout management:
-- <code>cleanup_package_whiteouts()</code> - Remove package file whiteouts
-- <code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in <code>/var/lib/opkg/info/</code></p>
-<p><strong>New in v0.6.0</strong>: <code>conffiles.py</code> module provides config file conflict detection:
-- <code>detect_modified_conffiles()</code> - Compare config files between upper/lower OverlayFS layers
-- <code>create_dpkg_new_files()</code> - Copy new versions to <code>.dpkg-new</code> files for manual review
-- <code>get_package_conffiles()</code> - Read CONFFILES metadata from opkg
-- <code>has_files_in_upper()</code> - Detect if package has files in upper layer (for two-phase duplicate removal)
-- <code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag with fallback
-- <code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</p>
+<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS whiteout management:</p>
+<ul>
+<li><code>cleanup_package_whiteouts()</code> - Remove package file whiteouts</li>
+<li><code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in <code>/var/lib/opkg/info/</code></li>
+</ul>
+<p><strong>New in v0.6.0</strong>: <code>conffiles.py</code> module provides config file conflict detection:</p>
+<ul>
+<li><code>detect_modified_conffiles()</code> - Compare config files between upper/lower OverlayFS layers</li>
+<li><code>create_dpkg_new_files()</code> - Copy new versions to <code>.dpkg-new</code> files for manual review</li>
+<li><code>get_package_conffiles()</code> - Read CONFFILES metadata from opkg</li>
+<li><code>has_files_in_upper()</code> - Detect if package has files in upper layer (for two-phase duplicate removal)</li>
+<li><code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag with fallback</li>
+<li><code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</li>
+</ul>
 <p><strong>Binary Locations</strong> (as of v0.5.0):</p>
 <ul>
 <li><code>/usr/bin/cup</code> - User-facing CLI command</li>
@@ -3193,21 +3175,7 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>RAUC_BUNDLE_EXTRA_FILES += &quot;bundle-extras.tar.gz&quot;
 </code></pre></div>
 <p>The <code>bundle</code> class automatically includes files listed in <code>RAUC_BUNDLE_EXTRA_FILES</code> from <code>DEPLOY_DIR_IMAGE</code>.</p>
-<h3 id="why-bundle-extras">Why Bundle Extras?<a class="headerlink" href="#why-bundle-extras" title="Permanent link">&para;</a></h3>
-<p>Without bundle extras, the hook would need to:</p>
-<ol>
-<li>~~Mount the inactive slot after RAUC installation~~  ✗ Not possible - RAUC unmounts slots after installation</li>
-<li>~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted when hook runs</li>
-<li>~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional complexity and failure modes</li>
-</ol>
-<p>With bundle extras:</p>
-<p>✅ Self-contained: Bundle includes all necessary metadata<br />
-✅ No mounting required: Status file provided via environment variable<br />
-✅ Hook runs without slot access: Works even if slot can't be mounted<br />
-✅ Faster: No filesystem access delays<br />
-✅ More reliable: Fewer moving parts, fewer failure modes  </p>
-<p><strong>Critical for v0.5.0+</strong>: The hook now receives <code>RAUC_BUNDLE_STATUS_IMAGE</code> from the post-install handler, which extracts <code>status.image</code> from bundle extras. The hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new image's package status.</p>
-<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<h3 id="missing-bundle-extras">Missing Bundle Extras<a class="headerlink" href="#missing-bundle-extras" title="Permanent link">&para;</a></h3>
 <p>If bundle extras are missing or corrupted:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">extras</span> <span class="o">=</span> <span class="n">extract_bundle_extras</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">extras</span><span class="p">:</span>
@@ -3273,7 +3241,7 @@
 <p><strong>Note</strong>: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the update still proceeds normally. Network access is required after reboot if prefetch didn't cache packages.</p>
 <h4 id="phase-1-hook-during-rauc-install-the-brain">Phase 1: Hook (During RAUC Install) - THE BRAIN<a class="headerlink" href="#phase-1-hook-during-rauc-install-the-brain" title="Permanent link">&para;</a></h4>
 <p><strong>Module</strong>: <code>hooks.py</code> → <code>run_slot_hook()</code></p>
-<p><strong>RAUC Integration</strong> (v0.5.0+):</p>
+<p><strong>RAUC Integration</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># /usr/lib/rauc/post-install-handler.sh</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">BUNDLE_STATUS_IMAGE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RAUC_BUNDLE_MOUNT_POINT</span><span class="si">}</span><span class="s2">/extras/opkg/status.image&quot;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
@@ -3283,7 +3251,6 @@
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>/usr/lib/calculinux-update/cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SLOT_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-<p><strong>Critical Change in v0.5.0</strong>: The hook NO LONGER MOUNTS SLOTS. It receives the status.image file path from bundle extras via the <code>RAUC_BUNDLE_STATUS_IMAGE</code> environment variable.</p>
 <p><strong>Process</strong> (ALL happens before reboot):</p>
 <ol>
 <li>Validate environment (<code>RAUC_SLOT_CLASS=rootfs</code>, <code>RAUC_BUNDLE_STATUS_IMAGE</code> provided)</li>
@@ -3428,7 +3395,7 @@
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="k">return</span> <span class="mi">0</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="c1"># If no pending operations, we&#39;re done</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> 
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>                   <span class="n">PENDING_UPGRADE_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>                   <span class="n">PENDING_DUPLICATES_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_pending</span><span class="p">:</span>
@@ -3508,16 +3475,16 @@
 </code></pre></div>
 <p><strong>Algorithm</strong>:</p>
 <ol>
-<li>
-<p><strong>Identify all duplicates</strong> - packages in both writable and new image:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
+<li><strong>Identify all duplicates</strong> - packages in both writable and new image:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">new_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">image_status</span><span class="p">)}</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">all_duplicates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">writable_pkgs</span> <span class="o">&amp;</span> <span class="n">new_image_pkgs</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Split duplicates into two phases</strong> - based on upper layer presence:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+<ol>
+<li><strong>Split duplicates into two phases</strong> - based on upper layer presence:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">physical_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>
@@ -3527,11 +3494,11 @@
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="c1"># Status-only - safe to remove now</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>        <span class="n">status_only_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Find missing packages</strong> - packages removed from new image:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
+</code></pre></div>
+<ol>
+<li><strong>Find missing packages</strong> - packages removed from new image:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">missing_from_new</span> <span class="o">=</span> <span class="n">old_image_pkgs</span> <span class="o">-</span> <span class="n">new_image_pkgs</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Only reinstall if writable packages depend on them</span>
@@ -3539,18 +3506,16 @@
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">missing_from_new</span><span class="p">:</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">pkg</span> <span class="ow">in</span> <span class="n">get_dependencies</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">writable_status</span><span class="p">):</span>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="n">reinstall</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Identify upgrades needed</strong> - overlay packages that may conflict:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">upgrade_packages</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+<ol>
+<li><strong>Identify upgrades needed</strong> - overlay packages that may conflict:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">upgrade_packages</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">):</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="n">pkg_name</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="k">if</span> <span class="n">pkg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>  <span class="c1"># Not a duplicate</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="n">upgrade_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-</ol>
+</code></pre></div>
 <p><strong>Why upgrade everything?</strong>: Overlay packages were compiled against the old base. The new base may have updated shared libraries or APIs. Upgrading ensures ABI compatibility.</p>
 <h3 id="status-file-parsing">Status File Parsing<a class="headerlink" href="#status-file-parsing" title="Permanent link">&para;</a></h3>
 <p><strong>Module</strong>: <code>status.py</code></p>
@@ -3635,15 +3600,17 @@
 </code></pre></div>
 <p><strong>CONFFILES Format</strong>:</p>
 <p>OPKG packages declare config files in <code>/var/lib/opkg/info/&lt;package&gt;.conffiles</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a># Comment lines ignored
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>/etc/ssh/sshd_config d41d8cd98f00b204e9800998ecf8427e
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Comment lines ignored</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>/etc/ssh/sshd_config<span class="w"> </span>d41d8cd98f00b204e9800998ecf8427e
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>/etc/ssh/ssh_config
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>/etc/default/ssh
 </code></pre></div>
-<p>Each line:
-- Absolute path to config file
-- Optional MD5 checksum (newer OPKG versions)
-- Comments (lines starting with <code>#</code>) are ignored</p>
+<p>Each line:</p>
+<ul>
+<li>Absolute path to config file</li>
+<li>Optional MD5 checksum (newer OPKG versions)</li>
+<li>Comments (lines starting with <code>#</code>) are ignored</li>
+</ul>
 <p><strong>OverlayFS Access</strong>:</p>
 <p>The module accesses both layers directly:</p>
 <ul>
@@ -3661,11 +3628,13 @@
 <p><strong>Testing</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>pytest<span class="w"> </span>tests/test_opkg_conffiles.py<span class="w"> </span>-v
 </code></pre></div>
-<p>Test coverage includes:
-- MD5 computation (including error cases)
-- CONFFILES parsing (with/without checksums, comments, relative paths)
-- Modified file detection (various scenarios)
-- <code>.dpkg-new</code> file creation (including dry-run mode)</p>
+<p>Test coverage includes:</p>
+<ul>
+<li>MD5 computation (including error cases)</li>
+<li>CONFFILES parsing (with/without checksums, comments, relative paths)</li>
+<li>Modified file detection (various scenarios)</li>
+<li><code>.dpkg-new</code> file creation (including dry-run mode)</li>
+</ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p><strong>Module</strong>: <code>config.py</code></p>
 <p><strong>File</strong>: <code>/etc/calculinux-update.toml</code></p>
@@ -3710,9 +3679,9 @@
 <a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>    <span class="c1"># Sorts by timestamp (newest first)</span>
 </code></pre></div>
 <p><strong>Bundles Metadata</strong> (<code>bundles.txt</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a># timestamp filename size sha256
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>1732147200 calculinux-bundle-20241120.raucb 123456789 abc123...
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>1731542400 calculinux-bundle-20241113.raucb 123456780 def456...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># timestamp filename size sha256</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="m">1732147200</span><span class="w"> </span>calculinux-bundle-20241120.raucb<span class="w"> </span><span class="m">123456789</span><span class="w"> </span>abc123...
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="m">1731542400</span><span class="w"> </span>calculinux-bundle-20241113.raucb<span class="w"> </span><span class="m">123456780</span><span class="w"> </span>def456...
 </code></pre></div>
 <p><strong>Download</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">download_bundle</span><span class="p">(</span>
@@ -3866,7 +3835,7 @@
 <li><code>update-state.pre-update-writable</code> - Pre-update writable status backup (for rollback)</li>
 <li><code>update-state.boot-id</code> - Boot ID for rollback detection</li>
 </ul>
-<h2 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">&para;</a></h2>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
 <h3 id="prefetch-failures">Prefetch Failures<a class="headerlink" href="#prefetch-failures" title="Permanent link">&para;</a></h3>
 <p><strong>Scenario</strong>: opkg not configured, no network, missing feeds</p>
 <p><strong>Handling</strong>:</p>
@@ -4059,7 +4028,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 30, 2026 18:21:52 UTC">January 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 30, 2026 19:20:42 UTC">January 30, 2026</span>
   </span>
 
     

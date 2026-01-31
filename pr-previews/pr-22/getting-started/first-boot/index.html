@@ -2525,18 +2525,22 @@
 <li><strong>Wait for boot</strong> (30-60 seconds first time)</li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a class="headerlink" href="#what-to-expect" title="Permanent link">&para;</a></h3>
-<p><strong>Boot Process</strong>:
-- Power LED lights up
-- Boot messages appear on display
-- System initialization
-- Login prompt appears</p>
-<p><strong>First Boot Timing</strong>:
-- First boot: 30-60 seconds
-- Subsequent boots: 15-30 seconds</p>
+<p><strong>Boot Process</strong>:</p>
+<ul>
+<li>Power LED lights up</li>
+<li>Boot messages appear on display</li>
+<li>System initialization</li>
+<li>Login prompt appears</li>
+</ul>
+<p><strong>First Boot Timing</strong>:</p>
+<ul>
+<li>First boot: 30-60 seconds</li>
+<li>Subsequent boots: 15-30 seconds</li>
+</ul>
 <h2 id="initial-login">Initial Login<a class="headerlink" href="#initial-login" title="Permanent link">&para;</a></h2>
 <h3 id="default-credentials">Default Credentials<a class="headerlink" href="#default-credentials" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Username: root
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Password: root
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Username:<span class="w"> </span>root
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Password:<span class="w"> </span>root
 </code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Change Password Immediately</p>
@@ -2598,14 +2602,18 @@
 <p class="admonition-title">Hardware Expansion</p>
 <p>The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.</p>
 </div>
-<p><strong>Currently Tested:</strong>
-- Display (built-in LCD drivers)
-- Keyboard (built-in keyboard drivers)<br />
-- USB WiFi adapters (see WiFi chipsets above)</p>
-<p><strong>Planned/Future Support:</strong>
-- I2C RTC modules (e.g., Adafruit DS3231)
-- LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
-- Additional I2C/SPI peripherals</p>
+<p><strong>Currently Tested:</strong></p>
+<ul>
+<li>Display (built-in LCD drivers)</li>
+<li>Keyboard (built-in keyboard drivers)</li>
+<li>USB WiFi adapters (see WiFi chipsets above)</li>
+</ul>
+<p><strong>Planned/Future Support:</strong></p>
+<ul>
+<li>I2C RTC modules (e.g., Adafruit DS3231)</li>
+<li>LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)</li>
+<li>Additional I2C/SPI peripherals</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Peripheral Testing</p>
 <p>Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!</p>
@@ -2630,29 +2638,33 @@
 <ol>
 <li>Connect Lyra's USB-C port to your computer</li>
 <li>Wait 10-15 seconds for the USB gadget to enumerate</li>
-<li>SSH to the PicoCalc:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Password: calc</span>
-</code></pre></div></li>
+<li>SSH to the PicoCalc:</li>
 </ol>
-<p>See the <a href="../../user-guide/usb-networking/">USB Networking Guide</a> for complete setup instructions including:
-- Internet sharing configuration
-- USB serial console access
-- Advanced configuration options</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Password: calc</span>
+</code></pre></div>
+<p>See the <a href="../../user-guide/usb-networking/">USB Networking Guide</a> for complete setup instructions including:</p>
+<ul>
+<li>Internet sharing configuration</li>
+<li>USB serial console access</li>
+<li>Advanced configuration options</li>
+</ul>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Windows Users</p>
 <p>The default configuration uses ECM (CDC-Ether) which works natively on Linux and macOS but <strong>not on Windows</strong>.</p>
 <p>If you're using Windows, you need to switch the device to RNDIS mode - see the <a href="../../user-guide/usb-networking/#switching-between-ecm-and-rndis">USB Networking Configuration</a> section.</p>
 </div>
-<p><strong>What you get with USB networking:</strong>
-- ✅ Fast, reliable connection
-- ✅ No additional hardware required
-- ✅ Works on Linux and macOS out-of-the-box
-- ✅ Windows support via RNDIS mode
-- ✅ Static IP (<code>192.168.7.2</code>) always available
-- ✅ DHCP support for internet sharing
-- ✅ USB serial console at 1500000 baud</p>
+<p><strong>What you get with USB networking:</strong></p>
+<ul>
+<li>✅ Fast, reliable connection</li>
+<li>✅ No additional hardware required</li>
+<li>✅ Works on Linux and macOS out-of-the-box</li>
+<li>✅ Windows support via RNDIS mode</li>
+<li>✅ Static IP (<code>192.168.7.2</code>) always available</li>
+<li>✅ DHCP support for internet sharing</li>
+<li>✅ USB serial console at 1500000 baud</li>
+</ul>
 <h3 id="wifi-setup-usb-adapter-required">WiFi Setup (USB Adapter Required)<a class="headerlink" href="#wifi-setup-usb-adapter-required" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">WiFi Hardware Required</p>
@@ -2747,7 +2759,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 27, 2026 03:19:23 UTC">January 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 31, 2026 07:46:06 UTC">January 31, 2026</span>
   </span>
 
     

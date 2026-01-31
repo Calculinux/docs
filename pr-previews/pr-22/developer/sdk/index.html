@@ -2283,24 +2283,26 @@
 </ul>
 <h2 id="install-the-sdk">Install the SDK<a class="headerlink" href="#install-the-sdk" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Download the installer that matches your host architecture:</li>
-</ol>
+<li>
+<p>Download the installer that matches your host architecture:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">SDK_BASE</span><span class="o">=</span>https://opkg.calculinux.org/sdk/develop/continuous
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-O<span class="w"> </span><span class="si">${</span><span class="nv">SDK_BASE</span><span class="si">}</span>/x86_64/calculinux-sdk-luckfox-lyra-x86_64.sh
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>curl<span class="w"> </span>-O<span class="w"> </span><span class="si">${</span><span class="nv">SDK_BASE</span><span class="si">}</span>/x86_64/calculinux-sdk-luckfox-lyra-x86_64.manifest
 </code></pre></div>
-<ol>
-<li>Choose an install location (no sudo needed):</li>
-</ol>
+</li>
+<li>
+<p>Choose an install location (no sudo needed):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/opt/calculinux-sdk&quot;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>calculinux-sdk-luckfox-lyra-x86_64.sh
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>./calculinux-sdk-luckfox-lyra-x86_64.sh<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALL_DIR</span><span class="s2">&quot;</span><span class="w"> </span>--<span class="w"> </span>-y
 </code></pre></div>
-<ol>
-<li>Optional: skim the manifest to see included headers and libraries:</li>
-</ol>
+</li>
+<li>
+<p>Optional: skim the manifest to see included headers and libraries:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>less<span class="w"> </span>calculinux-sdk-luckfox-lyra-x86_64.manifest
 </code></pre></div>
+</li>
+</ol>
 <h2 id="activate-the-cross-environment">Activate the cross environment<a class="headerlink" href="#activate-the-cross-environment" title="Permanent link">&para;</a></h2>
 <p>Source the environment script from the install directory (exact filename may vary slightly with the tune):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALL_DIR</span><span class="s2">&quot;</span>/environment-setup-*
@@ -2401,29 +2403,33 @@
 <a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
 </code></pre></div>
 <ol>
-<li>Add a minimal <code>Makefile</code> that uses the Kernel build system:</li>
-</ol>
+<li>
+<p>Add a minimal <code>Makefile</code> that uses the Kernel build system:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">obj-m</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>hello.o
 </code></pre></div>
-<ol>
-<li>Build the module with the SDK environment:</li>
-</ol>
+</li>
+<li>
+<p>Build the module with the SDK environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALL_DIR</span><span class="s2">&quot;</span>/environment-setup-*
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">KERNEL_SRC</span><span class="o">=</span><span class="nv">$OECORE_TARGET_SYSROOT</span>/usr/src/kernel
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># ARCH and CROSS_COMPILE come from the SDK environment, but set ARCH explicitly for clarity</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">ARCH</span><span class="o">=</span>arm<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$KERNEL_SRC</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">M</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span><span class="w"> </span>modules
 </code></pre></div>
-<ol>
-<li>The resulting <code>hello.ko</code> can be copied to the device and loaded:</li>
-</ol>
+</li>
+<li>
+<p>The resulting <code>hello.ko</code> can be copied to the device and loaded:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>scp<span class="w"> </span>hello.ko<span class="w"> </span>root@&lt;device&gt;:/tmp/
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ssh<span class="w"> </span>root@&lt;device&gt;<span class="w"> </span><span class="s2">&quot;insmod /tmp/hello.ko &amp;&amp; dmesg | tail&quot;</span>
 </code></pre></div>
-<p>Notes:
-- Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the Kernel.
-- If you see missing headers, confirm the SDK contains <code>usr/src/kernel</code>; install the matching <code>linux-*-dev</code> package into the SDK sysroot if needed, then rebuild.
-- For repeated builds, keep the <code>KERNEL_SRC</code> path cached; the Kernel tree in the SDK already has the correct config and Module.symvers.</p>
+</li>
+</ol>
+<p>Notes:</p>
+<ul>
+<li>Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the Kernel.</li>
+<li>If you see missing headers, confirm the SDK contains <code>usr/src/kernel</code>; install the matching <code>linux-*-dev</code> package into the SDK sysroot if needed, then rebuild.</li>
+<li>For repeated builds, keep the <code>KERNEL_SRC</code> path cached; the Kernel tree in the SDK already has the correct config and Module.symvers.</li>
+</ul>
 <h2 id="updating-the-sdk">Updating the SDK<a class="headerlink" href="#updating-the-sdk" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Grab the latest installer from the same feed/subfolder when CI publishes a new build (develop) or a new tag (release).</li>
@@ -2452,7 +2458,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 26, 2026 23:32:57 UTC">January 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 31, 2026 07:46:06 UTC">January 31, 2026</span>
   </span>
 
     
