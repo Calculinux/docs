@@ -4,28 +4,28 @@ This section covers network connectivity options for your PicoCalc.
 
 !!! info "PicoCalc Network Configuration"
     The PicoCalc uses **systemd-networkd** for network configuration and **iwd** for WiFi management. No graphical network managers (like NetworkManager) are included - configuration is done via configuration files or command-line tools like `iwctl`.
-    
+
 ## Available Connectivity
 
 <div class="grid cards" markdown>
 
--   :material-usb:{ .lg .middle } **USB Networking**
+- :octicons-link: **USB Networking**
 
     ---
 
     Connect directly to your computer via USB for fast, convenient network access.
 
-    [:octicons-arrow-right-24: USB Networking Guide](usb-networking.md)
+    [:octicons-arrow-right: USB Networking Guide](usb-networking.md)
 
--   :material-wifi:{ .lg .middle } **WiFi**
+- :material-notifications:{ .lg .middle } **WiFi**
 
     ---
 
     Connect to wireless networks using a USB WiFi adapter (not built-in, must be installed separately).
 
-    [:octicons-arrow-right-24: WiFi Setup](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
+    [:octicons-arrow-right: WiFi Setup](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
 
-    [:octicons-arrow-right-24: Selecting a WiFi Adapter](../hardware/specifications.md#supported-wifi-chipsets)
+    [:octicons-arrow-right: Selecting a WiFi Adapter](../hardware/specifications.md#supported-wifi-chipsets)
 
 </div>
 
@@ -42,27 +42,35 @@ This section covers network connectivity options for your PicoCalc.
 
 Access your PicoCalc remotely via SSH:
 
-```bash
+```shell
 ssh pico@<ip-address>
 # Default password: calc
+
 ```
 
+``shell
+
 For USB networking:
-```bash
+
+```shell
 ssh pico@192.168.7.2
+
 ```
 
 ### File Transfer
 
 Transfer files using SCP:
 
-```bash
+```shell
 # Copy to PicoCalc
 scp myfile.txt pico@<ip-address>:/home/pico/
 
 # Copy from PicoCalc
 scp pico@<ip-address>:/path/to/file ./
+
 ```
+
+``shell
 
 ### Internet Access
 

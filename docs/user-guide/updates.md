@@ -15,15 +15,15 @@ graph TD
         basepkgs[Base System Packages]
         statusimage[/var/lib/opkg/status.image]
     end
-    
+
     subgraph overlay["Writable Overlay"]
         userpkgs[User-Installed Packages]
         config[Configuration Files]
         status[/var/lib/opkg/status]
     end
-    
+
     base -.-> overlay
-    
+
     style base fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
     style overlay fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
 ```
@@ -38,7 +38,7 @@ The `calculinux-update` package provides the `cup` command for managing system u
 
 The easiest way to update is interactively:
 
-```bash
+```shell
 sudo cup install
 ```
 
@@ -55,7 +55,7 @@ Each RAUC bundle includes metadata about the new system's package configuration,
 
 ### Update Specific Channel
 
-```bash
+```shell
 sudo cup install --channel "Release"
 ```
 
@@ -63,7 +63,7 @@ sudo cup install --channel "Release"
 
 If you know the bundle name:
 
-```bash
+```shell
 sudo cup install --bundle calculinux-bundle-walnascar-20251120.raucb
 ```
 
@@ -71,7 +71,7 @@ sudo cup install --bundle calculinux-bundle-walnascar-20251120.raucb
 
 For automation or when you're confident:
 
-```bash
+```shell
 sudo cup install --bundle <name> --yes
 ```
 
@@ -79,13 +79,13 @@ sudo cup install --bundle <name> --yes
 
 ### List All Updates
 
-```bash
+```shell
 cup list
 ```
 
 ### List Updates from Specific Channel
 
-```bash
+```shell
 cup list --channel "Continuous"
 ```
 
@@ -93,7 +93,7 @@ cup list --channel "Continuous"
 
 To download a bundle without installing (useful for offline installation later):
 
-```bash
+```shell
 cup download --bundle <name>
 ```
 
@@ -149,13 +149,13 @@ When the system boots into the new slot:
 
 After an update, check the systemd journal:
 
-```bash
+```shell
 journalctl -u calculinux-update-postreboot.service
 ```
 
 Look for messages like:
 
-```
+```log
 cup-hook: pruned writable status against new image
 cup-hook: queued 3 packages for reinstall
 cup-hook: queued 5 packages for upgrade
@@ -190,7 +190,7 @@ Set `enable = true` to show a channel in `cup list`.
 
 In some cases you might want to skip prefetch (though metadata extraction still occurs):
 
-```bash
+```shell
 sudo cup install --no-prefetch
 ```
 
@@ -221,13 +221,13 @@ graph TD
 
 Check RAUC status:
 
-```bash
+```shell
 rauc status
 ```
 
 View detailed logs:
 
-```bash
+```shell
 journalctl -u rauc -e
 ```
 
@@ -235,7 +235,7 @@ journalctl -u rauc -e
 
 Check the post-reboot service:
 
-```bash
+```shell
 systemctl status calculinux-update-postreboot.service
 journalctl -u calculinux-update-postreboot.service -e
 ```
@@ -250,7 +250,7 @@ Pending operations are stored in:
 
 To check which config files need review:
 
-```bash
+```shell
 # Check post-reboot service logs
 journalctl -u calculinux-update-postreboot.service | grep "Modified config"
 
@@ -261,7 +261,7 @@ cat /var/lib/calculinux-update/update-state.modified-conffiles
 find /etc /usr /var -name "*.dpkg-new" 2>/dev/null
 ```
 
-See the [Config File Handling](#config-file-handling) section for how to resolve conflicts.
+See the [Modified Config Files After Update](#modified-config-files-after-update) section for how to resolve conflicts.
 
 ### Prefetch Fails
 
@@ -269,20 +269,20 @@ If bundle metadata extraction or prefetch fails, you have several options:
 
 **Check if bundle is corrupted:**
 
-```bash
+```shell
 # Download again if needed
 cup download --bundle <bundle-name>
 ```
 
 **Skip prefetch (requires network after reboot):**
 
-```bash
+```shell
 sudo cup install --no-prefetch
 ```
 
 **Verify OPKG configuration:**
 
-```bash
+```shell
 cat /etc/opkg/opkg.conf
 opkg update
 ```
@@ -293,7 +293,7 @@ Prefetch failures are usually harmless - the system will simply download package
 
 RAUC maintains the previous slot as a fallback:
 
-```bash
+```shell
 # Mark current slot as bad and reboot to previous
 sudo rauc status mark-bad booted
 sudo reboot
@@ -303,22 +303,22 @@ Or select the other slot in your bootloader (if supported).
 
 !!! warning "Package State After Rollback"
     After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:
-    
+
     ```bash
     # Before updating, save your package list
     opkg list-installed > ~/my-packages.txt
-    
+
     # After rollback, reinstall if needed
     cat ~/my-packages.txt | awk '{print $1}' | xargs opkg install
     ```
-    
+
     Future versions will include automatic rollback detection and reconciliation.
 
 ### Dry Run
 
 Test the update process without actually installing:
 
-```bash
+```shell
 cup install --dry-run
 ```
 
@@ -342,7 +342,7 @@ This downloads and prepares but doesn't invoke RAUC.
 
 Use `--no-prefetch` and ensure network access:
 
-```bash
+```shell
 sudo cup install --no-prefetch
 ```
 
@@ -352,7 +352,7 @@ sudo cup install --no-prefetch
 
 Enable the Builds channel and install PR bundles:
 
-```bash
+```shell
 # Edit /etc/calculinux-update.toml, set Builds enable = true
 cup list --channel "Builds"
 sudo cup install --channel "Builds" --bundle luckfox-lyra-pr123.raucb
@@ -362,7 +362,7 @@ sudo cup install --channel "Builds" --bundle luckfox-lyra-pr123.raucb
 
 For kiosk or embedded deployments:
 
-```bash
+```shell
 #!/bin/bash
 # Update to latest release automatically
 BUNDLE=$(cup list --channel "Release" | head -1 | awk '{print $1}')

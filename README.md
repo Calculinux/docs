@@ -23,27 +23,35 @@ cd docs
 
 2. Install dependencies:
 ```bash
-pip install -r requirements.txt
+make install
+```
+
+### Quick Start
+
+The repository includes a Makefile for common development tasks:
+
+```bash
+make          # Default: runs lint, then starts docs server
+make lint     # Run all linters (markdownlint, link-check, vale)
+make docs     # Start local MkDocs server
+make clean    # Remove build artifacts
+make help     # Show all available commands
 ```
 
 ### Preview the docs locally
 
-MkDocs makes it easy to preview updates while authoring documentation.
-This repository already pins the toolchain in `./.tool-versions`, so it
-works seamlessly with `asdf`, but you can also install `mkdocs` and the
-Material theme manually:
+To preview documentation with live reload:
 
-````bash
-pip install -r requirements.txt
-````
-
-Then launch the live preview server:
-
-````bash
-mkdocs serve --watch-theme
-````
+```bash
+make docs
+```
 
 Navigate to http://127.0.0.1:8000/ to browse the rendered docs.
+
+Or manually:
+```bash
+mkdocs serve --watch-theme
+```
 
 ### Local Development
 

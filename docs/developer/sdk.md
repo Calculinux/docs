@@ -1,3 +1,4 @@
+
 # Using the Yocto SDK
 
 The Calculinux CI builds a cross-compilation SDK for application development. SDKs are produced by the meta-calculinux build and publish workflows whenever the `develop` branch or a tagged release is built. Each SDK installer contains the target sysroot, cross-toolchain, pkg-config data, and CMake/Meson toolchain files for the Luckfox Lyra.
@@ -21,37 +22,37 @@ Notes:
 
 1. Download the installer that matches your host architecture:
 
-```bash
-SDK_BASE=https://opkg.calculinux.org/sdk/develop/continuous
-curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.sh
-curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.manifest
-```
+    ```bash
+    SDK_BASE=https://opkg.calculinux.org/sdk/develop/continuous
+    curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.sh
+    curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.manifest
+    ```
 
 2. Choose an install location (no sudo needed):
 
-```bash
-INSTALL_DIR="$HOME/opt/calculinux-sdk"
-chmod +x calculinux-sdk-luckfox-lyra-x86_64.sh
-./calculinux-sdk-luckfox-lyra-x86_64.sh -d "$INSTALL_DIR" -- -y
-```
+    ```bash
+    INSTALL_DIR="$HOME/opt/calculinux-sdk"
+    chmod +x calculinux-sdk-luckfox-lyra-x86_64.sh
+    ./calculinux-sdk-luckfox-lyra-x86_64.sh -d "$INSTALL_DIR" -- -y
+    ```
 
 3. Optional: skim the manifest to see included headers and libraries:
 
-```bash
-less calculinux-sdk-luckfox-lyra-x86_64.manifest
-```
+    ```bash
+    less calculinux-sdk-luckfox-lyra-x86_64.manifest
+    ```
 
 ## Activate the cross environment
 
 Source the environment script from the install directory (exact filename may vary slightly with the tune):
 
-```bash
+```shell
 source "$INSTALL_DIR"/environment-setup-*
 ```
 
 After sourcing you should see the cross toolchain in your path:
 
-```bash
+```shell
 echo $CC
 $CC --version
 pkg-config --modversion sdl2
@@ -63,13 +64,13 @@ To make this persistent for a shell session, add the `source` line to your shell
 
 ### Plain Make or Autotools
 
-```bash
+```shell
 $CC hello.c -o hello
 ```
 
 ### CMake
 
-```bash
+```shell
 cmake -B build -S . \
   -DCMAKE_TOOLCHAIN_FILE=$OECORE_NATIVE_SYSROOT/usr/share/cmake/OEToolchainConfig.cmake
 cmake --build build
@@ -77,7 +78,7 @@ cmake --build build
 
 ### Meson
 
-```bash
+```shell
 meson setup build . --cross-file $OECORE_NATIVE_SYSROOT/usr/share/meson/oe-cross-file.txt
 meson compile -C build
 ```
@@ -88,7 +89,7 @@ The `$PKG_CONFIG_SYSROOT_DIR` and `$OECORE_TARGET_SYSROOT` variables from the SD
 
 The SDK names its environment file with the target triple plus the Yocto tune. For the Luckfox Lyra build you will see something like:
 
-```
+```shell
 environment-setup-cortexa7thf-neon-vfpv4-poky-linux-musl*
 ```
 
@@ -111,16 +112,16 @@ The SDK sysroot can be extended with additional development libraries and tools 
 
 !!! warning "Experimental: Opkg package installation in SDK"
     Installing opkg packages directly into the SDK sysroot is experimental and may not work reliably. Many packages have dependencies on image-specific files or systemd services that won't be present in the SDK. Consider these alternatives:
-    
+
     - **Build from source** – Most projects compile cleanly within the SDK
     - **[Rebuild the image](customization.md)** – Add recipe dependencies to the image layer instead of modifying the SDK
     - **Manual header/library installation** – Download and extract only the headers you need
-    
+
     Use this method only if you've confirmed the package and its dependencies are SDK-compatible.
 
 ### Quick install (copy-paste ready)
 
-```bash
+```shell
 source ~/calculinux-sdk/environment-setup-*
 WORK_DIR=$(mktemp -d) && cd "$WORK_DIR"
 ARCH=$(basename $OECORE_TARGET_SYSROOT | cut -d- -f1-4)
@@ -135,7 +136,7 @@ Replace `libcurl-dev` with the package you want. That's it!
 
 To browse available packages:
 
-```bash
+```shell
 # List packages for your architecture
 ARCH=$(basename $OECORE_TARGET_SYSROOT | cut -d- -f1-4)
 curl https://opkg.calculinux.org/ipk/walnascar/continuous/$ARCH/ | grep ".ipk" | head -30
@@ -143,7 +144,7 @@ curl https://opkg.calculinux.org/ipk/walnascar/continuous/$ARCH/ | grep ".ipk" |
 
 Or search from your host (no SDK needed):
 
-```bash
+```shell
 curl https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4/ | grep "libcurl"
 ```
 
@@ -175,32 +176,34 @@ static void __exit hello_exit(void)
 module_init(hello_init);
 module_exit(hello_exit);
 MODULE_LICENSE("GPL");
+
 ```
 
-2. Add a minimal `Makefile` that uses the Kernel build system:
+1. Add a minimal `Makefile` that uses the Kernel build system:
 
-```make
-obj-m += hello.o
-```
+    ```make
+    obj-m += hello.o
+    ```
 
-3. Build the module with the SDK environment:
+2. Build the module with the SDK environment:
 
-```bash
-source "$INSTALL_DIR"/environment-setup-*
-KERNEL_SRC=$OECORE_TARGET_SYSROOT/usr/src/kernel
+    ```shell
+    source "$INSTALL_DIR"/environment-setup-*
+    KERNEL_SRC=$OECORE_TARGET_SYSROOT/usr/src/kernel
 
-# ARCH and CROSS_COMPILE come from the SDK environment, but set ARCH explicitly for clarity
-ARCH=arm make -C "$KERNEL_SRC" M="$PWD" modules
-```
+    # ARCH and CROSS_COMPILE come from the SDK environment, but set ARCH explicitly for clarity
+    ARCH=arm make -C "$KERNEL_SRC" M="$PWD" modules
+    ```
 
-4. The resulting `hello.ko` can be copied to the device and loaded:
+3. The resulting `hello.ko` can be copied to the device and loaded:
 
-```bash
-scp hello.ko root@<device>:/tmp/
-ssh root@<device> "insmod /tmp/hello.ko && dmesg | tail"
-```
+    ```shell
+    scp hello.ko root@<device>:/tmp/
+    ssh root@<device> "insmod /tmp/hello.ko && dmesg | tail"
+    ```
 
 Notes:
+
 - Always use an SDK that matches the image running on the device (same release/feed) so the module ABI aligns with the Kernel.
 - If you see missing headers, confirm the SDK contains `usr/src/kernel`; install the matching `linux-*-dev` package into the SDK sysroot if needed, then rebuild.
 - For repeated builds, keep the `KERNEL_SRC` path cached; the Kernel tree in the SDK already has the correct config and Module.symvers.

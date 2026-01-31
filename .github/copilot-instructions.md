@@ -65,17 +65,62 @@ Sections: Getting Started → Hardware → User Guide → Developer Guide → Tr
 
 ## Development Workflow
 
-### Local Preview
+### Using the Makefile (Recommended)
+
+This repository includes a Makefile for streamlined development:
+
 ```bash
-pip install -r requirements.txt
-mkdocs serve
-# Opens http://127.0.0.1:8000 with live reload
+make          # Default: runs linting, then starts docs server
+make lint     # Run all linters: markdownlint (with autofix), link-check, vale
+make docs     # Start local MkDocs server at http://127.0.0.1:8000
+make install  # Install Python and Node dependencies
+make clean    # Remove build artifacts (site/)
+make help     # Show all available targets
 ```
 
-### Building
+### Manual Commands
+
+If you prefer to run commands directly:
+
 ```bash
+# Install dependencies
+pip install -r requirements.txt
+npm install
+
+# Linting
+npx markdownlint-cli2 --fix docs/**/*.md        # Autofix markdown formatting
+npx markdown-link-check -q docs/**/*.md          # Check for broken links
+vale docs/                                        # Style/grammar linting
+
+# Preview docs
+mkdocs serve  # Opens http://127.0.0.1:8000 with live reload
+
+# Build
 mkdocs build  # Output to site/
 ```
+
+### Linting Tools
+
+The documentation is linted with three tools (all run via `make lint`):
+
+1. **markdownlint-cli2** - Markdown formatting rules
+   - Uses `markdownlint-config-material` for Material for MkDocs compatibility
+   - Autofix enabled: fixes formatting issues automatically
+
+2. **markdown-link-check** - Validates all links (internal and external)
+   - Non-blocking: continues on error to allow other checks to run
+
+3. **Vale** - Style and grammar checking
+   - Configuration: `.vale.ini`
+   - Non-blocking in CI/CD
+
+**GitHub Actions Workflow** (`.github/workflows/markdown-check.yml`):
+- Triggers on PR with markdown changes
+- Installs Python dependencies (`mkdocs`, Material theme)
+- Installs Node dependencies (`markdownlint-cli2`, link-checker, Material linter)
+- Runs autofix on changed files
+- Commits fixes back to PR branch
+- Reports remaining issues via reviewdog for inline PR comments
 
 ### Deployment
 - **Auto-deploy**: Push to `main` triggers `.github/workflows/deploy.yml` → GitHub Pages
@@ -83,14 +128,16 @@ mkdocs build  # Output to site/
 
 ## Quality Checks (GitHub Actions)
 
-All PRs trigger automated checks:
+All PRs trigger automated checks (`.github/workflows/markdown-check.yml`):
 
-1. **Markdown Lint** (markdownlint) - Syntax/structure validation (MD013 line length disabled)
-2. **Vale** - Prose linting for style/grammar
-3. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
+1. **Markdown Lint** (markdownlint) - Syntax/structure validation using Material for MkDocs config
+   - **Autofix enabled**: Invalid formatting is automatically corrected
+   - Fixes are committed back to the PR branch
+2. **Link Checking** (markdown-link-check) - Validates all links in documentation
+3. **Vale** - Prose linting for style/grammar (`.vale.ini` config)
+4. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
 
-
-Reviewdog posts inline comments on PRs. Don't block on minor style issues - let automation handle it.
+Reviewdog posts inline comments on PRs for any remaining issues. Don't block on minor style issues - let automation handle it (the autofix step will catch and fix most formatting problems automatically).
 
 ## Content Guidelines
 

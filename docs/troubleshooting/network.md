@@ -6,7 +6,7 @@ Troubleshooting network connectivity problems on your PicoCalc.
 
 Start with these basic checks:
 
-```bash
+```shell
 # Check network interfaces
 ip addr show
 
@@ -29,7 +29,7 @@ For detailed USB networking troubleshooting, see the [USB Networking Guide](../u
 
 ### Quick USB Network Checks
 
-```bash
+```shell
 # Check if USB gadget service is running
 systemctl status usb-gadget-network
 
@@ -55,7 +55,7 @@ See [USB Networking Troubleshooting](../user-guide/usb-networking.md#troubleshoo
 
 Check if the WiFi interface exists:
 
-```bash
+```shell
 # List network interfaces
 ip link show
 
@@ -66,17 +66,20 @@ iw dev
 If no WiFi interface is found:
 
 1. Check if the module is loaded:
-   ```bash
+
+   ```shell
    lsmod | grep -E 'rtl|aic'
    ```
 
 2. Load the WiFi driver module:
-   ```bash
+
+   ```shell
    sudo modprobe <driver_name>
    ```
 
 3. Check system logs:
-   ```bash
+
+   ```shell
    dmesg | grep -i wifi
    journalctl -u systemd-networkd -b
    ```
@@ -85,7 +88,7 @@ If no WiFi interface is found:
 
 Using `iwctl`:
 
-```bash
+```shell
 # Enter iwctl interactive mode
 iwctl
 
@@ -105,7 +108,8 @@ If connection fails:
 2. **Verify password**: Ensure correct passphrase
 3. **Check network mode**: Some routers may need 2.4GHz mode enabled
 4. **Check logs**:
-   ```bash
+
+   ```shell
    journalctl -u iwd -f
    ```
 
@@ -114,7 +118,8 @@ If connection fails:
 Common causes:
 
 1. **Power management**: Disable WiFi power saving:
-   ```bash
+
+   ```shell
    sudo iw dev wlan0 set power_save off
    ```
 
@@ -123,7 +128,8 @@ Common causes:
 3. **Channel interference**: Try changing router channel (especially on 2.4GHz)
 
 4. **Driver issues**: Check for kernel messages:
-   ```bash
+
+   ```shell
    dmesg | grep wlan0
    ```
 
@@ -133,7 +139,7 @@ Common causes:
 
 Test DNS resolution:
 
-```bash
+```shell
 # Check DNS servers
 cat /etc/resolv.conf
 
@@ -147,14 +153,15 @@ dig google.com
 Fix DNS issues:
 
 1. **Manually set DNS servers** in `/etc/resolv.conf`:
-   ```bash
+
+   ```shell
    nameserver 1.1.1.1
    nameserver 8.8.8.8
    ```
 
 2. **For WiFi with iwd**: DNS should be set automatically via DHCP
 
-3. **For USB networking**: 
+3. **For USB networking**:
    - With internet sharing, DNS should come from DHCP
    - For static config, manually set DNS as above
 
@@ -162,7 +169,8 @@ Fix DNS issues:
 
 1. Try alternative DNS servers (Cloudflare, Google, Quad9)
 2. Check if DNS server is accessible:
-   ```bash
+
+   ```shell
    ping 1.1.1.1
    ```
 
@@ -173,24 +181,28 @@ Fix DNS issues:
 If SSH to your PicoCalc times out:
 
 1. **Verify connectivity**:
-   ```bash
+
+   ```shell
    ping <picocalc-ip>
    ```
 
 2. **Check if SSH is running**:
-   ```bash
+
+   ```shell
    # On PicoCalc
    systemctl status sshd
    ```
 
 3. **Check firewall** (if enabled):
-   ```bash
+
+   ```shell
    # On PicoCalc
    sudo iptables -L -v
    ```
 
 4. **Try verbose SSH** to see where it fails:
-   ```bash
+
+   ```shell
    ssh -vvv pico@<ip-address>
    ```
 
@@ -199,26 +211,31 @@ If SSH to your PicoCalc times out:
 If you can't reach external sites:
 
 1. **Check default route**:
-   ```bash
+
+   ```shell
    ip route show default
    ```
 
 2. **Test local gateway**:
-   ```bash
+
+   ```shell
    ping <gateway-ip>
    ```
 
 3. **Test external IP**:
-   ```bash
+
+   ```shell
    ping 8.8.8.8
    ```
 
 4. **Test DNS**:
-   ```bash
+
+   ```shell
    ping google.com
    ```
 
 This helps identify if the issue is:
+
 - Local network (can't reach gateway)
 - Internet routing (can reach gateway but not internet)
 - DNS (can reach IPs but not resolve names)
@@ -227,7 +244,7 @@ This helps identify if the issue is:
 
 ### Network Interface Details
 
-```bash
+```shell
 # Detailed interface info
 ethtool usb0  # or wlan0
 
@@ -240,7 +257,7 @@ ip route show table all
 
 ### Network Traffic Analysis
 
-```bash
+```shell
 # Monitor traffic on interface
 sudo tcpdump -i usb0
 
@@ -253,7 +270,7 @@ netstat -s
 
 ### Service Status
 
-```bash
+```shell
 # Check network-related services
 systemctl status systemd-networkd
 systemctl status iwd
@@ -270,7 +287,8 @@ journalctl -u iwd -b
 If you're still experiencing issues:
 
 1. **Gather diagnostic information**:
-   ```bash
+
+   ```shell
    # Save to a file
    {
      echo "=== Network Interfaces ==="

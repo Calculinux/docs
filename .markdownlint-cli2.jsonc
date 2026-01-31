@@ -1,5 +1,6 @@
 {
-  // Configuration for markdownlint-cli2
+  // Configuration for markdownlint-cli2 with mkdocs-material-linter plugin
+  "customRules": ["mkdocs-material-linter"],
   "config": {
     // Disable MD013 (line length)
     "MD013": false,
@@ -10,7 +11,26 @@
     "MD033": false,
     "MD041": false,
     "MD007": false,
+    // Disable MD060 (table column style - spaces in tables are valid)
+    "MD060": false,
+    // Disable MD046 (code-block-style) - MkDocs material-linter will validate this
+    "MD046": false,
     "tables": true,
-    "ignore_code_blocks": true
+    "ignore_code_blocks": true,
+    
+    // Material for MkDocs rules
+    "material-admonition-types": true,
+    "material-admonition-indentation": true,
+    "material-admonition-empty": true,
+    "material-admonition-empty-title": true,
+    "material-code-annotations": true,
+    "material-content-tabs": true,
+    "material-navigation-structure": true,
+    "material-shell-language-standardization": true,
+    "material-bundle-exec-shell-type": true,
+    "material-blank-lines-spacing": true,
+    "material-code-block-syntax": true,
+    // Disable metadata tags for now (optional SEO feature)
+    "material-meta-tags": false
   }
 }

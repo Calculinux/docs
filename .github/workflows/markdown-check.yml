@@ -39,15 +39,48 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: reviewdog/action-setup@v1
 
+      - name: Setup Python
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: pip install -r requirements.txt
+
       - name: Setup Node.js
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install markdownlint-cli2
+      - name: Install Node dependencies
         if: steps.changed-files.outputs.any_changed == 'true'
-        run: npm install -g markdownlint-cli2
+        run: npm install
+
+      - name: Run markdownlint with autofix
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: npx markdownlint-cli2 --fix ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Check for broken links
+        if: steps.changed-files.outputs.any_changed == 'true'
+        continue-on-error: true
+        run: |
+          npx markdown-link-check -q ${{ steps.changed-files.outputs.all_changed_files }} || true
+
+      - name: Commit autofix changes
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -u
+            git commit -m "chore: autofix markdown formatting"
+            git push
+          fi
 
       - name: Run markdownlint with reviewdog
         id: markdownlint
@@ -56,7 +89,7 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
+          npx markdownlint-cli2 --config node_modules/markdownlint-config-material/.markdownlint.json ${{ steps.changed-files.outputs.all_changed_files }} 2>&1 | \
           reviewdog -efm="%f:%l:%c %m" -efm="%f:%l %m" -name="markdownlint" -reporter=github-pr-review -filter-mode=nofilter -fail-on-error=false
 
       - name: Vale

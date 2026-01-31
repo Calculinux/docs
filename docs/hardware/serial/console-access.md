@@ -16,13 +16,11 @@ no parity, and 1 stop bit ("1500000 8N1").
 - Access to `/dev/ttyUSB0`. If you are not root, add yourself to the
   `dialout` (or distribution-specific) group and re-login:
 
-
 !!! info
     If you prefeer a GUI tool to access the serial port but don't know what to
-    choose, options on Linux desktops include **CuteCom**, and **PuTTY** among 
+    choose, options on Linux desktops include **CuteCom**, and **PuTTY** among
     others; they provide point-and-click interfaces for selecting ports and baud
-    rates. The only setting you will need to change is the 1,500,000 baud setting. 
-
+    rates. The only setting you will need to change is the 1,500,000 baud setting.
 
   ```bash
   sudo usermod -a -G dialout "$USER"
@@ -34,12 +32,12 @@ no parity, and 1 stop bit ("1500000 8N1").
 
 After connecting the board, confirm the kernel created the serial device:
 
-```bash
+```shell
 ls /dev/ttyUSB*
 ```
 
 You should see `/dev/ttyUSB0`. If the device is missing, check `dmesg`
-for driver errors or verify cabling. If you already have other serial 
+for driver errors or verify cabling. If you already have other serial
 devices, it may have received a different number.
 
 ---

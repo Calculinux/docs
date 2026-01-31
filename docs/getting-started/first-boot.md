@@ -13,12 +13,14 @@ After flashing your SD card and installing hardware:
 ### What to Expect
 
 **Boot Process**:
+
 - Power LED lights up
 - Boot messages appear on display
 - System initialization
 - Login prompt appears
 
 **First Boot Timing**:
+
 - First boot: 30-60 seconds
 - Subsequent boots: 15-30 seconds
 
@@ -26,7 +28,7 @@ After flashing your SD card and installing hardware:
 
 ### Default Credentials
 
-```
+```shell
 Username: root
 Password: root
 ```
@@ -41,14 +43,14 @@ Password: root
 
 ### 1. Change Root Password
 
-```bash
+```shell
 passwd
 # Enter new password twice
 ```
 
 ### 2. Set System Time
 
-```bash
+```shell
 # Set current date/time
 date -s "2025-10-06 14:30:00"
 
@@ -58,7 +60,7 @@ ntpd -q -p pool.ntp.org
 
 ### 3. Check System Status
 
-```bash
+```shell
 # Check system info
 uname -a
 
@@ -79,7 +81,7 @@ systemctl status
 
 ### 5. Update Package Database
 
-```bash
+```shell
 opkg update
 ```
 
@@ -87,7 +89,7 @@ opkg update
 
 ### Verify Hardware
 
-```bash
+```shell
 # Check display
 ls -l /dev/fb0
 cat /dev/urandom > /dev/fb0  # Should show random colors
@@ -109,11 +111,13 @@ ip link show
     The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.
 
 **Currently Tested:**
+
 - Display (built-in LCD drivers)
-- Keyboard (built-in keyboard drivers)  
+- Keyboard (built-in keyboard drivers)
 - USB WiFi adapters (see WiFi chipsets above)
 
 **Planned/Future Support:**
+
 - I2C RTC modules (e.g., Adafruit DS3231)
 - LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
 - Additional I2C/SPI peripherals
@@ -123,7 +127,7 @@ ip link show
 
 ### Check Logs
 
-```bash
+```shell
 # Boot messages
 dmesg | less
 
@@ -146,22 +150,25 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
     1. Connect Lyra's USB-C port to your computer
     2. Wait 10-15 seconds for the USB gadget to enumerate
     3. SSH to the PicoCalc:
-       ```bash
-       ssh pico@192.168.7.2
-       # Password: calc
-       ```
-    
+
+    ```shell
+    ssh pico@192.168.7.2
+    # Password: calc
+    ```
+
     See the [USB Networking Guide](../user-guide/usb-networking.md) for complete setup instructions including:
+
     - Internet sharing configuration
     - USB serial console access
     - Advanced configuration options
 
 !!! warning "Windows Users"
     The default configuration uses ECM (CDC-Ether) which works natively on Linux and macOS but **not on Windows**.
-    
+
     If you're using Windows, you need to switch the device to RNDIS mode - see the [USB Networking Configuration](../user-guide/usb-networking.md#switching-between-ecm-and-rndis) section.
 
 **What you get with USB networking:**
+
 - ✅ Fast, reliable connection
 - ✅ No additional hardware required
 - ✅ Works on Linux and macOS out-of-the-box
@@ -174,14 +181,14 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
 
 !!! info "WiFi Hardware Required"
     Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the Lyra's USB header.
-    
+
     For a complete list of supported WiFi chipsets, see [Hardware Specifications - WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets).
 
 #### Connecting to WiFi with iwctl
 
 Calculinux uses `iwd` (iNet Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
 
-```bash
+```shell
 # Start iwctl interactive mode
 iwctl
 
@@ -201,7 +208,7 @@ iwctl station wlan0 connect "YourSSID"
 
 **Verify Connection:**
 
-```bash
+```shell
 # Check connection status
 iwctl station wlan0 show
 
@@ -214,7 +221,7 @@ ping -c 3 8.8.8.8
 
 **Disconnect:**
 
-```bash
+```shell
 iwctl station wlan0 disconnect
 ```
 
