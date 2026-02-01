@@ -97,7 +97,7 @@ Calculinux uses a custom ILI9488 framebuffer driver:
 
 ### Device Tree Configuration
 
-Actual device tree configuration from `rk3506-luckfox-lyra.dtsi`:
+Actual device tree configuration from `rk3506-luckfox-lyra.dtsi` (installed by `picocalc-devicetree`; source file is `linux-rk3506-luckfox-lyra.dtsi` in picocalc-drivers):
 
 ```dts
 &spi0 {
@@ -253,7 +253,7 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 
 ### Device Tree Configuration
 
-Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.dtsi`:
+Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.dtsi` (installed by `picocalc-devicetree`; source file is `linux-rk3506-luckfox-lyra.dtsi` in picocalc-drivers):
 
 ```dts
 &i2c2 {
