@@ -178,23 +178,23 @@ Ready to proceed? Here's where to go next:
 
     Flash Calculinux to your SD card
 
-    [:material-arrow-right: Install Now](installation.md)
+    [:octicons-arrow-right-24: Install Now](installation.md)
 
--   :material-rocket:{ .lg .middle } **First Boot**
+-   :material-rocket-launch:{ .lg .middle } **First Boot**
 
     ---
 
     Power on and configure your system
 
-    [:material-arrow-right: Boot Up](first-boot.md)
+    [:octicons-arrow-right-24: Boot Up](first-boot.md)
 
--   :material-book-open-variant:{ .lg .middle } **Quick Start**
+-   :material-book-open-page-variant:{ .lg .middle } **Quick Start**
 
     ---
 
     Learn the basics quickly
 
-    [:material-arrow-right: Quick Start](quick-start.md)
+    [:octicons-arrow-right-24: Quick Start](quick-start.md)
 
 </div>
 
