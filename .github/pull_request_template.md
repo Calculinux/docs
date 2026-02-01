@@ -35,20 +35,34 @@ When the workflow finds issues, it will post comments on this PR with:
    - **Disagree with Feedback**: Reply to the comment explaining why, then close the conversation
    - **Acknowledge & Close**: If you're addressing the feedback in a separate issue, close the conversation
 
-### 📚 Adding to the Dictionary
+### 📚 Adding Terms to Vale Accept List
 
-If the spell checker flags a legitimate technical term that should be recognized:
+**Quick Add via Comment** ⚡
 
-1. Add it to `.github/calculinux-dictionary.txt`
-2. Push the change in your PR
-3. The workflow will re-run and recognize the new term
+If Vale flags a legitimate term (technical word, brand name, acronym), you can add it automatically:
+
+1. Reply to the Vale error comment with: `vale-accept-term`
+2. The bot will automatically:
+   - Extract the term from the error
+   - Add it to `.github/styles/config/vocabularies/Calculinux/accept.txt`
+   - Commit the change to your PR
+   - Add a 👍 reaction to your command
+   - Mark the conversation as resolved
+   - Confirm with a comment
+
+**Manual Add**
+
+You can also manually edit `.github/styles/config/vocabularies/Calculinux/accept.txt` and add terms:
+- One term per line
+- Case-sensitive (unless you use regex patterns like `(?i)term`)
+- Push the change and the workflow will re-run
 
 **Examples of terms to add:**
-- Product names (hardware, software)
-- Brand names
-- Technical acronyms
+- Product names (PicoCalc, Luckfox, Rockchip)
+- Brand names (ClockworkPi, Yocto)
+- Technical acronyms (GPIO, UART, SoC)
 - Project-specific terminology
-- New tool names
+- Tool names (bitbake, mkdocs)
 
 ### ✅ Merge Requirements
 
