@@ -114,7 +114,7 @@ jobs:
             return { shouldRun: true, term: term };
 
       - name: Get PR details
-        if: steps.check-command.outputs.should_run == 'true' && steps.check-command.outputs.is_review_comment == 'true'
+        if: steps.check-command.outputs.should_run == 'true'
         id: pr-details
         uses: actions/github-script@v7
         with:
@@ -132,7 +132,7 @@ jobs:
         if: steps.check-command.outputs.should_run == 'true'
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.check-command.outputs.is_review_comment == 'true' && steps.pr-details.outputs.head_ref || github.event.issue.pull_request.head.ref }}
+          ref: ${{ steps.pr-details.outputs.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
