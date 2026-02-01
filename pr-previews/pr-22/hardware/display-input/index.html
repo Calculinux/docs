@@ -973,10 +973,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backlight-control_1" class="md-nav__link">
+  <a href="#backlight-pwm-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backlight Control
+        Backlight PWM Control
       
     </span>
   </a>
@@ -1112,10 +1112,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#device-tree-configuration_1" class="md-nav__link">
+  <a href="#device-tree-configuration-keyboard-mcu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device Tree Configuration
+        Device Tree Configuration (Keyboard MCU)
       
     </span>
   </a>
@@ -2414,10 +2414,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backlight-control_1" class="md-nav__link">
+  <a href="#backlight-pwm-control" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backlight Control
+        Backlight PWM Control
       
     </span>
   </a>
@@ -2553,10 +2553,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#device-tree-configuration_1" class="md-nav__link">
+  <a href="#device-tree-configuration-keyboard-mcu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device Tree Configuration
+        Device Tree Configuration (Keyboard MCU)
       
     </span>
   </a>
@@ -2972,13 +2972,13 @@
 <p class="admonition-title">Backlight Limitations</p>
 <p>Current display sleep functionality does not yet control the backlight directly. Full backlight control is intended to be implemented through the experimental MFD drivers that communicate with the keyboard MCU.</p>
 </div>
-<p><strong>Display Sleep</strong> (without backlight control):
+<p><strong>Display Sleep</strong> (without backlight control):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Turn off display (framebuffer only)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Turn on display</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/bl_power
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="display-driver">Display Driver<a class="headerlink" href="#display-driver" title="Permanent link">&para;</a></h3>
 <p>Calculinux uses a custom ILI9488 framebuffer driver:</p>
 <p><strong>Driver Name</strong>: <code>ili9488</code>
@@ -3013,7 +3013,7 @@
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">};</span>
 </code></pre></div>
-<p><strong>GPIO Pin Configuration</strong>:
+<p><strong>GPIO Pin Configuration</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ili9488</span><span class="cm"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nl">ili9488_pins</span><span class="p">:</span><span class="w"> </span><span class="nf">ili9488-pins</span><span class="cm"> </span><span class="p">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">rockchip</span><span class="p">,</span><span class="n">pins</span><span class="w"> </span><span class="o">=</span>
@@ -3022,20 +3022,20 @@
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="na">RK_PA2</span><span class="w"> </span><span class="na">RK_FUNC_GPIO</span><span class="w"> </span><span class="o">&amp;</span><span class="na">pcfg_pull_none</span><span class="o">&gt;</span><span class="p">;</span><span class="w">  </span><span class="cm">/* RST */</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">};</span>
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
-<p><strong>Bandwidth Calculation</strong>:
+<p><strong>Bandwidth Calculation</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>320 × 320 pixels × 2 bytes × 60 fps = 12.3 MB/s
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>At 80 MHz SPI: ~10 MB/s theoretical maximum
-</code></pre></div></p>
+</code></pre></div>
 <p>The driver implements:
 - Frame skipping if needed
 - Partial updates for efficiency
 - Double buffering to reduce tearing</p>
-<h3 id="backlight-control_1">Backlight Control<a class="headerlink" href="#backlight-control_1" title="Permanent link">&para;</a></h3>
+<h3 id="backlight-pwm-control">Backlight PWM Control<a class="headerlink" href="#backlight-pwm-control" title="Permanent link">&para;</a></h3>
 <p>The backlight is controlled via PWM:</p>
 <p><strong>Interface</strong>: <code>/sys/class/backlight/picocalc/</code></p>
-<p><strong>Control</strong>:
+<p><strong>Control</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Set brightness (0-255)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/backlight/picocalc/brightness
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -3044,7 +3044,7 @@
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Get maximum brightness</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>cat<span class="w"> </span>/sys/class/backlight/picocalc/max_brightness
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="keyboard-system">Keyboard System<a class="headerlink" href="#keyboard-system" title="Permanent link">&para;</a></h2>
 <h3 id="keyboard-architecture">Keyboard Architecture<a class="headerlink" href="#keyboard-architecture" title="Permanent link">&para;</a></h3>
 <p>The PicoCalc keyboard uses a sophisticated architecture with a dedicated microcontroller:</p>
@@ -3146,7 +3146,7 @@
 <p class="admonition-title">Legacy vs MFD Drivers</p>
 <p>Current stable releases may use simpler keyboard-only drivers, while experimental MFD drivers provide full MCU integration. Check your kernel configuration for which driver is active.</p>
 </div>
-<h3 id="device-tree-configuration_1">Device Tree Configuration<a class="headerlink" href="#device-tree-configuration_1" title="Permanent link">&para;</a></h3>
+<h3 id="device-tree-configuration-keyboard-mcu">Device Tree Configuration (Keyboard MCU)<a class="headerlink" href="#device-tree-configuration-keyboard-mcu" title="Permanent link">&para;</a></h3>
 <p>Actual device tree configuration for I2C keyboard MCU from <code>rk3506-luckfox-lyra.dtsi</code> (installed by <code>picocalc-devicetree</code>; source file is <code>linux-rk3506-luckfox-lyra.dtsi</code> in picocalc-drivers):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&amp;</span><span class="na">i2c2</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;okay&quot;</span><span class="p">;</span>
@@ -3161,7 +3161,7 @@
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">};</span>
 </code></pre></div>
-<p><strong>I2C Pin Configuration</strong>:
+<p><strong>I2C Pin Configuration</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&amp;</span><span class="na">pinctrl</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="na">rm_io11</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nl">rm_io11_i2c2_sda</span><span class="p">:</span><span class="w"> </span><span class="nf">rm-io11-i2c2-sda</span><span class="cm"> </span><span class="p">{</span>
@@ -3175,7 +3175,7 @@
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="p">};</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">};</span>
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">I2C Configuration</p>
 <p>The keyboard MCU is connected to I2C bus 2 at address 0x1F, running at 400kHz (fast mode).</p>
@@ -3183,31 +3183,31 @@
 <h3 id="input-device-interface">Input Device Interface<a class="headerlink" href="#input-device-interface" title="Permanent link">&para;</a></h3>
 <p>The keyboard appears as a standard Linux input device:</p>
 <p><strong>Device Path</strong>: <code>/dev/input/event0</code></p>
-<p><strong>Testing Input</strong>:
+<p><strong>Testing Input</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># List input devices</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cat<span class="w"> </span>/proc/bus/input/devices
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Monitor keyboard events</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>evtest<span class="w"> </span>/dev/input/event0
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="custom-key-bindings">Custom Key Bindings<a class="headerlink" href="#custom-key-bindings" title="Permanent link">&para;</a></h3>
 <p>Users can remap keys using standard Linux tools:</p>
-<p><strong>Using udev/hwdb</strong>:
+<p><strong>Using udev/hwdb</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># /etc/udev/hwdb.d/90-picocalc-keyboard.hwdb
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>evdev:input:b0003v*p*
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a> KEYBOARD_KEY_1e=leftshift
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="display-output">Display Output<a class="headerlink" href="#display-output" title="Permanent link">&para;</a></h2>
 <h3 id="console-text-mode">Console (Text Mode)<a class="headerlink" href="#console-text-mode" title="Permanent link">&para;</a></h3>
 <p><strong>Console Driver</strong>: <code>fbcon</code> (framebuffer console)
 <strong>Default Font</strong>: 6×8 pixels
 <strong>Text Area</strong>: <strong>53 columns × 40 rows</strong> (at 320×320 with 6×8 font)</p>
-<p><strong>Configuration</strong>:
+<p><strong>Configuration</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># /etc/default/console-setup</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">ACTIVE_CONSOLES</span><span class="o">=</span><span class="s2">&quot;/dev/tty[1-6]&quot;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">FONTFACE</span><span class="o">=</span><span class="s2">&quot;Terminus&quot;</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">FONTSIZE</span><span class="o">=</span><span class="s2">&quot;6x8&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>Font Rendering</strong>:
 - Character size: 6×8 pixels
 - Text area: 53×40 characters
@@ -3244,7 +3244,7 @@
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="display-issues">Display Issues<a class="headerlink" href="#display-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Symptom</strong>: No display output</p>
-<p><strong>Check</strong>:
+<p><strong>Check</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Verify framebuffer device exists</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/fb0
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
@@ -3253,7 +3253,7 @@
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># View kernel logs</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>ili9488
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>Symptom</strong>: Display corruption or tearing</p>
 <p><strong>Solutions</strong>:
 - Check display cable is fully inserted
@@ -3277,7 +3277,7 @@
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1"># or</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>modprobe<span class="w"> </span>picocalc_kbd
 </code></pre></div>
-<p><strong>Additional Checks</strong>:
+<p><strong>Additional Checks</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Verify input device exists</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/input/event*
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
@@ -3286,25 +3286,25 @@
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Test raw input</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>evtest<span class="w"> </span>/dev/input/event0
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>If Problems Persist</strong>:
 File a bug report with:
 - Which drivers you tested
 - Serial console output
 - Kernel log messages (<code>dmesg | grep -i picocalc</code>)</p>
 <p><strong>Symptom</strong>: Intermittent key responses</p>
-<p><strong>Check</strong>:
+<p><strong>Check</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Check I2C bus errors</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>i2c
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Monitor MCU communication</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># (requires debug firmware or driver)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p><strong>Symptom</strong>: Key repeat too fast/slow</p>
-<p><strong>Adjust</strong>:
+<p><strong>Adjust</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Set repeat rate (delay, rate)</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kbdrate<span class="w"> </span>-d<span class="w"> </span><span class="m">250</span><span class="w"> </span>-r<span class="w"> </span><span class="m">30</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="development-debugging">Development &amp; Debugging<a class="headerlink" href="#development-debugging" title="Permanent link">&para;</a></h2>
 <h3 id="graphics-programming">Graphics Programming<a class="headerlink" href="#graphics-programming" title="Permanent link">&para;</a></h3>
 <p>For graphics applications, we recommend using SDL rather than direct framebuffer access:</p>
@@ -3389,7 +3389,7 @@ File a bug report with:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 1, 2026 18:59:42 UTC">February 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 1, 2026 19:29:10 UTC">February 1, 2026</span>
   </span>
 
     
