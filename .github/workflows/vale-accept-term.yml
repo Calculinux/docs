@@ -38,36 +38,48 @@ jobs:
               return { shouldRun: false };
             }
             
-            let comments;
-            let currentCommentId = context.payload.comment.id;
+            let previousComment;
+            const currentCommentId = context.payload.comment.id;
             
             if (isReviewComment) {
-              // For review comments, get the list of review comments
-              const reviewComments = await github.rest.pulls.listReviewComments({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: issueNumber
-              });
-              comments = reviewComments.data;
+              // For review comments, use in_reply_to_id to find the parent comment
+              const inReplyToId = context.payload.comment.in_reply_to_id;
+              
+              if (!inReplyToId) {
+                console.log('Review comment is not a reply to another comment');
+                return { shouldRun: false };
+              }
+              
+              // Fetch the parent comment directly
+              try {
+                const parentComment = await github.rest.pulls.getReviewComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: inReplyToId
+                });
+                previousComment = parentComment.data;
+              } catch (error) {
+                console.log('Could not fetch parent review comment:', error.message);
+                return { shouldRun: false };
+              }
             } else {
-              // For issue comments, get the list of issue comments
+              // For issue comments, get the list and find the previous one
               const issueComments = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issueNumber
               });
-              comments = issueComments.data;
+              
+              const comments = issueComments.data;
+              const currentIndex = comments.findIndex(c => c.id === currentCommentId);
+              
+              if (currentIndex <= 0) {
+                console.log('No previous comment found');
+                return { shouldRun: false };
+              }
+              
+              previousComment = comments[currentIndex - 1];
             }
-            
-            // Find the previous comment (Vale error)
-            const currentIndex = comments.findIndex(c => c.id === currentCommentId);
-            
-            if (currentIndex <= 0) {
-              console.log('No previous comment found');
-              return { shouldRun: false };
-            }
-            
-            const previousComment = comments[currentIndex - 1];
             
             // Check if it's a Vale error comment (from vale-action bot)
             if (!previousComment.body.includes('Vale') && !previousComment.body.includes('vale')) {
@@ -214,30 +226,29 @@ jobs:
             // Try to resolve the review thread if this was a review comment
             if (isReviewComment) {
               try {
-                // Get all review comments
-                const reviewComments = await github.rest.pulls.listReviewComments({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: issueNumber
-                });
+                // Use in_reply_to_id to get the Vale error comment
+                const inReplyToId = context.payload.comment.in_reply_to_id;
                 
-                // Find the current comment to get the previous one (the Vale error)
-                const currentIndex = reviewComments.data.findIndex(c => c.id === context.payload.comment.id);
-                if (currentIndex > 0) {
-                  const previousComment = reviewComments.data[currentIndex - 1];
+                if (inReplyToId) {
+                  // Fetch the parent comment (the Vale error)
+                  const parentComment = await github.rest.pulls.getReviewComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: inReplyToId
+                  });
                   
                   // Check if this is the Vale error comment
-                  if (previousComment.body.toLowerCase().includes('vale') || 
-                      previousComment.body.includes(term)) {
+                  if (parentComment.data.body.toLowerCase().includes('vale') || 
+                      parentComment.data.body.includes(term)) {
                     // Update the comment to mark it as resolved
                     await github.rest.pulls.updateReviewComment({
                       owner: context.repo.owner,
                       repo: context.repo.repo,
-                      comment_id: previousComment.id,
-                      body: previousComment.body + '\n\n✅ **Resolved**: Term added to accept list via `vale-accept-term` command.'
+                      comment_id: inReplyToId,
+                      body: parentComment.data.body + '\n\n✅ **Resolved**: Term added to accept list via `vale-accept-term` command.'
                     });
                     
-                    console.log('Resolved review thread for comment', previousComment.id);
+                    console.log('Resolved review thread for comment', inReplyToId);
                   }
                 }
               } catch (error) {
