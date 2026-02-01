@@ -104,7 +104,7 @@ mkdocs build  # Output to site/
 The documentation is linted with three tools (all run via `make lint`):
 
 1. **markdownlint-cli2** - Markdown formatting rules
-   - Uses `markdownlint-config-material` for Material for MkDocs compatibility
+    - Uses `.markdownlint-cli2.jsonc` with `mkdocs-material-linter` rules for Material for MkDocs compatibility
    - Autofix enabled: fixes formatting issues automatically
 
 2. **markdown-link-check** - Validates all links (internal and external)

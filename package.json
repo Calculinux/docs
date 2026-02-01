@@ -2,7 +2,6 @@
   "devDependencies": {
     "mkdocs-material-linter": "^1.5.3",
     "markdownlint-cli2": "^0.13.0",
-    "markdownlint-config-material": "^1.6.0",
     "markdown-link-check": "^3.12.2"
   }
 }
