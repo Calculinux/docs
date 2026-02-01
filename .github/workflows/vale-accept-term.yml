@@ -110,10 +110,11 @@ jobs:
             console.log('Extracted term:', term);
             core.setOutput('term', term);
             core.setOutput('should_run', 'true');
+            core.setOutput('is_review_comment', isReviewComment ? 'true' : 'false');
             return { shouldRun: true, term: term };
 
       - name: Get PR details
-        if: steps.check-command.outputs.should_run == 'true'
+        if: steps.check-command.outputs.should_run == 'true' && steps.check-command.outputs.is_review_comment == 'true'
         id: pr-details
         uses: actions/github-script@v7
         with:
@@ -131,7 +132,7 @@ jobs:
         if: steps.check-command.outputs.should_run == 'true'
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.pr-details.outputs.head_ref }}
+          ref: ${{ steps.check-command.outputs.is_review_comment == 'true' && steps.pr-details.outputs.head_ref || github.event.issue.pull_request.head.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
