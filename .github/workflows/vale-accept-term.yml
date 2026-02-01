@@ -159,29 +159,11 @@ jobs:
             await github.rest.reactions.createForIssueComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-            
-            // Post info comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
-            });
-            
-            // Add checkmark reaction to the command comment
-            await github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
               comment_id: context.payload.comment.id,
               content: '+1'
+            });
+            
             try {
-              // Get the pull request
-              const pr = await github.rest.pulls.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number
-              });
-              
               // Get all review comments
               const reviewComments = await github.rest.pulls.listReviewComments({
                 owner: context.repo.owner,
