@@ -159,21 +159,11 @@ jobs:
             await github.rest.reactions.createForIssueComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-            
-            // Post info comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
-            });
-            
-            // Add checkmark reaction to the command comment
-            await github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
               comment_id: context.payload.comment.id,
               content: '+1'
+            });
+            
+            // Try to resolve the review thread
             try {
               // Get the pull request
               const pr = await github.rest.pulls.get({
@@ -229,11 +219,20 @@ jobs:
         with:
           script: |
             const term = '${{ steps.check-command.outputs.term }}';
+            
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
               body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
+            });
+            
+            // Add thumbs up reaction
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: '+1'
             });
 
       - name: Post error comment
