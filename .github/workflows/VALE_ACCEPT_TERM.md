@@ -32,7 +32,7 @@ sequenceDiagram
 
 1. **Trigger**: Listens for `issue_comment` and `pull_request_review_comment` events on PRs
 2. **Command Detection**: Checks if comment is exactly `vale-accept-term`
-3. **Parent Comment Resolution**: 
+3. **Parent Comment Resolution**:
    - For review comments: Uses `in_reply_to_id` to find the parent comment in the thread
    - For issue comments: Looks at the chronologically previous comment
 4. **Term Extraction**: Parses the Vale error to extract the flagged term
@@ -45,6 +45,7 @@ sequenceDiagram
 ## Command
 
 Reply to any Vale error comment with:
+
 - `vale-accept-term` ✅
 
 Command is case-insensitive but must be the exact text (no other words).
@@ -52,6 +53,7 @@ Command is case-insensitive but must be the exact text (no other words).
 ## Term Extraction Patterns
 
 The workflow looks for terms in these formats:
+
 - `'term'` - Single quotes
 - `"term"` - Double quotes
 - `**term**` - Bold markdown
@@ -98,11 +100,13 @@ To test this feature:
 The workflow uses different strategies for finding the parent comment:
 
 **Review Comments (line-specific comments on PR diffs):**
+
 - Uses GitHub's `in_reply_to_id` field to directly identify the parent comment
 - This ensures the correct Vale error is identified even when multiple review threads exist
 - More reliable and efficient than searching through all comments
 
 **Issue Comments (general PR comments):**
+
 - Fetches all issue comments and finds the chronologically previous one
 - Works well for linear comment threads
 - Sufficient for issue-level comments which are naturally sequential
@@ -110,6 +114,7 @@ The workflow uses different strategies for finding the parent comment:
 ## Future Enhancements
 
 Possible improvements:
+
 - Support for adding terms with specific case patterns (e.g., `(?i)term`)
 - Ability to add to other vocabularies (Yocto, OpenSource)
 - Support for phrase extraction (multi-word terms)
