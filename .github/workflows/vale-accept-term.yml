@@ -12,7 +12,7 @@ permissions:
 jobs:
   add-to-accept-list:
     # Only run on PR comments
-    if: github.event.issue.pull_request
+    if: github.event.issue.pull_request != null
     runs-on: ubuntu-latest
     
     steps:
