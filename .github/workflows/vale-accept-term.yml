@@ -25,9 +25,7 @@ jobs:
           script: |
             // Determine event type and extract comment body
             const isReviewComment = context.eventName === 'pull_request_review_comment';
-            const comment = isReviewComment 
-              ? context.payload.comment.body.trim().toLowerCase()
-              : context.payload.comment.body.trim().toLowerCase();
+            const comment = context.payload.comment.body.trim().toLowerCase();
             const validCommand = 'vale-accept-term';
             
             // Extract issue/PR number based on event type
@@ -120,7 +118,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const issueNumber = ${{ steps.check-command.outputs.issue_number }};
+            const issueNumber = '${{ steps.check-command.outputs.issue_number }}';
             const pr = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -184,7 +182,7 @@ jobs:
         with:
           script: |
             const term = '${{ steps.check-command.outputs.term }}';
-            const issueNumber = ${{ steps.check-command.outputs.issue_number }};
+            const issueNumber = '${{ steps.check-command.outputs.issue_number }}';
             const isReviewComment = context.eventName === 'pull_request_review_comment';
             
             // Post success comment
@@ -253,7 +251,7 @@ jobs:
         with:
           script: |
             const term = '${{ steps.check-command.outputs.term }}';
-            const issueNumber = ${{ steps.check-command.outputs.issue_number }};
+            const issueNumber = '${{ steps.check-command.outputs.issue_number }}';
             const isReviewComment = context.eventName === 'pull_request_review_comment';
             
             await github.rest.issues.createComment({
@@ -285,7 +283,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const issueNumber = ${{ steps.check-command.outputs.issue_number }};
+            const issueNumber = '${{ steps.check-command.outputs.issue_number }}';
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
