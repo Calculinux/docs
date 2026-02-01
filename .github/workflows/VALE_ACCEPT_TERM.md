@@ -17,11 +17,13 @@ sequenceDiagram
     participant Repository
 
     Vale->>GitHub: Post PR review comment about unknown term
-    User->>GitHub: Reply to comment with "add"
+    User->>GitHub: Reply to comment with "vale-accept-term"
     GitHub->>Workflow: Trigger vale-accept-term workflow
     Workflow->>Workflow: Parse previous comment for term
     Workflow->>Repository: Add term to accept.txt
     Workflow->>Repository: Commit and push
+    Workflow->>GitHub: Add 👍 reaction to command comment
+    Workflow->>GitHub: Update Vale comment as resolved
     Workflow->>GitHub: Post confirmation comment
     GitHub->>User: Term added! ✅
 ```
@@ -35,6 +37,8 @@ sequenceDiagram
 5. **File Update**: Adds term to `.github/styles/config/vocabularies/Calculinux/accept.txt`
 6. **Commit & Push**: Commits the change to the PR branch
 7. **Confirmation**: Posts a success message
+8. **Reaction**: Adds a green checkmark (👍) reaction to the command comment
+9. **Resolution**: Updates the Vale review comment to mark it as resolved
 
 ## Command
 

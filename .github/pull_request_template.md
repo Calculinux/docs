@@ -46,6 +46,8 @@ If Vale flags a legitimate term (technical word, brand name, acronym), you can a
    - Extract the term from the error
    - Add it to `.github/styles/config/vocabularies/Calculinux/accept.txt`
    - Commit the change to your PR
+   - Add a 👍 reaction to your command
+   - Mark the conversation as resolved
    - Confirm with a comment
 
 **Manual Add**

@@ -37,6 +37,8 @@ When Vale flags a term in a PR review comment:
    - Extract the term from the Vale error
    - Add it to `Calculinux/accept.txt`
    - Commit the change to your PR
+   - Add a 👍 reaction to your command
+   - Mark the Vale comment as resolved
    - Post a confirmation comment
 
 ### Manual Addition

@@ -146,12 +146,82 @@ jobs:
         with:
           script: |
             const term = '${{ steps.check-command.outputs.term }}';
+            
+            // Post success comment
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
               body: `✅ Added \`${term}\` to the Vale accept list!\n\nThe term has been committed to this PR. Vale will no longer flag this word as an error.`
             });
+            
+            // Add green checkmark reaction to the command comment
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            
+            // Post info comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
+            });
+            
+            // Add checkmark reaction to the command comment
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: '+1'
+            try {
+              // Get the pull request
+              const pr = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number
+              });
+              
+              // Get all review comments
+              const reviewComments = await github.rest.pulls.listReviewComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number
+              });
+              
+              // Find the Vale error comment (the one we replied to)
+              const allComments = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
+              
+              const currentIndex = allComments.data.findIndex(c => c.id === context.payload.comment.id);
+              if (currentIndex > 0) {
+                const previousComment = allComments.data[currentIndex - 1];
+                
+                // Try to find matching review comment by looking for similar timing and content
+                for (const reviewComment of reviewComments.data) {
+                  // Check if this review comment body contains Vale-like content
+                  if (reviewComment.body.toLowerCase().includes('vale') || 
+                      reviewComment.body.includes(term)) {
+                    // Resolve the thread
+                    await github.rest.pulls.updateReviewComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      comment_id: reviewComment.id,
+                      body: reviewComment.body + '\n\n✅ **Resolved**: Term added to accept list via `vale-accept-term` command.'
+                    });
+                    
+                    console.log('Resolved review thread for comment', reviewComment.id);
+                    break;
+                  }
+                }
+              }
+            } catch (error) {
+              console.log('Could not resolve conversation thread:', error.message);
+              // Don't fail the workflow if we can't resolve the thread
+            }
 
       - name: Post already exists comment
         if: steps.check-command.outputs.should_run == 'true' && steps.add-term.outputs.term_exists == 'true'
