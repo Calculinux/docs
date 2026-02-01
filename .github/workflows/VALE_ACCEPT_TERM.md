@@ -30,9 +30,11 @@ sequenceDiagram
 
 ### Workflow Steps
 
-1. **Trigger**: Listens for `issue_comment` events on PRs
+1. **Trigger**: Listens for `issue_comment` and `pull_request_review_comment` events on PRs
 2. **Command Detection**: Checks if comment is exactly `vale-accept-term`
-3. **Context Analysis**: Looks at the previous comment (the Vale error)
+3. **Parent Comment Resolution**: 
+   - For review comments: Uses `in_reply_to_id` to find the parent comment in the thread
+   - For issue comments: Looks at the chronologically previous comment
 4. **Term Extraction**: Parses the Vale error to extract the flagged term
 5. **File Update**: Adds term to `.github/styles/config/vocabularies/Calculinux/accept.txt`
 6. **Commit & Push**: Commits the change to the PR branch
@@ -84,10 +86,26 @@ To test this feature:
 
 ## Limitations
 
-- Only extracts terms from the immediate previous comment
+- Only extracts terms from the parent comment in the thread (for review comments) or the immediate previous comment (for issue comments)
 - Cannot add terms retroactively (must reply to the original error)
 - Single term per command (for multiple terms, reply to each error separately)
 - Requires the term to be extractable via regex patterns
+
+## Technical Details
+
+### Comment Thread Resolution
+
+The workflow uses different strategies for finding the parent comment:
+
+**Review Comments (line-specific comments on PR diffs):**
+- Uses GitHub's `in_reply_to_id` field to directly identify the parent comment
+- This ensures the correct Vale error is identified even when multiple review threads exist
+- More reliable and efficient than searching through all comments
+
+**Issue Comments (general PR comments):**
+- Fetches all issue comments and finds the chronologically previous one
+- Works well for linear comment threads
+- Sufficient for issue-level comments which are naturally sequential
 
 ## Future Enhancements
 
