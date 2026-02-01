@@ -146,7 +146,7 @@ External links, tools, community information
 !!! warning "Data Loss"
     If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.
 
-!!! caution "SPI NAND Flash"
+!!! warning "SPI NAND Flash"
     If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored during boot. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
 
 ### Make a Backup Plan
@@ -164,13 +164,13 @@ Ready to proceed? Here's where to go next:
 
 <div class="grid cards" markdown>
 
--   :material-check-decagram:{ .lg .middle } **Hardware Requirements**
+-   :material-check-circle:{ .lg .middle } **Hardware Requirements**
 
     ---
 
     Verify you have compatible hardware
 
-    [:octicons-arrow-right-24: Check Requirements](hardware-requirements.md)
+    [:material-arrow-right: Check Requirements](hardware-requirements.md)
 
 -   :material-download:{ .lg .middle } **Installation Guide**
 
@@ -178,23 +178,23 @@ Ready to proceed? Here's where to go next:
 
     Flash Calculinux to your SD card
 
-    [:octicons-arrow-right-24: Install Now](installation.md)
+    [:material-arrow-right: Install Now](installation.md)
 
--   :material-rocket-launch:{ .lg .middle } **First Boot**
+-   :material-rocket:{ .lg .middle } **First Boot**
 
     ---
 
     Power on and configure your system
 
-    [:octicons-arrow-right-24: Boot Up](first-boot.md)
+    [:material-arrow-right: Boot Up](first-boot.md)
 
--   :material-book-open:{ .lg .middle } **Quick Start**
+-   :material-book-open-variant:{ .lg .middle } **Quick Start**
 
     ---
 
     Learn the basics quickly
 
-    [:octicons-arrow-right-24: Quick Start](quick-start.md)
+    [:material-arrow-right: Quick Start](quick-start.md)
 
 </div>
 

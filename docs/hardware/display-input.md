@@ -25,7 +25,7 @@ This page provides technical implementation details about the PicoCalc display a
 
 The display connects via SPI with the following characteristics:
 
-```
+```text
 SPI Bus: spi0
 Mode: 0 (CPOL=0, CPHA=0)
 Bits per word: 8
@@ -71,6 +71,7 @@ The backlight is controlled by the STM32 MCU, not directly by the Linux system:
     Current display sleep functionality does not yet control the backlight directly. Full backlight control is intended to be implemented through the experimental MFD drivers that communicate with the keyboard MCU.
 
 **Display Sleep** (without backlight control):
+
 ```bash
 # Turn off display (framebuffer only)
 echo 0 > /sys/class/backlight/picocalc/bl_power
@@ -123,6 +124,7 @@ Actual device tree configuration from `rk3506-luckfox-lyra.dtsi` (installed by `
 ```
 
 **GPIO Pin Configuration**:
+
 ```dts
 ili9488 {
     ili9488_pins: ili9488-pins {
@@ -137,7 +139,8 @@ ili9488 {
 ### Performance Considerations
 
 **Bandwidth Calculation**:
-```
+
+```text
 320 × 320 pixels × 2 bytes × 60 fps = 12.3 MB/s
 At 80 MHz SPI: ~10 MB/s theoretical maximum
 ```
@@ -147,13 +150,14 @@ The driver implements:
 - Partial updates for efficiency
 - Double buffering to reduce tearing
 
-### Backlight Control
+### Backlight PWM Control
 
 The backlight is controlled via PWM:
 
 **Interface**: `/sys/class/backlight/picocalc/`
 
 **Control**:
+
 ```bash
 # Set brightness (0-255)
 echo 200 > /sys/class/backlight/picocalc/brightness
@@ -251,7 +255,7 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 !!! info "Legacy vs MFD Drivers"
     Current stable releases may use simpler keyboard-only drivers, while experimental MFD drivers provide full MCU integration. Check your kernel configuration for which driver is active.
 
-### Device Tree Configuration
+### Device Tree Configuration (Keyboard MCU)
 
 Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.dtsi` (installed by `picocalc-devicetree`; source file is `linux-rk3506-luckfox-lyra.dtsi` in picocalc-drivers):
 
@@ -271,6 +275,7 @@ Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.
 ```
 
 **I2C Pin Configuration**:
+
 ```dts
 &pinctrl {
     rm_io11 {
@@ -297,6 +302,7 @@ The keyboard appears as a standard Linux input device:
 **Device Path**: `/dev/input/event0`
 
 **Testing Input**:
+
 ```bash
 # List input devices
 cat /proc/bus/input/devices
@@ -310,7 +316,8 @@ evtest /dev/input/event0
 Users can remap keys using standard Linux tools:
 
 **Using udev/hwdb**:
-```
+
+```text
 # /etc/udev/hwdb.d/90-picocalc-keyboard.hwdb
 evdev:input:b0003v*p*
  KEYBOARD_KEY_1e=leftshift
@@ -325,6 +332,7 @@ evdev:input:b0003v*p*
 **Text Area**: **53 columns × 40 rows** (at 320×320 with 6×8 font)
 
 **Configuration**:
+
 ```bash
 # /etc/default/console-setup
 ACTIVE_CONSOLES="/dev/tty[1-6]"
@@ -385,6 +393,7 @@ IdleActionSec=5min
 **Symptom**: No display output
 
 **Check**:
+
 ```bash
 # Verify framebuffer device exists
 ls -l /dev/fb0
@@ -427,6 +436,7 @@ modprobe picocalc_kbd
 ```
 
 **Additional Checks**:
+
 ```bash
 # Verify input device exists
 ls -l /dev/input/event*
@@ -447,6 +457,7 @@ File a bug report with:
 **Symptom**: Intermittent key responses
 
 **Check**:
+
 ```bash
 # Check I2C bus errors
 dmesg | grep -i i2c
@@ -458,6 +469,7 @@ dmesg | grep -i i2c
 **Symptom**: Key repeat too fast/slow
 
 **Adjust**:
+
 ```bash
 # Set repeat rate (delay, rate)
 kbdrate -d 250 -r 30
