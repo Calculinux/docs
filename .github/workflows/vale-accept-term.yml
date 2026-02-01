@@ -1,0 +1,179 @@
+name: Vale - Add Term to Accept List
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  add-to-accept-list:
+    # Only run on PR comments
+    if: github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check for vale-accept-term command
+        id: check-command
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = context.payload.comment.body.trim().toLowerCase();
+            const validCommand = 'vale-accept-term';
+            
+            // Check if comment is the valid command
+            if (comment !== validCommand) {
+              console.log('Comment is not the vale-accept-term command:', comment);
+              return { shouldRun: false };
+            }
+            
+            // Get the comment this is replying to
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            
+            // Find the previous comment (Vale error)
+            const allComments = comments.data;
+            const currentIndex = allComments.findIndex(c => c.id === context.payload.comment.id);
+            
+            if (currentIndex <= 0) {
+              console.log('No previous comment found');
+              return { shouldRun: false };
+            }
+            
+            const previousComment = allComments[currentIndex - 1];
+            
+            // Check if it's a Vale error comment (from vale-action bot)
+            if (!previousComment.body.includes('Vale') && !previousComment.body.includes('vale')) {
+              console.log('Previous comment is not a Vale error');
+              return { shouldRun: false };
+            }
+            
+            // Extract term from Vale error message
+            // Vale errors typically look like: "Did you really mean 'term'?"
+            // or: "Unknown word: term"
+            const termPatterns = [
+              /'([^']+)'/,           // Single quotes
+              /"([^"]+)"/,           // Double quotes
+              /\*\*([^*]+)\*\*/,     // Bold markdown
+              /`([^`]+)`/,           // Code backticks
+              /Unknown word:\s*(\w+)/i,
+              /Did you really mean\s+'([^']+)'/i
+            ];
+            
+            let term = null;
+            for (const pattern of termPatterns) {
+              const match = previousComment.body.match(pattern);
+              if (match) {
+                term = match[1];
+                break;
+              }
+            }
+            
+            if (!term) {
+              console.log('Could not extract term from Vale error');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: '❌ Could not extract term from the Vale error.\n\nPlease ensure you are replying to a Vale error comment with `vale-accept-term`.'
+              });
+              return { shouldRun: false };
+            }
+            
+            console.log('Extracted term:', term);
+            core.setOutput('term', term);
+            core.setOutput('should_run', 'true');
+            return { shouldRun: true, term: term };
+
+      - name: Checkout PR branch
+        if: steps.check-command.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.issue.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Add term to accept list
+        if: steps.check-command.outputs.should_run == 'true'
+        id: add-term
+        run: |
+          TERM="${{ steps.check-command.outputs.term }}"
+          ACCEPT_FILE=".github/styles/config/vocabularies/Calculinux/accept.txt"
+          
+          if [ -z "$TERM" ]; then
+            echo "No term to add"
+            exit 1
+          fi
+          
+          # Check if term already exists (case-insensitive)
+          if grep -iq "^${TERM}$" "$ACCEPT_FILE"; then
+            echo "term_exists=true" >> $GITHUB_OUTPUT
+            echo "Term '$TERM' already exists in accept list"
+          else
+            # Add term to the end of the file (before any trailing newlines)
+            # Remove trailing newlines, add term, add back one newline
+            sed -i -e :a -e '/^\s*$/d;N;ba' "$ACCEPT_FILE"
+            echo "$TERM" >> "$ACCEPT_FILE"
+            echo "term_exists=false" >> $GITHUB_OUTPUT
+            echo "Added term '$TERM' to accept list"
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-command.outputs.should_run == 'true' && steps.add-term.outputs.term_exists != 'true'
+        run: |
+          TERM="${{ steps.check-command.outputs.term }}"
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add .github/styles/config/vocabularies/Calculinux/accept.txt
+          git commit -m "docs: add '$TERM' to Vale accept list
+          
+          Added via PR comment command.
+          Co-authored-by: ${{ github.event.comment.user.login }} <${{ github.event.comment.user.id }}+${{ github.event.comment.user.login }}@users.noreply.github.com>"
+          
+          git push
+
+      - name: Post success comment
+        if: steps.check-command.outputs.should_run == 'true' && steps.add-term.outputs.term_exists != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const term = '${{ steps.check-command.outputs.term }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ Added \`${term}\` to the Vale accept list!\n\nThe term has been committed to this PR. Vale will no longer flag this word as an error.`
+            });
+
+      - name: Post already exists comment
+        if: steps.check-command.outputs.should_run == 'true' && steps.add-term.outputs.term_exists == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const term = '${{ steps.check-command.outputs.term }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
+            });
+
+      - name: Post error comment
+        if: failure() && steps.check-command.outputs.should_run == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '❌ Failed to add term to Vale accept list. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.'
+            });

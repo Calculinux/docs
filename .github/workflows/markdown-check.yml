@@ -101,4 +101,37 @@ jobs:
           separator: ','
           reporter: github-pr-review
           vale_flags: '--config .vale.ini'
+          fail_on_error: false
         continue-on-error: true
+
+      - name: Add Vale acceptance instructions
+        if: steps.changed-files-comma.outputs.any_changed == 'true'
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Post a general comment about the vale-accept-term command
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            
+            // Check if we've already posted the instruction comment
+            const instructionExists = comments.data.some(c => 
+              c.body.includes('vale-accept-term') && 
+              c.user.login === 'github-actions[bot]'
+            );
+            
+            if (!instructionExists) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: '### 📝 Vale Linting Instructions\n\n' +
+                      'If Vale flags a legitimate technical term, you can add it to the accept list by:\n' +
+                      '1. Reply to the specific Vale error comment with: `vale-accept-term`\n' +
+                      '2. The bot will automatically extract and add the term\n\n' +
+                      'This command works for technical terms, product names, acronyms, and project-specific vocabulary.'
+              });
+            }

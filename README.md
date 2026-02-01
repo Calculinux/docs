@@ -12,6 +12,8 @@ This repository contains the source for the Calculinux documentation website, bu
 
 - Python 3.8 or higher
 - pip
+- Node.js and npm
+- Vale (installed automatically via `make install`)
 
 ### Installation
 
@@ -35,6 +37,8 @@ make          # Default: runs lint, then starts docs server
 make lint     # Run all linters (markdownlint, link-check, vale)
 make docs     # Start local MkDocs server
 make clean    # Remove build artifacts
+make vale-sync           # Sync Vale styles and packages
+make validate-workflows  # Validate GitHub Actions YAML files
 make help     # Show all available commands
 ```
 
@@ -112,6 +116,22 @@ We welcome contributions to improve the documentation!
 - Follow the existing structure and style
 - Test all commands and instructions
 - Keep line length reasonable for readability
+
+### Automated Quality Checks
+
+Pull requests automatically run:
+- **markdownlint** - Markdown formatting and structure
+- **markdown-link-check** - Validates all links
+- **Vale** - Prose linting (grammar, style, technical terms)
+
+#### Vale Term Management
+
+If Vale flags a legitimate technical term on your PR:
+
+1. Reply to the Vale error comment with `vale-accept-term`
+2. The bot will automatically add the term to the accept list and commit it
+
+See [Vale Vocabulary README](.github/styles/config/vocabularies/README.md) for more details.
 
 ### Markdown Features
 
