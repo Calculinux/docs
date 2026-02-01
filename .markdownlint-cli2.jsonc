@@ -1,6 +1,9 @@
 {
   // Configuration for markdownlint-cli2 with mkdocs-material-linter plugin
-  "customRules": ["mkdocs-material-linter"],
+  "customRules": [
+    "mkdocs-material-linter",
+    ".github/markdownlint-rules/material-icons-complete.js"
+  ],
   "config": {
     // Disable MD013 (line length)
     "MD013": false,
@@ -30,6 +33,10 @@
     "material-bundle-exec-shell-type": true,
     "material-blank-lines-spacing": true,
     "material-code-block-syntax": true,
+    // Disable the incomplete icon validation from mkdocs-material-linter
+    "material-icons-valid": false,
+    // Enable our custom complete icon validation
+    "material-icons-complete": true,
     // Disable metadata tags for now (optional SEO feature)
     "material-meta-tags": false
   }

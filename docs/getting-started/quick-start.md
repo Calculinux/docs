@@ -6,7 +6,7 @@ Get up and running quickly with Calculinux basics.
 
 ### System Information
 
-```bash
+```shell
 # System version
 cat /etc/os-release
 
@@ -26,7 +26,7 @@ free -h
 
 ### Package Management
 
-```bash
+```shell
 # Update package list
 opkg update
 
@@ -45,7 +45,7 @@ opkg list-installed
 
 ### File Management
 
-```bash
+```shell
 # Navigate directories
 cd /path/to/directory
 pwd  # Show current directory
@@ -68,7 +68,7 @@ nano filename  # Edit
 
 ### System Management
 
-```bash
+```shell
 # Reboot
 reboot
 
@@ -89,7 +89,7 @@ dmesg  # Kernel messages
 
 ### Connect to Network
 
-```bash
+```shell
 # Ethernet (DHCP)
 udhcpc -i eth0
 
@@ -99,7 +99,7 @@ ping 8.8.8.8
 
 ### Install Software
 
-```bash
+```shell
 # Example: Install Python
 opkg update
 opkg install python3
@@ -110,7 +110,7 @@ opkg install vim
 
 ### Manage Files
 
-```bash
+```shell
 # Create a file
 echo "Hello World" > test.txt
 
@@ -123,7 +123,7 @@ cat test.txt
 
 ### Monitor System
 
-```bash
+```shell
 # Real-time process monitor
 htop  # or top
 
@@ -138,7 +138,7 @@ ps aux
 
 ### Python Example
 
-```bash
+```shell
 # Create Python script
 nano hello.py
 ```
@@ -148,7 +148,7 @@ nano hello.py
 print("Hello from Calculinux!")
 ```
 
-```bash
+```shell
 # Make executable
 chmod +x hello.py
 
@@ -158,7 +158,7 @@ chmod +x hello.py
 
 ### C Example
 
-```bash
+```shell
 # Create C program
 nano hello.c
 ```
@@ -172,7 +172,7 @@ int main() {
 }
 ```
 
-```bash
+```shell
 # Compile
 gcc hello.c -o hello
 
@@ -191,7 +191,7 @@ gcc hello.c -o hello
 
 ### Command History
 
-```bash
+```shell
 # View history
 history
 
@@ -209,7 +209,7 @@ Ctrl+R  # Then type search term
 
 Add to `~/.bashrc`:
 
-```bash
+```shell
 alias ll='ls -la'
 alias update='opkg update'
 alias install='opkg install'
@@ -219,7 +219,7 @@ alias install='opkg install'
 
 ### Built-in Help
 
-```bash
+```shell
 # Command manual
 man <command>
 

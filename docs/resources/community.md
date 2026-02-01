@@ -8,7 +8,8 @@ Connect with the Calculinux community and get support.
 
 Join our active Discord community for real-time chat and support:
 
-**Calculinux Discord Server**
+#### Calculinux Discord Server
+
 - URL: [discord.gg/7quBbSPxcP](https://discord.gg/7quBbSPxcP)
 - Purpose: Real-time community discussion, help, and project sharing
 - Channels: General discussion, help & support, development, hardware, showcase
@@ -18,7 +19,8 @@ Join our active Discord community for real-time chat and support:
 
 The primary discussion platform for Calculinux and PicoCalc modifications:
 
-**ClockworkPi Forum - Luckfox Lyra Thread**
+#### ClockworkPi Forum - Luckfox Lyra Thread
+
 - URL: [forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 - Purpose: General discussion, questions, showcase projects
 - Activity: Active community, quick responses
@@ -26,13 +28,15 @@ The primary discussion platform for Calculinux and PicoCalc modifications:
 
 ### GitHub
 
-**Source Code & Issues**
+#### Source Code & Issues
+
 - Repository: [github.com/Calculinux/meta-calculinux](https://github.com/Calculinux/meta-calculinux)
 - Issues: Bug reports and feature requests
 - Pull Requests: Code contributions
 - Discussions: Development planning
 
-**Documentation**
+#### Documentation
+
 - Repository: [github.com/Calculinux/docs](https://github.com/Calculinux/docs)
 - Issues: Documentation improvements
 - Website: [calculinux.github.io/docs](https://calculinux.github.io/docs)
@@ -72,7 +76,7 @@ The primary discussion platform for Calculinux and PicoCalc modifications:
 
 **Good Question Format**:
 
-```
+```text
 Subject: Clear, specific title
 
 Hardware:
@@ -110,25 +114,29 @@ Logs:
 
 ### Ways to Contribute
 
-**Code Contributions**
+#### Code Contributions
+
 - Bug fixes
 - New features
 - Driver improvements
 - See [Contributing Guide](../developer/contributing.md)
 
-**Documentation**
+#### Documentation Improvements
+
 - Fix typos and errors
 - Add missing information
 - Create tutorials
 - Translate to other languages
 
-**Testing**
+#### Testing
+
 - Test on different hardware
 - Report compatibility
 - Verify bug fixes
 - Test new features
 
-**Community Support**
+#### Community Support
+
 - Answer questions on forum
 - Help troubleshoot issues
 - Share your projects

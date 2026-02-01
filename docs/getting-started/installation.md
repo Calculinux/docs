@@ -50,7 +50,7 @@ Additional files you may find:
 
 After downloading, verify the image integrity:
 
-```bash
+```shell
 # On Linux/macOS
 sha256sum calculinux-*.wic.gz
 
@@ -64,7 +64,7 @@ Compare with the SHA256 hash on the release page.
 
 If the image is compressed (`.xz`, `.gz`, `.zip`):
 
-```bash
+```shell
 # Linux/macOS with xz
 unxz calculinux-*.wic.gz
 
@@ -93,7 +93,7 @@ unxz calculinux-*.wic.gz
 !!! warning "Dangerous Command"
     Double-check the device name! Using the wrong device will destroy your data.
 
-```bash
+```shell
 # 1. Insert SD card and identify device
 lsblk
 # Look for your SD card (usually /dev/sdX or /dev/mmcblkN)
@@ -135,7 +135,7 @@ sync
 
 After flashing:
 
-```bash
+```shell
 # Linux/macOS - verify partition table
 sudo fdisk -l /dev/sdX
 
@@ -150,7 +150,7 @@ If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the [
 
 If your Luckfox Lyra has SPI NAND, you **must** erase it:
 
-```bash
+```shell
 # See Hardware Modifications guide for detailed instructions
 # Or Boot Problems troubleshooting page
 ```
@@ -172,10 +172,12 @@ Quick checklist:
 ### What to Expect
 
 **Initial boot timing**:
+
 - First boot: 30-60 seconds
 - Subsequent boots: 15-30 seconds
 
 **Visual indicators**:
+
 - Power LED should light up
 - Display may show boot messages
 - Initial splash screen
@@ -185,7 +187,7 @@ Quick checklist:
 
 You should see:
 
-```
+```text
 [    0.000000] Booting Linux on physical CPU 0x0
 [    0.000000] Linux version 5.10.x-calculinux
 ...
@@ -206,16 +208,19 @@ picocalc login: _
 If the system doesn't boot:
 
 **No display activity**:
+
 - Check power supply (try different cable/adapter)
 - Verify SD card is inserted correctly
 - See [Boot Problems](../troubleshooting/boot-problems.md)
 
 **Boots but hangs**:
+
 - Wait 2-3 minutes (first boot may take longer)
 - Check SD card integrity
 - Try reflashing the image
 
 **Display shows errors**:
+
 - Note the error messages
 - Check [Troubleshooting](../troubleshooting/common-issues.md)
 - Search forum for similar issues
@@ -256,7 +261,7 @@ You can create multiple SD cards for different purposes:
 
 Just flash different images or clone a working card:
 
-```bash
+```shell
 # Clone a working SD card
 sudo dd if=/dev/sdX of=backup.img bs=4M status=progress
 
@@ -269,28 +274,33 @@ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress
 Calculinux comes with a console-based environment including:
 
 ### System Utilities
+
 - **Shell**: bash, busybox
 - **Editors**: vi, nano (via opkg)
 - **Development**: gcc, g++, make, autoconf, git, gdb
 - **Package Management**: opkg with online repositories
 
 ### Network Tools
+
 - **WiFi**: iwd (iwctl command)
 - **Utilities**: curl, wget, links (text browser), openssh
 - **Debugging**: iw, htop, systemd-analyze
 
 ### System Management
+
 - **Update System**: RAUC (A/B partition updates)
 - **Storage**: e2fsprogs, mtd-utils, cloud-utils-growpart
 - **Hardware**: i2c-tools, usbutils, android-tools
 
 ### Additional Features
+
 - **Filesystem**: Overlayfs for read-only root with persistent overlay
 - **Console Font**: Terminus font for better readability
 - **Keyboard**: Full keyboard mapping support
 
 !!! info "No GUI/Desktop"
     Calculinux is currently **console-only** with no graphical desktop environment. All interaction is via text terminal. GUI support may be added in future releases.
+
 - File manager
 - Basic applications
 
@@ -315,7 +325,7 @@ Instead of using pre-built images, you can build your own:
 
 To update an existing installation:
 
-```bash
+```shell
 # Update package database
 opkg update
 
@@ -333,7 +343,7 @@ Protect your work:
 
 ### Full SD Card Backup
 
-```bash
+```shell
 # Backup entire SD card
 sudo dd if=/dev/sdX of=calculinux-backup.img bs=4M status=progress
 
@@ -343,7 +353,7 @@ gzip calculinux-backup.wic
 
 ### Filesystem Backup
 
-```bash
+```shell
 # Backup home directory
 tar czf home-backup.tar.gz /home
 
@@ -392,6 +402,7 @@ If you encounter problems:
 4. Open [GitHub issue](https://github.com/Calculinux/meta-calculinux/issues)
 
 Include in your help request:
+
 - Image variant and version
 - SD card brand/size
 - Luckfox Lyra version (RAM, NAND)

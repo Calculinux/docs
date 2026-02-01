@@ -24,16 +24,19 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 ## Recommended Configurations
 
 ### Budget Configuration
+
 - Luckfox Lyra 128MB (basic model, no SPI NAND)
 - 16GB Class 10 SD card
 - **Best for**: Console use, scripting, learning Linux
 
 ### Standard Configuration
+
 - Luckfox Lyra 128MB
 - 32GB UHS-I SD card
 - **Best for**: General use with more storage for applications
 
 ### Advanced Configuration
+
 - Luckfox Lyra 128MB
 - 64GB UHS-I SD card
 - Powered USB hub (for 5V peripherals)
@@ -42,7 +45,7 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 
 !!! tip "Serial Console for Development"
     A second USB-C cable connected to the **PicoCalc's USB-C port** (not the Lyra's port) provides serial console access at **1500000 baud**. This is invaluable for:
-    
+
     - Watching boot messages and kernel output
     - Debugging firmware and kernel driver modifications
     - Troubleshooting hardware issues
@@ -53,6 +56,7 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 ## What's Included vs What to Buy
 
 ### Comes with PicoCalc
+
 - Display and keyboard
 - Internal battery
 - PicoCalc USB-C port (for charging and serial console)
@@ -60,11 +64,13 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 - Original RP2040 board (you'll replace this)
 
 ### You Need to Purchase
+
 - Luckfox Lyra SBC (replaces RP2040)
 - MicroSD card for Lyra (system boot disk)
 - USB-C cable
 
 ### Optional Purchases
+
 - WiFi adapter (3.3V or via powered hub)
 - Additional SD card for PicoCalc slot
 - Powered USB hub (for 5V devices)
@@ -77,7 +83,7 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 !!! info "Graphical Desktop Experimentation"
     Calculinux is console-only by default. While you can experiment with lightweight graphical environments, the 128MB RAM is a significant limiting factor for desktop use. Set expectations accordingly!
 
-!!! caution "SPI NAND Models"
+!!! warning "SPI NAND Models"
     If you purchase a Luckfox Lyra with SPI NAND storage, you **must erase the NAND flash** before Calculinux will boot from SD card. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for instructions.
 
 !!! note "PicoCalc Availability"
@@ -107,7 +113,7 @@ Once you have your hardware:
 
 !!! danger "Critical: 3.3V Requirement"
     The Lyra's USB port provides only **3.3V power**. Standard 5V USB adapters will NOT work and may damage the board.
-    
+
     **Options**:
     - Use a 3.3V-compatible USB WiFi adapter
     - Use an **externally powered** USB hub for 5V devices
@@ -139,7 +145,7 @@ Once you have your hardware:
 
 See [Compatibility Matrix](../hardware/compatibility.md) for detailed hardware compatibility information.
 
-## Next Steps
+## Ready to Install
 
 - Review [Luckfox Lyra details](../hardware/luckfox-lyra.md)
 - Check [Installation Guide](installation.md)

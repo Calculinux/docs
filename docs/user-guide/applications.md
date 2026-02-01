@@ -68,12 +68,12 @@ blocks of a functional system:
 
 ## Installing new applications
 
-### See the [Package Management](package-management.md) documentation For a more thorough explanation.
+### See the [Package Management](package-management.md) documentation For a more thorough explanation
 
 Calculinux uses **opkg** (Open Package Management) as the package manager.
 Below, you will find a basic guide on how to install applications by using opkg:
 
-```bash
+```shell
 opkg update
 opkg install package_name
 ```
@@ -84,7 +84,9 @@ Then, the _opkg install *package_name*_ command will make opkg look for
 _package_name_ in the list of available packages, and try to install it, if all
 dependencies are available.
 
-##### A dependency for a package in linux, is another package required for it to function properly or install successfully.
+#### What is a Dependency?
+
+A dependency for a package in Linux is another package required for it to function properly or install successfully.
 
 If you are installing packages with network access, dependencies should
 automatically install alongside your chosen package. If however you install your
@@ -104,7 +106,7 @@ it manually, one by one.
 
 ### Example Usage of opkg Package Installation Options/Arguements
 
-```bash
+```shell
 opkg list-installed
 opkg list-installed | grep <package-name> # Searches Filter
 opkg install --force-reinstall package-name
@@ -154,7 +156,7 @@ Configuration for installed software is usually kept in two main places.
 - Before you edit anything in /etc, make a copy of the file. For example:
   - sudo cp /etc/example.conf /etc/example.conf.bak
 
-2. User settings in the home folder
+1. User settings in the home folder
 
 - Most applications save user specific settings in hidden files or folders in
   your home directory. These names start with a dot. Examples are ~/.config/,

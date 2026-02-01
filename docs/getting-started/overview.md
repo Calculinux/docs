@@ -18,6 +18,7 @@ Before you begin, make sure you have:
 - ✅ Computer (for flashing the SD card)
 
 Optional but helpful:
+
 - Second USB-C cable (for serial console monitoring at 1500000 baud)
 - USB WiFi adapter (3.3V compatible, see [Hardware Requirements](hardware-requirements.md))
 
@@ -119,21 +120,27 @@ Be aware of these limitations:
 This documentation is organized into sections:
 
 ### Getting Started (You Are Here)
+
 Everything needed to get Calculinux running
 
 ### Hardware
+
 Physical device information, modifications, technical specs
 
 ### User Guide
+
 Day-to-day usage, applications, configuration
 
 ### Developer Guide
+
 Building, customizing, contributing to Calculinux
 
 ### Troubleshooting
+
 Solutions to common problems and FAQ
 
 ### Resources
+
 External links, tools, community information
 
 ## Before You Begin
@@ -164,7 +171,7 @@ Ready to proceed? Here's where to go next:
 
 <div class="grid cards" markdown>
 
--   :material-check-circle:{ .lg .middle } **Hardware Requirements**
+- :material-check-circle:{ .lg .middle } **Hardware Requirements**
 
     ---
 
@@ -172,7 +179,7 @@ Ready to proceed? Here's where to go next:
 
     [:material-arrow-right: Check Requirements](hardware-requirements.md)
 
--   :material-download:{ .lg .middle } **Installation Guide**
+- :material-download:{ .lg .middle } **Installation Guide**
 
     ---
 
@@ -180,7 +187,7 @@ Ready to proceed? Here's where to go next:
 
     [:octicons-arrow-right-24: Install Now](installation.md)
 
--   :material-rocket-launch:{ .lg .middle } **First Boot**
+- :material-rocket-launch:{ .lg .middle } **First Boot**
 
     ---
 
@@ -188,7 +195,7 @@ Ready to proceed? Here's where to go next:
 
     [:octicons-arrow-right-24: Boot Up](first-boot.md)
 
--   :material-book-open-page-variant:{ .lg .middle } **Quick Start**
+- :material-book-open-page-variant:{ .lg .middle } **Quick Start**
 
     ---
 

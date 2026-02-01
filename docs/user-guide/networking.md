@@ -9,23 +9,23 @@ This section covers network connectivity options for your PicoCalc.
 
 <div class="grid cards" markdown>
 
-- :octicons-link: **USB Networking**
+- :material-usb:{ .lg .middle } **USB Networking**
 
     ---
 
     Connect directly to your computer via USB for fast, convenient network access.
 
-    [:octicons-arrow-right: USB Networking Guide](usb-networking.md)
+    [:octicons-arrow-right-24: USB Networking Guide](usb-networking.md)
 
-- :material-notifications:{ .lg .middle } **WiFi**
+- :material-wifi:{ .lg .middle } **WiFi**
 
     ---
 
     Connect to wireless networks using a USB WiFi adapter (not built-in, must be installed separately).
 
-    [:octicons-arrow-right: WiFi Setup](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
+    [:octicons-arrow-right-24: WiFi Setup](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
 
-    [:octicons-arrow-right: Selecting a WiFi Adapter](../hardware/specifications.md#supported-wifi-chipsets)
+    [:octicons-arrow-right-24: Selecting a WiFi Adapter](../hardware/specifications.md#supported-wifi-chipsets)
 
 </div>
 

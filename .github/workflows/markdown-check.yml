@@ -67,7 +67,7 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         continue-on-error: true
         run: |
-          npx markdown-link-check -q ${{ steps.changed-files.outputs.all_changed_files }} || true
+          npx markdown-link-check -q -c .markdown-link-check.json ${{ steps.changed-files.outputs.all_changed_files }} || true
 
       - name: Commit autofix changes
         if: steps.changed-files.outputs.any_changed == 'true'

@@ -457,21 +457,21 @@ Choose your path:
 
 <div class="grid cards" markdown>
 
-- :material-settings:{ .lg .middle } **Set Up Environment**
+- :material-cog:{ .lg .middle } **Set Up Environment**
 
   ---
 
   Install tools and configure Yocto
 
-  [:octicons-arrow-right: Yocto Setup](yocto-setup.md)
+  [:octicons-arrow-right-24: Yocto Setup](yocto-setup.md)
 
-- :material-work:{ .lg .middle } **Build Calculinux**
+- :material-hammer-wrench:{ .lg .middle } **Build Calculinux**
 
   ---
 
   Compile your first image
 
-  [:octicons-arrow-right: Building Guide](building.md)
+  [:octicons-arrow-right-24: Building Guide](building.md)
 
 - :material-star:{ .lg .middle } **Customize**
 
@@ -479,7 +479,7 @@ Choose your path:
 
   Make Calculinux your own
 
-  [:octicons-arrow-right: Customization](customization.md)
+  [:octicons-arrow-right-24: Customization](customization.md)
 
 - :material-share:{ .lg .middle } **Contribute**
 
@@ -487,6 +487,6 @@ Choose your path:
 
   Join the development effort
 
-  [:octicons-arrow-right: Contributing](contributing.md)
+  [:octicons-arrow-right-24: Contributing](contributing.md)
 
 </div>

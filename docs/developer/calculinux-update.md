@@ -147,7 +147,7 @@ def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
 
 The `calculinux_export_bundle_extras()` function runs during `do_rootfs`:
 
-```bash
+```shell
 calculinux_export_bundle_extras() {
     extras_dir="${DEPLOY_DIR_IMAGE}/bundle-extras/extras/opkg"
 
@@ -269,7 +269,7 @@ downloaded = downloader.download(plan.reinstall, PREFETCH_CACHE_DIR)
 
 **RAUC Integration**:
 
-```bash
+```shell
 # /usr/lib/rauc/post-install-handler.sh
 BUNDLE_STATUS_IMAGE="${RAUC_BUNDLE_MOUNT_POINT}/extras/opkg/status.image"
 
@@ -678,7 +678,7 @@ def create_dpkg_new_files(
 
 OPKG packages declare config files in `/var/lib/opkg/info/<package>.conffiles`:
 
-```bash
+```shell
 # Comment lines ignored
 /etc/ssh/sshd_config d41d8cd98f00b204e9800998ecf8427e
 /etc/ssh/ssh_config
@@ -713,7 +713,7 @@ _atomic_write(MODIFIED_CONFFILES_FILE, modified_conffiles)  # For post-reboot re
 
 **Testing**:
 
-```bash
+```shell
 pytest tests/test_opkg_conffiles.py -v
 ```
 
@@ -779,7 +779,7 @@ def list_bundles_for_channel(
 
 **Bundles Metadata** (`bundles.txt`):
 
-```bash
+```shell
 # timestamp filename size sha256
 1732147200 calculinux-bundle-20241120.raucb 123456789 abc123...
 1731542400 calculinux-bundle-20241113.raucb 123456780 def456...
@@ -892,7 +892,7 @@ def test_install_pkg(mock_run):
 
 ### Running Tests
 
-```bash
+```shell
 # All tests with coverage
 pytest --cov=calculinux_update --cov-report=term-missing
 
@@ -1101,7 +1101,7 @@ def postreboot_entrypoint() -> int:
 
 Set `LOGLEVEL` environment variable:
 
-```bash
+```shell
 LOGLEVEL=DEBUG cup install
 
 # Hook (requires bundle extras)
@@ -1115,7 +1115,7 @@ LOGLEVEL=DEBUG cup-postreboot
 
 ### Inspect Status Files (v0.5.0)
 
-```bash
+```shell
 # Current writable status
 cat /var/lib/opkg/status
 
@@ -1135,7 +1135,7 @@ ls -lh /var/cache/calculinux-update/prefetch/
 
 ### Manual Reconciliation
 
-```bash
+```shell
 # Simulate hook (requires bundle extras setup)
 export RAUC_BUNDLE_STATUS_IMAGE=/path/to/status.image
 export RAUC_SLOT_CLASS=rootfs

@@ -105,6 +105,9 @@ The documentation is linted with three tools (all run via `make lint`):
 
 1. **markdownlint-cli2** - Markdown formatting rules
     - Uses `.markdownlint-cli2.jsonc` with `mkdocs-material-linter` rules for Material for MkDocs compatibility
+   - Custom rule: `.github/markdownlint-rules/material-icons-complete.js` - validates icons against complete lists from Material theme
+   - Icon lists: `.github/icon-lists.json` - generated from Material for MkDocs theme (7447 material icons, 665 octicons, 2806 fontawesome, 3364 simple icons)
+   - Regenerate icon lists: `python3 .github/scripts/generate-icon-lists.py`
    - Autofix enabled: fixes formatting issues automatically
 
 2. **markdown-link-check** - Validates all links (internal and external)

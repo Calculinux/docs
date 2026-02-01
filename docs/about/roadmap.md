@@ -16,7 +16,7 @@ Calculinux currently includes:
 
 ## Short-term Goals
 
-**Q4 2024 - Q1 2025**
+### Q4 2024 - Q1 2025
 
 - [ ] Complete documentation for all user guides
 - [ ] Expand hardware compatibility testing
@@ -26,7 +26,7 @@ Calculinux currently includes:
 
 ## Medium-term Goals
 
-**Q2-Q3 2025**
+### Q2-Q3 2025
 
 - [ ] Additional SBC support (Milk-V Duo, etc.)
 - [ ] Enhanced power management
@@ -36,7 +36,7 @@ Calculinux currently includes:
 
 ## Long-term Vision
 
-**2025 and Beyond**
+### 2025 and Beyond
 
 - [ ] Full-featured desktop experience
 - [ ] Comprehensive application library
@@ -64,4 +64,4 @@ Interested in helping? See our [Contributing Guide](../developer/contributing.md
 
 ---
 
-*Roadmap updated: October 2024*
+Roadmap updated: October 2024

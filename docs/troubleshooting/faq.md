@@ -6,7 +6,7 @@ Common issues and frequently asked questions about Calculinux.
 
 Before diving into specific issues, run these basic checks:
 
-```bash
+```shell
 # Check system info
 uname -a
 cat /proc/cpuinfo | grep -i "model name"
@@ -29,6 +29,7 @@ journalctl -b
 **Symptoms**: No display activity, device appears dead
 
 **Possible Causes**:
+
 1. SPI NAND not erased (most common with NAND versions)
 2. Corrupt SD card image
 3. SD card not inserted properly
@@ -36,6 +37,7 @@ journalctl -b
 5. Hardware connection issue
 
 **Solutions**:
+
 - See [Boot Problems](boot-problems.md#system-wont-boot) for detailed troubleshooting
 - Verify SPI NAND was erased: [NAND Erasing Guide](../hardware/modifications.md#erasing-spi-nand)
 - Try different power supply (5V/2A minimum)
@@ -47,7 +49,8 @@ journalctl -b
 **Symptoms**: System boots but display stays blank
 
 **Quick Fixes**:
-```bash
+
+```shell
 # Check if framebuffer exists
 ls -l /dev/fb0
 
@@ -66,7 +69,8 @@ See [Display Issues](display.md) for more details.
 **Symptoms**: Cannot type or keys don't register
 
 **Quick Fixes**:
-```bash
+
+```shell
 # Check input devices
 cat /proc/bus/input/devices
 
@@ -84,7 +88,8 @@ See [Input Problems](input.md) for more details.
 **Symptoms**: Cannot connect to network
 
 **Quick Check**:
-```bash
+
+```shell
 # Check interfaces
 ip link
 
@@ -102,7 +107,8 @@ See [Network Issues](network.md) for solutions.
 **Symptoms**: "No space left on device" errors
 
 **Solution**:
-```bash
+
+```shell
 # Check disk usage
 df -h
 
@@ -119,13 +125,15 @@ opkg clean
 ### Issue: System Running Slow
 
 **Possible Causes**:
+
 - Insufficient RAM
 - Slow SD card
 - Too many services running
 - Swap thrashing
 
 **Solutions**:
-```bash
+
+```shell
 # Check memory
 free -h
 
@@ -203,7 +211,8 @@ A: Text-mode browsers (lynx, w3m) work well. Graphical browsers require 256MB+ R
 **Q: How do I install more software?**
 
 A: Use the opkg package manager:
-```bash
+
+```shell
 opkg update
 opkg install <package-name>
 ```
@@ -240,15 +249,17 @@ A: Check RAM usage (`free -h`). With only 128MB, many applications will struggle
 
 **Q: Where can I get help?**
 
-A: 
+A:
+
 1. Check this documentation
 2. Join our [Discord Community](https://discord.gg/7quBbSPxcP)
 3. Search the [Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 4. Open a [GitHub issue](https://github.com/Calculinux/meta-calculinux/issues)
 
-**Q: The display shows garbage/corruption**
+### Q: The display shows garbage/corruption
 
 A: Try:
+
 - Reducing SPI clock speed in device tree. The default should be stable, however.
 - Reflashing SD card
 - Testing with different SD card
@@ -294,7 +305,7 @@ When asking for help, provide:
 
 Boot with more verbose output:
 
-```bash
+```shell
 # Edit boot command in U-Boot
 # Add to kernel command line:
 loglevel=7 debug
@@ -304,7 +315,7 @@ loglevel=7 debug
 
 Connect via serial for full boot output:
 
-```bash
+```shell
 # From another computer
 screen /dev/ttyUSB0 1500000
 ```
@@ -313,7 +324,7 @@ screen /dev/ttyUSB0 1500000
 
 Boot to minimal system:
 
-```bash
+```shell
 # Connect with a serial cable, then reboot.
 # In U-Boot, add to kernel command line:
 single

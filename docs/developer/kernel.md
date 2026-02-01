@@ -25,4 +25,4 @@ This section will cover:
 
 ---
 
-*Content planned for future release*
+Content planned for future release

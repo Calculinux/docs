@@ -9,6 +9,7 @@ Calculinux packages are hosted on package feeds at `https://opkg.calculinux.org/
 ### Feed Types
 
 **Continuous Feed**: Rolling release packages with the latest updates
+
 - URL format: `https://opkg.calculinux.org/ipk/{codename}/continuous/`
 - Updated automatically as changes are made
 - Best for staying current with development
@@ -16,6 +17,7 @@ Calculinux packages are hosted on package feeds at `https://opkg.calculinux.org/
 - Used by main and develop branch builds
 
 **Release Feed**: Stable versioned packages
+
 - URL format: `https://opkg.calculinux.org/ipk/{codename}/release/`
 - Locked to specific release versions
 - Thoroughly tested before release
@@ -26,18 +28,20 @@ Calculinux packages are hosted on package feeds at `https://opkg.calculinux.org/
 
 Check your current feed configuration:
 
-```bash
+```shell
 cat /etc/opkg/base-feeds.conf
 ```
 
 Example output for a continuous build:
-```
+
+```text
 src/gz all https://opkg.calculinux.org/ipk/walnascar/continuous/all
 src/gz cortexa7t2hf-neon-vfpv4 https://opkg.calculinux.org/ipk/walnascar/continuous/cortexa7t2hf-neon-vfpv4
 src/gz luckfox_lyra https://opkg.calculinux.org/ipk/walnascar/continuous/luckfox_lyra
 ```
 
 The feed configuration is set during the image build process and matches the image type:
+
 - Images from `main` branch → `walnascar/continuous` feed
 - Images from `develop` branch → `develop/continuous` feed  
 - Images from tagged releases → `walnascar/release` feed
@@ -48,7 +52,7 @@ The feed configuration is set during the image build process and matches the ima
 
 Before installing or updating packages, refresh the package list:
 
-```bash
+```shell
 opkg update
 ```
 
@@ -56,12 +60,13 @@ opkg update
 
 Install a package:
 
-```bash
+```shell
 opkg install <package-name>
 ```
 
 Example:
-```bash
+
+```shell
 opkg install vim
 ```
 
@@ -69,13 +74,13 @@ opkg install vim
 
 Remove a package:
 
-```bash
+```shell
 opkg remove <package-name>
 ```
 
 Remove a package and its configuration files:
 
-```bash
+```shell
 opkg remove --force-removal-of-dependent-packages <package-name>
 ```
 
@@ -83,18 +88,19 @@ opkg remove --force-removal-of-dependent-packages <package-name>
 
 Search for available packages:
 
-```bash
+```shell
 opkg list | grep <search-term>
 ```
 
 Example:
-```bash
+
+```shell
 opkg list | grep python
 ```
 
 Search for installed packages:
 
-```bash
+```shell
 opkg list-installed | grep <search-term>
 ```
 
@@ -102,13 +108,13 @@ opkg list-installed | grep <search-term>
 
 Get information about a package:
 
-```bash
+```shell
 opkg info <package-name>
 ```
 
 List files in an installed package:
 
-```bash
+```shell
 opkg files <package-name>
 ```
 
@@ -116,14 +122,14 @@ opkg files <package-name>
 
 Update all installed packages:
 
-```bash
+```shell
 opkg update
 opkg upgrade
 ```
 
 Update a specific package:
 
-```bash
+```shell
 opkg update
 opkg upgrade <package-name>
 ```
@@ -134,7 +140,7 @@ opkg upgrade <package-name>
 
 Install a `.ipk` package file directly:
 
-```bash
+```shell
 opkg install /path/to/package.ipk
 ```
 
@@ -142,30 +148,31 @@ opkg install /path/to/package.ipk
 
 List all available packages:
 
-```bash
+```shell
 opkg list
 ```
 
 List all installed packages:
 
-```bash
+```shell
 opkg list-installed
 ```
 
 List upgradeable packages:
 
-```bash
+```shell
 opkg list-upgradable
 ```
 
 ### Finding Which Package Provides a File
 
-```bash
+```shell
 opkg search <filename>
 ```
 
 Example:
-```bash
+
+```shell
 opkg search /usr/bin/python3
 ```
 
@@ -173,13 +180,13 @@ opkg search /usr/bin/python3
 
 View package dependencies:
 
-```bash
+```shell
 opkg depends <package-name>
 ```
 
 View reverse dependencies (what depends on this package):
 
-```bash
+```shell
 opkg whatdepends <package-name>
 ```
 
@@ -195,7 +202,7 @@ opkg whatdepends <package-name>
 
 To switch from continuous to release feed, edit `/etc/opkg/base-feeds.conf`:
 
-```bash
+```shell
 # Backup current configuration
 cp /etc/opkg/base-feeds.conf /etc/opkg/base-feeds.conf.backup
 
@@ -205,7 +212,7 @@ vi /etc/opkg/base-feeds.conf
 
 Change `continuous` to `release` in all URLs (or vice versa):
 
-```
+```text
 src/gz all https://opkg.calculinux.org/ipk/walnascar/release/all
 src/gz cortexa7t2hf-neon-vfpv4 https://opkg.calculinux.org/ipk/walnascar/release/cortexa7t2hf-neon-vfpv4
 src/gz luckfox_lyra https://opkg.calculinux.org/ipk/walnascar/release/luckfox_lyra
@@ -213,7 +220,7 @@ src/gz luckfox_lyra https://opkg.calculinux.org/ipk/walnascar/release/luckfox_ly
 
 Then update:
 
-```bash
+```shell
 opkg update
 ```
 
@@ -224,7 +231,7 @@ opkg update
 
 To add a custom package feed:
 
-```bash
+```shell
 echo "src/gz custom-feed https://example.com/ipk/all" >> /etc/opkg/custom-feeds.conf
 opkg update
 ```
@@ -247,21 +254,21 @@ Different Calculinux versions use different distribution codenames in their feed
 
 ### Installing Development Tools
 
-```bash
+```shell
 opkg update
 opkg install gcc g++ make git
 ```
 
 ### Installing Python Packages
 
-```bash
+```shell
 opkg update
 opkg install python3 python3-pip
 ```
 
 ### Installing Networking Tools
 
-```bash
+```shell
 opkg update
 opkg install curl wget netcat iproute2
 ```
@@ -270,7 +277,7 @@ opkg install curl wget netcat iproute2
 
 Free up disk space by removing downloaded package files:
 
-```bash
+```shell
 rm -rf /var/cache/opkg/*
 ```
 
@@ -281,16 +288,19 @@ rm -rf /var/cache/opkg/*
 If a package fails to install:
 
 1. Update package lists:
+
    ```bash
    opkg update
    ```
 
 2. Check available space:
+
    ```bash
    df -h
    ```
 
 3. Check error message for missing dependencies:
+
    ```bash
    opkg install --force-depends <package-name>
    ```
@@ -300,16 +310,19 @@ If a package fails to install:
 If you can't connect to the package feeds:
 
 1. Check network connectivity:
+
    ```bash
    ping opkg.calculinux.org
    ```
 
 2. Verify feed URLs:
+
    ```bash
    cat /etc/opkg/base-feeds.conf
    ```
 
 3. Try updating manually:
+
    ```bash
    opkg update --verbosity=3
    ```
@@ -318,7 +331,7 @@ If you can't connect to the package feeds:
 
 If you encounter version conflicts:
 
-```bash
+```shell
 # Force reinstallation
 opkg install --force-reinstall <package-name>
 
@@ -330,7 +343,7 @@ opkg install --force-downgrade <package-name>
 
 To fix broken package installations:
 
-```bash
+```shell
 # Remove partially installed package
 opkg remove --force-remove <package-name>
 
