@@ -116,7 +116,7 @@ All interfaces operate at **3.3V logic levels**:
 | **MIPI DSI** | 🚧 Possible | For alternate displays (22-pin CM4 connector) |
 
 !!! danger "Critical: 3.3V Logic Levels"
-    **ALL interfaces operate at 3.3V ONLY.** Using 5V devices or signals will damage the hardware. Always verify voltage compatibility before connecting peripherals.
+    **ALL interfaces operate at 3.3V ONLY.** Using 5V signals will damage the hardware. Always verify voltage compatibility before connecting peripherals.
 
 ### Display Interface Details
 
@@ -144,31 +144,82 @@ All interfaces operate at **3.3V logic levels**:
 
 The following USB WiFi adapters are supported (must operate at **3.3V**):
 
-### Enabled in Current Kernel
+!!! warning "Many *(but NOT all!)* USB WiFi adapters are designed to
+    operate at 5 volts, but are 3.3v tolerant due to design of their voltage
+    regulator's circutry.
 
-- **RTL8192CU** - Realtek single-band USB adapter
-- **R8712U** - Realtek single-band USB adapter
-- **R8188EU** - Realtek single-band USB adapter
-- **RTL8723BS** - Realtek dual-band (SDIO/USB)
+    Some devices may operate properly with a full battery but malfunction if
+    the battery is low, as with a low battery the supplied voltage may dip
+    below their operating limits!
 
-### Requiring Kernel Configuration
+### Tested WiFi adapters
 
-The following chipsets have drivers available but are not currently enabled:
+ - **RTL8188FTV**
+   - USB wifi *module* (requires soldering!)
+   - [Aliexpress](https://www.aliexpress.us/item/3256807590709883.html)
+ - **AIC8800DC**
+    - regular USB adapter (requires a cable!)
+    - [AliExpress](https://www.aliexpress.us/item/3256805850412278.html)
+ - **RTL8188EU**
+    - regular usb adapter (requires a cable!)
+    - [Amazon](https://a.co/d/gRErxAn)
 
-- RTL8723DU
-- RTL8812AU
-- RTL8814AU
-- RTL8821CU
-- RTL88X2BU
-- RTL8188FU
-- RTL8188FTV
-- RT2800 series
-- MT7612U
-- MT7610U
-- RT5370
+!!! note "USB adapters require a cable"
+    In order to use a USB wifi adapter, you will need a cable similar
+    to [this one from Waveshare (on Amazon)](https://a.co/d/hQKiBRK).
+
+    These devices are fully plug and play, but may have stability problems
+    at low battery levels. The cable and connector plugged in to the lyra
+    also can be a VERY tight fit inside the picocalc, and it may be necessary
+    to modify the rear casing or replace it with a 3D printed rear case.
+
+!!! note "USB modules require soldering"
+    A USB module is a small circuit board that contains the USB wifi adapter
+    and castellated edges or a pin header used for attaching the circuit
+    board to a larger board or device. It does not include a USB plug, and
+    will require soldering to connect to the lyra.
+
+    Most modules will explicitly support 3.3 volts so will be more stable
+    at low battery levels, and installation by soldering allows a more compact
+    installation.
+
+### Currently Enabled WiFi Drivers
+
+The following WiFi chipsets are enabled in the current kernel:
+
+**Realtek:**
+
+- **RTL8192CU** - Single-band USB adapter
+- **R8712U** - Single-band USB adapter  
+- **R8188EU** - Single-band USB adapter
+- **RTL8723BS** - Dual-band (SDIO/USB)
+
+**Ralink/MediaTek:**
+
+- **RT2500USB** - Legacy 802.11b/g
+- **RT73USB** - Legacy 802.11b/g
+- **RT2800USB** - 802.11n with variants: RT33XX, RT35XX, RT3572, RT5370, RT5372, RT55XX
+- **MT7601U** - Single-band 802.11n
+- **MT7663U** - Dual-band 802.11ac
+- **MT7921U** - Dual-band 802.11ax (WiFi 6)
+
+**Atheros:**
+
+- **AR5523** - Legacy 802.11a/b/g
+- **ATH9K_USB** - 802.11n
+- **AR9170_USB** - 802.11n
+
+**AIC:**
+
+- **AIC8800** - Single-band 802.11n (out-of-tree module)
+
+**Others:**
+
+- **ZD1211RW** - Zydas 802.11b/g
+- **LIBERTAS_USB** - Marvell 802.11b/g
 
 !!! warning "3.3V Requirement for WiFi"
-    USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Standard 5V USB adapters will not work and may damage the board. Use an externally powered USB hub for 5V devices.
+    USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices.
 
 ## Boot Priority
 
@@ -192,14 +243,6 @@ The RK3506G2 boot ROM follows this priority:
 !!! note "Other Lyra Models"
     Other Luckfox Lyra variants exist (64MB, 256MB RAM, different SoC models) but have different pinouts and are not compatible without custom adapter boards.
 
-## Thermal Considerations
-
-| Condition | Details |
-|-----------|---------|
-| **Normal Operation** | No heatsink required for typical console use |
-| **Heavy Load** | Monitor temperatures during intensive tasks |
-| **Enclosed Design** | PicoCalc case limits airflow, consider heat dissipation |
-
 ## Power Supply Requirements
 
 | Component | Requirement |
@@ -212,7 +255,8 @@ The RK3506G2 boot ROM follows this priority:
 !!! tip "Power Supply Recommendations"
     - Use a quality USB-C cable (not just charging cables)
     - Ensure power supply can deliver stable 2A
-    - Under-voltage can cause system instability and boot failures
+    - Under-voltage can cause system instability and boot
+      failures if operating without batteries
     - Quality power supplies reduce risk of data corruption
 
 ## Console Display Specifications
@@ -231,6 +275,7 @@ The RK3506G2 boot ROM follows this priority:
     - Horizontal scrolling for wide output
     - Setting `COLUMNS=53 LINES=40` environment variables
     - Using compact display modes when available
+    - further customization of the affected app
 
 ## Related Documentation
 
