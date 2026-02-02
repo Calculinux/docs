@@ -233,7 +233,7 @@ If your system uses systemd-networkd instead of NetworkManager:
     See the [Configuration](#switching-between-ecm-and-rndis) section above to switch to RNDIS mode.
 
 !!! note
-    Windows requires RNDIS drivers, which are usually built-in for Windows 10/11.
+    Windows requires RNDIS drivers, which are built-in for Windows 10/11.
 
 1. **Configure PicoCalc** for RNDIS mode (see Configuration section)
 2. Connect your PicoCalc via USB
