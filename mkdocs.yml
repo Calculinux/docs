@@ -89,7 +89,15 @@ nav:
     - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
-    - Compatibility Matrix: hardware/compatibility.md
+    - Compatibility Matrix:
+      - Overview: hardware/compatibility/index.md
+      - SBC & Luckfox Lyra Variants: hardware/compatibility/sbc-lyra.md
+      - Storage Compatibility: hardware/compatibility/storage.md
+      - Display & Input: hardware/compatibility/display-input.md
+      - Networking & WiFi: hardware/compatibility/networking-wifi.md
+      - Power Compatibility: hardware/compatibility/power.md
+      - Peripheral Compatibility: hardware/compatibility/peripherals.md
+      - Software & Testing: hardware/compatibility/software-testing.md
     - Serial Console Access: hardware/serial/console-access.md
   
   - User Guide:

@@ -183,40 +183,8 @@ The following USB WiFi adapters are supported (must operate at **3.3V**):
     at low battery levels, and installation by soldering allows a more compact
     installation.
 
-### Currently Enabled WiFi Drivers
-
-The following WiFi chipsets are enabled in the current kernel:
-
-**Realtek:**
-
-- **RTL8192CU** - Single-band USB adapter
-- **R8712U** - Single-band USB adapter  
-- **R8188EU** - Single-band USB adapter
-- **RTL8723BS** - Dual-band (SDIO/USB)
-
-**Ralink/MediaTek:**
-
-- **RT2500USB** - Legacy 802.11b/g
-- **RT73USB** - Legacy 802.11b/g
-- **RT2800USB** - 802.11n with variants: RT33XX, RT35XX, RT3572, RT5370, RT5372, RT55XX
-- **MT7601U** - Single-band 802.11n
-- **MT7663U** - Dual-band 802.11ac
-- **MT7921U** - Dual-band 802.11ax (WiFi 6)
-
-**Atheros:**
-
-- **AR5523** - Legacy 802.11a/b/g
-- **ATH9K_USB** - 802.11n
-- **AR9170_USB** - 802.11n
-
-**AIC:**
-
-- **AIC8800** - Single-band 802.11n (out-of-tree module)
-
-**Others:**
-
-- **ZD1211RW** - Zydas 802.11b/g
-- **LIBERTAS_USB** - Marvell 802.11b/g
+!!! info "Supported WiFi Chipsets"
+    For a comprehensive list of enabled WiFi drivers, tested adapters, and future support options, see [Networking & WiFi](compatibility/networking-wifi.md).
 
 !!! warning "3.3V Requirement for WiFi"
     USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices.
@@ -282,7 +250,7 @@ The RK3506G2 boot ROM follows this priority:
 - [PicoCalc Overview](picocalc.md) - Device overview and design
 - [Luckfox Lyra](luckfox-lyra.md) - SDK, purchasing, software details
 - [Display & Input](display-input.md) - Driver implementation details
-- [Hardware Compatibility](compatibility.md) - Compatibility matrices
+- [Hardware Compatibility](compatibility/index.md) - Compatibility matrices
 - [Hardware Modifications](modifications.md) - Installation and modification guides
 
 ---

@@ -129,5 +129,5 @@ Luckfox Lyra boards are available from:
 - Learn about the [PicoCalc hardware](picocalc.md)
 - Review [Hardware Specifications](specifications.md) for complete technical details
 - Check [Display & Input](display-input.md) for driver implementation details
-- See [Hardware Compatibility](compatibility.md) for compatibility matrices
+- See [Hardware Compatibility](compatibility/index.md) for compatibility matrices
 - Follow [Hardware Modifications](modifications.md) for installation guide

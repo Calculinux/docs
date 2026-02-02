@@ -69,7 +69,7 @@ The PicoCalc's modular design potentially supports various SBCs with the right a
 - 🚧 **Milk-V Duo** - Future support planned
 - ❓ **Other SBCs** - Community experimentation ongoing
 
-See the [Compatibility Matrix](compatibility.md) for detailed information.
+See the [Compatibility Matrix](compatibility/index.md) for detailed information.
 
 ## Resources
 
@@ -83,4 +83,4 @@ See the [Compatibility Matrix](compatibility.md) for detailed information.
 - Learn about the [Luckfox Lyra](luckfox-lyra.md) SBC
 - Check [Hardware Modifications](modifications.md) installation guide
 - See [Display & Input](display-input.md) for driver implementation details
-- Review [Hardware Compatibility](compatibility.md) for supported hardware
+- Review [Hardware Compatibility](compatibility/index.md) for supported hardware
