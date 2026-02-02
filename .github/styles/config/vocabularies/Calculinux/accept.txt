@@ -270,3 +270,4 @@ Subfolder
 sudo
 sysroot
 autotools
+Chipsets
