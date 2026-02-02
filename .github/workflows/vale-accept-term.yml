@@ -216,36 +216,9 @@ jobs:
             const issueNumber = parseInt('${{ steps.check-command.outputs.issue_number }}', 10);
             const isReviewComment = context.eventName === 'pull_request_review_comment';
             
-            // Post success comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: `✅ Added \`${term}\` to the Vale accept list!\n\nThe term has been committed to this PR. Vale will no longer flag this word as an error.`
-            });
-            
-            // Add green checkmark reaction to the command comment
-            if (isReviewComment) {
-              await github.rest.reactions.createForPullRequestReviewComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: context.payload.comment.id,
-                content: '+1'
-              });
-            } else {
-              await github.rest.reactions.createForIssueComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: context.payload.comment.id,
-                content: '+1'
-              });
-            }
-            
-            // Try to resolve the review thread if this was a review comment
-            if (isReviewComment) {
+            // Helper function to resolve review thread
+            async function resolveReviewThread() {
               try {
-                // Get the thread ID from the comment
-                // First, get the PR number
                 const prNumber = issueNumber;
                 
                 // Query to get all review threads for the PR and find the one with our comment
@@ -316,6 +289,91 @@ jobs:
                 // Don't fail the workflow if we can't resolve the thread
               }
             }
+            
+            // Find or create the tracking comment
+            const COMMENT_MARKER = '<!-- vale-accept-term-tracker -->';
+            
+            // Get all comments on the PR
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber
+            });
+            
+            // Find existing tracking comment
+            const existingComment = comments.find(comment => comment.body.includes(COMMENT_MARKER));
+            
+            if (existingComment) {
+              // Update existing comment by adding the new term to the list
+              const currentBody = existingComment.body;
+              
+              // Extract the list of terms from the current comment
+              // Match lines that start with "- `term`"
+              const termMatches = currentBody.match(/^- `([^`]+)`/gm) || [];
+              const existingTerms = termMatches.map(m => m.match(/`([^`]+)`/)[1]);
+              
+              // Add the new term to the list if not already there
+              if (!existingTerms.includes(term)) {
+                existingTerms.push(term);
+              }
+              
+              // Sort terms alphabetically
+              existingTerms.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+              
+              // Build the updated comment body
+              const termsList = existingTerms.map(t => '- `' + t + '`').join('\n');
+              const updatedBody = COMMENT_MARKER + '\n## ✅ Vale Terms Added to Accept List\n\n' +
+                'The following terms have been added to the Vale accept list in this PR:\n\n' +
+                termsList + '\n\n' +
+                'These terms will no longer be flagged as errors by Vale.';
+              
+              // Update the comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: updatedBody
+              });
+              
+              console.log('Updated existing tracking comment with term:', term);
+            } else {
+              // Create new tracking comment
+              const newBody = COMMENT_MARKER + '\n## ✅ Vale Terms Added to Accept List\n\n' +
+                'The following terms have been added to the Vale accept list in this PR:\n\n' +
+                '- `' + term + '`\n\n' +
+                'These terms will no longer be flagged as errors by Vale.';
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: newBody
+              });
+              
+              console.log('Created new tracking comment with term:', term);
+            }
+            
+            // Add green checkmark reaction to the command comment
+            if (isReviewComment) {
+              await github.rest.reactions.createForPullRequestReviewComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: context.payload.comment.id,
+                content: '+1'
+              });
+            } else {
+              await github.rest.reactions.createForIssueComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: context.payload.comment.id,
+                content: '+1'
+              });
+            }
+            
+            // Try to resolve the review thread if this was a review comment
+            if (isReviewComment) {
+              await resolveReviewThread();
+            }
 
       - name: Post already exists comment
         if: steps.check-command.outputs.should_run == 'true' && steps.add-term.outputs.term_exists == 'true'
@@ -326,12 +384,83 @@ jobs:
             const issueNumber = parseInt('${{ steps.check-command.outputs.issue_number }}', 10);
             const isReviewComment = context.eventName === 'pull_request_review_comment';
             
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: `ℹ️ The term \`${term}\` already exists in the Vale accept list.`
-            });
+            // Helper function to resolve review thread
+            async function resolveReviewThread() {
+              try {
+                const prNumber = issueNumber;
+                
+                // Query to get all review threads for the PR and find the one with our comment
+                const query = `
+                  query($owner: String!, $repo: String!, $prNumber: Int!) {
+                    repository(owner: $owner, name: $repo) {
+                      pullRequest(number: $prNumber) {
+                        reviewThreads(first: 100) {
+                          nodes {
+                            id
+                            isResolved
+                            comments(first: 50) {
+                              nodes {
+                                databaseId
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                `;
+                
+                const variables = {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  prNumber: prNumber
+                };
+                
+                const result = await github.graphql(query, variables);
+                const threads = result.repository.pullRequest.reviewThreads.nodes;
+                
+                // Find the thread that contains our comment or its parent
+                const commentId = context.payload.comment.id;
+                const inReplyToId = context.payload.comment.in_reply_to_id;
+                
+                let threadId = null;
+                for (const thread of threads) {
+                  const commentIds = thread.comments.nodes.map(c => c.databaseId);
+                  if (commentIds.includes(commentId) || (inReplyToId && commentIds.includes(inReplyToId))) {
+                    threadId = thread.id;
+                    console.log('Found thread ID:', threadId, 'isResolved:', thread.isResolved);
+                    break;
+                  }
+                }
+                
+                if (threadId) {
+                  // Resolve the thread using GraphQL mutation
+                  const mutation = `
+                    mutation($threadId: ID!) {
+                      resolveReviewThread(input: {threadId: $threadId}) {
+                        thread {
+                          id
+                          isResolved
+                        }
+                      }
+                    }
+                  `;
+                  
+                  const resolveResult = await github.graphql(mutation, { threadId });
+                  console.log('Thread resolved successfully:', resolveResult.resolveReviewThread.thread.isResolved);
+                } else {
+                  console.log('Could not find thread ID for comment', commentId);
+                }
+              } catch (error) {
+                console.log('Could not resolve conversation thread:', error.message);
+                console.log('Error details:', error);
+                // Don't fail the workflow if we can't resolve the thread
+              }
+            }
+            
+            // For already existing terms, just add a reaction and resolve thread
+            // No need to post a separate comment since the term is already accepted
+            console.log('Term already exists in accept list - adding reaction only:', term);
             
             // Add reaction to the command comment
             if (isReviewComment) {
@@ -348,6 +477,11 @@ jobs:
                 comment_id: context.payload.comment.id,
                 content: '+1'
               });
+            }
+            
+            // Try to resolve the review thread if this was a review comment
+            if (isReviewComment) {
+              await resolveReviewThread();
             }
             
             // Try to resolve the review thread if this was a review comment
