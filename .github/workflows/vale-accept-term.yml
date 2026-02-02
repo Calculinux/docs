@@ -25,89 +25,119 @@ jobs:
           script: |
             // Determine event type and extract comment body
             const isReviewComment = context.eventName === 'pull_request_review_comment';
-            const comment = context.payload.comment.body.trim().toLowerCase();
+            const commentBody = context.payload.comment.body.trim();
+            const commentLower = commentBody.toLowerCase();
             const validCommand = 'vale-accept-term';
             
             // Extract issue/PR number based on event type
             const issueNumber = context.payload.issue?.number || context.payload.pull_request?.number;
             core.setOutput('issue_number', issueNumber);
             
-            // Check if comment is the valid command
-            if (comment !== validCommand) {
-              console.log('Comment is not the vale-accept-term command:', comment);
+            // Check if comment starts with the valid command
+            if (!commentLower.startsWith(validCommand)) {
+              console.log('Comment does not start with vale-accept-term command:', commentLower);
               return { shouldRun: false };
             }
             
-            let comments;
-            let currentCommentId = context.payload.comment.id;
+            // Check if a custom term was provided after the command
+            // Format: "vale-accept-term CustomTerm" or "vale-accept-term (?i)pattern"
+            const customTerm = commentBody.substring(validCommand.length).trim();
+            const hasCustomTerm = customTerm.length > 0;
             
-            if (isReviewComment) {
-              // For review comments, get the list of review comments
-              const reviewComments = await github.rest.pulls.listReviewComments({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: issueNumber
-              });
-              comments = reviewComments.data;
-            } else {
-              // For issue comments, get the list of issue comments
-              const issueComments = await github.rest.issues.listComments({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber
-              });
-              comments = issueComments.data;
+            if (hasCustomTerm) {
+              console.log('Custom term provided:', customTerm);
             }
-            
-            // Find the previous comment (Vale error)
-            const currentIndex = comments.findIndex(c => c.id === currentCommentId);
-            
-            if (currentIndex <= 0) {
-              console.log('No previous comment found');
-              return { shouldRun: false };
-            }
-            
-            const previousComment = comments[currentIndex - 1];
-            
-            // Check if it's a Vale error comment (from vale-action bot)
-            if (!previousComment.body.includes('Vale') && !previousComment.body.includes('vale')) {
-              console.log('Previous comment is not a Vale error');
-              return { shouldRun: false };
-            }
-            
-            // Extract term from Vale error message
-            // Vale errors typically look like: "Did you really mean 'term'?"
-            // or: "Unknown word: term"
-            const termPatterns = [
-              /'([^']+)'/,           // Single quotes
-              /"([^"]+)"/,           // Double quotes
-              /\*\*([^*]+)\*\*/,     // Bold markdown
-              /`([^`]+)`/,           // Code backticks
-              /Unknown word:\s*(\w+)/i,
-              /Did you really mean\s+'([^']+)'/i
-            ];
             
             let term = null;
-            for (const pattern of termPatterns) {
-              const match = previousComment.body.match(pattern);
-              if (match) {
-                term = match[1];
-                break;
+            
+            if (hasCustomTerm) {
+              // Use the custom term provided in the command
+              term = customTerm;
+              console.log('Using custom term:', term);
+            } else {
+              // Extract term from parent comment (original behavior)
+              let previousComment;
+              const currentCommentId = context.payload.comment.id;
+              
+              if (isReviewComment) {
+                // For review comments, use in_reply_to_id to find the parent comment
+                const inReplyToId = context.payload.comment.in_reply_to_id;
+                
+                if (!inReplyToId) {
+                  console.log('Review comment is not a reply to another comment');
+                  return { shouldRun: false };
+                }
+                
+                // Fetch the parent comment directly
+                try {
+                  const parentComment = await github.rest.pulls.getReviewComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: inReplyToId
+                  });
+                  previousComment = parentComment.data;
+                } catch (error) {
+                  console.log('Could not fetch parent review comment:', error.message);
+                  return { shouldRun: false };
+                }
+              } else {
+                // For issue comments, get the list and find the previous one
+                const issueComments = await github.rest.issues.listComments({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber
+                });
+                
+                const comments = issueComments.data;
+                const currentIndex = comments.findIndex(c => c.id === currentCommentId);
+                
+                if (currentIndex <= 0) {
+                  console.log('No previous comment found');
+                  return { shouldRun: false };
+                }
+                
+                previousComment = comments[currentIndex - 1];
               }
+              
+              // Check if it's a Vale error comment (from vale-action bot)
+              if (!previousComment.body.includes('Vale') && !previousComment.body.includes('vale')) {
+                console.log('Previous comment is not a Vale error');
+                return { shouldRun: false };
+              }
+              
+              // Extract term from Vale error message
+              // Vale errors typically look like: "Did you really mean 'term'?"
+              // or: "Unknown word: term"
+              const termPatterns = [
+                /'([^']+)'/,           // Single quotes
+                /"([^"]+)"/,           // Double quotes
+                /\*\*([^*]+)\*\*/,     // Bold markdown
+                /`([^`]+)`/,           // Code backticks
+                /Unknown word:\s*(\w+)/i,
+                /Did you really mean\s+'([^']+)'/i
+              ];
+              
+              for (const pattern of termPatterns) {
+                const match = previousComment.body.match(pattern);
+                if (match) {
+                  term = match[1];
+                  break;
+                }
+              }
+              
+              if (!term) {
+                console.log('Could not extract term from Vale error');
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: '❌ Could not extract term from the Vale error.\n\nPlease ensure you are replying to a Vale error comment with `vale-accept-term`, or provide the term explicitly like `vale-accept-term YourTerm`.'
+                });
+                return { shouldRun: false };
+              }
+              
+              console.log('Extracted term from parent comment:', term);
             }
-            
-            if (!term) {
-              console.log('Could not extract term from Vale error');
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: '❌ Could not extract term from the Vale error.\n\nPlease ensure you are replying to a Vale error comment with `vale-accept-term`.'
-              });
-              return { shouldRun: false };
-            }
-            
-            console.log('Extracted term:', term);
             core.setOutput('term', term);
             core.setOutput('should_run', 'true');
             core.setOutput('is_review_comment', isReviewComment ? 'true' : 'false');
@@ -214,30 +244,29 @@ jobs:
             // Try to resolve the review thread if this was a review comment
             if (isReviewComment) {
               try {
-                // Get all review comments
-                const reviewComments = await github.rest.pulls.listReviewComments({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: issueNumber
-                });
+                // Use in_reply_to_id to get the Vale error comment
+                const inReplyToId = context.payload.comment.in_reply_to_id;
                 
-                // Find the current comment to get the previous one (the Vale error)
-                const currentIndex = reviewComments.data.findIndex(c => c.id === context.payload.comment.id);
-                if (currentIndex > 0) {
-                  const previousComment = reviewComments.data[currentIndex - 1];
+                if (inReplyToId) {
+                  // Fetch the parent comment (the Vale error)
+                  const parentComment = await github.rest.pulls.getReviewComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: inReplyToId
+                  });
                   
                   // Check if this is the Vale error comment
-                  if (previousComment.body.toLowerCase().includes('vale') || 
-                      previousComment.body.includes(term)) {
+                  if (parentComment.data.body.toLowerCase().includes('vale') || 
+                      parentComment.data.body.includes(term)) {
                     // Update the comment to mark it as resolved
                     await github.rest.pulls.updateReviewComment({
                       owner: context.repo.owner,
                       repo: context.repo.repo,
-                      comment_id: previousComment.id,
-                      body: previousComment.body + '\n\n✅ **Resolved**: Term added to accept list via `vale-accept-term` command.'
+                      comment_id: inReplyToId,
+                      body: parentComment.data.body + '\n\n✅ **Resolved**: Term added to accept list via `vale-accept-term` command.'
                     });
                     
-                    console.log('Resolved review thread for comment', previousComment.id);
+                    console.log('Resolved review thread for comment', inReplyToId);
                   }
                 }
               } catch (error) {
