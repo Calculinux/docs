@@ -6,6 +6,9 @@ Picocalc exposes a USB-to-UART bridge that enumerates as `/dev/ttyUSB0`
 on most Linux hosts. The console runs at **1,500,000 baud**, 8 data bits,
 no parity, and 1 stop bit ("1500000 8N1").
 
+!!! tip "USB Serial Console Alternative"
+    For general terminal access over USB (not early boot debugging), see the [USB Serial Console](../../user-guide/usb-networking.md#usb-serial-console) section in the USB Networking guide. The USB serial console runs at the same 1500000 baud and appears as `/dev/ttyACM0` on Linux hosts.
+
 ## Prerequisites
 
 - Linux host with `python3-serial` (for `miniterm.py`) or `minicom`
@@ -13,13 +16,11 @@ no parity, and 1 stop bit ("1500000 8N1").
 - Access to `/dev/ttyUSB0`. If you are not root, add yourself to the
   `dialout` (or distribution-specific) group and re-login:
 
-
 !!! info
     If you prefeer a GUI tool to access the serial port but don't know what to
-    choose, options on Linux desktops include **CuteCom**, and **PuTTY** among 
+    choose, options on Linux desktops include **CuteCom**, and **PuTTY** among
     others; they provide point-and-click interfaces for selecting ports and baud
-    rates. The only setting you will need to change is the 1,500,000 baud setting. 
-
+    rates. The only setting you will need to change is the 1,500,000 baud setting.
 
   ```bash
   sudo usermod -a -G dialout "$USER"
@@ -31,12 +32,12 @@ no parity, and 1 stop bit ("1500000 8N1").
 
 After connecting the board, confirm the kernel created the serial device:
 
-```bash
+```shell
 ls /dev/ttyUSB*
 ```
 
 You should see `/dev/ttyUSB0`. If the device is missing, check `dmesg`
-for driver errors or verify cabling. If you already have other serial 
+for driver errors or verify cabling. If you already have other serial
 devices, it may have received a different number.
 
 ---

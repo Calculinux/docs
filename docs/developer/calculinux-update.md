@@ -14,7 +14,7 @@ graph TD
         prefetch[Package prefetch]
         install[RAUC installation]
     end
-    
+
     subgraph Hook["cup-hook (RAUC Post-Install Handler)"]
         extract[Extract bundle extras]
         compare[Compare status files]
@@ -23,19 +23,19 @@ graph TD
         queue[Queue pending operations]
         marker[Set status-pruned marker]
     end
-    
+
     subgraph Postreboot["cup-postreboot (Systemd Service)"]
         feeds[opkg update]
         reinstall[Execute reinstalls]
         upgrade[Execute upgrades]
         cleanup[Clean up state files]
     end
-    
+
     CLI -->|Prefetch packages| prefetch
     CLI -->|Install bundle| install
     install -->|RAUC post-install| Hook
     Hook -->|System reboot| Postreboot
-    
+
     style CLI fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style Hook fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style Postreboot fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
@@ -45,7 +45,7 @@ graph TD
 
 ## Module Structure
 
-```
+```text
 src/calculinux_update/
 ├── cli.py              # Main CLI entry point (cup command)
 ├── config.py           # Configuration file parsing
@@ -57,12 +57,20 @@ src/calculinux_update/
 └── opkg/
     ├── status.py       # OPKG status file parser
     ├── reconcile.py    # Reconciliation algorithm
-    └── overlayfs.py    # OverlayFS whiteout cleanup
+    ├── overlayfs.py    # OverlayFS whiteout cleanup
+    └── conffiles.py    # Config file conflict detection
 ```
 
 **New in v0.5.1**: `overlayfs.py` module provides comprehensive OverlayFS whiteout management:
+
 - `cleanup_package_whiteouts()` - Remove package file whiteouts
 - `cleanup_opkg_metadata_whiteouts()` - Remove metadata whiteouts in `/var/lib/opkg/info/`
+
+**New in v0.6.0**: `conffiles.py` module provides config file conflict detection:
+
+- `detect_modified_conffiles()` - Compare config files between upper/lower OverlayFS layers
+- `create_dpkg_new_files()` - Copy new versions to `.dpkg-new` files for manual review
+- `get_package_conffiles()` - Read CONFFILES metadata from opkg
 - `has_files_in_upper()` - Detect if package has files in upper layer (for two-phase duplicate removal)
 - `is_package_in_writable_status()` - Uses enhanced opkg `--writable-only` flag with fallback
 - `remount_overlayfs()` - Remount overlay to pick up whiteout changes
@@ -83,7 +91,7 @@ RAUC bundles can include additional files beyond the root filesystem image. Calc
 
 ### Bundle Structure
 
-```
+```text
 bundle.raucb (squashfs)
 ├── manifest.raucb      # RAUC manifest
 ├── rootfs.img          # Root filesystem image
@@ -109,7 +117,7 @@ The `extract_bundle_extras()` function performs a two-stage extraction:
 ```python
 def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
     """Extract Calculinux-specific extras from a RAUC bundle.
-    
+
     Returns None when extras are missing. The caller is responsible for calling
     ``cleanup`` on the returned BundleExtras once finished with the temporary
     directory.
@@ -119,15 +127,15 @@ def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
         "unsquashfs", "-f", "-d", str(temp_dir),
         str(bundle_path), "bundle-extras.tar.gz"
     ])
-    
+
     # Stage 2: Extract tarball contents
     with tarfile.open(tarball_path, "r:gz") as tar:
         tar.extractall(path=temp_dir, filter="data")
-    
+
     # Validate and return
     if not (temp_dir / "extras/opkg/status.image").exists():
         return None
-    
+
     return BundleExtras(root=temp_dir, opkg_root=temp_dir / "extras/opkg", ...)
 ```
 
@@ -139,23 +147,23 @@ def extract_bundle_extras(bundle_path: Path) -> Optional[BundleExtras]:
 
 The `calculinux_export_bundle_extras()` function runs during `do_rootfs`:
 
-```bash
+```shell
 calculinux_export_bundle_extras() {
     extras_dir="${DEPLOY_DIR_IMAGE}/bundle-extras/extras/opkg"
-    
+
     # Export OPKG configuration
     if [ -d "${IMAGE_ROOTFS}/etc/opkg" ]; then
         install -d "${extras_dir}/etc"
         cp -r "${IMAGE_ROOTFS}/etc/opkg" "${extras_dir}/etc/"
     fi
-    
+
     # Export image status file
     if [ -f "${IMAGE_ROOTFS}/var/lib/opkg/status.image" ]; then
         install -d "${extras_dir}"
         install -m 0644 "${IMAGE_ROOTFS}/var/lib/opkg/status.image" \
             "${extras_dir}/status.image"
     fi
-    
+
     # Create tarball only if we have data
     if [ "$has_data" = "1" ]; then
         tar -czf "${DEPLOY_DIR_IMAGE}/bundle-extras.tar.gz" \
@@ -174,25 +182,7 @@ RAUC_BUNDLE_EXTRA_FILES += "bundle-extras.tar.gz"
 
 The `bundle` class automatically includes files listed in `RAUC_BUNDLE_EXTRA_FILES` from `DEPLOY_DIR_IMAGE`.
 
-### Why Bundle Extras?
-
-Without bundle extras, the hook would need to:
-
-1. ~~Mount the inactive slot after RAUC installation~~  ✗ Not possible - RAUC unmounts slots after installation
-2. ~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted when hook runs
-3. ~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional complexity and failure modes
-
-With bundle extras:
-
-✅ Self-contained: Bundle includes all necessary metadata  
-✅ No mounting required: Status file provided via environment variable  
-✅ Hook runs without slot access: Works even if slot can't be mounted  
-✅ Faster: No filesystem access delays  
-✅ More reliable: Fewer moving parts, fewer failure modes  
-
-**Critical for v0.5.0+**: The hook now receives `RAUC_BUNDLE_STATUS_IMAGE` from the post-install handler, which extracts `status.image` from bundle extras. The hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new image's package status.
-
-### Error Handling
+### Missing Bundle Extras
 
 If bundle extras are missing or corrupted:
 
@@ -277,9 +267,9 @@ downloaded = downloader.download(plan.reinstall, PREFETCH_CACHE_DIR)
 
 **Module**: `hooks.py` → `run_slot_hook()`
 
-**RAUC Integration** (v0.5.0+):
+**RAUC Integration**:
 
-```bash
+```shell
 # /usr/lib/rauc/post-install-handler.sh
 BUNDLE_STATUS_IMAGE="${RAUC_BUNDLE_MOUNT_POINT}/extras/opkg/status.image"
 
@@ -289,8 +279,6 @@ export RAUC_SLOT_NAME="${SLOT_NAME}"
 
 /usr/lib/calculinux-update/cup-hook slot-post-install "${SLOT_NAME}"
 ```
-
-**Critical Change in v0.5.0**: The hook NO LONGER MOUNTS SLOTS. It receives the status.image file path from bundle extras via the `RAUC_BUNDLE_STATUS_IMAGE` environment variable.
 
 **Process** (ALL happens before reboot):
 
@@ -319,40 +307,40 @@ export RAUC_SLOT_NAME="${SLOT_NAME}"
 ```python
 def run_slot_hook(hook: str, slot: str) -> None:
     """RAUC hook for slot-post-install phase."""
-    
+
     # 1. Get status.image from bundle extras (via environment)
     bundle_status_image = os.environ.get("RAUC_BUNDLE_STATUS_IMAGE")
     if not bundle_status_image:
         LOG.warning("RAUC_BUNDLE_STATUS_IMAGE not provided")
         return
-    
+
     image_status = Path(bundle_status_image)
     if not image_status.exists():
         LOG.warning("bundle status image missing")
         return
-    
+
     # 2. Require current image to have status.image
     if not CURRENT_IMAGE_STATUS.exists():
         LOG.error("current image too old - missing status.image")
         raise SystemExit(1)
-    
+
     # 3. Compute reconciliation plan
     plan = compute_reconcile_plan(
         image_status=image_status,
         writable_status=WRITABLE_STATUS,
         current_status=CURRENT_IMAGE_STATUS,
     )
-    
+
     # 4. Remove status-only duplicates immediately (safe)
     _prune_status_only_duplicates(plan.status_only_duplicates)
-    
+
     # 5. Queue physical duplicates for post-reboot removal
     _write_pending(PENDING_DUPLICATES_FILE, plan.duplicates, "physical duplicates")
-    
+
     # 6. Queue pending operations
     _write_pending(PENDING_REINSTALL_FILE, plan.reinstall, "reinstall")
     _write_pending(PENDING_UPGRADE_FILE, plan.upgrade, "upgrade")
-    
+
     # 7. Mark status as pruned
     _atomic_write(STATUS_PRUNED_MARKER, "pruned\n")
 ```
@@ -362,6 +350,20 @@ def run_slot_hook(hook: str, slot: str) -> None:
 - **Status-only duplicates**: Packages that exist only in the status file but have no actual files in the upper layer can be safely removed immediately. Removing them before reboot is safe because they don't have any files that could temporarily break system access.
 - **Physical duplicates**: Packages with actual files in the upper layer must be removed after reboot. If removed before reboot, OverlayFS creates whiteout files for ALL package files. If a second update follows immediately, these whiteouts temporarily hide critical libraries from the base image, potentially breaking system access during the update window.
 - **Example**: User installs SDL → Update 1 includes SDL in base → Update 2 follows immediately. If SDL is removed before reboot in Update 1, whiteouts hide SDL libraries during Update 2, breaking any program that needs SDL.
+
+**Config File Conflict Detection** (Phase 4):
+
+After package reconciliation, the hook detects modified configuration files:
+
+1. **Read CONFFILES metadata**: Load config file lists from `/var/lib/opkg/info/<package>.conffiles`
+2. **Compare upper/lower layers**: For each config file:
+   - Compute MD5 of upper layer file (user's modified version)
+   - Compute MD5 of lower layer file (new image version)
+   - If different, user has modified the config and it shadows the new version
+3. **Create `.dpkg-new` files**: Copy lower layer version to `<path>.dpkg-new` in upper layer
+4. **Save state**: Write modified conffiles list for post-reboot reporting
+
+This ensures users are aware when their config changes shadow new versions from the updated image.
 
 **OverlayFS Whiteout Cleanup**:
 
@@ -416,50 +418,66 @@ WantedBy=multi-user.target
 3. Updates opkg package feeds (`opkg update`)
 4. Executes pending reinstalls (preferring cached .ipk files)
 5. Executes pending upgrades
-6. Cleans up state files
+6. **Reports modified config files** for user review
+7. Cleans up state files
 
 **Key Implementation** (v0.5.0):
 
 ```python
 def postreboot_entrypoint() -> int:
     """Post-reboot package reconciliation - pure execution."""
-    
+
     # Check for rollback (skip if we rolled back)
     if _handle_rollback():
         return 0
-    
+
     # If no pending operations, we're done
-    has_pending = (PENDING_REINSTALL_FILE.exists() or 
+    has_pending = (PENDING_REINSTALL_FILE.exists() or
                    PENDING_UPGRADE_FILE.exists() or
                    PENDING_DUPLICATES_FILE.exists())
     if not has_pending:
         LOG.info("no pending operations")
         return 0
-    
+
     # Remove physical duplicates first (queued from hook)
     if PENDING_DUPLICATES_FILE.exists():
         if not _process_pending(PENDING_DUPLICATES_FILE, _remove_duplicate_pkg):
             LOG.warning("some duplicate removals failed")
             # Continue anyway
-    
+
     # Update feeds
     if not _run_opkg(["update"]):
         LOG.error("opkg update failed")
         return 1
-    
+
     # Execute reinstalls
     if not _process_pending(PENDING_REINSTALL_FILE, _install_reinstall_pkg):
         LOG.warning("some reinstalls failed, leaving pending file for retry")
         # Continue anyway
-    
+
     # Execute upgrades
     if not _process_pending(PENDING_UPGRADE_FILE, _upgrade_pkg):
         LOG.warning("some upgrades failed, leaving pending file for retry")
         # Continue anyway
-    
+
+    # Report modified config files
+    _report_modified_conffiles()
+
     LOG.info("post-reboot reconciliation complete")
     return 0
 ```
+
+**Config File Reporting**:
+
+After all package operations complete, the service reports modified config files that need manual review. Users see output like:
+
+```text
+Modified config files detected (user changes shadow new image versions):
+Package: openssh-server
+  /etc/ssh/sshd_config -> /etc/ssh/sshd_config.dpkg-new
+```
+
+Users can then review changes with `diff` or `vimdiff` and merge manually.
 
 **What Changed from v0.4.x**:
 
@@ -509,6 +527,7 @@ def compute_reconcile_plan(
 **Algorithm**:
 
 1. **Identify all duplicates** - packages in both writable and new image:
+
    ```python
    writable_pkgs = {e["Package"] for e in load_status_entries(writable_status)}
    new_image_pkgs = {e["Package"] for e in load_status_entries(image_status)}
@@ -516,10 +535,11 @@ def compute_reconcile_plan(
    ```
 
 2. **Split duplicates into two phases** - based on upper layer presence:
+
    ```python
    status_only_duplicates = []
    physical_duplicates = []
-   
+
    for pkg in all_duplicates:
        if has_files_in_upper(pkg):
            # Has actual files - defer to post-reboot
@@ -530,10 +550,11 @@ def compute_reconcile_plan(
    ```
 
 3. **Find missing packages** - packages removed from new image:
+
    ```python
    old_image_pkgs = {e["Package"] for e in load_status_entries(current_status)}
    missing_from_new = old_image_pkgs - new_image_pkgs
-   
+
    # Only reinstall if writable packages depend on them
    reinstall = []
    for pkg in missing_from_new:
@@ -542,6 +563,7 @@ def compute_reconcile_plan(
    ```
 
 4. **Identify upgrades needed** - overlay packages that may conflict:
+
    ```python
    upgrade_packages = []
    for entry in load_status_entries(writable_status):
@@ -558,7 +580,7 @@ def compute_reconcile_plan(
 
 **Format**: OPKG status files use a paragraph-based format (like Debian control files):
 
-```
+```text
 Package: foo
 Version: 1.0-r0
 Depends: libbar (>= 2.0)
@@ -591,6 +613,116 @@ def _iter_paragraphs(file: TextIO) -> Iterator[List[str]]:
 - Preserves field order when round-tripping
 - Respects blank lines between entries
 - Case-insensitive field lookup
+
+### Config File Conflict Detection
+
+**Module**: `conffiles.py`
+
+**Purpose**: Detect when user-modified configuration files shadow new versions from an updated image.
+
+**The Problem**:
+
+When updating with RAUC, config files in the lower OverlayFS layer (read-only base image) are replaced, but user-modified copies in the upper layer persist and shadow the new versions. OPKG's CONFFILES mechanism only works during package upgrades, not image replacements.
+
+**The Solution**:
+
+```python
+from calculinux_update.opkg.conffiles import (
+    ConffileInfo,
+    get_package_conffiles,
+    detect_modified_conffiles,
+    create_dpkg_new_files,
+)
+
+# Get conffiles for all packages in new image
+conffiles = get_all_conffiles(image_packages, "/var/lib/opkg/info")
+
+# Detect which ones are modified
+modified = detect_modified_conffiles(image_packages, overlay_mount="/data/overlay/etc")
+
+# Create .dpkg-new files for manual review
+create_dpkg_new_files(modified, overlay_mount="/data/overlay/etc")
+```
+
+**Key Functions**:
+
+```python
+@dataclass
+class ConffileInfo:
+    path: str           # Absolute path to config file
+    package: str        # Package name
+    md5_from_meta: Optional[str]  # MD5 from .conffiles file
+
+def get_package_conffiles(package_name: str, info_dir: str) -> List[ConffileInfo]:
+    """Read CONFFILES metadata for a package from /var/lib/opkg/info/."""
+    # Parses <package>.conffiles format:
+    # /path/to/file [md5sum]
+
+def detect_modified_conffiles(
+    image_packages: List[str],
+    overlay_mount: str = "/data/overlay/etc",
+) -> List[ConffileInfo]:
+    """Compare config files between upper/lower OverlayFS layers."""
+    # Returns files where upper MD5 != lower MD5
+
+def create_dpkg_new_files(
+    modified_conffiles: List[ConffileInfo],
+    overlay_mount: str,
+    dry_run: bool = False,
+) -> int:
+    """Copy lower layer versions to .dpkg-new files in upper layer."""
+    # Creates <path>.dpkg-new for each modified file
+```
+
+**CONFFILES Format**:
+
+OPKG packages declare config files in `/var/lib/opkg/info/<package>.conffiles`:
+
+```shell
+# Comment lines ignored
+/etc/ssh/sshd_config d41d8cd98f00b204e9800998ecf8427e
+/etc/ssh/ssh_config
+/etc/default/ssh
+```
+
+Each line:
+
+- Absolute path to config file
+- Optional MD5 checksum (newer OPKG versions)
+- Comments (lines starting with `#`) are ignored
+
+**OverlayFS Access**:
+
+The module accesses both layers directly:
+
+- Upper layer: `/data/overlay/<dir>/upper/<path>` (user's version)
+- Lower layer: `/data/overlay/<dir>/lower/<path>` (new image version)
+
+This allows MD5 comparison without mounting slots.
+
+**Integration**:
+
+Called during RAUC hook (Phase 4) after package reconciliation:
+
+```python
+# In hooks.py run_slot_hook()
+modified_conffiles = detect_modified_conffiles(image_packages)
+create_dpkg_new_files(modified_conffiles)
+_atomic_write(MODIFIED_CONFFILES_FILE, modified_conffiles)  # For post-reboot reporting
+```
+
+**Testing**:
+
+```shell
+pytest tests/test_opkg_conffiles.py -v
+```
+
+Test coverage includes:
+
+- MD5 computation (including error cases)
+- CONFFILES parsing (with/without checksums, comments, relative paths)
+- Modified file detection (various scenarios)
+- `.dpkg-new` file creation (including dry-run mode)
 
 ## Configuration
 
@@ -647,7 +779,7 @@ def list_bundles_for_channel(
 
 **Bundles Metadata** (`bundles.txt`):
 
-```
+```shell
 # timestamp filename size sha256
 1732147200 calculinux-bundle-20241120.raucb 123456789 abc123...
 1731542400 calculinux-bundle-20241113.raucb 123456780 def456...
@@ -711,7 +843,7 @@ def install_with_rauc(bundle_path: str) -> bool:
 
 ### Test Structure
 
-```
+```text
 tests/
 ├── test_cli.py             # CLI argument parsing and commands
 ├── test_config.py          # Configuration loading
@@ -760,7 +892,7 @@ def test_install_pkg(mock_run):
 
 ### Running Tests
 
-```bash
+```shell
 # All tests with coverage
 pytest --cov=calculinux_update --cov-report=term-missing
 
@@ -829,7 +961,7 @@ post-install=/usr/bin/cup-hook
 
 **Configuration**: `/etc/opkg/opkg.conf`
 
-```
+```text
 src/gz calculinux http://feeds.example.com/release
 dest root /
 lists_dir ext /var/lib/opkg/lists
@@ -903,12 +1035,12 @@ def postreboot_entrypoint() -> int:
     # Check for rollback first
     if _handle_rollback():
         return 0
-    
+
     # If no pending operations, we're done
     if not has_pending:
         LOG.info("no pending operations")
         return 0
-    
+
     try:
         # Update feeds, reinstall, upgrade
         _cleanup_update_state()  # Only on success
@@ -969,7 +1101,7 @@ def postreboot_entrypoint() -> int:
 
 Set `LOGLEVEL` environment variable:
 
-```bash
+```shell
 LOGLEVEL=DEBUG cup install
 
 # Hook (requires bundle extras)
@@ -983,7 +1115,7 @@ LOGLEVEL=DEBUG cup-postreboot
 
 ### Inspect Status Files (v0.5.0)
 
-```bash
+```shell
 # Current writable status
 cat /var/lib/opkg/status
 
@@ -1003,7 +1135,7 @@ ls -lh /var/cache/calculinux-update/prefetch/
 
 ### Manual Reconciliation
 
-```bash
+```shell
 # Simulate hook (requires bundle extras setup)
 export RAUC_BUNDLE_STATUS_IMAGE=/path/to/status.image
 export RAUC_SLOT_CLASS=rootfs

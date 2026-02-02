@@ -158,7 +158,7 @@ This page provides links to external documentation, resources, and references th
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| **LXDE** | [lxde.org](https://www.lxde.org/) | Lightweight desktop |
+| **LXDE** | [github.com/lxde](https://github.com/lxde) | Lightweight desktop |
 | **XFCE** | [xfce.org](https://www.xfce.org/) | Feature-rich lightweight |
 | **i3** | [i3wm.org](https://i3wm.org/) | Tiling window manager |
 | **Openbox** | [openbox.org](http://openbox.org/) | Minimal WM |
@@ -262,19 +262,23 @@ Many datasheets require registration or NDA:
 ### Recommended Reading
 
 **Embedded Linux**:
+
 - "Mastering Embedded Linux Programming" - Chris Simmonds
 - "Embedded Linux Primer" - Christopher Hallinan
 - "Building Embedded Linux Systems" - Karim Yaghmour
 
 **Yocto/OpenEmbedded**:
+
 - "Embedded Linux Development Using Yocto Project" - Otavio Salvador
 - "Yocto for Raspberry Pi" - Pierre-Jean Texier
 
 **Kernel Development**:
+
 - "Linux Device Drivers" - Corbet, Rubini, Kroah-Hartman
 - "Linux Kernel Development" - Robert Love
 
 **General Linux**:
+
 - "The Linux Command Line" - William Shotts
 - "How Linux Works" - Brian Ward
 
@@ -362,4 +366,4 @@ Found a useful resource not listed here?
 
 ---
 
-*Last updated: October 2025*
+Last updated: October 2025

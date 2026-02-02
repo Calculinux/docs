@@ -27,10 +27,12 @@ The Luckfox Lyra boot process prioritizes SPI NAND flash over SD cards. If your 
 ## Checking If You Have SPI NAND
 
 **Visual Inspection:**
+
 - Look for an additional chip on the board labeled "SPI NAND" or similar
 - Check your purchase order/product specifications
 
 **Check Product Documentation:**
+
 - Refer to the [Luckfox Lyra documentation](https://wiki.luckfox.com/Luckfox-Lyra/) for your specific model
 
 ## Erasure Methods
@@ -68,7 +70,7 @@ This is the easiest and most reliable method for most users.
    - Hold down the **BOOT** button on the board
    - While holding BOOT, connect the USB cable to your PC
    - Wait 2-3 seconds, then release the BOOT button
-   
+
 3. **Method B - Using RESET button:**
    - With the board connected via USB
    - Hold down **RESET** button
@@ -82,7 +84,7 @@ This is the easiest and most reliable method for most users.
 
 !!! tip "Troubleshooting Device Detection"
     If the device is not detected, check Windows Device Manager:
-    
+
     - **Correct (Loader Mode)**: Should show "Rockusb Device" under "Universal Serial Bus controllers"
     - **Wrong**: Shows as "ADB Interface" or other device
     
@@ -115,7 +117,7 @@ Alternatively, you can erase by flashing a minimal firmware:
 
 This method uses command-line tools on Linux.
 
-#### Prerequisites
+#### Requirements
 
 - Linux PC (tested on Ubuntu 22.04)
 - Luckfox SDK or upgrade_tool
@@ -124,9 +126,11 @@ This method uses command-line tools on Linux.
 #### Step 1: Download Tools
 
 Download the Luckfox SDK which includes the flashing tools:
+
 - [Luckfox SDK Setup Guide](https://wiki.luckfox.com/Luckfox-Lyra/SDK)
 
 Or download standalone upgrade_tool:
+
 - Available in the SDK under `tools/linux/Linux_Upgrade_Tool/`
 
 #### Step 2: Enter Loader Mode
@@ -134,12 +138,13 @@ Or download standalone upgrade_tool:
 1. Hold the **BOOT** button while connecting the board to your PC
 2. Verify detection with `lsusb`:
 
-```bash
+```shell
 lsusb | grep Rockchip
 ```
 
 You should see output indicating Loader mode:
-```
+
+```text
 Bus 001 Device 007: ID 2207:350f Fuzhou Rockchip Electronics Company
 ```
 
@@ -147,14 +152,14 @@ Bus 001 Device 007: ID 2207:350f Fuzhou Rockchip Electronics Company
 
 If you have the full SDK:
 
-```bash
+```shell
 cd /path/to/luckfox-sdk
 sudo ./rkflash.sh erase
 ```
 
 #### Step 4: Verify
 
-```bash
+```shell
 # Check the flash is erased
 sudo ./rkflash.sh query
 ```
@@ -179,15 +184,15 @@ Use this method only if Loader Mode fails or the device is in an unrecoverable s
 
 ![MaskRom Mode Pins](https://wiki.luckfox.com/assets/images/Lyra-eMMC-GND-5a8f923f48f967c8ca7ebc7bcc1b2c8f.png)
 
-4. **Erase in MaskRom**:
+1. **Erase in MaskRom**:
    - Use RKDevTool "Erase Flash" function
    - Or flash a minimal firmware image
 
 ### Method 4: Linux on the Device (Not Yet Documented)
 
 !!! warning "Method Not Available"
-    Methods for erasing SPI NAND directly from Linux running on the Luckfox Lyra (without external flashing tools) are not yet documented or tested. 
-    
+    Methods for erasing SPI NAND directly from Linux running on the Luckfox Lyra (without external flashing tools) are not yet documented or tested.
+
     This would theoretically be possible using `mtd-utils` and `/dev/mtdX` devices, but specific procedures for Calculinux have not been established.
 
 ## After Erasing
@@ -206,6 +211,7 @@ Once the SPI NAND is erased:
 **Symptoms**: SD card is ignored, old firmware still runs
 
 **Solutions**:
+
 - Verify the erase completed successfully
 - Try the erase process again
 - Try MaskRom mode instead of Loader mode
@@ -216,6 +222,7 @@ Once the SPI NAND is erased:
 **Symptoms**: RKDevTool doesn't detect device
 
 **Solutions**:
+
 - Try different USB cable (must be data-capable)
 - Try different USB port
 - Check Device Manager for driver issues
@@ -227,6 +234,7 @@ Once the SPI NAND is erased:
 **Symptoms**: Erase process errors or hangs
 
 **Solutions**:
+
 - Disconnect and retry
 - Try using MaskRom mode
 - Ensure stable USB connection
@@ -237,6 +245,7 @@ Once the SPI NAND is erased:
 **Symptoms**: No boot after erasing NAND
 
 **This is expected behavior!** With NAND erased and no SD card:
+
 - Insert your Calculinux SD card
 - Power on the device
 - It should boot from SD card

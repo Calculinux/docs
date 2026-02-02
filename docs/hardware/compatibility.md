@@ -15,6 +15,7 @@ This page provides a comprehensive compatibility matrix for different hardware c
 | **Custom Boards** | ❓ Unknown | Varies | Community experiments |
 
 **Legend**:
+
 - ✅ Fully Supported - Works out of box with official images
 - 🚧 Planned - Under development or planned for future
 - ❓ Unknown - Not tested, may work with modifications
@@ -63,6 +64,7 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 | **Generic/No-Name** | Varies | Any | ⚠️ Use Caution | May be unreliable |
 
 **Recommendations**:
+
 - **Minimum**: 8 GB Class 10
 - **Recommended**: 16-32 GB from reputable brand
 
@@ -141,7 +143,7 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 
 !!! info "Two USB-C Ports"
     The PicoCalc has TWO USB-C ports with different functions:
-    
+
     - **PicoCalc USB-C Port**: Used for charging the internal battery and provides a USB serial console connection to the Lyra (at 1500000 baud)
     - **Lyra USB-C Port**: Provides USB On-The-Go (OTG) functionality for external devices but does NOT charge the PicoCalc batteries. External devices must be 3.3V compatible or use an externally powered hub.
 
@@ -189,7 +191,7 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 
 !!! info "PWM Audio Details"
     The PicoCalc has built-in audio support using PWM (Pulse Width Modulation) on GPIO pins. However, there are significant limitations:
-    
+
     - The Lyra's PWM is not available on the correct pins without hardware modification
     - Software PWM must be used instead on pins with only 1.2V tolerance
     - This results in **low volume** audio and **high CPU usage**
@@ -239,8 +241,6 @@ All console applications work well with the 128 MB RAM configuration:
 | Configuration | Test Date | Status |
 |--------------|-----------|--------|
 | Lyra 128MB + 64GB SD | Mar 2025 | ✅ Working |
-
-
 
 ### Known Issues
 

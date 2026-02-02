@@ -18,6 +18,7 @@ Before you begin, make sure you have:
 - ✅ Computer (for flashing the SD card)
 
 Optional but helpful:
+
 - Second USB-C cable (for serial console monitoring at 1500000 baud)
 - USB WiFi adapter (3.3V compatible, see [Hardware Requirements](hardware-requirements.md))
 
@@ -72,7 +73,9 @@ Once Calculinux is running, you'll have:
 - Command-line terminal access via built-in display and keyboard
 - Package manager (opkg) for installing software
 - Development tools (gcc, g++, make, git, gdb, etc.)
+- USB networking for fast connection to your computer
 - Network connectivity via WiFi or Ethernet (USB adapters required)
+- USB serial console for remote access
 - Access to thousands of open-source command-line applications
 
 ### Limitations
@@ -117,21 +120,27 @@ Be aware of these limitations:
 This documentation is organized into sections:
 
 ### Getting Started (You Are Here)
+
 Everything needed to get Calculinux running
 
 ### Hardware
+
 Physical device information, modifications, technical specs
 
 ### User Guide
+
 Day-to-day usage, applications, configuration
 
 ### Developer Guide
+
 Building, customizing, contributing to Calculinux
 
 ### Troubleshooting
+
 Solutions to common problems and FAQ
 
 ### Resources
+
 External links, tools, community information
 
 ## Before You Begin
@@ -144,7 +153,7 @@ External links, tools, community information
 !!! warning "Data Loss"
     If you're replacing an existing PicoCalc Linux installation, back up any data first, or use a different SD card. The installation process will erase the SD card.
 
-!!! caution "SPI NAND Flash"
+!!! warning "SPI NAND Flash"
     If your Luckfox Lyra has SPI NAND flash, you **must** erase it first or the SD card will be ignored during boot. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
 
 ### Make a Backup Plan
@@ -162,15 +171,15 @@ Ready to proceed? Here's where to go next:
 
 <div class="grid cards" markdown>
 
--   :material-check-decagram:{ .lg .middle } **Hardware Requirements**
+- :material-check-circle:{ .lg .middle } **Hardware Requirements**
 
     ---
 
     Verify you have compatible hardware
 
-    [:octicons-arrow-right-24: Check Requirements](hardware-requirements.md)
+    [:material-arrow-right: Check Requirements](hardware-requirements.md)
 
--   :material-download:{ .lg .middle } **Installation Guide**
+- :material-download:{ .lg .middle } **Installation Guide**
 
     ---
 
@@ -178,7 +187,7 @@ Ready to proceed? Here's where to go next:
 
     [:octicons-arrow-right-24: Install Now](installation.md)
 
--   :material-rocket-launch:{ .lg .middle } **First Boot**
+- :material-rocket-launch:{ .lg .middle } **First Boot**
 
     ---
 
@@ -186,7 +195,7 @@ Ready to proceed? Here's where to go next:
 
     [:octicons-arrow-right-24: Boot Up](first-boot.md)
 
--   :material-book-open:{ .lg .middle } **Quick Start**
+- :material-book-open-page-variant:{ .lg .middle } **Quick Start**
 
     ---
 

@@ -227,7 +227,7 @@ The RK3506G2 boot ROM follows this priority:
 
 !!! note "Small Text Console"
     The 53×40 text area is smaller than standard terminals (typically 80×24 or larger). Many applications may require:
-    
+
     - Horizontal scrolling for wide output
     - Setting `COLUMNS=53 LINES=40` environment variables
     - Using compact display modes when available

@@ -35,6 +35,7 @@ Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provide
 For detailed technical specifications including display, keyboard, power, and interface details, see the [Hardware Specifications](specifications.md) page.
 
 **Quick Overview:**
+
 - Pocket-sized handheld computer form factor
 - 320×320 pixel LCD display with ILI9488 controller
 - Full physical keyboard with compact layout
@@ -51,6 +52,7 @@ For detailed technical specifications including display, keyboard, power, and in
 ## Technical Details
 
 For complete technical specifications including:
+
 - Display system (ILI9488 controller, SPI interface, refresh rates)
 - Keyboard system (STM32 MCU, I2C communication)
 - USB-C ports (two ports with different functions)

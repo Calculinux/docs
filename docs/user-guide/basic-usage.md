@@ -11,6 +11,7 @@ First, please refer to (if you haven't already):
 ## Daily usage patterns
 
 Normally, for some daily usage patterns, you would need the following types of packages/apps:
+
 - A text/code editor
 - A file manager (not necessary, could be done through the command line)
 - Any other tools or apps you use (like networking tools)
@@ -50,8 +51,6 @@ The Linux Command Line can be difficult at first, but once you get the hang of i
 | top                             | Displays active processes and resource usage in real time.                  |
 | kill [PID]                      | Terminates a process using its process ID.                                  |
 
-
-
 For more thorough command explanations, and a larger list, you may want to refer to: [100+ Linux Commands: A Complete Guide for Beginners and Professionals](https://dev.to/10000coders/100-linux-commands-a-complete-guide-for-beginners-and-professionals-5404)
 
 ## File management
@@ -84,7 +83,8 @@ Monitoring your system helps keep it running smoothly by showing how resources a
 htop is a real‑time, interactive system monitor that displays CPU, memory, and process activity in a color‑coded layout.
 
 **Run:**
-```
+
+```shell
 htop
 ```
 
@@ -111,6 +111,5 @@ You can also check system health with basic commands:
 | `free -h` |     Memory and swap usage      |
 |  `df -h`  |        Disk space usage        |
 | `ps aux`  |     Detailed process list      |
-
 
 ---

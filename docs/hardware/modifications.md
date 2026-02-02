@@ -52,11 +52,11 @@ Before installation:
 1. Take care to ensure the board is properly aligned with all screw holes
 2. Ensure the kayboard rubber is in place
 3. Ensure the display is properly aligned with the case
-3. Align the case halves
-4. Replace all screws
-5. Verify nothing is binding or misaligned
+4. Align the case halves
+5. Replace all screws
+6. Verify nothing is binding or misaligned
 
-!!! warn "Risk to your Display!"
+!!! warning "Risk to your Display!"
     If the display is misaligned when installed, it can crack when you tighten the screws. make sure it is perfectly aligned with the front case!
 
 !!! tip "Keeping the screen aligned"
@@ -71,9 +71,11 @@ If your Luckfox Lyra has SPI NAND flash, you **must** erase it for the board to 
 1. Download Luckfox SDK and tools from [GitHub](https://github.com/LuckfoxTECH/luckfox-pico)
 2. Connect Luckfox Lyra via USB while holding boot button
 3. Use `upgrade_tool` to erase NAND:
+
    ```bash
    upgrade_tool ef
    ```
+
 4. Wait for confirmation message
 5. Disconnect and reconnect power
 
@@ -81,7 +83,7 @@ If your Luckfox Lyra has SPI NAND flash, you **must** erase it for the board to 
 
 If you can boot to U-Boot prompt:
 
-```bash
+```shell
 # Erase entire NAND
 nand erase.chip
 
@@ -94,7 +96,7 @@ sf erase 0 0x1000000
 
 If you have a working Linux system on the board:
 
-```bash
+```shell
 # Identify NAND device
 cat /proc/mtd
 
@@ -106,6 +108,7 @@ flash_erase /dev/mtd0 0 0
     You only need to erase the NAND once. After erasing, the board will always boot from SD card (unless you reprogram the NAND).
 
 ## Pin Mapping
+
 TODO: insert information about pin mapping
 
 !!! warning "GPIO Voltage Levels"
@@ -114,7 +117,7 @@ TODO: insert information about pin mapping
     - Always verify voltage levels before hardware modifications
 
 !!! info "Hardware PWM Limitation"
-    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM. 
+    Some GPIO pins (like GPIO4_B3 and GPIO4_B2) cannot output hardware PWM as they are not RMIO-capable. For audio modifications, use RMIO pins that support hardware PWM.
     A future page needs to be written detailing this.
 
 ### Power

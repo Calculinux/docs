@@ -57,46 +57,40 @@ For building Calculinux, you need:
 
 Calculinux is built using the **Yocto Project**, a powerful framework for creating custom Linux distributions.
 
-```
-Calculinux Architecture:
-
-┌─────────────────────────────────────┐
-│        Applications                 │
-├─────────────────────────────────────┤
-│     Desktop Environment (Optional)  │
-├─────────────────────────────────────┤
-│      Package Management (opkg)      │
-├─────────────────────────────────────┤
-│         System Libraries            │
-├─────────────────────────────────────┤
-│        Linux Kernel 5.10.x          │
-├─────────────────────────────────────┤
-│         U-Boot Bootloader           │
-├─────────────────────────────────────┤
-│    Hardware (Luckfox Lyra/RV1106)   │
-└─────────────────────────────────────┘
-```
+| Calculinux Architecture Layers |
+|:-----:|
+| **Applications** |
+| Desktop Environment (Optional) |
+| Package Management (opkg) |
+| System Libraries |
+| Linux Kernel 5.10.x |
+| U-Boot Bootloader |
+| Hardware (Luckfox Lyra/RV1106) |
 
 ### Key Components
 
-**meta-calculinux**
+#### meta-calculinux
+
 - Main Yocto layer for Calculinux
 - Machine configurations
 - Custom recipes and patches
 - Image definitions
 
-**Linux Kernel**
+#### Linux Kernel
+
 - Based on Rockchip 5.10 kernel
 - Custom drivers (display, keyboard)
 - Device tree configurations
 - Hardware support
 
-**Bootloader**
+#### Bootloader
+
 - U-Boot for RV1106
 - Boot scripts
 - Device tree selection
 
-**Userspace**
+#### Userspace
+
 - Based on OpenEmbedded core
 - Package management (opkg)
 - System services (systemd)
@@ -108,7 +102,7 @@ Calculinux Architecture:
 
 The meta-calculinux repository uses a multi-layer Yocto structure:
 
-```
+```shell
 meta-calculinux/
 ├── meta-calculinux-distro/      # Distribution layer
 │   ├── conf/distro/
@@ -157,18 +151,21 @@ Calculinux uses external repositories for kernel and bootloader sources:
 
 ### Build Types
 
-**Full Build** (Clean)
+#### Full Build (Clean)
+
 - First build or major changes
 - Builds everything from scratch
 - Takes 2-8 hours depending on hardware
 - Uses significant disk space
 
-**Incremental Build**
+#### Incremental Build
+
 - Rebuilds only changed components
 - Much faster (minutes to hour)
 - Used for development iterations
 
-**Package Build**
+#### Package Build
+
 - Builds specific packages
 - Quick testing of changes
 - Useful for recipe development
@@ -187,18 +184,21 @@ If you're ready to start developing:
 ### Learning Path
 
 **Beginner** (New to Yocto):
+
 1. Read Yocto Project documentation
 2. Follow our [Yocto Setup](yocto-setup.md) guide
 3. Build a stock image
 4. Make small customizations
 
 **Intermediate** (Some Yocto experience):
+
 1. Clone meta-calculinux
 2. Customize image configurations
 3. Add new packages/recipes
 4. Modify existing recipes
 
 **Advanced** (Experienced with Yocto):
+
 1. Kernel development
 2. Driver development
 3. BSP modifications
@@ -210,7 +210,7 @@ If you're ready to start developing:
 
 Installed via package manager:
 
-```bash
+```shell
 # Ubuntu/Debian
 sudo apt install gawk wget git diffstat unzip texinfo \
     gcc build-essential chrpath socat cpio python3 \
@@ -245,6 +245,7 @@ Recommended editors with Yocto support:
 Calculinux uses Yocto for several reasons:
 
 **Advantages**:
+
 - ✅ Reproducible builds
 - ✅ Extensive package ecosystem
 - ✅ Professional tooling
@@ -253,6 +254,7 @@ Calculinux uses Yocto for several reasons:
 - ✅ Customization flexibility
 
 **Challenges**:
+
 - ⚠️ Steep learning curve
 - ⚠️ Long initial build times
 - ⚠️ Large disk space requirements
@@ -290,7 +292,7 @@ do_install() {
 
 ### Adding a Package
 
-```bash
+```shell
 # Create new recipe
 devtool add <package-name> <source-url>
 
@@ -303,7 +305,7 @@ devtool finish <package-name> meta-calculinux
 
 ### Modifying Kernel
 
-```bash
+```shell
 # Extract kernel source
 bitbake linux-rockchip -c unpack
 
@@ -327,7 +329,7 @@ IMAGE_INSTALL += "mypackage another-package"
 
 ### Build Testing
 
-```bash
+```shell
 # Build main image
 bitbake calculinux-image
 
@@ -355,6 +357,7 @@ Coming soon: CI/CD pipeline for automated builds and tests.
 ### Build Speed
 
 **Parallel Builds**:
+
 ```python
 # local.conf
 BB_NUMBER_THREADS = "8"
@@ -362,11 +365,13 @@ PARALLEL_MAKE = "-j 8"
 ```
 
 **Shared State Cache**:
+
 ```python
 SSTATE_DIR = "/path/to/shared/sstate-cache"
 ```
 
 **Build History**:
+
 ```python
 INHERIT += "buildhistory"
 BUILDHISTORY_COMMIT = "1"
@@ -391,7 +396,7 @@ IMAGE_LINGUAS = "en-us"
 
 ### Build Failures
 
-```bash
+```shell
 # Verbose output
 bitbake -v calculinux-image
 
@@ -405,9 +410,9 @@ bitbake <package>
 
 ### Runtime Debugging
 
-```bash
+```shell
 # Serial console
-screen /dev/ttyUSB0 115200
+screen /dev/ttyUSB0 1500000
 
 # SSH access
 ssh root@<ip-address>
@@ -452,36 +457,36 @@ Choose your path:
 
 <div class="grid cards" markdown>
 
--   :material-cog:{ .lg .middle } **Set Up Environment**
+- :material-cog:{ .lg .middle } **Set Up Environment**
 
-    ---
+  ---
 
-    Install tools and configure Yocto
+  Install tools and configure Yocto
 
-    [:octicons-arrow-right-24: Yocto Setup](yocto-setup.md)
+  [:octicons-arrow-right-24: Yocto Setup](yocto-setup.md)
 
--   :material-hammer-wrench:{ .lg .middle } **Build Calculinux**
+- :material-hammer-wrench:{ .lg .middle } **Build Calculinux**
 
-    ---
+  ---
 
-    Compile your first image
+  Compile your first image
 
-    [:octicons-arrow-right-24: Building Guide](building.md)
+  [:octicons-arrow-right-24: Building Guide](building.md)
 
--   :material-palette:{ .lg .middle } **Customize**
+- :material-star:{ .lg .middle } **Customize**
 
-    ---
+  ---
 
-    Make Calculinux your own
+  Make Calculinux your own
 
-    [:octicons-arrow-right-24: Customization](customization.md)
+  [:octicons-arrow-right-24: Customization](customization.md)
 
--   :material-code-braces:{ .lg .middle } **Contribute**
+- :material-share:{ .lg .middle } **Contribute**
 
-    ---
+  ---
 
-    Join the development effort
+  Join the development effort
 
-    [:octicons-arrow-right-24: Contributing](contributing.md)
+  [:octicons-arrow-right-24: Contributing](contributing.md)
 
 </div>

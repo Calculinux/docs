@@ -25,7 +25,7 @@ This page provides technical implementation details about the PicoCalc display a
 
 The display connects via SPI with the following characteristics:
 
-```
+```text
 SPI Bus: spi0
 Mode: 0 (CPOL=0, CPHA=0)
 Bits per word: 8
@@ -54,6 +54,7 @@ The 320×320 pixel display with 6×8 font provides a text area of **53 columns �
 - Some TUI applications may have layout issues
 
 **Workarounds**:
+
 - Use applications designed for small terminals
 - Configure `COLUMNS=53` and `LINES=40` environment variables
 - Use terminal pagers with line wrapping (`less -S` for side-scrolling)
@@ -71,7 +72,8 @@ The backlight is controlled by the STM32 MCU, not directly by the Linux system:
     Current display sleep functionality does not yet control the backlight directly. Full backlight control is intended to be implemented through the experimental MFD drivers that communicate with the keyboard MCU.
 
 **Display Sleep** (without backlight control):
-```bash
+
+```shell
 # Turn off display (framebuffer only)
 echo 0 > /sys/class/backlight/picocalc/bl_power
 
@@ -87,6 +89,7 @@ Calculinux uses a custom ILI9488 framebuffer driver:
 **Compatible**: `ilitek,ili9488`
 
 **Features**:
+
 - Direct framebuffer access (`/dev/fb0`)
 - 320×320 pixel resolution
 - 30 FPS target frame rate
@@ -97,7 +100,7 @@ Calculinux uses a custom ILI9488 framebuffer driver:
 
 ### Device Tree Configuration
 
-Actual device tree configuration from `rk3506-luckfox-lyra.dtsi`:
+Actual device tree configuration from `rk3506-luckfox-lyra.dtsi` (installed by `picocalc-devicetree`; source file is `linux-rk3506-luckfox-lyra.dtsi` in picocalc-drivers):
 
 ```dts
 &spi0 {
@@ -123,6 +126,7 @@ Actual device tree configuration from `rk3506-luckfox-lyra.dtsi`:
 ```
 
 **GPIO Pin Configuration**:
+
 ```dts
 ili9488 {
     ili9488_pins: ili9488-pins {
@@ -137,24 +141,27 @@ ili9488 {
 ### Performance Considerations
 
 **Bandwidth Calculation**:
-```
+
+```text
 320 × 320 pixels × 2 bytes × 60 fps = 12.3 MB/s
 At 80 MHz SPI: ~10 MB/s theoretical maximum
 ```
 
 The driver implements:
+
 - Frame skipping if needed
 - Partial updates for efficiency
 - Double buffering to reduce tearing
 
-### Backlight Control
+### Backlight PWM Control
 
 The backlight is controlled via PWM:
 
 **Interface**: `/sys/class/backlight/picocalc/`
 
 **Control**:
-```bash
+
+```shell
 # Set brightness (0-255)
 echo 200 > /sys/class/backlight/picocalc/brightness
 
@@ -204,6 +211,7 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 **Source**: [Custom PicoCalc BIOS](https://git.jcsmith.fr/jackcartersmith/picocalc_BIOS)
 **Forum Discussion**: [Custom PicoCalc BIOS Thread](https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292)
 **Additional Features**:
+
 - Real-Time Clock (RTC) support
 - Enhanced power management
 - Extended I2C functionality
@@ -225,6 +233,7 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 **Purpose**: Unified driver for all MCU functions
 
 **Driver Components**:
+
 - Keyboard input device
 - Battery monitoring
 - Brightness control
@@ -240,6 +249,7 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 **Driver Name**: `picocalc_mfd` (experimental)
 
 **Features**:
+
 - I2C communication with STM32 MCU
 - Standard Linux input device interface
 - Integration with MCU power management
@@ -251,9 +261,9 @@ The STM32F103R8T6 microcontroller provides multiple functions:
 !!! info "Legacy vs MFD Drivers"
     Current stable releases may use simpler keyboard-only drivers, while experimental MFD drivers provide full MCU integration. Check your kernel configuration for which driver is active.
 
-### Device Tree Configuration
+### Device Tree Configuration (Keyboard MCU)
 
-Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.dtsi`:
+Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.dtsi` (installed by `picocalc-devicetree`; source file is `linux-rk3506-luckfox-lyra.dtsi` in picocalc-drivers):
 
 ```dts
 &i2c2 {
@@ -271,6 +281,7 @@ Actual device tree configuration for I2C keyboard MCU from `rk3506-luckfox-lyra.
 ```
 
 **I2C Pin Configuration**:
+
 ```dts
 &pinctrl {
     rm_io11 {
@@ -297,7 +308,8 @@ The keyboard appears as a standard Linux input device:
 **Device Path**: `/dev/input/event0`
 
 **Testing Input**:
-```bash
+
+```shell
 # List input devices
 cat /proc/bus/input/devices
 
@@ -310,7 +322,8 @@ evtest /dev/input/event0
 Users can remap keys using standard Linux tools:
 
 **Using udev/hwdb**:
-```
+
+```text
 # /etc/udev/hwdb.d/90-picocalc-keyboard.hwdb
 evdev:input:b0003v*p*
  KEYBOARD_KEY_1e=leftshift
@@ -325,7 +338,8 @@ evdev:input:b0003v*p*
 **Text Area**: **53 columns × 40 rows** (at 320×320 with 6×8 font)
 
 **Configuration**:
-```bash
+
+```shell
 # /etc/default/console-setup
 ACTIVE_CONSOLES="/dev/tty[1-6]"
 FONTFACE="Terminus"
@@ -333,6 +347,7 @@ FONTSIZE="6x8"
 ```
 
 **Font Rendering**:
+
 - Character size: 6×8 pixels
 - Text area: 53×40 characters
 - VGA text mode emulation
@@ -346,6 +361,7 @@ The display is graphics-capable but no graphical environment is installed by def
 **Experimentation Encouraged**: Community testing of graphical environments
 
 **Potential Display Servers**:
+
 - **X11**: Would require `xf86-video-fbdev` driver installation
 - **Wayland**: Would require compositor with fbdev backend
 - **Direct Rendering**: Via `/dev/fb0` for custom applications
@@ -359,7 +375,7 @@ The display is graphics-capable but no graphical environment is installed by def
 
 The display can be put to sleep to save power:
 
-```bash
+```shell
 # Turn off display
 echo 0 > /sys/class/backlight/picocalc/bl_power
 
@@ -371,7 +387,7 @@ echo 1 > /sys/class/backlight/picocalc/bl_power
 
 Configure automatic dimming:
 
-```bash
+```shell
 # Using systemd-logind
 # /etc/systemd/logind.conf
 IdleAction=ignore
@@ -385,7 +401,8 @@ IdleActionSec=5min
 **Symptom**: No display output
 
 **Check**:
-```bash
+
+```shell
 # Verify framebuffer device exists
 ls -l /dev/fb0
 
@@ -399,6 +416,7 @@ dmesg | grep -i ili9488
 **Symptom**: Display corruption or tearing
 
 **Solutions**:
+
 - Check display cable is fully inserted
 - Reduce SPI clock speed in device tree
 - Enable double buffering
@@ -409,11 +427,12 @@ dmesg | grep -i ili9488
 **Symptom**: Keys not responding
 
 **Check via Serial Console**:
+
 1. Connect to PicoCalc USB-C port at 1500000 baud
 2. Log in to the system
 3. Check which keyboard driver is loaded:
 
-```bash
+```shell
 # Check for picocalc_kbd driver
 lsmod | grep picocalc_kbd
 
@@ -427,7 +446,8 @@ modprobe picocalc_kbd
 ```
 
 **Additional Checks**:
-```bash
+
+```shell
 # Verify input device exists
 ls -l /dev/input/event*
 
@@ -440,6 +460,7 @@ evtest /dev/input/event0
 
 **If Problems Persist**:
 File a bug report with:
+
 - Which drivers you tested
 - Serial console output
 - Kernel log messages (`dmesg | grep -i picocalc`)
@@ -447,7 +468,8 @@ File a bug report with:
 **Symptom**: Intermittent key responses
 
 **Check**:
-```bash
+
+```shell
 # Check I2C bus errors
 dmesg | grep -i i2c
 
@@ -458,7 +480,8 @@ dmesg | grep -i i2c
 **Symptom**: Key repeat too fast/slow
 
 **Adjust**:
-```bash
+
+```shell
 # Set repeat rate (delay, rate)
 kbdrate -d 250 -r 30
 ```
@@ -470,6 +493,7 @@ kbdrate -d 250 -r 30
 For graphics applications, we recommend using SDL rather than direct framebuffer access:
 
 **SDL (Simple DirectMedia Layer)**:
+
 - Cross-platform graphics library
 - Handles framebuffer abstraction
 - Better compatibility and portability
@@ -478,6 +502,7 @@ For graphics applications, we recommend using SDL rather than direct framebuffer
 **SDL Documentation**: [SDL2 Documentation](https://wiki.libsdl.org/)
 
 **Basic SDL Setup**:
+
 ```c
 #include <SDL2/SDL.h>
 

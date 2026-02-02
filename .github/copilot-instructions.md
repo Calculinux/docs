@@ -5,6 +5,7 @@
 This is the documentation repository for **Calculinux**, a Linux distribution for PicoCalc handheld computers running on Luckfox Lyra SBCs. Built with **MkDocs** + **Material theme** using Flatly color scheme, deployed to GitHub Pages.
 
 **Key repos**:
+
 - `Calculinux/docs` (this repo) - Documentation site
 - `Calculinux/meta-calculinux` - Yocto build system (multi-layer setup)
 
@@ -26,10 +27,12 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
 
 </div>
 ```
+
 - Icons: use Material Design (`:material-*:`) or Octicons (`:octicons-*:`)
 - See [docs/index.md](../docs/index.md) lines 26-61 for canonical example
 
 **Admonitions** - For callouts:
+
 ```markdown
 !!! tip "Optional Title"
     Content here
@@ -41,6 +44,7 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
     - Hardware: PicoCalc with Luckfox Lyra
     - Storage: 8GB+ microSD
 ```
+
 - Types: `info`, `tip`, `warning`, `danger`, `note`, `example`
 - Content must be indented exactly 4 spaces
 
@@ -48,6 +52,7 @@ This is the documentation repository for **Calculinux**, a Linux distribution fo
 ```markdown
 --8<-- "developer/adding-packages/_snippets/licensing-workflow.md"
 ```
+
 - Stored in `docs/*/_snippets/` directories
 - Use for repeated procedures (licensing, SD card install, dependencies)
 - See [docs/developer/adding-packages/](../docs/developer/adding-packages/) examples
@@ -60,17 +65,65 @@ Sections: Getting Started → Hardware → User Guide → Developer Guide → Tr
 
 ## Development Workflow
 
-### Local Preview
+### Using the Makefile (Recommended)
+
+This repository includes a Makefile for streamlined development:
+
 ```bash
-pip install -r requirements.txt
-mkdocs serve
-# Opens http://127.0.0.1:8000 with live reload
+make          # Default: runs linting, then starts docs server
+make lint     # Run all linters: markdownlint (with autofix), link-check, vale
+make docs     # Start local MkDocs server at http://127.0.0.1:8000
+make install  # Install Python and Node dependencies
+make clean    # Remove build artifacts (site/)
+make help     # Show all available targets
 ```
 
-### Building
+### Manual Commands
+
+If you prefer to run commands directly:
+
 ```bash
+# Install dependencies
+pip install -r requirements.txt
+npm install
+
+# Linting
+npx markdownlint-cli2 --fix docs/**/*.md        # Autofix markdown formatting
+npx markdown-link-check -q docs/**/*.md          # Check for broken links
+vale docs/                                        # Style/grammar linting
+
+# Preview docs
+mkdocs serve  # Opens http://127.0.0.1:8000 with live reload
+
+# Build
 mkdocs build  # Output to site/
 ```
+
+### Linting Tools
+
+The documentation is linted with three tools (all run via `make lint`):
+
+1. **markdownlint-cli2** - Markdown formatting rules
+    - Uses `.markdownlint-cli2.jsonc` with `mkdocs-material-linter` rules for Material for MkDocs compatibility
+   - Custom rule: `.github/markdownlint-rules/material-icons-complete.js` - validates icons against complete lists from Material theme
+   - Icon lists: `.github/icon-lists.json` - generated from Material for MkDocs theme (7447 material icons, 665 octicons, 2806 fontawesome, 3364 simple icons)
+   - Regenerate icon lists: `python3 .github/scripts/generate-icon-lists.py`
+   - Autofix enabled: fixes formatting issues automatically
+
+2. **markdown-link-check** - Validates all links (internal and external)
+   - Non-blocking: continues on error to allow other checks to run
+
+3. **Vale** - Style and grammar checking
+   - Configuration: `.vale.ini`
+   - Non-blocking in CI/CD
+
+**GitHub Actions Workflow** (`.github/workflows/markdown-check.yml`):
+- Triggers on PR with markdown changes
+- Installs Python dependencies (`mkdocs`, Material theme)
+- Installs Node dependencies (`markdownlint-cli2`, link-checker, Material linter)
+- Runs autofix on changed files
+- Commits fixes back to PR branch
+- Reports remaining issues via reviewdog for inline PR comments
 
 ### Deployment
 - **Auto-deploy**: Push to `main` triggers `.github/workflows/deploy.yml` → GitHub Pages
@@ -78,35 +131,48 @@ mkdocs build  # Output to site/
 
 ## Quality Checks (GitHub Actions)
 
-All PRs trigger automated checks:
+All PRs trigger automated checks (`.github/workflows/markdown-check.yml`):
 
-1. **Markdown Lint** (markdownlint) - Syntax/structure validation (MD013 line length disabled)
-2. **Vale** - Prose linting for style/grammar
-3. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
+1. **Markdown Lint** (markdownlint) - Syntax/structure validation using Material for MkDocs config
+   - **Autofix enabled**: Invalid formatting is automatically corrected
+   - Fixes are committed back to the PR branch
+2. **Link Checking** (markdown-link-check) - Validates all links in documentation
+3. **Vale** - Prose linting for style/grammar (`.vale.ini` config)
+4. **cspell** - Spell checking (add terms to `.github/calculinux-dictionary.txt`)
 
-Reviewdog posts inline comments on PRs. Don't block on minor style issues - let automation handle it.
+Reviewdog posts inline comments on PRs for any remaining issues. Don't block on minor style issues - let automation handle it (the autofix step will catch and fix most formatting problems automatically).
 
 ## Content Guidelines
 
 ### Accuracy vs. Speculation
+
 **Read `DOCUMENTATION_REVIEW.md`** - Lists autogenerated speculation that was removed. When documenting:
+
 - Verify against actual repos (`meta-calculinux` has multi-layer structure: `meta-calculinux-distro/`, `meta-picocalc-bsp-rockchip/`, `meta-calculinux-apps/`)
 - Don't invent repository names (e.g., "linux-calculinux" doesn't exist; actual kernel is `linux-rockchip` from `0xd61/luckfox-linux-6.1-rk3506`)
 - Only two images exist: `calculinux-image.bb` and `calculinux-bundle.bb`
 
+
 ### Writing Style (from `CONTRIBUTING.md`)
+
 - Active voice, present tense, second person
 - Test all commands before documenting
 - Use realistic examples from the actual codebase
 
+
 ### Code Blocks
+
 Always specify language:
+
 ```bash
 bitbake calculinux-image
 ```
 
+
 ### Cross-References
+
 Link to related pages. Use relative paths: `[Hardware Guide](hardware/luckfox-lyra.md)`
+
 
 ## File Organization
 
@@ -116,20 +182,49 @@ docs/
 ├── getting-started/            # Installation, first boot
 ├── hardware/                   # PicoCalc, Lyra, specs, serial console
 ├── user-guide/                 # Package management, updates, apps
+│   └── updates.md              # System updates, RAUC, package reconciliation, config file handling
 ├── developer/                  # Yocto setup, building, contributing
+│   ├── calculinux-update.md    # Update system architecture, OPKG reconciliation, conffiles
 │   └── adding-packages/        # Recipe examples (newsboat, rust-example)
 │       └── _snippets/          # Reusable content blocks
 ├── troubleshooting/            # FAQs, boot problems, display issues
 └── resources/                  # Community links, external docs
 ```
 
+## Key Documentation Topics
+
+### Update System (`calculinux-update`)
+
+The update system documentation covers:
+
+- **RAUC A/B slot updates**: Atomic system updates with rollback capability
+- **Package reconciliation**: Automatic handling of duplicate/missing/conflicting packages
+- **Config file conflict detection** (v0.6.0+): Detects user-modified configs that shadow new versions
+  - Creates `.dpkg-new` files for manual review
+  - Reports modified files after reboot
+  - User resolves conflicts with `diff`/`vimdiff`
+- **Bundle extras**: Metadata embedded in RAUC bundles for prefetch and reconciliation
+- **Three-component architecture**: `cup` (CLI), `cup-hook` (RAUC handler), `cup-postreboot` (systemd service)
+
+Key files:
+- User guide: `docs/user-guide/updates.md` - User-facing update process, config file resolution
+- Developer guide: `docs/developer/calculinux-update.md` - Technical architecture, module documentation
+
+When documenting updates:
+- Config file handling is Phase 4 of reconciliation (after package duplicate removal)
+- CONFFILES metadata from `/var/lib/opkg/info/<package>.conffiles` lists config files
+- OverlayFS upper/lower layer comparison detects modifications via MD5 checksums
+- `.dpkg-new` files contain new versions; original paths keep user modifications
+
 ## Dependencies
 
 From `requirements.txt`:
+
 - mkdocs ≥1.5.0
 - mkdocs-material ≥9.4.0
 - pymdown-extensions ≥10.3
 - mkdocs-git-revision-date-localized-plugin ≥1.2.0
+
 
 Material theme features enabled (see `mkdocs.yml` lines 31-42): navigation tabs/sections, search, code copy, edit action
 
@@ -144,12 +239,10 @@ Material theme features enabled (see `mkdocs.yml` lines 31-42): navigation tabs/
 7. Link to related pages
 8. Let GitHub Actions handle formatting/linting
 
+
 ## Common Tasks
 
-**Add new package recipe guide**: Create in `docs/developer/adding-packages/`, follow pattern from `newsboat.md` or `rust-example.md`
-
-**Fix broken links**: Run `mkdocs build` to catch them (validation enabled)
-
-**Add technical terms**: Update `.github/calculinux-dictionary.txt` for spell checker
-
-**Preview PR changes**: PR preview deploys to `https://calculinux.github.io/docs/pr-preview/pr-<number>/` (see `.github/workflows/deploy-pr-preview.yml`)
+- **Add new package recipe guide**: Create in `docs/developer/adding-packages/`, follow pattern from `newsboat.md` or `rust-example.md`
+- **Fix broken links**: Run `mkdocs build` to catch them (validation enabled)
+- **Add technical terms**: Update `.github/calculinux-dictionary.txt` for spell checker
+- **Preview PR changes**: PR preview deploys to `https://calculinux.github.io/docs/pr-preview/pr-<number>/` (see `.github/workflows/deploy-pr-preview.yml`)
