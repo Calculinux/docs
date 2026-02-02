@@ -1088,6 +1088,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../user-guide/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/usb-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../user-guide/package-management/" class="md-nav__link">
         
   
@@ -1297,6 +1353,34 @@
     
   
     Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer/sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
   
 
     
@@ -1935,6 +2019,10 @@ issues or recover a system when network access is unavailable. The
 Picocalc exposes a USB-to-UART bridge that enumerates as <code>/dev/ttyUSB0</code>
 on most Linux hosts. The console runs at <strong>1,500,000 baud</strong>, 8 data bits,
 no parity, and 1 stop bit ("1500000 8N1").</p>
+<div class="admonition tip">
+<p class="admonition-title">USB Serial Console Alternative</p>
+<p>For general terminal access over USB (not early boot debugging), see the <a href="../../../user-guide/usb-networking/#usb-serial-console">USB Serial Console</a> section in the USB Networking guide. The USB serial console runs at the same 1500000 baud and appears as <code>/dev/ttyACM0</code> on Linux hosts.</p>
+</div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Linux host with <code>python3-serial</code> (for <code>miniterm.py</code>) or <code>minicom</code>
@@ -1945,9 +2033,9 @@ no parity, and 1 stop bit ("1500000 8N1").</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>If you prefeer a GUI tool to access the serial port but don't know what to
-choose, options on Linux desktops include <strong>CuteCom</strong>, and <strong>PuTTY</strong> among 
+choose, options on Linux desktops include <strong>CuteCom</strong>, and <strong>PuTTY</strong> among
 others; they provide point-and-click interfaces for selecting ports and baud
-rates. The only setting you will need to change is the 1,500,000 baud setting. </p>
+rates. The only setting you will need to change is the 1,500,000 baud setting.</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
 </code></pre></div>
@@ -1959,7 +2047,7 @@ rates. The only setting you will need to change is the 1,500,000 baud setting. <
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>/dev/ttyUSB*
 </code></pre></div>
 <p>You should see <code>/dev/ttyUSB0</code>. If the device is missing, check <code>dmesg</code>
-for driver errors or verify cabling. If you already have other serial 
+for driver errors or verify cabling. If you already have other serial
 devices, it may have received a different number.</p>
 <hr />
 <h2 id="using-minitermpy">Using <code>miniterm.py</code><a class="headerlink" href="#using-minitermpy" title="Permanent link">&para;</a></h2>
@@ -2055,7 +2143,7 @@ specific drivers are loaded.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 13, 2025 13:29:51 UTC">November 13, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
   </span>
 
     

@@ -983,6 +983,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../user-guide/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
@@ -1192,6 +1248,34 @@
     
   
     Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
   
 
     
@@ -1700,10 +1784,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites_1" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Requirements
       
     </span>
   </a>
@@ -2236,10 +2320,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites_1" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Requirements
       
     </span>
   </a>
@@ -2573,11 +2657,15 @@
 </tbody>
 </table>
 <h2 id="checking-if-you-have-spi-nand">Checking If You Have SPI NAND<a class="headerlink" href="#checking-if-you-have-spi-nand" title="Permanent link">&para;</a></h2>
-<p><strong>Visual Inspection:</strong>
-- Look for an additional chip on the board labeled "SPI NAND" or similar
-- Check your purchase order/product specifications</p>
-<p><strong>Check Product Documentation:</strong>
-- Refer to the <a href="https://wiki.luckfox.com/Luckfox-Lyra/">Luckfox Lyra documentation</a> for your specific model</p>
+<p><strong>Visual Inspection:</strong></p>
+<ul>
+<li>Look for an additional chip on the board labeled "SPI NAND" or similar</li>
+<li>Check your purchase order/product specifications</li>
+</ul>
+<p><strong>Check Product Documentation:</strong></p>
+<ul>
+<li>Refer to the <a href="https://wiki.luckfox.com/Luckfox-Lyra/">Luckfox Lyra documentation</a> for your specific model</li>
+</ul>
 <h2 id="erasure-methods">Erasure Methods<a class="headerlink" href="#erasure-methods" title="Permanent link">&para;</a></h2>
 <h3 id="method-1-windows-rkdevtool-recommended">Method 1: Windows - RKDevTool (Recommended)<a class="headerlink" href="#method-1-windows-rkdevtool-recommended" title="Permanent link">&para;</a></h3>
 <p>This is the easiest and most reliable method for most users.</p>
@@ -2659,17 +2747,21 @@
 </ol>
 <h3 id="method-2-linux-x86_64-platform">Method 2: Linux (x86_64 Platform)<a class="headerlink" href="#method-2-linux-x86_64-platform" title="Permanent link">&para;</a></h3>
 <p>This method uses command-line tools on Linux.</p>
-<h4 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">&para;</a></h4>
+<h4 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Linux PC (tested on Ubuntu 22.04)</li>
 <li>Luckfox SDK or upgrade_tool</li>
 <li>USB Type-A to Type-C cable</li>
 </ul>
 <h4 id="step-1-download-tools">Step 1: Download Tools<a class="headerlink" href="#step-1-download-tools" title="Permanent link">&para;</a></h4>
-<p>Download the Luckfox SDK which includes the flashing tools:
-- <a href="https://wiki.luckfox.com/Luckfox-Lyra/SDK">Luckfox SDK Setup Guide</a></p>
-<p>Or download standalone upgrade_tool:
-- Available in the SDK under <code>tools/linux/Linux_Upgrade_Tool/</code></p>
+<p>Download the Luckfox SDK which includes the flashing tools:</p>
+<ul>
+<li><a href="https://wiki.luckfox.com/Luckfox-Lyra/SDK">Luckfox SDK Setup Guide</a></li>
+</ul>
+<p>Or download standalone upgrade_tool:</p>
+<ul>
+<li>Available in the SDK under <code>tools/linux/Linux_Upgrade_Tool/</code></li>
+</ul>
 <h4 id="step-2-enter-loader-mode">Step 2: Enter Loader Mode<a class="headerlink" href="#step-2-enter-loader-mode" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Hold the <strong>BOOT</strong> button while connecting the board to your PC</li>
@@ -2677,9 +2769,9 @@
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Rockchip
 </code></pre></div>
-<p>You should see output indicating Loader mode:
+<p>You should see output indicating Loader mode:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Bus 001 Device 007: ID 2207:350f Fuzhou Rockchip Electronics Company
-</code></pre></div></p>
+</code></pre></div>
 <h4 id="step-3-erase-using-rkflashsh">Step 3: Erase Using rkflash.sh<a class="headerlink" href="#step-3-erase-using-rkflashsh" title="Permanent link">&para;</a></h4>
 <p>If you have the full SDK:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/luckfox-sdk
@@ -2715,7 +2807,7 @@
 <h3 id="method-4-linux-on-the-device-not-yet-documented">Method 4: Linux on the Device (Not Yet Documented)<a class="headerlink" href="#method-4-linux-on-the-device-not-yet-documented" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Method Not Available</p>
-<p>Methods for erasing SPI NAND directly from Linux running on the Luckfox Lyra (without external flashing tools) are not yet documented or tested. </p>
+<p>Methods for erasing SPI NAND directly from Linux running on the Luckfox Lyra (without external flashing tools) are not yet documented or tested.</p>
 <p>This would theoretically be possible using <code>mtd-utils</code> and <code>/dev/mtdX</code> devices, but specific procedures for Calculinux have not been established.</p>
 </div>
 <h2 id="after-erasing">After Erasing<a class="headerlink" href="#after-erasing" title="Permanent link">&para;</a></h2>
@@ -2729,32 +2821,40 @@
 <h2 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
 <h3 id="issue-board-still-boots-from-nand">Issue: Board Still Boots from NAND<a class="headerlink" href="#issue-board-still-boots-from-nand" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: SD card is ignored, old firmware still runs</p>
-<p><strong>Solutions</strong>:
-- Verify the erase completed successfully
-- Try the erase process again
-- Try MaskRom mode instead of Loader mode
-- Check that your SD card is properly flashed</p>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Verify the erase completed successfully</li>
+<li>Try the erase process again</li>
+<li>Try MaskRom mode instead of Loader mode</li>
+<li>Check that your SD card is properly flashed</li>
+</ul>
 <h3 id="issue-cannot-enter-loader-mode">Issue: Cannot Enter Loader Mode<a class="headerlink" href="#issue-cannot-enter-loader-mode" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: RKDevTool doesn't detect device</p>
-<p><strong>Solutions</strong>:
-- Try different USB cable (must be data-capable)
-- Try different USB port
-- Check Device Manager for driver issues
-- Reinstall RK Driver Assistant
-- Try MaskRom mode</p>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Try different USB cable (must be data-capable)</li>
+<li>Try different USB port</li>
+<li>Check Device Manager for driver issues</li>
+<li>Reinstall RK Driver Assistant</li>
+<li>Try MaskRom mode</li>
+</ul>
 <h3 id="issue-erase-fails-midway">Issue: Erase Fails Midway<a class="headerlink" href="#issue-erase-fails-midway" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: Erase process errors or hangs</p>
-<p><strong>Solutions</strong>:
-- Disconnect and retry
-- Try using MaskRom mode
-- Ensure stable USB connection
-- Check power supply is adequate</p>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Disconnect and retry</li>
+<li>Try using MaskRom mode</li>
+<li>Ensure stable USB connection</li>
+<li>Check power supply is adequate</li>
+</ul>
 <h3 id="issue-device-wont-boot-after-erase">Issue: Device Won't Boot After Erase<a class="headerlink" href="#issue-device-wont-boot-after-erase" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>: No boot after erasing NAND</p>
-<p><strong>This is expected behavior!</strong> With NAND erased and no SD card:
-- Insert your Calculinux SD card
-- Power on the device
-- It should boot from SD card</p>
+<p><strong>This is expected behavior!</strong> With NAND erased and no SD card:</p>
+<ul>
+<li>Insert your Calculinux SD card</li>
+<li>Power on the device</li>
+<li>It should boot from SD card</li>
+</ul>
 <h2 id="recovery-options">Recovery Options<a class="headerlink" href="#recovery-options" title="Permanent link">&para;</a></h2>
 <p>If you need to restore the original Luckfox firmware to NAND:</p>
 <ol>
@@ -2800,7 +2900,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 19:07:03 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
   </span>
 
     

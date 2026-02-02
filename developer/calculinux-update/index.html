@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://calculinux.org/developer/calculinux-update/">
       
       
-        <link rel="prev" href="../building/">
+        <link rel="prev" href="../sdk/">
       
       
         <link rel="next" href="../contributing/">
@@ -983,6 +983,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../user-guide/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
@@ -1212,6 +1268,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1353,21 +1437,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-bundle-extras" class="md-nav__link">
+  <a href="#missing-bundle-extras" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bundle Extras?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Handling
+        Missing Bundle Extras
       
     </span>
   </a>
@@ -1468,6 +1541,17 @@
     <span class="md-ellipsis">
       
         Status File Parsing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-file-conflict-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config File Conflict Detection
       
     </span>
   </a>
@@ -1624,7 +1708,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#error-handling_1" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
         Error Handling
@@ -2385,21 +2469,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-bundle-extras" class="md-nav__link">
+  <a href="#missing-bundle-extras" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Bundle Extras?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Handling
+        Missing Bundle Extras
       
     </span>
   </a>
@@ -2500,6 +2573,17 @@
     <span class="md-ellipsis">
       
         Status File Parsing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-file-conflict-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config File Conflict Detection
       
     </span>
   </a>
@@ -2656,7 +2740,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#error-handling_1" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
         Error Handling
@@ -2988,14 +3072,23 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└── opkg/
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ├── status.py       # OPKG status file parser
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    ├── reconcile.py    # Reconciliation algorithm
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    └── overlayfs.py    # OverlayFS whiteout cleanup
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ├── overlayfs.py    # OverlayFS whiteout cleanup
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    └── conffiles.py    # Config file conflict detection
 </code></pre></div>
-<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS whiteout management:
-- <code>cleanup_package_whiteouts()</code> - Remove package file whiteouts
-- <code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in <code>/var/lib/opkg/info/</code>
-- <code>has_files_in_upper()</code> - Detect if package has files in upper layer (for two-phase duplicate removal)
-- <code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag with fallback
-- <code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</p>
+<p><strong>New in v0.5.1</strong>: <code>overlayfs.py</code> module provides comprehensive OverlayFS whiteout management:</p>
+<ul>
+<li><code>cleanup_package_whiteouts()</code> - Remove package file whiteouts</li>
+<li><code>cleanup_opkg_metadata_whiteouts()</code> - Remove metadata whiteouts in <code>/var/lib/opkg/info/</code></li>
+</ul>
+<p><strong>New in v0.6.0</strong>: <code>conffiles.py</code> module provides config file conflict detection:</p>
+<ul>
+<li><code>detect_modified_conffiles()</code> - Compare config files between upper/lower OverlayFS layers</li>
+<li><code>create_dpkg_new_files()</code> - Copy new versions to <code>.dpkg-new</code> files for manual review</li>
+<li><code>get_package_conffiles()</code> - Read CONFFILES metadata from opkg</li>
+<li><code>has_files_in_upper()</code> - Detect if package has files in upper layer (for two-phase duplicate removal)</li>
+<li><code>is_package_in_writable_status()</code> - Uses enhanced opkg <code>--writable-only</code> flag with fallback</li>
+<li><code>remount_overlayfs()</code> - Remount overlay to pick up whiteout changes</li>
+</ul>
 <p><strong>Binary Locations</strong> (as of v0.5.0):</p>
 <ul>
 <li><code>/usr/bin/cup</code> - User-facing CLI command</li>
@@ -3082,21 +3175,7 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>RAUC_BUNDLE_EXTRA_FILES += &quot;bundle-extras.tar.gz&quot;
 </code></pre></div>
 <p>The <code>bundle</code> class automatically includes files listed in <code>RAUC_BUNDLE_EXTRA_FILES</code> from <code>DEPLOY_DIR_IMAGE</code>.</p>
-<h3 id="why-bundle-extras">Why Bundle Extras?<a class="headerlink" href="#why-bundle-extras" title="Permanent link">&para;</a></h3>
-<p>Without bundle extras, the hook would need to:</p>
-<ol>
-<li>~~Mount the inactive slot after RAUC installation~~  ✗ Not possible - RAUC unmounts slots after installation</li>
-<li>~~Access the filesystem to read OPKG configuration~~ ✗ Slot no longer mounted when hook runs</li>
-<li>~~Deal with potential mounting failures or filesystem issues~~ ✗ Additional complexity and failure modes</li>
-</ol>
-<p>With bundle extras:</p>
-<p>✅ Self-contained: Bundle includes all necessary metadata<br />
-✅ No mounting required: Status file provided via environment variable<br />
-✅ Hook runs without slot access: Works even if slot can't be mounted<br />
-✅ Faster: No filesystem access delays<br />
-✅ More reliable: Fewer moving parts, fewer failure modes  </p>
-<p><strong>Critical for v0.5.0+</strong>: The hook now receives <code>RAUC_BUNDLE_STATUS_IMAGE</code> from the post-install handler, which extracts <code>status.image</code> from bundle extras. The hook NO LONGER MOUNTS SLOTS - it relies entirely on bundle extras for the new image's package status.</p>
-<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<h3 id="missing-bundle-extras">Missing Bundle Extras<a class="headerlink" href="#missing-bundle-extras" title="Permanent link">&para;</a></h3>
 <p>If bundle extras are missing or corrupted:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">extras</span> <span class="o">=</span> <span class="n">extract_bundle_extras</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">extras</span><span class="p">:</span>
@@ -3162,7 +3241,7 @@
 <p><strong>Note</strong>: Prefetch is OPTIONAL. If it fails or is skipped (--no-prefetch), the update still proceeds normally. Network access is required after reboot if prefetch didn't cache packages.</p>
 <h4 id="phase-1-hook-during-rauc-install-the-brain">Phase 1: Hook (During RAUC Install) - THE BRAIN<a class="headerlink" href="#phase-1-hook-during-rauc-install-the-brain" title="Permanent link">&para;</a></h4>
 <p><strong>Module</strong>: <code>hooks.py</code> → <code>run_slot_hook()</code></p>
-<p><strong>RAUC Integration</strong> (v0.5.0+):</p>
+<p><strong>RAUC Integration</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># /usr/lib/rauc/post-install-handler.sh</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">BUNDLE_STATUS_IMAGE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RAUC_BUNDLE_MOUNT_POINT</span><span class="si">}</span><span class="s2">/extras/opkg/status.image&quot;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
@@ -3172,7 +3251,6 @@
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>/usr/lib/calculinux-update/cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SLOT_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-<p><strong>Critical Change in v0.5.0</strong>: The hook NO LONGER MOUNTS SLOTS. It receives the status.image file path from bundle extras via the <code>RAUC_BUNDLE_STATUS_IMAGE</code> environment variable.</p>
 <p><strong>Process</strong> (ALL happens before reboot):</p>
 <ol>
 <li>Validate environment (<code>RAUC_SLOT_CLASS=rootfs</code>, <code>RAUC_BUNDLE_STATUS_IMAGE</code> provided)</li>
@@ -3241,6 +3319,18 @@
 <li><strong>Physical duplicates</strong>: Packages with actual files in the upper layer must be removed after reboot. If removed before reboot, OverlayFS creates whiteout files for ALL package files. If a second update follows immediately, these whiteouts temporarily hide critical libraries from the base image, potentially breaking system access during the update window.</li>
 <li><strong>Example</strong>: User installs SDL → Update 1 includes SDL in base → Update 2 follows immediately. If SDL is removed before reboot in Update 1, whiteouts hide SDL libraries during Update 2, breaking any program that needs SDL.</li>
 </ul>
+<p><strong>Config File Conflict Detection</strong> (Phase 4):</p>
+<p>After package reconciliation, the hook detects modified configuration files:</p>
+<ol>
+<li><strong>Read CONFFILES metadata</strong>: Load config file lists from <code>/var/lib/opkg/info/&lt;package&gt;.conffiles</code></li>
+<li><strong>Compare upper/lower layers</strong>: For each config file:</li>
+<li>Compute MD5 of upper layer file (user's modified version)</li>
+<li>Compute MD5 of lower layer file (new image version)</li>
+<li>If different, user has modified the config and it shadows the new version</li>
+<li><strong>Create <code>.dpkg-new</code> files</strong>: Copy lower layer version to <code>&lt;path&gt;.dpkg-new</code> in upper layer</li>
+<li><strong>Save state</strong>: Write modified conffiles list for post-reboot reporting</li>
+</ol>
+<p>This ensures users are aware when their config changes shadow new versions from the updated image.</p>
 <p><strong>OverlayFS Whiteout Cleanup</strong>:</p>
 <p>The hook cleans up two types of whiteouts after removing status-only duplicates:</p>
 <ol>
@@ -3293,6 +3383,7 @@
 <li>Updates opkg package feeds (<code>opkg update</code>)</li>
 <li>Executes pending reinstalls (preferring cached .ipk files)</li>
 <li>Executes pending upgrades</li>
+<li><strong>Reports modified config files</strong> for user review</li>
 <li>Cleans up state files</li>
 </ol>
 <p><strong>Key Implementation</strong> (v0.5.0):</p>
@@ -3304,7 +3395,7 @@
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="k">return</span> <span class="mi">0</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="c1"># If no pending operations, we&#39;re done</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> 
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">has_pending</span> <span class="o">=</span> <span class="p">(</span><span class="n">PENDING_REINSTALL_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>                   <span class="n">PENDING_UPGRADE_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>                   <span class="n">PENDING_DUPLICATES_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_pending</span><span class="p">:</span>
@@ -3332,9 +3423,19 @@
 <a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;some upgrades failed, leaving pending file for retry&quot;</span><span class="p">)</span>
 <a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>        <span class="c1"># Continue anyway</span>
 <a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>
-<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>    <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;post-reboot reconciliation complete&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>    <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>    <span class="c1"># Report modified config files</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>    <span class="n">_report_modified_conffiles</span><span class="p">()</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>    <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;post-reboot reconciliation complete&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>    <span class="k">return</span> <span class="mi">0</span>
 </code></pre></div>
+<p><strong>Config File Reporting</strong>:</p>
+<p>After all package operations complete, the service reports modified config files that need manual review. Users see output like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Modified config files detected (user changes shadow new image versions):
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Package: openssh-server
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  /etc/ssh/sshd_config -&gt; /etc/ssh/sshd_config.dpkg-new
+</code></pre></div>
+<p>Users can then review changes with <code>diff</code> or <code>vimdiff</code> and merge manually.</p>
 <p><strong>What Changed from v0.4.x</strong>:</p>
 <ul>
 <li>❌ Removed: Duplicate status pruning logic (now in hook only)</li>
@@ -3345,103 +3446,101 @@
 <li>✅ Kept: Rollback detection</li>
 </ul>
 <p><strong>Cache Preference</strong>: The system prefers prefetched <code>.ipk</code> files from <code>/var/cache/calculinux-update/prefetch/</code> for offline operation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_install_reinstall_pkg</span><span class="p">(</span><span class="n">pkg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">cached</span> <span class="o">=</span> <span class="n">_find_cached_package</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;reinstalling </span><span class="si">%s</span><span class="s2"> from cache&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">)</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="k">return</span> <span class="n">_run_opkg</span><span class="p">([</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">cached</span><span class="p">)])</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;reinstalling </span><span class="si">%s</span><span class="s2"> from feed&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">)</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="k">return</span> <span class="n">_run_opkg</span><span class="p">([</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_install_reinstall_pkg</span><span class="p">(</span><span class="n">pkg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">cached</span> <span class="o">=</span> <span class="n">_find_cached_package</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;reinstalling </span><span class="si">%s</span><span class="s2"> from cache&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="k">return</span> <span class="n">_run_opkg</span><span class="p">([</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">cached</span><span class="p">)])</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;reinstalling </span><span class="si">%s</span><span class="s2"> from feed&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="k">return</span> <span class="n">_run_opkg</span><span class="p">([</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span> <span class="n">pkg</span><span class="p">])</span>
 </code></pre></div>
 <h3 id="reconciliation-algorithm">Reconciliation Algorithm<a class="headerlink" href="#reconciliation-algorithm" title="Permanent link">&para;</a></h3>
 <p><strong>Module</strong>: <code>reconcile.py</code></p>
 <p><strong>Core Function</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReconcilePlan</span><span class="p">:</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Plan for reconciling overlay packages with new base image.&quot;&quot;&quot;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">status_only_duplicates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># Duplicates safe to remove immediately</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">duplicates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>              <span class="c1"># Physical duplicates (deferred to post-reboot)</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">reinstall</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>               <span class="c1"># Missing packages to reinstall</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">upgrade</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>                 <span class="c1"># Overlay packages to upgrade</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_reconcile_plan</span><span class="p">(</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="n">image_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="n">writable_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="n">current_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReconcilePlan</span><span class="p">:</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute what needs to change in writable status.&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReconcilePlan</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Plan for reconciling overlay packages with new base image.&quot;&quot;&quot;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">status_only_duplicates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># Duplicates safe to remove immediately</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">duplicates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>              <span class="c1"># Physical duplicates (deferred to post-reboot)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">reinstall</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>               <span class="c1"># Missing packages to reinstall</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">upgrade</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>                 <span class="c1"># Overlay packages to upgrade</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_reconcile_plan</span><span class="p">(</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">image_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="n">writable_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="n">current_status</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReconcilePlan</span><span class="p">:</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute what needs to change in writable status.&quot;&quot;&quot;</span>
 </code></pre></div>
 <p><strong>Algorithm</strong>:</p>
 <ol>
-<li>
-<p><strong>Identify all duplicates</strong> - packages in both writable and new image:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">new_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">image_status</span><span class="p">)}</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">all_duplicates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">writable_pkgs</span> <span class="o">&amp;</span> <span class="n">new_image_pkgs</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Split duplicates into two phases</strong> - based on upper layer presence:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">physical_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="k">if</span> <span class="n">has_files_in_upper</span><span class="p">(</span><span class="n">pkg</span><span class="p">):</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>        <span class="c1"># Has actual files - defer to post-reboot</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="n">physical_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>        <span class="c1"># Status-only - safe to remove now</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>        <span class="n">status_only_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Find missing packages</strong> - packages removed from new image:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">missing_from_new</span> <span class="o">=</span> <span class="n">old_image_pkgs</span> <span class="o">-</span> <span class="n">new_image_pkgs</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Only reinstall if writable packages depend on them</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">reinstall</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">missing_from_new</span><span class="p">:</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">pkg</span> <span class="ow">in</span> <span class="n">get_dependencies</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">writable_status</span><span class="p">):</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">reinstall</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Identify upgrades needed</strong> - overlay packages that may conflict:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">upgrade_packages</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">):</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">pkg_name</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="k">if</span> <span class="n">pkg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>  <span class="c1"># Not a duplicate</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="n">upgrade_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">)</span>
-</code></pre></div></p>
-</li>
+<li><strong>Identify all duplicates</strong> - packages in both writable and new image:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">writable_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">)}</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">new_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">image_status</span><span class="p">)}</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">all_duplicates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">writable_pkgs</span> <span class="o">&amp;</span> <span class="n">new_image_pkgs</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li><strong>Split duplicates into two phases</strong> - based on upper layer presence:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">status_only_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">physical_duplicates</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="k">if</span> <span class="n">has_files_in_upper</span><span class="p">(</span><span class="n">pkg</span><span class="p">):</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="c1"># Has actual files - defer to post-reboot</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="n">physical_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="c1"># Status-only - safe to remove now</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>        <span class="n">status_only_duplicates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li><strong>Find missing packages</strong> - packages removed from new image:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">old_image_pkgs</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">current_status</span><span class="p">)}</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">missing_from_new</span> <span class="o">=</span> <span class="n">old_image_pkgs</span> <span class="o">-</span> <span class="n">new_image_pkgs</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Only reinstall if writable packages depend on them</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">reinstall</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">missing_from_new</span><span class="p">:</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">pkg</span> <span class="ow">in</span> <span class="n">get_dependencies</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">writable_status</span><span class="p">):</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="n">reinstall</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li><strong>Identify upgrades needed</strong> - overlay packages that may conflict:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">upgrade_packages</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">load_status_entries</span><span class="p">(</span><span class="n">writable_status</span><span class="p">):</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="n">pkg_name</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">&quot;Package&quot;</span><span class="p">]</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="k">if</span> <span class="n">pkg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_duplicates</span><span class="p">:</span>  <span class="c1"># Not a duplicate</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="n">upgrade_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Why upgrade everything?</strong>: Overlay packages were compiled against the old base. The new base may have updated shared libraries or APIs. Upgrading ensures ABI compatibility.</p>
 <h3 id="status-file-parsing">Status File Parsing<a class="headerlink" href="#status-file-parsing" title="Permanent link">&para;</a></h3>
 <p><strong>Module</strong>: <code>status.py</code></p>
 <p><strong>Format</strong>: OPKG status files use a paragraph-based format (like Debian control files):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Package: foo
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Version: 1.0-r0
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Depends: libbar (&gt;= 2.0)
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>Status: install user installed
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Architecture: cortexa9t2hf-neon
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>Package: bar
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Package: foo
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Version: 1.0-r0
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Depends: libbar (&gt;= 2.0)
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Status: install user installed
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Architecture: cortexa9t2hf-neon
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Package: bar
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>...
 </code></pre></div>
 <p><strong>Key Functions</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_status_entries</span><span class="p">(</span><span class="n">status_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">StatusEntry</span><span class="p">]:</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse status file into list of package entries.&quot;&quot;&quot;</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="c1"># Returns list of dicts, one per package</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">write_status_entries</span><span class="p">(</span><span class="n">status_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">StatusEntry</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Write entries back to status file.&quot;&quot;&quot;</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="c1"># Preserves original format and field order</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">_iter_paragraphs</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">TextIO</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over paragraph blocks in status file.&quot;&quot;&quot;</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="c1"># Handles blank lines, comments, continuations</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_status_entries</span><span class="p">(</span><span class="n">status_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">StatusEntry</span><span class="p">]:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse status file into list of package entries.&quot;&quot;&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="c1"># Returns list of dicts, one per package</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">write_status_entries</span><span class="p">(</span><span class="n">status_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">StatusEntry</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Write entries back to status file.&quot;&quot;&quot;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="c1"># Preserves original format and field order</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">_iter_paragraphs</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="n">TextIO</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over paragraph blocks in status file.&quot;&quot;&quot;</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="c1"># Handles blank lines, comments, continuations</span>
 </code></pre></div>
 <p><strong>Robustness</strong>:</p>
 <ul>
@@ -3450,23 +3549,109 @@
 <li>Respects blank lines between entries</li>
 <li>Case-insensitive field lookup</li>
 </ul>
+<h3 id="config-file-conflict-detection">Config File Conflict Detection<a class="headerlink" href="#config-file-conflict-detection" title="Permanent link">&para;</a></h3>
+<p><strong>Module</strong>: <code>conffiles.py</code></p>
+<p><strong>Purpose</strong>: Detect when user-modified configuration files shadow new versions from an updated image.</p>
+<p><strong>The Problem</strong>:</p>
+<p>When updating with RAUC, config files in the lower OverlayFS layer (read-only base image) are replaced, but user-modified copies in the upper layer persist and shadow the new versions. OPKG's CONFFILES mechanism only works during package upgrades, not image replacements.</p>
+<p><strong>The Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">calculinux_update.opkg.conffiles</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">ConffileInfo</span><span class="p">,</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="n">get_package_conffiles</span><span class="p">,</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">detect_modified_conffiles</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">create_dpkg_new_files</span><span class="p">,</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># Get conffiles for all packages in new image</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="n">conffiles</span> <span class="o">=</span> <span class="n">get_all_conffiles</span><span class="p">(</span><span class="n">image_packages</span><span class="p">,</span> <span class="s2">&quot;/var/lib/opkg/info&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># Detect which ones are modified</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="n">modified</span> <span class="o">=</span> <span class="n">detect_modified_conffiles</span><span class="p">(</span><span class="n">image_packages</span><span class="p">,</span> <span class="n">overlay_mount</span><span class="o">=</span><span class="s2">&quot;/data/overlay/etc&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="c1"># Create .dpkg-new files for manual review</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="n">create_dpkg_new_files</span><span class="p">(</span><span class="n">modified</span><span class="p">,</span> <span class="n">overlay_mount</span><span class="o">=</span><span class="s2">&quot;/data/overlay/etc&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Key Functions</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ConffileInfo</span><span class="p">:</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># Absolute path to config file</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">package</span><span class="p">:</span> <span class="nb">str</span>        <span class="c1"># Package name</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="n">md5_from_meta</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># MD5 from .conffiles file</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_package_conffiles</span><span class="p">(</span><span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">info_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ConffileInfo</span><span class="p">]:</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Read CONFFILES metadata for a package from /var/lib/opkg/info/.&quot;&quot;&quot;</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="c1"># Parses &lt;package&gt;.conffiles format:</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="c1"># /path/to/file [md5sum]</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">detect_modified_conffiles</span><span class="p">(</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>    <span class="n">image_packages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>    <span class="n">overlay_mount</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/data/overlay/etc&quot;</span><span class="p">,</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ConffileInfo</span><span class="p">]:</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare config files between upper/lower OverlayFS layers.&quot;&quot;&quot;</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>    <span class="c1"># Returns files where upper MD5 != lower MD5</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_dpkg_new_files</span><span class="p">(</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>    <span class="n">modified_conffiles</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ConffileInfo</span><span class="p">],</span>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>    <span class="n">overlay_mount</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>    <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Copy lower layer versions to .dpkg-new files in upper layer.&quot;&quot;&quot;</span>
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>    <span class="c1"># Creates &lt;path&gt;.dpkg-new for each modified file</span>
+</code></pre></div>
+<p><strong>CONFFILES Format</strong>:</p>
+<p>OPKG packages declare config files in <code>/var/lib/opkg/info/&lt;package&gt;.conffiles</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Comment lines ignored</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>/etc/ssh/sshd_config<span class="w"> </span>d41d8cd98f00b204e9800998ecf8427e
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>/etc/ssh/ssh_config
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>/etc/default/ssh
+</code></pre></div>
+<p>Each line:</p>
+<ul>
+<li>Absolute path to config file</li>
+<li>Optional MD5 checksum (newer OPKG versions)</li>
+<li>Comments (lines starting with <code>#</code>) are ignored</li>
+</ul>
+<p><strong>OverlayFS Access</strong>:</p>
+<p>The module accesses both layers directly:</p>
+<ul>
+<li>Upper layer: <code>/data/overlay/&lt;dir&gt;/upper/&lt;path&gt;</code> (user's version)</li>
+<li>Lower layer: <code>/data/overlay/&lt;dir&gt;/lower/&lt;path&gt;</code> (new image version)</li>
+</ul>
+<p>This allows MD5 comparison without mounting slots.</p>
+<p><strong>Integration</strong>:</p>
+<p>Called during RAUC hook (Phase 4) after package reconciliation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># In hooks.py run_slot_hook()</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">modified_conffiles</span> <span class="o">=</span> <span class="n">detect_modified_conffiles</span><span class="p">(</span><span class="n">image_packages</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">create_dpkg_new_files</span><span class="p">(</span><span class="n">modified_conffiles</span><span class="p">)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">_atomic_write</span><span class="p">(</span><span class="n">MODIFIED_CONFFILES_FILE</span><span class="p">,</span> <span class="n">modified_conffiles</span><span class="p">)</span>  <span class="c1"># For post-reboot reporting</span>
+</code></pre></div>
+<p><strong>Testing</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>pytest<span class="w"> </span>tests/test_opkg_conffiles.py<span class="w"> </span>-v
+</code></pre></div>
+<p>Test coverage includes:</p>
+<ul>
+<li>MD5 computation (including error cases)</li>
+<li>CONFFILES parsing (with/without checksums, comments, relative paths)</li>
+<li>Modified file detection (various scenarios)</li>
+<li><code>.dpkg-new</code> file creation (including dry-run mode)</li>
+</ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p><strong>Module</strong>: <code>config.py</code></p>
 <p><strong>File</strong>: <code>/etc/calculinux-update.toml</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ChannelConfig</span><span class="p">:</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">enable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">mirror_base_url</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChannelConfig</span><span class="p">]</span>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="n">cache_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/var/cache/calculinux-update&quot;</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
-<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AppConfig</span><span class="p">:</span>
-<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Load config from /etc or fallback to package defaults.&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ChannelConfig</span><span class="p">:</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="n">enable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="n">mirror_base_url</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChannelConfig</span><span class="p">]</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>    <span class="n">cache_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/var/cache/calculinux-update&quot;</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AppConfig</span><span class="p">:</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Load config from /etc or fallback to package defaults.&quot;&quot;&quot;</span>
 </code></pre></div>
 <p><strong>Configuration Resolution</strong>:</p>
 <ol>
@@ -3477,49 +3662,49 @@
 <h2 id="mirror-browsing">Mirror Browsing<a class="headerlink" href="#mirror-browsing" title="Permanent link">&para;</a></h2>
 <p><strong>Module</strong>: <code>mirror.py</code></p>
 <p><strong>Structure</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BundleInfo</span><span class="p">:</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="n">sha256</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">list_bundles_for_channel</span><span class="p">(</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="n">channel</span><span class="p">:</span> <span class="n">ChannelConfig</span><span class="p">,</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BundleInfo</span><span class="p">]:</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;List available bundles from mirror channel.&quot;&quot;&quot;</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="c1"># Fetches channel/bundles.txt</span>
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>    <span class="c1"># Parses bundle metadata</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>    <span class="c1"># Sorts by timestamp (newest first)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BundleInfo</span><span class="p">:</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="n">sha256</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">list_bundles_for_channel</span><span class="p">(</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="n">channel</span><span class="p">:</span> <span class="n">ChannelConfig</span><span class="p">,</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BundleInfo</span><span class="p">]:</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;List available bundles from mirror channel.&quot;&quot;&quot;</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="c1"># Fetches channel/bundles.txt</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>    <span class="c1"># Parses bundle metadata</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>    <span class="c1"># Sorts by timestamp (newest first)</span>
 </code></pre></div>
 <p><strong>Bundles Metadata</strong> (<code>bundles.txt</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># timestamp filename size sha256
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>1732147200 calculinux-bundle-20241120.raucb 123456789 abc123...
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>1731542400 calculinux-bundle-20241113.raucb 123456780 def456...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># timestamp filename size sha256</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="m">1732147200</span><span class="w"> </span>calculinux-bundle-20241120.raucb<span class="w"> </span><span class="m">123456789</span><span class="w"> </span>abc123...
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="m">1731542400</span><span class="w"> </span>calculinux-bundle-20241113.raucb<span class="w"> </span><span class="m">123456780</span><span class="w"> </span>def456...
 </code></pre></div>
 <p><strong>Download</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">download_bundle</span><span class="p">(</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="n">bundle</span><span class="p">:</span> <span class="n">BundleInfo</span><span class="p">,</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="n">channel</span><span class="p">:</span> <span class="n">ChannelConfig</span><span class="p">,</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">verify_checksum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Download bundle from mirror with optional verification.&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">download_bundle</span><span class="p">(</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="n">bundle</span><span class="p">:</span> <span class="n">BundleInfo</span><span class="p">,</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="n">channel</span><span class="p">:</span> <span class="n">ChannelConfig</span><span class="p">,</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="n">verify_checksum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Download bundle from mirror with optional verification.&quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="installation-flow">Installation Flow<a class="headerlink" href="#installation-flow" title="Permanent link">&para;</a></h2>
 <p><strong>Module</strong>: <code>installer.py</code></p>
 <p><strong>Main Orchestrator</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_update_interactive</span><span class="p">(</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">AppConfig</span><span class="p">,</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="n">channel_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">bundle_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">prefetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">require_confirmation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Interactive update installation with prefetch.&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_update_interactive</span><span class="p">(</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">AppConfig</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">channel_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">bundle_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    <span class="n">prefetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="n">require_confirmation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Interactive update installation with prefetch.&quot;&quot;&quot;</span>
 </code></pre></div>
 <p><strong>Process</strong>:</p>
 <ol>
@@ -3532,87 +3717,87 @@
 <li><strong>Invoke RAUC</strong> - <code>rauc install &lt;bundle&gt;</code></li>
 </ol>
 <p><strong>RAUC Integration</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_with_rauc</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Install bundle using RAUC.&quot;&quot;&quot;</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>        <span class="p">[</span><span class="s2">&quot;rauc&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="n">bundle_path</span><span class="p">],</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>        <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="p">)</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_with_rauc</span><span class="p">(</span><span class="n">bundle_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Install bundle using RAUC.&quot;&quot;&quot;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>        <span class="p">[</span><span class="s2">&quot;rauc&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="n">bundle_path</span><span class="p">],</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>        <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    <span class="p">)</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
 </code></pre></div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <h3 id="test-structure">Test Structure<a class="headerlink" href="#test-structure" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>tests/
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>├── test_cli.py             # CLI argument parsing and commands
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>├── test_config.py          # Configuration loading
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>├── test_mirror.py          # Mirror browsing and downloads
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>├── test_installer.py       # Installation orchestration
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>├── test_opkg_status.py     # Status file parsing
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>├── test_opkg_reconcile.py  # Reconciliation algorithm
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>├── test_hooks.py           # Hook and post-reboot logic
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>└── test_prefetch.py        # Package prefetch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>tests/
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>├── test_cli.py             # CLI argument parsing and commands
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>├── test_config.py          # Configuration loading
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>├── test_mirror.py          # Mirror browsing and downloads
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>├── test_installer.py       # Installation orchestration
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>├── test_opkg_status.py     # Status file parsing
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>├── test_opkg_reconcile.py  # Reconciliation algorithm
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>├── test_hooks.py           # Hook and post-reboot logic
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>└── test_prefetch.py        # Package prefetch
 </code></pre></div>
 <h3 id="key-testing-principles">Key Testing Principles<a class="headerlink" href="#key-testing-principles" title="Permanent link">&para;</a></h3>
 <p><strong>Avoid Brittleness</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># ❌ BAD: Too specific, fragile</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_find_booted_device</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;/dev/mmcblk0p1&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="n">device</span> <span class="o">=</span> <span class="n">find_booted_device</span><span class="p">()</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">assert</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;/dev/mmcblk0p1&quot;</span>  <span class="c1"># Breaks if device changes</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># ✅ GOOD: Checks behavior, not exact values</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_find_booted_device</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;/dev/mmcblk0p1&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="n">device</span> <span class="o">=</span> <span class="n">find_booted_device</span><span class="p">()</span>
-<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="k">assert</span> <span class="n">device</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/dev/&quot;</span><span class="p">)</span>  <span class="c1"># Flexible</span>
-<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># ❌ BAD: Too specific, fragile</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_find_booted_device</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;/dev/mmcblk0p1&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="n">device</span> <span class="o">=</span> <span class="n">find_booted_device</span><span class="p">()</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="k">assert</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">&quot;/dev/mmcblk0p1&quot;</span>  <span class="c1"># Breaks if device changes</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="c1"># ✅ GOOD: Checks behavior, not exact values</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_find_booted_device</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;/dev/mmcblk0p1&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="n">device</span> <span class="o">=</span> <span class="n">find_booted_device</span><span class="p">()</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    <span class="k">assert</span> <span class="n">device</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/dev/&quot;</span><span class="p">)</span>  <span class="c1"># Flexible</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </code></pre></div>
 <p><strong>Test Behavior, Not Implementation</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># ❌ BAD: Tests exact argument order</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_install_pkg</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">install_package</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">assert_called_with</span><span class="p">([</span><span class="s2">&quot;opkg&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">])</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="c1"># ✅ GOOD: Tests that package is installed</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_install_pkg</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="n">install_package</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="k">assert</span> <span class="s2">&quot;install&quot;</span> <span class="ow">in</span> <span class="n">args</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="k">assert</span> <span class="s2">&quot;foo&quot;</span> <span class="ow">in</span> <span class="n">args</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># ❌ BAD: Tests exact argument order</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_install_pkg</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="n">install_package</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">assert_called_with</span><span class="p">([</span><span class="s2">&quot;opkg&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">])</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1"># ✅ GOOD: Tests that package is installed</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_install_pkg</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    <span class="n">install_package</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>    <span class="k">assert</span> <span class="s2">&quot;install&quot;</span> <span class="ow">in</span> <span class="n">args</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    <span class="k">assert</span> <span class="s2">&quot;foo&quot;</span> <span class="ow">in</span> <span class="n">args</span>
 </code></pre></div>
 <h3 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># All tests with coverage</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>pytest<span class="w"> </span>--cov<span class="o">=</span>calculinux_update<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Specific module</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>pytest<span class="w"> </span>tests/test_hooks.py<span class="w"> </span>-v
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># Coverage threshold (CI)</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>pytest<span class="w"> </span>--cov<span class="o">=</span>calculinux_update<span class="w"> </span>--cov-fail-under<span class="o">=</span><span class="m">80</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># All tests with coverage</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>pytest<span class="w"> </span>--cov<span class="o">=</span>calculinux_update<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># Specific module</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>pytest<span class="w"> </span>tests/test_hooks.py<span class="w"> </span>-v
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="c1"># Coverage threshold (CI)</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>pytest<span class="w"> </span>--cov<span class="o">=</span>calculinux_update<span class="w"> </span>--cov-fail-under<span class="o">=</span><span class="m">80</span>
 </code></pre></div>
 <p><strong>Current Coverage</strong>: ~84% (above 80% threshold)</p>
 <h3 id="mocking-external-commands">Mocking External Commands<a class="headerlink" href="#mocking-external-commands" title="Permanent link">&para;</a></h3>
 <p><strong>RAUC</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;subprocess.run&quot;</span><span class="p">)</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_rauc_install</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">returncode</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">install_with_rauc</span><span class="p">(</span><span class="s2">&quot;/tmp/bundle.raucb&quot;</span><span class="p">)</span>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">True</span>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="s2">&quot;rauc&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">call</span><span class="p">)</span> <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">call_args_list</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;subprocess.run&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_rauc_install</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">returncode</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">install_with_rauc</span><span class="p">(</span><span class="s2">&quot;/tmp/bundle.raucb&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">True</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="s2">&quot;rauc&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">call</span><span class="p">)</span> <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">call_args_list</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>OPKG</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;subprocess.run&quot;</span><span class="p">)</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_opkg_update</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">returncode</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;Updated 3 feeds&quot;</span><span class="p">)</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="n">run_opkg_command</span><span class="p">([</span><span class="s2">&quot;update&quot;</span><span class="p">])</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="k">assert</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">called</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;subprocess.run&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_opkg_update</span><span class="p">(</span><span class="n">mock_run</span><span class="p">):</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="n">mock_run</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">returncode</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="s2">&quot;Updated 3 feeds&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="n">run_opkg_command</span><span class="p">([</span><span class="s2">&quot;update&quot;</span><span class="p">])</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="k">assert</span> <span class="n">mock_run</span><span class="o">.</span><span class="n">called</span>
 </code></pre></div>
 <h2 id="integration-points">Integration Points<a class="headerlink" href="#integration-points" title="Permanent link">&para;</a></h2>
 <h3 id="rauc">RAUC<a class="headerlink" href="#rauc" title="Permanent link">&para;</a></h3>
 <p><strong>Configuration</strong>: <code>/etc/rauc/system.conf</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">[hooks]</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="na">post-install</span><span class="o">=</span><span class="s">/usr/bin/cup-hook</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">[hooks]</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="na">post-install</span><span class="o">=</span><span class="s">/usr/bin/cup-hook</span>
 </code></pre></div>
 <p><strong>Hook Environment Variables</strong>:</p>
 <ul>
@@ -3631,9 +3816,9 @@
 </ul>
 <h3 id="opkg">OPKG<a class="headerlink" href="#opkg" title="Permanent link">&para;</a></h3>
 <p><strong>Configuration</strong>: <code>/etc/opkg/opkg.conf</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>src/gz calculinux http://feeds.example.com/release
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>dest root /
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>lists_dir ext /var/lib/opkg/lists
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>src/gz calculinux http://feeds.example.com/release
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>dest root /
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>lists_dir ext /var/lib/opkg/lists
 </code></pre></div>
 <p><strong>Key Paths</strong> (v0.5.1):</p>
 <ul>
@@ -3650,56 +3835,56 @@
 <li><code>update-state.pre-update-writable</code> - Pre-update writable status backup (for rollback)</li>
 <li><code>update-state.boot-id</code> - Boot ID for rollback detection</li>
 </ul>
-<h2 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">&para;</a></h2>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
 <h3 id="prefetch-failures">Prefetch Failures<a class="headerlink" href="#prefetch-failures" title="Permanent link">&para;</a></h3>
 <p><strong>Scenario</strong>: opkg not configured, no network, missing feeds</p>
 <p><strong>Handling</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">prefetch_for_bundle</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>        <span class="c1"># Attempt download</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>        <span class="k">return</span> <span class="n">downloader</span><span class="o">.</span><span class="n">download_packages</span><span class="p">(</span><span class="n">packages</span><span class="p">)</span>
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefetch failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Continuing without prefetch - network required after reboot&quot;</span><span class="p">)</span>
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>        <span class="k">return</span> <span class="kc">False</span>
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    <span class="c1"># Install proceeds regardless</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">prefetch_for_bundle</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>        <span class="c1"># Attempt download</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>        <span class="k">return</span> <span class="n">downloader</span><span class="o">.</span><span class="n">download_packages</span><span class="p">(</span><span class="n">packages</span><span class="p">)</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prefetch failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Continuing without prefetch - network required after reboot&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>    <span class="c1"># Install proceeds regardless</span>
 </code></pre></div>
 <p><strong>User Impact</strong>: Post-reboot reconciliation requires network if prefetch fails.</p>
 <h3 id="hook-failures">Hook Failures<a class="headerlink" href="#hook-failures" title="Permanent link">&para;</a></h3>
 <p><strong>Scenario</strong>: Can't mount slot, status parsing fails, write failures</p>
 <p><strong>Handling</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_slot_hook</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>        <span class="c1"># Mount, reconcile, prune, queue</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>        <span class="k">return</span> <span class="kc">True</span>
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hook failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Reconciliation may be incomplete&quot;</span><span class="p">)</span>
-<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>        <span class="k">return</span> <span class="kc">False</span>
-<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    <span class="c1"># RAUC install continues (slot is valid even if hook fails)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_slot_hook</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>        <span class="c1"># Mount, reconcile, prune, queue</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>        <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hook failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Reconciliation may be incomplete&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>    <span class="c1"># RAUC install continues (slot is valid even if hook fails)</span>
 </code></pre></div>
 <p><strong>User Impact</strong>: May have duplicate packages or conflicts after reboot. Manual intervention required (<code>opkg remove &lt;pkg&gt;</code>).</p>
 <h3 id="post-reboot-failures">Post-Reboot Failures<a class="headerlink" href="#post-reboot-failures" title="Permanent link">&para;</a></h3>
 <p><strong>Scenario</strong>: Network unavailable, missing packages, opkg failures</p>
 <p><strong>Handling</strong> (v0.5.0):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">postreboot_entrypoint</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="c1"># Check for rollback first</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="k">if</span> <span class="n">_handle_rollback</span><span class="p">():</span>
-<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    <span class="c1"># If no pending operations, we&#39;re done</span>
-<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_pending</span><span class="p">:</span>
-<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;no pending operations&quot;</span><span class="p">)</span>
-<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
-<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>        <span class="c1"># Update feeds, reinstall, upgrade</span>
-<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>        <span class="n">_cleanup_update_state</span><span class="p">()</span>  <span class="c1"># Only on success</span>
-<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>        <span class="k">return</span> <span class="mi">0</span>
-<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-reboot failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>        <span class="c1"># Leave pending files for retry</span>
-<a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a>        <span class="k">return</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">postreboot_entrypoint</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>    <span class="c1"># Check for rollback first</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="k">if</span> <span class="n">_handle_rollback</span><span class="p">():</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>    <span class="c1"># If no pending operations, we&#39;re done</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_pending</span><span class="p">:</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;no pending operations&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>        <span class="c1"># Update feeds, reinstall, upgrade</span>
+<a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>        <span class="n">_cleanup_update_state</span><span class="p">()</span>  <span class="c1"># Only on success</span>
+<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-reboot failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a>        <span class="c1"># Leave pending files for retry</span>
+<a id="__codelineno-42-18" name="__codelineno-42-18" href="#__codelineno-42-18"></a>        <span class="k">return</span> <span class="mi">1</span>
 </code></pre></div>
 <p><strong>User Impact</strong>: Service fails, pending files remain. User can:</p>
 <ol>
@@ -3746,71 +3931,71 @@
 <h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
 <h3 id="enable-debug-logging">Enable Debug Logging<a class="headerlink" href="#enable-debug-logging" title="Permanent link">&para;</a></h3>
 <p>Set <code>LOGLEVEL</code> environment variable:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup<span class="w"> </span>install
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1"># Hook (requires bundle extras)</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_BUNDLE_STATUS_IMAGE</span><span class="o">=</span>/path/to/bundle/extras/opkg/status.image
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_SLOT_CLASS</span><span class="o">=</span>rootfs
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span>rootfs.1
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
-<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="c1"># Post-reboot</span>
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup-postreboot
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup<span class="w"> </span>install
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="c1"># Hook (requires bundle extras)</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_BUNDLE_STATUS_IMAGE</span><span class="o">=</span>/path/to/bundle/extras/opkg/status.image
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_SLOT_CLASS</span><span class="o">=</span>rootfs
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span>rootfs.1
+<a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>
+<a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a><span class="c1"># Post-reboot</span>
+<a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a><span class="nv">LOGLEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span>cup-postreboot
 </code></pre></div>
 <h3 id="inspect-status-files-v050">Inspect Status Files (v0.5.0)<a class="headerlink" href="#inspect-status-files-v050" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># Current writable status</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>cat<span class="w"> </span>/var/lib/opkg/status
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
-<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="c1"># Base image status</span>
-<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>cat<span class="w"> </span>/var/lib/opkg/status.image
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
-<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># Pending operations (new location)</span>
-<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>cat<span class="w"> </span>/var/lib/calculinux-update/update-state.pending-reinstalls
-<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>cat<span class="w"> </span>/var/lib/calculinux-update/update-state.pending-upgrades
-<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>
-<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="c1"># Hook completion marker</span>
-<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>cat<span class="w"> </span>/var/lib/calculinux-update/status-pruned
-<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>
-<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a><span class="c1"># Prefetched packages</span>
-<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a>ls<span class="w"> </span>-lh<span class="w"> </span>/var/cache/calculinux-update/prefetch/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1"># Current writable status</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>cat<span class="w"> </span>/var/lib/opkg/status
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="c1"># Base image status</span>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>cat<span class="w"> </span>/var/lib/opkg/status.image
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="c1"># Pending operations (new location)</span>
+<a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>cat<span class="w"> </span>/var/lib/calculinux-update/update-state.pending-reinstalls
+<a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>cat<span class="w"> </span>/var/lib/calculinux-update/update-state.pending-upgrades
+<a id="__codelineno-44-10" name="__codelineno-44-10" href="#__codelineno-44-10"></a>
+<a id="__codelineno-44-11" name="__codelineno-44-11" href="#__codelineno-44-11"></a><span class="c1"># Hook completion marker</span>
+<a id="__codelineno-44-12" name="__codelineno-44-12" href="#__codelineno-44-12"></a>cat<span class="w"> </span>/var/lib/calculinux-update/status-pruned
+<a id="__codelineno-44-13" name="__codelineno-44-13" href="#__codelineno-44-13"></a>
+<a id="__codelineno-44-14" name="__codelineno-44-14" href="#__codelineno-44-14"></a><span class="c1"># Prefetched packages</span>
+<a id="__codelineno-44-15" name="__codelineno-44-15" href="#__codelineno-44-15"></a>ls<span class="w"> </span>-lh<span class="w"> </span>/var/cache/calculinux-update/prefetch/
 </code></pre></div>
 <h3 id="manual-reconciliation">Manual Reconciliation<a class="headerlink" href="#manual-reconciliation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># Simulate hook (requires bundle extras setup)</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_BUNDLE_STATUS_IMAGE</span><span class="o">=</span>/path/to/status.image
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_SLOT_CLASS</span><span class="o">=</span>rootfs
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>sudo<span class="w"> </span>cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span>rootfs.1
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="c1"># Simulate post-reboot</span>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>sudo<span class="w"> </span>cup-postreboot
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="c1"># Or via systemd</span>
-<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>cup-postreboot.service
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>
-<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="c1"># Manually prune duplicates</span>
-<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>remove<span class="w"> </span>&lt;package&gt;
-<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>
-<a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="c1"># Manually upgrade all</span>
-<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>upgrade
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="c1"># Simulate hook (requires bundle extras setup)</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_BUNDLE_STATUS_IMAGE</span><span class="o">=</span>/path/to/status.image
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RAUC_SLOT_CLASS</span><span class="o">=</span>rootfs
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>sudo<span class="w"> </span>cup-hook<span class="w"> </span>slot-post-install<span class="w"> </span>rootfs.1
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="c1"># Simulate post-reboot</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>sudo<span class="w"> </span>cup-postreboot
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>
+<a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="c1"># Or via systemd</span>
+<a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>cup-postreboot.service
+<a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a>
+<a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a><span class="c1"># Manually prune duplicates</span>
+<a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>remove<span class="w"> </span>&lt;package&gt;
+<a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a>
+<a id="__codelineno-45-15" name="__codelineno-45-15" href="#__codelineno-45-15"></a><span class="c1"># Manually upgrade all</span>
+<a id="__codelineno-45-16" name="__codelineno-45-16" href="#__codelineno-45-16"></a>sudo<span class="w"> </span>opkg<span class="w"> </span>upgrade
 </code></pre></div>
 <h3 id="test-reconciliation-plan-v050">Test Reconciliation Plan (v0.5.0)<a class="headerlink" href="#test-reconciliation-plan-v050" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">calculinux_update.opkg.status</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_package_names</span>
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">calculinux_update.opkg.reconcile</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_reconcile_plan</span>
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="c1"># Load status files</span>
-<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="n">image_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/new/status.image&quot;</span><span class="p">)</span>
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="n">writable_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/var/lib/opkg/status&quot;</span><span class="p">)</span>
-<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="n">current_image_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/var/lib/opkg/status.image&quot;</span><span class="p">)</span>
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="c1"># Compute plan</span>
-<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="n">plan</span> <span class="o">=</span> <span class="n">compute_reconcile_plan</span><span class="p">(</span>
-<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>    <span class="n">image_status</span><span class="o">=</span><span class="n">image_status</span><span class="p">,</span>
-<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>    <span class="n">writable_status</span><span class="o">=</span><span class="n">writable_status</span><span class="p">,</span>
-<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>    <span class="n">current_status</span><span class="o">=</span><span class="n">current_image_status</span><span class="p">,</span>
-<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a><span class="p">)</span>
-<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>
-<a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicates to remove: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">duplicates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Packages to reinstall: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">reinstall</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Packages to upgrade: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">upgrade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">calculinux_update.opkg.status</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_package_names</span>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">calculinux_update.opkg.reconcile</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_reconcile_plan</span>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="c1"># Load status files</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="n">image_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/new/status.image&quot;</span><span class="p">)</span>
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="n">writable_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/var/lib/opkg/status&quot;</span><span class="p">)</span>
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="n">current_image_status</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/var/lib/opkg/status.image&quot;</span><span class="p">)</span>
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a>
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="c1"># Compute plan</span>
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="n">plan</span> <span class="o">=</span> <span class="n">compute_reconcile_plan</span><span class="p">(</span>
+<a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a>    <span class="n">image_status</span><span class="o">=</span><span class="n">image_status</span><span class="p">,</span>
+<a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a>    <span class="n">writable_status</span><span class="o">=</span><span class="n">writable_status</span><span class="p">,</span>
+<a id="__codelineno-46-14" name="__codelineno-46-14" href="#__codelineno-46-14"></a>    <span class="n">current_status</span><span class="o">=</span><span class="n">current_image_status</span><span class="p">,</span>
+<a id="__codelineno-46-15" name="__codelineno-46-15" href="#__codelineno-46-15"></a><span class="p">)</span>
+<a id="__codelineno-46-16" name="__codelineno-46-16" href="#__codelineno-46-16"></a>
+<a id="__codelineno-46-17" name="__codelineno-46-17" href="#__codelineno-46-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicates to remove: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">duplicates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-46-18" name="__codelineno-46-18" href="#__codelineno-46-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Packages to reinstall: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">reinstall</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-46-19" name="__codelineno-46-19" href="#__codelineno-46-19"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Packages to upgrade: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">upgrade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3843,7 +4028,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2025 05:52:15 UTC">November 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
   </span>
 
     

@@ -1487,6 +1487,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../user-guide/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
@@ -1696,6 +1752,34 @@
     
   
     Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
   
 
     
@@ -2893,14 +2977,18 @@
 <li><strong>Power on</strong> the device</li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a class="headerlink" href="#what-to-expect" title="Permanent link">&para;</a></h3>
-<p><strong>Initial boot timing</strong>:
-- First boot: 30-60 seconds
-- Subsequent boots: 15-30 seconds</p>
-<p><strong>Visual indicators</strong>:
-- Power LED should light up
-- Display may show boot messages
-- Initial splash screen
-- Login prompt (console-only, no GUI)</p>
+<p><strong>Initial boot timing</strong>:</p>
+<ul>
+<li>First boot: 30-60 seconds</li>
+<li>Subsequent boots: 15-30 seconds</li>
+</ul>
+<p><strong>Visual indicators</strong>:</p>
+<ul>
+<li>Power LED should light up</li>
+<li>Display may show boot messages</li>
+<li>Initial splash screen</li>
+<li>Login prompt (console-only, no GUI)</li>
+</ul>
 <h3 id="boot-messages">Boot Messages<a class="headerlink" href="#boot-messages" title="Permanent link">&para;</a></h3>
 <p>You should see:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[    0.000000] Booting Linux on physical CPU 0x0
@@ -2920,18 +3008,24 @@
 </div>
 <h3 id="troubleshooting-boot-issues">Troubleshooting Boot Issues<a class="headerlink" href="#troubleshooting-boot-issues" title="Permanent link">&para;</a></h3>
 <p>If the system doesn't boot:</p>
-<p><strong>No display activity</strong>:
-- Check power supply (try different cable/adapter)
-- Verify SD card is inserted correctly
-- See <a href="../../troubleshooting/boot-problems/">Boot Problems</a></p>
-<p><strong>Boots but hangs</strong>:
-- Wait 2-3 minutes (first boot may take longer)
-- Check SD card integrity
-- Try reflashing the image</p>
-<p><strong>Display shows errors</strong>:
-- Note the error messages
-- Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a>
-- Search forum for similar issues</p>
+<p><strong>No display activity</strong>:</p>
+<ul>
+<li>Check power supply (try different cable/adapter)</li>
+<li>Verify SD card is inserted correctly</li>
+<li>See <a href="../../troubleshooting/boot-problems/">Boot Problems</a></li>
+</ul>
+<p><strong>Boots but hangs</strong>:</p>
+<ul>
+<li>Wait 2-3 minutes (first boot may take longer)</li>
+<li>Check SD card integrity</li>
+<li>Try reflashing the image</li>
+</ul>
+<p><strong>Display shows errors</strong>:</p>
+<ul>
+<li>Note the error messages</li>
+<li>Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a></li>
+<li>Search forum for similar issues</li>
+</ul>
 <h2 id="step-5-initial-login">Step 5: Initial Login<a class="headerlink" href="#step-5-initial-login" title="Permanent link">&para;</a></h2>
 <p>After successful boot, you'll see a login prompt.</p>
 <div class="admonition info">
@@ -3084,12 +3178,14 @@
 <li>Ask in community chat</li>
 <li>Open <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub issue</a></li>
 </ol>
-<p>Include in your help request:
-- Image variant and version
-- SD card brand/size
-- Luckfox Lyra version (RAM, NAND)
-- Exact error messages
-- What you've already tried</p>
+<p>Include in your help request:</p>
+<ul>
+<li>Image variant and version</li>
+<li>SD card brand/size</li>
+<li>Luckfox Lyra version (RAM, NAND)</li>
+<li>Exact error messages</li>
+<li>What you've already tried</li>
+</ul>
 
 
 
@@ -3112,7 +3208,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 20, 2025 19:19:17 UTC">November 20, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
   </span>
 
     

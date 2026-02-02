@@ -834,6 +834,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#usb-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Networking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#wifi-setup-usb-adapter-required" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1328,6 +1339,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../user-guide/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
@@ -1537,6 +1604,34 @@
     
   
     Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Yocto SDK
   
 
     
@@ -2232,6 +2327,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#usb-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Networking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#wifi-setup-usb-adapter-required" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2419,18 +2525,22 @@
 <li><strong>Wait for boot</strong> (30-60 seconds first time)</li>
 </ol>
 <h3 id="what-to-expect">What to Expect<a class="headerlink" href="#what-to-expect" title="Permanent link">&para;</a></h3>
-<p><strong>Boot Process</strong>:
-- Power LED lights up
-- Boot messages appear on display
-- System initialization
-- Login prompt appears</p>
-<p><strong>First Boot Timing</strong>:
-- First boot: 30-60 seconds
-- Subsequent boots: 15-30 seconds</p>
+<p><strong>Boot Process</strong>:</p>
+<ul>
+<li>Power LED lights up</li>
+<li>Boot messages appear on display</li>
+<li>System initialization</li>
+<li>Login prompt appears</li>
+</ul>
+<p><strong>First Boot Timing</strong>:</p>
+<ul>
+<li>First boot: 30-60 seconds</li>
+<li>Subsequent boots: 15-30 seconds</li>
+</ul>
 <h2 id="initial-login">Initial Login<a class="headerlink" href="#initial-login" title="Permanent link">&para;</a></h2>
 <h3 id="default-credentials">Default Credentials<a class="headerlink" href="#default-credentials" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Username: root
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Password: root
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Username:<span class="w"> </span>root
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Password:<span class="w"> </span>root
 </code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Change Password Immediately</p>
@@ -2492,14 +2602,18 @@
 <p class="admonition-title">Hardware Expansion</p>
 <p>The PicoCalc and Luckfox Lyra do not include WiFi or many peripherals by default. Hardware can be added via USB, I2C, SPI, and GPIO headers.</p>
 </div>
-<p><strong>Currently Tested:</strong>
-- Display (built-in LCD drivers)
-- Keyboard (built-in keyboard drivers)<br />
-- USB WiFi adapters (see WiFi chipsets above)</p>
-<p><strong>Planned/Future Support:</strong>
-- I2C RTC modules (e.g., Adafruit DS3231)
-- LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)
-- Additional I2C/SPI peripherals</p>
+<p><strong>Currently Tested:</strong></p>
+<ul>
+<li>Display (built-in LCD drivers)</li>
+<li>Keyboard (built-in keyboard drivers)</li>
+<li>USB WiFi adapters (see WiFi chipsets above)</li>
+</ul>
+<p><strong>Planned/Future Support:</strong></p>
+<ul>
+<li>I2C RTC modules (e.g., Adafruit DS3231)</li>
+<li>LoRa radio modules (e.g., Waveshare Core1262-868M for Meshtastic)</li>
+<li>Additional I2C/SPI peripherals</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Peripheral Testing</p>
 <p>Most peripheral support beyond WiFi, display, and keyboard has not been thoroughly tested yet. Community contributions for additional hardware support are welcome!</p>
@@ -2512,6 +2626,45 @@
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>journalctl<span class="w"> </span>-b
 </code></pre></div>
 <h2 id="network-configuration">Network Configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
+<p>You have two primary options for network connectivity:</p>
+<ol>
+<li><strong>USB Networking</strong> - Direct connection to your computer (recommended for initial setup)</li>
+<li><strong>WiFi</strong> - Requires USB WiFi adapter</li>
+</ol>
+<h3 id="usb-networking">USB Networking<a class="headerlink" href="#usb-networking" title="Permanent link">&para;</a></h3>
+<p>USB networking is the easiest way to get started with Calculinux. Simply connect the Lyra's USB-C port to your computer, and the device will appear as a USB Ethernet adapter.</p>
+<div class="admonition tip">
+<p class="admonition-title">Quick USB Setup</p>
+<ol>
+<li>Connect Lyra's USB-C port to your computer</li>
+<li>Wait 10-15 seconds for the USB gadget to enumerate</li>
+<li>SSH to the PicoCalc:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>pico@192.168.7.2
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># Password: calc</span>
+</code></pre></div>
+<p>See the <a href="../../user-guide/usb-networking/">USB Networking Guide</a> for complete setup instructions including:</p>
+<ul>
+<li>Internet sharing configuration</li>
+<li>USB serial console access</li>
+<li>Advanced configuration options</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Windows Users</p>
+<p>The default configuration uses ECM (CDC-Ether) which works natively on Linux and macOS but <strong>not on Windows</strong>.</p>
+<p>If you're using Windows, you need to switch the device to RNDIS mode - see the <a href="../../user-guide/usb-networking/#switching-between-ecm-and-rndis">USB Networking Configuration</a> section.</p>
+</div>
+<p><strong>What you get with USB networking:</strong></p>
+<ul>
+<li>✅ Fast, reliable connection</li>
+<li>✅ No additional hardware required</li>
+<li>✅ Works on Linux and macOS out-of-the-box</li>
+<li>✅ Windows support via RNDIS mode</li>
+<li>✅ Static IP (<code>192.168.7.2</code>) always available</li>
+<li>✅ DHCP support for internet sharing</li>
+<li>✅ USB serial console at 1500000 baud</li>
+</ul>
 <h3 id="wifi-setup-usb-adapter-required">WiFi Setup (USB Adapter Required)<a class="headerlink" href="#wifi-setup-usb-adapter-required" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">WiFi Hardware Required</p>
@@ -2520,34 +2673,34 @@
 </div>
 <h4 id="connecting-to-wifi-with-iwctl">Connecting to WiFi with iwctl<a class="headerlink" href="#connecting-to-wifi-with-iwctl" title="Permanent link">&para;</a></h4>
 <p>Calculinux uses <code>iwd</code> (iNet Wireless Daemon) for WiFi management. Use <code>iwctl</code> to configure wireless connections:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Start iwctl interactive mode</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>iwctl
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Inside iwctl:</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># device list                          # List wireless devices</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 scan                   # Scan for networks</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 get-networks           # Show available networks</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 connect &quot;SSID&quot;         # Connect to network</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Enter passphrase when prompted</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># exit</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Or use iwctl non-interactively:</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>scan
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;YourSSID&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Start iwctl interactive mode</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>iwctl
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Inside iwctl:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># device list                          # List wireless devices</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 scan                   # Scan for networks</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 get-networks           # Show available networks</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># station wlan0 connect &quot;SSID&quot;         # Connect to network</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Enter passphrase when prompted</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="o">[</span>iwd<span class="o">]</span><span class="c1"># exit</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="c1"># Or use iwctl non-interactively:</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>scan
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;YourSSID&quot;</span>
 </code></pre></div>
 <p><strong>Verify Connection:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check connection status</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>show
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Check IP address</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>wlan0
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Test connectivity</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">8</span>.8.8.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check connection status</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>show
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Check IP address</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>wlan0
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Test connectivity</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">8</span>.8.8.8
 </code></pre></div>
 <p><strong>Disconnect:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>disconnect
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>iwctl<span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>disconnect
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After initial setup:</p>
@@ -2606,7 +2759,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2025 20:49:37 UTC">October 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
   </span>
 
     
