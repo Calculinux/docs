@@ -273,3 +273,4 @@ autotools
 Chipsets
 IPs
 Hostnames
+adbd
