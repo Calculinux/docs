@@ -723,9 +723,177 @@ To enable ADB (advanced users):
 - View adbd logs: `journalctl -u adbd -f`
 - If host does not see ADB: `adb kill-server`, replug USB, verify `ENABLE_ADB=1`, ensure `usb_f_fs` module is loaded, and verify adbd is running
 
+## USB Host/Gadget Mode Switching
+
+The PicoCalc's main USB-C port (usb20_otg0) supports **USB OTG** (On-The-Go), allowing it to switch between two roles:
+
+- **Gadget Mode** (default) - Device acts as a USB peripheral (network adapter, serial console, ADB)
+- **Host Mode** - Device acts as a USB host to connect peripherals (flash drives, keyboards, mice)
+
+!!! warning "Network Access Required"
+    Switching to host mode disables USB gadget networking. Before switching, ensure you have **alternate access** via WiFi or serial console to switch back.
+
+### Using usb-modeswitch
+
+The `usb-modeswitch` command provides temporary USB configuration changes without editing files. Changes are stored in `/run/usb-gadget-network.env` and persist until cleared or rebooted.
+
+#### Switch to Host Mode
+
+```bash
+sudo usb-modeswitch --mode host
+```
+
+After this command:
+
+- USB gadget networking stops
+- PicoCalc can now connect to USB peripherals
+- Use WiFi or serial console to access the device
+
+#### Switch Back to Gadget Mode
+
+Via WiFi or serial console:
+
+```bash
+sudo usb-modeswitch --mode gadget
+```
+
+#### Change USB Protocol
+
+```bash
+# Switch to RNDIS (Windows compatibility)
+sudo usb-modeswitch --protocol rndis
+
+# Switch to ECM (Linux/macOS, default)
+sudo usb-modeswitch --protocol ecm
+```
+
+#### Toggle Additional Functions
+
+```bash
+# Enable USB serial console
+sudo usb-modeswitch --serial on
+
+# Disable USB networking (serial only)
+sudo usb-modeswitch --network off --serial on
+
+# Enable ADB function
+sudo usb-modeswitch --adb on
+```
+
+#### Clear Temporary Overrides
+
+```bash
+# Remove all temporary settings and return to defaults
+sudo usb-modeswitch --clear
+```
+
+#### Check Current Settings
+
+```bash
+usb-modeswitch --status
+```
+
+Output shows current configuration:
+
+```
+USB_MODE=gadget
+USB_PROTOCOL=ecm
+ENABLE_SERIAL_CONSOLE=0
+ENABLE_NETWORK=1
+ENABLE_ADB=0
+```
+
+### Persistent Configuration
+
+To make USB mode changes permanent, edit `/etc/default/usb-gadget-network`:
+
+```bash
+sudo nano /etc/default/usb-gadget-network
+```
+
+Available settings:
+
+```bash
+# USB port mode
+USB_MODE=gadget  # or "host"
+
+# Network protocol (gadget mode only)
+USB_PROTOCOL=ecm  # or "rndis"
+
+# Optional features
+ENABLE_SERIAL_CONSOLE=0  # 1=enable, 0=disable
+ENABLE_NETWORK=1         # 1=enable, 0=disable
+ENABLE_ADB=0             # 1=enable, 0=disable
+```
+
+After editing, restart the service:
+
+```bash
+sudo systemctl restart usb-gadget-network
+```
+
+### Using USB Storage in Host Mode
+
+When in host mode, connected USB storage devices appear as block devices:
+
+```bash
+# List USB devices
+lsusb
+
+# Check for storage devices
+ls /dev/sd*
+
+# Mount USB drive
+sudo mkdir -p /mnt/usb
+sudo mount /dev/sda1 /mnt/usb
+
+# Access files
+ls /mnt/usb
+
+# Unmount when done
+sudo umount /mnt/usb
+```
+
+### Troubleshooting Mode Switching
+
+**USB device not detected in host mode:**
+
+Check current mode:
+
+```bash
+cat /etc/default/usb-gadget-network | grep USB_MODE
+# Or check runtime override:
+cat /run/usb-gadget-network.env 2>/dev/null
+```
+
+Verify no gadget is bound:
+
+```bash
+ls /sys/kernel/config/usb_gadget/
+# Should be empty or g1 should not exist when in host mode
+```
+
+Check for connected USB devices:
+
+```bash
+lsusb
+dmesg | grep -i usb | tail -20
+```
+
+**Can't switch back to gadget mode:**
+
+If you lose all network access and can't switch back:
+
+1. Connect via hardware serial console (see [Serial Console documentation](../hardware/serial-console.md))
+2. Or remove the SD card, mount on another computer
+3. Edit `/etc/default/usb-gadget-network` on the overlay partition
+4. Set `USB_MODE=gadget`
+5. Reinsert SD card and boot
+
 ## See Also
 
 - [Basic Usage](basic-usage.md) - General PicoCalc usage
 - [WiFi Configuration](../getting-started/first-boot.md#wifi-setup-usb-adapter-required) - Alternative connectivity
 - [Network Troubleshooting](../troubleshooting/network.md) - More troubleshooting tips
-- [Serial Console Access](../hardware/serial/console-access.md) - Alternative access method
+- [Serial Console Access](../hardware/serial-console.md) - Alternative access method
+- [USB Host Mode Details](https://github.com/Calculinux/meta-calculinux/blob/main/USB_HOST_MODE.md) - Implementation details
