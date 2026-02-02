@@ -50,14 +50,14 @@ All console applications work well with the 128 MB RAM configuration:
 
 ## Community Testing
 
-We need community help testing various hardware combinations!
+We need community help testing different hardware combinations!
 
 ### Untested Configurations
 
 Help us test these combinations:
 
 - [ ] Different SD card brands (though performance differences are likely minimal)
-- [ ] Various applications (request inclusion!)
+- [ ] Additional applications (request inclusion!)
 - [ ] Luckfox Lyra Plus (Ethernet model) with custom backplate
 
 ### How to Report

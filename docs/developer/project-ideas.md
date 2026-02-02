@@ -14,7 +14,7 @@ While we have limited RAM and CPU resources, there's a surprising account you ca
 
 | Name              | Description                                                                 | Examples                    |
 |-------------------|-----------------------------------------------------------------------------|-----------------------------|
-| Game Boy Emulator | What did you expect? It’s for playing games, obviously!                     | mGBA, SameBoy               |
+| Game Boy Emulator | For playing classic Game Boy games                                          | mGBA, SameBoy               |
 | Text Messaging    | Send and receive text messages.                                             | Irssi, Profanity, libpurple |
 | Docupedia         | A place where you can find documentation for almost anything.               | Wikipedia, Grokipedia       |
 | Web Browser       | A text-based web browser designed for efficient everyday web browsing.      | w3m, Lynx                   |

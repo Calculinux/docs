@@ -12,7 +12,7 @@
 ## Expansion Interfaces
 
 !!! info "Internal Expansion Options"
-    While the Luckfox Lyra is enclosed within the PicoCalc, it provides several expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+    While the Luckfox Lyra is enclosed within the PicoCalc, it provides multiple expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
 
 | Interface | Voltage | Status | Notes |
 |-----------|---------|--------|-------|

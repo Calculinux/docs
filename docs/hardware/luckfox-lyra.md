@@ -78,7 +78,7 @@ For completeness, other distributions available for Luckfox Lyra include:
 
 - **hisptoot's Buildroot images** - Original community port using Luckfox SDK
 - **markbirss's Ubuntu images** - Ubuntu 22.04/24.04 based distributions
-- **Community Buildroot variants** - Various SDK-based images with different features
+- **Community Buildroot variants** - SDK-based images with different features
 
 See the [ClockworkPi forum thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280) for links to these alternative distributions.
 
@@ -93,7 +93,7 @@ The RK3506G2 boot ROM follows this priority:
 3. **USB Boot** (for recovery/programming)
 
 !!! danger "NAND Boot Priority"
-    If your Luckfox Lyra has SPI NAND, the boot ROM will **always try NAND first**. You must erase the NAND or it will ignore the SD card completely. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
+    If your Luckfox Lyra has SPI NAND, the boot ROM will **always try NAND first**. You must erase the NAND or it will ignore the SD card. See the [SPI NAND Erase Guide](../troubleshooting/erase-nand.md) for complete instructions.
 
 ### Power Supply & Thermal Management
 

@@ -6,7 +6,7 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 
 ### Tools Required
 
-- The allen wrench that came with the picocalc
+- The Allen wrench that came with the picocalc
 - Good lighting and magnification (optional)
 - A soft cloth to work or pad on
 
@@ -19,7 +19,7 @@ This guide covers the physical modifications required to install a Luckfox Lyra 
 
 ### Step 1: Power Off and Disconnect
 
-1. Power off the PicoCalc completely
+1. Power off the PicoCalc
 2. remove the batteries
 
 ### Step 2: Open the Case
@@ -50,7 +50,7 @@ Before installation:
 ### Step 6: Reassembly
 
 1. Take care to ensure the board is properly aligned with all screw holes
-2. Ensure the kayboard rubber is in place
+2. Ensure the keyboard rubber is in place
 3. Ensure the display is properly aligned with the case
 4. Align the case halves
 5. Replace all screws

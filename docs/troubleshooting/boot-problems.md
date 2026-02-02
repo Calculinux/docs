@@ -8,7 +8,7 @@ Detailed troubleshooting for boot-related issues.
 
 ### SPI NAND Interference
 
-Some Luckfox Lyra boards include SPI NAND flash memory. The RK3506G2 boot ROM **always tries NAND first**, so if your board has NAND with any firmware on it, the boot ROM will ignore your SD card completely.
+Some Luckfox Lyra boards include SPI NAND flash memory. The RK3506G2 boot ROM **always tries NAND first**, so if your board has NAND with any firmware on it, the boot ROM will ignore your SD card.
 
 **Quick Check:**
 

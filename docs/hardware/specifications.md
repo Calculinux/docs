@@ -146,7 +146,7 @@ The following USB WiFi adapters are supported (must operate at **3.3V**):
 
 !!! warning "Many *(but NOT all!)* USB WiFi adapters are designed to
     operate at 5 volts, but are 3.3v tolerant due to design of their voltage
-    regulator's circutry.
+    regulator's circuitry.
 
     Some devices may operate properly with a full battery but malfunction if
     the battery is low, as with a low battery the supplied voltage may dip
@@ -156,12 +156,12 @@ The following USB WiFi adapters are supported (must operate at **3.3V**):
 
  - **RTL8188FTV**
    - USB wifi *module* (requires soldering!)
-   - [Aliexpress](https://www.aliexpress.us/item/3256807590709883.html)
+   - [AliExpress](https://www.aliexpress.us/item/3256807590709883.html)
  - **AIC8800DC**
     - regular USB adapter (requires a cable!)
     - [AliExpress](https://www.aliexpress.us/item/3256805850412278.html)
  - **RTL8188EU**
-    - regular usb adapter (requires a cable!)
+    - regular USB adapter (requires a cable!)
     - [Amazon](https://a.co/d/gRErxAn)
 
 !!! note "USB adapters require a cable"

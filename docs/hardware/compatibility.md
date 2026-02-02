@@ -243,7 +243,7 @@ This section consolidates networking options, USB gadget networking, and WiFi co
 ### Expansion Interfaces
 
 !!! info "Internal Expansion Options"
-    While the Luckfox Lyra is enclosed within the PicoCalc, it provides several expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+    While the Luckfox Lyra is enclosed within the PicoCalc, it provides multiple expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
 
 | Interface | Voltage | Status | Notes |
 |-----------|---------|--------|-------|
@@ -270,7 +270,6 @@ This section consolidates networking options, USB gadget networking, and WiFi co
 | **Additional SPI Displays** | SPI | ⚠️ Conflicts | Would conflict with main display |
 | **Input Devices** | GPIO/I2C | 🚧 Possible | Additional buttons, encoders |
 | **Communication** | UART/USB | ✅ Compatible | Serial devices, modems |
-
 
 !!! info "PWM Audio Details"
     The PicoCalc has built-in audio support using PWM (Pulse Width Modulation) on GPIO pins. However, there are significant limitations:
@@ -334,14 +333,14 @@ All console applications work well with the 128 MB RAM configuration:
 
 ## Community Testing
 
-We need community help testing various hardware combinations!
+We need community help testing different hardware combinations!
 
 ### Untested Configurations
 
 Help us test these combinations:
 
 - [ ] Different SD card brands (though performance differences are likely minimal)
-- [ ] Various applications (request inclusion!)
+- [ ] Additional applications (request inclusion!)
 - [ ] Luckfox Lyra Plus (Ethernet model) with custom backplate
 
 ### How to Report

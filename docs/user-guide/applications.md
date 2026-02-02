@@ -143,7 +143,7 @@ based on the author's opinion:
 
 ## Application Configuration
 
-Configuration for installed software is usually kept in two main places.
+Configuration for installed software is typically kept in two main places.
 
 1. System wide files in /etc
 
@@ -161,7 +161,7 @@ Configuration for installed software is usually kept in two main places.
 - Most applications save user specific settings in hidden files or folders in
   your home directory. These names start with a dot. Examples are ~/.config/,
   ~/.bashrc, or ~/.vimrc.
-- Settings here only affect that user. They are usually safe to change without
+- Settings here only affect that user. They are typically safe to change without
   admin rights.
 - Common places you will see are:
   - ~/.config/appname/ for modern applications

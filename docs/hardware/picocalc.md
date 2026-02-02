@@ -24,7 +24,7 @@ The PicoCalc originally ships with a **Raspberry Pi Pico** or **RP2040-based** m
 Upgrading from the stock microcontroller to an SBC like the Luckfox Lyra provides:
 
 - **Full Linux OS** instead of PicoMite MMBasic
-- **Significantly more processing power**
+- **Much more processing power**
 - **More RAM** (128MB vs. 264KB)
 - **Network connectivity** options
 - **Storage expansion** via multiple SD cards
@@ -37,7 +37,7 @@ For detailed technical specifications including display, keyboard, power, and in
 **Quick Overview:**
 
 - Pocket-sized handheld computer form factor
-- 320×320 pixel LCD display with ILI9488 controller
+- 320×320 pixel LCD with ILI9488 controller
 - Full physical keyboard with compact layout
 - Two USB-C ports (PicoCalc port and Lyra port with different functions)
 - Internal rechargeable battery
@@ -63,7 +63,7 @@ See the [Hardware Specifications](specifications.md) page.
 
 ## Compatibility
 
-The PicoCalc's modular design potentially supports various SBCs with the right adapters and modifications:
+The PicoCalc's modular design potentially supports other SBCs with the right adapters and modifications:
 
 - ✅ **Luckfox Lyra** - Fully supported by Calculinux
 - 🚧 **Milk-V Duo** - Future support planned

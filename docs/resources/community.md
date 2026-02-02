@@ -147,7 +147,7 @@ Logs:
 ### Core Team
 
 - **hisptoot** - Original port and driver development
-- **Community contributors** - Various improvements
+- **Community contributors** - Multiple improvements
 
 Want to become a maintainer? Contribute regularly and show your commitment!
 
@@ -187,7 +187,7 @@ Relevant conferences where Calculinux might be presented:
 
 - **Embedded Linux Conference**
 - **FOSDEM**
-- **Maker Faires**
+- **Maker Fairs**
 - **Local Linux User Groups**
 
 ## Social Media
@@ -247,7 +247,7 @@ For sensitive issues (security vulnerabilities, etc.):
 
 ## License & Legal
 
-- **Code**: Various open source licenses (see individual repositories)
+- **Code**: Multiple open source licenses (see individual repositories)
 - **Documentation**: CC BY 4.0
 - **Trademarks**: Respect all trademarks
 

@@ -124,7 +124,7 @@ This page provides links to external documentation, resources, and references th
 |----------|-----|-------------|
 | **GDB** | [gnu.org/software/gdb](https://www.gnu.org/software/gdb/) | GNU debugger |
 | **OpenOCD** | [openocd.org](http://openocd.org/) | On-chip debugging |
-| **JTAG Info** | Various | Hardware debugging |
+| **JTAG Info** | Multiple sources | Hardware debugging |
 
 ### Version Control
 
@@ -287,7 +287,7 @@ Many datasheets require registration or NDA:
 ### Free Courses
 
 - **Yocto Project Training** (bootlin.com)
-- **Embedded Linux Courses** (various MOOCs)
+- **Embedded Linux Courses** (online MOOCs)
 - **ARM University Program** (free materials)
 
 ### Paid Courses
@@ -304,7 +304,7 @@ Many datasheets require registration or NDA:
 |------|-----|---------|
 | **Device Tree Compiler** | [devicetree.org](https://www.devicetree.org/) | DT compilation |
 | **Regex Tester** | [regex101.com](https://regex101.com/) | Pattern testing |
-| **Color Picker** | Various | GUI development |
+| **Color Picker** | Multiple options | GUI development |
 
 ### Software Tools
 
@@ -330,7 +330,7 @@ See [Contributing Guide](../developer/contributing.md) for Calculinux-specific g
 |----------|-----|-------------|
 | **Open Source Guide** | [opensource.guide](https://opensource.guide/) | Contributing basics |
 | **How to Contribute** | GitHub guides | PR workflow |
-| **Code of Conduct** | Various | Community standards |
+| **Code of Conduct** | Multiple templates | Community standards |
 
 ## Stay Updated
 
@@ -345,7 +345,7 @@ See [Contributing Guide](../developer/contributing.md) for Calculinux-specific g
 
 - Yocto Project Blog
 - ClockworkPi Blog
-- Embedded Linux blogs (various)
+- Embedded Linux blogs (multiple)
 
 ## Need More Help?
 
