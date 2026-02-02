@@ -739,7 +739,7 @@ The `usb-modeswitch` command provides temporary USB configuration changes withou
 
 #### Switch to Host Mode
 
-```bash
+```shell
 sudo usb-modeswitch --mode host
 ```
 
@@ -753,13 +753,13 @@ After this command:
 
 Via WiFi or serial console:
 
-```bash
+```shell
 sudo usb-modeswitch --mode gadget
 ```
 
 #### Change USB Protocol
 
-```bash
+```shell
 # Switch to RNDIS (Windows compatibility)
 sudo usb-modeswitch --protocol rndis
 
@@ -769,7 +769,7 @@ sudo usb-modeswitch --protocol ecm
 
 #### Toggle Additional Functions
 
-```bash
+```shell
 # Enable USB serial console
 sudo usb-modeswitch --serial on
 
@@ -782,20 +782,20 @@ sudo usb-modeswitch --adb on
 
 #### Clear Temporary Overrides
 
-```bash
+```shell
 # Remove all temporary settings and return to defaults
 sudo usb-modeswitch --clear
 ```
 
 #### Check Current Settings
 
-```bash
+```shell
 usb-modeswitch --status
 ```
 
 Output shows current configuration:
 
-```
+```shell
 USB_MODE=gadget
 USB_PROTOCOL=ecm
 ENABLE_SERIAL_CONSOLE=0
@@ -807,13 +807,13 @@ ENABLE_ADB=0
 
 To make USB mode changes permanent, edit `/etc/default/usb-gadget-network`:
 
-```bash
+```shell
 sudo nano /etc/default/usb-gadget-network
 ```
 
 Available settings:
 
-```bash
+```shell
 # USB port mode
 USB_MODE=gadget  # or "host"
 
@@ -828,7 +828,7 @@ ENABLE_ADB=0             # 1=enable, 0=disable
 
 After editing, restart the service:
 
-```bash
+```shell
 sudo systemctl restart usb-gadget-network
 ```
 
@@ -836,7 +836,7 @@ sudo systemctl restart usb-gadget-network
 
 When in host mode, connected USB storage devices appear as block devices:
 
-```bash
+```shell
 # List USB devices
 lsusb
 
@@ -860,7 +860,7 @@ sudo umount /mnt/usb
 
 Check current mode:
 
-```bash
+```shell
 cat /etc/default/usb-gadget-network | grep USB_MODE
 # Or check runtime override:
 cat /run/usb-gadget-network.env 2>/dev/null
@@ -868,14 +868,14 @@ cat /run/usb-gadget-network.env 2>/dev/null
 
 Verify no gadget is bound:
 
-```bash
+```shell
 ls /sys/kernel/config/usb_gadget/
 # Should be empty or g1 should not exist when in host mode
 ```
 
 Check for connected USB devices:
 
-```bash
+```shell
 lsusb
 dmesg | grep -i usb | tail -20
 ```
@@ -884,7 +884,7 @@ dmesg | grep -i usb | tail -20
 
 If you lose all network access and can't switch back:
 
-1. Connect via hardware serial console (see [Serial Console documentation](../hardware/serial-console.md))
+1. Connect via hardware serial console (see [Serial Console documentation](../hardware/serial/console-access.md))
 2. Or remove the SD card, mount on another computer
 3. Edit `/etc/default/usb-gadget-network` on the overlay partition
 4. Set `USB_MODE=gadget`
@@ -895,5 +895,5 @@ If you lose all network access and can't switch back:
 - [Basic Usage](basic-usage.md) - General PicoCalc usage
 - [WiFi Configuration](../getting-started/first-boot.md#wifi-setup-usb-adapter-required) - Alternative connectivity
 - [Network Troubleshooting](../troubleshooting/network.md) - More troubleshooting tips
-- [Serial Console Access](../hardware/serial-console.md) - Alternative access method
-- [USB Host Mode Details](https://github.com/Calculinux/meta-calculinux/blob/main/USB_HOST_MODE.md) - Implementation details
+- [Serial Console Access](../hardware/serial/console-access.md) - Alternative access method
+- [USB Host Mode Details](https://github.com/Calculinux/meta-calculinux/blob/main/meta-calculinux-distro/recipes-connectivity/usb-gadget-network/USB_HOST_MODE.md) - Implementation details
