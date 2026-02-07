@@ -2,18 +2,16 @@
 
 This section consolidates networking options, USB gadget networking, and WiFi compatibility.
 
-=== "Networking Options"
+## Built-in Network
 
-    ### Built-in Network
+| Model | Interface | Speed | Status |
+|-------|-----------|-------|--------|
+| **Lyra Plus** | Ethernet (10/100) | 100 Mbps | ❓ Untested - Requires custom backplate |
+| **Lyra** | None | N/A | N/A - USB WiFi adapters and USB gadget networking supported |
 
-    | Model | Interface | Speed | Status |
-    |-------|-----------|-------|--------|
-    | **Lyra Plus** | Ethernet (10/100) | 100 Mbps | ❓ Untested - Requires custom backplate |
-    | **Lyra** | None | N/A | N/A - USB WiFi adapters supported |
-
-    !!! info "Network Options"
-        - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only tested option.
-        - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the port.
+!!! info "Network Options"
+    - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only tested option.
+    - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the port.
 
 === "USB Gadget Networking"
 
@@ -31,6 +29,26 @@ This section consolidates networking options, USB gadget networking, and WiFi co
     - `ssh pico@192.168.7.2` (password: `calc`)
 
     For detailed setup steps and troubleshooting, see [USB Networking](../../user-guide/usb-networking.md).
+
+=== "Tested WiFi Adapters"
+
+    The following USB WiFi adapters have been tested with Calculinux:
+
+    | Model | Type | Notes | Link |
+    |-------|------|-------|------|
+    | **RTL8188FTV/FU** | USB module | Requires soldering; 3.3V native | [AliExpress](https://www.aliexpress.us/item/3256807590709883.html) |
+    | **AIC8800DC** | USB adapter | Requires cable; 3.3V tolerant | [AliExpress](https://www.aliexpress.us/item/3256805850412278.html) |
+    | **RTL8188EU** | USB adapter | Requires cable; 3.3V tolerant | [Amazon](https://a.co/d/gRErxAn) |
+
+    !!! note "USB Adapter Connection"
+        USB WiFi adapters require a USB-C cable (similar to [this Waveshare cable](https://a.co/d/hQKiBRK)) to connect to the Lyra's USB-C port. The cable is a very tight fit inside the PicoCalc enclosure and may require rear casing modifications or a 3D-printed case.
+
+    !!! note "USB Modules vs. Adapters"
+        - **USB Modules** (like RTL8188FTV) are compact circuit boards with castellated edges that require soldering. Most modules support 3.3V natively, providing better stability at low battery levels.
+        - **USB Adapters** are standard USB devices that plug directly into a cable but require an external USB cable.
+
+    !!! warning "3.3V Requirement"
+        USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices. Many USB adapters are 5V rated but tolerate 3.3V due to voltage regulator design, but may malfunction at low battery levels.
 
 === "WiFi Drivers"
 
@@ -66,28 +84,6 @@ This section consolidates networking options, USB gadget networking, and WiFi co
 
     - **ZD1211RW** - Zydas 802.11b/g
     - **LIBERTAS_USB** - Marvell 802.11b/g
-
-=== "Tested WiFi Adapters"
-
-    The following USB WiFi adapters have been tested with Calculinux:
-
-    | Model | Type | Notes | Link |
-    |-------|------|-------|------|
-    | **RTL8188FTV/FU** | USB module | Requires soldering; 3.3V native | [AliExpress](https://www.aliexpress.us/item/3256807590709883.html) |
-    | **AIC8800DC** | USB adapter | Requires cable; 3.3V tolerant | [AliExpress](https://www.aliexpress.us/item/3256805850412278.html) |
-    | **RTL8188EU** | USB adapter | Requires cable; 3.3V tolerant | [Amazon](https://a.co/d/gRErxAn) |
-
-    !!! note "USB Adapter Connection"
-        USB WiFi adapters require a USB-C cable (similar to [this Waveshare cable](https://a.co/d/hQKiBRK)) to connect to the Lyra's USB-C port. The cable is a very tight fit inside the PicoCalc enclosure and may require rear casing modifications or a 3D-printed case.
-
-    !!! note "USB Modules vs. Adapters"
-        - **USB Modules** (like RTL8188FTV) are compact circuit boards with castellated edges that require soldering. Most modules support 3.3V natively, providing better stability at low battery levels.
-        - **USB Adapters** are standard USB devices that plug directly into a cable but require an external USB cable.
-
-    !!! warning "3.3V Requirement"
-        USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices. Many USB adapters are 5V rated but tolerate 3.3V due to voltage regulator design, but may malfunction at low battery levels.
-
-=== "Future WiFi Support"
 
     The following chipsets have drivers available in the kernel but are not currently enabled. They may be enabled in future releases:
 
