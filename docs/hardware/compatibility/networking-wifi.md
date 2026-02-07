@@ -1,6 +1,6 @@
 # Networking & WiFi
 
-This section consolidates networking options, USB gadget networking, and WiFi compatibility.
+Information about built-in networking options, USB gadget networking, and WiFi compatibility.
 
 ## Built-in Network
 
