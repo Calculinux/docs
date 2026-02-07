@@ -2206,10 +2206,7 @@
 
 <h1 id="networking-wifi">Networking &amp; WiFi<a class="headerlink" href="#networking-wifi" title="Permanent link">&para;</a></h1>
 <p>This section consolidates networking options, USB gadget networking, and WiFi compatibility.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Networking Options</label><label for="__tabbed_1_2">USB Gadget Networking</label><label for="__tabbed_1_3">WiFi Drivers</label><label for="__tabbed_1_4">Tested WiFi Adapters</label><label for="__tabbed_1_5">Future WiFi Support</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<h3 id="built-in-network">Built-in Network<a class="headerlink" href="#built-in-network" title="Permanent link">&para;</a></h3>
+<h2 id="built-in-network">Built-in Network<a class="headerlink" href="#built-in-network" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2230,7 +2227,7 @@
 <td><strong>Lyra</strong></td>
 <td>None</td>
 <td>N/A</td>
-<td>N/A - USB WiFi adapters supported</td>
+<td>N/A - USB WiFi adapters and USB gadget networking supported</td>
 </tr>
 </tbody>
 </table>
@@ -2241,7 +2238,8 @@
 <li><strong>Luckfox Lyra Plus</strong>: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the port.</li>
 </ul>
 </div>
-</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">USB Gadget Networking</label><label for="__tabbed_1_2">Tested WiFi Adapters</label><label for="__tabbed_1_3">WiFi Drivers</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="admonition info">
 <p class="admonition-title">USB Gadget Networking</p>
@@ -2258,40 +2256,6 @@
 <li><code>ssh pico@192.168.7.2</code> (password: <code>calc</code>)</li>
 </ul>
 <p>For detailed setup steps and troubleshooting, see <a href="../../../user-guide/usb-networking/">USB Networking</a>.</p>
-</div>
-<div class="tabbed-block">
-<p>The following WiFi chipsets have drivers enabled in the Calculinux kernel:</p>
-<p><strong>Realtek:</strong></p>
-<ul>
-<li><strong>RTL8192CU</strong> - Single-band USB adapter</li>
-<li><strong>R8712U</strong> - Single-band USB adapter</li>
-<li><strong>R8188EU</strong> - Single-band USB adapter</li>
-<li><strong>RTL8723BS</strong> - Dual-band (SDIO/USB)</li>
-</ul>
-<p><strong>Ralink/MediaTek:</strong></p>
-<ul>
-<li><strong>RT2500USB</strong> - Legacy 802.11b/g</li>
-<li><strong>RT73USB</strong> - Legacy 802.11b/g</li>
-<li><strong>RT2800USB</strong> - 802.11n with variants: RT33XX, RT35XX, RT3572, RT5370, RT5372, RT55XX</li>
-<li><strong>MT7601U</strong> - Single-band 802.11n</li>
-<li><strong>MT7663U</strong> - Dual-band 802.11ac</li>
-<li><strong>MT7921U</strong> - Dual-band 802.11ax (WiFi 6)</li>
-</ul>
-<p><strong>Atheros:</strong></p>
-<ul>
-<li><strong>AR5523</strong> - Legacy 802.11a/b/g</li>
-<li><strong>ATH9K_USB</strong> - 802.11n</li>
-<li><strong>AR9170_USB</strong> - 802.11n</li>
-</ul>
-<p><strong>AIC:</strong></p>
-<ul>
-<li><strong>AIC8800DC</strong> - Single-band 802.11n (out-of-tree module)</li>
-</ul>
-<p><strong>Others:</strong></p>
-<ul>
-<li><strong>ZD1211RW</strong> - Zydas 802.11b/g</li>
-<li><strong>LIBERTAS_USB</strong> - Marvell 802.11b/g</li>
-</ul>
 </div>
 <div class="tabbed-block">
 <p>The following USB WiFi adapters have been tested with Calculinux:</p>
@@ -2342,6 +2306,38 @@
 </div>
 </div>
 <div class="tabbed-block">
+<p>The following WiFi chipsets have drivers enabled in the Calculinux kernel:</p>
+<p><strong>Realtek:</strong></p>
+<ul>
+<li><strong>RTL8192CU</strong> - Single-band USB adapter</li>
+<li><strong>R8712U</strong> - Single-band USB adapter</li>
+<li><strong>R8188EU</strong> - Single-band USB adapter</li>
+<li><strong>RTL8723BS</strong> - Dual-band (SDIO/USB)</li>
+</ul>
+<p><strong>Ralink/MediaTek:</strong></p>
+<ul>
+<li><strong>RT2500USB</strong> - Legacy 802.11b/g</li>
+<li><strong>RT73USB</strong> - Legacy 802.11b/g</li>
+<li><strong>RT2800USB</strong> - 802.11n with variants: RT33XX, RT35XX, RT3572, RT5370, RT5372, RT55XX</li>
+<li><strong>MT7601U</strong> - Single-band 802.11n</li>
+<li><strong>MT7663U</strong> - Dual-band 802.11ac</li>
+<li><strong>MT7921U</strong> - Dual-band 802.11ax (WiFi 6)</li>
+</ul>
+<p><strong>Atheros:</strong></p>
+<ul>
+<li><strong>AR5523</strong> - Legacy 802.11a/b/g</li>
+<li><strong>ATH9K_USB</strong> - 802.11n</li>
+<li><strong>AR9170_USB</strong> - 802.11n</li>
+</ul>
+<p><strong>AIC:</strong></p>
+<ul>
+<li><strong>AIC8800DC</strong> - Single-band 802.11n (out-of-tree module)</li>
+</ul>
+<p><strong>Others:</strong></p>
+<ul>
+<li><strong>ZD1211RW</strong> - Zydas 802.11b/g</li>
+<li><strong>LIBERTAS_USB</strong> - Marvell 802.11b/g</li>
+</ul>
 <p>The following chipsets have drivers available in the kernel but are not currently enabled. They may be enabled in future releases:</p>
 <ul>
 <li>MT7612U, MT7610U (MediaTek)</li>
@@ -2371,7 +2367,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 05:33:46 UTC">February 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 7, 2026 23:09:51 UTC">February 7, 2026</span>
   </span>
 
     
