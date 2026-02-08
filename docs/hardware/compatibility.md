@@ -23,35 +23,35 @@ This page provides a comprehensive compatibility matrix for different hardware c
 
 ## Luckfox Lyra Variants
 
-### Supported Variants
+Calculinux currently supports the Luckfox Lyra board with 128 MB RAM. View compatibility details by category:
 
-Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
+=== "Supported Variants"
 
-| RAM | Storage | Status | Notes |
-|-----|---------|--------|-------|
-| **128 MB** | SD Card Only | ✅ **Recommended** | Simplest setup |
-| **128 MB** | SPI NAND + SD | ✅ Supported | Requires NAND erase first |
+    | RAM | Storage | Status | Notes |
+    |-----|---------|--------|-------|
+    | **128 MB** | SD Card Only | ✅ **Recommended** | Simplest setup |
+    | **128 MB** | SPI NAND + SD | ✅ Supported | Requires NAND erase first |
 
-!!! note "Other Lyra Models"
-    - **Luckfox Lyra Plus**: RK3506-based with Ethernet (untested with Calculinux)
-    - **256 MB Lyra variants**: Would require custom adapter boards due to different pinouts; community members are experimenting with this
+    !!! note "Other Lyra Models"
+        - **Luckfox Lyra Plus**: RK3506-based with Ethernet (untested with Calculinux)
+        - **256 MB Lyra variants**: Would require custom adapter boards due to different pinouts; community members are experimenting with this
 
-### By Storage Type
+=== "By Storage Type"
 
-| Storage | Boot Priority | Calculinux Support |
-|---------|---------------|-------------------|
-| **SD Card Only** | Primary | ✅ **Recommended** - simplest setup |
-| **SPI NAND + SD** | NAND first | ✅ Supported after NAND erase |
+    | Storage | Boot Priority | Calculinux Support |
+    |---------|---------------|-------------------|
+    | **SD Card Only** | Primary | ✅ **Recommended** - simplest setup |
+    | **SPI NAND + SD** | NAND first | ✅ Supported after NAND erase |
 
-### By Network Capability
+=== "By Network Capability"
 
-!!! info "Limited Network Options"
-    The basic Luckfox Lyra has no built-in networking. The Luckfox Lyra Plus with Ethernet would require a custom 3D-printed backplate to access the port and has not been tested with Calculinux. USB WiFi adapters are the only tested networking option.
+    !!! info "Limited Network Options"
+        The basic Luckfox Lyra has no built-in networking. The Luckfox Lyra Plus with Ethernet would require a custom 3D-printed backplate to access the port and has not been tested with Calculinux. USB WiFi adapters are the only tested networking option.
 
-| Connectivity | Hardware Required | Status | Notes |
-|--------------|-------------------|--------|-------|
-| **Luckfox Lyra Plus (Ethernet)** | Custom backplate | ❓ Untested | Plus model has Ethernet but not tested |
-| **USB WiFi** | USB WiFi adapter (3.3V or powered hub) | ✅ Supported | Only tested networking option |
+    | Connectivity | Hardware Required | Status | Notes |
+    |--------------|-------------------|--------|-------|
+    | **Luckfox Lyra Plus (Ethernet)** | Custom backplate | ❓ Untested | Plus model has Ethernet but not tested |
+    | **USB WiFi** | USB WiFi adapter (3.3V or powered hub) | ✅ Supported | Only tested networking option |
 
 ## Storage Compatibility
 
@@ -118,18 +118,100 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 !!! info "USB OTG Input Support"
     While the integrated matrix keyboard is the primary input method, external USB input devices may be possible via the USB-C OTG port. This requires 3.3V compatible devices or an externally powered USB hub and is currently untested.
 
-## Network Hardware
+## Networking and WiFi
 
-### Built-in Network
+This section consolidates networking options, USB gadget networking, and WiFi compatibility.
 
-| Model | Interface | Speed | Status |
-|-------|-----------|-------|--------|
-| **Lyra Plus** | Ethernet (10/100) | 100 Mbps | ❓ Untested - Requires custom backplate |
-| **Lyra** | None | N/A | N/A - USB WiFi adapters supported |
+=== "Networking Options"
 
-!!! info "Network Options"
-    - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only networking option.
-    - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the Ethernet port within the PicoCalc enclosure.
+    ### Built-in Network
+
+    | Model | Interface | Speed | Status |
+    |-------|-----------|-------|--------|
+    | **Lyra Plus** | Ethernet (10/100) | 100 Mbps | ❓ Untested - Requires custom backplate |
+    | **Lyra** | None | N/A | N/A - USB WiFi adapters supported |
+
+    !!! info "Network Options"
+        - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only tested option.
+        - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the port.
+
+=== "USB Gadget Networking"
+
+    !!! info "USB Gadget Networking"
+        Calculinux includes USB gadget networking over the Lyra USB-C port. Connect the PicoCalc to your host via USB-C, and the device appears as a USB Ethernet adapter.
+
+    **Defaults:**
+
+    - **Device IP**: 192.168.7.2/24
+    - **Interface**: usb0
+    - **Mode**: ECM (Linux/macOS), RNDIS (Windows)
+
+    **Quick SSH:**
+
+    - `ssh pico@192.168.7.2` (password: `calc`)
+
+    For detailed setup steps and troubleshooting, see the USB gadget networking section in the [Hardware Specifications](specifications.md).
+
+=== "WiFi Drivers"
+
+    The following WiFi chipsets have drivers enabled in the Calculinux kernel:
+
+    **Realtek:**
+
+    - **RTL8192CU** - Single-band USB adapter
+    - **R8712U** - Single-band USB adapter
+    - **R8188EU** - Single-band USB adapter
+    - **RTL8723BS** - Dual-band (SDIO/USB)
+
+    **Ralink/MediaTek:**
+
+    - **RT2500USB** - Legacy 802.11b/g
+    - **RT73USB** - Legacy 802.11b/g
+    - **RT2800USB** - 802.11n with variants: RT33XX, RT35XX, RT3572, RT5370, RT5372, RT55XX
+    - **MT7601U** - Single-band 802.11n
+    - **MT7663U** - Dual-band 802.11ac
+    - **MT7921U** - Dual-band 802.11ax (WiFi 6)
+
+    **Atheros:**
+
+    - **AR5523** - Legacy 802.11a/b/g
+    - **ATH9K_USB** - 802.11n
+    - **AR9170_USB** - 802.11n
+
+    **AIC:**
+
+    - **AIC8800DC** - Single-band 802.11n (out-of-tree module)
+
+    **Others:**
+
+    - **ZD1211RW** - Zydas 802.11b/g
+    - **LIBERTAS_USB** - Marvell 802.11b/g
+
+=== "Tested WiFi Adapters"
+
+    The following USB WiFi adapters have been tested with Calculinux:
+
+    | Model | Type | Notes | Link |
+    |-------|------|-------|------|
+    | **RTL8188FTV/FU** | USB module | Requires soldering; 3.3V native | [AliExpress](https://www.aliexpress.us/item/3256807590709883.html) |
+    | **AIC8800DC** | USB adapter | Requires cable; 3.3V tolerant | [AliExpress](https://www.aliexpress.us/item/3256805850412278.html) |
+    | **RTL8188EU** | USB adapter | Requires cable; 3.3V tolerant | [Amazon](https://a.co/d/gRErxAn) |
+
+    !!! note "USB Adapter Connection"
+        USB WiFi adapters require a USB-C cable (similar to [this Waveshare cable](https://a.co/d/hQKiBRK)) to connect to the Lyra's USB-C port. The cable is a very tight fit inside the PicoCalc enclosure and may require rear casing modifications or a 3D-printed case.
+
+    !!! note "USB Modules vs. Adapters"
+        - **USB Modules** (like RTL8188FTV) are compact circuit boards with castellated edges that require soldering. Most modules support 3.3V natively, providing better stability at low battery levels.
+        - **USB Adapters** are standard USB devices that plug directly into a cable but require an external USB cable.
+
+    !!! warning "3.3V Requirement"
+        USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices. Many USB adapters are 5V rated but tolerate 3.3V due to voltage regulator design, but may malfunction at low battery levels.
+
+=== "Future WiFi Support"
+
+    The following chipsets have drivers available in the kernel but are not currently enabled. They may be enabled in future releases:
+
+    - MT7612U, MT7610U (MediaTek)
 
 ## Power Supply Compatibility
 
@@ -145,7 +227,7 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
     The PicoCalc has TWO USB-C ports with different functions:
 
     - **PicoCalc USB-C Port**: Used for charging the internal battery and provides a USB serial console connection to the Lyra (at 1500000 baud)
-    - **Lyra USB-C Port**: Provides USB On-The-Go (OTG) functionality for external devices but does NOT charge the PicoCalc batteries. External devices must be 3.3V compatible or use an externally powered hub.
+    - **Lyra USB-C Port**: Provides USB On-The-Go (OTG) functionality for external devices or connection to a host PC, but does NOT charge the PicoCalc batteries. External devices must use an externally powered hub.
 
 ## Peripheral Compatibility
 
@@ -161,7 +243,7 @@ Calculinux currently supports the Luckfox Lyra board with 128 MB RAM:
 ### Expansion Interfaces
 
 !!! info "Internal Expansion Options"
-    While the Luckfox Lyra is enclosed within the PicoCalc, it provides several expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
+    While the Luckfox Lyra is enclosed within the PicoCalc, it provides multiple expansion interfaces accessible for hardware modifications and custom projects. For detailed pinout information, see the [official Luckfox Lyra pinout documentation](https://wiki.luckfox.com/Luckfox-Lyra/Pinout).
 
 | Interface | Voltage | Status | Notes |
 |-----------|---------|--------|-------|
@@ -251,14 +333,14 @@ All console applications work well with the 128 MB RAM configuration:
 
 ## Community Testing
 
-We need community help testing various hardware combinations!
+We need community help testing different hardware combinations!
 
 ### Untested Configurations
 
 Help us test these combinations:
 
 - [ ] Different SD card brands (though performance differences are likely minimal)
-- [ ] Various applications (request inclusion!)
+- [ ] Additional applications (request inclusion!)
 - [ ] Luckfox Lyra Plus (Ethernet model) with custom backplate
 
 ### How to Report

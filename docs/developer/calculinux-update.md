@@ -721,7 +721,7 @@ Test coverage includes:
 
 - MD5 computation (including error cases)
 - CONFFILES parsing (with/without checksums, comments, relative paths)
-- Modified file detection (various scenarios)
+- Modified file detection (different scenarios)
 - `.dpkg-new` file creation (including dry-run mode)
 
 ## Configuration

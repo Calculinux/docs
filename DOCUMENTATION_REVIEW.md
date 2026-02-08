@@ -219,7 +219,7 @@ Password: root
 2. ✅ HIGH: `docs/developer/overview.md` - Development tasks section (FIXED)
 3. ✅ MEDIUM: `docs/getting-started/first-boot.md` - Expand filesystem and network commands (FIXED)
 4. ❌ HIGH: `docs/getting-started/installation.md` - Image names, default passwords (NEEDS FIX)
-5. ❌ HIGH: `docs/hardware/compatibility.md` - WiFi support status (NEEDS FIX)
+5. ❌ HIGH: `docs/hardware/compatibility/index.md` - WiFi support status (NEEDS FIX)
 6. ❌ HIGH: Multiple files - Desktop/GUI claims (NEEDS FIX - NO GUI exists!)
 7. ⚠️ MEDIUM: All files - Verify systemd service references
 8. ℹ️ LOW: Multiple files - Remove or mark stub page links
@@ -276,7 +276,7 @@ Password: calculinux
 
 ### 12. WiFi Support Status (HIGH PRIORITY)
 
-**Location**: `docs/hardware/compatibility.md`
+**Location**: `docs/hardware/compatibility/index.md`
 
 **Issue**: Claims WiFi is "🚧 Untested" or "Future USB WiFi dongle support"
 
@@ -318,7 +318,7 @@ Password: calculinux
    - Removed "Full Image" GUI claims
    - Fixed boot expectations (console-only)
 
-2. **compatibility.md**:
+2. **compatibility/index.md**:
    - Updated RAM recommendations (removed desktop references)
    - Fixed network capability (WiFi marked as supported)
    - Added complete WiFi chipset table with 5 supported Realtek drivers

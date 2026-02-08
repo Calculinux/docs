@@ -38,6 +38,7 @@ NAND
 GPIO
 USB-C
 OTG
+overlayfs
 POSIX
 FHS
 LSB
@@ -67,11 +68,28 @@ VS Code
 SSH
 FTP
 Vala
+gcc
+gdb
+groff
+iw
+iwctl
+minicom
+miniterm
+Imager
+Balena
 
 # Commands
 kas-container
 adb
 fastboot
+pwd
+mkdir
+rmdir
+mv
+whoami
+uname
+df
+du
 
 # Packages & Libraries
 Realtek
@@ -87,6 +105,7 @@ Ethernet
 # File Systems
 ext4
 FAT32
+fs
 
 # Project Specific
 meta-calculinux
@@ -131,6 +150,8 @@ bitbake-layers
 runqemu
 dmesg
 journalctl
+upgrade_tool
+luckfox_lyra
 
 # Common abbreviations
 DTB
@@ -151,6 +172,7 @@ BSP
 NPU
 TOPS
 FLOPS
+VMs
 
 # Writing/Docs specific
 README
@@ -160,6 +182,15 @@ DOCUMENTATION
 documentation
 mkdocs
 markdown
+Datasheet
+Datasheets
+Openbox
+Phoronix
+MOOCs
+Udemy
+subreddit
+uConsole
+RPi
 
 # Rust packaging examples
 [Nn]ewsboat
@@ -182,6 +213,13 @@ bbfatal
 externalsrc
 Walnascar
 downloader
+Scarthgap
+conffiles
+prefetch
+prefetched
+prefetches
+reinstalls
+Async
 
 # Technical terms and jargon
 valac
@@ -198,6 +236,50 @@ distro
 IPK
 SBC
 SBCs
+codecs
+pinout
+pinouts
+framerate
+microcontroller
+southbridge
+MMBasic
+prboom
+Irssi
+libpurple
+Docupedia
+Grokipedia
+Calc
+Customizers
+Noninteractive
+package_name
+reflash
+reflashing
+Reflash
+Reflashing
+Codenames
+Flashable
+Simmonds
+Hallinan
+Karim
+Yaghmour
+Otavio
+Texier
+Corbet
+Rubini
+Shotts
+fbtft
+Btrfs
+Pico
+APIs
+Squashfs
+Dev
+Debounce
+debounce
+LEDs
+PCBs
+distros
+markbirss's
+kapton
 
 # Package Names (from applications.md)
 acpid

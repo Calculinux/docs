@@ -93,7 +93,7 @@ This page outlines what hardware you need to purchase and prepare to run Calculi
 
 Once you have your hardware:
 
-1. **Check compatibility**: Review the [Hardware Compatibility Matrix](../hardware/compatibility.md)
+1. **Check compatibility**: Review the [Hardware Compatibility Matrix](../hardware/compatibility/index.md)
 2. **Learn about the hardware**: See [Hardware Specifications](../hardware/specifications.md) for technical details
 3. **Prepare for installation**: Continue to the [Installation Guide](installation.md)
 
@@ -102,7 +102,7 @@ Once you have your hardware:
 - [PicoCalc Overview](../hardware/picocalc.md) - Learn about the PicoCalc device
 - [Luckfox Lyra Details](../hardware/luckfox-lyra.md) - SDK, purchasing, and software info
 - [Hardware Specifications](../hardware/specifications.md) - Complete technical specs
-- [Hardware Compatibility](../hardware/compatibility.md) - Detailed compatibility information
+- [Hardware Compatibility](../hardware/compatibility/index.md) - Detailed compatibility information
 
 ## Optional Hardware
 
@@ -143,7 +143,7 @@ Once you have your hardware:
 
 ## Compatibility
 
-See [Compatibility Matrix](../hardware/compatibility.md) for detailed hardware compatibility information.
+See [Compatibility Matrix](../hardware/compatibility/index.md) for detailed hardware compatibility information.
 
 ## Ready to Install
 

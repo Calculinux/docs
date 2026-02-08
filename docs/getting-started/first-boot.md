@@ -186,7 +186,7 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
 
 #### Connecting to WiFi with iwctl
 
-Calculinux uses `iwd` (iNet Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
+Calculinux uses `iwd` (iwd Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
 
 ```shell
 # Start iwctl interactive mode

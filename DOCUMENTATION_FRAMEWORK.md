@@ -196,7 +196,7 @@ docs/
 8. hardware/luckfox-lyra.md
 9. hardware/modifications.md
 10. hardware/display-input.md
-11. hardware/compatibility.md
+11. hardware/compatibility/index.md
 12. developer/overview.md
 13. troubleshooting/faq.md
 14. resources/community.md

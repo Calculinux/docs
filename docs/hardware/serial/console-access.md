@@ -17,7 +17,7 @@ no parity, and 1 stop bit ("1500000 8N1").
   `dialout` (or distribution-specific) group and re-login:
 
 !!! info
-    If you prefeer a GUI tool to access the serial port but don't know what to
+    If you prefer a GUI tool to access the serial port but don't know what to
     choose, options on Linux desktops include **CuteCom**, and **PuTTY** among
     others; they provide point-and-click interfaces for selecting ports and baud
     rates. The only setting you will need to change is the 1,500,000 baud setting.
@@ -82,7 +82,7 @@ configuration between sessions.
    - Disable both hardware (`RTS/CTS`) and software (`XON/XOFF`) flow
      control unless your setup requires them.
 
-3. Choose **Save setup as dfl** so future invocations reuse these
+3. Choose **Save setup as default** so future invocations reuse these
    settings, then **Exit** the configuration menu.
 
 4. Start minicom normally:

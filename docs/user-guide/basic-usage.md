@@ -16,7 +16,7 @@ Normally, for some daily usage patterns, you would need the following types of p
 - A file manager (not necessary, could be done through the command line)
 - Any other tools or apps you use (like networking tools)
 
-We recommend vim as a text editor to use with calculinux, as it has extensive documentation, useful feature, and is very lightweight.
+We recommend vim as a text editor to use with calculinux, as it has extensive documentation, useful features, and is lightweight.
 
 As for the file management system, you could just use the command line, but it's sometimes more useful to display your files "graphically" so we recommend you use Midnight Commander (mc) which displays your files in a TUI-style way, to make it easier to do file management.
 
@@ -72,7 +72,7 @@ mc splits the screen into left and right panels, each showing a directory. The b
 
 ### Working with files
 
-Highlight a file or directory to act on it, or mark several items if you want to work on more than one at a time. The actual operations (copy, move, delete, etc.) are the same ones shown in the command table above; mc just gives you a clearer view of what you are doing.
+Highlight a file or directory to act on it, or mark multiple items if you want to work on more than one at a time. The actual operations (copy, move, delete, etc.) are the same ones shown in the command table above; mc just gives you a clearer view of what you are doing.
 
 ## System monitoring
 

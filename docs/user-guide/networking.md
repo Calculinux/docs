@@ -25,7 +25,7 @@ This section covers network connectivity options for your PicoCalc.
 
     [:octicons-arrow-right-24: WiFi Setup](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
 
-    [:octicons-arrow-right-24: Selecting a WiFi Adapter](../hardware/specifications.md#supported-wifi-chipsets)
+    [:octicons-arrow-right-24: Selecting a WiFi Adapter](../hardware/compatibility/networking-wifi.md)
 
 </div>
 
@@ -33,7 +33,7 @@ This section covers network connectivity options for your PicoCalc.
 
 - **USB Networking**: Direct USB connection to your computer - [Setup Guide](usb-networking.md)
 - **WiFi Setup**: Wireless connectivity with USB WiFi adapter (not built-in) - See [First Boot Guide](../getting-started/first-boot.md#wifi-setup-usb-adapter-required)
-- **WiFi Adapter Selection**: Choosing a compatible adapter - See [Supported WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets)
+- **WiFi Adapter Selection**: Choosing a compatible adapter - See [Networking & WiFi](../hardware/compatibility/networking-wifi.md)
 - **Troubleshooting**: Network issues - See [Network Troubleshooting](../troubleshooting/network.md)
 
 ## Common Tasks
@@ -82,8 +82,8 @@ Your PicoCalc can access the internet via (requires USB WiFi adapter):
 
 ## Additional Resources
 
-- [Supported WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets) - Choosing a compatible WiFi adapter
-- [Hardware Compatibility](../hardware/compatibility.md) - USB and peripheral compatibility information
+- [Networking & WiFi](../hardware/compatibility/networking-wifi.md) - Choosing a compatible WiFi adapter
+- [Hardware Compatibility](../hardware/compatibility/index.md) - USB and peripheral compatibility information
 - [Network Troubleshooting](../troubleshooting/network.md) - Solving connectivity issues
 - [Basic Usage](basic-usage.md) - General system usage
 

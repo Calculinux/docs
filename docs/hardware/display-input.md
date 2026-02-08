@@ -19,7 +19,7 @@ This page provides technical implementation details about the PicoCalc display a
 | **Refresh Rate** | ~60Hz |
 
 !!! note "Panel Variations"
-    The PicoCalc uses a 320×320 pixel display with an ILI9488 controller. The small text area (53×40 characters) means that many applications will wrap text lines, but this is usually manageable with proper terminal configuration.
+    The PicoCalc uses a 320×320 pixel display with an ILI9488 controller. The small text area (53×40 characters) means that many applications will wrap text lines, but this is manageable with proper terminal configuration.
 
 ### SPI Configuration
 

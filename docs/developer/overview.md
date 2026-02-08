@@ -242,7 +242,7 @@ Recommended editors with Yocto support:
 
 ### Yocto/OpenEmbedded
 
-Calculinux uses Yocto for several reasons:
+Calculinux uses Yocto for these reasons:
 
 **Advantages**:
 

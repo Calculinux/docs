@@ -265,7 +265,7 @@ See the [Modified Config Files After Update](#modified-config-files-after-update
 
 ### Prefetch Fails
 
-If bundle metadata extraction or prefetch fails, you have several options:
+If bundle metadata extraction or prefetch fails, you have these options:
 
 **Check if bundle is corrupted:**
 
@@ -287,7 +287,7 @@ cat /etc/opkg/opkg.conf
 opkg update
 ```
 
-Prefetch failures are usually harmless - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails completely, the bundle may be corrupted and should be re-downloaded.
+Prefetch failures are harmless in most cases - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails, the bundle may be corrupted and should be re-downloaded.
 
 ### Rolling Back an Update
 

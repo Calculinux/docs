@@ -243,7 +243,7 @@ CALCULINUX_FEED_SUBFOLDER = "release"
 
 ## Build Targets
 
-Calculinux provides several build targets:
+Calculinux provides multiple build targets:
 
 ### Main Image
 
