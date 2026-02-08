@@ -837,9 +837,27 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../hardware/compatibility/" class="md-nav__link">
+    
+    
+    
+    
+      
+      
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -853,7 +871,247 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatibility Matrix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/sbc-lyra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBC & Luckfox Lyra Variants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/display-input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display & Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/networking-wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking & WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/peripherals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peripheral Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/compatibility/software-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software & Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2184,7 +2442,7 @@
 <li>A file manager (not necessary, could be done through the command line)</li>
 <li>Any other tools or apps you use (like networking tools)</li>
 </ul>
-<p>We recommend vim as a text editor to use with calculinux, as it has extensive documentation, useful feature, and is very lightweight.</p>
+<p>We recommend vim as a text editor to use with calculinux, as it has extensive documentation, useful features, and is lightweight.</p>
 <p>As for the file management system, you could just use the command line, but it's sometimes more useful to display your files "graphically" so we recommend you use Midnight Commander (mc) which displays your files in a TUI-style way, to make it easier to do file management.</p>
 <h2 id="command-line-basics">Command line basics<a class="headerlink" href="#command-line-basics" title="Permanent link">&para;</a></h2>
 <p>The Linux Command Line can be difficult at first, but once you get the hang of it, you can utilize its full potential. Here are the basics of using the Linux command line:</p>
@@ -2305,7 +2563,7 @@ It will take over the terminal with a full‑screen interface; press <code>F10</
 <h3 id="layout-and-navigation">Layout and navigation<a class="headerlink" href="#layout-and-navigation" title="Permanent link">&para;</a></h3>
 <p>mc splits the screen into left and right panels, each showing a directory. The bottom line lists function-key shortcuts; use <code>Tab</code> to switch the active panel, <code>arrow keys</code> to move the cursor, Enter to enter a directory, and select the .. entry to go up.</p>
 <h3 id="working-with-files">Working with files<a class="headerlink" href="#working-with-files" title="Permanent link">&para;</a></h3>
-<p>Highlight a file or directory to act on it, or mark several items if you want to work on more than one at a time. The actual operations (copy, move, delete, etc.) are the same ones shown in the command table above; mc just gives you a clearer view of what you are doing.</p>
+<p>Highlight a file or directory to act on it, or mark multiple items if you want to work on more than one at a time. The actual operations (copy, move, delete, etc.) are the same ones shown in the command table above; mc just gives you a clearer view of what you are doing.</p>
 <h2 id="system-monitoring">System monitoring<a class="headerlink" href="#system-monitoring" title="Permanent link">&para;</a></h2>
 <p>Monitoring your system helps keep it running smoothly by showing how resources are being used.</p>
 <h3 id="htop">htop<a class="headerlink" href="#htop" title="Permanent link">&para;</a></h3>
@@ -2400,7 +2658,7 @@ It will take over the terminal with a full‑screen interface; press <code>F10</
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 8, 2026 22:35:40 UTC">February 8, 2026</span>
   </span>
 
     
