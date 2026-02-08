@@ -48,7 +48,7 @@ Information about built-in networking options, USB gadget networking, and WiFi c
         - **USB Adapters** are standard USB devices that plug directly into a cable but require an external USB cable.
 
     !!! warning "3.3V Requirement"
-        USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices. Many USB adapters are 5V rated but tolerate 3.3V due to voltage regulator design, but may malfunction at low battery levels.
+        USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Many USB adapters are 5V rated but tolerate 3.3V due to voltage regulator design, but may *possibly* malfunction at low battery levels. I have not witnessed low power malfunction in the USB adapters listed above yet.
 
 === "WiFi Drivers"
 
