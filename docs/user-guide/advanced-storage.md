@@ -11,7 +11,7 @@ For users who need expanded persistent storage or want to enable swapping boot S
 
 ### How It Works
 
-Calculinux's preinit script queries for storage partitions **by label**, not by device path. This allows flexibility in where partitions are located, but also requires careful management to avoid conflicts.
+Calculinux's pre-init script queries for storage partitions **by label**, not by device path. This allows flexibility in where partitions are located, but also requires careful management to avoid conflicts.
 
 The system searches for a partition labeled `OVERLAY_DATA` and mounts it as the upper layer for the overlayfs that provides persistent storage for `/etc`, `/home`, `/var`, `/usr`, and `/opt`.
 
@@ -246,7 +246,7 @@ To move back to standard (overlay on boot card):
 ### Performance Considerations
 
 !!! warning "SPI Interface Limitation"
-    The external SD card slot uses a **slower SPI-only interface**, not the faster SDIO/MMC interface used by the internal boot card slot. This significantly limits performance regardless of card quality.
+    The external SD card slot uses a **slower SPI-only interface**, not the faster SDIO/MMC interface used by the internal boot card slot. This limits performance regardless of card quality.
 
     **Maximum theoretical SPI throughput is much lower** than SDIO, so external overlay storage will generally be slower than internal overlay for I/O-heavy workloads.
 
@@ -260,8 +260,9 @@ To move back to standard (overlay on boot card):
 
 - **Expanded capacity** when boot card is too small (primary use case)
 - **Hot-swappable boot cards** for different system configurations
-- Read-mostly workloads where capacity matters more than speed
+- Read-heavy workloads where capacity matters more than speed
 - More physical space reduces write amplification on smaller cards
+- Calculinux development
 
 **Not recommended if**:
 
