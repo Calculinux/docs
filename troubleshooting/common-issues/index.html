@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://calculinux.org/troubleshooting/common-issues/">
       
       
-        <link rel="prev" href="../../developer/project-ideas/">
+        <link rel="prev" href="../basic-troubleshooting/">
       
       
-        <link rel="next" href="../boot-problems/">
+        <link rel="next" href="../network/">
       
       
         
@@ -327,7 +327,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../basic-troubleshooting/" class="md-tabs__link">
           
   
   
@@ -1374,6 +1374,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/advanced-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Storage Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1699,6 +1727,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1762,43 +1818,293 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-system-issues" class="md-nav__link">
+  <a href="#boot-problems" class="md-nav__link">
     <span class="md-ellipsis">
       
-        General System Issues
+        Boot Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-wont-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Won't Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Won&#39;t Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-nand-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI NAND Interference
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-issues" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-hangs-or-takes-long-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Performance Issues
+        Boot Hangs or Takes Long Time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-issues" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#sd-card-issues" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Storage Issues
+        SD Card Issues
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#package-management-issues" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#cannot-login" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Package Management Issues
+        Cannot Login
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-blank-but-system-accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Blank But System Accessible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-display-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Display Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-not-responding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Not Responding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-mapping-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Mapping Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-keyboard-firmware-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Keyboard Firmware Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-read-only-overlayfs-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Read-Only / Overlayfs Failure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Read-Only / Overlayfs Failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptoms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cause-external-sd-card-partition-label-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root Cause: External SD Card Partition Label Conflicts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosing-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnosing the Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-1-remove-external-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 1: Remove External SD Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-2-relabel-external-sd-card-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 2: Relabel External SD Card Partitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-3-recovery-after-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 3: Recovery After Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prevention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-external-overlay-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: External Overlay Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-troubleshooting-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More Troubleshooting Guides
       
     </span>
   </a>
@@ -1809,90 +2115,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../boot-problems/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Boot Problems
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../display/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Display Issues
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../input/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Input Problems
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2133,43 +2355,293 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-system-issues" class="md-nav__link">
+  <a href="#boot-problems" class="md-nav__link">
     <span class="md-ellipsis">
       
-        General System Issues
+        Boot Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-wont-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Won't Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Won&#39;t Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-nand-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI NAND Interference
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-issues" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-hangs-or-takes-long-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Performance Issues
+        Boot Hangs or Takes Long Time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-issues" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#sd-card-issues" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Storage Issues
+        SD Card Issues
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#package-management-issues" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#cannot-login" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Package Management Issues
+        Cannot Login
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-blank-but-system-accessible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Blank But System Accessible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-display-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Display Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyboard-not-responding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Not Responding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-mapping-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Mapping Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-keyboard-firmware-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Keyboard Firmware Not Working
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-read-only-overlayfs-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Read-Only / Overlayfs Failure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Read-Only / Overlayfs Failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symptoms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cause-external-sd-card-partition-label-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Root Cause: External SD Card Partition Label Conflicts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosing-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnosing the Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-1-remove-external-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 1: Remove External SD Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-2-relabel-external-sd-card-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 2: Relabel External SD Card Partitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-3-recovery-after-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution 3: Recovery After Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prevention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-external-overlay-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: External Overlay Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-troubleshooting-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More Troubleshooting Guides
       
     </span>
   </a>
@@ -2219,7 +2691,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../basic-troubleshooting/" class="md-path__link">
           
   <span class="md-ellipsis">
     Troubleshooting
@@ -2250,17 +2722,297 @@
 
 
 <h1 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h1>
-<p>General troubleshooting for common Calculinux problems.</p>
-<h2 id="general-system-issues">General System Issues<a class="headerlink" href="#general-system-issues" title="Permanent link">&para;</a></h2>
-<p><em>Common system problems and their solutions.</em></p>
-<h2 id="performance-issues">Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h2>
-<p><em>System performance troubleshooting.</em></p>
-<h2 id="storage-issues">Storage Issues<a class="headerlink" href="#storage-issues" title="Permanent link">&para;</a></h2>
-<p><em>Storage-related problems and solutions.</em></p>
-<h2 id="package-management-issues">Package Management Issues<a class="headerlink" href="#package-management-issues" title="Permanent link">&para;</a></h2>
-<p><em>opkg and package-related troubleshooting.</em></p>
-<hr />
-<p><em>This page is under development and will be populated with detailed troubleshooting information for common issues.</em></p>
+<p>Comprehensive troubleshooting for common Calculinux problems and boot-related issues.</p>
+<h2 id="boot-problems">Boot Problems<a class="headerlink" href="#boot-problems" title="Permanent link">&para;</a></h2>
+<h3 id="system-wont-boot">System Won't Boot<a class="headerlink" href="#system-wont-boot" title="Permanent link">&para;</a></h3>
+<h4 id="spi-nand-interference">SPI NAND Interference<a class="headerlink" href="#spi-nand-interference" title="Permanent link">&para;</a></h4>
+<p>Some Luckfox Lyra boards include SPI NAND flash memory. The RK3506G2 boot ROM <strong>always tries NAND first</strong>, so if your board has NAND with any firmware on it, the boot ROM will ignore your SD card.</p>
+<p><strong>Quick Check:</strong></p>
+<ul>
+<li>Lyra models with "SPI NAND" or "Lyra B" or "Lyra Plus" have NAND</li>
+<li>Check your purchase specifications</li>
+<li>If unsure, try booting - if SD card is ignored, you likely have NAND</li>
+<li><strong>Watch the red LED on the Lyra</strong> - it should blink in a heartbeat pattern when booted. If it's not blinking, the Lyra isn't booting at all.</li>
+</ul>
+<p><strong>Solution:</strong>
+You must erase the SPI NAND flash. See the comprehensive <strong><a href="../erase-nand/">SPI NAND Erase Guide</a></strong> for detailed step-by-step instructions covering:</p>
+<ul>
+<li>Windows method (RKDevTool)</li>
+<li>Linux method (upgrade_tool)</li>
+<li>MaskRom mode recovery</li>
+<li>Troubleshooting failed erases</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Critical: Data Loss</p>
+<p>Erasing SPI NAND will <strong>permanently delete all data</strong> on the NAND flash. This cannot be undone. Ensure you understand the implications before proceeding. On a new device there is nothing of value, only a test image placed there by Luckfox.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">More Information</p>
+<ul>
+<li><strong>Complete Erase Guide</strong>: <a href="../erase-nand/">SPI NAND Erase Guide</a></li>
+<li><strong>Boot Priority Details</strong>: <a href="../../hardware/specifications/#boot-priority">Hardware Specifications - Boot Priority</a></li>
+<li><strong>Luckfox Official Docs</strong>: <a href="https://wiki.luckfox.com/Luckfox-Lyra/Image-flashing/">wiki.luckfox.com/Luckfox-Lyra/Image-flashing</a></li>
+</ul>
+</div>
+<h3 id="boot-hangs-or-takes-long-time">Boot Hangs or Takes Long Time<a class="headerlink" href="#boot-hangs-or-takes-long-time" title="Permanent link">&para;</a></h3>
+<p><strong>First boot specific</strong>: The system automatically expands the overlay partition on first boot, which can take 1-3 minutes. This is normal.</p>
+<p><strong>Other causes</strong>:</p>
+<ul>
+<li><strong>SPI NAND not erased</strong>: Most common issue on NAND-equipped boards</li>
+<li><strong>Corrupt SD card</strong>: Test with <code>sudo fsck /dev/mmcblk0p1</code> after booting</li>
+<li><strong>Insufficient power</strong>: Ensure 5V/2A power supply or check battery charge</li>
+<li><strong>External SD card conflicts</strong>: Remove external SD cards during first boot</li>
+</ul>
+<h3 id="sd-card-issues">SD Card Issues<a class="headerlink" href="#sd-card-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Corrupted card</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Test filesystem integrity</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>fsck<span class="w"> </span>/dev/mmcblk0p1
+</code></pre></div>
+<p><strong>Write protection</strong>: Check physical write-protect switch on SD card</p>
+<p><strong>Incompatible card</strong>: Use Class 10 or UHS-I cards, avoid cheap/counterfeit cards</p>
+<p><strong>Wrong slot</strong>: Ensure SD card is in the <strong>Lyra's</strong> slot, not the PicoCalc's external slot</p>
+<h3 id="cannot-login">Cannot Login<a class="headerlink" href="#cannot-login" title="Permanent link">&para;</a></h3>
+<p><strong>Verify credentials</strong>:</p>
+<ul>
+<li>Username: <code>root</code></li>
+<li>Password: <code>root</code></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Change Default Password</p>
+<p>After first login, immediately change the root password with <code>passwd</code></p>
+</div>
+<p><strong>Other login issues</strong>:</p>
+<ul>
+<li>Try different keyboard if available</li>
+<li>Check keyboard driver loaded: <code>dmesg | grep -i keyboard</code></li>
+<li>Access via USB networking if display/keyboard not working</li>
+<li>Use serial console for debugging: 1500000 baud on PicoCalc USB-C port</li>
+</ul>
+<h2 id="display-issues">Display Issues<a class="headerlink" href="#display-issues" title="Permanent link">&para;</a></h2>
+<h3 id="display-blank-but-system-accessible">Display Blank But System Accessible<a class="headerlink" href="#display-blank-but-system-accessible" title="Permanent link">&para;</a></h3>
+<p>If you can access the system via USB networking but the display remains blank:</p>
+<p><strong>Cause</strong>: Lyra was powered on directly (via its USB-C port) before the PicoCalc was turned on.</p>
+<p><strong>Why this happens</strong>: The display initializes only during boot when the PicoCalc hardware is powered on. If the Lyra boots before the PicoCalc is turned on, the display hardware isn't available and won't be initialized.</p>
+<p><strong>Solution</strong>:</p>
+<ol>
+<li>Unplug the Lyra's USB-C cable (powers off the Lyra)</li>
+<li>Press the PicoCalc power button to turn on the device</li>
+<li>The PicoCalc will power and boot the Lyra with display properly initialized</li>
+<li><strong>If no batteries</strong>: Use the <strong>PicoCalc's USB-C port</strong> for power instead of the Lyra's</li>
+</ol>
+<h3 id="other-display-checks">Other Display Checks<a class="headerlink" href="#other-display-checks" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Check the red LED</strong>: The Lyra has a red LED that blinks in a heartbeat pattern when booted. If it's blinking, the system is running and the issue is display-specific. If it's not blinking, the system isn't booting.</li>
+<li><strong>Wait 2-3 minutes</strong>: First boot takes longer as the overlay partition is automatically expanded</li>
+<li><strong>Check power supply</strong>: If not running on batteries, ensure 5V/2A minimum</li>
+<li><strong>Verify SD card</strong>: Check SD card is inserted correctly in Lyra slot</li>
+<li><strong>Test display hardware</strong>: After login, run <code>sdl2-test</code> to verify display functionality</li>
+<li><strong>Review display compatibility</strong>: See <a href="../../hardware/compatibility/display-input/">Display &amp; Input Compatibility</a></li>
+</ul>
+<h2 id="input-issues">Input Issues<a class="headerlink" href="#input-issues" title="Permanent link">&para;</a></h2>
+<h3 id="keyboard-not-responding">Keyboard Not Responding<a class="headerlink" href="#keyboard-not-responding" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Check input devices</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>/proc/bus/input/devices
+</code></pre></div>
+</li>
+<li>
+<p><strong>Check kernel messages</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>keyboard
+</code></pre></div>
+</li>
+<li>
+<p><strong>Test events</strong> (if <code>evtest</code> is installed):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>evtest<span class="w"> </span>/dev/input/event0
+</code></pre></div>
+</li>
+<li>
+<p><strong>Hardware checks</strong>:</p>
+<ul>
+<li>Power-cycle the PicoCalc and ensure it is on before the Lyra boots</li>
+<li>Reseat internal connections if you recently modified hardware</li>
+</ul>
+</li>
+</ol>
+<h3 id="key-mapping-issues">Key Mapping Issues<a class="headerlink" href="#key-mapping-issues" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Check your layout in <a href="../../user-guide/basic-usage/">Basic Usage</a></li>
+<li>If you customized mappings, revert changes and retest</li>
+</ul>
+<h3 id="custom-keyboard-firmware-not-working">Custom Keyboard Firmware Not Working<a class="headerlink" href="#custom-keyboard-firmware-not-working" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms</strong>: Keyboard doesn't respond when using the <a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">custom PicoCalc keyboard firmware</a></p>
+<p><strong>Cause</strong>: The custom firmware by JackCarterSmith reduces the I2C bus frequency for more efficient power consumption, limiting it to 100 kHz. Calculinux currently attempts to use the I2C bus at 400 kHz, which is incompatible with the custom firmware.</p>
+<p><strong>Short-term Solution</strong>:</p>
+<p>Flash the keyboard back to the original firmware. The custom firmware is not yet officially supported.</p>
+<p><strong>Future Support</strong>:</p>
+<p>Calculinux plans to support the custom firmware with proper I2C speed configuration. Check <a href="https://github.com/Calculinux/meta-calculinux/issues">GitHub Issues</a> for updates on this compatibility improvement.</p>
+<h2 id="system-read-only-overlayfs-failure">System Read-Only / Overlayfs Failure<a class="headerlink" href="#system-read-only-overlayfs-failure" title="Permanent link">&para;</a></h2>
+<h3 id="symptoms">Symptoms<a class="headerlink" href="#symptoms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>System boots but remains <strong>read-only</strong></li>
+<li>Cannot create files or directories</li>
+<li>Cannot edit any settings in /etc</li>
+<li>Cannot change passwords</li>
+<li>Error messages mentioning overlayfs or mounting failures</li>
+<li><code>/var</code>, <code>/etc</code>, or <code>/home</code> appear read-only</li>
+</ul>
+<h3 id="root-cause-external-sd-card-partition-label-conflicts">Root Cause: External SD Card Partition Label Conflicts<a class="headerlink" href="#root-cause-external-sd-card-partition-label-conflicts" title="Permanent link">&para;</a></h3>
+<p><strong>The most common cause</strong> of overlayfs failure is <strong>partition label conflicts</strong> with external SD cards.</p>
+<p>Calculinux uses <strong>partition labels</strong> (not UUIDs or device paths) to identify and mount its overlayfs partition for persistent storage. If an external SD card contains partitions with <strong>conflicting labels</strong>—especially <code>OVERLAY_DATA</code> — the system may mount the wrong partition, causing overlayfs to fail.</p>
+<p><strong>How It Happens</strong>:</p>
+<ol>
+<li>User boots Calculinux with external SD card inserted</li>
+<li>External SD card has another Calculinux installation (or partitions with conflicting labels)</li>
+<li>During pre-init, the boot script queries for the <code>OVERLAY_DATA</code> partition by label using <code>lsblk</code></li>
+<li>When duplicate labels exist, <code>lsblk</code> returns <strong>multiple partition names</strong> instead of one</li>
+<li>The script attempts to expand the filesystem using <code>growpart</code>, but receives multiple/invalid partition names and <strong>fails</strong></li>
+<li>The subsequent <code>mount</code> command also fails because the partition name variable contains multiple values or the wrong partition</li>
+<li>Without a mounted overlay partition, the overlayfs setup for <code>/etc</code>, <code>/home</code>, <code>/var</code>, etc. cannot proceed</li>
+<li>System falls back to read-only mode</li>
+</ol>
+<h3 id="diagnosing-the-issue">Diagnosing the Issue<a class="headerlink" href="#diagnosing-the-issue" title="Permanent link">&para;</a></h3>
+<p><strong>Check for read-only filesystem</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Try creating a test file</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>touch<span class="w"> </span>~/test
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># If you get &quot;Read-only file system&quot; error, overlayfs failed to load</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Check mount status</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>overlay
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Should show overlayfs mounted on root</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># If missing, overlayfs failed to mount</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Check available block devices</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>lsblk
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># Look for multiple SD cards (mmcblk0, mmcblk1)</span>
+</code></pre></div>
+<p><strong>Check partition labels</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># List all partition labels</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,LABEL,FSTYPE,SIZE,MOUNTPOINT
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Look for duplicate labels - each should only appear ONCE:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># - OVERLAY_DATA (used for persistent storage overlay)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># - ROOT_A, ROOT_B (used for A/B system updates)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># - SWAP (used for swap space)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># - BOOT (used for boot partition)</span>
+</code></pre></div>
+<p><strong>Check system logs</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Check for mount errors</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;overlay\|mount\|fail&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>journalctl<span class="w"> </span>-b<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;overlay\|mount&quot;</span>
+</code></pre></div>
+<h3 id="solution-1-remove-external-sd-card">Solution 1: Remove External SD Card<a class="headerlink" href="#solution-1-remove-external-sd-card" title="Permanent link">&para;</a></h3>
+<p><strong>Immediate fix</strong>:</p>
+<ol>
+<li>Power off the device</li>
+<li>Remove any external SD card</li>
+<li>Reboot</li>
+<li>System should mount overlayfs correctly</li>
+</ol>
+<h3 id="solution-2-relabel-external-sd-card-partitions">Solution 2: Relabel External SD Card Partitions<a class="headerlink" href="#solution-2-relabel-external-sd-card-partitions" title="Permanent link">&para;</a></h3>
+<p>If you need to keep the external SD card inserted:</p>
+<p><strong>Option A: Change partition labels</strong> (preserves data):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Install sgdisk if not available (built in on 1.0.0 Alpha 8 ans later)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>opkg<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>opkg<span class="w"> </span>install<span class="w"> </span>gptfdisk
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># List current partition labels</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,LABEL
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Change partition labels to unique names</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># (adjust partition numbers as needed for your card)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">1</span>:<span class="s2">&quot;external-storage&quot;</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">2</span>:<span class="s2">&quot;external-backup&quot;</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Verify changes</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,LABEL
+</code></pre></div>
+<p><strong>Option B: Reformat the external card</strong> (destroys all data):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Identify the external card (mmcblk1)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>lsblk
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Unmount all partitions</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/mmcblk1*
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Create new partition table with unique partition label</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>-o<span class="w"> </span>/dev/mmcblk1<span class="w">  </span><span class="c1"># Create new GPT table</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>:0:0<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:8300<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>:<span class="s2">&quot;external-data&quot;</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1"># Format the partition</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;external-data&quot;</span><span class="w"> </span>/dev/mmcblk1p1
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Verify</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,LABEL
+</code></pre></div>
+<h3 id="solution-3-recovery-after-boot">Solution 3: Recovery After Boot<a class="headerlink" href="#solution-3-recovery-after-boot" title="Permanent link">&para;</a></h3>
+<p>If already booted into read-only mode, you can attempt a manual overlay mount:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Identify and mount the correct OVERLAY_DATA partition</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,MOUNTPOINT
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Find the partition with PARTLABEL &quot;OVERLAY_DATA&quot; on boot card (mmcblk0)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># 2. Mount the overlay data partition if not already mounted</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/disk/by-partlabel/OVERLAY_DATA<span class="w"> </span>/data
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># 3. Manually create overlay for /etc (example for one directory)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/overlay/etc/upper
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/overlay/etc/work
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>overlay<span class="w"> </span>overlay<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">lowerdir</span><span class="o">=</span>/etc,upperdir<span class="o">=</span>/data/overlay/etc/upper,workdir<span class="o">=</span>/data/overlay/etc/work<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span>/etc
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1"># 4. Repeat for other directories as needed:</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1"># /root, /home, /var, /usr, /opt</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1"># 5. Test write access</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>touch<span class="w"> </span>~/test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>~/test
+</code></pre></div>
+<p><strong>Note</strong>: Manual overlay mounting is complex and error-prone. The better solution is to fix the partition label conflict and reboot cleanly.</p>
+<h3 id="prevention">Prevention<a class="headerlink" href="#prevention" title="Permanent link">&para;</a></h3>
+<p><strong>Best practices</strong> to avoid this issue:</p>
+<ul>
+<li>✅ <strong>Remove external SD cards during first boot</strong></li>
+<li>✅ <strong>Use unique partition labels</strong> on all external storage</li>
+<li>✅ <strong>Never clone</strong> Calculinux SD cards for use as external storage</li>
+<li>✅ <strong>Check labels</strong> before rebooting with an external SD card inserted, especially if you've previously used it as a boot device</li>
+</ul>
+<p><strong>Safe external SD card labels</strong> (won't conflict):</p>
+<ul>
+<li><code>external-data</code></li>
+<li><code>backup</code></li>
+<li><code>media</code></li>
+<li><code>storage</code></li>
+<li>Any name <strong>not</strong> used by Calculinux system partitions</li>
+</ul>
+<p><strong>Calculinux reserved labels</strong> (never use these on external cards):</p>
+<ul>
+<li><code>OVERLAY_DATA</code> (most critical - causes immediate failure)</li>
+<li><code>ROOT_A</code> and <code>ROOT_B</code> (system partition labels - may cause issues with updates)</li>
+<li><code>SWAP</code> (swap partition)</li>
+<li><code>BOOT</code> (boot partition)</li>
+</ul>
+<p>Duplicating any of these labels will prevent proper system function.</p>
+<h3 id="advanced-external-overlay-storage">Advanced: External Overlay Storage<a class="headerlink" href="#advanced-external-overlay-storage" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">For Advanced Users Only</p>
+<p>It <strong>is</strong> possible to intentionally place the <code>OVERLAY_DATA</code> partition on an external SD card for expanded storage or to enable swapping boot SD cards while keeping persistent data separate.</p>
+<p>This is an <strong>advanced configuration</strong>  and is documented elsewhere:</p>
+<p>📖 <strong><a href="../../user-guide/advanced-storage/">Advanced Storage Configuration Guide</a></strong></p>
+</div>
+<p>If you're experiencing overlayfs failures, this advanced configuration is <strong>not</strong> your issue—you have accidental duplicate labels that need to be resolved using the solutions above.</p>
+<h3 id="related-issues">Related Issues<a class="headerlink" href="#related-issues" title="Permanent link">&para;</a></h3>
+<p>See also:</p>
+<ul>
+<li><a href="../../getting-started/installation/#step-3-hardware-installation">Installation Guide - External SD Card Warning</a></li>
+</ul>
+<h2 id="more-troubleshooting-guides">More Troubleshooting Guides<a class="headerlink" href="#more-troubleshooting-guides" title="Permanent link">&para;</a></h2>
+<p>Use these specialized guides for deeper troubleshooting:</p>
+<ul>
+<li><a href="../basic-troubleshooting/">Basic Troubleshooting</a></li>
+<li><a href="../network/">Network Issues</a></li>
+<li><a href="../erase-nand/">Erasing SPI NAND</a></li>
+<li><a href="../faq/">Troubleshooting &amp; FAQ</a></li>
+<li><a href="../../user-guide/advanced-storage/">Advanced Storage Configuration</a></li>
+</ul>
 
 
 
@@ -2283,7 +3035,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 9, 2026 20:27:37 UTC">February 9, 2026</span>
   </span>
 
     

@@ -327,7 +327,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../troubleshooting/common-issues/" class="md-tabs__link">
+        <a href="../../troubleshooting/basic-troubleshooting/" class="md-tabs__link">
           
   
   
@@ -1878,6 +1878,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/advanced-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Storage Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2203,6 +2231,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../troubleshooting/basic-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/common-issues/" class="md-nav__link">
         
   
@@ -2211,90 +2267,6 @@
     
   
     Common Issues
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../troubleshooting/boot-problems/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Boot Problems
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../troubleshooting/display/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Display Issues
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../troubleshooting/input/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Input Problems
   
 
     
@@ -3214,6 +3186,19 @@
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># - Boot partition (FAT32)</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># - Root filesystem (ext4)</span>
 </code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Critical: External SD Card Partition Conflicts</p>
+<p><strong>Before booting</strong>, ensure any external SD card inserted in your PicoCalc does <strong>not</strong> contain partition labels that conflict with Calculinux system partitions.</p>
+<p><strong>Critical labels to avoid</strong>: <code>OVERLAY_DATA</code>, <code>ROOT_A</code>, <code>ROOT_B</code>, <code>BOOT</code>, <code>SWAP</code></p>
+<p><strong>Why this matters</strong>: During boot, the preinit script searches for the <code>OVERLAY_DATA</code> partition <strong>by label</strong> to mount persistent storage. If an external SD card has a duplicate label (e.g., from another Calculinux installation), the query returns <strong>multiple partitions</strong>, causing the mount process to fail. The system then boots in <strong>read-only mode</strong> with no ability to save any changes.</p>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>✅ Remove external SD cards during first boot</li>
+<li>✅ Reformat external SD cards with unique labels before use</li>
+<li>✅ Never insert SD cards with Calculinux installations as external storage</li>
+<li>📖 See <a href="../../troubleshooting/common-issues/#system-read-only-overlayfs-failure">Troubleshooting: System Read-Only / Overlayfs Issues</a> for recovery</li>
+</ul>
+</div>
 <h2 id="hardware-installation">Step 3: Hardware Installation<a class="headerlink" href="#hardware-installation" title="Permanent link">&para;</a></h2>
 <p>If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the <a href="../../hardware/modifications/">Hardware Modifications</a> guide.</p>
 <p>If your Luckfox Lyra has SPI NAND, you <strong>must</strong> erase it:</p>
@@ -3270,7 +3255,7 @@
 <ul>
 <li>Check power supply (try different cable/adapter)</li>
 <li>Verify SD card is inserted correctly</li>
-<li>See <a href="../../troubleshooting/boot-problems/">Boot Problems</a></li>
+<li>See <a href="../../troubleshooting/common-issues/#boot-problems">Boot Problems</a></li>
 </ul>
 <p><strong>Boots but hangs</strong>:</p>
 <ul>
@@ -3466,7 +3451,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 2, 2026 00:45:26 UTC">February 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 9, 2026 20:27:37 UTC">February 9, 2026</span>
   </span>
 
     
