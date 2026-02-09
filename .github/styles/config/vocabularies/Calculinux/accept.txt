@@ -366,3 +366,4 @@ plaintext
 Subnet
 Mbps
 musl
+unbootable
