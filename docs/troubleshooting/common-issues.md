@@ -302,7 +302,7 @@ touch ~/test && rm ~/test
 - ✅ **Remove external SD cards during first boot**
 - ✅ **Use unique partition labels** on all external storage
 - ✅ **Never clone** Calculinux SD cards for use as external storage
-- ✅ **Check labels** before rebooting with an external SD card insterted, especially if you've previously used it as a boot device
+- ✅ **Check labels** before rebooting with an external SD card inserted, especially if you've previously used it as a boot device
 
 **Safe external SD card labels** (won't conflict):
 
