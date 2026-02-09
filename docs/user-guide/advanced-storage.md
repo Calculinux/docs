@@ -42,7 +42,7 @@ Before attempting this configuration:
 
 !!! danger "Critical: Do Not Remove External Card While Running"
     Once configured with external overlay storage, the external SD card becomes **essential** to system operation. **Never remove the external SD card while the PicoCalc is powered on or running.**
-    
+
     Removing the card will:
     
     - ⚠️ Cause immediate system instability
@@ -247,7 +247,7 @@ To move back to standard (overlay on boot card):
 
 !!! warning "SPI Interface Limitation"
     The external SD card slot uses a **slower SPI-only interface**, not the faster SDIO/MMC interface used by the internal boot card slot. This significantly limits performance regardless of card quality.
-    
+
     **Maximum theoretical SPI throughput is much lower** than SDIO, so external overlay storage will generally be slower than internal overlay for I/O-heavy workloads.
 
 **External overlay may be slower due to**:

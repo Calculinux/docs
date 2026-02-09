@@ -325,7 +325,7 @@ Duplicating any of these labels will prevent proper system function.
 
 !!! info "For Advanced Users Only"
     It **is** possible to intentionally place the `OVERLAY_DATA` partition on an external SD card for expanded storage or to enable swapping boot SD cards while keeping persistent data separate.
-    
+
     This is an **advanced configuration**  and is documented elsewhere:
     
     📖 **[Advanced Storage Configuration Guide](../user-guide/advanced-storage.md)**

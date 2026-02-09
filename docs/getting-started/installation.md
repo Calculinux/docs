@@ -146,7 +146,7 @@ sudo fdisk -l /dev/sdX
 
 !!! danger "Critical: External SD Card Partition Conflicts"
     **Before booting**, ensure any external SD card inserted in your PicoCalc does **not** contain partition labels that conflict with Calculinux system partitions.
-    
+
     **Critical labels to avoid**: `OVERLAY_DATA`, `ROOT_A`, `ROOT_B`, `BOOT`, `SWAP`
     
     **Why this matters**: During boot, the preinit script searches for the `OVERLAY_DATA` partition **by label** to mount persistent storage. If an external SD card has a duplicate label (e.g., from another Calculinux installation), the query returns **multiple partitions**, causing the mount process to fail. The system then boots in **read-only mode** with no ability to save any changes.

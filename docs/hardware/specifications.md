@@ -146,7 +146,7 @@ WiFi requires an external USB adapter as neither the PicoCalc nor Luckfox Lyra i
 
 !!! info "WiFi Compatibility Information"
     For comprehensive WiFi adapter information including:
-    
+
     - Supported chipsets and drivers
     - Tested adapters with purchase links
     - 3.3V voltage requirements
