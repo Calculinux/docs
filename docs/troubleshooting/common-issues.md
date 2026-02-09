@@ -157,6 +157,7 @@ Calculinux plans to support the custom firmware with proper I2C speed configurat
 - Cannot change passwords
 - Error messages mentioning overlayfs or mounting failures
 - `/var`, `/etc`, or `/home` appear read-only
+- DNS resolution does not work (because /etc/resolv.conf cannot be written)
 
 ### Root Cause: External SD Card Partition Label Conflicts
 
