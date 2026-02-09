@@ -366,3 +366,6 @@ plaintext
 Subnet
 Mbps
 musl
+unbootable
+preinit
+UUIDs

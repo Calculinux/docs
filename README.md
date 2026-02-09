@@ -18,13 +18,13 @@ This repository contains the source for the Calculinux documentation website, bu
 ### Installation
 
 1. Clone this repository:
-```bash
+```shell
 git clone https://github.com/Calculinux/docs.git
 cd docs
 ```
 
 2. Install dependencies:
-```bash
+```shell
 make install
 ```
 
@@ -32,7 +32,7 @@ make install
 
 The repository includes a Makefile for common development tasks:
 
-```bash
+```shell
 make          # Default: runs lint, then starts docs server
 make lint     # Run all linters (markdownlint, link-check, vale)
 make docs     # Start local MkDocs server
@@ -46,14 +46,14 @@ make help     # Show all available commands
 
 To preview documentation with live reload:
 
-```bash
+```shell
 make docs
 ```
 
 Navigate to http://127.0.0.1:8000/ to browse the rendered docs.
 
 Or manually:
-```bash
+```shell
 mkdocs serve --watch-theme
 ```
 
@@ -61,7 +61,7 @@ mkdocs serve --watch-theme
 
 Serve the documentation locally with live reload:
 
-```bash
+```shell
 mkdocs serve
 ```
 
@@ -71,7 +71,7 @@ Then open http://127.0.0.1:8000 in your browser.
 
 Build the static HTML site:
 
-```bash
+```shell
 mkdocs build
 ```
 
@@ -152,7 +152,7 @@ The documentation is automatically deployed to GitHub Pages when changes are pus
 
 To deploy manually:
 
-```bash
+```shell
 mkdocs gh-deploy
 ```
 

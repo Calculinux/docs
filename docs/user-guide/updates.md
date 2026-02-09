@@ -304,7 +304,7 @@ Or select the other slot in your bootloader (if supported).
 !!! warning "Package State After Rollback"
     After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:
 
-    ```bash
+    ```shell
     # Before updating, save your package list
     opkg list-installed > ~/my-packages.txt
 
@@ -383,7 +383,7 @@ mirror_base_url = "https://my-mirror.example.com"
 
 - [Package Management](package-management.md) - Installing and managing packages with opkg
 - [Configuration](configuration.md) - System configuration files
-- [Boot Problems](../troubleshooting/boot-problems.md) - Recovering from boot issues
+- [Boot Problems](../troubleshooting/common-issues.md#boot-problems) - Recovering from boot issues
 - [RAUC Documentation](https://rauc.readthedocs.io/) - Upstream RAUC docs
 
 ---

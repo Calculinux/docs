@@ -5,7 +5,7 @@ generated IPK to an SD card and installing it on the device.
 
 1. Build the package and locate the IPK on your build host:
 
-   ```bash
+   ```shell
    # Build the package
    bitbake hello-calculinux
 
@@ -18,7 +18,7 @@ generated IPK to an SD card and installing it on the device.
 
 2. Copy the IPK to an SD card on your host (PicoCalc slot SD works fine):
 
-   ```bash
+   ```shell
    # Replace <CARD_MOUNT> with your SD card mount point
    cp /path/to/hello-calculinux_*.ipk /media/$USER/<CARD_MOUNT>/
    sync
@@ -26,7 +26,7 @@ generated IPK to an SD card and installing it on the device.
 
 3. On the device, mount the SD card and install the package:
 
-   ```bash
+   ```shell
    # Example mount point; adjust device node and path as needed
    sudo mkdir -p /mnt/sd
    sudo mount /dev/mmcblk1p1 /mnt/sd
@@ -37,7 +37,7 @@ generated IPK to an SD card and installing it on the device.
 
 4. Run the utility to verify:
 
-   ```bash
+   ```shell
    hello-calculinux
    ```
 

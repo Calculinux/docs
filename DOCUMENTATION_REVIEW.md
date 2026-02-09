@@ -75,7 +75,7 @@ meta-calculinux/
 **Location**: `docs/developer/overview.md` lines ~277-287
 
 **Issue**: Commands reference non-existent components:
-```bash
+```shell
 bitbake linux-calculinux -c unpack
 ```
 

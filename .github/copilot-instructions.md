@@ -69,7 +69,7 @@ Sections: Getting Started → Hardware → User Guide → Developer Guide → Tr
 
 This repository includes a Makefile for streamlined development:
 
-```bash
+```shell
 make          # Default: runs linting, then starts docs server
 make lint     # Run all linters: markdownlint (with autofix), link-check, vale
 make docs     # Start local MkDocs server at http://127.0.0.1:8000
@@ -82,7 +82,7 @@ make help     # Show all available targets
 
 If you prefer to run commands directly:
 
-```bash
+```shell
 # Install dependencies
 pip install -r requirements.txt
 npm install
@@ -164,7 +164,7 @@ Reviewdog posts inline comments on PRs for any remaining issues. Don't block on 
 
 Always specify language:
 
-```bash
+```shell
 bitbake calculinux-image
 ```
 

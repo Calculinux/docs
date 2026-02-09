@@ -68,7 +68,7 @@ When Vale flags a term in a PR review comment:
 
 After adding terms, test locally:
 
-```bash
+```shell
 # Install Vale (if not already installed)
 make install-vale
 

@@ -144,6 +144,20 @@ sudo fdisk -l /dev/sdX
 # - Root filesystem (ext4)
 ```
 
+!!! danger "Critical: External SD Card Partition Conflicts"
+    **Before booting**, ensure any external SD card inserted in your PicoCalc does **not** contain partition labels that conflict with Calculinux system partitions.
+
+    **Critical labels to avoid**: `OVERLAY_DATA`, `ROOT_A`, `ROOT_B`, `BOOT`, `SWAP`
+    
+    **Why this matters**: During boot, the preinit script searches for the `OVERLAY_DATA` partition **by label** to mount persistent storage. If an external SD card has a duplicate label (e.g., from another Calculinux installation), the query returns **multiple partitions**, causing the mount process to fail. The system then boots in **read-only mode** with no ability to save any changes.
+    
+    **Solutions**:
+    
+    - ✅ Remove external SD cards during first boot
+    - ✅ Reformat external SD cards with unique labels before use
+    - ✅ Never insert SD cards with Calculinux installations as external storage
+    - 📖 See [Troubleshooting: System Read-Only / Overlayfs Issues](../troubleshooting/common-issues.md#system-read-only-overlayfs-failure) for recovery
+
 ## Step 3: Hardware Installation {#hardware-installation}
 
 If you haven't already installed the Luckfox Lyra in your PicoCalc, follow the [Hardware Modifications](../hardware/modifications.md) guide.
@@ -211,7 +225,7 @@ If the system doesn't boot:
 
 - Check power supply (try different cable/adapter)
 - Verify SD card is inserted correctly
-- See [Boot Problems](../troubleshooting/boot-problems.md)
+- See [Boot Problems](../troubleshooting/common-issues.md#boot-problems)
 
 **Boots but hangs**:
 

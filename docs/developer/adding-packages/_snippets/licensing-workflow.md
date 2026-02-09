@@ -11,7 +11,7 @@ BitBake enforces license checksums. Use this workflow to add them correctly:
 
 2. Trigger a build to get BitBake's suggested checksum:
 
-   ```bash
+   ```shell
    bitbake <recipe_name>
    ```
 
@@ -21,6 +21,6 @@ BitBake enforces license checksums. Use this workflow to add them correctly:
 
 4. Optional: compute manually if needed from the upstream repo:
 
-   ```bash
+   ```shell
    md5sum LICENSE
    ```

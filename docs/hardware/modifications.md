@@ -72,7 +72,7 @@ If your Luckfox Lyra has SPI NAND flash, you **must** erase it for the board to 
 2. Connect Luckfox Lyra via USB while holding boot button
 3. Use `upgrade_tool` to erase NAND:
 
-   ```bash
+   ```shell
    upgrade_tool ef
    ```
 
@@ -135,7 +135,7 @@ After installation:
 3. **Boot Check**: Look for display activity
 4. **LED Indicators**: Observe any status LEDs on Luckfox board
 
-If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems.md).
+If the system doesn't boot, see [Boot Problems](../troubleshooting/common-issues.md#boot-problems).
 
 ## Common Issues
 

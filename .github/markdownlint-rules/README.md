@@ -21,7 +21,7 @@ The complete icon lists are stored in `../.github/icon-lists.json` and are gener
 
 If you update the Material for MkDocs theme to a newer version, regenerate the icon lists:
 
-```bash
+```shell
 python3 .github/scripts/generate-icon-lists.py
 ```
 

@@ -42,7 +42,7 @@ require ${BPN}-crates.inc
 
 Then generate crate dependencies from Cargo.lock:
 
-```bash
+```shell
 bitbake -c update_crates newsboat
 ```
 
@@ -57,6 +57,6 @@ This auto-generates `newsboat-crates.inc` listing all Rust dependencies.
 - Ensure `Cargo.lock` is present to avoid network fetches during builds.
 - Test the package standalone before adding it to images:
 
-```bash
+```shell
 bitbake newsboat
 ```

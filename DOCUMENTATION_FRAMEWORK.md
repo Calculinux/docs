@@ -104,7 +104,7 @@ The documentation is organized into the following sections:
 
 ### Local Development
 
-```bash
+```shell
 # Install dependencies
 pip install -r requirements.txt
 
@@ -116,7 +116,7 @@ mkdocs serve
 
 ### Building
 
-```bash
+```shell
 # Build static site
 mkdocs build
 
@@ -125,7 +125,7 @@ mkdocs build
 
 ### Deployment
 
-```bash
+```shell
 # Deploy to GitHub Pages
 mkdocs gh-deploy
 ```
