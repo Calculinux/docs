@@ -135,7 +135,7 @@ After installation:
 3. **Boot Check**: Look for display activity
 4. **LED Indicators**: Observe any status LEDs on Luckfox board
 
-If the system doesn't boot, see [Boot Problems](../troubleshooting/boot-problems.md).
+If the system doesn't boot, see [Boot Problems](../troubleshooting/common-issues.md#boot-problems).
 
 ## Common Issues
 

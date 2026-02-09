@@ -268,7 +268,7 @@ If you need to restore the original Luckfox firmware to NAND:
 
 If you encounter issues not covered here:
 
-1. Check the [Boot Problems](boot-problems.md) troubleshooting guide
+1. Check the [Boot Problems](common-issues.md#boot-problems) troubleshooting guide
 2. Ask in the [Calculinux Forum](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
 3. Refer to [Luckfox Official Documentation](https://wiki.luckfox.com/Luckfox-Lyra/)
 4. Open a [GitHub Issue](https://github.com/Calculinux/meta-calculinux/issues)

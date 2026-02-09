@@ -383,7 +383,7 @@ mirror_base_url = "https://my-mirror.example.com"
 
 - [Package Management](package-management.md) - Installing and managing packages with opkg
 - [Configuration](configuration.md) - System configuration files
-- [Boot Problems](../troubleshooting/boot-problems.md) - Recovering from boot issues
+- [Boot Problems](../troubleshooting/common-issues.md#boot-problems) - Recovering from boot issues
 - [RAUC Documentation](https://rauc.readthedocs.io/) - Upstream RAUC docs
 
 ---

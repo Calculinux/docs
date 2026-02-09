@@ -225,7 +225,7 @@ If the system doesn't boot:
 
 - Check power supply (try different cable/adapter)
 - Verify SD card is inserted correctly
-- See [Boot Problems](../troubleshooting/boot-problems.md)
+- See [Boot Problems](../troubleshooting/common-issues.md#boot-problems)
 
 **Boots but hangs**:
 
