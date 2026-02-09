@@ -2452,7 +2452,7 @@
 <h2 id="external-overlay-storage">External Overlay Storage<a class="headerlink" href="#external-overlay-storage" title="Permanent link">&para;</a></h2>
 <p>For users who need expanded persistent storage or want to enable swapping boot SD cards while keeping user data separate, it's possible to place the <code>OVERLAY_DATA</code> partition on an external SD card.</p>
 <h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
-<p>Calculinux's preinit script queries for storage partitions <strong>by label</strong>, not by device path. This allows flexibility in where partitions are located, but also requires careful management to avoid conflicts.</p>
+<p>Calculinux's pre-init script queries for storage partitions <strong>by label</strong>, not by device path. This allows flexibility in where partitions are located, but also requires careful management to avoid conflicts.</p>
 <p>The system searches for a partition labeled <code>OVERLAY_DATA</code> and mounts it as the upper layer for the overlayfs that provides persistent storage for <code>/etc</code>, <code>/home</code>, <code>/var</code>, <code>/usr</code>, and <code>/opt</code>.</p>
 <h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h3>
 <p><strong>Valid reasons to use external overlay storage</strong>:</p>
@@ -2677,7 +2677,7 @@
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">SPI Interface Limitation</p>
-<p>The external SD card slot uses a <strong>slower SPI-only interface</strong>, not the faster SDIO/MMC interface used by the internal boot card slot. This significantly limits performance regardless of card quality.</p>
+<p>The external SD card slot uses a <strong>slower SPI-only interface</strong>, not the faster SDIO/MMC interface used by the internal boot card slot. This limits performance regardless of card quality.</p>
 <p><strong>Maximum theoretical SPI throughput is much lower</strong> than SDIO, so external overlay storage will generally be slower than internal overlay for I/O-heavy workloads.</p>
 </div>
 <p><strong>External overlay may be slower due to</strong>:</p>
@@ -2690,8 +2690,9 @@
 <ul>
 <li><strong>Expanded capacity</strong> when boot card is too small (primary use case)</li>
 <li><strong>Hot-swappable boot cards</strong> for different system configurations</li>
-<li>Read-mostly workloads where capacity matters more than speed</li>
+<li>Read-heavy workloads where capacity matters more than speed</li>
 <li>More physical space reduces write amplification on smaller cards</li>
+<li>Calculinux development</li>
 </ul>
 <p><strong>Not recommended if</strong>:</p>
 <ul>
@@ -2728,7 +2729,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 9, 2026 20:16:12 UTC">February 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 9, 2026 20:24:40 UTC">February 9, 2026</span>
   </span>
 
     
