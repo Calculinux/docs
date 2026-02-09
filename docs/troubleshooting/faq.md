@@ -2,151 +2,14 @@
 
 Common issues and frequently asked questions about Calculinux.
 
-## Quick Diagnostics
+## Need troubleshooting?
 
-Before diving into specific issues, run these basic checks:
+Start with these guides:
 
-```shell
-# Check system info
-uname -a
-cat /proc/cpuinfo | grep -i "model name"
-free -h
-
-# Check disk space
-df -h
-
-# Check boot messages
-dmesg | less
-
-# Check system logs
-journalctl -b
-```
-
-## Most Common Issues
-
-### Issue: System Won't Boot
-
-**Symptoms**: No display activity, device appears dead
-
-**Possible Causes**:
-
-1. SPI NAND not erased (most common with NAND versions)
-2. Corrupt SD card image
-3. SD card not inserted properly
-4. Insufficient power supply
-5. Hardware connection issue
-
-**Solutions**:
-
-- See [Boot Problems](boot-problems.md#system-wont-boot) for detailed troubleshooting
-- Verify SPI NAND was erased: [NAND Erasing Guide](../hardware/modifications.md#erasing-spi-nand)
-- Try different power supply (5V/2A minimum)
-- Reflash SD card
-- Reseat hardware connections
-
-### Issue: Display Not Working
-
-**Symptoms**: System boots but display stays blank
-
-**Quick Fixes**:
-
-```shell
-# Check if framebuffer exists
-ls -l /dev/fb0
-
-# Test display with color pattern
-cat /dev/urandom > /dev/fb0
-
-# Check display driver
-dmesg | grep -i display
-lsmod | grep fb
-```
-
-See [Display Issues](display.md) for more details.
-
-### Issue: Keyboard Not Responding
-
-**Symptoms**: Cannot type or keys don't register
-
-**Quick Fixes**:
-
-```shell
-# Check input devices
-cat /proc/bus/input/devices
-
-# Test keyboard
-evtest /dev/input/event0
-
-# Check driver
-dmesg | grep -i keyboard
-```
-
-See [Input Problems](input.md) for more details.
-
-### Issue: Network Not Working
-
-**Symptoms**: Cannot connect to network
-
-**Quick Check**:
-
-```shell
-# Check interfaces
-ip link
-
-# Check connectivity
-ping 8.8.8.8
-
-# Check DNS
-cat /etc/resolv.conf
-```
-
-See [Network Issues](network.md) for solutions.
-
-### Issue: Out of Space
-
-**Symptoms**: "No space left on device" errors
-
-**Solution**:
-
-```shell
-# Check disk usage
-df -h
-
-# Find large files
-du -h /home | sort -h | tail -20
-
-# Clean package cache
-opkg clean
-
-# Note: Filesystem expansion is handled automatically by the pre-init script
-# No manual intervention required for SD card expansion
-```
-
-### Issue: System Running Slow
-
-**Possible Causes**:
-
-- Insufficient RAM
-- Slow SD card
-- Too many services running
-- Swap thrashing
-
-**Solutions**:
-
-```shell
-# Check memory
-free -h
-
-# Check swap
-swapon --show
-
-# Check running processes
-htop  # or top
-
-# Disable unnecessary services
-systemctl list-unit-files --state=enabled
-systemctl disable <service-name>
-```
+- [Basic Troubleshooting](basic-troubleshooting.md)
+- [Common Issues](common-issues.md)
+- [Network Issues](network.md)
+- [Erasing SPI NAND](erase-nand.md)
 
 ## Frequently Asked Questions
 
@@ -241,7 +104,7 @@ A: GitHub: [github.com/Calculinux](https://github.com/Calculinux)
 
 **Q: Why won't my system boot from SD card?**
 
-A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you must erase it first. See [Boot Problems](boot-problems.md#spi-nand-interference).
+A: Most likely SPI NAND interference. If your Luckfox Lyra has SPI NAND, you must erase it first. See [Common Issues](common-issues.md#spi-nand-interference).
 
 **Q: Why is my system so slow?**
 
@@ -263,82 +126,6 @@ A: Try:
 - Reducing SPI clock speed in device tree. The default should be stable, however.
 - Reflashing SD card
 - Testing with different SD card
-
-## Error Messages
-
-### Common Error Messages and Solutions
-
-| Error Message | Cause | Solution |
-|---------------|-------|----------|
-| "Kernel panic - not syncing" | Corrupt kernel or bad device tree | Reflash SD card, verify image |
-| "No space left on device" | Disk full | Clean cache, expand filesystem |
-| "Out of memory" | RAM exhausted | Close apps, disable services, upgrade RAM |
-| "Cannot allocate memory" | Memory fragmentation | Reboot, reduce memory usage |
-| "Unable to mount root fs" | Bad SD card or partition | Check SD card, reflash |
-| "Timeout waiting for device" | Hardware not detected | Check connections, verify device tree |
-
-## Getting More Help
-
-If you can't find a solution here:
-
-### Information to Include
-
-When asking for help, provide:
-
-1. **Hardware**: Luckfox Lyra version (RAM, NAND), SD card brand/size
-2. **Software**: Calculinux version/image variant
-3. **Error messages**: Exact text of errors
-4. **What you tried**: Steps you've already taken
-5. **Logs**: Relevant portions of `dmesg` or `journalctl`
-
-### Where to Ask
-
-- **Documentation**: Check specific troubleshooting pages
-- **Discord Community**: [Join our Discord](https://discord.gg/7quBbSPxcP)
-- **Forum**: [ClockworkPi Forum Thread](https://forum.clockworkpi.com/t/luckfox-lyra-on-picocalc/16280)
-- **GitHub**: [Issue Tracker](https://github.com/Calculinux/meta-calculinux/issues)
-- **Community**: Links in [Resources](../resources/community.md)
-
-## Still Stuck?
-
-### Debug Mode Boot
-
-Boot with more verbose output:
-
-```shell
-# Edit boot command in U-Boot
-# Add to kernel command line:
-loglevel=7 debug
-```
-
-### Serial Console
-
-Connect via serial for full boot output:
-
-```shell
-# From another computer
-screen /dev/ttyUSB0 1500000
-```
-
-### Safe Mode
-
-Boot to minimal system:
-
-```shell
-# Connect with a serial cable, then reboot.
-# In U-Boot, add to kernel command line:
-single
-```
-
-This boots to single-user mode for recovery.
-
-## Related Pages
-
-- [Boot Problems](boot-problems.md) - Detailed boot troubleshooting
-- [Display Issues](display.md) - Display-specific problems
-- [Input Problems](input.md) - Keyboard/input issues
-- [Network Issues](network.md) - Networking problems
-- [Common Issues](common-issues.md) - General issues and solutions
 
 ---
 

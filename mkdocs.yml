@@ -107,6 +107,7 @@ nav:
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
     - Applications: user-guide/applications.md
+    - Advanced Storage Configuration: user-guide/advanced-storage.md
   
   - Developer Guide:
     - Development Overview: developer/overview.md
@@ -118,10 +119,8 @@ nav:
     - Project Ideas: developer/project-ideas.md
   
   - Troubleshooting:
+    - Basic Troubleshooting: troubleshooting/basic-troubleshooting.md
     - Common Issues: troubleshooting/common-issues.md
-    - Boot Problems: troubleshooting/boot-problems.md
-    - Display Issues: troubleshooting/display.md
-    - Input Problems: troubleshooting/input.md
     - Network Issues: troubleshooting/network.md
     - Erasing SPI NAND: troubleshooting/erase-nand.md
     - FAQ: troubleshooting/faq.md

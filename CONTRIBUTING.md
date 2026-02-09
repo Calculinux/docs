@@ -18,19 +18,19 @@ We welcome various types of contributions:
 ### Getting Started
 
 1. **Fork the repository**
-   ```bash
+   ```shell
    # On GitHub, click "Fork" button
    git clone https://github.com/YOUR_USERNAME/docs.git
    cd docs
    ```
 
 2. **Set up development environment**
-   ```bash
+   ```shell
    pip install -r requirements.txt
    ```
 
 3. **Create a branch**
-   ```bash
+   ```shell
    git checkout -b my-improvement
    ```
 
@@ -40,13 +40,13 @@ We welcome various types of contributions:
    - View at http://127.0.0.1:8000
 
 5. **Commit your changes**
-   ```bash
+   ```shell
    git add .
    git commit -m "Brief description of changes"
    ```
 
 6. **Push and create PR**
-   ```bash
+   ```shell
    git push origin my-improvement
    # Then create Pull Request on GitHub
    ```
@@ -66,7 +66,7 @@ We welcome various types of contributions:
 - Use **Markdown** for all documentation
 - One sentence per line (makes diffs clearer)
 - Use code blocks with language specification:
-  ```bash
+  ```shell
   # Like this
   command --option
   ```

@@ -22,7 +22,7 @@ no parity, and 1 stop bit ("1500000 8N1").
     others; they provide point-and-click interfaces for selecting ports and baud
     rates. The only setting you will need to change is the 1,500,000 baud setting.
 
-  ```bash
+  ```shell
   sudo usermod -a -G dialout "$USER"
   ```
 
@@ -49,7 +49,7 @@ serial terminal.
 
 1. Launch the terminal with the required baud rate:
 
-   ```bash
+   ```shell
    python3 -m serial.tools.miniterm /dev/ttyUSB0 1500000
    ```
 
@@ -72,7 +72,7 @@ configuration between sessions.
 
 1. Run the setup menu once to create a default profile:
 
-   ```bash
+   ```shell
    sudo minicom -s
    ```
 
@@ -87,7 +87,7 @@ configuration between sessions.
 
 4. Start minicom normally:
 
-   ```bash
+   ```shell
    minicom
    ```
 

@@ -140,54 +140,20 @@ All interfaces operate at **3.3V logic levels**:
 | **SCL Pin** | GPIO0 RK_PB2 |
 | **SDA Pin** | GPIO0 RK_PB3 |
 
-## Supported WiFi Chipsets
+## WiFi Support
 
-The following USB WiFi adapters are supported (must operate at **3.3V**):
+WiFi requires an external USB adapter as neither the PicoCalc nor Luckfox Lyra include built-in WiFi hardware.
 
-!!! warning "Many *(but NOT all!)* USB WiFi adapters are designed to
-    operate at 5 volts, but are 3.3v tolerant due to design of their voltage
-    regulator's circuitry.
-
-    Some devices may operate properly with a full battery but malfunction if
-    the battery is low, as with a low battery the supplied voltage may dip
-    below their operating limits!
-
-### Tested WiFi adapters
-
- - **RTL8188FTV**
-   - USB wifi *module* (requires soldering!)
-   - [AliExpress](https://www.aliexpress.us/item/3256807590709883.html)
- - **AIC8800DC**
-    - regular USB adapter (requires a cable!)
-    - [AliExpress](https://www.aliexpress.us/item/3256805850412278.html)
- - **RTL8188EU**
-    - regular USB adapter (requires a cable!)
-    - [Amazon](https://a.co/d/gRErxAn)
-
-!!! note "USB adapters require a cable"
-    In order to use a USB wifi adapter, you will need a cable similar
-    to [this one from Waveshare (on Amazon)](https://a.co/d/hQKiBRK).
-
-    These devices are fully plug and play, but may have stability problems
-    at low battery levels. The cable and connector plugged in to the lyra
-    also can be a VERY tight fit inside the picocalc, and it may be necessary
-    to modify the rear casing or replace it with a 3D printed rear case.
-
-!!! note "USB modules require soldering"
-    A USB module is a small circuit board that contains the USB wifi adapter
-    and castellated edges or a pin header used for attaching the circuit
-    board to a larger board or device. It does not include a USB plug, and
-    will require soldering to connect to the lyra.
-
-    Most modules will explicitly support 3.3 volts so will be more stable
-    at low battery levels, and installation by soldering allows a more compact
-    installation.
-
-!!! info "Supported WiFi Chipsets"
-    For a comprehensive list of enabled WiFi drivers, tested adapters, and future support options, see [Networking & WiFi](compatibility/networking-wifi.md).
-
-!!! warning "3.3V Requirement for WiFi"
-    USB WiFi adapters **must operate at 3.3V** as the Lyra's USB provides only 3.3V power. Use an externally powered USB hub for 5V devices.
+!!! info "WiFi Compatibility Information"
+    For comprehensive WiFi adapter information including:
+    
+    - Supported chipsets and drivers
+    - Tested adapters with purchase links
+    - 3.3V voltage requirements
+    - Installation guidance (cables vs. soldering)
+    - Future WiFi support plans
+    
+    See the dedicated **[Networking & WiFi Compatibility](compatibility/networking-wifi.md)** page.
 
 ## Boot Priority
 

@@ -22,7 +22,7 @@ Notes:
 
 1. Download the installer that matches your host architecture:
 
-    ```bash
+    ```shell
     SDK_BASE=https://opkg.calculinux.org/sdk/develop/continuous
     curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.sh
     curl -O ${SDK_BASE}/x86_64/calculinux-sdk-luckfox-lyra-x86_64.manifest
@@ -30,7 +30,7 @@ Notes:
 
 2. Choose an install location (no sudo needed):
 
-    ```bash
+    ```shell
     INSTALL_DIR="$HOME/opt/calculinux-sdk"
     chmod +x calculinux-sdk-luckfox-lyra-x86_64.sh
     ./calculinux-sdk-luckfox-lyra-x86_64.sh -d "$INSTALL_DIR" -- -y
@@ -38,7 +38,7 @@ Notes:
 
 3. Optional: skim the manifest to see included headers and libraries:
 
-    ```bash
+    ```shell
     less calculinux-sdk-luckfox-lyra-x86_64.manifest
     ```
 

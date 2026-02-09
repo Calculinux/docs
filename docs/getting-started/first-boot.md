@@ -35,7 +35,7 @@ Password: root
 
 !!! danger "Change Password Immediately"
     The first thing you should do after logging in is change the root password:
-    ```bash
+    ```shell
     passwd
     ```
 
@@ -50,13 +50,18 @@ passwd
 
 ### 2. Set System Time
 
+The system clock can be set manually or will sync automatically via NTP when network is available:
+
 ```shell
-# Set current date/time
+# Set manually if no network connection
 date -s "2025-10-06 14:30:00"
 
-# Or use NTP if network connected
-ntpd -q -p pool.ntp.org
+# Verify current time
+date
 ```
+
+!!! info "Automatic Time Sync"
+    If you have an active network connection (USB networking or WiFi), `ntpd` runs automatically in the background and will sync the system time. No manual intervention is needed.
 
 ### 3. Check System Status
 
@@ -90,9 +95,13 @@ opkg update
 ### Verify Hardware
 
 ```shell
-# Check display
+# Check display device exists
 ls -l /dev/fb0
-cat /dev/urandom > /dev/fb0  # Should show random colors
+
+# Test display with SDL2 test utility
+sdl2-test
+# Press SPACE or ENTER to cycle through test patterns
+# Press ESC to exit
 
 # Check keyboard
 cat /proc/bus/input/devices
@@ -114,7 +123,7 @@ ip link show
 
 - Display (built-in LCD drivers)
 - Keyboard (built-in keyboard drivers)
-- USB WiFi adapters (see WiFi chipsets above)
+- USB WiFi adapters (see **[Networking & WiFi Compatibility](../hardware/compatibility/networking-wifi.md)**)
 
 **Planned/Future Support:**
 
@@ -182,7 +191,7 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
 !!! info "WiFi Hardware Required"
     Neither the PicoCalc nor Luckfox Lyra include built-in WiFi. You need a **USB WiFi adapter operating at 3.3V** connected to the Lyra's USB header.
 
-    For a complete list of supported WiFi chipsets, see [Hardware Specifications - WiFi Chipsets](../hardware/specifications.md#supported-wifi-chipsets).
+    For a complete list of supported WiFi chipsets and tested adapters, see **[Networking & WiFi Compatibility](../hardware/compatibility/networking-wifi.md)**.
 
 #### Connecting to WiFi with iwctl
 
@@ -235,26 +244,17 @@ After initial setup:
 
 ## Troubleshooting First Boot
 
-### No Display
+### No Display or Boot Hangs
 
-- Wait 2-3 minutes
-- Check power supply
-- Verify SD card inserted correctly
-- See [Boot Problems](../troubleshooting/boot-problems.md)
+**Most common first-boot issue**: Wait 2-3 minutes. The first boot takes longer as the overlay partition is automatically expanded to use available disk space.
 
-### Boot Hangs
+If problems persist after waiting, see [Troubleshooting - Common Issues](../troubleshooting/common-issues.md) for:
 
-- SPI NAND not erased (most common)
-- Corrupt SD card
-- Insufficient power
-- See [Troubleshooting](../troubleshooting/common-issues.md)
-
-### Cannot Login
-
-- Verify correct username: `root`
-- Verify correct password: `calculinux`
-- Try different keyboard
-- Check keyboard driver in logs
+- Display initialization problems
+- SPI NAND interference
+- SD card issues
+- Login problems
+- Other boot issues
 
 ## Getting Help
 

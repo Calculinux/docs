@@ -304,7 +304,7 @@ Or select the other slot in your bootloader (if supported).
 !!! warning "Package State After Rollback"
     After rolling back, some manually installed packages may need to be reinstalled, as the reconciliation system currently only runs during forward updates. A list of your installed packages can help:
 
-    ```bash
+    ```shell
     # Before updating, save your package list
     opkg list-installed > ~/my-packages.txt
 

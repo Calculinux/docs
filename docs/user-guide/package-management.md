@@ -289,19 +289,19 @@ If a package fails to install:
 
 1. Update package lists:
 
-   ```bash
+   ```shell
    opkg update
    ```
 
 2. Check available space:
 
-   ```bash
+   ```shell
    df -h
    ```
 
 3. Check error message for missing dependencies:
 
-   ```bash
+   ```shell
    opkg install --force-depends <package-name>
    ```
 
@@ -311,19 +311,19 @@ If you can't connect to the package feeds:
 
 1. Check network connectivity:
 
-   ```bash
+   ```shell
    ping opkg.calculinux.org
    ```
 
 2. Verify feed URLs:
 
-   ```bash
+   ```shell
    cat /etc/opkg/base-feeds.conf
    ```
 
 3. Try updating manually:
 
-   ```bash
+   ```shell
    opkg update --verbosity=3
    ```
 

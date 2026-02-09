@@ -14,7 +14,7 @@ packaging it into a Yocto recipe so it ships in Calculinux images.
 
 Make a minimal CLI called `hello-calculinux`:
 
-```bash
+```shell
 cargo new hello-calculinux --bin
 cd hello-calculinux
 ```
@@ -38,7 +38,7 @@ edition = "2026"
 
 Commit the project to a Git repo (local or hosted):
 
-```bash
+```shell
 git init && git add .
 git commit -m "Initial Rust utility"
 # If hosting, push to e.g., GitHub
@@ -129,7 +129,7 @@ If you use a bundle (e.g., `calculinux-bundle.bb`), include it there.
 
 Build the package and the image:
 
-```bash
+```shell
 # Build just the package (faster for iteration)
 bitbake hello-calculinux
 
@@ -139,7 +139,7 @@ bitbake calculinux-image
 
 After flashing and booting, verify on the target:
 
-```bash
+```shell
 hello-calculinux
 # Output: hello, Calculinux!
 ```
