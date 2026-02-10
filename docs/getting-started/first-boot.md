@@ -14,6 +14,7 @@ After flashing your SD card and installing hardware:
     Leave the PicoCalc external SD card slot **empty** during the first boot. External cards with duplicate partition labels (such as `OVERLAY_DATA`, `ROOT_A`, or `ROOT_B`) can cause overlayfs to fail and leave the system read-only.
 
     Once the first boot completes successfully, you’ll have a clean baseline so any read-only behavior after inserting an external card is easier to attribute to partition label conflicts.
+
     See:
     - [Common Issues - System Read-Only / Overlayfs Failure](../troubleshooting/common-issues.md#system-read-only--overlayfs-failure)
     - [Basic Troubleshooting](../troubleshooting/basic-troubleshooting.md)
