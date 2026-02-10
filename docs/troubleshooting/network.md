@@ -133,6 +133,63 @@ Common causes:
    dmesg | grep wlan0
    ```
 
+### WiFi Adapter in Invalid State
+
+**Symptoms**:
+
+- Access points don't appear in WiFi scan results
+- `iwctl station wlan0 scan` returns empty list
+- WiFi USB adapter doesn't appear in `lsusb` output
+- Network interface exists but doesn't respond to commands
+
+**Cause**: The WiFi adapter or module enters an invalid state, preventing normal operation. This can happen after power cycling, resets, or other transient hardware issues.
+
+**Solutions**:
+
+**Option 1: Complete power cycle** (most reliable)
+
+A simple reboot (`reboot`) or `sudo systemctl restart iwd` often does **not** work for invalid adapter states. A complete power off is required:
+
+1. Power off completely:
+
+   ```shell
+   sudo poweroff
+   ```
+
+2. Press the power button and boot normally
+3. The adapter hardware will fully reinitialize
+
+**Option 2: Remove and re-insert USB adapter** (for external adapters)
+
+If you have an external USB WiFi adapter, physical disconnection can help reset the hardware:
+
+1. Unplug the USB WiFi adapter
+2. Wait 10-15 seconds
+3. Re-insert the adapter
+
+!!! warning "Adapter May Get a New Name"
+
+    In rare cases, a corrupted adapter may be assigned a new interface name upon re-insertion. Instead of `wlan0`, it may appear as `wlan1` in `ip addr`, `dmesg`, or other tools. iwd will still connect correctly since its configuration is adapter-independent. To restore the original device naming, reboot or perform a complete power cycle.
+
+**Option 3: Software module reload** (unreliable for stuck adapters)
+
+Software-only solutions may not work when the adapter itself is in an invalid state, but you can try:
+
+```shell
+# This may not work if the adapter hardware is truly stuck
+# Identify the WiFi driver module (e.g., rtl8188fu, aic8800)
+lsmod | grep -E 'rtl|aic'
+
+# Attempt to reload the module (replace with your driver name)
+sudo modprobe -r rtl8xxxu
+sudo modprobe rtl8xxxu
+
+# Or try restarting the iwd service
+sudo systemctl restart iwd
+```
+
+If software reload doesn't resolve the issue within a few minutes, proceed to Option 1 (complete power cycle).
+
 ## DNS Problems
 
 ### Cannot Resolve Hostnames
