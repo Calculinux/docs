@@ -10,6 +10,16 @@ After flashing your SD card and installing hardware:
 2. **Connect USB-C power** (5V/2A minimum)
 3. **Wait for boot** (30-60 seconds first time)
 
+!!! warning "Remove external SD card on first boot"
+    Leave the PicoCalc external SD card slot **empty** during the first boot. External cards with duplicate partition labels (such as `OVERLAY_DATA`, `ROOT_A`, or `ROOT_B`) can cause overlayfs to fail and leave the system read-only.
+
+    Once the first boot completes successfully, you’ll have a clean baseline so any read-only behavior after inserting an external card is easier to attribute to partition label conflicts.
+
+    See:
+    - [Common Issues - System Read-Only / Overlayfs Failure](../troubleshooting/common-issues.md#system-read-only--overlayfs-failure)
+    - [Basic Troubleshooting](../troubleshooting/basic-troubleshooting.md)
+    - [Advanced Storage Configuration](../user-guide/advanced-storage.md)
+
 ### What to Expect
 
 **Boot Process**:

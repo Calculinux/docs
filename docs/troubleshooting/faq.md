@@ -25,7 +25,7 @@ A: No. The stock PicoCalc uses a Raspberry Pi Pico running **PicoMite MMBasic** 
 
 **Q: Will this void my warranty?**
 
-A: Yes. Opening the PicoCalc and replacing the internal board voids the warranty. Proceed at your own risk.
+A: No. The PicoCalc is designed with an interchangeable microcontroller in mind. That said, this project is **not** officially sanctioned by ClockworkPi. Proceed at your own risk.
 
 **Q: Can I revert to the original firmware?**
 
@@ -35,15 +35,15 @@ A: Yes, if you kept the original RP2040 board. Simply reinstall it and reflash t
 
 **Q: Which Luckfox Lyra version should I buy?**
 
-A: The 128MB version without SPI NAND is recommended for simplicity. The SPI NAND versions work but require an extra NAND erasing step.
+A: The 128MB version without SPI NAND is recommended for simplicity. The SPI NAND versions work but require an extra NAND erasing step. The SPI NAND could be useful in the future, however.
 
 **Q: What size SD card do I need?**
 
-A: Minimum 8GB, but 16GB or 32GB is recommended for comfortable use.
+A: Minimum 8GB, but 16GB,32GB, or larger is recommended for comfortable use.
 
 **Q: Does it work with other SBCs?**
 
-A: Currently only Luckfox Lyra is officially supported. Milk-V Duo support is planned. Other boards may work with community modifications.
+A: Currently only Luckfox Lyra B is officially supported. Milk-V Duo support is planned. Other boards may work with community modifications.
 
 **Q: Can I use WiFi?**
 
@@ -61,7 +61,7 @@ A: Yes, using the opkg package manager. Many standard Linux packages are availab
 
 **Q: Can I run a graphical desktop?**
 
-A: Yes, lightweight desktop environments like LXDE work on 128MB+ systems. Full desktops like GNOME/KDE are too heavy.
+A: Yes, lightweight desktop environments like LXDE work on 128MB+ systems. Full desktops like GNOME/KDE are too heavy. No significant effort has been taken yet to build or install these desktops, however.
 
 **Q: Can I run Python/C/other languages?**
 
