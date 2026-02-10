@@ -89,6 +89,8 @@ nav:
     - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
+    - Device Tree Overlays: hardware/device-tree-overlays.md
+    - DS3231 RTC Module: hardware/ds3231-rtc.md
     - Compatibility Matrix:
       - Overview: hardware/compatibility/index.md
       - SBC & Luckfox Lyra Variants: hardware/compatibility/sbc-lyra.md
@@ -107,6 +109,7 @@ nav:
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
     - Applications: user-guide/applications.md
+    - Screen Capture: user-guide/screen-capture.md
     - Advanced Storage Configuration: user-guide/advanced-storage.md
   
   - Developer Guide:
@@ -114,6 +117,7 @@ nav:
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
     - Using the Yocto SDK: developer/sdk.md
+    - Creating Device Tree Overlays: developer/device-tree-overlays.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
     - Project Ideas: developer/project-ideas.md
