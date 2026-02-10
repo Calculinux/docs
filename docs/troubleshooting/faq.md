@@ -25,7 +25,7 @@ A: No. The stock PicoCalc uses a Raspberry Pi Pico running **PicoMite MMBasic** 
 
 **Q: Will this void my warranty?**
 
-A: No. The PicoCalc is designed with swappable microcontrollers in mind. That said, this project is **not** officially sanctioned by ClockworkPi. Proceed at your own risk.
+A: No. The PicoCalc is designed with an interchangeable microcontroller in mind. That said, this project is **not** officially sanctioned by ClockworkPi. Proceed at your own risk.
 
 **Q: Can I revert to the original firmware?**
 

@@ -150,7 +150,7 @@ Common causes:
 
 A simple reboot (`reboot`) or `sudo systemctl restart iwd` often does **not** work for invalid adapter states. A complete power off is required:
 
-1. Power off completely:
+1. Power off the Picocalc:
 
    ```shell
    sudo poweroff
