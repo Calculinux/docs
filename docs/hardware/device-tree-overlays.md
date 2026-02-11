@@ -27,11 +27,25 @@ Enables the Maxim DS3231 I2C Real-Time Clock module on I2C bus 2. See the [DS323
 
 **File**: `100khz-i2c.dtbo`
 
-Reduces the I2C2 bus clock from 400 kHz to 100 kHz for devices that require slower communication speeds.
+Reduces the I2C2 bus clock from 400 kHz to 100 kHz. Required when using the [custom PicoCalc keyboard firmware](https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292). See the [100 kHz I2C Overlay](100khz-i2c.md) guide for setup.
 
-### Other Overlays
+### u-blox NEO-M8N GPS
 
-Additional overlays may be available depending on your Calculinux version. Check the contents of `/boot/devicetree/` on your device.
+**File**: `neo-m8n-gps.dtbo`
+
+Enables UART5 for the u-blox NEO-M8N GPS module on the RMII1 test pads. See the [NEO-M8N GPS](neo-m8n-gps.md) guide for wiring and usage.
+
+### PCM5102A I2S DAC
+
+**File**: `pcm5102a-i2s.dtbo`
+
+Adds support for the TI PCM5102A I2S stereo DAC on SAI2 (RMII1 test pads). See the [PCM5102A I2S DAC](pcm5102a-i2s.md) guide for connections and audio setup.
+
+### SX1262 LoRa (Waveshare)
+
+**File**: `sx1262-lora.dtbo`
+
+Configures GPIO bitbang SPI for the Waveshare SX1262 LoRa module (e.g. for Meshtastic). See the [SX1262 LoRa](sx1262-lora.md) guide for pinout and usage.
 
 ## Loading an Overlay
 

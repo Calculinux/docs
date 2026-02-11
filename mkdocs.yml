@@ -91,6 +91,10 @@ nav:
     - Display & Input: hardware/display-input.md
     - Device Tree Overlays: hardware/device-tree-overlays.md
     - DS3231 RTC Module: hardware/ds3231-rtc.md
+    - 100 kHz I2C Overlay: hardware/100khz-i2c.md
+    - NEO-M8N GPS: hardware/neo-m8n-gps.md
+    - PCM5102A I2S DAC: hardware/pcm5102a-i2s.md
+    - SX1262 LoRa: hardware/sx1262-lora.md
     - Compatibility Matrix:
       - Overview: hardware/compatibility/index.md
       - SBC & Luckfox Lyra Variants: hardware/compatibility/sbc-lyra.md

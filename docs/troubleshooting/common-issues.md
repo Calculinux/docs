@@ -137,15 +137,13 @@ If you can access the system via USB networking but the display remains blank:
 
 **Symptoms**: Keyboard doesn't respond when using the [custom PicoCalc keyboard firmware](https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292)
 
-**Cause**: The custom firmware by JackCarterSmith reduces the I2C bus frequency for more efficient power consumption, limiting it to 100 kHz. Calculinux currently attempts to use the I2C bus at 400 kHz, which is incompatible with the custom firmware.
+**Cause**: The custom firmware by JackCarterSmith reduces the I2C bus frequency for more efficient power consumption, limiting it to 100 kHz. Calculinux uses I2C2 at 400 kHz by default, which is incompatible with the custom firmware.
 
-**Short-term Solution**:
+**Solution**:
 
-Flash the keyboard back to the original firmware. The custom firmware is not yet officially supported.
+Load the **100 kHz I2C overlay** so the host uses 100 kHz on I2C2, matching the keyboard firmware. See the [100 kHz I2C Overlay](../hardware/100khz-i2c.md) guide for one-time and persistent setup. Add `100khz-i2c` to `/etc/device-tree-overlays.conf` to enable it at boot.
 
-**Future Support**:
-
-Calculinux plans to support the custom firmware with proper I2C speed configuration. Check [GitHub Issues](https://github.com/Calculinux/meta-calculinux/issues) for updates on this compatibility improvement.
+If you prefer to use the stock keyboard firmware instead, flash the keyboard back to the original firmware.
 
 ## System Read-Only / Overlayfs Failure
 
