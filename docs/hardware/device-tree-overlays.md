@@ -15,7 +15,7 @@ Calculinux uses the kernel's built-in ConfigFS interface for loading overlays dy
 
 ## Available Overlays
 
-Calculinux includes several pre-built overlays in `/lib/firmware/overlays/`:
+Calculinux includes several pre-built overlays in `/boot/devicetree/`:
 
 ### DS3231 Real-Time Clock
 
@@ -31,7 +31,7 @@ Reduces the I2C2 bus clock from 400 kHz to 100 kHz for devices that require slow
 
 ### Other Overlays
 
-Additional overlays may be available depending on your Calculinux version. Check the contents of `/lib/firmware/overlays/` on your device.
+Additional overlays may be available depending on your Calculinux version. Check the contents of `/boot/devicetree/` on your device.
 
 ## Loading an Overlay
 
@@ -42,7 +42,7 @@ To load a device tree overlay at runtime:
 mkdir -p /sys/kernel/config/device-tree/overlays/<overlay-name>
 
 # Load the compiled overlay file
-cat /lib/firmware/overlays/<overlay-name>.dtbo > /sys/kernel/config/device-tree/overlays/<overlay-name>/dtbo
+cat /boot/devicetree/<overlay-name>.dtbo > /sys/kernel/config/device-tree/overlays/<overlay-name>/dtbo
 
 # Activate the overlay
 echo 1 > /sys/kernel/config/device-tree/overlays/<overlay-name>/status
@@ -51,7 +51,7 @@ echo 1 > /sys/kernel/config/device-tree/overlays/<overlay-name>/status
 !!! example "Loading the DS3231 RTC Overlay"
     ```shell
     mkdir -p /sys/kernel/config/device-tree/overlays/ds3231
-    cat /lib/firmware/overlays/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo
+    cat /boot/devicetree/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo
     echo 1 > /sys/kernel/config/device-tree/overlays/ds3231/status
     ```
 
@@ -69,36 +69,61 @@ rmdir /sys/kernel/config/device-tree/overlays/<overlay-name>
 
 ## Making Overlays Persistent
 
-Overlays loaded via ConfigFS don't persist across reboots. To automatically load them at boot, create a systemd service.
+Overlays loaded via ConfigFS don't persist across reboots. Calculinux includes a built-in systemd service (`load-dt-overlays.service`) that automatically loads overlays listed in a configuration file at boot.
 
-!!! example "Persistent DS3231 RTC Overlay"
-    Create `/etc/systemd/system/ds3231-rtc.service`:
-    
+### Enabling an Overlay at Boot
+
+Add the overlay name to `/etc/device-tree-overlays.conf` (one overlay per line):
+
+```shell
+echo "ds3231-rtc" >> /etc/device-tree-overlays.conf
+```
+
+The overlay loads on the next boot. To load it immediately without rebooting:
+
+```shell
+systemctl restart load-dt-overlays.service
+```
+
+### Configuration File Format
+
+The configuration file `/etc/device-tree-overlays.conf` supports:
+
+- **Overlay names** — resolved first in `/etc/devicetree/`, then `/boot/devicetree/`
+- **Absolute paths** — for custom overlay files stored elsewhere
+- **Comments** — lines starting with `#` are ignored
+- The `.dtbo` extension is optional
+
+!!! example "Example `/etc/device-tree-overlays.conf`"
     ```ini
-    [Unit]
-    Description=Load DS3231 RTC device tree overlay
-    After=sys-kernel-config.mount
-    Requires=sys-kernel-config.mount
+    # Load the DS3231 RTC overlay
+    ds3231-rtc
 
-    [Service]
-    Type=oneshot
-    RemainAfterExit=yes
-    ExecStart=/bin/sh -c 'mkdir -p /sys/kernel/config/device-tree/overlays/ds3231 && \
-      cat /lib/firmware/overlays/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo && \
-      echo 1 > /sys/kernel/config/device-tree/overlays/ds3231/status'
-    ExecStop=/bin/sh -c 'echo 0 > /sys/kernel/config/device-tree/overlays/ds3231/status; \
-      rmdir /sys/kernel/config/device-tree/overlays/ds3231'
+    # Load the 100 kHz I2C overlay
+    100khz-i2c
 
-    [Install]
-    WantedBy=multi-user.target
+    # Load a custom overlay from an absolute path
+    /home/pico/custom-sensor.dtbo
     ```
-    
-    Enable and start the service:
-    
-    ```shell
-    systemctl enable ds3231-rtc.service
-    systemctl start ds3231-rtc.service
-    ```
+
+### How It Works
+
+The `load-dt-overlays.service` runs early in the boot process (after filesystems are mounted, before `multi-user.target`). For each entry in the config file, it:
+
+1. Resolves the overlay file path
+2. Creates the ConfigFS overlay directory
+3. Loads the `.dtbo` blob
+4. Activates the overlay
+
+The service logs its progress to the journal:
+
+```shell
+journalctl -u load-dt-overlays.service
+```
+
+### User Overlay Overrides
+
+If you place a `.dtbo` file in `/etc/devicetree/`, it takes priority over the system-provided version in `/boot/devicetree/`. This lets you test modified overlays without replacing the originals.
 
 ## Verifying Loaded Overlays
 
@@ -128,7 +153,7 @@ dmesg | tail -20
 
 Common issues:
 
-- **Missing file**: Verify the `.dtbo` file exists in `/lib/firmware/overlays/`
+- **Missing file**: Verify the `.dtbo` file exists in `/boot/devicetree/` or `/etc/devicetree/`
 - **Permission denied**: Ensure you have root privileges
 - **Overlay conflicts**: Another overlay or driver may be using the same hardware resources
 

@@ -26,6 +26,17 @@ The DS3231 connects to **I2C bus 2** on the PicoCalc:
 !!! info "I2C Address"
     The DS3231 uses I2C address **0x68** by default.
 
+### GPIO Wiring Reference
+
+![DS3231 RTC wiring on PicoCalc GPIO pins](../../assets/images/ds3231-gpio-wiring.jpg)
+
+The image above shows how to connect the DS3231 module to the I2C header on the PicoCalc. Connect:
+
+- **VCC** to 3.3V (pin 5 on the right header)
+- **GND** to ground (pin 18 on the left header)
+- **SDA** to I2C SDA (pin 9 on the left header)
+- **SCL** to I2C SCL (pin 10 on the left header)
+
 ## Software Setup
 
 ### Step 1: Enable the Device Tree Overlay
@@ -37,7 +48,7 @@ Load the DS3231 overlay to register the device with the kernel:
 mkdir -p /sys/kernel/config/device-tree/overlays/ds3231
 
 # Load the overlay
-cat /lib/firmware/overlays/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo
+cat /boot/devicetree/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo
 
 # Activate it
 echo 1 > /sys/kernel/config/device-tree/overlays/ds3231/status
@@ -54,7 +65,7 @@ i2cdetect -y 2
 
 You should see a device at address `0x68`:
 
-```
+```text
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
@@ -137,35 +148,26 @@ Now `/dev/rtc` will point to the DS3231.
 
 ## Automatic Overlay Loading
 
-To load the DS3231 overlay automatically at boot, create a systemd service:
-
-Create `/etc/systemd/system/ds3231-rtc.service`:
-
-```ini
-[Unit]
-Description=Load DS3231 RTC device tree overlay
-After=sys-kernel-config.mount
-Requires=sys-kernel-config.mount
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/bin/sh -c 'mkdir -p /sys/kernel/config/device-tree/overlays/ds3231 && \
-  cat /lib/firmware/overlays/ds3231-rtc.dtbo > /sys/kernel/config/device-tree/overlays/ds3231/dtbo && \
-  echo 1 > /sys/kernel/config/device-tree/overlays/ds3231/status'
-ExecStop=/bin/sh -c 'echo 0 > /sys/kernel/config/device-tree/overlays/ds3231/status; \
-  rmdir /sys/kernel/config/device-tree/overlays/ds3231'
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable and start the service:
+Calculinux includes a built-in systemd service for loading device tree overlays at boot. To enable the DS3231 overlay automatically, add it to the overlay configuration file:
 
 ```shell
-systemctl enable ds3231-rtc.service
-systemctl start ds3231-rtc.service
+echo "ds3231-rtc" >> /etc/device-tree-overlays.conf
 ```
+
+The overlay loads on the next boot. To load it immediately without rebooting:
+
+```shell
+systemctl restart load-dt-overlays.service
+```
+
+Verify the service loaded the overlay successfully:
+
+```shell
+journalctl -u load-dt-overlays.service
+```
+
+!!! tip
+    See [Device Tree Overlays — Making Overlays Persistent](device-tree-overlays.md#making-overlays-persistent) for more details on the configuration file format and overlay resolution.
 
 ## Troubleshooting
 
@@ -200,7 +202,7 @@ If the time is wrong after rebooting:
 
 1. **Check battery**: The CR2032 battery may be dead
 2. **Set time**: Use `hwclock -w` to write system time to RTC
-3. **Verify systemd service**: Ensure the overlay loads before time sync
+3. **Verify overlay service**: Check `journalctl -u load-dt-overlays.service` for errors
 
 ## Using Alarms (Advanced)
 
