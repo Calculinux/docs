@@ -97,6 +97,10 @@
          <lastmod>2026-02-11</lastmod>
     </url>
     <url>
+         <loc>https://calculinux.org/hardware/100khz-i2c/</loc>
+         <lastmod>2026-02-11</lastmod>
+    </url>
+    <url>
          <loc>https://calculinux.org/hardware/compatibility/</loc>
          <lastmod>2026-02-11</lastmod>
     </url>
@@ -121,6 +125,14 @@
          <lastmod>2026-02-11</lastmod>
     </url>
     <url>
+         <loc>https://calculinux.org/hardware/neo-m8n-gps/</loc>
+         <lastmod>2026-02-11</lastmod>
+    </url>
+    <url>
+         <loc>https://calculinux.org/hardware/pcm5102a-i2s/</loc>
+         <lastmod>2026-02-11</lastmod>
+    </url>
+    <url>
          <loc>https://calculinux.org/hardware/picocalc/</loc>
          <lastmod>2026-02-11</lastmod>
     </url>
@@ -130,6 +142,10 @@
     </url>
     <url>
          <loc>https://calculinux.org/hardware/specifications/</loc>
+         <lastmod>2026-02-11</lastmod>
+    </url>
+    <url>
+         <loc>https://calculinux.org/hardware/sx1262-lora/</loc>
          <lastmod>2026-02-11</lastmod>
     </url>
     <url>

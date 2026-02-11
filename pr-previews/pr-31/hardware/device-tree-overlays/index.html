@@ -946,10 +946,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-overlays" class="md-nav__link">
+  <a href="#u-blox-neo-m8n-gps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Other Overlays
+        u-blox NEO-M8N GPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pcm5102a-i2s-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCM5102A I2S DAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sx1262-lora-waveshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SX1262 LoRa (Waveshare)
       
     </span>
   </a>
@@ -1170,6 +1192,118 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../100khz-i2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    100 kHz I2C Overlay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neo-m8n-gps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NEO-M8N GPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pcm5102a-i2s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCM5102A I2S DAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sx1262-lora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SX1262 LoRa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1189,10 +1323,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
         
           
-          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="">
             
   
   
@@ -1210,8 +1344,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2448,10 +2582,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-overlays" class="md-nav__link">
+  <a href="#u-blox-neo-m8n-gps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Other Overlays
+        u-blox NEO-M8N GPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pcm5102a-i2s-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCM5102A I2S DAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sx1262-lora-waveshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SX1262 LoRa (Waveshare)
       
     </span>
   </a>
@@ -2720,9 +2876,16 @@
 <p>Enables the Maxim DS3231 I2C Real-Time Clock module on I2C bus 2. See the <a href="../ds3231-rtc/">DS3231 RTC Guide</a> for complete setup instructions.</p>
 <h3 id="100-khz-i2c-bus">100 kHz I2C Bus<a class="headerlink" href="#100-khz-i2c-bus" title="Permanent link">&para;</a></h3>
 <p><strong>File</strong>: <code>100khz-i2c.dtbo</code></p>
-<p>Reduces the I2C2 bus clock from 400 kHz to 100 kHz for devices that require slower communication speeds.</p>
-<h3 id="other-overlays">Other Overlays<a class="headerlink" href="#other-overlays" title="Permanent link">&para;</a></h3>
-<p>Additional overlays may be available depending on your Calculinux version. Check the contents of <code>/boot/devicetree/</code> on your device.</p>
+<p>Reduces the I2C2 bus clock from 400 kHz to 100 kHz. Required when using the <a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">custom PicoCalc keyboard firmware</a>. See the <a href="../100khz-i2c/">100 kHz I2C Overlay</a> guide for setup.</p>
+<h3 id="u-blox-neo-m8n-gps">u-blox NEO-M8N GPS<a class="headerlink" href="#u-blox-neo-m8n-gps" title="Permanent link">&para;</a></h3>
+<p><strong>File</strong>: <code>neo-m8n-gps.dtbo</code></p>
+<p>Enables UART5 for the u-blox NEO-M8N GPS module on the RMII1 test pads. See the <a href="../neo-m8n-gps/">NEO-M8N GPS</a> guide for wiring and usage.</p>
+<h3 id="pcm5102a-i2s-dac">PCM5102A I2S DAC<a class="headerlink" href="#pcm5102a-i2s-dac" title="Permanent link">&para;</a></h3>
+<p><strong>File</strong>: <code>pcm5102a-i2s.dtbo</code></p>
+<p>Adds support for the TI PCM5102A I2S stereo DAC on SAI2 (RMII1 test pads). See the <a href="../pcm5102a-i2s/">PCM5102A I2S DAC</a> guide for connections and audio setup.</p>
+<h3 id="sx1262-lora-waveshare">SX1262 LoRa (Waveshare)<a class="headerlink" href="#sx1262-lora-waveshare" title="Permanent link">&para;</a></h3>
+<p><strong>File</strong>: <code>sx1262-lora.dtbo</code></p>
+<p>Configures GPIO bitbang SPI for the Waveshare SX1262 LoRa module (e.g. for Meshtastic). See the <a href="../sx1262-lora/">SX1262 LoRa</a> guide for pinout and usage.</p>
 <h2 id="loading-an-overlay">Loading an Overlay<a class="headerlink" href="#loading-an-overlay" title="Permanent link">&para;</a></h2>
 <p>To load a device tree overlay at runtime:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create the overlay directory</span>
@@ -2875,7 +3038,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:12:32 UTC">February 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:38:22 UTC">February 11, 2026</span>
   </span>
 
     
