@@ -196,12 +196,14 @@ RDEPENDS:${PN} = " \
 After committing your overlay to the picocalc-drivers repository:
 
 1. Get the new commit hash:
+
    ```shell
    cd picocalc-drivers
    git log -1 --format=%H
    ```
 
 2. Update `meta-calculinux-distro/recipes-bsp/drivers/picocalc-drivers-source.inc`:
+
    ```bitbake
    SRCREV = "<new-commit-hash>"
    ```
@@ -423,6 +425,7 @@ See [ds3231-rtc.md](../hardware/ds3231-rtc.md) for a complete example.
 Here's a complete example of adding support for a BMP280 pressure sensor:
 
 1. **Create overlay source** in picocalc-drivers:
+
    ```dts
    /dts-v1/;
    /plugin/;

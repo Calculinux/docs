@@ -175,7 +175,7 @@ The RK3506 on Luckfox Lyra exposes the following I2C buses for expansion:
 
 !!! tip "Checking I2C Devices"
     Use `i2cdetect` to scan for devices on a bus:
-    
+
     ```shell
     i2cdetect -y 2
     ```

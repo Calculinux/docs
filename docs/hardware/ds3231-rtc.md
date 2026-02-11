@@ -193,6 +193,7 @@ dmesg | grep -i "ds3231\|rtc"
 ```
 
 Common causes:
+
 - I2C device not responding (check connections)
 - Kernel driver not compiled (shouldn't happen with standard Calculinux)
 
