@@ -948,6 +948,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Hardware Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-wiring-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO Wiring Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2422,6 +2439,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Hardware Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-wiring-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO Wiring Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2756,6 +2790,15 @@
 <p class="admonition-title">I2C Address</p>
 <p>The DS3231 uses I2C address <strong>0x68</strong> by default.</p>
 </div>
+<h3 id="gpio-wiring-reference">GPIO Wiring Reference<a class="headerlink" href="#gpio-wiring-reference" title="Permanent link">&para;</a></h3>
+<p><img alt="DS3231 RTC wiring on PicoCalc GPIO pins" src="../../assets/images/ds3231-gpio-wiring.jpg" /></p>
+<p>The image above shows how to connect the DS3231 module to the I2C header on the PicoCalc. Connect:</p>
+<ul>
+<li><strong>VCC</strong> to 3.3V (pin 5 on the right header)</li>
+<li><strong>GND</strong> to ground (pin 18 on the left header)</li>
+<li><strong>SDA</strong> to I2C SDA (pin 9 on the left header)</li>
+<li><strong>SCL</strong> to I2C SCL (pin 10 on the left header)</li>
+</ul>
 <h2 id="software-setup">Software Setup<a class="headerlink" href="#software-setup" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-enable-the-device-tree-overlay">Step 1: Enable the Device Tree Overlay<a class="headerlink" href="#step-1-enable-the-device-tree-overlay" title="Permanent link">&para;</a></h3>
 <p>Load the DS3231 overlay to register the device with the kernel:</p>
@@ -2763,7 +2806,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Load the overlay</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cat<span class="w"> </span>/lib/firmware/overlays/ds3231-rtc.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/dtbo
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cat<span class="w"> </span>/boot/devicetree/ds3231-rtc.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/dtbo
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Activate it</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/status
@@ -2822,29 +2865,19 @@
 </code></pre></div>
 <p>Now <code>/dev/rtc</code> will point to the DS3231.</p>
 <h2 id="automatic-overlay-loading">Automatic Overlay Loading<a class="headerlink" href="#automatic-overlay-loading" title="Permanent link">&para;</a></h2>
-<p>To load the DS3231 overlay automatically at boot, create a systemd service:</p>
-<p>Create <code>/etc/systemd/system/ds3231-rtc.service</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">[Unit]</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Load DS3231 RTC device tree overlay</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">After</span><span class="o">=</span><span class="s">sys-kernel-config.mount</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">Requires</span><span class="o">=</span><span class="s">sys-kernel-config.mount</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">[Service]</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/bin/sh -c &#39;mkdir -p /sys/kernel/config/device-tree/overlays/ds3231 &amp;&amp; </span>\
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="s">cat /lib/firmware/overlays/ds3231-rtc.dtbo &gt; /sys/kernel/config/device-tree/overlays/ds3231/dtbo &amp;&amp; </span>\
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="s">echo 1 &gt; /sys/kernel/config/device-tree/overlays/ds3231/status&#39;</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="na">ExecStop</span><span class="o">=</span><span class="s">/bin/sh -c &#39;echo 0 &gt; /sys/kernel/config/device-tree/overlays/ds3231/status</span><span class="c1">; \</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="na">rmdir /sys/kernel/config/device-tree/overlays/ds3231&#39;</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="k">[Install]</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+<p>Calculinux includes a built-in systemd service for loading device tree overlays at boot. To enable the DS3231 overlay automatically, add it to the overlay configuration file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ds3231-rtc&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/device-tree-overlays.conf
 </code></pre></div>
-<p>Enable and start the service:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ds3231-rtc.service
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>systemctl<span class="w"> </span>start<span class="w"> </span>ds3231-rtc.service
+<p>The overlay loads on the next boot. To load it immediately without rebooting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>load-dt-overlays.service
 </code></pre></div>
+<p>Verify the service loaded the overlay successfully:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>load-dt-overlays.service
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See <a href="../device-tree-overlays/#making-overlays-persistent">Device Tree Overlays — Making Overlays Persistent</a> for more details on the configuration file format and overlay resolution.</p>
+</div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="i2c-device-not-found">I2C Device Not Found<a class="headerlink" href="#i2c-device-not-found" title="Permanent link">&para;</a></h3>
 <p>If <code>i2cdetect</code> doesn't show the device at 0x68:</p>
@@ -2856,11 +2889,11 @@
 </ol>
 <h3 id="rtc-driver-not-loading">RTC Driver Not Loading<a class="headerlink" href="#rtc-driver-not-loading" title="Permanent link">&para;</a></h3>
 <p>If the overlay loads but <code>/dev/rtc1</code> doesn't appear:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Check overlay status</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cat<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/status
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Check kernel messages for errors</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;ds3231\|rtc&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Check overlay status</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>cat<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/status
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Check kernel messages for errors</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;ds3231\|rtc&quot;</span>
 </code></pre></div>
 <p>Common causes:
 - I2C device not responding (check connections)
@@ -2870,7 +2903,7 @@
 <ol>
 <li><strong>Check battery</strong>: The CR2032 battery may be dead</li>
 <li><strong>Set time</strong>: Use <code>hwclock -w</code> to write system time to RTC</li>
-<li><strong>Verify systemd service</strong>: Ensure the overlay loads before time sync</li>
+<li><strong>Verify overlay service</strong>: Check <code>journalctl -u load-dt-overlays.service</code> for errors</li>
 </ol>
 <h2 id="using-alarms-advanced">Using Alarms (Advanced)<a class="headerlink" href="#using-alarms-advanced" title="Permanent link">&para;</a></h2>
 <p>The DS3231 supports two programmable alarms with interrupt output. To use them:</p>
@@ -2917,7 +2950,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 17:21:14 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:12:32 UTC">February 11, 2026</span>
   </span>
 
     

@@ -992,6 +992,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Making Overlays Persistent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-an-overlay-at-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling an Overlay at Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration File Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-overlay-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Overlay Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2444,6 +2494,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Making Overlays Persistent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-an-overlay-at-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling an Overlay at Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration File Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-overlay-overrides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Overlay Overrides
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2614,7 +2714,7 @@
 </ul>
 <p>Calculinux uses the kernel's built-in ConfigFS interface for loading overlays dynamically.</p>
 <h2 id="available-overlays">Available Overlays<a class="headerlink" href="#available-overlays" title="Permanent link">&para;</a></h2>
-<p>Calculinux includes several pre-built overlays in <code>/lib/firmware/overlays/</code>:</p>
+<p>Calculinux includes several pre-built overlays in <code>/boot/devicetree/</code>:</p>
 <h3 id="ds3231-real-time-clock">DS3231 Real-Time Clock<a class="headerlink" href="#ds3231-real-time-clock" title="Permanent link">&para;</a></h3>
 <p><strong>File</strong>: <code>ds3231-rtc.dtbo</code></p>
 <p>Enables the Maxim DS3231 I2C Real-Time Clock module on I2C bus 2. See the <a href="../ds3231-rtc/">DS3231 RTC Guide</a> for complete setup instructions.</p>
@@ -2622,14 +2722,14 @@
 <p><strong>File</strong>: <code>100khz-i2c.dtbo</code></p>
 <p>Reduces the I2C2 bus clock from 400 kHz to 100 kHz for devices that require slower communication speeds.</p>
 <h3 id="other-overlays">Other Overlays<a class="headerlink" href="#other-overlays" title="Permanent link">&para;</a></h3>
-<p>Additional overlays may be available depending on your Calculinux version. Check the contents of <code>/lib/firmware/overlays/</code> on your device.</p>
+<p>Additional overlays may be available depending on your Calculinux version. Check the contents of <code>/boot/devicetree/</code> on your device.</p>
 <h2 id="loading-an-overlay">Loading an Overlay<a class="headerlink" href="#loading-an-overlay" title="Permanent link">&para;</a></h2>
 <p>To load a device tree overlay at runtime:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create the overlay directory</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Load the compiled overlay file</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cat<span class="w"> </span>/lib/firmware/overlays/&lt;overlay-name&gt;.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;/dtbo
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cat<span class="w"> </span>/boot/devicetree/&lt;overlay-name&gt;.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;/dtbo
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Activate the overlay</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;/status
@@ -2637,7 +2737,7 @@
 <div class="admonition example">
 <p class="admonition-title">Loading the DS3231 RTC Overlay</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>/lib/firmware/overlays/ds3231-rtc.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/dtbo
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>/boot/devicetree/ds3231-rtc.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/dtbo
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/ds3231/status
 </code></pre></div>
 </div>
@@ -2650,48 +2750,63 @@
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>rmdir<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;
 </code></pre></div>
 <h2 id="making-overlays-persistent">Making Overlays Persistent<a class="headerlink" href="#making-overlays-persistent" title="Permanent link">&para;</a></h2>
-<p>Overlays loaded via ConfigFS don't persist across reboots. To automatically load them at boot, create a systemd service.</p>
-<div class="admonition example">
-<p class="admonition-title">Persistent DS3231 RTC Overlay</p>
-<p>Create <code>/etc/systemd/system/ds3231-rtc.service</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[Unit]</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Load DS3231 RTC device tree overlay</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">After</span><span class="o">=</span><span class="s">sys-kernel-config.mount</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="na">Requires</span><span class="o">=</span><span class="s">sys-kernel-config.mount</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">[Service]</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/bin/sh -c &#39;mkdir -p /sys/kernel/config/device-tree/overlays/ds3231 &amp;&amp; </span>\
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="s">cat /lib/firmware/overlays/ds3231-rtc.dtbo &gt; /sys/kernel/config/device-tree/overlays/ds3231/dtbo &amp;&amp; </span>\
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="s">echo 1 &gt; /sys/kernel/config/device-tree/overlays/ds3231/status&#39;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">ExecStop</span><span class="o">=</span><span class="s">/bin/sh -c &#39;echo 0 &gt; /sys/kernel/config/device-tree/overlays/ds3231/status</span><span class="c1">; \</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="na">rmdir /sys/kernel/config/device-tree/overlays/ds3231&#39;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">[Install]</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+<p>Overlays loaded via ConfigFS don't persist across reboots. Calculinux includes a built-in systemd service (<code>load-dt-overlays.service</code>) that automatically loads overlays listed in a configuration file at boot.</p>
+<h3 id="enabling-an-overlay-at-boot">Enabling an Overlay at Boot<a class="headerlink" href="#enabling-an-overlay-at-boot" title="Permanent link">&para;</a></h3>
+<p>Add the overlay name to <code>/etc/device-tree-overlays.conf</code> (one overlay per line):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ds3231-rtc&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/device-tree-overlays.conf
 </code></pre></div>
-<p>Enable and start the service:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ds3231-rtc.service
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>systemctl<span class="w"> </span>start<span class="w"> </span>ds3231-rtc.service
+<p>The overlay loads on the next boot. To load it immediately without rebooting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>load-dt-overlays.service
+</code></pre></div>
+<h3 id="configuration-file-format">Configuration File Format<a class="headerlink" href="#configuration-file-format" title="Permanent link">&para;</a></h3>
+<p>The configuration file <code>/etc/device-tree-overlays.conf</code> supports:</p>
+<ul>
+<li><strong>Overlay names</strong> — resolved first in <code>/etc/devicetree/</code>, then <code>/boot/devicetree/</code></li>
+<li><strong>Absolute paths</strong> — for custom overlay files stored elsewhere</li>
+<li><strong>Comments</strong> — lines starting with <code>#</code> are ignored</li>
+<li>The <code>.dtbo</code> extension is optional</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example <code>/etc/device-tree-overlays.conf</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Load the DS3231 RTC overlay</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">ds3231-rtc</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Load the 100 kHz I2C overlay</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="na">100khz-i2c</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Load a custom overlay from an absolute path</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="na">/home/pico/custom-sensor.dtbo</span>
 </code></pre></div>
 </div>
+<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<p>The <code>load-dt-overlays.service</code> runs early in the boot process (after filesystems are mounted, before <code>multi-user.target</code>). For each entry in the config file, it:</p>
+<ol>
+<li>Resolves the overlay file path</li>
+<li>Creates the ConfigFS overlay directory</li>
+<li>Loads the <code>.dtbo</code> blob</li>
+<li>Activates the overlay</li>
+</ol>
+<p>The service logs its progress to the journal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>load-dt-overlays.service
+</code></pre></div>
+<h3 id="user-overlay-overrides">User Overlay Overrides<a class="headerlink" href="#user-overlay-overrides" title="Permanent link">&para;</a></h3>
+<p>If you place a <code>.dtbo</code> file in <code>/etc/devicetree/</code>, it takes priority over the system-provided version in <code>/boot/devicetree/</code>. This lets you test modified overlays without replacing the originals.</p>
 <h2 id="verifying-loaded-overlays">Verifying Loaded Overlays<a class="headerlink" href="#verifying-loaded-overlays" title="Permanent link">&para;</a></h2>
 <p>To check which overlays are currently loaded:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ls<span class="w"> </span>/sys/kernel/config/device-tree/overlays/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ls<span class="w"> </span>/sys/kernel/config/device-tree/overlays/
 </code></pre></div>
 <p>To check the status of a specific overlay:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cat<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;/status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>/sys/kernel/config/device-tree/overlays/&lt;overlay-name&gt;/status
 </code></pre></div>
 <p>A status of <code>1</code> means the overlay is active, <code>0</code> means it's inactive.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="overlay-wont-load">Overlay won't load<a class="headerlink" href="#overlay-wont-load" title="Permanent link">&para;</a></h3>
 <p>Check kernel messages for errors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
 </code></pre></div>
 <p>Common issues:</p>
 <ul>
-<li><strong>Missing file</strong>: Verify the <code>.dtbo</code> file exists in <code>/lib/firmware/overlays/</code></li>
+<li><strong>Missing file</strong>: Verify the <code>.dtbo</code> file exists in <code>/boot/devicetree/</code> or <code>/etc/devicetree/</code></li>
 <li><strong>Permission denied</strong>: Ensure you have root privileges</li>
 <li><strong>Overlay conflicts</strong>: Another overlay or driver may be using the same hardware resources</li>
 </ul>
@@ -2727,7 +2842,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Checking I2C Devices</p>
 <p>Use <code>i2cdetect</code> to scan for devices on a bus:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
 </div>
 <h2 id="developer-resources">Developer Resources<a class="headerlink" href="#developer-resources" title="Permanent link">&para;</a></h2>
@@ -2760,7 +2875,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 17:21:14 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:12:32 UTC">February 11, 2026</span>
   </span>
 
     
