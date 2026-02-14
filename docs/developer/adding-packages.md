@@ -39,15 +39,20 @@ The build system uses these to fetch, patch, configure, build, and install the p
 
 Step-by-step guides with full recipe content:
 
-- [Go Application (circumflex)](adding-packages/go-example.md) — Terminal app using `go-mod`
-- [Rust Application (glkcli)](adding-packages/rust-example.md) — CLI tool using `cargo` and crate checksums
-- [Rust Application (Newsboat)](adding-packages/newsboat.md) — Packaging an existing Rust CLI
+- [Go (amfora)](adding-packages/go-example.md) — Terminal app using `go-mod`
+- [Rust (glkcli)](adding-packages/rust-example.md) — CLI tool using `cargo` and crate checksums
+- [Rust (Newsboat)](adding-packages/newsboat.md) — Packaging an existing Rust CLI
+- [CMake (notcurses)](adding-packages/cmake-example.md) — Library and tools using `cmake`
+- [Python (wik)](adding-packages/python-example.md) — CLI tool using `python_flit_core`
+- [Meson (kiwix-tools)](adding-packages/meson-example.md) — CLI tools using `meson`
 
 ## Recipe Types and Classes
 
 - **Go applications** — `inherit go-mod`, set `GO_IMPORT`, and use a Git `SRC_URI`; put the clone in a path that matches the module path in `go.mod`. See [Go example](adding-packages/go-example.md).
 - **Rust applications** — `inherit cargo` and usually `cargo-update-recipe-crates`; use a `*-crates.inc` include for crate checksums. See [Rust examples](adding-packages/rust-example.md) and [Newsboat](adding-packages/newsboat.md).
-- **CMake projects** — `inherit cmake` and set `SRC_URI` (and optionally `S`).
+- **CMake projects** — `inherit cmake` and set `SRC_URI`; use `EXTRA_OECMAKE` for options. See [CMake example](adding-packages/cmake-example.md).
+- **Python applications** — `inherit python_flit_core` for Flit/pyproject.toml, or `setuptools3` for setup.py. See [Python example](adding-packages/python-example.md).
+- **Meson projects** — `inherit meson` and set `SRC_URI`; use `EXTRA_OEMESON` for options. See [Meson example](adding-packages/meson-example.md).
 - **Autotools (configure/make)** — `inherit autotools` and set `SRC_URI`.
 - **Simple Makefile** — `inherit pkgconfig` or a custom recipe with `do_compile`/`do_install` steps.
 

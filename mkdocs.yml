@@ -123,9 +123,12 @@ nav:
     - Adding Packages: 
       - Overview: developer/adding-packages.md
       - Examples:
-        - Go (circumflex): developer/adding-packages/go-example.md
+        - Go (amfora): developer/adding-packages/go-example.md
         - Rust (glkcli): developer/adding-packages/rust-example.md
         - Rust (Newsboat): developer/adding-packages/newsboat.md
+        - CMake (notcurses): developer/adding-packages/cmake-example.md
+        - Python (wik): developer/adding-packages/python-example.md
+        - Meson (kiwix-tools): developer/adding-packages/meson-example.md
     - Using the Yocto SDK: developer/sdk.md
     - Creating Device Tree Overlays: developer/device-tree-overlays.md
     - Calculinux Update System: developer/calculinux-update.md
