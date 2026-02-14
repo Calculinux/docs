@@ -116,14 +116,9 @@ Notes:
 
 ## 4) Add the package to your image
 
-Add the utility to your image with an `IMAGE_INSTALL` append. For example,
-in your distribution or image configuration or a bundle:
+--8<-- "developer/adding-packages/_snippets/add-to-image.md"
 
-```bitbake
-IMAGE_INSTALL:append = " hello-calculinux"
-```
-
-If you use a bundle (e.g., `calculinux-bundle.bb`), include it there.
+For this example, use `hello-calculinux` as the package name.
 
 ## 5) Build and test
 

@@ -120,7 +120,12 @@ nav:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
-    - Adding Packages: developer/adding-packages.md
+    - Adding Packages: 
+      - Overview: developer/adding-packages.md
+      - Examples:
+        - Go (circumflex): developer/adding-packages/go-example.md
+        - Rust (glkcli): developer/adding-packages/rust-example.md
+        - Rust (Newsboat): developer/adding-packages/newsboat.md
     - Using the Yocto SDK: developer/sdk.md
     - Creating Device Tree Overlays: developer/device-tree-overlays.md
     - Calculinux Update System: developer/calculinux-update.md
