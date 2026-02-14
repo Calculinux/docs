@@ -375,3 +375,4 @@ FFmpeg
 kmsgrab
 framerates
 bitbang
+gpsd
