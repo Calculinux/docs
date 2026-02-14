@@ -96,7 +96,7 @@ dmesg | grep -i rtc
 ### Read Current Time
 
 ```shell
-hwclock -r -f /dev/rtc1
+hwclock -r -f /dev/rtc0
 ```
 
 ### Set RTC from System Time
@@ -104,7 +104,7 @@ hwclock -r -f /dev/rtc1
 After setting the system time (via NTP or manually), write it to the RTC:
 
 ```shell
-hwclock -w -f /dev/rtc1
+hwclock -w -f /dev/rtc0
 ```
 
 ### Set System Time from RTC
@@ -112,7 +112,7 @@ hwclock -w -f /dev/rtc1
 On boot or when the system time is incorrect, read from the RTC:
 
 ```shell
-hwclock -s -f /dev/rtc1
+hwclock -s -f /dev/rtc0
 ```
 
 ### Manual Time Setting
@@ -124,7 +124,7 @@ If you need to set the RTC manually:
 date 020815302026  # Feb 8, 15:30, 2026
 
 # Write to RTC
-hwclock -w -f /dev/rtc1
+hwclock -w -f /dev/rtc0
 ```
 
 ## Making the DS3231 the Default RTC
@@ -135,7 +135,7 @@ Create `/etc/udev/rules.d/50-rtc.rules`:
 
 ```udev
 # Make DS3231 the default RTC
-KERNEL=="rtc1", SUBSYSTEM=="rtc", SYMLINK+="rtc", OPTIONS+="link_priority=10"
+KERNEL=="rtc0", SUBSYSTEM=="rtc", SYMLINK+="rtc", OPTIONS+="link_priority=10"
 ```
 
 Reload udev rules:
@@ -176,9 +176,8 @@ journalctl -u load-dt-overlays.service
 If `i2cdetect` doesn't show the device at 0x68:
 
 1. **Check wiring**: Verify all connections, especially VCC (3.3V) and GND
-2. **Check voltage**: Ensure you're using 3.3V, not 5V
-3. **Test connections**: Use a multimeter to verify continuity
-4. **Try another I2C device**: Rule out I2C bus issues
+2. **Test connections**: Use a multimeter to verify continuity
+3. **Try another I2C device**: If picocalc keyboard works, the I2C bus is working.
 
 ### RTC Driver Not Loading
 
@@ -214,7 +213,7 @@ The DS3231 supports two programmable alarms with interrupt output. To use them:
 3. **Use RTC alarm tools** like `rtcwake`
 
 !!! tip "RTC Wake from Sleep"
-    With proper configuration, the DS3231 can wake your PicoCalc from sleep mode at a scheduled time.
+    While the DS3231 could conceivably wake your PicoCalc from sleep mode at a scheduled time, this may be challenging and require modification of the stm32 connections or firmware. Instead of doing this with a DS3231, there is custom firmware for the STM32 itself that supports this function. See [custom PicoCalc keyboard firmware](https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292) by JackCarterSmith on the ClockworkPi forums.
 
 ## Related Topics
 
