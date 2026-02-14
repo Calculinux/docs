@@ -2976,15 +2976,15 @@
 </code></pre></div>
 <h2 id="using-the-rtc">Using the RTC<a class="headerlink" href="#using-the-rtc" title="Permanent link">&para;</a></h2>
 <h3 id="read-current-time">Read Current Time<a class="headerlink" href="#read-current-time" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>hwclock<span class="w"> </span>-r<span class="w"> </span>-f<span class="w"> </span>/dev/rtc1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>hwclock<span class="w"> </span>-r<span class="w"> </span>-f<span class="w"> </span>/dev/rtc0
 </code></pre></div>
 <h3 id="set-rtc-from-system-time">Set RTC from System Time<a class="headerlink" href="#set-rtc-from-system-time" title="Permanent link">&para;</a></h3>
 <p>After setting the system time (via NTP or manually), write it to the RTC:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>hwclock<span class="w"> </span>-w<span class="w"> </span>-f<span class="w"> </span>/dev/rtc1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>hwclock<span class="w"> </span>-w<span class="w"> </span>-f<span class="w"> </span>/dev/rtc0
 </code></pre></div>
 <h3 id="set-system-time-from-rtc">Set System Time from RTC<a class="headerlink" href="#set-system-time-from-rtc" title="Permanent link">&para;</a></h3>
 <p>On boot or when the system time is incorrect, read from the RTC:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>hwclock<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>/dev/rtc1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>hwclock<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>/dev/rtc0
 </code></pre></div>
 <h3 id="manual-time-setting">Manual Time Setting<a class="headerlink" href="#manual-time-setting" title="Permanent link">&para;</a></h3>
 <p>If you need to set the RTC manually:</p>
@@ -2992,13 +2992,13 @@
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>date<span class="w"> </span><span class="m">020815302026</span><span class="w">  </span><span class="c1"># Feb 8, 15:30, 2026</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Write to RTC</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>hwclock<span class="w"> </span>-w<span class="w"> </span>-f<span class="w"> </span>/dev/rtc1
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>hwclock<span class="w"> </span>-w<span class="w"> </span>-f<span class="w"> </span>/dev/rtc0
 </code></pre></div>
 <h2 id="making-the-ds3231-the-default-rtc">Making the DS3231 the Default RTC<a class="headerlink" href="#making-the-ds3231-the-default-rtc" title="Permanent link">&para;</a></h2>
 <p>To make the DS3231 the system default RTC device:</p>
 <p>Create <code>/etc/udev/rules.d/50-rtc.rules</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># Make DS3231 the default RTC
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>KERNEL==&quot;rtc1&quot;, SUBSYSTEM==&quot;rtc&quot;, SYMLINK+=&quot;rtc&quot;, OPTIONS+=&quot;link_priority=10&quot;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>KERNEL==&quot;rtc0&quot;, SUBSYSTEM==&quot;rtc&quot;, SYMLINK+=&quot;rtc&quot;, OPTIONS+=&quot;link_priority=10&quot;
 </code></pre></div>
 <p>Reload udev rules:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>udevadm<span class="w"> </span>control<span class="w"> </span>--reload-rules
@@ -3023,9 +3023,8 @@
 <p>If <code>i2cdetect</code> doesn't show the device at 0x68:</p>
 <ol>
 <li><strong>Check wiring</strong>: Verify all connections, especially VCC (3.3V) and GND</li>
-<li><strong>Check voltage</strong>: Ensure you're using 3.3V, not 5V</li>
 <li><strong>Test connections</strong>: Use a multimeter to verify continuity</li>
-<li><strong>Try another I2C device</strong>: Rule out I2C bus issues</li>
+<li><strong>Try another I2C device</strong>: If picocalc keyboard works, the I2C bus is working.</li>
 </ol>
 <h3 id="rtc-driver-not-loading">RTC Driver Not Loading<a class="headerlink" href="#rtc-driver-not-loading" title="Permanent link">&para;</a></h3>
 <p>If the overlay loads but <code>/dev/rtc1</code> doesn't appear:</p>
@@ -3056,7 +3055,7 @@
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">RTC Wake from Sleep</p>
-<p>With proper configuration, the DS3231 can wake your PicoCalc from sleep mode at a scheduled time.</p>
+<p>While the DS3231 could conceivably wake your PicoCalc from sleep mode at a scheduled time, this may be challenging and require modification of the stm32 connections or firmware. Instead of doing this with a DS3231, there is custom firmware for the STM32 itself that supports this function. See <a href="https://forum.clockworkpi.com/t/custom-picocalc-bios-keyboard-firmware/17292">custom PicoCalc keyboard firmware</a> by JackCarterSmith on the ClockworkPi forums.</p>
 </div>
 <h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3092,7 +3091,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2026 19:55:46 UTC">February 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2026 20:10:15 UTC">February 14, 2026</span>
   </span>
 
     
