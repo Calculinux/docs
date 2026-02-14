@@ -2045,7 +2045,7 @@
   <span class="md-ellipsis">
     
   
-    Go (circumflex)
+    Go (amfora)
   
 
     
@@ -2102,6 +2102,90 @@
     
   
     Rust (Newsboat)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cmake-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMake (notcurses)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python (wik)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="meson-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meson (kiwix-tools)
   
 
     
@@ -2860,15 +2944,20 @@
 <h2 id="concrete-examples">Concrete Examples<a class="headerlink" href="#concrete-examples" title="Permanent link">&para;</a></h2>
 <p>Step-by-step guides with full recipe content:</p>
 <ul>
-<li><a href="go-example/">Go Application (circumflex)</a> — Terminal app using <code>go-mod</code></li>
-<li><a href="rust-example/">Rust Application (glkcli)</a> — CLI tool using <code>cargo</code> and crate checksums</li>
-<li><a href="newsboat/">Rust Application (Newsboat)</a> — Packaging an existing Rust CLI</li>
+<li><a href="go-example/">Go (amfora)</a> — Terminal app using <code>go-mod</code></li>
+<li><a href="rust-example/">Rust (glkcli)</a> — CLI tool using <code>cargo</code> and crate checksums</li>
+<li><a href="newsboat/">Rust (Newsboat)</a> — Packaging an existing Rust CLI</li>
+<li><a href="cmake-example/">CMake (notcurses)</a> — Library and tools using <code>cmake</code></li>
+<li><a href="python-example/">Python (wik)</a> — CLI tool using <code>python_flit_core</code></li>
+<li><a href="meson-example/">Meson (kiwix-tools)</a> — CLI tools using <code>meson</code></li>
 </ul>
 <h2 id="recipe-types-and-classes">Recipe Types and Classes<a class="headerlink" href="#recipe-types-and-classes" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Go applications</strong> — <code>inherit go-mod</code>, set <code>GO_IMPORT</code>, and use a Git <code>SRC_URI</code>; put the clone in a path that matches the module path in <code>go.mod</code>. See <a href="go-example/">Go example</a>.</li>
 <li><strong>Rust applications</strong> — <code>inherit cargo</code> and usually <code>cargo-update-recipe-crates</code>; use a <code>*-crates.inc</code> include for crate checksums. See <a href="rust-example/">Rust examples</a> and <a href="newsboat/">Newsboat</a>.</li>
-<li><strong>CMake projects</strong> — <code>inherit cmake</code> and set <code>SRC_URI</code> (and optionally <code>S</code>).</li>
+<li><strong>CMake projects</strong> — <code>inherit cmake</code> and set <code>SRC_URI</code>; use <code>EXTRA_OECMAKE</code> for options. See <a href="cmake-example/">CMake example</a>.</li>
+<li><strong>Python applications</strong> — <code>inherit python_flit_core</code> for Flit/pyproject.toml, or <code>setuptools3</code> for setup.py. See <a href="python-example/">Python example</a>.</li>
+<li><strong>Meson projects</strong> — <code>inherit meson</code> and set <code>SRC_URI</code>; use <code>EXTRA_OEMESON</code> for options. See <a href="meson-example/">Meson example</a>.</li>
 <li><strong>Autotools (configure/make)</strong> — <code>inherit autotools</code> and set <code>SRC_URI</code>.</li>
 <li><strong>Simple Makefile</strong> — <code>inherit pkgconfig</code> or a custom recipe with <code>do_compile</code>/<code>do_install</code> steps.</li>
 </ul>
@@ -2916,7 +3005,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2026 22:26:07 UTC">February 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2026 22:29:41 UTC">February 14, 2026</span>
   </span>
 
     
