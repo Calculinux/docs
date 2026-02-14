@@ -373,3 +373,4 @@ Decompiling
 udev
 FFmpeg
 kmsgrab
+framerates
