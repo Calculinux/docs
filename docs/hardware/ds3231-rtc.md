@@ -83,7 +83,7 @@ Check for the RTC device node:
 ls -l /dev/rtc*
 ```
 
-The DS3231 should appear as `/dev/rtc1` (the SoC's built-in RTC is typically `/dev/rtc0`).
+The DS3231 should appear as `/dev/rtc0`.
 
 Verify in kernel messages:
 
