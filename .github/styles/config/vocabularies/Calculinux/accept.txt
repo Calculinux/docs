@@ -380,3 +380,4 @@ IPKs
 Makefile
 TUIs
 pkgconfig
+wik
