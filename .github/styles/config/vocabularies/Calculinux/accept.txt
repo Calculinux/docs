@@ -383,3 +383,4 @@ pkgconfig
 wik
 python_flit_core
 setuptools
+amfora
