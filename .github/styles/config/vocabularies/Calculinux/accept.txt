@@ -379,3 +379,4 @@ gpsd
 IPKs
 Makefile
 TUIs
+pkgconfig
