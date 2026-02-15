@@ -143,6 +143,18 @@ hello-calculinux
 
 ## Troubleshooting
 
+- **OpenSSL / openssl-sys**: If your crate uses `openssl` or `openssl-sys` (e.g. for HTTPS) and the build fails with "Could not find directory of OpenSSL installation":
+
+  --8<-- "developer/adding-packages/_snippets/rust-openssl.md"
+
+- **`use of unstable library feature` (e.g. `unsigned_is_multiple_of`)**: A dependency requires a newer Rust. See:
+
+  --8<-- "developer/adding-packages/_snippets/rust-version.md"
+
+- **`the lock file needs to be updated but --frozen was passed`**: When you patch `Cargo.lock` (e.g. to pin a crate for Rust compatibility), Cargo may need to reconcile it. See:
+
+  --8<-- "developer/adding-packages/_snippets/rust-cargo-lock-frozen.md"
+
 - If Rust is not available, add `meta-rust` and ensure the Rust toolchain
   is enabled for your target.
 - If the binary is not found during `do_install()`, check the
