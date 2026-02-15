@@ -381,3 +381,4 @@ Makefile
 TUIs
 pkgconfig
 wik
+python_flit_core
