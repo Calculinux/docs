@@ -45,6 +45,37 @@ Calculinux currently includes the following config fragments:
 
 ## Creating a Config Fragment
 
+### Quick Start: Using the Makefile Helper
+
+The fastest way to create a config fragment is using the Makefile's `kernel-config` target (from the `meta-calculinux` directory):
+
+```bash
+cd meta-calculinux
+make kernel-config FRAGMENT=mydevice
+```
+
+This workflow automatically:
+
+1. Opens the kernel's interactive configuration menu (`menuconfig`)
+2. Lets you select your kernel options
+3. Generates a config fragment using `diffconfig`
+4. Saves the fragment to: `meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/mydevice.cfg`
+
+**Example:**
+
+```bash
+cd meta-calculinux
+make kernel-config FRAGMENT=lm75-sensor
+
+# In menuconfig:
+# Device Drivers > Hardware Monitoring > LM75 temperature sensor
+# Mark as [M] (module) and exit
+
+# The fragment is automatically created!
+```
+
+This is the recommended approach for most developers. For more control or manual creation, follow the detailed steps below.
+
 ### Step 1: Identify Required Kernel Options
 
 First, determine which kernel configuration options you need for your hardware:
@@ -413,6 +444,47 @@ modinfo sensor-driver
 ## Building and Testing
 
 After adding your config fragment:
+
+### Using the Makefile Helper
+
+Calculinux provides a convenient Makefile target to generate kernel config fragments interactively:
+
+```bash
+# From meta-calculinux directory
+make kernel-config FRAGMENT=mydevice
+```
+
+This workflow:
+
+1. **Opens menuconfig** - Interactive kernel configuration interface
+2. **Generates a fragment** - Uses `diffconfig` to extract your changes
+3. **Copies the fragment** - Automatically saves to the correct location:
+   ```
+   meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/mydevice.cfg
+   ```
+
+**Example workflow:**
+
+```bash
+# From meta-calculinux directory
+cd meta-calculinux
+make kernel-config FRAGMENT=rtc
+
+# In menuconfig:
+# 1. Navigate to Device Drivers > Real-time clock
+# 2. Enable CONFIG_RTC_DRV_DS1307
+# 3. Save and exit
+# 4. The fragment is automatically created!
+
+# Verify the fragment was created
+cat meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/rtc.cfg
+```
+
+For more details, see the [Makefile documentation](../../../meta-calculinux/Makefile) or run:
+
+```bash
+make help | grep kernel-config
+```
 
 ### Build the Image
 

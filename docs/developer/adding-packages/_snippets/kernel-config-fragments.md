@@ -92,6 +92,10 @@ meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/
 # Add your fragment to the files/ directory
 cp myfeature.cfg meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/
 
+# OR use the Makefile helper (from meta-calculinux directory):
+# cd meta-calculinux
+# make kernel-config FRAGMENT=myfeature
+
 # Build kernel
 bitbake linux-rockchip -c compile -f
 

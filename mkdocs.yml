@@ -120,6 +120,10 @@ nav:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
+    - Kernel Development:
+      - Kernel Overview: developer/kernel.md
+      - Hardware Driver Config Fragments: developer/kernel-driver-config-fragments.md
+      - Creating Device Tree Overlays: developer/device-tree-overlays.md
     - Adding Packages: 
       - Overview: developer/adding-packages.md
       - Examples:
@@ -130,7 +134,6 @@ nav:
         - Python (wik): developer/adding-packages/python-example.md
         - Meson (kiwix-tools): developer/adding-packages/meson-example.md
     - Using the Yocto SDK: developer/sdk.md
-    - Creating Device Tree Overlays: developer/device-tree-overlays.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md
     - Project Ideas: developer/project-ideas.md

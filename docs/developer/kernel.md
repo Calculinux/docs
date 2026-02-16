@@ -107,6 +107,21 @@ grep CONFIG_OPTION_NAME <bitbake-build-dir>/linux-rockchip/.config
 
 ### Add Driver Support
 
+There are two approaches:
+
+**Option 1: Interactive Configuration (Recommended for New Drivers)**
+
+Use the Makefile helper to interactively configure the kernel:
+
+```bash
+cd meta-calculinux
+make kernel-config FRAGMENT=mydevice
+```
+
+This opens menuconfig, lets you select your options, and automatically generates the fragment.
+
+**Option 2: Manual Fragment Creation**
+
 1. Create or modify a `.cfg` file in `meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/`
 2. Add kernel config options for your driver
 3. Rebuild: `bitbake linux-rockchip -c compile -f`
