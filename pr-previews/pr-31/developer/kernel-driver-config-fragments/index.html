@@ -12,13 +12,13 @@
         <meta name="author" content="Calculinux Project">
       
       
-        <link rel="canonical" href="https://calculinux.org/user-guide/screen-capture/">
+        <link rel="canonical" href="https://calculinux.org/developer/kernel-driver-config-fragments/">
       
       
-        <link rel="prev" href="../applications/">
+        <link rel="prev" href="../kernel/">
       
       
-        <link rel="next" href="../advanced-storage/">
+        <link rel="next" href="../device-tree-overlays/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Screen Capture - Calculinux</title>
+        <title>Hardware Driver Config Fragments - Calculinux</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#screen-capture-with-ffmpeg" class="md-skip">
+        <a href="#adding-hardware-driver-config-fragments" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Screen Capture
+              Hardware Driver Config Fragments
             
           </span>
         </div>
@@ -281,13 +281,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../basic-usage/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../user-guide/basic-usage/" class="md-tabs__link">
           
   
   
@@ -303,11 +301,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../developer/overview/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -1324,31 +1324,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -1366,7 +1363,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1384,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basic-usage/" class="md-nav__link">
+      <a href="../../user-guide/basic-usage/" class="md-nav__link">
         
   
   
@@ -1412,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+      <a href="../../user-guide/networking/" class="md-nav__link">
         
   
   
@@ -1440,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../usb-networking/" class="md-nav__link">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
         
   
   
@@ -1468,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../package-management/" class="md-nav__link">
+      <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
   
@@ -1496,7 +1493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../updates/" class="md-nav__link">
+      <a href="../../user-guide/updates/" class="md-nav__link">
         
   
   
@@ -1524,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../applications/" class="md-nav__link">
+      <a href="../../user-guide/applications/" class="md-nav__link">
         
   
   
@@ -1532,6 +1529,295 @@
     
   
     Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/screen-capture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen Capture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/advanced-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Storage Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yocto-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up Yocto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Calculinux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kernel Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Overview
   
 
     
@@ -1568,7 +1854,7 @@
   <span class="md-ellipsis">
     
   
-    Screen Capture
+    Hardware Driver Config Fragments
   
 
     
@@ -1586,7 +1872,7 @@
   <span class="md-ellipsis">
     
   
-    Screen Capture
+    Hardware Driver Config Fragments
   
 
     
@@ -1612,10 +1898,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Quick Start
       
     </span>
   </a>
@@ -1623,10 +1909,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        How It Works
       
     </span>
   </a>
@@ -1634,22 +1920,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#taking-screenshots" class="md-nav__link">
+  <a href="#existing-fragments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Taking Screenshots
+        Existing Fragments
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Taking Screenshots">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-fragment-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Fragment Creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual Fragment Creation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#single-frame-capture" class="md-nav__link">
+  <a href="#1-create-the-fragment-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Single Frame Capture
+        1. Create the Fragment File
       
     </span>
   </a>
@@ -1657,10 +1954,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-timestamp" class="md-nav__link">
+  <a href="#2-understand-configuration-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Timestamp
+        2. Understand Configuration Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-to-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Add to Repository
       
     </span>
   </a>
@@ -1673,22 +1981,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recording-video" class="md-nav__link">
+  <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recording Video
+        Best Practices
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Recording Video">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-video-recording" class="md-nav__link">
+  <a href="#i2c-sensor-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic Video Recording
+        I2C Sensor Driver
       
     </span>
   </a>
@@ -1696,10 +2015,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-specific-framerate" class="md-nav__link">
+  <a href="#spi-device" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Specific Framerate
+        SPI Device
       
     </span>
   </a>
@@ -1707,10 +2026,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#timed-recording" class="md-nav__link">
+  <a href="#usb-gadget" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Timed Recording
+        USB Gadget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filesystem Support
       
     </span>
   </a>
@@ -1723,10 +2053,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-animated-gifs" class="md-nav__link">
+  <a href="#verify-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating Animated GIFs
+        Verify Configuration
       
     </span>
   </a>
@@ -1734,22 +2064,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-options" class="md-nav__link">
+  <a href="#integration-with-device-tree-overlays" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Advanced Options
+        Integration with Device Tree Overlays
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Advanced Options">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building and Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Testing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hardware-encoding" class="md-nav__link">
+  <a href="#build-the-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware Encoding
+        Build the Image
       
     </span>
   </a>
@@ -1757,21 +2098,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-timestamp-overlay" class="md-nav__link">
+  <a href="#test-on-device" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Timestamp Overlay
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lower-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lower Resolution
+        Test on Device
       
     </span>
   </a>
@@ -1780,17 +2110,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg-preset-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFmpeg Preset Options
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1807,10 +2126,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#permission-denied" class="md-nav__link">
+  <a href="#option-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permission Denied
+        Option Not Found
       
     </span>
   </a>
@@ -1818,10 +2137,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#display-not-found" class="md-nav__link">
+  <a href="#kernel-build-fails" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Display Not Found
+        Kernel Build Fails
       
     </span>
   </a>
@@ -1829,32 +2148,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#low-framerate-or-dropped-frames" class="md-nav__link">
+  <a href="#module-wont-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Low Framerate or Dropped Frames
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#black-screen-or-corrupted-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Black Screen or Corrupted Output
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recording-stops-immediately" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recording Stops Immediately
+        Module Won't Load
       
     </span>
   </a>
@@ -1867,110 +2164,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#technical-details" class="md-nav__link">
+  <a href="#submitting-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Technical Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Technical Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#display-specifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Display Specifications
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-kmsgrab-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How kmsgrab Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#performance-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Considerations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#documenting-a-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documenting a Process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-animated-demos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Animated Demos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#time-lapse-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Time-lapse Recording
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Topics
+        Submitting Changes
       
     </span>
   </a>
@@ -1982,6 +2179,17 @@
     <span class="md-ellipsis">
       
         References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -2004,290 +2212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advanced-storage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Advanced Storage Configuration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Developer Guide
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Developer Guide
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Development Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/yocto-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Setting Up Yocto
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/building/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Building Calculinux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Development
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Kernel Development
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/kernel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/kernel-driver-config-fragments/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hardware Driver Config Fragments
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developer/device-tree-overlays/" class="md-nav__link">
+      <a href="../device-tree-overlays/" class="md-nav__link">
         
   
   
@@ -2329,10 +2254,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -2341,7 +2269,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
             
   
   
@@ -2377,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/" class="md-nav__link">
+      <a href="../adding-packages/" class="md-nav__link">
         
   
   
@@ -2459,7 +2387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/go-example/" class="md-nav__link">
+      <a href="../adding-packages/go-example/" class="md-nav__link">
         
   
   
@@ -2487,7 +2415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/rust-example/" class="md-nav__link">
+      <a href="../adding-packages/rust-example/" class="md-nav__link">
         
   
   
@@ -2515,7 +2443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/newsboat/" class="md-nav__link">
+      <a href="../adding-packages/newsboat/" class="md-nav__link">
         
   
   
@@ -2543,7 +2471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/cmake-example/" class="md-nav__link">
+      <a href="../adding-packages/cmake-example/" class="md-nav__link">
         
   
   
@@ -2571,7 +2499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/python-example/" class="md-nav__link">
+      <a href="../adding-packages/python-example/" class="md-nav__link">
         
   
   
@@ -2599,7 +2527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/adding-packages/meson-example/" class="md-nav__link">
+      <a href="../adding-packages/meson-example/" class="md-nav__link">
         
   
   
@@ -2643,7 +2571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/sdk/" class="md-nav__link">
+      <a href="../sdk/" class="md-nav__link">
         
   
   
@@ -2671,7 +2599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/calculinux-update/" class="md-nav__link">
+      <a href="../calculinux-update/" class="md-nav__link">
         
   
   
@@ -2699,7 +2627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/contributing/" class="md-nav__link">
+      <a href="../contributing/" class="md-nav__link">
         
   
   
@@ -2727,7 +2655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developer/project-ideas/" class="md-nav__link">
+      <a href="../project-ideas/" class="md-nav__link">
         
   
   
@@ -3100,10 +3028,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Quick Start
       
     </span>
   </a>
@@ -3111,10 +3039,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        How It Works
       
     </span>
   </a>
@@ -3122,22 +3050,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#taking-screenshots" class="md-nav__link">
+  <a href="#existing-fragments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Taking Screenshots
+        Existing Fragments
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Taking Screenshots">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-fragment-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Fragment Creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual Fragment Creation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#single-frame-capture" class="md-nav__link">
+  <a href="#1-create-the-fragment-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Single Frame Capture
+        1. Create the Fragment File
       
     </span>
   </a>
@@ -3145,10 +3084,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-timestamp" class="md-nav__link">
+  <a href="#2-understand-configuration-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Timestamp
+        2. Understand Configuration Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-to-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Add to Repository
       
     </span>
   </a>
@@ -3161,22 +3111,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recording-video" class="md-nav__link">
+  <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recording Video
+        Best Practices
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Recording Video">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-video-recording" class="md-nav__link">
+  <a href="#i2c-sensor-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic Video Recording
+        I2C Sensor Driver
       
     </span>
   </a>
@@ -3184,10 +3145,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-specific-framerate" class="md-nav__link">
+  <a href="#spi-device" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Specific Framerate
+        SPI Device
       
     </span>
   </a>
@@ -3195,10 +3156,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#timed-recording" class="md-nav__link">
+  <a href="#usb-gadget" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Timed Recording
+        USB Gadget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filesystem Support
       
     </span>
   </a>
@@ -3211,10 +3183,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-animated-gifs" class="md-nav__link">
+  <a href="#verify-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating Animated GIFs
+        Verify Configuration
       
     </span>
   </a>
@@ -3222,22 +3194,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-options" class="md-nav__link">
+  <a href="#integration-with-device-tree-overlays" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Advanced Options
+        Integration with Device Tree Overlays
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Advanced Options">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building and Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Testing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hardware-encoding" class="md-nav__link">
+  <a href="#build-the-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware Encoding
+        Build the Image
       
     </span>
   </a>
@@ -3245,21 +3228,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-timestamp-overlay" class="md-nav__link">
+  <a href="#test-on-device" class="md-nav__link">
     <span class="md-ellipsis">
       
-        With Timestamp Overlay
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lower-resolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lower Resolution
+        Test on Device
       
     </span>
   </a>
@@ -3268,17 +3240,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg-preset-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFmpeg Preset Options
-      
-    </span>
-  </a>
   
 </li>
       
@@ -3295,10 +3256,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#permission-denied" class="md-nav__link">
+  <a href="#option-not-found" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Permission Denied
+        Option Not Found
       
     </span>
   </a>
@@ -3306,10 +3267,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#display-not-found" class="md-nav__link">
+  <a href="#kernel-build-fails" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Display Not Found
+        Kernel Build Fails
       
     </span>
   </a>
@@ -3317,32 +3278,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#low-framerate-or-dropped-frames" class="md-nav__link">
+  <a href="#module-wont-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Low Framerate or Dropped Frames
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#black-screen-or-corrupted-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Black Screen or Corrupted Output
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recording-stops-immediately" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recording Stops Immediately
+        Module Won't Load
       
     </span>
   </a>
@@ -3355,110 +3294,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#technical-details" class="md-nav__link">
+  <a href="#submitting-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Technical Details
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Technical Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#display-specifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Display Specifications
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-kmsgrab-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How kmsgrab Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#performance-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Considerations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#documenting-a-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documenting a Process
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-animated-demos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Animated Demos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#time-lapse-recording" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Time-lapse Recording
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Topics
+        Submitting Changes
       
     </span>
   </a>
@@ -3470,6 +3309,17 @@
     <span class="md-ellipsis">
       
         References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -3519,10 +3369,28 @@
     
     
       <li class="md-path__item">
-        <a href="../basic-usage/" class="md-path__link">
+        <a href="../overview/" class="md-path__link">
           
   <span class="md-ellipsis">
-    User Guide
+    Developer Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../kernel/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Kernel Development
   </span>
 
         </a>
@@ -3541,7 +3409,7 @@
 
 
   
-    <a href="https://github.com/Calculinux/docs/edit/main/docs/user-guide/screen-capture.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/developer/kernel-driver-config-fragments.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3549,226 +3417,228 @@
   
 
 
-<h1 id="screen-capture-with-ffmpeg">Screen Capture with FFmpeg<a class="headerlink" href="#screen-capture-with-ffmpeg" title="Permanent link">&para;</a></h1>
-<p>Calculinux includes FFmpeg with DRM/KMS framebuffer capture support, enabling direct screen capture from your PicoCalc's display without requiring X11 or Wayland.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>FFmpeg's <code>kmsgrab</code> input device captures directly from the Linux Direct Rendering Manager (DRM) framebuffer. This provides efficient, low-overhead screen recording and screenshot capabilities.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li>FFmpeg is pre-installed in Calculinux</li>
-<li>The ILI9488 DRM display driver must be loaded (standard on Calculinux)</li>
-<li>User must have access to <code>/dev/dri/card0</code> (members of <code>video</code> and <code>render</code> groups)</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Default Permissions</p>
-<p>The default <code>pico</code> user is already in the <code>video</code> and <code>render</code> groups and has the necessary permissions.</p>
-</div>
-<h2 id="taking-screenshots">Taking Screenshots<a class="headerlink" href="#taking-screenshots" title="Permanent link">&para;</a></h2>
-<h3 id="single-frame-capture">Single Frame Capture<a class="headerlink" href="#single-frame-capture" title="Permanent link">&para;</a></h3>
-<p>Capture a single frame (screenshot) to a PNG file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg<span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span>-vframes<span class="w"> </span><span class="m">1</span><span class="w"> </span>screenshot.png
+<h1 id="adding-hardware-driver-config-fragments">Adding Hardware Driver Config Fragments<a class="headerlink" href="#adding-hardware-driver-config-fragments" title="Permanent link">&para;</a></h1>
+<p>Kernel config fragments are <code>.cfg</code> files containing kernel configuration options. They're automatically discovered and merged during the build, allowing you to add driver support without modifying the base kernel configuration.</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>The recommended way to create a kernel config fragment is using the Makefile helper:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>meta-calculinux
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>make<span class="w"> </span>kernel-config<span class="w"> </span><span class="nv">FRAGMENT</span><span class="o">=</span>mydevice
 </code></pre></div>
-<h3 id="with-timestamp">With Timestamp<a class="headerlink" href="#with-timestamp" title="Permanent link">&para;</a></h3>
-<p>Add the current date and time to the filename:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg<span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span>-vframes<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>screenshot-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>.png
+<p>This will:
+1. Open the kernel's interactive configuration (<code>menuconfig</code>)
+2. Let you select your kernel options
+3. Automatically generate the fragment using <code>diffconfig</code>
+4. Save to: <code>meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/mydevice.cfg</code></p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>meta-calculinux
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>make<span class="w"> </span>kernel-config<span class="w"> </span><span class="nv">FRAGMENT</span><span class="o">=</span>lm75-sensor
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># In menuconfig, navigate and select your options:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Device Drivers &gt; Hardware Monitoring &gt; LM75 temperature sensor</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Mark as [M] (module) and save/exit</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Fragment is automatically created!</span>
 </code></pre></div>
-<h2 id="recording-video">Recording Video<a class="headerlink" href="#recording-video" title="Permanent link">&para;</a></h2>
-<h3 id="basic-video-recording">Basic Video Recording<a class="headerlink" href="#basic-video-recording" title="Permanent link">&para;</a></h3>
-<p>Record the screen to an MP4 file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ffmpeg<span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>ultrafast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>output.mp4
-</code></pre></div>
-<p>Press <code>q</code> to stop recording.</p>
-<h3 id="with-specific-framerate">With Specific Framerate<a class="headerlink" href="#with-specific-framerate" title="Permanent link">&para;</a></h3>
-<p>Record at 15 frames per second (recommended for PicoCalc):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">15</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>veryfast<span class="w"> </span>-crf<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>screencast.mp4
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Performance Tip</p>
-<p>Lower framerates (10-15 fps) work better on the RK3506's Cortex-A7 processor.</p>
-</div>
-<h3 id="timed-recording">Timed Recording<a class="headerlink" href="#timed-recording" title="Permanent link">&para;</a></h3>
-<p>Record for a specific duration (e.g., 10 seconds):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ffmpeg<span class="w"> </span>-t<span class="w"> </span><span class="m">10</span><span class="w"> </span>-framerate<span class="w"> </span><span class="m">15</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>veryfast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>10sec.mp4
-</code></pre></div>
-<h2 id="creating-animated-gifs">Creating Animated GIFs<a class="headerlink" href="#creating-animated-gifs" title="Permanent link">&para;</a></h2>
-<p>Convert screen capture to an animated GIF:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ffmpeg<span class="w"> </span>-t<span class="w"> </span><span class="m">5</span><span class="w"> </span>-framerate<span class="w"> </span><span class="m">10</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0,fps=10,scale=320:-1:flags=lanczos&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-c:v<span class="w"> </span>gif<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>animation.gif
-</code></pre></div>
-<p>This captures 5 seconds at 10 fps and creates an optimized GIF.</p>
-<h2 id="advanced-options">Advanced Options<a class="headerlink" href="#advanced-options" title="Permanent link">&para;</a></h2>
-<h3 id="hardware-encoding">Hardware Encoding<a class="headerlink" href="#hardware-encoding" title="Permanent link">&para;</a></h3>
-<p>If hardware encoding is available on your system:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">15</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=nv12&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>-c:v<span class="w"> </span>h264_v4l2m2m<span class="w"> </span>-b:v<span class="w"> </span>2M<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>screencast.mp4
-</code></pre></div>
-<h3 id="with-timestamp-overlay">With Timestamp Overlay<a class="headerlink" href="#with-timestamp-overlay" title="Permanent link">&para;</a></h3>
-<p>Add a timestamp to your recording:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">10</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s2">&quot;hwdownload,format=bgr0,drawtext=fontfile=/usr/share/fonts/terminus/ter-u32n.otb:text=&#39;%{localtime\:%X}&#39;:fontcolor=white:x=10:y=10&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>ultrafast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span>timestamped.mp4
-</code></pre></div>
-<h3 id="lower-resolution">Lower Resolution<a class="headerlink" href="#lower-resolution" title="Permanent link">&para;</a></h3>
-<p>Reduce output resolution for smaller file sizes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">10</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0,scale=160:240&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>veryfast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span>small.mp4
-</code></pre></div>
-<h2 id="ffmpeg-preset-options">FFmpeg Preset Options<a class="headerlink" href="#ffmpeg-preset-options" title="Permanent link">&para;</a></h2>
-<p>The <code>-preset</code> option controls encoding speed vs. compression:</p>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>When building the kernel, the Yocto build system:</p>
+<ol>
+<li>Discovers all <code>.cfg</code> files in <code>meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/</code></li>
+<li>Merges them in alphabetical order</li>
+<li>Compiles the kernel with merged configuration</li>
+</ol>
+<p>The process is defined in <code>linux-rockchip_6.1.bbappend</code>.</p>
+<h2 id="existing-fragments">Existing Fragments<a class="headerlink" href="#existing-fragments" title="Permanent link">&para;</a></h2>
+<p>Calculinux includes:</p>
 <table>
 <thead>
 <tr>
-<th>Preset</th>
-<th>Speed</th>
-<th>File Size</th>
-<th>Recommended For</th>
+<th>Fragment</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ultrafast</code></td>
-<td>Fastest</td>
-<td>Largest</td>
-<td>Real-time capture on PicoCalc</td>
+<td><code>base-configs.cfg</code></td>
+<td>Core kernel options</td>
 </tr>
 <tr>
-<td><code>veryfast</code></td>
-<td>Very Fast</td>
-<td>Large</td>
-<td>Good balance</td>
+<td><code>audio-i2s.cfg</code></td>
+<td>I2S audio support</td>
 </tr>
 <tr>
-<td><code>fast</code></td>
-<td>Fast</td>
-<td>Medium</td>
-<td>Post-processing</td>
+<td><code>display.cfg</code></td>
+<td>Display drivers</td>
 </tr>
 <tr>
-<td><code>medium</code></td>
-<td>Medium</td>
-<td>Small</td>
-<td>Archive/sharing (slow on PicoCalc)</td>
+<td><code>dto.cfg</code></td>
+<td>Device Tree Overlay support</td>
+</tr>
+<tr>
+<td><code>filesystems.cfg</code></td>
+<td>Filesystem support</td>
+</tr>
+<tr>
+<td><code>led.cfg</code></td>
+<td>LED subsystem</td>
+</tr>
+<tr>
+<td><code>rtc.cfg</code></td>
+<td>Real-Time Clock drivers</td>
+</tr>
+<tr>
+<td><code>wifi.cfg</code></td>
+<td>Wireless drivers</td>
+</tr>
+<tr>
+<td><code>usb-gadget.cfg</code></td>
+<td>USB gadget mode</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Performance Impact</p>
-<p>Use <code>ultrafast</code> or <code>veryfast</code> presets on PicoCalc. Slower presets may cause dropped frames.</p>
-</div>
+<h2 id="manual-fragment-creation">Manual Fragment Creation<a class="headerlink" href="#manual-fragment-creation" title="Permanent link">&para;</a></h2>
+<p>If you prefer to manually create fragments instead of using the Makefile helper:</p>
+<h3 id="1-create-the-fragment-file">1. Create the Fragment File<a class="headerlink" href="#1-create-the-fragment-file" title="Permanent link">&para;</a></h3>
+<p>Create a <code>.cfg</code> file in <code>meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># File: myfeature.cfg</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Brief description of what this enables</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">CONFIG_FEATURE_OPTION</span><span class="o">=</span>y
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">CONFIG_DRIVER_MODULE</span><span class="o">=</span>m
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># CONFIG_UNUSED_OPTION is not set</span>
+</code></pre></div>
+<h3 id="2-understand-configuration-options">2. Understand Configuration Options<a class="headerlink" href="#2-understand-configuration-options" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>CONFIG_OPTION=y</code> — Compile into kernel</li>
+<li><code>CONFIG_OPTION=m</code> — Compile as loadable module (preferred for optional drivers)</li>
+<li><code># CONFIG_OPTION is not set</code> — Disable option</li>
+</ul>
+<h3 id="3-add-to-repository">3. Add to Repository<a class="headerlink" href="#3-add-to-repository" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>add<span class="w"> </span>meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/myfeature.cfg
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add kernel config for feature support&quot;</span>
+</code></pre></div>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>One feature per file</strong> - Keep fragments focused (e.g., <code>lm75-sensor.cfg</code>, not <code>drivers.cfg</code>)</li>
+<li><strong>Use modules</strong> - Use <code>=m</code> for optional drivers, <code>=y</code> only for essential hardware</li>
+<li><strong>Add comments</strong> - Explain what each option enables</li>
+<li><strong>Document dependencies</strong> - If your fragment requires other features, comment it</li>
+<li><strong>Check existing examples</strong> - Reference similar fragments in the repository</li>
+</ul>
+<h2 id="common-patterns">Common Patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="i2c-sensor-driver">I2C Sensor Driver<a class="headerlink" href="#i2c-sensor-driver" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CONFIG_I2C</span><span class="o">=</span>y
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">CONFIG_HWMON</span><span class="o">=</span>y
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">CONFIG_SENSORS_LM75</span><span class="o">=</span>m
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">CONFIG_SENSORS_LM75_REGMAP</span><span class="o">=</span>y
+</code></pre></div>
+<h3 id="spi-device">SPI Device<a class="headerlink" href="#spi-device" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">CONFIG_SPI</span><span class="o">=</span>y
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">CONFIG_SPI_BITBANG</span><span class="o">=</span>m
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">CONFIG_DEVICE_DRIVER</span><span class="o">=</span>m
+</code></pre></div>
+<h3 id="usb-gadget">USB Gadget<a class="headerlink" href="#usb-gadget" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">CONFIG_USB_GADGET</span><span class="o">=</span>y
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">CONFIG_USB_GADGET_CONFIGFS</span><span class="o">=</span>y
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">CONFIG_USB_CONFIGFS_SERIAL</span><span class="o">=</span>y
+</code></pre></div>
+<h3 id="filesystem-support">Filesystem Support<a class="headerlink" href="#filesystem-support" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">CONFIG_F2FS_FS</span><span class="o">=</span>m
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">CONFIG_EXFAT_FS</span><span class="o">=</span>m
+</code></pre></div>
+<h2 id="verify-configuration">Verify Configuration<a class="headerlink" href="#verify-configuration" title="Permanent link">&para;</a></h2>
+<p>After building, verify your config was applied:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># On build machine</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>grep<span class="w"> </span>CONFIG_MY_OPTION<span class="w"> </span>&lt;build-dir&gt;/linux-rockchip/.config
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># On target device</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>zcat<span class="w"> </span>/usr/share/kernel/config.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>CONFIG_MY_OPTION
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Check if modules loaded</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>modprobe<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>driver-name
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>driver-name
+</code></pre></div>
+<h2 id="integration-with-device-tree-overlays">Integration with Device Tree Overlays<a class="headerlink" href="#integration-with-device-tree-overlays" title="Permanent link">&para;</a></h2>
+<p>For maximum flexibility, pair kernel config fragments with device tree overlays:</p>
+<ul>
+<li><strong>Kernel fragment</strong> enables the driver</li>
+<li><strong>Device tree overlay</strong> enables the specific device instance</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Kernel fragment: enables driver</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">CONFIG_SENSORS_LM75</span><span class="o">=</span>m
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">#</span><span class="w"> </span><span class="na">Device</span><span class="w"> </span><span class="na">tree</span><span class="w"> </span><span class="nl">overlay</span><span class="p">:</span><span class="w"> </span><span class="na">enables</span><span class="w"> </span><span class="na">specific</span><span class="w"> </span><span class="na">device</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">&amp;</span><span class="na">i2c2</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nl">lm75</span><span class="p">:</span><span class="w"> </span><span class="nf">lm75</span><span class="o">@</span><span class="mi">48</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm75&quot;</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x48</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">};</span>
+</code></pre></div>
+<p>See <a href="../device-tree-overlays/">Creating Device Tree Overlays</a> for details.</p>
+<h2 id="building-and-testing">Building and Testing<a class="headerlink" href="#building-and-testing" title="Permanent link">&para;</a></h2>
+<h3 id="build-the-image">Build the Image<a class="headerlink" href="#build-the-image" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>calculinux-build
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>./meta-calculinux/kas-container<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>./meta-calculinux/kas-luckfox-lyra-bundle.yaml
+</code></pre></div>
+<h3 id="test-on-device">Test on Device<a class="headerlink" href="#test-on-device" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># After flashing to device</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ssh<span class="w"> </span>root@&lt;device-ip&gt;
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Verify your config</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>zcat<span class="w"> </span>/usr/share/kernel/config.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>CONFIG_YOUR_OPTION
+</code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="permission-denied">Permission Denied<a class="headerlink" href="#permission-denied" title="Permanent link">&para;</a></h3>
-<p>If you get "Cannot open device /dev/dri/card0":</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check device exists</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/dri/
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Verify your groups</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>groups
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Add user to video group if needed (requires logout)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>video,render<span class="w"> </span><span class="nv">$USER</span>
-</code></pre></div>
-<h3 id="display-not-found">Display Not Found<a class="headerlink" href="#display-not-found" title="Permanent link">&para;</a></h3>
-<p>Verify the DRM device exists and the driver is loaded:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check for DRM devices</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/dri/
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Check if ILI9488 driver is loaded</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ili9488
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Check kernel messages</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>ili9488
-</code></pre></div>
-<h3 id="low-framerate-or-dropped-frames">Low Framerate or Dropped Frames<a class="headerlink" href="#low-framerate-or-dropped-frames" title="Permanent link">&para;</a></h3>
-<p>To improve performance:</p>
+<h3 id="option-not-found">Option Not Found<a class="headerlink" href="#option-not-found" title="Permanent link">&para;</a></h3>
+<p>If you get an "Unknown option" error:</p>
 <ol>
-<li><strong>Reduce framerate</strong>: Use <code>-framerate 10</code> or even <code>-framerate 5</code></li>
-<li><strong>Use faster preset</strong>: Switch to <code>-preset ultrafast</code></li>
-<li><strong>Lower quality</strong>: Increase CRF value to <code>-crf 28</code> (lower quality, smaller file)</li>
-<li><strong>Reduce resolution</strong>: Add scale filter <code>-vf '...,scale=160:240'</code></li>
+<li>Verify it exists in kernel 6.1.x (Calculinux uses <code>linux-rockchip_6.1</code>)</li>
+<li>Check spelling and case (CONFIG options are case-sensitive)</li>
+<li>Some options may be architecture-specific or require parent options</li>
 </ol>
-<h3 id="black-screen-or-corrupted-output">Black Screen or Corrupted Output<a class="headerlink" href="#black-screen-or-corrupted-output" title="Permanent link">&para;</a></h3>
-<p>If the output is black or corrupted:</p>
+<h3 id="kernel-build-fails">Kernel Build Fails<a class="headerlink" href="#kernel-build-fails" title="Permanent link">&para;</a></h3>
+<p>If the build fails:</p>
 <ol>
-<li><strong>Ensure display is active</strong>: Run an application that draws to the screen first</li>
-<li><strong>Test with SDL</strong>: Run <code>sdl2-test</code> or another graphical application</li>
-<li><strong>Check plane status</strong>: The DRM plane must be active for capture</li>
+<li>Check the build log: <code>bitbake -v linux-rockchip 2&gt;&amp;1 | tee build.log</code></li>
+<li>Verify parent options are enabled (e.g., enable <code>CONFIG_I2C</code> before I2C drivers)</li>
+<li>Try building without your fragment to isolate the issue</li>
 </ol>
-<h3 id="recording-stops-immediately">Recording Stops Immediately<a class="headerlink" href="#recording-stops-immediately" title="Permanent link">&para;</a></h3>
-<p>If FFmpeg exits right away:</p>
-<ul>
-<li>Check that another process isn't already capturing the display</li>
-<li>Verify the display driver is functioning: <code>cat /sys/class/graphics/fb0/name</code></li>
-</ul>
-<h2 id="technical-details">Technical Details<a class="headerlink" href="#technical-details" title="Permanent link">&para;</a></h2>
-<h3 id="display-specifications">Display Specifications<a class="headerlink" href="#display-specifications" title="Permanent link">&para;</a></h3>
-<p>The PicoCalc's LCD is <strong>320×480 pixels</strong>. FFmpeg automatically detects this resolution from the DRM device.</p>
-<h3 id="how-kmsgrab-works">How kmsgrab Works<a class="headerlink" href="#how-kmsgrab-works" title="Permanent link">&para;</a></h3>
-<p>The <code>kmsgrab</code> input device:</p>
+<h3 id="module-wont-load">Module Won't Load<a class="headerlink" href="#module-wont-load" title="Permanent link">&para;</a></h3>
+<p>If a driver module won't load:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Check kernel messages</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Check module dependencies</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>modinfo<span class="w"> </span>driver-name
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Try loading manually</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>modprobe<span class="w"> </span>-v<span class="w"> </span>driver-name
+</code></pre></div>
+<h2 id="submitting-changes">Submitting Changes<a class="headerlink" href="#submitting-changes" title="Permanent link">&para;</a></h2>
+<p>When contributing a new kernel config fragment:</p>
 <ol>
-<li>Opens the DRM device (<code>/dev/dri/card0</code>)</li>
-<li>Finds the active plane (framebuffer layer)</li>
-<li>Reads frame data directly from video memory</li>
-<li>Converts to the requested pixel format</li>
+<li>Create the fragment with appropriate comments</li>
+<li>Test on hardware</li>
+<li>Ensure it follows naming conventions</li>
+<li>Submit pull request with clear description</li>
+<li>If adding new functionality, create user documentation</li>
 </ol>
-<p>This bypasses the framebuffer entirely and provides the most efficient capture method.</p>
-<h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
-<p>Screen capture on the RK3506 is CPU-intensive:</p>
-<ul>
-<li>The Cortex-A7 cores are limited compared to modern processors</li>
-<li>Video encoding requires significant computation</li>
-<li>Real-time encoding at higher framerates may not be possible</li>
-<li>Consider recording at lower framerates and speeding up in post-processing</li>
-</ul>
-<h2 id="example-use-cases">Example Use Cases<a class="headerlink" href="#example-use-cases" title="Permanent link">&para;</a></h2>
-<h3 id="documenting-a-process">Documenting a Process<a class="headerlink" href="#documenting-a-process" title="Permanent link">&para;</a></h3>
-<p>Record your screen while demonstrating a process:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">10</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>ultrafast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span>tutorial.mp4
-</code></pre></div>
-<h3 id="creating-animated-demos">Creating Animated Demos<a class="headerlink" href="#creating-animated-demos" title="Permanent link">&para;</a></h3>
-<p>Capture a 5-second GIF for sharing:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ffmpeg<span class="w"> </span>-t<span class="w"> </span><span class="m">5</span><span class="w"> </span>-framerate<span class="w"> </span><span class="m">10</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0,fps=10&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>demo.gif
-</code></pre></div>
-<h3 id="time-lapse-recording">Time-lapse Recording<a class="headerlink" href="#time-lapse-recording" title="Permanent link">&para;</a></h3>
-<p>Record at very low framerate for a time-lapse effect:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">1</span><span class="w"> </span>-device<span class="w"> </span>/dev/dri/card0<span class="w"> </span>-f<span class="w"> </span>kmsgrab<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span>-vf<span class="w"> </span><span class="s1">&#39;hwdownload,format=bgr0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-preset<span class="w"> </span>ultrafast<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span>timelapse.mp4
-</code></pre></div>
-<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../applications/">Applications</a> - Other software available on Calculinux</li>
-<li><a href="../../hardware/display-input/">Display &amp; Input</a> - Display driver details</li>
-<li><a href="../basic-usage/">Basic Usage</a> - General command-line usage</li>
-</ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://trac.ffmpeg.org/wiki/Capture/Desktop">FFmpeg kmsgrab Documentation</a></li>
-<li><a href="https://ffmpeg.org/documentation.html">FFmpeg Official Documentation</a></li>
-<li><a href="https://www.kernel.org/doc/html/latest/gpu/drm-kms.html">Linux DRM/KMS Documentation</a></li>
+<li><a href="../device-tree-overlays/">Device Tree Overlays Developer Guide</a></li>
+<li><a href="../building/">Building Calculinux</a></li>
+<li><a href="https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html">Linux Kernel Configuration Documentation</a></li>
+<li><a href="https://github.com/Calculinux/meta-calculinux">meta-calculinux Repository</a></li>
 </ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Recommended:</strong> Use <code>make kernel-config FRAGMENT=&lt;name&gt;</code> to generate fragments interactively</li>
+<li><strong>Alternative:</strong> Manually create <code>.cfg</code> files with kernel options</li>
+<li>Place in: <code>meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/</code></li>
+<li>Build and test with full image build</li>
+<li>Verify configuration is applied on device</li>
+</ol>
+<p>The modular fragment system keeps the build clean and maintainable while enabling flexible hardware support.</p>
 
 
 
@@ -3791,7 +3661,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 17:21:14 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 16, 2026 05:31:06 UTC">February 16, 2026</span>
   </span>
 
     
@@ -3801,7 +3671,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 17:21:14 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 16, 2026 05:16:27 UTC">February 16, 2026</span>
   </span>
 
     
