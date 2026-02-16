@@ -1,133 +1,130 @@
 ## Quick Reference
 
-This snippet provides a quick reference for common hardware driver config fragment patterns in Calculinux.
+This snippet provides common patterns for kernel config fragments in Calculinux.
 
 ### Basic Template
 
 ```bash
-# File: meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/DEVICENAME.cfg
+# File: meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/myfeature.cfg
 
 # Brief description of what this enables
-# Example: Support for XYZ hardware peripheral
-
-CONFIG_OPTION_NAME=y
-CONFIG_ANOTHER_OPTION=m
-# CONFIG_DISABLED_OPTION is not set
+CONFIG_FEATURE_MAIN=y
+CONFIG_FEATURE_DRIVER=m
 ```
 
 ### Common Patterns
 
-**I2C Sensor Driver**
+**I2C Sensor**
 ```bash
 CONFIG_I2C=y
 CONFIG_HWMON=y
-CONFIG_SENSORS_DEVICENAME=m
+CONFIG_SENSORS_LM75=m
 ```
 
-**SPI Device Driver**
+**SPI Device**
 ```bash
 CONFIG_SPI=y
 CONFIG_SPI_BITBANG=m
-CONFIG_DEVICE_DRIVER=m
+CONFIG_DEVICE_SPI=m
 ```
 
-**USB Gadget Function**
+**USB Gadget**
 ```bash
 CONFIG_USB_GADGET=y
 CONFIG_USB_GADGET_CONFIGFS=y
-CONFIG_USB_CONFIGFS_FUNCTIONNAME=y
+CONFIG_USB_CONFIGFS_SERIAL=y
 ```
 
 **RTC Module**
 ```bash
 CONFIG_RTC_CLASS=y
-CONFIG_RTC_DRV_DEVICENAME=m
+CONFIG_RTC_DRV_DS1307=m
 ```
 
 **Wireless Driver**
 ```bash
 CONFIG_WIRELESS=y
 CONFIG_CFG80211=m
-CONFIG_WLAN_VENDOR_MANUFACTURER=y
+CONFIG_WLAN_VENDOR_NAME=y
 CONFIG_DRIVER_NAME=m
 ```
 
-**Filesystem Support**
+**Filesystem**
 ```bash
-CONFIG_FILESYSTEM_TYPE=m
-CONFIG_FILESYSTEM_TYPE_XATTR=y
+CONFIG_F2FS_FS=m
+CONFIG_EXFAT_FS=m
 ```
 
 ### Key Rules
 
-- **Module** (`=m`) - For optional drivers
-- **Built-in** (`=y`) - For required drivers only  
-- **Disabled** (`is not set`) - Explicitly turn off options
-- **One feature per file** - Keep fragments focused
-- **Alphabetical naming** - Use consistent naming pattern
-- **Add comments** - Explain the purpose of each option
+- Use `=m` for optional drivers (smaller kernel, loads on demand)
+- Use `=y` for essential hardware only
+- Use `is not set` to explicitly disable options
+- One feature per file (keep focused)
+- Add comments explaining each option
+- Check existing fragments for examples
 
-### File Organization
+### Creating a Fragment
 
+**Using Makefile (Recommended):**
+```bash
+cd meta-calculinux
+make kernel-config FRAGMENT=mydevice
+# Responds to menuconfig prompts
+# Fragment auto-generated
 ```
-meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/
-├── base-configs.cfg              # Core
-├── audio-i2s.cfg                # Audio
-├── display.cfg                  # Graphics
-├── dto.cfg                      # Device tree overlays
-├── filesystems.cfg              # FS support
-├── fonts.cfg                    # Console fonts
-├── led.cfg                      # LEDs
-├── removed.cfg                  # Disabled options
-├── rtc.cfg                      # RTC drivers
-├── utf8.cfg                     # UTF-8 support
-├── wifi.cfg                     # Wireless
-├── rauc.cfg                     # Updates
-└── [your-feature].cfg           # Your additions
+
+**Manual Creation:**
+```bash
+# Create file in meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/myfeature.cfg
+# Add CONFIG_ options
+# Commit to git
 ```
 
 ### Testing
 
 ```bash
-# Add your fragment to the files/ directory
-cp myfeature.cfg meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/
-
-# OR use the Makefile helper (from meta-calculinux directory):
-# cd meta-calculinux
-# make kernel-config FRAGMENT=myfeature
-
 # Build kernel
 bitbake linux-rockchip -c compile -f
 
-# Verify config was applied
-grep CONFIG_MY_OPTION tmp/work/.../linux-rockchip/.config
-
 # Build full image
-./meta-calculinux/kas-container build ./meta-calculinux/kas-luckfox-lyra-bundle.yaml
+./meta-calculinux/kas-container build \
+    ./meta-calculinux/kas-luckfox-lyra-bundle.yaml
 
 # On device, verify
 zcat /usr/share/kernel/config.gz | grep CONFIG_MY_OPTION
+modprobe -l | grep driver-name
+```
+
+### File Organization
+
+```
+meta-picocalc-bsp-rockchip/recipes-kernel/linux/files/
+├── base-configs.cfg      # Core options
+├── display.cfg          # Graphics drivers
+├── wifi.cfg             # Wireless drivers
+├── rtc.cfg              # RTC drivers
+├── usb-gadget.cfg       # USB support
+└── [your-feature].cfg   # Your additions
 ```
 
 ### Common Kernel Config Options
 
 | Option | Purpose |
 |--------|---------|
-| `CONFIG_I2C` | I2C controller support |
-| `CONFIG_SPI` | SPI controller support |
-| `CONFIG_UART_8250` | Serial port support |
+| `CONFIG_I2C` | I2C controller |
+| `CONFIG_SPI` | SPI controller |
 | `CONFIG_GPIO` | GPIO support |
 | `CONFIG_PWM` | PWM support |
-| `CONFIG_HWMON` | Hardware monitoring drivers |
-| `CONFIG_RTC_CLASS` | Real-time clock support |
+| `CONFIG_RTC_CLASS` | Real-time clock |
+| `CONFIG_HWMON` | Hardware monitoring |
 | `CONFIG_USB_GADGET` | USB device mode |
 | `CONFIG_WIRELESS` | Wireless networking |
-| `CONFIG_BT` | Bluetooth support |
 | `CONFIG_CONFIGFS_FS` | ConfigFS filesystem |
-| `CONFIG_OF_OVERLAY` | Device tree overlay support |
+| `CONFIG_OF_OVERLAY` | Device tree overlays |
 
 ### Related Documentation
 
-- [Kernel Driver Config Fragments](../developer/kernel-driver-config-fragments.md) - Full guide
-- [Device Tree Overlays](../developer/device-tree-overlays.md) - Define hardware in device tree
-- [Building Calculinux](../developer/building.md) - Build instructions
+- [Hardware Driver Config Fragments](../developer/kernel-driver-config-fragments.md) — Full guide
+- [Device Tree Overlays](../developer/device-tree-overlays.md) — Runtime hardware config
+- [Building Calculinux](../developer/building.md) — Build instructions
