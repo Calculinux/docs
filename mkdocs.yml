@@ -86,6 +86,7 @@ nav:
   - Hardware:
     - PicoCalc Overview: hardware/picocalc.md
     - Luckfox Lyra: hardware/luckfox-lyra.md
+    - Testing the M0 Core (GPIO Blink): hardware/m0-blink-test.md
     - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
