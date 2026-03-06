@@ -44,6 +44,7 @@ theme:
 
 extra_css:
   - stylesheets/flatly.css
+  - stylesheets/pdf-print.css
 
 markdown_extensions:
   - admonition
@@ -72,6 +73,11 @@ plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
+  # PDF export (only runs when BUILD_PDF=1; requires WeasyPrint system deps)
+  - pdf-export:
+      enabled_if_env: BUILD_PDF
+      combined: true
+      combined_output_path: calculinux-docs.pdf
 
 nav:
   - Home: index.md
@@ -86,6 +92,7 @@ nav:
   - Hardware:
     - PicoCalc Overview: hardware/picocalc.md
     - Luckfox Lyra: hardware/luckfox-lyra.md
+    - M0 Core Tutorial (Build, Load, Customize): hardware/m0-core-tutorial.md
     - Testing the M0 Core (GPIO Blink): hardware/m0-blink-test.md
     - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md

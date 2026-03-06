@@ -36,6 +36,8 @@ The repository includes a Makefile for common development tasks:
 make          # Default: runs lint, then starts docs server
 make lint     # Run all linters (markdownlint, link-check, vale)
 make docs     # Start local MkDocs server
+make site     # Build static HTML site to site/
+make pdf      # Build static site and combined PDF (site/calculinux-docs.pdf)
 make clean    # Remove build artifacts
 make vale-sync           # Sync Vale styles and packages
 make validate-workflows  # Validate GitHub Actions YAML files
@@ -72,10 +74,33 @@ Then open http://127.0.0.1:8000 in your browser.
 Build the static HTML site:
 
 ```shell
+make site
+```
+
+Or manually:
+
+```shell
 mkdocs build
 ```
 
 The built site will be in the `site/` directory.
+
+### Building a PDF
+
+You can generate a single combined PDF of all documentation pages:
+
+```shell
+make pdf
+```
+
+The PDF is written to **`site/calculinux-docs.pdf`**.
+
+**Requirements:** PDF generation uses [WeasyPrint](https://weasyprint.org/), which needs system libraries. Install them before running `make pdf`:
+
+- **Fedora:** `sudo dnf install cairo pango gdk-pixbuf2 libffi-devel`
+- **Debian/Ubuntu:** `sudo apt install libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info`
+
+Then ensure the Python dependencies are installed (`make install` or `pip install -r requirements.txt`). If `make pdf` fails with a WeasyPrint error, check that the system packages above are installed.
 
 ## Project Structure
 

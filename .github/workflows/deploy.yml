@@ -30,9 +30,21 @@ jobs:
           restore-keys: |
             mkdocs-material-
       
+      - name: Install WeasyPrint system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcairo2 \
+            libpango-1.0-0 \
+            libpangocairo-1.0-0 \
+            libgdk-pixbuf2.0-0 \
+            libffi-dev \
+            shared-mime-info
+      
       - run: pip install -r requirements.txt
       
-      - run: mkdocs build
+      - name: Build site and PDF
+        run: BUILD_PDF=1 mkdocs build
       
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

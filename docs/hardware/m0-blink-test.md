@@ -1,6 +1,6 @@
 # Testing the Cortex-M0 Core (GPIO Blink)
 
-The RK3506 (used on the Luckfox Lyra and PicoCalc) includes a **Cortex-M0** coprocessor alongside the three Cortex-A7 cores. This guide walks through building and loading a minimal bare-metal firmware that blinks an LED on **GPIO1_B1** to verify the M0 core is working.
+The RK3506 (used on the Luckfox Lyra and PicoCalc) includes a **Cortex-M0** coprocessor alongside the three Cortex-A7 cores. This page is a **quick reference** for building and loading the blink firmware. For a full tutorial (project structure, customizing for your own purposes, and detailed steps), see the **[M0 Core Tutorial](m0-core-tutorial.md)**.
 
 GPIO1_B1 is an external GPIO on the PicoCalc, located next to a ground pin, so you can connect an LED (with a series resistor) between that pin and GND to see the blink.
 
@@ -125,6 +125,7 @@ The firmware sets GPIO1_B1 as output and toggles it in a loop with a software de
 
 ## References
 
+- **[M0 Core Tutorial](m0-core-tutorial.md)** – Full tutorial: build, load, test, and customize the M0 firmware for your own projects.
 - **[nvitya/rk3506-mcu](https://github.com/nvitya/rk3506-mcu)** – Remote processor driver for RK3506, loading at 0xFFF84000, start/stop/restart via sysfs.
 - **Calculinux/m0-example** – [github.com/Calculinux/m0-example](https://github.com/Calculinux/m0-example): bare-metal blink firmware (main.c, startup.c, linker.ld, Makefile) for GPIO1_B1.
 - **Luckfox AMP** – Alternative approach: build an AMP image where U-Boot loads the M0 firmware from flash; see Luckfox SDK and `rk3506g_buildroot_spinand_amp_defconfig` if you prefer that over remoteproc.
