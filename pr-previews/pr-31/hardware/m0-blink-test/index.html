@@ -12,27 +12,31 @@
         <meta name="author" content="Calculinux Project">
       
       
-        <link rel="canonical" href="https://calculinux.org/developer/adding-packages/_snippets/rust-openssl/">
+        <link rel="canonical" href="https://calculinux.org/hardware/m0-blink-test/">
       
       
+        <link rel="prev" href="../m0-core-tutorial/">
+      
+      
+        <link rel="next" href="../specifications/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/calculinux.png">
+      <link rel="icon" href="../../assets/calculinux.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
-        <title>Rust packages with OpenSSL - Calculinux</title>
+        <title>Testing the M0 Core (GPIO Blink) - Calculinux</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/flatly.css">
+      <link rel="stylesheet" href="../../stylesheets/flatly.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/pdf-print.css">
+      <link rel="stylesheet" href="../../stylesheets/pdf-print.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rust-packages-with-openssl" class="md-skip">
+        <a href="#testing-the-cortex-m0-core-gpio-blink" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +100,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Calculinux" class="md-header__button md-logo" aria-label="Calculinux" data-md-component="logo">
+    <a href="../.." title="Calculinux" class="md-header__button md-logo" aria-label="Calculinux" data-md-component="logo">
       
-  <img src="../../../../assets/calculinux.svg" alt="logo">
+  <img src="../../assets/calculinux.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rust packages with OpenSSL
+              Testing the M0 Core (GPIO Blink)
             
           </span>
         </div>
@@ -222,7 +226,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -243,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../getting-started/overview/" class="md-tabs__link">
+        <a href="../../getting-started/overview/" class="md-tabs__link">
           
   
   
@@ -259,11 +263,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../hardware/picocalc/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../picocalc/" class="md-tabs__link">
           
   
   
@@ -283,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../user-guide/basic-usage/" class="md-tabs__link">
+        <a href="../../user-guide/basic-usage/" class="md-tabs__link">
           
   
   
@@ -303,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../overview/" class="md-tabs__link">
+        <a href="../../developer/overview/" class="md-tabs__link">
           
   
   
@@ -323,7 +329,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../troubleshooting/basic-troubleshooting/" class="md-tabs__link">
+        <a href="../../troubleshooting/basic-troubleshooting/" class="md-tabs__link">
           
   
   
@@ -343,7 +349,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../resources/community/" class="md-tabs__link">
+        <a href="../../resources/community/" class="md-tabs__link">
           
   
   
@@ -383,9 +389,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Calculinux" class="md-nav__button md-logo" aria-label="Calculinux" data-md-component="logo">
+    <a href="../.." title="Calculinux" class="md-nav__button md-logo" aria-label="Calculinux" data-md-component="logo">
       
-  <img src="../../../../assets/calculinux.svg" alt="logo">
+  <img src="../../assets/calculinux.svg" alt="logo">
 
     </a>
     Calculinux
@@ -412,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -493,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/overview/" class="md-nav__link">
+      <a href="../../getting-started/overview/" class="md-nav__link">
         
   
   
@@ -521,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/hardware-requirements/" class="md-nav__link">
+      <a href="../../getting-started/hardware-requirements/" class="md-nav__link">
         
   
   
@@ -549,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/installation/" class="md-nav__link">
+      <a href="../../getting-started/installation/" class="md-nav__link">
         
   
   
@@ -577,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/first-boot/" class="md-nav__link">
+      <a href="../../getting-started/first-boot/" class="md-nav__link">
         
   
   
@@ -605,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/quick-start/" class="md-nav__link">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
         
   
   
@@ -637,28 +643,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -676,7 +685,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -694,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/picocalc/" class="md-nav__link">
+      <a href="../picocalc/" class="md-nav__link">
         
   
   
@@ -722,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/luckfox-lyra/" class="md-nav__link">
+      <a href="../luckfox-lyra/" class="md-nav__link">
         
   
   
@@ -750,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/m0-core-tutorial/" class="md-nav__link">
+      <a href="../m0-core-tutorial/" class="md-nav__link">
         
   
   
@@ -775,10 +784,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../hardware/m0-blink-test/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing the M0 Core (GPIO Blink)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -794,6 +830,192 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-your-build-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On your build machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-the-picocalc-luckfox-lyra-running-calculinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the PicoCalc / Luckfox Lyra (running Calculinux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-optional-but-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (optional but recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-the-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the firmware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-and-load-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy and load on the device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy and load on the device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-copy-the-firmware-to-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Copy the firmware to the device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-find-the-remoteproc-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Find the remoteproc device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-load-and-start-the-m0-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Load and start the M0 firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-stop-the-m0-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Stop the M0 (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-and-register-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin and register reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -806,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/specifications/" class="md-nav__link">
+      <a href="../specifications/" class="md-nav__link">
         
   
   
@@ -834,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/modifications/" class="md-nav__link">
+      <a href="../modifications/" class="md-nav__link">
         
   
   
@@ -862,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/display-input/" class="md-nav__link">
+      <a href="../display-input/" class="md-nav__link">
         
   
   
@@ -890,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/device-tree-overlays/" class="md-nav__link">
+      <a href="../device-tree-overlays/" class="md-nav__link">
         
   
   
@@ -918,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/ds3231-rtc/" class="md-nav__link">
+      <a href="../ds3231-rtc/" class="md-nav__link">
         
   
   
@@ -946,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/100khz-i2c/" class="md-nav__link">
+      <a href="../100khz-i2c/" class="md-nav__link">
         
   
   
@@ -974,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/neo-m8n-gps/" class="md-nav__link">
+      <a href="../neo-m8n-gps/" class="md-nav__link">
         
   
   
@@ -1002,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/pcm5102a-i2s/" class="md-nav__link">
+      <a href="../pcm5102a-i2s/" class="md-nav__link">
         
   
   
@@ -1030,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/sx1262-lora/" class="md-nav__link">
+      <a href="../sx1262-lora/" class="md-nav__link">
         
   
   
@@ -1064,10 +1286,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1076,7 +1301,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_14" >
         
           
-          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="">
             
   
   
@@ -1112,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/" class="md-nav__link">
+      <a href="../compatibility/" class="md-nav__link">
         
   
   
@@ -1140,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/sbc-lyra/" class="md-nav__link">
+      <a href="../compatibility/sbc-lyra/" class="md-nav__link">
         
   
   
@@ -1168,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/storage/" class="md-nav__link">
+      <a href="../compatibility/storage/" class="md-nav__link">
         
   
   
@@ -1196,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/display-input/" class="md-nav__link">
+      <a href="../compatibility/display-input/" class="md-nav__link">
         
   
   
@@ -1224,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/networking-wifi/" class="md-nav__link">
+      <a href="../compatibility/networking-wifi/" class="md-nav__link">
         
   
   
@@ -1252,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/power/" class="md-nav__link">
+      <a href="../compatibility/power/" class="md-nav__link">
         
   
   
@@ -1280,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/peripherals/" class="md-nav__link">
+      <a href="../compatibility/peripherals/" class="md-nav__link">
         
   
   
@@ -1308,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/compatibility/software-testing/" class="md-nav__link">
+      <a href="../compatibility/software-testing/" class="md-nav__link">
         
   
   
@@ -1344,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../hardware/serial/console-access/" class="md-nav__link">
+      <a href="../serial/console-access/" class="md-nav__link">
         
   
   
@@ -1433,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/basic-usage/" class="md-nav__link">
+      <a href="../../user-guide/basic-usage/" class="md-nav__link">
         
   
   
@@ -1461,7 +1686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/networking/" class="md-nav__link">
+      <a href="../../user-guide/networking/" class="md-nav__link">
         
   
   
@@ -1489,7 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/usb-networking/" class="md-nav__link">
+      <a href="../../user-guide/usb-networking/" class="md-nav__link">
         
   
   
@@ -1517,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/package-management/" class="md-nav__link">
+      <a href="../../user-guide/package-management/" class="md-nav__link">
         
   
   
@@ -1545,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/updates/" class="md-nav__link">
+      <a href="../../user-guide/updates/" class="md-nav__link">
         
   
   
@@ -1573,7 +1798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/applications/" class="md-nav__link">
+      <a href="../../user-guide/applications/" class="md-nav__link">
         
   
   
@@ -1601,7 +1826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/screen-capture/" class="md-nav__link">
+      <a href="../../user-guide/screen-capture/" class="md-nav__link">
         
   
   
@@ -1629,7 +1854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../user-guide/advanced-storage/" class="md-nav__link">
+      <a href="../../user-guide/advanced-storage/" class="md-nav__link">
         
   
   
@@ -1718,7 +1943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/" class="md-nav__link">
+      <a href="../../developer/overview/" class="md-nav__link">
         
   
   
@@ -1746,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../yocto-setup/" class="md-nav__link">
+      <a href="../../developer/yocto-setup/" class="md-nav__link">
         
   
   
@@ -1774,7 +1999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../building/" class="md-nav__link">
+      <a href="../../developer/building/" class="md-nav__link">
         
   
   
@@ -1856,7 +2081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kernel/" class="md-nav__link">
+      <a href="../../developer/kernel/" class="md-nav__link">
         
   
   
@@ -1884,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kernel-driver-config-fragments/" class="md-nav__link">
+      <a href="../../developer/kernel-driver-config-fragments/" class="md-nav__link">
         
   
   
@@ -1912,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../device-tree-overlays/" class="md-nav__link">
+      <a href="../../developer/device-tree-overlays/" class="md-nav__link">
         
   
   
@@ -2002,7 +2227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../developer/adding-packages/" class="md-nav__link">
         
   
   
@@ -2084,7 +2309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../go-example/" class="md-nav__link">
+      <a href="../../developer/adding-packages/go-example/" class="md-nav__link">
         
   
   
@@ -2112,7 +2337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rust-example/" class="md-nav__link">
+      <a href="../../developer/adding-packages/rust-example/" class="md-nav__link">
         
   
   
@@ -2140,7 +2365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../newsboat/" class="md-nav__link">
+      <a href="../../developer/adding-packages/newsboat/" class="md-nav__link">
         
   
   
@@ -2168,7 +2393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cmake-example/" class="md-nav__link">
+      <a href="../../developer/adding-packages/cmake-example/" class="md-nav__link">
         
   
   
@@ -2196,7 +2421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-example/" class="md-nav__link">
+      <a href="../../developer/adding-packages/python-example/" class="md-nav__link">
         
   
   
@@ -2224,7 +2449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../meson-example/" class="md-nav__link">
+      <a href="../../developer/adding-packages/meson-example/" class="md-nav__link">
         
   
   
@@ -2268,7 +2493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sdk/" class="md-nav__link">
+      <a href="../../developer/sdk/" class="md-nav__link">
         
   
   
@@ -2296,7 +2521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../calculinux-update/" class="md-nav__link">
+      <a href="../../developer/calculinux-update/" class="md-nav__link">
         
   
   
@@ -2324,7 +2549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../contributing/" class="md-nav__link">
+      <a href="../../developer/contributing/" class="md-nav__link">
         
   
   
@@ -2352,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../project-ideas/" class="md-nav__link">
+      <a href="../../developer/project-ideas/" class="md-nav__link">
         
   
   
@@ -2441,7 +2666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../troubleshooting/basic-troubleshooting/" class="md-nav__link">
+      <a href="../../troubleshooting/basic-troubleshooting/" class="md-nav__link">
         
   
   
@@ -2469,7 +2694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../troubleshooting/common-issues/" class="md-nav__link">
+      <a href="../../troubleshooting/common-issues/" class="md-nav__link">
         
   
   
@@ -2497,7 +2722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../troubleshooting/network/" class="md-nav__link">
+      <a href="../../troubleshooting/network/" class="md-nav__link">
         
   
   
@@ -2525,7 +2750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../troubleshooting/erase-nand/" class="md-nav__link">
+      <a href="../../troubleshooting/erase-nand/" class="md-nav__link">
         
   
   
@@ -2553,7 +2778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../troubleshooting/faq/" class="md-nav__link">
+      <a href="../../troubleshooting/faq/" class="md-nav__link">
         
   
   
@@ -2642,7 +2867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../resources/community/" class="md-nav__link">
+      <a href="../../resources/community/" class="md-nav__link">
         
   
   
@@ -2670,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../resources/external-docs/" class="md-nav__link">
+      <a href="../../resources/external-docs/" class="md-nav__link">
         
   
   
@@ -2718,6 +2943,180 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-your-build-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On your build machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-the-picocalc-luckfox-lyra-running-calculinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the PicoCalc / Luckfox Lyra (running Calculinux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-optional-but-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (optional but recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-the-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the firmware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-and-load-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy and load on the device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy and load on the device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-copy-the-firmware-to-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Copy the firmware to the device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-find-the-remoteproc-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Find the remoteproc device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-load-and-start-the-m0-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Load and start the M0 firmware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-stop-the-m0-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Stop the M0 (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-and-register-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin and register reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2734,6 +3133,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../picocalc/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -2741,7 +3180,7 @@
 
 
   
-    <a href="https://github.com/Calculinux/docs/edit/main/docs/developer/adding-packages/_snippets/rust-openssl.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/hardware/m0-blink-test.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2749,17 +3188,144 @@
   
 
 
-<h1 id="rust-packages-with-openssl">Rust packages with OpenSSL<a class="headerlink" href="#rust-packages-with-openssl" title="Permanent link">&para;</a></h1>
-<p>If your Rust crate depends on <code>openssl</code> or <code>openssl-sys</code> (common for HTTPS), the build will fail with "Could not find directory of OpenSSL installation" unless you configure it for cross-compilation.</p>
-<p>Add to your recipe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>DEPENDS = &quot;openssl&quot;
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a># Set up OpenSSL for Rust&#39;s openssl-sys crate (cross-compilation)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>export OPENSSL_DIR = &quot;${STAGING_DIR_HOST}${prefix}&quot;
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>export OPENSSL_LIB_DIR = &quot;${STAGING_DIR_HOST}${libdir}&quot;
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>export OPENSSL_INCLUDE_DIR = &quot;${STAGING_DIR_HOST}${includedir}&quot;
+<h1 id="testing-the-cortex-m0-core-gpio-blink">Testing the Cortex-M0 Core (GPIO Blink)<a class="headerlink" href="#testing-the-cortex-m0-core-gpio-blink" title="Permanent link">&para;</a></h1>
+<p>The RK3506 (used on the Luckfox Lyra and PicoCalc) includes a <strong>Cortex-M0</strong> coprocessor alongside the three Cortex-A7 cores. This page is a <strong>quick reference</strong> for building and loading the blink firmware. For a full tutorial (project structure, customizing for your own purposes, and detailed steps), see the <strong><a href="../m0-core-tutorial/">M0 Core Tutorial</a></strong>.</p>
+<p>GPIO1_B1 is an external GPIO on the PicoCalc, located next to a ground pin, so you can connect an LED (with a series resistor) between that pin and GND to see the blink.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Goal:</strong> Run a small M0 program that toggles GPIO1_B1 at about 1–2 Hz.</li>
+<li><strong>Firmware:</strong> Built from the <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a> repository (<code>main.c</code>, <code>startup.c</code>, <code>linker.ld</code>, <code>Makefile</code>).</li>
+<li><strong>Loading:</strong> The M0 firmware is loaded into SRAM at <strong>0xFFF84000</strong> and started via the Linux <strong>remoteproc</strong> interface, using the <a href="https://github.com/nvitya/rk3506-mcu">rk3506-mcu</a> remote processor driver.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">External project: rk3506-mcu</p>
+<p>The remote processor driver and loading process are documented in <strong><a href="https://github.com/nvitya/rk3506-mcu">nvitya/rk3506-mcu</a></strong>. That project provides the kernel driver and notes on firmware layout. This page focuses on using the <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a> blink firmware with that setup.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="on-your-build-machine">On your build machine<a class="headerlink" href="#on-your-build-machine" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ARM bare-metal toolchain:</strong> <code>arm-none-eabi-gcc</code> and <code>arm-none-eabi-objcopy</code> in your PATH.</li>
+<li>On Debian/Ubuntu: <code>sudo apt install gcc-arm-none-eabi</code></li>
+<li>On Fedora: <code>sudo dnf install arm-none-eabi-gcc</code></li>
+</ul>
+<h3 id="on-the-picocalc-luckfox-lyra-running-calculinux">On the PicoCalc / Luckfox Lyra (running Calculinux)<a class="headerlink" href="#on-the-picocalc-luckfox-lyra-running-calculinux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>rk3506-mcu remoteproc driver</strong> built and loaded so that <code>/sys/class/remoteproc/remoteproc0</code> exists (or <code>remoteproc1</code> depending on your device tree). If you are using a Calculinux image that includes this driver, the interface will be available; otherwise you need to build and install the driver from <a href="https://github.com/nvitya/rk3506-mcu/tree/main/rk3506_rproc">rk3506-mcu/rk3506_rproc</a>.</li>
+</ul>
+<h3 id="hardware-optional-but-recommended">Hardware (optional but recommended)<a class="headerlink" href="#hardware-optional-but-recommended" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>LED + resistor</strong> (e.g. 330 Ω–1 kΩ) between <strong>GPIO1_B1</strong> and <strong>GND</strong> on the PicoCalc expansion header. GPIO1_B1 is the pin next to a ground pin; see your board pinout for the exact position.</li>
+</ul>
+<h2 id="build-the-firmware">Build the firmware<a class="headerlink" href="#build-the-firmware" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Clone the <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a> repository:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Calculinux/m0-example.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>m0-example
 </code></pre></div>
-<p>This tells the <code>openssl-sys</code> build script where to find OpenSSL in the Yocto staging sysroot. See <code>glkcli</code> or <code>wiki-tui</code> in meta-calculinux-apps for working examples.</p>
+<ol>
+<li>Build:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make
+</code></pre></div>
+<p>This produces:</p>
+<ul>
+<li><strong><code>m0-gpio1_b1-blink.elf</code></strong> – ELF image (used by remoteproc)</li>
+<li><strong><code>m0-gpio1_b1-blink.bin</code></strong> – raw binary at load address 0xFFF84000</li>
+</ul>
+<p>The ELF is what you load via the remoteproc <code>firmware</code> attribute; the driver uses it to load the program into the M0 SRAM.</p>
+<h2 id="deploy-and-load-on-the-device">Deploy and load on the device<a class="headerlink" href="#deploy-and-load-on-the-device" title="Permanent link">&para;</a></h2>
+<h3 id="1-copy-the-firmware-to-the-device">1. Copy the firmware to the device<a class="headerlink" href="#1-copy-the-firmware-to-the-device" title="Permanent link">&para;</a></h3>
+<p>Copy the ELF file to the PicoCalc, for example to <code>/lib/firmware/</code> so the kernel can find it by name, or to any path you will pass to remoteproc:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>m0-gpio1_b1-blink.elf<span class="w"> </span>root@&lt;device-ip&gt;:/lib/firmware/
+</code></pre></div>
+<p>(Replace <code>&lt;device-ip&gt;</code> with your board’s IP or hostname.)</p>
+<h3 id="2-find-the-remoteproc-device">2. Find the remoteproc device<a class="headerlink" href="#2-find-the-remoteproc-device" title="Permanent link">&para;</a></h3>
+<p>On the device, check that the M0 remoteproc is available:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>/sys/class/remoteproc/
+</code></pre></div>
+<p>You should see at least one <code>remoteprocN</code> (often <code>remoteproc0</code>). Use that name in the next steps.</p>
+<h3 id="3-load-and-start-the-m0-firmware">3. Load and start the M0 firmware<a class="headerlink" href="#3-load-and-start-the-m0-firmware" title="Permanent link">&para;</a></h3>
+<p>Run these commands <strong>on the PicoCalc</strong> (e.g. over SSH):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Use the remoteproc node you found (e.g. remoteproc0)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">RPROC</span><span class="o">=</span>remoteproc0
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Stop the M0 core if it is already running</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">echo</span><span class="w"> </span>stop<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Tell the driver which firmware to load (path to the .elf on the device)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">echo</span><span class="w"> </span>/lib/firmware/m0-gpio1_b1-blink.elf<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/firmware
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Start the M0 core; it will run the blink loop</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nb">echo</span><span class="w"> </span>start<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+</code></pre></div>
+<p>If the driver and firmware are correct, the M0 starts executing and GPIO1_B1 toggles. With an LED connected between GPIO1_B1 and GND, you should see it blink.</p>
+<h3 id="4-stop-the-m0-optional">4. Stop the M0 (optional)<a class="headerlink" href="#4-stop-the-m0-optional" title="Permanent link">&para;</a></h3>
+<p>To stop the firmware and release the M0:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span>stop<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">No hot-swap</p>
+<p>Once the M0 is running, the SRAM at 0xFFF84000 is in use and cannot be overwritten by Linux until the M0 is stopped or the system is rebooted. To run a new or modified firmware, stop the remoteproc, (optionally) replace the ELF file, set the <code>firmware</code> attribute again, then <code>echo start</code> again. A full reboot is also a reliable way to load a new image.</p>
+</div>
+<h2 id="pin-and-register-reference">Pin and register reference<a class="headerlink" href="#pin-and-register-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pin</strong></td>
+<td>GPIO1_B1 (global GPIO #41: bank 1, group B, pin 1)</td>
+</tr>
+<tr>
+<td><strong>GPIO1 base</strong></td>
+<td>0xFF870000 (from RK3506 device tree)</td>
+</tr>
+<tr>
+<td><strong>M0 load address</strong></td>
+<td>0xFFF84000 (SRAM window used by rk3506-mcu)</td>
+</tr>
+</tbody>
+</table>
+<p>The firmware sets GPIO1_B1 as output and toggles it in a loop with a software delay; blink rate is approximate and depends on M0 clock.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No <code>/sys/class/remoteproc/remoteproc0</code></td>
+<td>rk3506-mcu remoteproc driver not loaded or not enabled in device tree. Build and install the driver from <a href="https://github.com/nvitya/rk3506-mcu">rk3506-mcu</a>.</td>
+</tr>
+<tr>
+<td><code>echo start</code> fails or M0 doesn’t run</td>
+<td>Check <code>dmesg</code> for remoteproc errors. Ensure the ELF is built for 0xFFF84000 (linker script in <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a> uses this).</td>
+</tr>
+<tr>
+<td>LED does not blink</td>
+<td>GPIO1 may need its clock enabled; the kernel often leaves GPIO1 clock on. Confirm the pin is not used by another function (e.g. UART or LCD) in the device tree. On PicoCalc, verify you’re using GPIO1_B1 and GND on the correct header pins.</td>
+</tr>
+<tr>
+<td>Want to change blink rate</td>
+<td>Edit the <code>delay(...)</code> argument in <code>main.c</code> in <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a>, rebuild, and redeploy; then stop/start remoteproc (or reboot) and load the new ELF.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../m0-core-tutorial/">M0 Core Tutorial</a></strong> – Full tutorial: build, load, test, and customize the M0 firmware for your own projects.</li>
+<li><strong><a href="https://github.com/nvitya/rk3506-mcu">nvitya/rk3506-mcu</a></strong> – Remote processor driver for RK3506, loading at 0xFFF84000, start/stop/restart via sysfs.</li>
+<li><strong>Calculinux/m0-example</strong> – <a href="https://github.com/Calculinux/m0-example">github.com/Calculinux/m0-example</a>: bare-metal blink firmware (main.c, startup.c, linker.ld, Makefile) for GPIO1_B1.</li>
+<li><strong>Luckfox AMP</strong> – Alternative approach: build an AMP image where U-Boot loads the M0 firmware from flash; see Luckfox SDK and <code>rk3506g_buildroot_spinand_amp_defconfig</code> if you prefer that over remoteproc.</li>
+</ul>
 
 
 
@@ -2782,7 +3348,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 15, 2026 03:53:43 UTC">February 15, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2026 00:49:38 UTC">March 6, 2026</span>
   </span>
 
     
@@ -2792,7 +3358,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 15, 2026 03:53:43 UTC">February 15, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 3, 2026 04:43:43 UTC">March 3, 2026</span>
   </span>
 
     
@@ -2847,10 +3413,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

@@ -12,13 +12,13 @@
         <meta name="author" content="Calculinux Project">
       
       
-        <link rel="canonical" href="https://calculinux.org/hardware/neo-m8n-gps/">
+        <link rel="canonical" href="https://calculinux.org/hardware/m0-core-tutorial/">
       
       
-        <link rel="prev" href="../100khz-i2c/">
+        <link rel="prev" href="../luckfox-lyra/">
       
       
-        <link rel="next" href="../pcm5102a-i2s/">
+        <link rel="next" href="../m0-blink-test/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>NEO-M8N GPS - Calculinux</title>
+        <title>M0 Core Tutorial (Build, Load, Customize) - Calculinux</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#u-blox-neo-m8n-gps-module" class="md-skip">
+        <a href="#m0-core-tutorial-build-load-and-use-for-your-own-projects" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NEO-M8N GPS
+              M0 Core Tutorial (Build, Load, Customize)
             
           </span>
         </div>
@@ -756,10 +756,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../m0-core-tutorial/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M0 Core Tutorial (Build, Load, Customize)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -775,6 +802,414 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-m0-core-and-why-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is the M0 core and why use it?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-your-build-machine-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On your build machine (host)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-the-device-picocalc-luckfox-lyra-running-calculinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the device (PicoCalc / Luckfox Lyra running Calculinux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-optional-but-recommended-for-the-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (optional but recommended for the example)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-build-the-m0-example-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Build the M0 example firmware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Build the M0 example firmware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Clone the repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-the-elf-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Verify the ELF (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-load-the-firmware-into-the-m0-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Load the firmware into the M0 core
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Load the firmware into the M0 core">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-copy-the-firmware-to-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Copy the firmware to the device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-find-the-remoteproc-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Find the remoteproc device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-load-and-start-the-m0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Load and start the M0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-stop-the-m0-when-you-want-to-unload-or-change-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Stop the M0 (when you want to unload or change firmware)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-test-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Test and verify
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Test and verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-remoteproc-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check remoteproc state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-kernel-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check kernel messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-understand-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Understand the project structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Understand the project structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-in-m0-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files in m0-example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout-linkerld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory layout (linker.ld)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startup-flow-startupc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup flow (startup.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-in-the-example-mainc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO in the example (main.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-use-the-m0-for-your-own-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Use the M0 for your own purposes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Use the M0 for your own purposes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-gpio-or-add-more-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change the GPIO or add more pins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-more-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add more logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change timing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-within-resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keep within resource limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-rename-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Rename the target
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-and-register-reference-rk3506" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin and register reference (RK3506)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -980,37 +1415,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NEO-M8N GPS
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../neo-m8n-gps/" class="md-nav__link">
         
   
   
@@ -1026,131 +1434,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#hardware-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware Requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hardware-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware Connection
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#software-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Software Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Software Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-load-the-overlay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Load the overlay
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-use-the-gps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Use the GPS
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automatic-overlay-loading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Automatic Overlay Loading
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Topics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2889,10 +3172,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hardware-requirements" class="md-nav__link">
+  <a href="#what-is-the-m0-core-and-why-use-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware Requirements
+        What is the M0 core and why use it?
       
     </span>
   </a>
@@ -2900,33 +3183,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardware-connection" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware Connection
+        Prerequisites
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#software-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Software Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Software Setup">
+    <nav class="md-nav" aria-label="Prerequisites">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-load-the-overlay" class="md-nav__link">
+  <a href="#on-your-build-machine-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Load the overlay
+        On your build machine (host)
       
     </span>
   </a>
@@ -2934,10 +3206,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-use-the-gps" class="md-nav__link">
+  <a href="#on-the-device-picocalc-luckfox-lyra-running-calculinux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Use the GPS
+        On the device (PicoCalc / Luckfox Lyra running Calculinux)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-optional-but-recommended-for-the-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (optional but recommended for the example)
       
     </span>
   </a>
@@ -2950,10 +3233,304 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#automatic-overlay-loading" class="md-nav__link">
+  <a href="#part-1-build-the-m0-example-firmware" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automatic Overlay Loading
+        Part 1: Build the M0 example firmware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Build the M0 example firmware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Clone the repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-the-elf-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Verify the ELF (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-load-the-firmware-into-the-m0-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Load the firmware into the M0 core
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Load the firmware into the M0 core">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-copy-the-firmware-to-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Copy the firmware to the device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-find-the-remoteproc-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Find the remoteproc device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-load-and-start-the-m0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Load and start the M0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-stop-the-m0-when-you-want-to-unload-or-change-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Stop the M0 (when you want to unload or change firmware)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-test-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Test and verify
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Test and verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-remoteproc-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check remoteproc state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-kernel-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check kernel messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-understand-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Understand the project structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Understand the project structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-in-m0-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files in m0-example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-layout-linkerld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory layout (linker.ld)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startup-flow-startupc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup flow (startup.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-in-the-example-mainc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO in the example (main.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-use-the-m0-for-your-own-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Use the M0 for your own purposes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Use the M0 for your own purposes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-gpio-or-add-more-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change the GPIO or add more pins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-more-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add more logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change timing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-within-resource-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keep within resource limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-rename-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Rename the target
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-and-register-reference-rk3506" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin and register reference (RK3506)
       
     </span>
   </a>
@@ -2965,17 +3542,6 @@
     <span class="md-ellipsis">
       
         Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Topics
       
     </span>
   </a>
@@ -3058,7 +3624,7 @@
 
 
   
-    <a href="https://github.com/Calculinux/docs/edit/main/docs/hardware/neo-m8n-gps.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Calculinux/docs/edit/main/docs/hardware/m0-core-tutorial.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3066,92 +3632,278 @@
   
 
 
-<h1 id="u-blox-neo-m8n-gps-module">u-blox NEO-M8N GPS Module<a class="headerlink" href="#u-blox-neo-m8n-gps-module" title="Permanent link">&para;</a></h1>
-<p>The NEO-M8N overlay enables <strong>UART5</strong> for the u-blox NEO-M8N GPS module on the PicoCalc. The module outputs NMEA sentences at 9600 baud by default and is compatible with standard tools such as <code>gpsd</code>, <code>gpsmon</code>, and <code>cgps</code>.</p>
-<h2 id="hardware-requirements">Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h2>
+<h1 id="m0-core-tutorial-build-load-and-use-for-your-own-projects">M0 Core Tutorial: Build, Load, and Use for Your Own Projects<a class="headerlink" href="#m0-core-tutorial-build-load-and-use-for-your-own-projects" title="Permanent link">&para;</a></h1>
+<p>The <strong>RK3506</strong> (used on the Luckfox Lyra and PicoCalc) includes a <strong>Cortex-M0</strong> coprocessor alongside the three Cortex-A7 cores. This tutorial walks you through building the example M0 firmware, loading it onto the M0 core, testing it, and adapting the project for your own bare-metal or real-time tasks.</p>
+<h2 id="what-is-the-m0-core-and-why-use-it">What is the M0 core and why use it?<a class="headerlink" href="#what-is-the-m0-core-and-why-use-it" title="Permanent link">&para;</a></h2>
+<p>The Cortex-M0 is a small, low-power ARM core that shares the SoC with the main Linux-running Cortex-A7 cores. Typical uses include:</p>
 <ul>
-<li><strong>u-blox NEO-M8N GPS module</strong> (or compatible)</li>
-<li><strong>Wiring</strong> to the RMII1 test pads on the Luckfox Lyra</li>
+<li><strong>Real-time or deterministic tasks</strong> (e.g. precise timing, PWM, step generation) that are easier without Linux scheduling and interrupts</li>
+<li><strong>Low-latency I/O</strong> such as bit-banging a protocol or driving a peripheral while Linux handles higher-level logic</li>
+<li><strong>Offloading</strong> simple control loops (sensors, LEDs, motor control) so the A7 cores can focus on applications</li>
+<li><strong>Learning</strong> bare-metal ARM programming and the RK3506 memory map</li>
 </ul>
-<h2 id="hardware-connection">Hardware Connection<a class="headerlink" href="#hardware-connection" title="Permanent link">&para;</a></h2>
-<p>The overlay uses UART5 on the RMII1 test pads:</p>
+<p>The M0 runs <strong>bare-metal</strong> code: no OS, no drivers. You program it like a classic microcontroller (registers, interrupts, tight loops). Linux loads the firmware into a dedicated SRAM region and starts or stops the M0 via the <strong>remoteproc</strong> subsystem.</p>
+<div class="admonition info">
+<p class="admonition-title">Driver and load address</p>
+<p>Loading and starting the M0 is done via the <a href="https://github.com/nvitya/rk3506-mcu">rk3506-mcu</a> remote processor driver. Firmware must be linked for the SRAM window at <strong>0xFFF84000</strong> (64 KB). The Calculinux/m0-example project is already set up for this.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="on-your-build-machine-host">On your build machine (host)<a class="headerlink" href="#on-your-build-machine-host" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ARM bare-metal toolchain</strong>: <code>arm-none-eabi-gcc</code> and <code>arm-none-eabi-objcopy</code> in your PATH.</li>
+<li><strong>Debian/Ubuntu:</strong> <code>sudo apt install gcc-arm-none-eabi</code></li>
+<li><strong>Fedora:</strong> <code>sudo dnf install arm-none-eabi-gcc</code></li>
+<li><strong>Git</strong> (to clone the example repo).</li>
+</ul>
+<h3 id="on-the-device-picocalc-luckfox-lyra-running-calculinux">On the device (PicoCalc / Luckfox Lyra running Calculinux)<a class="headerlink" href="#on-the-device-picocalc-luckfox-lyra-running-calculinux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>rk3506-mcu remoteproc driver</strong> loaded so that <code>/sys/class/remoteproc/remoteproc0</code> (or <code>remoteproc1</code>) exists. Calculinux images that include this driver provide the interface; otherwise build and install the driver from <a href="https://github.com/nvitya/rk3506-mcu/tree/main/rk3506_rproc">rk3506-mcu/rk3506_rproc</a>.</li>
+<li><strong>SSH or serial access</strong> to run commands and copy files.</li>
+</ul>
+<h3 id="hardware-optional-but-recommended-for-the-example">Hardware (optional but recommended for the example)<a class="headerlink" href="#hardware-optional-but-recommended-for-the-example" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>LED and series resistor</strong> (e.g. 330 Ω–1 kΩ) between <strong>GPIO1_B1</strong> and <strong>GND</strong> on the PicoCalc expansion header so you can see the blink. See your board pinout for the exact pin.</li>
+</ul>
+<hr />
+<h2 id="part-1-build-the-m0-example-firmware">Part 1: Build the M0 example firmware<a class="headerlink" href="#part-1-build-the-m0-example-firmware" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a> repository contains a minimal project that blinks GPIO1_B1. Building it confirms your toolchain and produces the ELF file you will load onto the M0.</p>
+<h3 id="step-1-clone-the-repository">Step 1: Clone the repository<a class="headerlink" href="#step-1-clone-the-repository" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Calculinux/m0-example.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>m0-example
+</code></pre></div>
+<h3 id="step-2-build">Step 2: Build<a class="headerlink" href="#step-2-build" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make
+</code></pre></div>
+<p>You should see the compiler and linker run and no errors. The Makefile produces:</p>
 <table>
 <thead>
 <tr>
-<th>NEO-M8N</th>
-<th>Connection</th>
-<th>RMII1 test pad</th>
+<th>Output</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>VCC</strong></td>
-<td>3.3V</td>
-<td>3.3V</td>
+<td><strong><code>m0-gpio1_b1-blink.elf</code></strong></td>
+<td>ELF image with symbols and load addresses. This is what you give to remoteproc; the kernel loads segments into M0 SRAM.</td>
 </tr>
 <tr>
-<td><strong>GND</strong></td>
-<td>Ground</td>
-<td>GND</td>
-</tr>
-<tr>
-<td><strong>TX</strong> (module)</td>
-<td>RX (SoC)</td>
-<td>GPIO3_B3 (Pin 29) — UART5_RX</td>
-</tr>
-<tr>
-<td><strong>RX</strong> (module)</td>
-<td>TX (SoC)</td>
-<td>GPIO3_B4 (Pin 28) — UART5_TX</td>
+<td><strong><code>m0-gpio1_b1-blink.bin</code></strong></td>
+<td>Raw binary at load address 0xFFF84000. Useful for flashing or other loaders; remoteproc uses the ELF.</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">Baud rate</p>
-<p>The NEO-M8N defaults to 9600 baud. The overlay configures UART5 for 9600 baud. You can change the module’s baud rate with u-blox tools if needed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clean build</p>
+<p>To rebuild from scratch: <code>make clean &amp;&amp; make</code></p>
 </div>
-<h2 id="software-setup">Software Setup<a class="headerlink" href="#software-setup" title="Permanent link">&para;</a></h2>
-<h3 id="step-1-load-the-overlay">Step 1: Load the overlay<a class="headerlink" href="#step-1-load-the-overlay" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create overlay directory</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/sys/kernel/config/device-tree/overlays/neo-m8n-gps
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Load the overlay</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cat<span class="w"> </span>/boot/devicetree/neo-m8n-gps.dtbo<span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/neo-m8n-gps/dtbo
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Activate it</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/device-tree/overlays/neo-m8n-gps/status
+<h3 id="step-3-verify-the-elf-optional">Step 3: Verify the ELF (optional)<a class="headerlink" href="#step-3-verify-the-elf-optional" title="Permanent link">&para;</a></h3>
+<p>Check that the program is linked for the correct load address:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>arm-none-eabi-objdump<span class="w"> </span>-f<span class="w"> </span>m0-gpio1_b1-blink.elf
 </code></pre></div>
-<h3 id="step-2-use-the-gps">Step 2: Use the GPS<a class="headerlink" href="#step-2-use-the-gps" title="Permanent link">&para;</a></h3>
-<p>The GPS serial port is <code>/dev/ttyS5</code>.</p>
-<p>Read raw NMEA sentences:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>/dev/ttyS5
+<p>Look for <code>start address 0x...</code>; the code should start in the 0xFFF84000 region. The linker script in the repo enforces this.</p>
+<hr />
+<h2 id="part-2-load-the-firmware-into-the-m0-core">Part 2: Load the firmware into the M0 core<a class="headerlink" href="#part-2-load-the-firmware-into-the-m0-core" title="Permanent link">&para;</a></h2>
+<p>Loading is done on the <strong>device</strong> via the Linux remoteproc interface. You first copy the ELF to the device, then tell the driver which firmware to use and start the M0.</p>
+<h3 id="step-1-copy-the-firmware-to-the-device">Step 1: Copy the firmware to the device<a class="headerlink" href="#step-1-copy-the-firmware-to-the-device" title="Permanent link">&para;</a></h3>
+<p>From your <strong>host</strong> (in the <code>m0-example</code> directory):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>m0-gpio1_b1-blink.elf<span class="w"> </span>root@&lt;device-ip&gt;:/lib/firmware/
 </code></pre></div>
-<p>Use with <strong>gpsd</strong> (install with <code>opkg install gpsd</code> if needed):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gpsd<span class="w"> </span>/dev/ttyS5
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>gpsmon<span class="w"> </span>/dev/ttyS5
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># or</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>cgps<span class="w"> </span>-s
+<p>Replace <code>&lt;device-ip&gt;</code> with your board’s IP or hostname. Using <code>/lib/firmware/</code> lets you reference the file by a short name when setting the <code>firmware</code> attribute; you can use another path if you prefer.</p>
+<h3 id="step-2-find-the-remoteproc-device">Step 2: Find the remoteproc device<a class="headerlink" href="#step-2-find-the-remoteproc-device" title="Permanent link">&para;</a></h3>
+<p>On the <strong>device</strong> (e.g. over SSH):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ls<span class="w"> </span>/sys/class/remoteproc/
 </code></pre></div>
-<h2 id="automatic-overlay-loading">Automatic Overlay Loading<a class="headerlink" href="#automatic-overlay-loading" title="Permanent link">&para;</a></h2>
-<p>To load the overlay at boot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;neo-m8n-gps&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/device-tree-overlays.conf
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>load-dt-overlays.service<span class="w">   </span><span class="c1"># optional: apply now</span>
+<p>You should see at least one directory such as <code>remoteproc0</code> (or <code>remoteproc1</code>). Use that name in the next steps. Set a variable for convenience:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">RPROC</span><span class="o">=</span>remoteproc0<span class="w">   </span><span class="c1"># or remoteproc1, depending on your system</span>
 </code></pre></div>
-<p>See <a href="../device-tree-overlays/#making-overlays-persistent">Device Tree Overlays — Making Overlays Persistent</a> for details.</p>
+<h3 id="step-3-load-and-start-the-m0">Step 3: Load and start the M0<a class="headerlink" href="#step-3-load-and-start-the-m0" title="Permanent link">&para;</a></h3>
+<p>Run these commands <strong>on the device</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Stop the M0 if it is already running (required before loading new firmware)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span>stop<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Tell the driver which firmware to load (path as on the device)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">echo</span><span class="w"> </span>/lib/firmware/m0-gpio1_b1-blink.elf<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/firmware
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Start the M0; it will run the blink loop</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">echo</span><span class="w"> </span>start<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+</code></pre></div>
+<p>If the driver and ELF are correct, the M0 starts executing. With an LED connected between <strong>GPIO1_B1</strong> and <strong>GND</strong>, you should see it blink at about 1–2 Hz.</p>
+<h3 id="step-4-stop-the-m0-when-you-want-to-unload-or-change-firmware">Step 4: Stop the M0 (when you want to unload or change firmware)<a class="headerlink" href="#step-4-stop-the-m0-when-you-want-to-unload-or-change-firmware" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span>stop<span class="w"> </span>&gt;<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">No hot-swap of firmware</p>
+<p>While the M0 is running, its SRAM (0xFFF84000) is in use. To run a different or updated firmware: stop the remoteproc, (optionally) replace the ELF on the device, set the <code>firmware</code> attribute again, then <code>echo start</code> again. A reboot also resets the M0 and allows loading a new image.</p>
+</div>
+<hr />
+<h2 id="part-3-test-and-verify">Part 3: Test and verify<a class="headerlink" href="#part-3-test-and-verify" title="Permanent link">&para;</a></h2>
+<h3 id="visual-check">Visual check<a class="headerlink" href="#visual-check" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>LED on GPIO1_B1:</strong> If you connected an LED (with series resistor) between GPIO1_B1 and GND, it should blink. Blink rate is approximate and depends on M0 clock and the delay loop in the example.</li>
+</ul>
+<h3 id="check-remoteproc-state">Check remoteproc state<a class="headerlink" href="#check-remoteproc-state" title="Permanent link">&para;</a></h3>
+<p>On the device:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>/sys/class/remoteproc/<span class="nv">$RPROC</span>/state
+</code></pre></div>
+<ul>
+<li><code>running</code> – M0 is executing your firmware.</li>
+<li><code>stopped</code> – M0 is halted; you can load new firmware and start again.</li>
+</ul>
+<h3 id="check-kernel-messages">Check kernel messages<a class="headerlink" href="#check-kernel-messages" title="Permanent link">&para;</a></h3>
+<p>If something fails, check the kernel log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-30
+</code></pre></div>
+<p>Look for messages from the remoteproc driver (e.g. load address, start/stop, or errors).</p>
+<hr />
+<h2 id="part-4-understand-the-project-structure">Part 4: Understand the project structure<a class="headerlink" href="#part-4-understand-the-project-structure" title="Permanent link">&para;</a></h2>
+<p>Understanding the example helps you adapt it for your own code.</p>
+<h3 id="files-in-m0-example">Files in m0-example<a class="headerlink" href="#files-in-m0-example" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>main.c</code></strong></td>
+<td>Application code: configures GPIO1_B1 as output and toggles it in a loop with a software delay.</td>
+</tr>
+<tr>
+<td><strong><code>startup.c</code></strong></td>
+<td>C runtime and interrupt setup: vector table, Reset_Handler (copies .data, zeros .bss, calls <code>main()</code>), and weak default handlers for exceptions.</td>
+</tr>
+<tr>
+<td><strong><code>linker.ld</code></strong></td>
+<td>Linker script: places code and data in the 64 KB M0 SRAM at 0xFFF84000, defines stack top and symbols used by startup.</td>
+</tr>
+<tr>
+<td><strong><code>Makefile</code></strong></td>
+<td>Builds with <code>arm-none-eabi-gcc</code>, produces <code>.elf</code> and <code>.bin</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory-layout-linkerld">Memory layout (linker.ld)<a class="headerlink" href="#memory-layout-linkerld" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RAM:</strong> One region <code>mcu_ram</code> at <strong>0xFFF84000</strong>, length <strong>64K</strong>. All sections (<code>.isr_vector</code>, <code>.text</code>, <code>.rodata</code>, <code>.data</code>, <code>.bss</code>) go here. Stack grows down from the top of this region.</li>
+<li><strong>Load address:</strong> The kernel (remoteproc) loads the ELF into this same address range. Do not change the origin address without aligning with the rk3506-mcu driver and kernel.</li>
+</ul>
+<h3 id="startup-flow-startupc">Startup flow (startup.c)<a class="headerlink" href="#startup-flow-startupc" title="Permanent link">&para;</a></h3>
+<ol>
+<li>On reset, the CPU uses the vector table (first word = initial stack pointer, second = Reset_Handler).</li>
+<li><strong>Reset_Handler</strong> copies <code>.data</code> from its load address to RAM, zeros <code>.bss</code>, then calls <code>main()</code>.</li>
+<li><strong>main()</strong> never returns in this example; if it did, the startup code would spin in an infinite loop.</li>
+<li>Exceptions (NMI, HardFault, SVC, PendSV, SysTick) have weak default handlers that spin forever; you can override them in your code for interrupts or fault handling.</li>
+</ol>
+<h3 id="gpio-in-the-example-mainc">GPIO in the example (main.c)<a class="headerlink" href="#gpio-in-the-example-mainc" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GPIO1 base address:</strong> <code>0xFF870000</code> (from RK3506 documentation/device tree).</li>
+<li><strong>Registers used:</strong> <code>GPIO_SWPORT_DDR</code> (direction) and <code>GPIO_SWPORT_DR</code> (data). One bit per pin; GPIO1_B1 is pin 9 in that bank.</li>
+<li>The code sets the pin as output and toggles it in a loop with <code>delay(2000000u)</code> to get roughly 1–2 Hz blink.</li>
+</ul>
+<hr />
+<h2 id="part-5-use-the-m0-for-your-own-purposes">Part 5: Use the M0 for your own purposes<a class="headerlink" href="#part-5-use-the-m0-for-your-own-purposes" title="Permanent link">&para;</a></h2>
+<p>You can use this project as a template for your own M0 firmware.</p>
+<h3 id="change-the-gpio-or-add-more-pins">Change the GPIO or add more pins<a class="headerlink" href="#change-the-gpio-or-add-more-pins" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Different pin:</strong> Look up the GPIO bank base and pin index for your pin (e.g. from RK3506 docs or device tree). In <code>main.c</code>, change <code>GPIO1_BASE</code> if you use another bank, and change the pin bit/mask (e.g. <code>GPIO1_PIN_B1_BIT</code> / <code>GPIO1_PIN_B1_MASK</code>) to match your pin.</li>
+<li><strong>Multiple pins:</strong> Define more <code>*_BIT</code> and <code>*_MASK</code> constants and set direction and data bits for each. Be aware of pin multiplexing: the pin must not be claimed by another function in the device tree (e.g. UART, SPI).</li>
+</ul>
+<h3 id="add-more-logic">Add more logic<a class="headerlink" href="#add-more-logic" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>More C files:</strong> Add them to <code>SRCS</code> in the Makefile and implement your logic in <code>main()</code> or in functions called from <code>main()</code>. Keep in mind you have 64 KB of RAM total; avoid large stacks and big global arrays.</li>
+<li><strong>Interrupts:</strong> Implement the relevant exception handler in your code (e.g. override <code>SysTick_Handler</code> for a periodic tick, or add a vector and handler for a peripheral IRQ if the hardware and memory map support it). Ensure the vector table in <code>startup.c</code> includes the new handler.</li>
+</ul>
+<h3 id="change-timing">Change timing<a class="headerlink" href="#change-timing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Blink rate:</strong> Change the argument to <code>delay(...)</code> in <code>main.c</code>; larger value = slower blink. Rebuild, copy the new ELF to the device, stop remoteproc, set <code>firmware</code>, then start again.</li>
+<li><strong>More precise timing:</strong> For better accuracy you would typically use a timer and interrupts (e.g. SysTick or a hardware timer) instead of a busy-loop delay.</li>
+</ul>
+<h3 id="keep-within-resource-limits">Keep within resource limits<a class="headerlink" href="#keep-within-resource-limits" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>64 KB SRAM:</strong> All code, data, and stack live in the 0xFFF84000 region. Use <code>-ffunction-sections -fdata-sections</code> and <code>--gc-sections</code> (already in the Makefile) to remove unused code/data. Monitor size with <code>arm-none-eabi-size m0-gpio1_b1-blink.elf</code>.</li>
+<li><strong>No standard library:</strong> The project uses <code>-nostdlib</code> and <code>-ffreestanding</code>. You have no <code>malloc</code>, no <code>printf</code> to host. Use registers, globals, and simple loops; add minimal helpers (e.g. your own <code>putchar</code> over UART) if needed.</li>
+</ul>
+<h3 id="optional-rename-the-target">Optional: Rename the target<a class="headerlink" href="#optional-rename-the-target" title="Permanent link">&para;</a></h3>
+<p>If you create a different application (e.g. a different blink pin or a new project name), you can change the output name in the Makefile:</p>
+<ul>
+<li>Replace <code>m0-gpio1_b1-blink</code> with your target name in the <code>all</code> target and in the <code>.elf</code> / <code>.bin</code> rules.</li>
+<li>Copy and load the new <code>.elf</code> the same way; use the new path when writing to the <code>firmware</code> attribute.</li>
+</ul>
+<hr />
+<h2 id="pin-and-register-reference-rk3506">Pin and register reference (RK3506)<a class="headerlink" href="#pin-and-register-reference-rk3506" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Example pin</strong></td>
+<td>GPIO1_B1 (global GPIO #41: bank 1, group B, pin 1)</td>
+</tr>
+<tr>
+<td><strong>GPIO1 base</strong></td>
+<td>0xFF870000</td>
+</tr>
+<tr>
+<td><strong>M0 SRAM (load address)</strong></td>
+<td>0xFFF84000, 64 KB</td>
+</tr>
+<tr>
+<td><strong>Direction register offset</strong></td>
+<td>0x04 (GPIO_SWPORT_DDR): 1 = output, 0 = input</td>
+</tr>
+<tr>
+<td><strong>Data register offset</strong></td>
+<td>0x00 (GPIO_SWPORT_DR): read/write pin level</td>
+</tr>
+</tbody>
+</table>
+<p>Other GPIO banks have different base addresses; consult the RK3506 TRM or your board’s device tree.</p>
+<hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>No data on <code>/dev/ttyS5</code></strong>: Check wiring (TX↔RX crossed), power (3.3V), and antenna. Ensure the module has a clear view of the sky for a fix.</li>
-<li><strong>Overlay won’t load</strong>: Run <code>dmesg | tail -20</code> and confirm the overlay file exists under <code>/boot/devicetree/neo-m8n-gps.dtbo</code>.</li>
-</ul>
-<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../device-tree-overlays/">Device Tree Overlays</a> — General overlay usage</li>
-<li><a href="../modifications/">Hardware Modifications</a> — Physical connections</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No <code>/sys/class/remoteproc/remoteproc0</code></strong></td>
+<td>rk3506-mcu remoteproc driver not loaded or not enabled in device tree. Build and install the driver from <a href="https://github.com/nvitya/rk3506-mcu">rk3506-mcu</a>.</td>
+</tr>
+<tr>
+<td><strong><code>echo start</code> fails or M0 doesn’t run</strong></td>
+<td>Check <code>dmesg</code> for remoteproc errors. Ensure the ELF is built for 0xFFF84000 (the example’s linker script does this).</td>
+</tr>
+<tr>
+<td><strong>LED does not blink</strong></td>
+<td>GPIO1 may need its clock enabled (often left on by the kernel). Confirm the pin is not used by another function (UART, LCD, etc.) in the device tree. On PicoCalc, verify GPIO1_B1 and GND on the correct header pins and that the LED polarity and resistor are correct.</td>
+</tr>
+<tr>
+<td><strong>Build fails: toolchain not found</strong></td>
+<td>Install <code>gcc-arm-none-eabi</code> (and ensure <code>arm-none-eabi-gcc</code> is on your PATH).</td>
+</tr>
+<tr>
+<td><strong>Want to change blink rate or behavior</strong></td>
+<td>Edit <code>main.c</code> (and/or add files), run <code>make</code>, copy the new <code>.elf</code> to the device, then stop/start remoteproc (or reboot) and set <code>firmware</code> to the new file.</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/Calculinux/picocalc-drivers/blob/main/devicetree-overlays/neo-m8n-gps-overlay.dts">Device tree overlay source</a></li>
-<li><a href="https://www.u-blox.com/en/product/neo-m8-series">u-blox NEO-M8N product page</a></li>
+<li><strong><a href="https://github.com/Calculinux/m0-example">Calculinux/m0-example</a></strong> – Example M0 firmware (GPIO blink) used in this tutorial.</li>
+<li><strong><a href="https://github.com/nvitya/rk3506-mcu">nvitya/rk3506-mcu</a></strong> – Remote processor driver for RK3506; loads firmware at 0xFFF84000, start/stop via sysfs.</li>
+<li><strong>Testing the M0 Core (GPIO Blink)</strong> – <a href="../m0-blink-test/">Quick reference</a> for build and load steps.</li>
+<li><strong>Luckfox AMP</strong> – Alternative: U-Boot can load M0 firmware from flash in an AMP setup (e.g. <code>rk3506g_buildroot_spinand_amp_defconfig</code>); see Luckfox SDK if you prefer that over remoteproc.</li>
 </ul>
 
 
@@ -3175,7 +3927,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:38:22 UTC">February 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2026 00:50:02 UTC">March 6, 2026</span>
   </span>
 
     
@@ -3185,7 +3937,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 06:38:22 UTC">February 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2026 00:50:02 UTC">March 6, 2026</span>
   </span>
 
     
