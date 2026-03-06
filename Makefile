@@ -1,4 +1,4 @@
-.PHONY: build lint docs clean install install-vale vale-sync validate-workflows help update-icons
+.PHONY: build lint docs clean install install-vale vale-sync validate-workflows help update-icons site pdf
 
 # Default target
 build: lint docs
@@ -87,6 +87,22 @@ validate-workflows:
 		exit 1; \
 	fi
 
+# Build static HTML site (no PDF)
+site:
+	mkdocs build
+
+# Build static site and combined PDF (requires WeasyPrint system deps)
+pdf:
+	@echo "Building site and PDF (this may take a minute)..."
+	BUILD_PDF=1 mkdocs build
+	@if [ -f site/calculinux-docs.pdf ]; then \
+		echo ""; \
+		echo "✅ PDF built: site/calculinux-docs.pdf"; \
+	else \
+		echo "⚠️  PDF not found. Ensure WeasyPrint is installed (see README)."; \
+		exit 1; \
+	fi
+
 # Clean build artifacts
 clean:
 	rm -rf site/
@@ -99,6 +115,8 @@ help:
 	@echo "  make build              (default) - Run lint and then start docs server"
 	@echo "  make lint                         - Run all linting tools (markdownlint, link-check, vale)"
 	@echo "  make docs                         - Start local MkDocs server"
+	@echo "  make site                         - Build static HTML site to site/"
+	@echo "  make pdf                          - Build static site and combined PDF (site/calculinux-docs.pdf)"
 	@echo "  make install                      - Install Python, Node, Vale, and sync Vale styles"
 	@echo "  make install-vale                 - Install Vale prose linter only"
 	@echo "  make vale-sync                    - Sync Vale styles and packages from .vale.ini"

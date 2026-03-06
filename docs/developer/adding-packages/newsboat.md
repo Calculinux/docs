@@ -50,13 +50,23 @@ This auto-generates `newsboat-crates.inc` listing all Rust dependencies.
 
 --8<-- "developer/adding-packages/_snippets/dependencies.md"
 
+### OpenSSL (HTTPS support)
+
+Newsboat and many Rust CLIs use OpenSSL for HTTPS. If the build fails with "Could not find directory of OpenSSL installation":
+
+--8<-- "developer/adding-packages/_snippets/rust-openssl.md"
+
+## Add to the package group
+
+--8<-- "developer/adding-packages/_snippets/add-to-package-group.md"
+
+## Build and test
+
+--8<-- "developer/adding-packages/_snippets/build-and-test.md"
+
 ## Tips
 
 - Keep `SRCREV` pinned to a commit for reproducibility; use `${AUTOREV}`
   only during development.
 - Ensure `Cargo.lock` is present to avoid network fetches during builds.
-- Test the package standalone before adding it to images:
-
-```shell
-bitbake newsboat
-```
+- If the build fails with `use of unstable library feature` (e.g. `unsigned_is_multiple_of`), a dependency may require Rust 1.87+:  --8<-- "developer/adding-packages/_snippets/rust-version.md"

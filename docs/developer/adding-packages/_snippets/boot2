@@ -1,0 +1,337 @@
+�DDR e748f9ce32b hcy 25/01/14-15:13:47,fwver: v1.05
+tREFI:4x, sr_idle:93, pd_idle:13
+SRX
+get rd_skew=0x2b, wr_skew=0x25
+PHY drv:clk:60,ca:160,DQ:80,odt:480
+vrefinner:50%, vrefout:50%
+dram drv:40,odt:0
+sr_dq:0, sr_ca:0, sr_clk:0
+rg:0x20-0x0-0x2, 0x14-0x0-0x2,status:a007
+DDR3, 750MHz
+BW=16 Col=10 Bk=8 CS0 Row=13 CS=1 Size=128MB
+out
+U-Boot SPL board init
+U-Boot SPL 2017.09 (Aug 05 2025 - 00:36:22)
+sfc cmd=03H(6BH-x4)
+SPI Nand ID ef aa 22
+Winbond SPI NAND was found.
+u MiB, block size: u KiB, page size: u, OOB size: 128
+unrecognized JEDEC id bytes: ff, ef, aa
+Trying to boot from MMC1
+No misc partition
+Trying fit image at 0x1000 sector
+## Verified-boot: 0
+## Checking optee 0x00001000 ... sha256(a1d622f9b2...) + OK
+## Checking uboot 0x00200000 ... sha256(f22978a4fc...) + OK
+## Checking fdt 0x0027ff20 ... sha256(4c7bf9a02f...) + OK
+Jumping to U-Boot(0x00200000) via OP-TEE(0x00001000)
+Total: 102.155/1085.593 ms
+
+I/TC:
+I/TC: Status: cluster=0xc00, core=0xe100, bootcpu=0
+I/TC: Next entry point address: 0x00200000
+I/TC: OP-TEE version: 3.13.0-928-ge59e3e25748 #chenjh (gcc version 10.2.1 20201103 (GNU Toolchain for the A-profile Architecture 10.2-2020.11 (arm-10.16))) #2 Wed Jan 15
+16:34:08 CST 2025 arm, fwver: v2.00
+I/TC: OP-TEE memory size: TEEOS 0x5e000 TA 0x1000 SHM 0x1000
+I/TC: Primary CPU initializing
+I/TC: Primary CPU switching to normal world boot
+
+
+U-Boot 2017.09 (Aug 05 2025 - 00:36:22 +0000)
+
+Model: Luckfox Lyra
+MPIDR: 0xf00
+PreSerial: 0, raw, 0xff0a0000
+DRAM:  128 MiB
+Sysmem: init
+Relocation Offset: 07663000
+Relocation fdt: 066fad18 - 066fedf8
+CR: M/C/I
+DM: v2
+mmc@ff480000: 0
+GUID Partition Table Entry Array CRC is wrong: 0xaf55978e != 0xf49de430
+Repair the backup gpt table OK!
+Bootdev(atags): mmc 0
+MMC0: Legacy, 52Mhz
+PartType: EFI
+No misc partition
+boot mode: normal
+FIT: No boot partition
+Failed to load DTB, ret=-19
+No valid DTB, ret=-22
+Failed to get kernel dtb, ret=-22
+Model: Luckfox Lyra
+## Error: Can't overwrite "ethaddr"
+## Error inserting "ethaddr" variable, errno=1
+rockchip_set_serialno: could not find efuse/otp device
+CLK: (arm clk use pvtpll, rate = 1200M)
+  gpll 1500000 KHz
+  v0pll 1179648 KHz
+  v1pll 903168 KHz
+  clk_gpll_div 187500 KHz
+  clk_gpll_div_100m 93750 KHz
+  clk_v0pll_div 147456 KHz
+  clk_v1pll_div 129024 KHz
+  aclk_bus_root 187500 KHz
+  hclk_bus_root 147456 KHz
+  pclk_bus_root 93750 KHz
+  aclk_hsperi_root 147456 KHz
+  hclk_ksperi_root 93750 KHz
+Net:   No ethernet found.
+Hit key to stop autoboot('CTRL+C'):  0
+MMC Device 1 not found
+no mmc device at slot 1
+switch to partitions #0, OK
+mmc0 is current device
+Scanning mmc 0:4...
+Found U-Boot script /boot/boot.scr
+2393 bytes read in 5 ms (466.8 KiB/s)
+## Executing script at 00b00000
+Found valid slot B, 1 attempts remaining
+Saving Environment from bootcmd
+Saving Environment to MMC...
+Writing to redundant MMC(0)... done
+Saving Environment to MMC...
+Writing to MMC(0)... done
+echo - echo args to console
+
+Usage:
+echo [args..]
+    - echo args to console; \c suppresses newline
+Loading FIT image <zboot.img> from mmc 0:4
+7456768 bytes read in 593 ms (12 MiB/s)
+Booting from address <0x01800000>
+BOOTM: transferring to board Android
+DTB: rk-kernel.dtb
+HASH(c): OK
+ANDROID: sha1(ae0b4fc20c...) + OK
+Booting ZIMAGE kernel at 0x01100000(Uncompress to 0x00108000) with fdt at 0x00063000...
+
+
+No misc partition
+## Booting Android Image at 0x010ff800 ...
+Kernel: 0x01100000 - 0x0163f358 (5373 KiB)
+## Flattened Device Tree blob at 0x00063000
+   Booting using the fdt blob at 0x00063000
+   XIP Kernel Image from 0x01100000 to 0x01100000 ... OK
+   kernel loaded at 0x01100000, end = 0x0163f358
+   Using Device Tree in place at 00063000, end 000e8ea3
+## reserved-memory:
+  trust@0: addr=0 size=62000
+  ramoops@83000: addr=83000 size=2d000
+Adding bank: 0x00000000 - 0x08000000 (size: 0x08000000)
+Total: 5934.236/7028.428 ms
+
+Starting kernel ...
+
+[    7.628807] Booting Linux on physical CPU 0xf00
+[    7.628836] Linux version 6.1.99-rockchip-standard (oe-user@oe-host) (arm-poky-linux-musleabi-gcc (GCC) 14.3.0, GNU ld (GNU Binutils) 2.44.0.20250715) #1 SMP PREEMPT F
+ri Jan 30 17:38:10 UTC 2026
+[    7.628847] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+[    7.628857] CPU: div instructions available: patching division code
+[    7.628862] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    7.631814] OF: fdt: Machine model: Luckfox Lyra
+[    7.651950] earlycon: uart8250 at MMIO32 0xff0a0000 (options '')
+[    7.656851] printk: bootconsole [uart8250] enabled
+[    7.657433] Memory policy: Data cache writealloc
+[    7.658004] OF: fdt: Reserved memory: failed to reserve memory for node 'drm-logo@0': base 0x00000000, size 0 MiB
+[    7.659016] Reserved memory: created CMA memory pool at 0x07000000, size 16 MiB
+[    7.659691] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    7.660771] Zone ranges:
+[    7.661029]   Normal   [mem 0x0000000000000000-0x0000000007ffffff]
+[    7.661606] Movable zone start for each node
+[    7.662000] Early memory node ranges
+[    7.662330]   node   0: [mem 0x0000000000000000-0x0000000007ffffff]
+[    7.662909] Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
+[    7.722247] psci: probing for conduit method from DT.
+[    7.722737] psci: PSCIv1.0 detected in firmware.
+[    7.723167] psci: Using standard PSCI v0.2 function IDs
+[    7.723650] psci: MIGRATE_INFO_TYPE not supported.
+[    7.724093] psci: SMC Calling Convention v1.1
+[    7.724636] percpu: Embedded 12 pages/cpu s16468 r8192 d24492 u49152
+[    7.725362] Built 1 zonelists, mobility grouping on.  Total pages: 32480
+[    7.725987] Kernel command line: console=ttyFIQ0tty1 earlycon=uart8250,mmio32,0xff0a0000 console=ttyFIQ0,115200 consoleblank=300 rockchip.fiq_debugger_baudrate=115200
+ro rootwait root=PARTLABEL=ROOT_B rauc.slot=B fsck.mode=skip noinitrd init=/sbin/preinit regulator.debug=1  fbcon=font:6x8 fbcon=map:10 storagemedia=sd ubi.mtd=2 rootfsty
+pe=ext4 snd_aloop.index=7 snd_aloop.use_raw_jiffies=1 androidboot.fwver=ddr-v1.05-e748f9ce32b,tee-v2.00,uboot-08/05/2025 user_debug=31
+[    7.730476] Unknown kernel command line parameters "storagemedia=sd", will be passed to user space.
+[    7.731375] Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+[    7.732099] Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+[    7.732785] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    7.736181] Memory: 102972K/131072K available (4692K kernel code, 425K rwdata, 2224K rodata, 200K init, 182K bss, 11716K reserved, 16384K cma-reserved)
+[    7.737613] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=3, Nodes=1
+[    7.738443] rcu: Preemptible hierarchical RCU implementation.
+[    7.738983] rcu:     RCU event tracing is enabled.
+[    7.739401] rcu:     RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=3.
+[    7.740004] rcu: RCU calculated value of scheduler-enlistment delay is 30 jiffies.
+[    7.740698] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=3
+[    7.741342] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    7.749479] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    7.764905] arch_timer: cp15 timer(s) running at 24.00MHz (virt).
+[    7.765502] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    7.766502] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    7.767244] Switching to timer-based delay loop, resolution 41ns
+[    7.772567] Console: colour dummy device 80x30
+[    7.773038] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=80000)
+[    7.773991] CPU: Testing write buffer coherency: ok
+[    7.774481] pid_max: default: 4096 minimum: 301
+[    7.775058] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    7.775747] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    7.777487] /cpus/cpu@f00 missing clock-frequency property
+[    7.778034] /cpus/cpu@f01 missing clock-frequency property
+[    7.778554] /cpus/cpu@f02 missing clock-frequency property
+[    7.779067] CPU0: thread -1, cpu 0, socket 15, mpidr 80000f00
+[    7.780539] Setting up static identity map for 0x108240 - 0x108294
+[    7.781304] rcu: Hierarchical SRCU implementation.
+[    7.781755] rcu:     Max phase no-delay instances is 1000.
+[    7.783026] smp: Bringing up secondary CPUs ...
+I/TC: Secondary CPU 1 initializing
+I/TC: Secondary CPU 1 switching to normal world boot
+I/TC: Secondary CPU 2 initializing
+I/TC: Secondary CPU 2 switching to normal world boot
+[    7.784979] CPU1: thread -1, cpu 1, socket 15, mpidr 80000f01
+[    7.786585] CPU2: thread -1, cpu 2, socket 15, mpidr 80000f02
+[    7.786715] smp: Brought up 1 node, 3 CPUs
+[    7.788203] SMP: Total of 3 processors activated (144.00 BogoMIPS).
+[    7.788783] CPU: All CPU(s) started in SVC mode.
+[    7.789875] devtmpfs: initialized
+[    7.869739] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    7.870671] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 6370867519511994 ns
+[    7.871623] futex hash table entries: 16 (order: -2, 1024 bytes, linear)
+[    7.872360] pinctrl core: initialized pinctrl subsystem
+[    7.874057] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    7.875264] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    7.876681] Registered FIQ tty driver
+[    7.877432] thermal_sys: Registered thermal governor 'step_wise'
+[    7.877444] thermal_sys: Registered thermal governor 'user_space'
+[    7.878077] cpuidle: using governor menu
+[    7.882053] ramoops: boot-log-0      0xd000@0x00083000
+[    7.882524] ramoops: console 0x20000@0x00090000
+[    7.883306] printk: console [ramoops-1] enabled
+[    7.883732] pstore: Registered ramoops as persistent store backend
+[    7.884306] ramoops: using 0x2d000@0x83000, ecc: 0
+[    7.999572] rockchip-pinctrl pinctrl: failed to parse function
+[    8.000143] rockchip-pinctrl: probe of pinctrl failed with error -22
+[    8.008689] platform vdd-cpu: Fixed dependency cycle(s) with /vdd-cpu
+[    8.072303] raid6: int32x8  gen()   215 MB/s
+[    8.129050] raid6: int32x4  gen()   239 MB/s
+[    8.185812] raid6: int32x2  gen()   273 MB/s
+[    8.242503] raid6: int32x1  gen()   202 MB/s
+[    8.242922] raid6: using algorithm int32x2 gen() 273 MB/s
+[    8.299225] raid6: .... xor() 218 MB/s, rmw enabled
+[    8.299691] raid6: using intx1 recovery algorithm
+[    8.301211] fiq_debugger fiq_debugger.0: error -ENXIO: IRQ fiq not found
+[    8.301870] fiq_debugger fiq_debugger.0: error -ENXIO: IRQ wakeup not found
+[    8.302528] fiq_debugger_probe: could not install nmi irq handler
+[ [    8.303224] printk: console [ttyFIQ0] enabled
+   8.303224] printk: console [ttyFIQ0] enabled
+[    8.304025] printk: bootconsole [uart8250] disabled
+[    8.304025] printk: bootconsole [uart8250] disabled
+[    8.304751] Registered fiq debugger ttyFIQ0
+[    8.307081] reg-fixed-voltage vdd-cpu: Fixed regulator specified with variable voltages
+[    8.307117] reg-fixed-voltage: probe of vdd-cpu failed with error -22
+[    8.307615] mc: Linux media interface: v0.10
+[    8.307730] videodev: Linux video capture interface: v2.00
+[    8.307794] pps_core: LinuxPPS API ver. 1 registered
+[    8.307812] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    8.307842] PTP clock support registered
+[    8.308992] Advanced Linux Sound Architecture Driver Initialized.
+[    8.309580] Bluetooth: Core ver 2.22
+[    8.309663] NET: Registered PF_BLUETOOTH protocol family
+[    8.309682] Bluetooth: HCI device and connection manager initialized
+[    8.309705] Bluetooth: HCI socket layer initialized
+[    8.309723] Bluetooth: L2CAP socket layer initialized
+[    8.309751] Bluetooth: SCO socket layer initialized
+[    8.310355] rockchip-cpuinfo cpuinfo: SoC            : 35060000
+[    8.310395] rockchip-cpuinfo cpuinfo: Serial         : 56e66ea6dafa7ba2
+[    8.311364] clocksource: Switched to clocksource arch_sys_counter
+[    8.321301] NET: Registered PF_INET protocol family
+[    8.321563] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    8.322261] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    8.322321] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    8.322418] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    8.322450] TCP bind hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    8.322492] TCP: Hash tables configured (established 1024 bind 1024)
+[    8.322603] UDP hash table entries: 128 (order: 0, 4096 bytes, linear)
+[    8.322647] UDP-Lite hash table entries: 128 (order: 0, 4096 bytes, linear)
+[    8.322870] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    8.324288] Initialise system trusted keyrings
+[    8.324598] workingset: timestamp_bits=14 max_order=15 bucket_order=1
+[    8.329316] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    8.395031] NET: Registered PF_ALG protocol family
+[    8.395083] xor: measuring software checksum speed
+[    8.400316]    arm4regs        :  1895 MB/sec
+[    8.409160]    8regs           :  1117 MB/sec
+[    8.416506]    32regs          :  1346 MB/sec
+[    8.416525] xor: using function: arm4regs (1895 MB/sec)
+[    8.416548] Key type asymmetric registered
+[    8.416563] Asymmetric key parser 'x509' registered
+[    8.418413] alg: self-tests for CTR-KDF (hmac(sha256)) passed
+[    8.418602] io scheduler mq-deadline registered
+[    8.418629] io scheduler kyber registered
+[    8.418800] io scheduler bfq registered
+[    8.423745] dma-pl330 ff000000.dma-controller: Loaded driver for PL330 DMAC-241330
+[    8.423792] dma-pl330 ff000000.dma-controller:       DBUFF-32x8bytes Num_Chans-6 Num_Peri-12 Num_Events-12
+[    8.425451] dma-pl330 ff008000.dma-controller: Loaded driver for PL330 DMAC-241330
+[    8.425490] dma-pl330 ff008000.dma-controller:       DBUFF-128x8bytes Num_Chans-8 Num_Peri-20 Num_Events-16
+[    8.425736] rockchip-system-monitor rockchip-system-monitor: system monitor probe
+[    8.426354] Serial: 8250/16550 driver, 6 ports, IRQ sharing disabled
+E/TC:1   plat_shm_get_page_num:373 plat_shm_get_page_num: type 6 alloc is not supported
+[    8.429012] no ATF memory for init
+[    8.436364] loop: module loaded
+[    8.461948] spi-nand spi2.0: Winbond SPI NAND was found.
+[    8.461997] spi-nand spi2.0: 256 MiB, block size: 128 KiB, page size: 2048, OOB size: 128
+[    8.466290] CAN device driver interface
+[    8.466595] PPP generic driver version 2.4.2
+[    8.467164] i2c_dev: i2c /dev entries driver
+[    8.468284] device-mapper: ioctl: 4.47.0-ioctl (2022-07-28) initialised: dm-devel@redhat.com
+[    8.468711] cpu cpu0: bin=0
+[    8.468836] cpu cpu0: leakage=4
+[    8.468973] cpu cpu0: failed to set opp config
+[    8.468997] cpu cpu0: failed to init opp info
+[    8.469010] Failed to initialize dvfs info cpu0
+[    8.469378] Synopsys Designware Multimedia Card Interface Driver
+[    8.474219] NET: Registered PF_PACKET protocol family
+[    8.474307] can: controller area network core
+[    8.474456] NET: Registered PF_CAN protocol family
+[    8.474484] can: raw protocol
+[    8.474503] can: broadcast manager protocol
+[    8.474525] can: netlink gateway - max_hops=1
+[    8.474825] Bluetooth: RFCOMM TTY layer initialized
+[    8.474890] Bluetooth: RFCOMM socket layer initialized
+[    8.474931] Bluetooth: RFCOMM ver 1.11
+[    8.474959] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    8.474981] Bluetooth: BNEP socket layer initialized
+[    8.474995] [BT_RFKILL]: Enter rfkill_rk_init
+[    8.475008] [WLAN_RFKILL]: Enter rfkill_wlan_init
+[    8.475714] Registering SWP/SWPB emulation handler
+[    8.476042] Loading compiled-in X.509 certificates
+[    8.476219] Key type .fscrypt registered
+[    8.476244] Key type fscrypt-provisioning registered
+[    8.479872] Btrfs loaded, crc32c=crc32c-generic, zoned=no, fsverity=no
+[    8.487877] rga2 ff610000.rga: probe successfully, irq = 37, hw_version:3.a.07135
+[    8.488120] rga: IOMMU binding successfully, default mapping core[0x4]
+[    8.488420] rga: Module initialized. v1.3.6
+[    8.506816] adc_keys adc-keys: keymap is missing
+[    8.506860] adc_keys: probe of adc-keys failed with error -22
+[    8.508716] UBI error: cannot open mtd 2, error -19
+[    8.508994] of_cfs_init
+[    8.509127] of_cfs_init: OK
+[    8.512200] OF: fdt: not creating '/sys/firmware/fdt': CRC check failed
+[    8.512407] clk: Disabling unused clocks
+[    8.512997] rockchip-pm rockchip-suspend: not set pwm-regulator-config
+[    8.515359] rockchip-suspend not set sleep-mode-config for mem-lite
+[    8.515393] rockchip-suspend not set wakeup-config for mem-lite
+[    8.515413] rockchip-suspend not set sleep-mode-config for mem-ultra
+[    8.515427] rockchip-suspend not set wakeup-config for mem-ultra
+[    8.515950] ALSA device list:
+[    8.515980]   No soundcards found.
+[    8.516955] Waiting for root device PARTLABEL=ROOT_B...
+[   18.719202] platform ff650000.tsadc: deferred probe pending
+[   18.719245] platform ff480000.mmc: deferred probe pending
+[   18.719260] platform ff930000.pwm: deferred probe pending
+[   18.719275] platform ff931000.pwm: deferred probe pending
+[   18.719290] platform ff0b0000.serial: deferred probe pending
+[   18.719305] platform ff120000.spi: deferred probe pending
+[   18.719319] platform ff130000.spi: deferred probe pending
+[   18.719334] platform ff060000.i2c: deferred probe pending
+[   18.719348] platform leds: deferred probe pending

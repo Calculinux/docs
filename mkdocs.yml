@@ -44,6 +44,7 @@ theme:
 
 extra_css:
   - stylesheets/flatly.css
+  - stylesheets/pdf-print.css
 
 markdown_extensions:
   - admonition
@@ -72,6 +73,11 @@ plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
+  # PDF export (only runs when BUILD_PDF=1; requires WeasyPrint system deps)
+  - pdf-export:
+      enabled_if_env: BUILD_PDF
+      combined: true
+      combined_output_path: calculinux-docs.pdf
 
 nav:
   - Home: index.md
@@ -86,9 +92,17 @@ nav:
   - Hardware:
     - PicoCalc Overview: hardware/picocalc.md
     - Luckfox Lyra: hardware/luckfox-lyra.md
+    - M0 Core Tutorial (Build, Load, Customize): hardware/m0-core-tutorial.md
+    - Testing the M0 Core (GPIO Blink): hardware/m0-blink-test.md
     - Technical Specifications: hardware/specifications.md
     - Hardware Modifications: hardware/modifications.md
     - Display & Input: hardware/display-input.md
+    - Device Tree Overlays: hardware/device-tree-overlays.md
+    - DS3231 RTC Module: hardware/ds3231-rtc.md
+    - 100 kHz I2C Overlay: hardware/100khz-i2c.md
+    - NEO-M8N GPS: hardware/neo-m8n-gps.md
+    - PCM5102A I2S DAC: hardware/pcm5102a-i2s.md
+    - SX1262 LoRa: hardware/sx1262-lora.md
     - Compatibility Matrix:
       - Overview: hardware/compatibility/index.md
       - SBC & Luckfox Lyra Variants: hardware/compatibility/sbc-lyra.md
@@ -107,12 +121,26 @@ nav:
     - Package Management: user-guide/package-management.md
     - System Updates: user-guide/updates.md
     - Applications: user-guide/applications.md
+    - Screen Capture: user-guide/screen-capture.md
     - Advanced Storage Configuration: user-guide/advanced-storage.md
   
   - Developer Guide:
     - Development Overview: developer/overview.md
     - Setting Up Yocto: developer/yocto-setup.md
     - Building Calculinux: developer/building.md
+    - Kernel Development:
+      - Kernel Overview: developer/kernel.md
+      - Hardware Driver Config Fragments: developer/kernel-driver-config-fragments.md
+      - Creating Device Tree Overlays: developer/device-tree-overlays.md
+    - Adding Packages: 
+      - Overview: developer/adding-packages.md
+      - Examples:
+        - Go (amfora): developer/adding-packages/go-example.md
+        - Rust (glkcli): developer/adding-packages/rust-example.md
+        - Rust (Newsboat): developer/adding-packages/newsboat.md
+        - CMake (notcurses): developer/adding-packages/cmake-example.md
+        - Python (wik): developer/adding-packages/python-example.md
+        - Meson (kiwix-tools): developer/adding-packages/meson-example.md
     - Using the Yocto SDK: developer/sdk.md
     - Calculinux Update System: developer/calculinux-update.md
     - Contributing: developer/contributing.md

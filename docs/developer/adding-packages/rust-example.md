@@ -116,14 +116,9 @@ Notes:
 
 ## 4) Add the package to your image
 
-Add the utility to your image with an `IMAGE_INSTALL` append. For example,
-in your distribution or image configuration or a bundle:
+--8<-- "developer/adding-packages/_snippets/add-to-image.md"
 
-```bitbake
-IMAGE_INSTALL:append = " hello-calculinux"
-```
-
-If you use a bundle (e.g., `calculinux-bundle.bb`), include it there.
+For this example, use `hello-calculinux` as the package name.
 
 ## 5) Build and test
 
@@ -147,6 +142,18 @@ hello-calculinux
 --8<-- "developer/adding-packages/_snippets/sd-card-install.md"
 
 ## Troubleshooting
+
+- **OpenSSL / openssl-sys**: If your crate uses `openssl` or `openssl-sys` (e.g. for HTTPS) and the build fails with "Could not find directory of OpenSSL installation":
+
+  --8<-- "developer/adding-packages/_snippets/rust-openssl.md"
+
+- **`use of unstable library feature` (e.g. `unsigned_is_multiple_of`)**: A dependency requires a newer Rust. See:
+
+  --8<-- "developer/adding-packages/_snippets/rust-version.md"
+
+- **`the lock file needs to be updated but --frozen was passed`**: When you patch `Cargo.lock` (e.g. to pin a crate for Rust compatibility), Cargo may need to reconcile it. See:
+
+  --8<-- "developer/adding-packages/_snippets/rust-cargo-lock-frozen.md"
 
 - If Rust is not available, add `meta-rust` and ensure the Rust toolchain
   is enabled for your target.
