@@ -53,10 +53,6 @@ The TUI lists visible networks with signal strength. Select a network and press 
 | `[*]` | Currently connected |
 | `[k]` | Known network (credentials stored) |
 
-### Multiple adapters
-
-Press **O** to open adapter options if more than one WiFi interface is present. From that menu you can pick the adapter and toggle power with **P**.
-
 ## Verify the connection
 
 ```shell

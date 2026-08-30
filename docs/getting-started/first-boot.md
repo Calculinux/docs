@@ -212,7 +212,7 @@ uwific
 
 Scan results appear in the TUI. Highlight a network, press **Enter**, and type the passphrase if asked. **D** disconnects, **Q** quits.
 
-Known networks reconnect on later boots. For keys, multiple adapters, and the `iwctl` command-line alternative, see the [WiFi guide](../user-guide/wifi.md).
+Known networks reconnect on later boots. For keys and the `iwctl` command-line alternative, see the [WiFi guide](../user-guide/wifi.md).
 
 **Verify Connection:**
 
