@@ -22,7 +22,7 @@ Information about built-in networking options, USB gadget networking, and WiFi c
 
     - **Device IP**: 192.168.7.2/24
     - **Interface**: usb0
-    - **Mode**: RNDIS by default (Windows/Linux); ECM for macOS
+    - **Mode**: RNDIS by default (Windows/Linux); ECM for macOS (also for Linux)
 
     **Quick SSH:**
 
