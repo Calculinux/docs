@@ -1269,6 +1269,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../user-guide/wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../user-guide/usb-networking/" class="md-nav__link">
         
   
@@ -2699,18 +2727,21 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-b
 </code></pre></div>
 <h3 id="cannot-connect-to-network">Cannot Connect to Network<a class="headerlink" href="#cannot-connect-to-network" title="Permanent link">&para;</a></h3>
-<p>Using <code>iwctl</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Enter iwctl interactive mode</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>iwctl
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Scan for networks</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>station<span class="w"> </span>wlan0<span class="w"> </span>scan
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># List available networks</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Connect to network</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">"NetworkName"</span>
+<p>Use <code>uwific</code> to scan and connect (see <a href="../../user-guide/wifi/">WiFi</a>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>uwific
+</code></pre></div>
+<p>Or use <code>iwctl</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Enter iwctl interactive mode</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>iwctl
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Scan for networks</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>station<span class="w"> </span>wlan0<span class="w"> </span>scan
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># List available networks</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>station<span class="w"> </span>wlan0<span class="w"> </span>get-networks
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Connect to network</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">"NetworkName"</span>
 </code></pre></div>
 <p>If connection fails:</p>
 <ol>
@@ -2719,14 +2750,14 @@
 <li><strong>Check network mode</strong>: Some routers may need 2.4GHz mode enabled</li>
 <li><strong>Check logs</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-f
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-f
 </code></pre></div>
 <h3 id="wifi-disconnects-frequently">WiFi Disconnects Frequently<a class="headerlink" href="#wifi-disconnects-frequently" title="Permanent link">&para;</a></h3>
 <p>Common causes:</p>
 <ol>
 <li><strong>Power management</strong>: Disable WiFi power saving:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span><span class="nb">set</span><span class="w"> </span>power_save<span class="w"> </span>off
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>iw<span class="w"> </span>dev<span class="w"> </span>wlan0<span class="w"> </span><span class="nb">set</span><span class="w"> </span>power_save<span class="w"> </span>off
 </code></pre></div>
 <ol>
 <li>
@@ -2739,7 +2770,7 @@
 <p><strong>Driver issues</strong>: Check for kernel messages:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>wlan0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>wlan0
 </code></pre></div>
 <h3 id="wifi-adapter-in-invalid-state">WiFi Adapter in Invalid State<a class="headerlink" href="#wifi-adapter-in-invalid-state" title="Permanent link">&para;</a></h3>
 <p><strong>Symptoms</strong>:</p>
@@ -2756,7 +2787,7 @@
 <ol>
 <li>Power off the Picocalc:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>poweroff
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>poweroff
 </code></pre></div>
 <ol>
 <li>Press the power button and boot normally</li>
@@ -2775,36 +2806,36 @@
 </div>
 <p><strong>Option 3: Software module reload</strong> (unreliable for stuck adapters)</p>
 <p>Software-only solutions may not work when the adapter itself is in an invalid state, but you can try:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># This may not work if the adapter hardware is truly stuck</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># Identify the WiFi driver module (e.g., rtl8188fu, aic8800)</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'rtl|aic'</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Attempt to reload the module (replace with your driver name)</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>-r<span class="w"> </span>rtl8xxxu
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>rtl8xxxu
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Or try restarting the iwd service</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>iwd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># This may not work if the adapter hardware is truly stuck</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># Identify the WiFi driver module (e.g., rtl8188fu, aic8800)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'rtl|aic'</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Attempt to reload the module (replace with your driver name)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>-r<span class="w"> </span>rtl8xxxu
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>sudo<span class="w"> </span>modprobe<span class="w"> </span>rtl8xxxu
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Or try restarting the iwd service</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>iwd
 </code></pre></div>
 <p>If software reload doesn't resolve the issue within a few minutes, proceed to Option 1 (complete power cycle).</p>
 <h2 id="dns-problems">DNS Problems<a class="headerlink" href="#dns-problems" title="Permanent link">&para;</a></h2>
 <h3 id="cannot-resolve-hostnames">Cannot Resolve Hostnames<a class="headerlink" href="#cannot-resolve-hostnames" title="Permanent link">&para;</a></h3>
 <p>Test DNS resolution:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Check DNS servers</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>cat<span class="w"> </span>/etc/resolv.conf
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Test DNS lookup</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>nslookup<span class="w"> </span>google.com
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Or use dig</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>dig<span class="w"> </span>google.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Check DNS servers</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cat<span class="w"> </span>/etc/resolv.conf
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Test DNS lookup</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>nslookup<span class="w"> </span>google.com
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Or use dig</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>dig<span class="w"> </span>google.com
 </code></pre></div>
 <p>Fix DNS issues:</p>
 <ol>
 <li><strong>Manually set DNS servers</strong> in <code>/etc/resolv.conf</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>nameserver<span class="w"> </span><span class="m">1</span>.1.1.1
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>nameserver<span class="w"> </span><span class="m">8</span>.8.8.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>nameserver<span class="w"> </span><span class="m">1</span>.1.1.1
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nameserver<span class="w"> </span><span class="m">8</span>.8.8.8
 </code></pre></div>
 <ol>
 <li>
@@ -2821,7 +2852,7 @@
 <li>Try alternative DNS servers (Cloudflare, Google, Quad9)</li>
 <li>Check if DNS server is accessible:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ping<span class="w"> </span><span class="m">1</span>.1.1.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ping<span class="w"> </span><span class="m">1</span>.1.1.1
 </code></pre></div>
 <h2 id="connection-timeouts">Connection Timeouts<a class="headerlink" href="#connection-timeouts" title="Permanent link">&para;</a></h2>
 <h3 id="ssh-connection-times-out">SSH Connection Times Out<a class="headerlink" href="#ssh-connection-times-out" title="Permanent link">&para;</a></h3>
@@ -2829,46 +2860,46 @@
 <ol>
 <li><strong>Verify connectivity</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ping<span class="w"> </span>&lt;picocalc-ip&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ping<span class="w"> </span>&lt;picocalc-ip&gt;
 </code></pre></div>
 <ol>
 <li><strong>Check if SSH is running</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># On PicoCalc</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># On PicoCalc</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
 </code></pre></div>
 <ol>
 <li><strong>Check firewall</strong> (if enabled):</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># On PicoCalc</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-v
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># On PicoCalc</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-v
 </code></pre></div>
 <ol>
 <li><strong>Try verbose SSH</strong> to see where it fails:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ssh<span class="w"> </span>-vvv<span class="w"> </span>pico@&lt;ip-address&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ssh<span class="w"> </span>-vvv<span class="w"> </span>pico@&lt;ip-address&gt;
 </code></pre></div>
 <h3 id="internet-access-times-out">Internet Access Times Out<a class="headerlink" href="#internet-access-times-out" title="Permanent link">&para;</a></h3>
 <p>If you can't reach external sites:</p>
 <ol>
 <li><strong>Check default route</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>default
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>default
 </code></pre></div>
 <ol>
 <li><strong>Test local gateway</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ping<span class="w"> </span>&lt;gateway-ip&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ping<span class="w"> </span>&lt;gateway-ip&gt;
 </code></pre></div>
 <ol>
 <li><strong>Test external IP</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ping<span class="w"> </span><span class="m">8</span>.8.8.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ping<span class="w"> </span><span class="m">8</span>.8.8.8
 </code></pre></div>
 <ol>
 <li><strong>Test DNS</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ping<span class="w"> </span>google.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ping<span class="w"> </span>google.com
 </code></pre></div>
 <p>This helps identify if the issue is:</p>
 <ul>
@@ -2878,52 +2909,52 @@
 </ul>
 <h2 id="advanced-diagnostics">Advanced Diagnostics<a class="headerlink" href="#advanced-diagnostics" title="Permanent link">&para;</a></h2>
 <h3 id="network-interface-details">Network Interface Details<a class="headerlink" href="#network-interface-details" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Detailed interface info</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>ethtool<span class="w"> </span>usb0<span class="w">  </span><span class="c1"># or wlan0</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Interface statistics</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>ip<span class="w"> </span>-s<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>usb0
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># Routing table</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>table<span class="w"> </span>all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Detailed interface info</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ethtool<span class="w"> </span>usb0<span class="w">  </span><span class="c1"># or wlan0</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Interface statistics</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>ip<span class="w"> </span>-s<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>usb0
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Routing table</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>ip<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>table<span class="w"> </span>all
 </code></pre></div>
 <h3 id="network-traffic-analysis">Network Traffic Analysis<a class="headerlink" href="#network-traffic-analysis" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Monitor traffic on interface</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>usb0
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Show active connections</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>ss<span class="w"> </span>-tunap
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Network statistics</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>netstat<span class="w"> </span>-s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Monitor traffic on interface</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sudo<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>usb0
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Show active connections</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>ss<span class="w"> </span>-tunap
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># Network statistics</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>netstat<span class="w"> </span>-s
 </code></pre></div>
 <h3 id="service-status">Service Status<a class="headerlink" href="#service-status" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Check network-related services</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>systemd-networkd
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>systemctl<span class="w"> </span>status<span class="w"> </span>iwd
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># View service logs</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-b
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-b
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Check network-related services</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>systemctl<span class="w"> </span>status<span class="w"> </span>systemd-networkd
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>systemctl<span class="w"> </span>status<span class="w"> </span>iwd
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>systemctl<span class="w"> </span>status<span class="w"> </span>sshd
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1"># View service logs</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>systemd-networkd<span class="w"> </span>-b
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>iwd<span class="w"> </span>-b
 </code></pre></div>
 <h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
 <p>If you're still experiencing issues:</p>
 <ol>
 <li><strong>Gather diagnostic information</strong>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Save to a file</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="o">{</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Network Interfaces ==="</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>ip<span class="w"> </span>addr<span class="w"> </span>show
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Routes ==="</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span>ip<span class="w"> </span>route<span class="w"> </span>show
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== DNS ==="</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">  </span>cat<span class="w"> </span>/etc/resolv.conf
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Service Status ==="</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">  </span>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network<span class="w"> </span>systemd-networkd<span class="w"> </span>iwd
-<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>network-diag.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Save to a file</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="o">{</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Network Interfaces ==="</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span>ip<span class="w"> </span>addr<span class="w"> </span>show
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Routes ==="</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span>ip<span class="w"> </span>route<span class="w"> </span>show
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== DNS ==="</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span>cat<span class="w"> </span>/etc/resolv.conf
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== Service Status ==="</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">  </span>systemctl<span class="w"> </span>status<span class="w"> </span>usb-gadget-network<span class="w"> </span>systemd-networkd<span class="w"> </span>iwd
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>network-diag.txt
 </code></pre></div>
 <ol>
 <li><strong>Check the documentation</strong>:</li>
@@ -2967,7 +2998,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 10, 2026 15:23:02 UTC">February 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 30, 2026 16:47:09 UTC">August 30, 2026</span>
   </span>
 
     
