@@ -296,7 +296,7 @@ Calculinux comes with a console-based environment including:
 
 ### Network Tools
 
-- **WiFi**: iwd (iwctl command)
+- **WiFi**: iwd with `uwific` (TUI) and `iwctl`
 - **Utilities**: curl, wget, links (text browser), openssh
 - **Debugging**: iw, htop, systemd-analyze
 

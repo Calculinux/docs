@@ -73,6 +73,7 @@ gdb
 groff
 iw
 iwctl
+uwific
 minicom
 miniterm
 Imager
@@ -301,6 +302,7 @@ hoard-of-bitfonts-commodore
 htop
 i2c-tools
 iwd
+uwific
 kbd-consolefonts
 kbd-keymaps
 kernel-modules

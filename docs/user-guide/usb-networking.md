@@ -824,7 +824,7 @@ If you lose all network access and can't switch back:
 ## See Also
 
 - [Basic Usage](basic-usage.md) - General PicoCalc usage
-- [WiFi Configuration](../getting-started/first-boot.md#wifi-setup-usb-adapter-required) - Alternative connectivity
+- [WiFi](wifi.md) - Wireless connectivity with `uwific`
 - [Network Troubleshooting](../troubleshooting/network.md) - More troubleshooting tips
 - [Serial Console Access](../hardware/serial/console-access.md) - Alternative access method
 - [USB Host Mode Details](https://github.com/Calculinux/meta-calculinux/blob/main/meta-calculinux-distro/recipes-connectivity/usb-gadget-network/USB_HOST_MODE.md) - Implementation details

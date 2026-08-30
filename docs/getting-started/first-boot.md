@@ -202,45 +202,23 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
 
     For a complete list of supported WiFi chipsets and tested adapters, see **[Networking & WiFi Compatibility](../hardware/compatibility/networking-wifi.md)**.
 
-#### Connecting to WiFi with iwctl
+#### Connecting to WiFi with uwific
 
-Calculinux uses `iwd` (iwd Wireless Daemon) for WiFi management. Use `iwctl` to configure wireless connections:
+Calculinux uses `iwd` for WiFi management. The included TUI is `uwific`:
 
 ```shell
-# Start iwctl interactive mode
-iwctl
-
-# Inside iwctl:
-[iwd]# device list                          # List wireless devices
-[iwd]# station wlan0 scan                   # Scan for networks
-[iwd]# station wlan0 get-networks           # Show available networks
-[iwd]# station wlan0 connect "SSID"         # Connect to network
-# Enter passphrase when prompted
-[iwd]# exit
-
-# Or use iwctl non-interactively:
-iwctl station wlan0 scan
-iwctl station wlan0 get-networks
-iwctl station wlan0 connect "YourSSID"
+uwific
 ```
+
+Scan results appear in the TUI. Highlight a network, press **Enter**, and type the passphrase if asked. **D** disconnects, **Q** quits.
+
+Known networks reconnect on later boots. For keys, multiple adapters, and the `iwctl` command-line alternative, see the [WiFi guide](../user-guide/wifi.md).
 
 **Verify Connection:**
 
 ```shell
-# Check connection status
-iwctl station wlan0 show
-
-# Check IP address
 ip addr show wlan0
-
-# Test connectivity
 ping -c 3 8.8.8.8
-```
-
-**Disconnect:**
-
-```shell
-iwctl station wlan0 disconnect
 ```
 
 ## Next Steps

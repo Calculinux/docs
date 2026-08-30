@@ -86,7 +86,13 @@ If no WiFi interface is found:
 
 ### Cannot Connect to Network
 
-Using `iwctl`:
+Use `uwific` to scan and connect (see [WiFi](../user-guide/wifi.md)):
+
+```shell
+uwific
+```
+
+Or use `iwctl`:
 
 ```shell
 # Enter iwctl interactive mode
