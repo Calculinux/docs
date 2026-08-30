@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/calculinux.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2118,13 +2118,13 @@
 <p>BitBake will fail the first build and print the exact
 <code>LIC_FILES_CHKSUM</code> to use. Include the license filename up front, then
 copy the suggested checksum into your recipe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LICENSE = &quot;MIT&quot;  # or the license used by the project
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>LIC_FILES_CHKSUM = &quot;file://LICENSE;md5=&lt;value from bitbake error&gt;&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">LICENSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MIT"</span><span class="w">  </span><span class="s">#</span><span class="w"> </span><span class="s">or</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">license</span><span class="w"> </span><span class="s">used</span><span class="w"> </span><span class="s">by</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">project</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">LIC_FILES_CHKSUM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"file://LICENSE;md5=&lt;value from bitbake error&gt;"</span>
 </code></pre></div>
 <h2 id="rust-specific-lines">Rust-specific lines<a class="headerlink" href="#rust-specific-lines" title="Permanent link">&para;</a></h2>
 <p>Include these in the recipe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>inherit cargo cargo-update-recipe-crates
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>require ${BPN}-crates.inc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">inherit</span><span class="w"> </span><span class="s">cargo</span><span class="w"> </span><span class="s">cargo-update-recipe-crates</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">require</span><span class="w"> </span><span class="si">${</span><span class="nv">BPN</span><span class="si">}</span><span class="s">-crates.inc</span>
 </code></pre></div>
 <p>Then generate crate dependencies from Cargo.lock:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>update_crates<span class="w"> </span>newsboat
@@ -2229,7 +2229,7 @@ copy the suggested checksum into your recipe:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

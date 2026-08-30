@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/calculinux.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2159,18 +2159,18 @@ packaging it into a Yocto recipe so it ships in Calculinux images.</p>
 </code></pre></div>
 <p>Edit <code>src/main.rs</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;hello, Calculinux!&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"hello, Calculinux!"</span><span class="p">);</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
 </code></pre></div>
 <p>Add a <code>Cargo.lock</code> and set a version in <code>Cargo.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[package]</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello-calculinux&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">edition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2026&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello-calculinux"</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">edition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2026"</span>
 </code></pre></div>
 <p>Commit the project to a Git repo (local or hosted):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial Rust utility&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Initial Rust utility"</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># If hosting, push to e.g., GitHub</span>
 </code></pre></div>
 <h2 id="2-add-sources-to-your-layer">2) Add sources to your layer<a class="headerlink" href="#2-add-sources-to-your-layer" title="Permanent link">&para;</a></h2>
@@ -2188,40 +2188,40 @@ your options are limited by how they ship. The protocol part of the SRC_URI
 <p>Create <code>hello-calculinux_0.1.0.bb</code> with this content (include the
 license file path but omit the checksum initially; BitBake will prompt
 you with the exact value to add):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SUMMARY = &quot;Simple Rust CLI that prints a greeting&quot;
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>HOMEPAGE = &quot;https://github.com/Calculinux/hello-calculinux&quot;
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>LICENSE = &quot;MIT&quot;
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>LIC_FILES_CHKSUM = &quot;file://LICENSE;md5=&lt;fill-after-bitbake&gt;&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">SUMMARY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Simple Rust CLI that prints a greeting"</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">HOMEPAGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://github.com/Calculinux/hello-calculinux"</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">LICENSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MIT"</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">LIC_FILES_CHKSUM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"file://LICENSE;md5=&lt;fill-after-bitbake&gt;"</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a># Fetch from your repo; replace URL/branch/SRCREV with your details
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>SRC_URI = &quot;git://github.com/Calculinux/hello-calculinux;branch=main;\
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>protocol=https&quot;
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>SRCREV = &quot;${AUTOREV}&quot;
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Fetch from your repo; replace URL/branch/SRCREV with your details</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">SRC_URI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git://github.com/Calculinux/hello-calculinux;branch=main;</span><span class="se">\</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s2">protocol=https"</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nv">SRCREV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">AUTOREV</span><span class="si">}</span><span class="s2">"</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>S = &quot;${WORKDIR}/git&quot;
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nv">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">WORKDIR</span><span class="si">}</span><span class="s2">/git"</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>inherit cargo
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="kn">inherit</span><span class="w"> </span><span class="s">cargo</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a># Build in release mode for smaller/faster binaries
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>CARGO_BUILD_FLAGS += &quot;--release&quot;
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Build in release mode for smaller/faster binaries</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nv">CARGO_BUILD_FLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"--release"</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a># Install the compiled binary into /usr/bin
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a># The Cargo class sets up the target directory; copy the release binary
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>do_install() {
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    install -d ${D}${bindir}
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    # Find the built binary from the cargo target dir and install it
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    BIN_PATH=$(find ${B}/target -type f -name hello-calculinux -path &quot;*/release/*&quot; -print -quit)
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    if [ -z &quot;$BIN_PATH&quot; ]; then
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>        bbfatal &quot;hello-calculinux binary not found in target/release&quot;
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    fi
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    install -m 0755 &quot;$BIN_PATH&quot; ${D}${bindir}/hello-calculinux
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>}
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># Install the compiled binary into /usr/bin</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="c1"># The Cargo class sets up the target directory; copy the release binary</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="nf">do_install</span>() <span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span>install<span class="w"> </span>-d<span class="w"> </span><span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="c1"># Find the built binary from the cargo target dir and install it</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="nv">BIN_PATH</span><span class="o">=</span><span class="k">$(</span>find<span class="w"> </span><span class="si">${</span><span class="nv">B</span><span class="si">}</span>/target<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span>hello-calculinux<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/release/*"</span><span class="w"> </span>-print<span class="w"> </span>-quit<span class="k">)</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$BIN_PATH</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span>bbfatal<span class="w"> </span><span class="s2">"hello-calculinux binary not found in target/release"</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span><span class="s2">"</span><span class="nv">$BIN_PATH</span><span class="s2">"</span><span class="w"> </span><span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>/hello-calculinux
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">}</span>
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a># Package contents
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>FILES:${PN} += &quot;${bindir}/hello-calculinux&quot;
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="c1"># Package contents</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="nv">FILES</span><span class="nd">:${PN}</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">bindir</span><span class="si">}</span><span class="s2">/hello-calculinux"</span>
 <a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a># Optionally strip the binary if desired
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>INHIBIT_PACKAGE_STRIP = &quot;0&quot;
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="c1"># Optionally strip the binary if desired</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="nv">INHIBIT_PACKAGE_STRIP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0"</span>
 </code></pre></div>
 <p>Notes:</p>
 <ul>
@@ -2234,7 +2234,7 @@ you with the exact value to add):</p>
 <h2 id="4-add-the-package-to-your-image">4) Add the package to your image<a class="headerlink" href="#4-add-the-package-to-your-image" title="Permanent link">&para;</a></h2>
 <p>Add the utility to your image with an <code>IMAGE_INSTALL</code> append. For example,
 in your distribution or image configuration or a bundle:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>IMAGE_INSTALL:append = &quot; hello-calculinux&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">IMAGE_INSTALL</span><span class="nd">:append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">" hello-calculinux"</span>
 </code></pre></div>
 <p>If you use a bundle (e.g., <code>calculinux-bundle.bb</code>), include it there.</p>
 <h2 id="5-build-and-test">5) Build and test<a class="headerlink" href="#5-build-and-test" title="Permanent link">&para;</a></h2>
@@ -2355,7 +2355,7 @@ in your distribution or image configuration or a bundle:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

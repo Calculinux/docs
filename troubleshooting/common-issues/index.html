@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/calculinux.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2876,7 +2876,7 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
 <p><strong>Check for read-only filesystem</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Try creating a test file</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>touch<span class="w"> </span>~/test
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># If you get &quot;Read-only file system&quot; error, overlayfs failed to load</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># If you get "Read-only file system" error, overlayfs failed to load</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Check mount status</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>overlay
@@ -2899,8 +2899,8 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
 </code></pre></div>
 <p><strong>Check system logs</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Check for mount errors</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;overlay\|mount\|fail&quot;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>journalctl<span class="w"> </span>-b<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;overlay\|mount&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"overlay\|mount\|fail"</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>journalctl<span class="w"> </span>-b<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"overlay\|mount"</span>
 </code></pre></div>
 <h3 id="solution-1-remove-external-sd-card">Solution 1: Remove External SD Card<a class="headerlink" href="#solution-1-remove-external-sd-card" title="Permanent link">&para;</a></h3>
 <p><strong>Immediate fix</strong>:</p>
@@ -2921,8 +2921,8 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Change partition labels to unique names</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># (adjust partition numbers as needed for your card)</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">1</span>:<span class="s2">&quot;external-storage&quot;</span><span class="w"> </span>/dev/mmcblk1
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">2</span>:<span class="s2">&quot;external-backup&quot;</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">1</span>:<span class="s2">"external-storage"</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>--change-name<span class="o">=</span><span class="m">2</span>:<span class="s2">"external-backup"</span><span class="w"> </span>/dev/mmcblk1
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Verify changes</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,LABEL
@@ -2936,10 +2936,10 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Create new partition table with unique partition label</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>-o<span class="w"> </span>/dev/mmcblk1<span class="w">  </span><span class="c1"># Create new GPT table</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>:0:0<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:8300<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>:<span class="s2">&quot;external-data&quot;</span><span class="w"> </span>/dev/mmcblk1
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>sudo<span class="w"> </span>sgdisk<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>:0:0<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:8300<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>:<span class="s2">"external-data"</span><span class="w"> </span>/dev/mmcblk1
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1"># Format the partition</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;external-data&quot;</span><span class="w"> </span>/dev/mmcblk1p1
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>-L<span class="w"> </span><span class="s2">"external-data"</span><span class="w"> </span>/dev/mmcblk1p1
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Verify</span>
 <a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,LABEL
@@ -2948,7 +2948,7 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
 <p>If already booted into read-only mode, you can attempt a manual overlay mount:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Identify and mount the correct OVERLAY_DATA partition</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>lsblk<span class="w"> </span>-o<span class="w"> </span>NAME,PARTLABEL,MOUNTPOINT
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Find the partition with PARTLABEL &quot;OVERLAY_DATA&quot; on boot card (mmcblk0)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Find the partition with PARTLABEL "OVERLAY_DATA" on boot card (mmcblk0)</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># 2. Mount the overlay data partition if not already mounted</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data
@@ -3104,7 +3104,7 @@ You must erase the SPI NAND flash. See the comprehensive <strong><a href="../era
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
