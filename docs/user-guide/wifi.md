@@ -25,7 +25,7 @@ sudo uwific
 
 `uwific` needs access to the system D-Bus, so it must run as root.
 
-The TUI lists visible networks with signal strength. Select a network and press **Enter**. For a PSK network, enter the passphrase when prompted.
+The TUI lists visible networks with signal strength. Select a network and press **Enter**. For a password protected network, enter the passphrase when prompted.
 
 ### Controls
 
