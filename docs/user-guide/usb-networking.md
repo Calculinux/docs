@@ -14,10 +14,11 @@ Calculinux includes built-in USB gadget networking support that makes your PicoC
 
 The USB gadget uses a **single configuration** mode where you can select the network protocol:
 
-- **ECM (CDC-Ether)** - Default, native Linux/macOS protocol (recommended)
-- **RNDIS** - Windows compatibility (configure via `/etc/default/usb-gadget-network`)
+- **RNDIS** — Default. Works on Windows and Linux with a single host interface
+- **ECM (CDC-Ether)** — Prefer for macOS (Apple has no inbox RNDIS host driver)
+- **both** — ECM + RNDIS together; available but not recommended as a default (Linux often binds both functions and ends up with two interfaces on the same subnet)
 
-By default, the device uses ECM which works natively on Linux and macOS without additional drivers. For Windows support, you can switch to RNDIS mode.
+By default the device uses RNDIS so Windows and Linux hosts work without switching. For macOS, switch to ECM (see [Switching protocols](#switching-protocols)).
 
 ## Quick Start
 
@@ -199,6 +200,15 @@ If your system uses systemd-networkd instead of NetworkManager:
 
 ### macOS
 
+!!! warning "ECM Required on macOS"
+    macOS has no inbox RNDIS host driver. Switch the PicoCalc to ECM before connecting:
+
+    ```shell
+    sudo usb-modeswitch --protocol ecm
+    ```
+
+    Or set `USB_PROTOCOL=ecm` in `/etc/default/usb-gadget-network` and restart `usb-gadget-network`.
+
 1. Connect your PicoCalc via USB
 2. Open **System Settings** (or System Preferences on older versions)
 3. Go to **Network**
@@ -227,18 +237,12 @@ If your system uses systemd-networkd instead of NetworkManager:
 
 ### Windows
 
-!!! warning "RNDIS Mode Required"
-    Windows requires the USB gadget to be in **RNDIS mode**. The default ECM mode will not work on Windows.
-
-    See the [Configuration](#switching-between-ecm-and-rndis) section above to switch to RNDIS mode.
-
 !!! note
-    Windows requires RNDIS drivers, which are built-in for Windows 10/11.
+    The default gadget protocol is **RNDIS**. Windows 10/11 include the RNDIS driver; no protocol switch is needed for basic SSH access.
 
-1. **Configure PicoCalc** for RNDIS mode (see Configuration section)
-2. Connect your PicoCalc via USB
-3. Windows should detect it as "RNDIS/Ethernet Gadget"
-4. If driver installation is needed, Windows should install it automatically
+1. Connect your PicoCalc via USB
+2. Windows should detect it as "RNDIS/Ethernet Gadget"
+3. If driver installation is needed, Windows should install it automatically
 
 **Configure the network:**
 
@@ -364,9 +368,9 @@ First, verify you're using the correct protocol for your host OS:
 # On PicoCalc - check current protocol
 grep USB_PROTOCOL /etc/default/usb-gadget-network
 
-# Should be:
-# USB_PROTOCOL=ecm    # for Linux/macOS
-# USB_PROTOCOL=rndis  # for Windows
+# Default:
+# USB_PROTOCOL=rndis  # Windows + Linux
+# USB_PROTOCOL=ecm    # macOS
 ```
 
 **On PicoCalc:**
@@ -486,43 +490,45 @@ If PicoCalc doesn't get an IP via DHCP:
 
 ## Configuration
 
-### Switching Between ECM and RNDIS
+### Switching protocols
 
-The USB network protocol can be configured by editing `/etc/default/usb-gadget-network` on the PicoCalc:
+The USB network protocol is set in `/etc/default/usb-gadget-network` on the PicoCalc (`USB_PROTOCOL`).
 
-**To use ECM (default - Linux/macOS):**
+**RNDIS (default — Windows and Linux):**
 
 ```shell
-# Edit the configuration file
 sudo nano /etc/default/usb-gadget-network
-
-# Set or verify:
-USB_PROTOCOL=ecm
-
-# Restart the USB gadget service
+# USB_PROTOCOL=rndis
 sudo systemctl restart usb-gadget-network
 ```
 
-**To use RNDIS (Windows):**
+**ECM (macOS, or Linux preference):**
 
 ```shell
-# Edit the configuration file
 sudo nano /etc/default/usb-gadget-network
-
-# Change to:
-USB_PROTOCOL=rndis
-
-# Restart the USB gadget service
+# USB_PROTOCOL=ecm
 sudo systemctl restart usb-gadget-network
 ```
+
+**both (ECM + RNDIS in one config):**
+
+```shell
+# USB_PROTOCOL=both
+sudo systemctl restart usb-gadget-network
+```
+
+!!! warning "Avoid both on Linux hosts"
+    With `USB_PROTOCOL=both`, Linux often binds ECM and RNDIS at once, producing two interfaces on the same subnet and confusing routing/NetworkManager. Prefer `rndis` (default) or `ecm` alone.
 
 !!! note "Reconnection Required"
-    After changing the protocol and restarting the service, you need to **unplug and replug** the USB cable for the host to detect the new configuration.
+    After changing the protocol and restarting the service, **unplug and replug** the USB cable so the host re-enumerates the gadget.
 
 !!! tip "Protocol Selection"
-    - Use **ECM** if you primarily use Linux or macOS - it's native and doesn't require special drivers
-    - Use **RNDIS** if you primarily use Windows - it requires the RNDIS driver but provides better Windows compatibility
-    - You cannot use both simultaneously; the device operates in one mode at a time
+    - **RNDIS** (default) — Windows and Linux, one host interface
+    - **ECM** — macOS (required); also fine on Linux
+    - **both** — only if you need it and can ignore the extra Linux interface
+
+Temporary switches without editing the file: `sudo usb-modeswitch --protocol rndis|ecm|both` (see [usb-modeswitch](#using-usb-modeswitch)).
 
 ### Advanced Topics
 
@@ -537,7 +543,7 @@ This configuration is handled by systemd-networkd and is defined in `/lib/system
 
 ```ini
 [Match]
-Name=usb0
+Name=usb*
 
 [Network]
 Address=192.168.7.2/24
@@ -559,7 +565,7 @@ To use a different static IP range:
 
    ```ini
    [Match]
-   Name=usb0
+   Name=usb*
 
    [Network]
    Address=10.0.0.2/24
@@ -650,84 +656,11 @@ Login with:
 
     See [Serial Console Access](../hardware/serial/console-access.md) for the hardware serial connection.
 
-## ADB over USB (Experimental)
-
-!!! warning "Currently Disabled by Default"
-    ADB support is included but **disabled by default** due to initialization complexity. The FunctionFS interface used by ADB requires special setup where the userspace daemon must be running before the gadget function can be bound. **For this and other reasons, this interface is not yet fully tested.**
-
-Calculinux can expose ADB over the same USB gadget using FunctionFS. This runs a patched
-adbd that works without Android, mounted via ConfigFS. This was ported from Luckfox's
-buildroot SDK and the patches were updated to a newer version of adbd to support more
-modern OpenSSL libraries.
-
-### Enabling ADB
-
-To enable ADB (advanced users):
-
-1. Edit `/etc/default/usb-gadget-network` and set `ENABLE_ADB=1`
-2. Ensure the adbd service will start before the gadget binds:
-
-   ```shell
-   sudo systemctl enable adbd
-   sudo systemctl start adbd
-   ```
-
-3. Restart the USB gadget:
-
-   ```shell
-   sudo systemctl restart usb-gadget-network
-   ```
-
-### Prerequisites
-
-- Host has Android Platform Tools (adb) installed
-- usb-gadget-network service enabled
-- adbd service running **before** the USB gadget binds
-
-### Configure adbd auth and transport
-
-- Set a password (preferred): create `/etc/adbd.passwd` (plaintext) or `/etc/adbd.passwd.md5` (md5 hash). Example:
-
-   ```shell
-   echo "strongpassword" | sudo tee /etc/adbd.passwd > /dev/null
-   sudo systemctl restart adbd
-   ```
-
-- Runtime defaults: `/etc/default/adbd`
-   - `ADB_SECURE=1` (default) enforces password prompt via `/usr/bin/adbd-auth.sh`
-   - `ADB_TCP_PORT=0` keeps ADB on USB only; set to `5555` if you also want TCP
-   - `ADBD_AUTH_COMMAND` can point to a custom helper if needed
-
-### Host connection
-
-1. Plug PicoCalc via USB and wait for usb-gadget-network + adbd
-2. On host, restart adb and list devices:
-
-    ```shell
-    adb kill-server
-    adb devices
-    ```
-
-3. Connect (accept password prompt):
-
-    ```shell
-    adb shell
-    ```
-
-    If you enabled TCP (`ADB_TCP_PORT=5555`), connect with `adb connect 192.168.7.2:5555`.
-
-### ADB Troubleshooting
-
-- Check FunctionFS mount: `mount | grep functionfs`
-- Inspect gadget functions: `ls /sys/kernel/config/usb_gadget/g1/functions`
-- View adbd logs: `journalctl -u adbd -f`
-- If host does not see ADB: `adb kill-server`, replug USB, verify `ENABLE_ADB=1`, ensure `usb_f_fs` module is loaded, and verify adbd is running
-
 ## USB Host/Gadget Mode Switching
 
 The PicoCalc's main USB-C port (usb20_otg0) supports **USB OTG** (On-The-Go), allowing it to switch between two roles:
 
-- **Gadget Mode** (default) - Device acts as a USB peripheral (network adapter, serial console, ADB)
+- **Gadget Mode** (default) - Device acts as a USB peripheral (network adapter, serial console)
 - **Host Mode** - Device acts as a USB host to connect peripherals (flash drives, keyboards, mice)
 
 !!! warning "Network Access Required"
@@ -760,11 +693,14 @@ sudo usb-modeswitch --mode gadget
 #### Change USB Protocol
 
 ```shell
-# Switch to RNDIS (Windows compatibility)
+# RNDIS (default — Windows + Linux)
 sudo usb-modeswitch --protocol rndis
 
-# Switch to ECM (Linux/macOS, default)
+# ECM (macOS)
 sudo usb-modeswitch --protocol ecm
+
+# Both ECM and RNDIS (usually avoid on Linux hosts)
+sudo usb-modeswitch --protocol both
 ```
 
 #### Toggle Additional Functions
@@ -775,9 +711,6 @@ sudo usb-modeswitch --serial on
 
 # Disable USB networking (serial only)
 sudo usb-modeswitch --network off --serial on
-
-# Enable ADB function
-sudo usb-modeswitch --adb on
 ```
 
 #### Clear Temporary Overrides
@@ -797,10 +730,9 @@ Output shows current configuration:
 
 ```shell
 USB_MODE=gadget
-USB_PROTOCOL=ecm
+USB_PROTOCOL=rndis
 ENABLE_SERIAL_CONSOLE=0
 ENABLE_NETWORK=1
-ENABLE_ADB=0
 ```
 
 ### Persistent Configuration
@@ -818,12 +750,11 @@ Available settings:
 USB_MODE=gadget  # or "host"
 
 # Network protocol (gadget mode only)
-USB_PROTOCOL=ecm  # or "rndis"
+USB_PROTOCOL=rndis  # or "ecm" / "both"
 
 # Optional features
 ENABLE_SERIAL_CONSOLE=0  # 1=enable, 0=disable
 ENABLE_NETWORK=1         # 1=enable, 0=disable
-ENABLE_ADB=0             # 1=enable, 0=disable
 ```
 
 After editing, restart the service:

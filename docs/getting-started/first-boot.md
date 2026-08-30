@@ -181,20 +181,19 @@ USB networking is the easiest way to get started with Calculinux. Simply connect
     - USB serial console access
     - Advanced configuration options
 
-!!! warning "Windows Users"
-    The default configuration uses ECM (CDC-Ether) which works natively on Linux and macOS but **not on Windows**.
-
-    If you're using Windows, you need to switch the device to RNDIS mode - see the [USB Networking Configuration](../user-guide/usb-networking.md#switching-between-ecm-and-rndis) section.
+!!! warning "macOS Users"
+    The default USB gadget protocol is **RNDIS**, which works on Windows and Linux. macOS needs **ECM** instead — see [USB Networking](../user-guide/usb-networking.md#switching-protocols).
 
 **What you get with USB networking:**
 
 - ✅ Fast, reliable connection
 - ✅ No additional hardware required
-- ✅ Works on Linux and macOS out-of-the-box
-- ✅ Windows support via RNDIS mode
+- ✅ Works on Windows and Linux out-of-the-box (RNDIS)
+- ✅ macOS via ECM (`usb-modeswitch --protocol ecm`)
 - ✅ Static IP (`192.168.7.2`) always available
 - ✅ DHCP support for internet sharing
 - ✅ USB serial console at 1500000 baud
+- ✅ SSH over USB (no ADB required)
 
 ### WiFi Setup (USB Adapter Required)
 
