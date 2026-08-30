@@ -90,12 +90,17 @@ dmesg  # Kernel messages
 ### Connect to Network
 
 ```shell
+# WiFi (USB adapter required)
+uwific
+
 # Ethernet (DHCP)
 udhcpc -i eth0
 
 # Check connection
 ping 8.8.8.8
 ```
+
+See the [WiFi guide](../user-guide/wifi.md) for keys and troubleshooting.
 
 ### Install Software
 

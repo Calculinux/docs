@@ -64,6 +64,7 @@ blocks of a functional system:
 | u-boot-rockchip-bootscript       | Boot scripts for Rockchip-based systems using U-Boot.                   |
 | usbutils                         | Utilities for inspecting USB devices (e.g., `lsusb`).                   |
 | util-linux                       | Core system utilities for disk, mount, login, and system management.    |
+| uwific                           | Terminal WiFi manager that talks to iwd.                                |
 | wget                             | Command-line utility for downloading files over HTTP/HTTPS/FTP.         |
 
 ## Installing new applications

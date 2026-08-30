@@ -12,6 +12,7 @@ Information about built-in networking options, USB gadget networking, and WiFi c
 !!! info "Network Options"
     - **Luckfox Lyra**: No built-in networking. USB WiFi adapters (3.3V or via powered hub) are the only tested option.
     - **Luckfox Lyra Plus**: Has built-in Ethernet but has not been tested with Calculinux and would require a custom 3D-printed backplate to access the port.
+    - To join a wireless network after the adapter is attached, see [WiFi](../../user-guide/wifi.md).
 
 === "USB Gadget Networking"
 
