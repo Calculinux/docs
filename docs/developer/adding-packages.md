@@ -11,6 +11,8 @@ For now, please refer to:
 - [Building Calculinux](building.md) - Building the system
 - [Yocto Setup](yocto-setup.md) - Yocto/BitBake basics
 
+--8<-- "developer/adding-packages/_snippets/instruction-set.md"
+
 ## Coming Soon
 
 This section will cover:
