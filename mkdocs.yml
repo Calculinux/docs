@@ -116,6 +116,7 @@ nav:
     - Building Calculinux: developer/building.md
     - Using the Yocto SDK: developer/sdk.md
     - Calculinux Update System: developer/calculinux-update.md
+    - Maintaining Feed Packages: developer/package-maintenance.md
     - Contributing: developer/contributing.md
     - Project Ideas: developer/project-ideas.md
   

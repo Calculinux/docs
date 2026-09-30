@@ -48,7 +48,8 @@ This will:
 2. Show available bundles sorted by date (newest first)
 3. Let you select which bundle to install
 4. Extract bundle metadata (OPKG configuration and package list)
-5. Prefetch packages that will be reinstalled after reboot
+5. Download any installed packages the new system needs reinstalled (only when the
+   release or kernel changes), while the device is still online
 6. Prompt for confirmation before installing
 
 Each RAUC bundle includes metadata about the new system's package configuration, allowing the update tool to prepare everything needed for a smooth transition.
@@ -123,42 +124,46 @@ The update process automatically handles these issues:
 When you run `sudo cup install`, the system:
 
 1. **Extracts bundle metadata** - Gets OPKG configuration and package information from the bundle
-2. **Plans reconciliation** - Identifies duplicates, missing packages, and upgrades needed
-3. **Prefetches packages** - Downloads packages that will need reinstallation using the new system's package repositories
+2. **Plans reconciliation** - Finds packages you installed that the new image now provides, and works out which of your packages must be reinstalled: all of them for a new release, kernel modules for a new kernel, none otherwise
+3. **Prefetches packages** - Downloads those reinstalls and their dependencies from the new system's package repositories
 
-This metadata-driven approach allows the update to prepare everything needed before installation, enabling offline reconciliation even if network isn't available after reboot.
+Because the downloads happen before the reboot, the update does not need the network afterwards. See [Maintaining Feed Packages](../developer/package-maintenance.md) for the details.
 
 #### During RAUC Installation (via `cup-hook`)
 
 When RAUC installs the new slot:
 
-1. **Removes duplicates** - Uninstalls overlay packages now provided by the base
-2. **Records the plan** - Saves which packages need reinstalling/upgrading
+1. **Drops stale entries** - Removes package entries that have no files of their own
+2. **Records the plan** - Saves which duplicates to remove and which packages to reinstall
 3. **Prepares for reboot** - Everything is ready for the post-reboot phase
 
 #### After Reboot (via `cup-postreboot`)
 
 When the system boots into the new slot:
 
-1. **Updates package feeds** - Runs `opkg update`
-2. **Reinstalls missing packages** - Installs packages from the old base now missing
-3. **Upgrades overlay packages** - Updates all user packages to match new base versions
-4. **Uses cached packages** - Prefers locally cached .ipk files for offline operation
+1. **Removes duplicates** - Uninstalls your copies of packages the new image provides, so the image's versions show through
+2. **Reinstalls packages** - From the packages downloaded before the reboot, without needing the network
+3. **Waits for anything else** - Packages that could not be downloaded stay queued; the login message and `cup status` list them, and `cup reconcile` installs them once you are online (it is also retried every 15 minutes)
+
+```shell
+cup status
+sudo cup reconcile
+```
 
 ### Checking Reconciliation Status
 
 After an update, check the systemd journal:
 
 ```shell
-journalctl -u calculinux-update-postreboot.service
+journalctl -u cup-postreboot.service
 ```
 
 Look for messages like:
 
 ```log
-cup-hook: pruned writable status against new image
-cup-hook: queued 3 packages for reinstall
-cup-hook: queued 5 packages for upgrade
+cup-hook: release change: 4 overlay package(s) will be reinstalled
+cup-hook: queued 4 packages for reinstall
+cup-hook: reinstalling 4 package(s) from the prefetch cache
 ```
 
 ## Configuration
@@ -195,7 +200,7 @@ sudo cup install --no-prefetch
 ```
 
 !!! warning
-    Without prefetch, post-reboot reconciliation requires network access. The bundle metadata will still be validated to ensure compatibility.
+    Without prefetch, packages that need reinstalling wait until the device is online and you run `cup reconcile` (or the retry timer does). The bundle metadata will still be validated to ensure compatibility.
 
 ## Update Process Flow
 
@@ -236,15 +241,16 @@ journalctl -u rauc -e
 Check the post-reboot service:
 
 ```shell
-systemctl status calculinux-update-postreboot.service
-journalctl -u calculinux-update-postreboot.service -e
+systemctl status cup-postreboot.service
+journalctl -u cup-postreboot.service -e
+cup status
 ```
 
 Pending operations are stored in:
 
 - `/var/lib/calculinux-update/update-state.pending-reinstalls`
-- `/var/lib/calculinux-update/update-state.pending-upgrades`
 - `/var/lib/calculinux-update/update-state.pending-duplicates`
+- `/var/lib/calculinux-update/update-state.leftovers` (packages that could not be reinstalled)
 
 ### Modified Config Files After Update
 
@@ -252,7 +258,7 @@ To check which config files need review:
 
 ```shell
 # Check post-reboot service logs
-journalctl -u calculinux-update-postreboot.service | grep "Modified config"
+journalctl -u cup-postreboot.service | grep "Modified config"
 
 # View the state file directly
 cat /var/lib/calculinux-update/update-state.modified-conffiles
@@ -287,7 +293,7 @@ cat /etc/opkg/opkg.conf
 opkg update
 ```
 
-Prefetch failures are harmless in most cases - the system will simply download packages after reboot instead of using pre-cached versions. However, if bundle metadata extraction fails, the bundle may be corrupted and should be re-downloaded.
+Prefetch failures are harmless in most cases - packages that could not be downloaded are installed later with `cup reconcile` once the device is online. However, if bundle metadata extraction fails, the bundle may be corrupted and should be re-downloaded.
 
 ### Rolling Back an Update
 
@@ -334,7 +340,7 @@ This downloads and prepares but doesn't invoke RAUC.
 
 ### After Updating
 
-1. **Check reconciliation**: `journalctl -u calculinux-update-postreboot.service`
+1. **Check reconciliation**: `journalctl -u cup-postreboot.service`
 2. **Test your applications**: Ensure everything still works
 3. **Keep previous slot**: Don't mark it bad until you're confident
 
